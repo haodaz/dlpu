@@ -1,7 +1,7 @@
 'use client';
 import React, { useState, useEffect, useRef } from 'react';
-import { Button, Typography, Tag, Divider, Spin } from 'antd';
-import { PlayCircleOutlined, SyncOutlined, CheckOutlined, FileTextOutlined } from '@ant-design/icons';
+import { Button, Typography, Tag, Divider, Spin, Table } from 'antd';
+import { PlayCircleOutlined, SyncOutlined, CheckOutlined, FileTextOutlined, DatabaseOutlined, HomeOutlined } from '@ant-design/icons';
 import { useRouter } from 'next/navigation';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from 'recharts';
 
@@ -16,7 +16,19 @@ export default function SmartEvaluationEngine() {
   const [agents, setAgents] = useState<Record<string, any>>({});
   const [finalReport, setFinalReport] = useState<any>(null);
   
+  // History state
+  const [historyReports, setHistoryReports] = useState<any[]>([]);
+  
   const logsEndRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const saved = localStorage.getItem('dlpu_eval_history');
+    if (saved) {
+      try {
+        setHistoryReports(JSON.parse(saved));
+      } catch (e) {}
+    }
+  }, []);
 
   useEffect(() => {
     if (!isFinished) {
@@ -60,6 +72,21 @@ export default function SmartEvaluationEngine() {
               } else if (event.type === 'result') {
                 setFinalReport(event.data);
                 setIsFinished(true);
+                
+                // Save to history
+                const newReport = {
+                  id: Date.now(),
+                  date: new Date().toLocaleString(),
+                  grade: event.data.grade,
+                  score: event.data.totalScore,
+                  data: event.data
+                };
+                setHistoryReports(prev => {
+                  const updated = [newReport, ...prev].slice(0, 10);
+                  localStorage.setItem('dlpu_eval_history', JSON.stringify(updated));
+                  return updated;
+                });
+
               } else if (event.type === 'error') {
                 setLogs(prev => [...prev, { message: `[ERROR] ${event.message}`, status: 'error' }]);
                 setHasError(true);
@@ -92,10 +119,39 @@ export default function SmartEvaluationEngine() {
   };
 
   const getGradeColor = (grade: string) => {
+    if (!grade) return 'bg-gray-100 text-gray-700 border-gray-200';
     if (grade.includes('卓越') || grade.includes('优秀')) return 'bg-green-100 text-green-700 border-green-200';
     if (grade.includes('良好')) return 'bg-blue-100 text-blue-700 border-blue-200';
     if (grade.includes('合格')) return 'bg-orange-100 text-orange-700 border-orange-200';
     return 'bg-red-100 text-red-700 border-red-200';
+  };
+
+  const getTraceabilityData = (expertResults: any) => {
+    if (!expertResults) return [];
+    
+    const mapping = [
+      { template: 'T03 产业白皮书', expertKey: 'expert_industry' },
+      { template: 'T04 课程体系矩阵', expertKey: 'expert_alignment' },
+      { template: 'T06 过程性评价', expertKey: 'expert_student' },
+      { template: 'T09 平台行为日志', expertKey: 'expert_student' },
+      { template: 'T10 资产台账', expertKey: 'expert_asset' },
+      { template: 'T12 综合验证课程', expertKey: 'expert_practice' },
+      { template: 'T13 毕业设计', expertKey: 'expert_practice' },
+      { template: 'T14 产教合作协议', expertKey: 'expert_integration' },
+      { template: 'T15 师资投入深度', expertKey: 'expert_teacher' },
+      { template: 'T18 初次就业质量', expertKey: 'expert_career' },
+      { template: 'T19 校友追踪', expertKey: 'expert_alumni' }
+    ];
+
+    return mapping.map((m, idx) => {
+      const res = expertResults[m.expertKey];
+      return {
+        key: idx,
+        template: m.template,
+        expert: res ? res.indicator : '无数据',
+        grade: res ? res.grade : 'N/A'
+      };
+    });
   };
 
   // --- 报告渲染 ---
@@ -106,12 +162,13 @@ export default function SmartEvaluationEngine() {
       <div className="min-h-screen bg-gray-50 flex flex-col items-center">
         {/* 固定顶部导航 */}
         <div className="sticky top-0 w-full bg-white border-b border-gray-200 shadow-sm z-50 flex justify-between items-center px-8 py-4">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-4">
             <span className="text-blue-600 text-xl"><FileTextOutlined /></span>
             <span className="font-bold text-gray-800 text-lg">方略一答报告引擎</span>
           </div>
           <div className="flex gap-4">
             <Button onClick={() => window.print()}>导出 PDF</Button>
+            <Button onClick={() => { setIsFinished(false); setFinalReport(null); }} icon={<HomeOutlined />}>返回报告大厅</Button>
             <Button type="primary" onClick={() => router.push('/panoramic')}>返回工作台</Button>
           </div>
         </div>
@@ -145,19 +202,10 @@ export default function SmartEvaluationEngine() {
 
           {/* Chief Summary (01) */}
           <div className="p-20 border-b border-gray-100 min-h-screen">
-            <div className="text-blue-600 font-bold text-xl mb-6">01. 综合诊断与全局战略画像</div>
+            <div className="text-blue-600 font-bold text-xl mb-10">01. 综合诊断与全局战略画像</div>
             
-            <div className="flex flex-col md:flex-row gap-12 items-center mb-16">
-              <div className="flex-1">
-                <div className="text-sm text-gray-400 mb-2">综合评级与得分</div>
-                <div className="text-6xl font-black text-gray-900 mb-4">
-                  {finalReport.grade} <span className="text-4xl text-blue-600">{finalReport.totalScore}</span>
-                </div>
-                <div className="text-gray-700 leading-loose text-justify text-base">
-                  {finalReport.diagnosis}
-                </div>
-              </div>
-              <div className="w-full md:w-1/2 h-80">
+            <div className="flex flex-col items-center mb-16 gap-12">
+              <div className="w-full max-w-2xl h-[400px]">
                 <ResponsiveContainer width="100%" height="100%">
                   <RadarChart cx="50%" cy="50%" outerRadius="70%" data={finalReport.radarData}>
                     <PolarGrid stroke="#e5e7eb" />
@@ -167,13 +215,44 @@ export default function SmartEvaluationEngine() {
                   </RadarChart>
                 </ResponsiveContainer>
               </div>
+
+              <div className="w-full">
+                <div className="text-center mb-10">
+                  <div className="text-sm text-gray-400 mb-2 font-bold tracking-widest uppercase">综合评级与得分</div>
+                  <div className="text-6xl font-black text-gray-900 mb-4 flex justify-center items-baseline gap-4">
+                    {finalReport.grade} <span className="text-5xl text-blue-600">{finalReport.totalScore}</span>
+                  </div>
+                </div>
+                <div className="text-gray-700 leading-loose text-justify text-lg bg-gray-50 p-8 rounded-2xl border border-gray-200 shadow-sm">
+                  {finalReport.diagnosis}
+                </div>
+              </div>
             </div>
 
-            <div className="bg-blue-50/50 p-8 rounded-2xl border border-blue-100">
+            <div className="bg-blue-50/50 p-8 rounded-2xl border border-blue-100 mb-16">
               <h3 className="text-lg font-bold text-blue-800 mb-4">全局战略改进建议</h3>
               <div className="text-gray-700 leading-loose whitespace-pre-wrap">
                 {finalReport.suggestions}
               </div>
+            </div>
+
+            {/* T-Module Traceability Table */}
+            <div>
+              <h3 className="text-lg font-bold text-gray-800 mb-6 flex items-center gap-2">
+                <DatabaseOutlined className="text-blue-500" />
+                底层数据追溯表 (Data Traceability Matrix)
+              </h3>
+              <Table 
+                dataSource={getTraceabilityData(finalReport.expertResults)}
+                columns={[
+                  { title: '底层 T 模板数据源', dataIndex: 'template', key: 'template', width: '25%', render: (t) => <Tag color="blue" className="font-mono text-sm py-1 px-2">{t}</Tag> },
+                  { title: '上层评估维度 (主责微专家)', dataIndex: 'expert', key: 'expert', width: '50%', render: (e) => <span className="font-bold text-slate-700">{e}</span> },
+                  { title: '评级追溯', dataIndex: 'grade', key: 'grade', align: 'center', render: (g) => <span className={`px-3 py-1 rounded-full text-xs font-bold border ${getGradeColor(g)}`}>{g}</span> }
+                ]}
+                pagination={false}
+                size="middle"
+                className="border border-gray-100 rounded-xl overflow-hidden shadow-sm"
+              />
             </div>
           </div>
 
@@ -191,8 +270,8 @@ export default function SmartEvaluationEngine() {
                   </div>
                   {exp.chartData && exp.chartData.tags && (
                     <div className="flex flex-wrap gap-2">
-                      {exp.chartData.tags.map(tag => (
-                        <Tag key={tag} color="blue" className="rounded-full px-3">{tag}</Tag>
+                      {exp.chartData.tags.map((tag: string) => (
+                        <Tag key={tag} color="blue" className="rounded-full px-3 py-0.5 shadow-sm border border-blue-200">{tag}</Tag>
                       ))}
                     </div>
                   )}
@@ -204,8 +283,8 @@ export default function SmartEvaluationEngine() {
                   </div>
                   
                   {exp.chartData && exp.chartData.tier && (
-                    <div className="bg-gray-50 px-4 py-3 rounded-xl border border-gray-100 flex flex-col items-end gap-2 shadow-sm">
-                      <div className="text-xs text-gray-500 font-bold uppercase tracking-wider">{exp.chartData.tier.label}</div>
+                    <div className="bg-gray-50 px-4 py-3 rounded-xl border border-gray-200 flex flex-col items-end gap-2 shadow-sm">
+                      <div className="text-[10px] text-gray-500 font-bold uppercase tracking-widest">{exp.chartData.tier.label}</div>
                       <div className="flex gap-1">
                         {Array.from({ length: exp.chartData.tier.totalTiers }).map((_, i) => (
                           <div 
@@ -228,25 +307,25 @@ export default function SmartEvaluationEngine() {
                   
                   {/* Status & Facts */}
                   <div className="relative">
-                    <div className="absolute -left-[45px] top-1 w-3 h-3 bg-gray-300 rounded-full border-2 border-white ring-4 ring-gray-50"></div>
+                    <div className="absolute -left-[45px] top-1 w-3 h-3 bg-gray-300 rounded-full border-2 border-white ring-4 ring-gray-50 shadow-sm"></div>
                     <h4 className="text-gray-400 text-sm font-bold tracking-widest mb-4 uppercase">Status & Facts</h4>
-                    <div className="text-gray-800 text-lg leading-relaxed bg-gray-50 p-6 border-l-4 border-gray-300 rounded-r-lg">
+                    <div className="text-gray-800 text-lg leading-relaxed bg-gray-50 p-6 border-l-4 border-gray-300 rounded-r-lg shadow-sm">
                       {exp.status}
                     </div>
                   </div>
 
                   {/* Criteria */}
                   <div className="relative">
-                    <div className="absolute -left-[45px] top-1 w-3 h-3 bg-gray-300 rounded-full border-2 border-white ring-4 ring-gray-50"></div>
+                    <div className="absolute -left-[45px] top-1 w-3 h-3 bg-gray-300 rounded-full border-2 border-white ring-4 ring-gray-50 shadow-sm"></div>
                     <h4 className="text-gray-400 text-sm font-bold tracking-widest mb-4 uppercase">Evaluation Criteria</h4>
-                    <div className="text-gray-600 leading-relaxed font-medium bg-white p-4 rounded-lg border border-gray-100 shadow-sm">
-                      标准：{exp.criteria}
+                    <div className="text-gray-600 leading-relaxed font-medium bg-white p-5 rounded-xl border border-gray-100 shadow-sm">
+                      <span className="font-bold text-gray-700 mr-2">标准：</span>{exp.criteria}
                     </div>
                   </div>
 
                   {/* Analysis */}
                   <div className="relative">
-                    <div className="absolute -left-[45px] top-1 w-3 h-3 bg-blue-300 rounded-full border-2 border-white ring-4 ring-blue-50"></div>
+                    <div className="absolute -left-[45px] top-1 w-3 h-3 bg-blue-300 rounded-full border-2 border-white ring-4 ring-blue-50 shadow-sm"></div>
                     <h4 className="text-blue-500 text-sm font-bold tracking-widest mb-4 uppercase">Deep Analysis</h4>
                     <div className="text-gray-700 leading-loose text-justify whitespace-pre-wrap">
                       {exp.analysis}
@@ -255,7 +334,7 @@ export default function SmartEvaluationEngine() {
 
                   {/* Suggestions (Light mode) */}
                   <div className="relative">
-                    <div className="absolute -left-[45px] top-1 w-3 h-3 bg-blue-500 rounded-full border-2 border-white ring-4 ring-blue-100 animate-pulse"></div>
+                    <div className="absolute -left-[45px] top-1 w-3 h-3 bg-blue-500 rounded-full border-2 border-white ring-4 ring-blue-100 animate-pulse shadow-sm"></div>
                     <div className="bg-blue-50/70 p-8 rounded-2xl border border-blue-200 shadow-sm hover:shadow-md transition-shadow">
                       <h4 className="text-blue-700 text-sm font-bold tracking-widest mb-4 uppercase">
                         Intervention Suggestions
@@ -276,23 +355,65 @@ export default function SmartEvaluationEngine() {
 
   // --- 初始状态 & 加载状态 (Engine Dashboard) ---
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col items-center justify-center py-10 px-4">
+    <div className="min-h-screen bg-slate-50 flex flex-col items-center justify-start py-20 px-4">
       
       {!isRunning && !isFinished && !hasError && (
-        <div className="text-center mt-20">
-          <Title level={2} className="!text-slate-800 !mb-6">专业建设协同评价引擎</Title>
-          <Paragraph className="text-slate-500 text-lg mb-12 max-w-2xl mx-auto">
-            即将并行唤醒 9 位细分领域专属微专家，穿透全景数据并执行互联网级深度核验。
-          </Paragraph>
-          <Button 
-            type="primary" 
-            size="large" 
-            icon={<PlayCircleOutlined />} 
-            onClick={startEvaluation}
-            className="bg-blue-600 hover:bg-blue-500 border-none px-12 h-14 text-lg font-bold shadow-[0_4px_15px_rgba(37,99,235,0.3)] rounded-full transition-transform hover:scale-105"
-          >
-            启动多智能体并发评估
-          </Button>
+        <div className="w-full max-w-5xl">
+          {/* Start Engine Card */}
+          <div className="bg-white rounded-3xl shadow-xl border border-slate-100 p-16 text-center mb-16 relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-500 to-purple-500"></div>
+            <Title level={1} className="!text-slate-800 !mb-6 !font-black">专业建设协同评价引擎</Title>
+            <Paragraph className="text-slate-500 text-lg mb-12 max-w-2xl mx-auto leading-relaxed">
+              即将并行唤醒 9 位细分领域专属微专家，穿透全景数据并执行互联网级深度核验。<br/>
+              完成评价后，将由「总司令」统筹生成万字长卷宗报告。
+            </Paragraph>
+            <Button 
+              type="primary" 
+              size="large" 
+              icon={<PlayCircleOutlined />} 
+              onClick={startEvaluation}
+              className="bg-blue-600 hover:bg-blue-500 border-none px-12 h-16 text-xl font-bold shadow-[0_8px_20px_rgba(37,99,235,0.3)] rounded-full transition-transform hover:scale-105"
+            >
+              启动多智能体并发评估
+            </Button>
+          </div>
+
+          {/* History List */}
+          {historyReports.length > 0 && (
+            <div className="animate-fade-in-up">
+              <Title level={3} className="!text-slate-700 !mb-8 flex items-center gap-3">
+                <FileTextOutlined className="text-blue-500" /> 历史评级大厅 (最近报告)
+              </Title>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {historyReports.map(report => (
+                  <div 
+                    key={report.id} 
+                    className="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:shadow-xl hover:-translate-y-1 cursor-pointer transition-all duration-300 flex flex-col justify-between"
+                    onClick={() => {
+                      setFinalReport(report.data);
+                      setIsFinished(true);
+                    }}
+                  >
+                    <div>
+                      <div className="text-slate-400 text-sm mb-6 font-mono bg-slate-50 inline-block px-3 py-1 rounded-full">{report.date}</div>
+                      <div className="flex items-baseline gap-4 mb-4">
+                        <span className="text-5xl font-black text-slate-800">{report.score}</span>
+                        <span className={`px-3 py-1 rounded-full text-xs font-bold border ${getGradeColor(report.grade)}`}>
+                          {report.grade}
+                        </span>
+                      </div>
+                      <div className="text-slate-600 text-sm line-clamp-3 leading-relaxed">
+                        {report.data.diagnosis}
+                      </div>
+                    </div>
+                    <div className="mt-6 text-blue-500 text-sm font-bold flex items-center gap-1 group">
+                      查看详情 <span className="transition-transform group-hover:translate-x-1">→</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       )}
 
@@ -346,8 +467,8 @@ export default function SmartEvaluationEngine() {
                <Button onClick={startEvaluation} type="primary" size="large" className="mr-4">
                  重新尝试
                </Button>
-               <Button onClick={() => router.push('/panoramic')} size="large">
-                 返回工作台
+               <Button onClick={() => { setHasError(false); setIsRunning(false); }} size="large">
+                 返回报告大厅
                </Button>
              </div>
           )}

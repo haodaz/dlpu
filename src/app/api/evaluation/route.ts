@@ -47,9 +47,7 @@ export async function POST(request: Request) {
 
           // 2. 拉取全景数据
           send({ type: 'log', message: '👑 总司令正在拉取底层全景数据池...' });
-          const rawData = await prisma.panoramicData.findMany({
-            where: { status: 'COMPLETED' }
-          });
+          const rawData = await prisma.panoramicData.findMany();
           
           const context: EvaluationContext = {
             panoramicData: {}
