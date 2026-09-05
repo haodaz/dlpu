@@ -72,10 +72,11 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
         onCollapse={(value) => setCollapsed(value)}
         style={{ borderRight: '1px solid #f0f0f0' }}
       >
-        <div className="h-16 flex items-center justify-center border-b border-gray-100 px-4">
+        <div className="h-16 flex items-center justify-center border-b border-slate-100 px-4">
           {!collapsed ? (
-            <div className="relative w-full h-8">
-               <Image src="/logo.png" alt="Logo" fill className="object-contain object-left" />
+            <div className="flex items-center gap-2 w-full">
+               <Image src="/dlpu_logo.png" alt="Logo" width={32} height={32} className="object-contain" />
+               <span className="font-black text-slate-800 text-lg tracking-tight">方略一答</span>
             </div>
           ) : (
             <div className="w-8 h-8 bg-blue-600 rounded flex items-center justify-center text-white font-bold">
