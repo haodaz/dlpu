@@ -8,13 +8,17 @@ import {
   AreaChartOutlined,
   CrownOutlined,
   FileDoneOutlined,
-  RadarChartOutlined
+  NodeIndexOutlined,
+  AppstoreAddOutlined,
+  BookOutlined,
+  PartitionOutlined
 } from '@ant-design/icons';
 import {
   Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis,
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, ResponsiveContainer,
   PieChart, Pie, Cell, LabelList
 } from 'recharts';
+import { useRouter } from 'next/navigation';
 
 // 实打实跑出来的真实评价数据作为底座 (Mock Default)
 const evalData = {
@@ -29,7 +33,7 @@ const evalData = {
     { item: "社会反馈", score: 90 }
   ],
   expertTiers: [
-    { expert: '产业白皮书', tier: 2 },
+    { expert: '产业分析', tier: 2 },
     { expert: '矩阵对齐', tier: 5 },
     { expert: '师资投入', tier: 5 },
     { expert: '过程监测', tier: 2 },
@@ -46,11 +50,13 @@ const evalData = {
 };
 
 const pieData = [
-  { name: 'Completed', value: 85, color: '#1677ff' },
-  { name: 'Pending', value: 15, color: '#e2e8f0' },
+  { name: '已覆盖', value: 85, color: '#1677ff' },
+  { name: '待覆盖', value: 15, color: '#e2e8f0' },
 ];
 
 export default function Dashboard() {
+  const router = useRouter();
+
   return (
     <div className="flex-1 flex flex-col min-h-[calc(100vh-140px)] bg-slate-50 rounded-xl overflow-hidden shadow-sm border border-slate-100">
       
@@ -60,27 +66,37 @@ export default function Dashboard() {
         {/* Header Title */}
         <div className="flex justify-between items-end mb-8">
           <div>
-            <h1 className="text-3xl font-black text-slate-800 tracking-tight m-0">Dashboard</h1>
+            <h1 className="text-3xl font-black text-slate-800 tracking-tight m-0">工作台总览</h1>
             <div className="flex items-center gap-3 mt-3">
               <img src="/dlpu_logo.png" alt="DLPU Logo" className="w-8 h-8 object-contain" />
-              <p className="text-slate-500 font-medium m-0">Dalian Polytechnic University - Smart Evaluation Center</p>
+              <p className="text-slate-500 font-medium m-0">大连工业大学 · 智能评价引擎大厅</p>
             </div>
+          </div>
+          <div className="flex gap-3">
+            <button className="px-4 py-2 bg-white border border-slate-200 text-slate-600 font-bold rounded-lg hover:border-blue-600 hover:text-blue-600 transition-colors">
+              导出全景报告
+            </button>
+            <button onClick={() => router.push('/evaluations')} className="px-4 py-2 bg-blue-600 text-white font-bold rounded-lg shadow hover:bg-blue-700 transition-colors">
+              发起全新评价
+            </button>
           </div>
         </div>
 
-        {/* Stats Row */}
+        {/* ================= 核心指标卡 (Top Stats) ================= */}
         <div className="grid grid-cols-4 gap-6 mb-8">
           {[
-            { label: '全景数据节点 (Nodes)', value: '1,128', icon: <DatabaseOutlined /> },
-            { label: '智能体诊断数 (Diagnoses)', value: '436', icon: <CheckCircleOutlined /> },
-            { label: 'AI诊断总分 (Total Score)', value: evalData.totalScore, icon: <AreaChartOutlined /> },
-            { label: '评级档位 (Grade)', value: evalData.grade, icon: <CrownOutlined /> },
+            { label: '全景数据节点', value: '1,128', icon: <DatabaseOutlined /> },
+            { label: '智能体诊断总数', value: '436', icon: <CheckCircleOutlined /> },
+            { label: '最新 AI 诊断均分', value: evalData.totalScore, icon: <AreaChartOutlined /> },
+            { label: '全局安全预警', value: '3', icon: <WarningOutlined />, isWarning: true },
           ].map((stat, i) => (
             <div key={i} className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex flex-col justify-between group hover:border-blue-300 transition-colors cursor-pointer">
               <div className="text-slate-500 text-sm font-bold mb-4">{stat.label}</div>
               <div className="flex items-center justify-between">
-                <span className="text-3xl font-black text-slate-800">{stat.value}</span>
-                <div className="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center text-lg group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                <span className={`text-3xl font-black ${stat.isWarning ? 'text-red-500' : 'text-slate-800'}`}>{stat.value}</span>
+                <div className={`w-10 h-10 rounded-full flex items-center justify-center text-lg transition-colors ${
+                  stat.isWarning ? 'bg-red-50 text-red-600 group-hover:bg-red-600 group-hover:text-white' : 'bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white'
+                }`}>
                   {stat.icon}
                 </div>
               </div>
@@ -88,60 +104,93 @@ export default function Dashboard() {
           ))}
         </div>
 
-        {/* Charts Row */}
-        <div className="grid grid-cols-3 gap-6 mb-8">
-          {/* Radar Chart */}
-          <div className="col-span-1 bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
-            <div className="flex justify-between items-center mb-6">
-              <h3 className="font-bold text-slate-800 text-lg">Holistic Health Radar</h3>
-              <span className="text-xs font-bold text-slate-500 border border-slate-200 rounded px-3 py-1">六维模型</span>
+        {/* ================= 快捷穿透入口 (Quick Actions) ================= */}
+        <div className="mb-8">
+          <h2 className="text-lg font-bold text-slate-800 mb-4">快捷诊断穿透 (Quick Drill-downs)</h2>
+          <div className="grid grid-cols-4 gap-6">
+            <div onClick={() => router.push('/panoramic')} className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:border-blue-500 hover:shadow-md transition-all cursor-pointer flex flex-col gap-3 group">
+              <div className="w-10 h-10 rounded bg-indigo-50 text-indigo-600 flex items-center justify-center text-xl group-hover:scale-110 transition-transform"><BookOutlined /></div>
+              <h3 className="font-bold text-slate-800 m-0">课程体系穿透评价</h3>
+              <p className="text-xs text-slate-500 leading-relaxed">直接从 T11/T12 切入，审查底层教学资产流转与学生达成度监控闭环。</p>
             </div>
-            <div className="h-64 relative">
-              <ResponsiveContainer width="100%" height="100%">
-                <RadarChart cx="50%" cy="50%" outerRadius="70%" data={evalData.radarData}>
-                  <PolarGrid stroke="#f1f5f9" />
-                  <PolarAngleAxis dataKey="item" tick={{ fill: '#64748b', fontSize: 11, fontWeight: 'bold' }} />
-                  <PolarRadiusAxis angle={30} domain={[0, 100]} tick={false} axisLine={false} />
-                  <Radar name="Score" dataKey="score" stroke="#1677ff" strokeWidth={2} fill="#1677ff" fillOpacity={0.4} />
-                  <RechartsTooltip contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }} />
-                </RadarChart>
-              </ResponsiveContainer>
+            
+            <div onClick={() => router.push('/evaluations')} className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:border-blue-500 hover:shadow-md transition-all cursor-pointer flex flex-col gap-3 group">
+              <div className="w-10 h-10 rounded bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl group-hover:scale-110 transition-transform"><NodeIndexOutlined /></div>
+              <h3 className="font-bold text-slate-800 m-0">产业链靶点对齐诊断</h3>
+              <p className="text-xs text-slate-500 leading-relaxed">穿透 T03 产业白皮书，直接验证人才输出是否精准命中产业生态圈核心岗位。</p>
             </div>
-          </div>
 
-          {/* Bar Chart for Expert Tiers */}
-          <div className="col-span-2 bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
-            <div className="flex justify-between items-center mb-6">
-              <h3 className="font-bold text-slate-800 text-lg">Micro-Experts Tier Distribution</h3>
-              <span className="text-xs font-bold text-slate-500 border border-slate-200 rounded px-3 py-1">档位: 1-5</span>
+            <div onClick={() => router.push('/data-flow')} className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:border-blue-500 hover:shadow-md transition-all cursor-pointer flex flex-col gap-3 group">
+              <div className="w-10 h-10 rounded bg-cyan-50 text-cyan-600 flex items-center justify-center text-xl group-hover:scale-110 transition-transform"><PartitionOutlined /></div>
+              <h3 className="font-bold text-slate-800 m-0">全景数据流监控图</h3>
+              <p className="text-xs text-slate-500 leading-relaxed">可视化追踪从 T01 到 T19 的数据节点血缘关系与流转状态，发现断点。</p>
             </div>
-            <div className="h-64">
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={evalData.expertTiers} margin={{ top: 20, right: 0, left: -20, bottom: 0 }}>
-                  <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
-                  <XAxis dataKey="expert" axisLine={false} tickLine={false} tick={{fill: '#64748b', fontSize: 11, fontWeight: 'bold'}} dy={10} />
-                  <YAxis axisLine={false} tickLine={false} tick={{fill: '#94a3b8', fontSize: 12}} domain={[0, 5]} ticks={[1, 2, 3, 4, 5]} />
-                  <RechartsTooltip cursor={{fill: '#f8fafc'}} contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }} />
-                  <Bar dataKey="tier" fill="#1677ff" radius={[4, 4, 0, 0]} barSize={24}>
-                    {evalData.expertTiers.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={entry.tier >= 4 ? '#1677ff' : (entry.tier <= 2 ? '#f87171' : '#94a3b8')} />
-                    ))}
-                    <LabelList dataKey="tier" position="top" fill="#64748b" fontSize={12} fontWeight="bold" />
-                  </Bar>
-                </BarChart>
-              </ResponsiveContainer>
+
+            <div onClick={() => router.push('/agents')} className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:border-blue-500 hover:shadow-md transition-all cursor-pointer flex flex-col gap-3 group">
+              <div className="w-10 h-10 rounded bg-purple-50 text-purple-600 flex items-center justify-center text-xl group-hover:scale-110 transition-transform"><AppstoreAddOutlined /></div>
+              <h3 className="font-bold text-slate-800 m-0">微专家矩阵统筹配置</h3>
+              <p className="text-xs text-slate-500 leading-relaxed">调度 9 位子智能体，调整各专家的性格特征、评判严苛度及考核靶点。</p>
             </div>
           </div>
         </div>
 
-        {/* Bottom Row */}
+        {/* ================= 诊断全景大屏 (Diagnostic Charts) ================= */}
+        <div className="mb-8">
+          <h2 className="text-lg font-bold text-slate-800 mb-4">实时诊断大屏 (Diagnostic Insights)</h2>
+          <div className="grid grid-cols-3 gap-6">
+            {/* 雷达图 */}
+            <div className="col-span-1 bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+              <div className="flex justify-between items-center mb-6">
+                <h3 className="font-bold text-slate-800 text-base">系统级六维健康雷达</h3>
+                <span className="text-xs font-bold text-slate-500 border border-slate-200 rounded px-3 py-1">综合建模</span>
+              </div>
+              <div className="h-64 relative">
+                <ResponsiveContainer width="100%" height="100%">
+                  <RadarChart cx="50%" cy="50%" outerRadius="70%" data={evalData.radarData}>
+                    <PolarGrid stroke="#f1f5f9" />
+                    <PolarAngleAxis dataKey="item" tick={{ fill: '#64748b', fontSize: 11, fontWeight: 'bold' }} />
+                    <PolarRadiusAxis angle={30} domain={[0, 100]} tick={false} axisLine={false} />
+                    <Radar name="分数" dataKey="score" stroke="#1677ff" strokeWidth={2} fill="#1677ff" fillOpacity={0.4} />
+                    <RechartsTooltip contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }} />
+                  </RadarChart>
+                </ResponsiveContainer>
+              </div>
+            </div>
+
+            {/* 子专家档位直方图 */}
+            <div className="col-span-2 bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+              <div className="flex justify-between items-center mb-6">
+                <h3 className="font-bold text-slate-800 text-base">微专家阵列定档追踪 (1-5档)</h3>
+                <span className="text-xs font-bold text-slate-500 border border-slate-200 rounded px-3 py-1">深度剖析</span>
+              </div>
+              <div className="h-64">
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart data={evalData.expertTiers} margin={{ top: 20, right: 0, left: -20, bottom: 0 }}>
+                    <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
+                    <XAxis dataKey="expert" axisLine={false} tickLine={false} tick={{fill: '#64748b', fontSize: 11, fontWeight: 'bold'}} dy={10} />
+                    <YAxis axisLine={false} tickLine={false} tick={{fill: '#94a3b8', fontSize: 12}} domain={[0, 5]} ticks={[1, 2, 3, 4, 5]} />
+                    <RechartsTooltip cursor={{fill: '#f8fafc'}} contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }} />
+                    <Bar dataKey="tier" fill="#1677ff" radius={[4, 4, 0, 0]} barSize={24}>
+                      {evalData.expertTiers.map((entry, index) => (
+                        <Cell key={`cell-${index}`} fill={entry.tier >= 4 ? '#1677ff' : (entry.tier <= 2 ? '#f87171' : '#94a3b8')} />
+                      ))}
+                      <LabelList dataKey="tier" position="top" fill="#64748b" fontSize={12} fontWeight="bold" />
+                    </Bar>
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ================= 底部细节区 (Bottom Details) ================= */}
         <div className="grid grid-cols-3 gap-6">
           
-          {/* AI Constructive Tags */}
+          {/* 判决与高频标签 */}
           <div className="col-span-1 bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
             <div className="flex justify-between items-center mb-6">
-              <h3 className="font-bold text-slate-800 text-lg">AI 诊断高频标签</h3>
-              <span className="text-sm font-bold text-blue-600 cursor-pointer hover:underline">View All</span>
+              <h3 className="font-bold text-slate-800 text-base">AI 语义识别高频标签</h3>
+              <span className="text-sm font-bold text-blue-600 cursor-pointer hover:underline">查看全部</span>
             </div>
             <div className="flex flex-wrap gap-2">
               {evalData.tags.map((tag, i) => {
@@ -156,18 +205,17 @@ export default function Dashboard() {
               })}
             </div>
             <div className="mt-8">
-              <h4 className="text-sm font-bold text-slate-700 mb-3">总司令判决要点:</h4>
+              <h4 className="text-sm font-bold text-slate-700 mb-3">总司令核心判词:</h4>
               <p className="text-xs text-slate-500 leading-relaxed bg-slate-50 p-4 rounded-xl border border-slate-100">
                 “该机械工程专业呈现'两端强劲、中间塌陷'的典型哑铃型发展格局。产业对接端极其精准（90.4%对口率），但核心教学环节资源利用率低下（180万高端设备零使用率）。亟需启动教学环节强化工程...”
               </p>
             </div>
           </div>
 
-          {/* Donut Chart */}
+          {/* 数据完整度图表 */}
           <div className="col-span-1 bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex flex-col">
             <div className="flex justify-between items-center mb-2">
-              <h3 className="font-bold text-slate-800 text-lg">Data Completeness</h3>
-              <span className="text-slate-400 font-bold text-xl leading-none">...</span>
+              <h3 className="font-bold text-slate-800 text-base">底层模板覆盖完备度</h3>
             </div>
             <div className="flex-1 flex flex-col items-center justify-center relative">
               <div className="h-48 w-full relative">
@@ -191,7 +239,7 @@ export default function Dashboard() {
                 </ResponsiveContainer>
                 <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
                   <span className="text-4xl font-black text-slate-800">85%</span>
-                  <span className="text-xs text-slate-500 font-bold mt-1">Total Coverage</span>
+                  <span className="text-xs text-slate-500 font-bold mt-1">全局覆盖率</span>
                 </div>
               </div>
               
@@ -209,17 +257,17 @@ export default function Dashboard() {
             </div>
           </div>
 
-          {/* Activities */}
+          {/* 最新系统事件 */}
           <div className="col-span-1 bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
             <div className="flex justify-between items-center mb-6">
-              <h3 className="font-bold text-slate-800 text-lg">Recent Activities</h3>
-              <span className="text-sm font-bold text-blue-600 cursor-pointer hover:underline">View All</span>
+              <h3 className="font-bold text-slate-800 text-base">底层数据变动预警</h3>
+              <span className="text-sm font-bold text-blue-600 cursor-pointer hover:underline">查看日志</span>
             </div>
             <div className="space-y-6 mt-4">
               {[
-                { title: 'Evaluation Engine', date: '2 hours ago', badge: 'Completed', icon: <CrownOutlined />, color: 'text-blue-600', bg: 'bg-blue-50' },
-                { title: 'T04 Upload', date: '3 days ago', badge: 'Success', icon: <FileDoneOutlined />, color: 'text-slate-600', bg: 'bg-slate-100' },
-                { title: 'Asset Expert Alert', date: '5 days ago', badge: 'Warning', icon: <WarningOutlined />, color: 'text-red-500', bg: 'bg-red-50' }
+                { title: 'T19 校友数据更新', date: '2 小时前', badge: '验证成功', icon: <CrownOutlined />, color: 'text-blue-600', bg: 'bg-blue-50' },
+                { title: 'T04 能力矩阵入库', date: '3 天前', badge: '建档完成', icon: <FileDoneOutlined />, color: 'text-slate-600', bg: 'bg-slate-100' },
+                { title: '产教基地状态异常', date: '5 天前', badge: '严重偏离', icon: <WarningOutlined />, color: 'text-red-500', bg: 'bg-red-50' }
               ].map((act, i) => (
                 <div key={i} className="flex items-start gap-4">
                   <div className={`w-10 h-10 rounded-xl ${act.bg} ${act.color} flex items-center justify-center text-lg shrink-0`}>
