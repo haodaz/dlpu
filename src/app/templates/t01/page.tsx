@@ -52,7 +52,7 @@ export default function T01Page() {
           layout="vertical"
           onFinish={onFinish}
         >
-          <Divider orientation="left" className="!mt-0 !text-blue-600">一、基本信息</Divider>
+          <Divider titlePlacement="left" className="!mt-0 !text-blue-600">一、基本信息</Divider>
           <div className="grid grid-cols-2 gap-4">
             <Form.Item name="majorName" label="专业名称" rules={[{ required: true }]}>
               <Input placeholder="例如：机械设计制造及其自动化" />
@@ -65,7 +65,7 @@ export default function T01Page() {
             <Input type="number" placeholder="例如：4" style={{ width: '200px' }} />
           </Form.Item>
 
-          <Divider orientation="left" className="!mt-6 !text-blue-600">二、培养目标长文本</Divider>
+          <Divider titlePlacement="left" className="!mt-6 !text-blue-600">二、培养目标长文本</Divider>
           
           <Form.Item 
             name="objectiveText" 

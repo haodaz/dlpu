@@ -73,7 +73,7 @@ export default function T04Page() {
             <Input placeholder="例如：2026-T03-V1" />
           </Form.Item>
 
-          <Divider orientation="left" className="!mt-6 !text-blue-600">映射关系配置</Divider>
+          <Divider titlePlacement="left" className="!mt-6 !text-blue-600">映射关系配置</Divider>
           <p className="text-sm text-gray-400 mb-4">请逐一添加核心课程，并在下拉列表中勾选它们所支撑的产业链节点。</p>
           
           <Form.List name="mappings">

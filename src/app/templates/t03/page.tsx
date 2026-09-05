@@ -43,7 +43,7 @@ export default function T03Page() {
           onFinish={onFinish}
           initialValues={{ lifecycle: '成长' }}
         >
-          <Divider orientation="left" className="!mt-0 !text-blue-600">一、产业生命周期判定</Divider>
+          <Divider titlePlacement="left" className="!mt-0 !text-blue-600">一、产业生命周期判定</Divider>
           <Form.Item name="industryName" label="产业方向名称" rules={[{ required: true }]}>
             <Input placeholder="例如：智能制造 / 新能源汽车" />
           </Form.Item>
@@ -59,7 +59,7 @@ export default function T03Page() {
             <Input.TextArea rows={3} placeholder="AI 可根据此处文本验证生命周期阶段" />
           </Form.Item>
 
-          <Divider orientation="left" className="!mt-6 !text-blue-600">二、产业链图谱与节点企业</Divider>
+          <Divider titlePlacement="left" className="!mt-6 !text-blue-600">二、产业链图谱与节点企业</Divider>
           
           <Form.List name="chainNodes">
             {(fields, { add, remove }) => (
@@ -105,7 +105,7 @@ export default function T03Page() {
             )}
           </Form.List>
 
-          <Divider orientation="left" className="!mt-6 !text-blue-600">三、关键岗位与能力清单</Divider>
+          <Divider titlePlacement="left" className="!mt-6 !text-blue-600">三、关键岗位与能力清单</Divider>
 
           <Form.List name="jobPositions">
             {(fields, { add, remove }) => (

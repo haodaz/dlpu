@@ -62,7 +62,7 @@ export default function T02Page() {
             </Form.Item>
           </div>
 
-          <Divider orientation="left" className="!mt-2 !text-blue-600">毕业要求大项与指标点</Divider>
+          <Divider titlePlacement="left" className="!mt-2 !text-blue-600">毕业要求大项与指标点</Divider>
           
           <Form.List name="requirements">
             {(fields, { add, remove }) => (
