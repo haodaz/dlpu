@@ -376,14 +376,15 @@ export default function PanoramicPage() {
           ]}
           className="mb-4 cursor-pointer"
         />
-        <div className="flex items-center gap-4">
-          <div className="w-16 h-16 bg-blue-600 rounded-lg shadow-sm flex items-center justify-center text-white text-3xl">
-            <BuildOutlined />
-          </div>
-          <div>
-            <h1 className="text-3xl font-bold text-gray-800 tracking-wide">大连工业大学 Entity Profile</h1>
-            <p className="text-gray-500 mt-1">这里汇聚了所有通过底层模板填报、API对接沉淀而来的院校底座真实数据。</p>
-          </div>
+      </div>
+      {/* 极简 CRM 风格 Header */}
+      <div className="bg-white px-8 py-6 border-b border-slate-200 flex items-center gap-4 shrink-0">
+        <div className="w-10 h-10 rounded bg-blue-50 flex items-center justify-center text-blue-600 text-lg">
+          <BuildOutlined />
+        </div>
+        <div>
+          <h1 className="text-xl font-semibold text-slate-800 m-0 leading-tight">大连工业大学 Entity Profile</h1>
+          <p className="text-sm text-slate-500 m-0 mt-1">这里汇聚了所有通过底层模板填报、API对接沉淀而来的院校底座真实数据。</p>
         </div>
       </div>
 

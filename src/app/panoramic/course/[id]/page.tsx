@@ -141,21 +141,30 @@ export default function CourseProfilePage({ params }: { params: any }) {
           className="mb-4 cursor-pointer"
         />
         
-        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 flex justify-between items-start">
-          <div>
-            <div className="flex items-center gap-3 mb-2">
-              <h1 className="text-3xl font-bold text-gray-800 m-0">{courseName}</h1>
-              {hasAlert && <Badge status="error" text={<span className="text-red-500 font-bold">质量闭环预警</span>} />}
+        {/* 极简 CRM 风格 Header */}
+        <div className="bg-white px-8 py-6 border-b border-slate-200 flex items-center justify-between shrink-0">
+          <div className="flex items-center gap-4">
+            <div className="w-10 h-10 rounded bg-indigo-50 flex items-center justify-center text-indigo-600 text-lg">
+              <BookOutlined />
             </div>
-            <div className="text-sm text-gray-500 mb-4">子实体数据透视 (Course Sub-Entity Profile)</div>
-            
+            <div>
+              <h1 className="text-xl font-semibold text-slate-800 m-0 leading-tight">{courseName}</h1>
+              <div className="text-sm text-slate-500 m-0 mt-1">子实体数据透视 (Course Sub-Entity Profile)</div>
+            </div>
+          </div>
+          <div className="flex items-center gap-3">
+            <Tag color="blue" className="text-sm px-3 py-1 font-bold">必修课</Tag>
+            <Tag color="green" className="text-sm px-3 py-1 font-bold border-green-200">达成度 82%</Tag>
+          </div>
+        </div>
+
+        <div className="bg-white p-6 shadow-sm border border-gray-100">
             <Descriptions size="small" column={3} className="max-w-3xl">
               <Descriptions.Item label="学分">{t11Data?.credits || '--'}</Descriptions.Item>
               <Descriptions.Item label="学时">{t11Data?.hours || '--'}</Descriptions.Item>
               <Descriptions.Item label="考核期">{t08Data?.semester || '--'}</Descriptions.Item>
               <Descriptions.Item label="考核形式" span={3}>{t08Data?.assessmentType || '--'}</Descriptions.Item>
             </Descriptions>
-          </div>
           
           <div className="text-right">
             <div className="text-xs text-gray-400 mb-1">关联产业靶点</div>
