@@ -13,7 +13,7 @@ import { integrationExpert } from '@/lib/evaluation/experts/07_integrationExpert
 import { careerExpert } from '@/lib/evaluation/experts/08_careerExpert';
 import { alumniExpert } from '@/lib/evaluation/experts/09_alumniExpert';
 
-// 导入总司令
+// 导入主智能体
 import { chiefEvaluate } from '@/lib/evaluation/chief';
 import { chartEvaluate } from '@/lib/evaluation/chartExpert';
 
@@ -43,10 +43,10 @@ export async function POST(request: Request) {
         try {
           // 1. 初始化界面状态
           send({ type: 'log', agentId: 'system', message: '正在启动强防御架构智能评价引擎 (Promise.allSettled)...' });
-          send({ type: 'agent', data: { id: 'chief', name: '总司令 (Chief AI)', status: 'working', icon: '👑' } });
+          send({ type: 'agent', data: { id: 'chief', name: '主智能体 (Chief AI)', status: 'working', icon: '👑' } });
 
           // 2. 拉取全景数据
-          send({ type: 'log', agentId: 'chief', message: '👑 总司令正在拉取底层全景数据池...' });
+          send({ type: 'log', agentId: 'chief', message: '👑 主智能体正在拉取底层全景数据池...' });
           const rawData = await prisma.panoramicData.findMany();
           
           const context: EvaluationContext = {
@@ -96,7 +96,7 @@ export async function POST(request: Request) {
             if (res.status === 'fulfilled') {
               validExpertResults[res.value.id] = res.value.report;
             } else {
-              // 为失败的专家提供降级报告，确保总司令能拿到点什么
+              // 为失败的专家提供降级报告，确保主智能体能拿到点什么
               validExpertResults[expertDef.id] = {
                 status: "专家崩溃",
                 indicator: "未知",
@@ -109,9 +109,9 @@ export async function POST(request: Request) {
           });
 
           // 4. 总 AI 合成与图表绘制
-          send({ type: 'agent', data: { id: 'chief_synthesis', name: '总司令 (统筹裁决)', status: 'working', icon: '👑' } });
+          send({ type: 'agent', data: { id: 'chief_synthesis', name: '主智能体 (统筹裁决)', status: 'working', icon: '👑' } });
           send({ type: 'agent', data: { id: 'chart_expert', name: '图表绘制师 (数据标签)', status: 'working', icon: '📊' } });
-          send({ type: 'log', agentId: 'system', message: '👑 总司令与 📊 图表绘制师 已并行唤醒，开始生成长卷宗与可视化数据...' });
+          send({ type: 'log', agentId: 'system', message: '👑 主智能体与 📊 图表绘制师 已并行唤醒，开始生成长卷宗与可视化数据...' });
           
           const chiefLog = (msg: string) => send({ type: 'log', agentId: 'chief_synthesis', message: msg });
           const chartLog = (msg: string) => send({ type: 'log', agentId: 'chart_expert', message: msg });
@@ -128,7 +128,7 @@ export async function POST(request: Request) {
             }
           }
 
-          send({ type: 'agent', data: { id: 'chief_synthesis', name: '总司令 (统筹裁决)', status: 'done', icon: '👑' } });
+          send({ type: 'agent', data: { id: 'chief_synthesis', name: '主智能体 (统筹裁决)', status: 'done', icon: '👑' } });
           send({ type: 'agent', data: { id: 'chart_expert', name: '图表绘制师 (数据标签)', status: 'done', icon: '📊' } });
 
           // 5. 存入数据库
@@ -143,7 +143,7 @@ export async function POST(request: Request) {
           });
 
           send({ type: 'log', agentId: 'system', message: '✅ 终极评价裁决完毕，结果已绝对存证！正在渲染前端长卷...' });
-          send({ type: 'agent', data: { id: 'chief_synthesis', name: '总司令 (统筹裁决)', status: 'done', icon: '👑' } });
+          send({ type: 'agent', data: { id: 'chief_synthesis', name: '主智能体 (统筹裁决)', status: 'done', icon: '👑' } });
           
           send({ type: 'result', data: finalReport });
 

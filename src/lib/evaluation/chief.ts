@@ -14,9 +14,9 @@ export const chiefEvaluate = async (
   expertResults: Record<string, ExpertResult>,
   onLog: (msg: string) => void
 ): Promise<FinalChiefReport> => {
-  onLog('👑 总司令 (Chief AI) 开始工作：正在汇总 9 位微专家的存证报告...');
+  onLog('👑 主智能体 (Chief AI) 开始工作：正在汇总 9 位微专家的存证报告...');
 
-  // 将所有专家的分析拼装起来供总司令阅读
+  // 将所有专家的分析拼装起来供主智能体阅读
   let combinedContext = '';
   for (const [expertId, result] of Object.entries(expertResults)) {
     combinedContext += `\n--- [${expertId}] ---\n指标: ${result.indicator}\n当前评级: ${result.grade}\n现状: ${result.status}\n深度分析: ${result.analysis}\n建议: ${result.suggestions}\n`;
@@ -57,7 +57,7 @@ ${combinedContext}
   ]
 }`;
 
-  onLog('🧠 👑 总司令 正在结合 9 大专家的结论进行总线长文本生成...');
+  onLog('🧠 👑 主智能体 正在结合 9 大专家的结论进行总线长文本生成...');
   
   const apiKey = process.env.DEEPSEEK_API_KEY || process.env.DASHSCOPE_API_KEY || process.env.OPENAI_API_KEY;
   const baseURL = process.env.DEEPSEEK_API_KEY 
@@ -65,12 +65,12 @@ ${combinedContext}
     : (process.env.DASHSCOPE_API_KEY ? 'https://dashscope.aliyuncs.com/compatible-mode/v1' : 'https://api.openai.com/v1');
 
   if (!apiKey) {
-    throw new Error("未配置 API_KEY，总司令拒绝工作");
+    throw new Error("未配置 API_KEY，主智能体拒绝工作");
   }
 
   const client = new OpenAI({ apiKey, baseURL });
   const response = await client.chat.completions.create({
-    model: 'deepseek-chat',
+    model: process.env.DEEPSEEK_MODEL || 'deepseek-chat',
     messages: [{ role: 'user', content: prompt }],
     response_format: { type: 'json_object' },
     max_tokens: 3000,
@@ -79,8 +79,8 @@ ${combinedContext}
   const reportContent = response.choices[0]?.message?.content || '{}';
   
   try {
-    const parsed = JSON.parse(reportContent);
-    onLog(`✅ 总司令 裁决完毕: 总分 [${parsed.totalScore}] 级 [${parsed.grade}]`);
+    const parsed = JSON.parse(reportContent.replace(/```json/g, '').replace(/```/g, '').trim());
+    onLog(`✅ 主智能体 裁决完毕: 总分 [${parsed.totalScore}] 级 [${parsed.grade}]`);
     return {
       totalScore: parsed.totalScore || 0,
       grade: parsed.grade || '未定级',

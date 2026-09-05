@@ -365,7 +365,7 @@ export default function SmartEvaluationEngine() {
             <Title level={1} className="!text-slate-800 !mb-6 !font-black">专业建设协同评价引擎</Title>
             <Paragraph className="text-slate-500 text-lg mb-12 max-w-2xl mx-auto leading-relaxed">
               即将并行唤醒 9 位细分领域专属微专家，穿透全景数据并执行互联网级深度核验。<br/>
-              完成评价后，将由「总司令」统筹生成万字长卷宗报告。
+              完成评价后，将由「主智能体」统筹生成万字长卷宗报告。
             </Paragraph>
             <Button 
               type="primary" 

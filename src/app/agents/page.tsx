@@ -126,7 +126,7 @@ export default function AgentsPage() {
       {/* ============== 左侧对话区 (Chat Area) ============== */}
       <div className="flex-1 flex flex-col bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden relative">
         <div className="h-14 border-b border-slate-100 flex items-center px-6 bg-slate-50/50 shrink-0">
-          <h2 className="font-bold text-slate-800 m-0">总司令对话终端 (ChatOps)</h2>
+          <h2 className="font-bold text-slate-800 m-0">主智能体对话终端 (ChatOps)</h2>
         </div>
         
         {/* Messages */}

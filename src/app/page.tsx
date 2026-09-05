@@ -109,39 +109,9 @@ export default function Dashboard() {
           ))}
         </div>
 
-        {/* 快捷穿透入口 (Quick Actions) */}
+        {/* 诊断全景大屏 (Evaluation Insights) - 包含新增的两型评估卡片 */}
         <div className="mb-8 shrink-0">
-          <h2 className="text-lg font-bold text-slate-800 mb-4">快捷诊断穿透 (Quick Drill-downs)</h2>
-          <div className="grid grid-cols-4 gap-6">
-            <div onClick={() => router.push('/panoramic')} className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:border-blue-500 hover:shadow-md transition-all cursor-pointer flex flex-col gap-3 group">
-              <div className="w-10 h-10 rounded bg-indigo-50 text-indigo-600 flex items-center justify-center text-xl group-hover:scale-110 transition-transform"><BookOutlined /></div>
-              <h3 className="font-bold text-slate-800 m-0">课程体系穿透评价</h3>
-              <p className="text-xs text-slate-500 leading-relaxed">直接从 T11/T12 切入，审查底层教学资产流转与学生达成度监控闭环。</p>
-            </div>
-            
-            <div onClick={() => router.push('/evaluations')} className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:border-blue-500 hover:shadow-md transition-all cursor-pointer flex flex-col gap-3 group">
-              <div className="w-10 h-10 rounded bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl group-hover:scale-110 transition-transform"><NodeIndexOutlined /></div>
-              <h3 className="font-bold text-slate-800 m-0">产业链靶点对齐诊断</h3>
-              <p className="text-xs text-slate-500 leading-relaxed">穿透 T03 产业白皮书，直接验证人才输出是否精准命中产业生态圈核心岗位。</p>
-            </div>
-
-            <div onClick={() => router.push('/data-flow')} className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:border-blue-500 hover:shadow-md transition-all cursor-pointer flex flex-col gap-3 group">
-              <div className="w-10 h-10 rounded bg-cyan-50 text-cyan-600 flex items-center justify-center text-xl group-hover:scale-110 transition-transform"><PartitionOutlined /></div>
-              <h3 className="font-bold text-slate-800 m-0">全景数据流监控图</h3>
-              <p className="text-xs text-slate-500 leading-relaxed">可视化追踪从 T01 到 T19 的数据节点血缘关系与流转状态，发现断点。</p>
-            </div>
-
-            <div onClick={() => router.push('/agents')} className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:border-blue-500 hover:shadow-md transition-all cursor-pointer flex flex-col gap-3 group">
-              <div className="w-10 h-10 rounded bg-purple-50 text-purple-600 flex items-center justify-center text-xl group-hover:scale-110 transition-transform"><AppstoreAddOutlined /></div>
-              <h3 className="font-bold text-slate-800 m-0">微专家矩阵统筹配置</h3>
-              <p className="text-xs text-slate-500 leading-relaxed">调度 9 位子智能体，调整各专家的性格特征、评判严苛度及考核靶点。</p>
-            </div>
-          </div>
-        </div>
-
-        {/* 诊断全景大屏 (Diagnostic Charts) - 包含新增的两型评估卡片 */}
-        <div className="mb-8 shrink-0">
-          <h2 className="text-lg font-bold text-slate-800 mb-4">实时诊断大屏 (Diagnostic Insights)</h2>
+          <h2 className="text-lg font-bold text-slate-800 mb-4">实时评估大屏 (Evaluation Insights)</h2>
           <div className="grid grid-cols-4 gap-6">
             {/* 雷达图 */}
             <div className="col-span-1 bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
@@ -243,7 +213,7 @@ export default function Dashboard() {
               })}
             </div>
             <div className="mt-8">
-              <h4 className="text-sm font-bold text-slate-700 mb-3">总司令核心判词:</h4>
+              <h4 className="text-sm font-bold text-slate-700 mb-3">主智能体核心判词:</h4>
               <p className="text-xs text-slate-500 leading-relaxed bg-slate-50 p-4 rounded-xl border border-slate-100">
                 “该机械工程专业呈现'两端强劲、中间塌陷'的典型哑铃型发展格局。产业对接端极其精准（90.4%对口率），但核心教学环节资源利用率低下（180万高端设备零使用率）。亟需启动教学环节强化工程...”
               </p>
@@ -350,7 +320,7 @@ export default function Dashboard() {
         </div>
 
         {/* 系统事件动态日志 */}
-        <div className="bg-white p-6 rounded-xl border border-slate-100 shadow-sm flex-1 overflow-y-auto custom-scrollbar">
+        <div className="bg-white p-6 rounded-xl border border-slate-100 shadow-sm flex flex-col custom-scrollbar">
           <h3 className="font-bold text-slate-800 text-base mb-6">底层数据变动预警</h3>
           <div className="space-y-6">
             {[
@@ -371,6 +341,25 @@ export default function Dashboard() {
                     <span className="text-xs font-bold text-slate-500 bg-slate-50 px-2 py-0.5 rounded border border-slate-100">{act.badge}</span>
                     <span className="text-xs text-slate-400 font-medium">{act.date}</span>
                   </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* 新增: 待审批评价报告 */}
+        <div className="bg-white p-6 rounded-xl border border-slate-100 shadow-sm flex-1 overflow-y-auto custom-scrollbar">
+          <h3 className="font-bold text-slate-800 text-base mb-4">待审批评价报告</h3>
+          <div className="space-y-4">
+            {[
+              { title: '通信工程 - 春季期中诊断', status: '主智能体已定稿', time: '10 分钟前' },
+              { title: '物联网工程 - 产教融合专评', status: '等待人工复核', time: '3 小时前' }
+            ].map((task, i) => (
+              <div key={i} className="p-4 rounded-lg bg-slate-50 border border-slate-100 hover:border-blue-300 cursor-pointer transition-colors group">
+                <h4 className="text-sm font-bold text-slate-800 mb-2 group-hover:text-blue-600">{task.title}</h4>
+                <div className="flex justify-between items-center text-xs">
+                  <span className={`font-medium ${task.status.includes('定稿') ? 'text-emerald-600' : 'text-amber-600'}`}>{task.status}</span>
+                  <span className="text-slate-400">{task.time}</span>
                 </div>
               </div>
             ))}
