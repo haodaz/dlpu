@@ -86,7 +86,7 @@ export default function T13EnterpriseProjectForm() {
   if (loading) {
     return (
       <div className="max-w-4xl mx-auto pb-10 pt-20 text-center">
-        <Spin size="large" tip="正在从教务系统及企业合同管理库提取项目信息 (L4 自动化对接)..." />
+        <Spin size="large" description="正在从教务系统及企业合同管理库提取项目信息 (L4 自动化对接)..." />
       </div>
     );
   }

@@ -90,7 +90,7 @@ export default function T18EmploymentForm() {
   if (loading) {
     return (
       <div className="max-w-4xl mx-auto pb-10 pt-20 text-center">
-        <Spin size="large" tip="正在通过 API 对接省级就业管理系统与校友追踪问卷..." />
+        <Spin size="large" description="正在通过 API 对接省级就业管理系统与校友追踪问卷..." />
       </div>
     );
   }

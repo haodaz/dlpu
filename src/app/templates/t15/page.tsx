@@ -81,7 +81,7 @@ export default function T15TeachingInvestmentForm() {
   if (loading) {
     return (
       <div className="max-w-4xl mx-auto pb-10 pt-20 text-center">
-        <Spin size="large" tip="正在抓取课程平台日志及答疑板块数据..." />
+        <Spin size="large" description="正在抓取课程平台日志及答疑板块数据..." />
       </div>
     );
   }

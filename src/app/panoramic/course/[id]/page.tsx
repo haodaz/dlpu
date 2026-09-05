@@ -110,7 +110,7 @@ export default function CourseProfilePage({ params }: { params: any }) {
       });
   }, [courseName]);
 
-  if (loading) return <div className="p-20 text-center"><Spin size="large" tip="正在加载子实体关联数据..." /></div>;
+  if (loading) return <div className="p-20 text-center"><Spin size="large" description="正在加载子实体关联数据..." /></div>;
 
   if (error) {
     return (

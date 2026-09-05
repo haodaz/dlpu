@@ -68,7 +68,7 @@ export default function T12GraduationDesignForm() {
   if (loading) {
     return (
       <div className="max-w-4xl mx-auto pb-10 pt-20 text-center">
-        <Spin size="large" tip="正在从毕设管理系统与校企电子签章库同步数据 (L4 自动化对接)..." />
+        <Spin size="large" description="正在从毕设管理系统与校企电子签章库同步数据 (L4 自动化对接)..." />
       </div>
     );
   }

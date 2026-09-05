@@ -83,7 +83,7 @@ ${externalData.substring(0, 800)}
 
     const client = new OpenAI({ apiKey, baseURL });
     const response = await client.chat.completions.create({
-      model: 'deepseek-chat',
+      model: process.env.DEEPSEEK_MODEL || 'deepseek-chat',
       messages: [{ role: 'user', content: prompt }],
       response_format: { type: 'json_object' },
       max_tokens: 2000,
@@ -91,7 +91,7 @@ ${externalData.substring(0, 800)}
 
     const reportContent = response.choices[0]?.message?.content || '{}';
     try {
-      const parsed = JSON.parse(reportContent);
+      const parsed = JSON.parse(reportContent.replace(/```json/g, '').replace(/```/g, '').trim());
       onLog(`✅ 真题真做专家 校验完毕: [${parsed.grade || '未定级'}] ${parsed.status.substring(0, 15)}...`);
       return {
         status: parsed.status || '校验完毕',

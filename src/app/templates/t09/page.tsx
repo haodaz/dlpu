@@ -64,7 +64,7 @@ export default function T09BehaviorDataForm() {
   if (loading) {
     return (
       <div className="max-w-4xl mx-auto pb-10 pt-20 text-center">
-        <Spin size="large" tip="正在从教务系统/课程平台同步学习行为数据 (L4 自动化对接)..." />
+        <Spin size="large" description="正在从教务系统/课程平台同步学习行为数据 (L4 自动化对接)..." />
       </div>
     );
   }

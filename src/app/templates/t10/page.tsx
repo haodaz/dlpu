@@ -66,7 +66,7 @@ export default function T10ResourceDataForm() {
   if (loading) {
     return (
       <div className="max-w-4xl mx-auto pb-10 pt-20 text-center">
-        <Spin size="large" tip="正在从资产管理系统与实验室排课系统拉取台账 (L4 自动化对接)..." />
+        <Spin size="large" description="正在从资产管理系统与实验室排课系统拉取台账 (L4 自动化对接)..." />
       </div>
     );
   }

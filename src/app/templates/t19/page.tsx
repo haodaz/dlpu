@@ -79,7 +79,7 @@ export default function T19AlumniForm() {
   if (loading) {
     return (
       <div className="max-w-4xl mx-auto pb-10 pt-20 text-center">
-        <Spin size="large" tip="正在通过爬虫引擎回溯全网知名校友工商注册与新闻数据..." />
+        <Spin size="large" description="正在通过爬虫引擎回溯全网知名校友工商注册与新闻数据..." />
       </div>
     );
   }

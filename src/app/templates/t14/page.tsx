@@ -91,7 +91,7 @@ export default function T14IntegrationForm() {
   if (loading) {
     return (
       <div className="max-w-4xl mx-auto pb-10 pt-20 text-center">
-        <Spin size="large" tip="正在通过 API 对接科研处、技术转移中心与教育部产学合作平台提取合同数据..." />
+        <Spin size="large" description="正在通过 API 对接科研处、技术转移中心与教育部产学合作平台提取合同数据..." />
       </div>
     );
   }
