@@ -195,35 +195,45 @@ export default function SmartEvaluationEngine() {
                   </div>
                 </div>
 
-                <div className="space-y-12">
-                  <div>
+                <div className="relative border-l-2 border-gray-200 ml-4 pl-10 space-y-12 py-4">
+                  
+                  {/* Status & Facts */}
+                  <div className="relative">
+                    <div className="absolute -left-[45px] top-1 w-3 h-3 bg-gray-300 rounded-full border-2 border-white ring-4 ring-gray-50"></div>
                     <h4 className="text-gray-400 text-sm font-bold tracking-widest mb-4 uppercase">Status & Facts</h4>
                     <div className="text-gray-800 text-lg leading-relaxed bg-gray-50 p-6 border-l-4 border-gray-300 rounded-r-lg">
                       {exp.status}
                     </div>
                   </div>
 
-                  <div>
+                  {/* Criteria */}
+                  <div className="relative">
+                    <div className="absolute -left-[45px] top-1 w-3 h-3 bg-gray-300 rounded-full border-2 border-white ring-4 ring-gray-50"></div>
                     <h4 className="text-gray-400 text-sm font-bold tracking-widest mb-4 uppercase">Evaluation Criteria</h4>
-                    <div className="text-gray-600 leading-relaxed font-medium">
+                    <div className="text-gray-600 leading-relaxed font-medium bg-white p-4 rounded-lg border border-gray-100 shadow-sm">
                       标准：{exp.criteria}
                     </div>
                   </div>
 
-                  <div>
-                    <h4 className="text-gray-400 text-sm font-bold tracking-widest mb-4 uppercase">Deep Analysis</h4>
+                  {/* Analysis */}
+                  <div className="relative">
+                    <div className="absolute -left-[45px] top-1 w-3 h-3 bg-blue-300 rounded-full border-2 border-white ring-4 ring-blue-50"></div>
+                    <h4 className="text-blue-500 text-sm font-bold tracking-widest mb-4 uppercase">Deep Analysis</h4>
                     <div className="text-gray-700 leading-loose text-justify whitespace-pre-wrap">
                       {exp.analysis}
                     </div>
                   </div>
 
-                  <div className="bg-slate-800 p-8 rounded-2xl text-slate-100 shadow-xl">
-                    <h4 className="text-blue-400 text-sm font-bold tracking-widest mb-4 uppercase flex items-center gap-2">
-                      <span className="w-2 h-2 bg-blue-500 rounded-full inline-block animate-pulse"></span>
-                      Intervention Suggestions
-                    </h4>
-                    <div className="text-slate-300 leading-loose whitespace-pre-wrap">
-                      {exp.suggestions}
+                  {/* Suggestions (Light mode) */}
+                  <div className="relative">
+                    <div className="absolute -left-[45px] top-1 w-3 h-3 bg-blue-500 rounded-full border-2 border-white ring-4 ring-blue-100 animate-pulse"></div>
+                    <div className="bg-blue-50/70 p-8 rounded-2xl border border-blue-200 shadow-sm hover:shadow-md transition-shadow">
+                      <h4 className="text-blue-700 text-sm font-bold tracking-widest mb-4 uppercase">
+                        Intervention Suggestions
+                      </h4>
+                      <div className="text-gray-800 leading-loose whitespace-pre-wrap font-medium">
+                        {exp.suggestions}
+                      </div>
                     </div>
                   </div>
                 </div>
