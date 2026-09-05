@@ -2,9 +2,17 @@ export interface ExpertResult {
   status: string;
   indicator: string;
   criteria: string;
-  grade: '优秀' | '良好' | '合格' | '不合格';
+  grade: '优秀' | '良好' | '合格' | '不合格' | string;
   analysis: string;
   suggestions: string;
+  chartData?: {
+    tags: string[];
+    tier: {
+      totalTiers: number;
+      currentTier: number;
+      label: string;
+    };
+  };
 }
 
 export interface EvaluationContext {

@@ -108,7 +108,7 @@ export default function SmartEvaluationEngine() {
         <div className="sticky top-0 w-full bg-white border-b border-gray-200 shadow-sm z-50 flex justify-between items-center px-8 py-4">
           <div className="flex items-center gap-2">
             <span className="text-blue-600 text-xl"><FileTextOutlined /></span>
-            <span className="font-bold text-gray-800 text-lg">知己智库报告引擎</span>
+            <span className="font-bold text-gray-800 text-lg">方略一答报告引擎</span>
           </div>
           <div className="flex gap-4">
             <Button onClick={() => window.print()}>导出 PDF</Button>
@@ -123,7 +123,7 @@ export default function SmartEvaluationEngine() {
           <div className="min-h-screen flex flex-col items-center justify-center p-20 relative">
             <div className="flex items-center gap-2 text-blue-500 font-bold mb-10 self-start absolute top-20 left-20">
               <span className="text-xl">✨</span>
-              <span>知己 · 专业建设全景智能评估报告 (Mission-Driven Intelligence)</span>
+              <span>方略一答 · 专业建设全景智能评估报告 (Mission-Driven Intelligence)</span>
             </div>
             
             <div className="text-center w-full mt-20">
@@ -185,14 +185,43 @@ export default function SmartEvaluationEngine() {
             
             return (
               <div key={expertId} className="p-20 border-b border-gray-100 min-h-screen relative group">
-                <div className="text-blue-600 font-bold text-xl mb-10">
-                  {sectionNumber}. {exp.indicator} 深度剖析
+                <div className="mb-10">
+                  <div className="text-blue-600 font-bold text-xl mb-4">
+                    {sectionNumber}. {exp.indicator} 深度剖析
+                  </div>
+                  {exp.chartData && exp.chartData.tags && (
+                    <div className="flex flex-wrap gap-2">
+                      {exp.chartData.tags.map(tag => (
+                        <Tag key={tag} color="blue" className="rounded-full px-3">{tag}</Tag>
+                      ))}
+                    </div>
+                  )}
                 </div>
 
-                <div className="absolute top-20 right-20">
+                <div className="absolute top-20 right-20 flex flex-col items-end gap-4">
                   <div className={`px-4 py-2 rounded-full border text-sm font-bold shadow-sm ${getGradeColor(exp.grade)}`}>
                     专项评级：{exp.grade}
                   </div>
+                  
+                  {exp.chartData && exp.chartData.tier && (
+                    <div className="bg-gray-50 px-4 py-3 rounded-xl border border-gray-100 flex flex-col items-end gap-2 shadow-sm">
+                      <div className="text-xs text-gray-500 font-bold uppercase tracking-wider">{exp.chartData.tier.label}</div>
+                      <div className="flex gap-1">
+                        {Array.from({ length: exp.chartData.tier.totalTiers }).map((_, i) => (
+                          <div 
+                            key={i} 
+                            className={`w-6 h-6 rounded-sm flex items-center justify-center font-bold text-xs ${
+                              i < exp.chartData!.tier.currentTier 
+                                ? 'bg-indigo-500 text-white shadow-inner' 
+                                : 'bg-gray-200 text-gray-400'
+                            }`}
+                          >
+                            {i + 1}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
 
                 <div className="relative border-l-2 border-gray-200 ml-4 pl-10 space-y-12 py-4">

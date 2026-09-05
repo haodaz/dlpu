@@ -15,6 +15,7 @@ import { alumniExpert } from '@/lib/evaluation/experts/09_alumniExpert';
 
 // 导入总司令
 import { chiefEvaluate } from '@/lib/evaluation/chief';
+import { chartEvaluate } from '@/lib/evaluation/chartExpert';
 
 const prisma = new PrismaClient();
 
@@ -109,12 +110,28 @@ export async function POST(request: Request) {
             }
           });
 
-          // 4. 总 AI 合成
+          // 4. 总 AI 合成与图表绘制
           send({ type: 'agent', data: { id: 'chief_synthesis', name: '总司令 (统筹裁决)', status: 'working', icon: '👑' } });
-          send({ type: 'log', message: '👑 总司令已集齐各路诸侯的存证报告，开始生成长卷宗裁决报告...' });
+          send({ type: 'agent', data: { id: 'chart_expert', name: '图表绘制师 (数据标签)', status: 'working', icon: '📊' } });
+          send({ type: 'log', message: '👑 总司令与 📊 图表绘制师 已并行唤醒，开始生成长卷宗与可视化数据...' });
           
           const chiefLog = (msg: string) => send({ type: 'log', message: msg });
-          const finalReport = await chiefEvaluate(validExpertResults, chiefLog);
+          const chartLog = (msg: string) => send({ type: 'log', message: msg });
+
+          const [finalReport, chartDataMap] = await Promise.all([
+            chiefEvaluate(validExpertResults, chiefLog),
+            chartEvaluate(validExpertResults, chartLog)
+          ]);
+
+          // 将 chartData 注入到 finalReport 的对应专家结果中
+          for (const key in chartDataMap) {
+            if (finalReport.expertResults[key]) {
+              finalReport.expertResults[key].chartData = chartDataMap[key];
+            }
+          }
+
+          send({ type: 'agent', data: { id: 'chief_synthesis', name: '总司令 (统筹裁决)', status: 'done', icon: '👑' } });
+          send({ type: 'agent', data: { id: 'chart_expert', name: '图表绘制师 (数据标签)', status: 'done', icon: '📊' } });
 
           // 5. 存入数据库
           send({ type: 'log', message: '💾 正在将万字长卷宗存入核心数据库...' });
