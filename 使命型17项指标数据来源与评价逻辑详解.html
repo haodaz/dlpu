@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>使命型17项指标 — 数据来源与评价逻辑详解</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif; background:#fff; color:#1f2937; line-height:1.8; font-size:14px; }
+  .wrap { max-width:1100px; margin:0 auto; padding:40px 24px; }
+  h1 { font-size:24px; color:#1a3a5c; text-align:center; margin-bottom:6px; }
+  .sub { text-align:center; color:#6b7280; font-size:13px; margin-bottom:32px; }
+  h2 { font-size:18px; color:#1a3a5c; border-left:4px solid #2563eb; padding-left:10px; margin:32px 0 16px; }
+  h3 { font-size:15px; color:#1a3a5c; margin:20px 0 10px; }
+  p { margin-bottom:8px; }
+  .small { font-size:12px; color:#6b7280; }
+
+  table { width:100%; border-collapse:collapse; margin:10px 0 20px; font-size:13px; }
+  th { background:#1a3a5c; color:#fff; padding:10px 8px; text-align:left; font-weight:600; }
+  td { padding:10px 8px; border:1px solid #d1d5db; vertical-align:top; }
+  tr:nth-child(even) td { background:#f8fafc; }
+
+  .dim-header td { background:#1a3a5c; color:#fff; font-weight:600; font-size:14px; }
+
+  .box { border:1px solid #d1d5db; border-radius:8px; padding:16px; margin:12px 0; background:#f8fafc; }
+  .box-blue { border-left:4px solid #2563eb; }
+  .box-green { border-left:4px solid #059669; }
+  .box-amber { border-left:4px solid #f59e0b; }
+  .box-red { border-left:4px solid #dc2626; }
+
+  .legend { display:flex; gap:12px; flex-wrap:wrap; margin:12px 0; font-size:12px; }
+  .legend span { display:inline-flex; align-items:center; gap:4px; }
+  .dot { width:10px; height:10px; border-radius:3px; display:inline-block; }
+
+  .q { background:#fef9c3; border:1px solid #fcd34d; border-radius:6px; padding:12px 16px; margin:12px 0; }
+  .q::before { content:"❓ "; }
+
+  ul { padding-left:18px; margin:6px 0; }
+  li { margin-bottom:4px; }
+
+  .hr { border:none; border-top:1px dashed #d1d5db; margin:32px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>使命型 17 项指标 — 数据来源与评价逻辑详解</h1>
+<p class="sub">从开发者视角理清：数据到底从哪来 · 怎么用 · 怎么评</p>
+
+<!-- ===== 概念解释 ===== -->
+<h2>先搞清楚几个关键概念</h2>
+
+<div class="box box-blue">
+<h3>"AI 预填"到底是什么意思？</h3>
+<p>文档里反复提到"AI预填"，实际开发中分三种情况：</p>
+<table>
+<tr><th style="width:20%">场景</th><th style="width:40%">实际做法</th><th style="width:40%">举例</th></tr>
+<tr>
+  <td><strong>从学校系统拉数据填表</strong></td>
+  <td>通过 API 接口或定期导入 Excel，从教务/科研/资产等系统中把已有数据自动填入模板对应字段，教师只需补充缺失部分</td>
+  <td>课程名称、学分、学时、任课教师 → 从教务系统直接拉取填入课程大纲模板</td>
+</tr>
+<tr>
+  <td><strong>AI 搜索外部数据起草</strong></td>
+  <td>用 AI 搜索公开数据库（论文库、专利库、行业标准库、招聘网站等），把搜到的原始信息整理成模板初稿，教师审核修改</td>
+  <td>产业白皮书的"产业链图谱"部分 → AI 搜索该产业的公开报告、上市企业年报、行业研报，自动整理出产业链上下游清单，教师在此基础上修改</td>
+</tr>
+<tr>
+  <td><strong>AI 根据已有数据生成分析</strong></td>
+  <td>教师填了原始事实数据，AI 根据这些数据自动生成分析结论段落，教师不能直接编辑结论，只能修改输入的事实数据后让 AI 重新生成</td>
+  <td>教师填了"实验开出率 82%"，AI 自动生成分析："低于合格线 80%，建议核查 XX 实验的开出情况"</td>
+</tr>
+</table>
+</div>
+
+<div class="box box-green">
+<h3>"外部采集"具体采集什么？在哪里采集？</h3>
+<table>
+<tr><th style="width:20%">数据类型</th><th style="width:25%">采集来源（具体到哪）</th><th style="width:25%">怎么采集</th><th style="width:30%">用在哪个指标</th></tr>
+<tr>
+  <td>论文 DOI</td>
+  <td>Crossref API（国际通用）<br>中国知网 API（国内论文）</td>
+  <td>输入 DOI 号 → 调 API → 返回论文标题、发表年份、期刊名 → 验证 DOI 真实存在</td>
+  <td>1.2.1 行业前沿课比例<br>（验证教师标注的前沿技术来源是否真实）</td>
+</tr>
+<tr>
+  <td>专利号</td>
+  <td>国家知识产权局专利检索<br>WIPO 国际专利数据库</td>
+  <td>输入专利号 → 查询 → 返回专利名称、申请人、申请日期 → 验证真实存在</td>
+  <td>1.2.1 行业前沿课比例</td>
+</tr>
+<tr>
+  <td>行业标准编号</td>
+  <td>国家标准网（openstd.samr.gov.cn）<br>行业标准信息服务平台</td>
+  <td>输入标准编号 → 查询 → 返回标准名称、发布日期、状态（现行/废止）→ 验证真实且现行有效</td>
+  <td>1.2.1 行业前沿课比例</td>
+</tr>
+<tr>
+  <td>教材出版年份</td>
+  <td>新闻出版总署 ISBN 查询<br>出版社官网 / 京东当当等图书平台</td>
+  <td>输入 ISBN → 查询 → 返回书名、出版日期、版次 → 计算距今年数</td>
+  <td>1.2.1 教材时效性</td>
+</tr>
+<tr>
+  <td>产业公开数据</td>
+  <td>政府统计年鉴、行业协会报告、<br>上市企业年报（巨潮资讯网）、<br>招聘网站岗位信息（猎聘/智联等公开数据）</td>
+  <td>AI 定期爬取或 API 获取 → 整理成结构化数据 → 作为产业白皮书的参考素材</td>
+  <td>1.1.1 产业白皮书（辅助起草）</td>
+</tr>
+<tr>
+  <td>企业合同信息</td>
+  <td>学校自己的合同管理系统（不是外部）</td>
+  <td>通过合同编号在系统内查询 → 验证合同真实存在、金额、期限、企业名称</td>
+  <td>3.1.2 企业真实项目驱动率</td>
+</tr>
+</table>
+<p class="small">注意：所谓"外部"主要是公开的学术和行业数据库，不是什么神秘渠道。大部分就是调 API 查一下编号是否真实存在。</p>
+</div>
+
+<div class="box box-amber">
+<h3>"系统采集"和"异常检测"具体怎么做？</h3>
+<p><strong>系统采集</strong>就是从学校已有的业务系统里取数据，有两种方式：</p>
+<ul>
+  <li><strong>API 实时对接：</strong>直接调学校教务系统、科研系统、资产系统的接口，实时获取数据。前提是学校有 API。大部分地方院校没有完整 API。</li>
+  <li><strong>定期导出 Excel：</strong>每学期让管理员从各系统导出标准格式 Excel，上传到平台。平台解析后入库。这是最现实的方案。</li>
+</ul>
+
+<p><strong>异常检测</strong>就是发现数据造假或不合理的情况，实际做法：</p>
+<table>
+<tr><th style="width:25%">检测什么</th><th style="width:35%">怎么检测</th><th style="width:40%">举例</th></tr>
+<tr>
+  <td>数据不合逻辑</td>
+  <td>设上下限规则，超出范围直接标红</td>
+  <td>设备完好率 >100% → 不可能；出勤率 100% 连续 16 周 → 可疑</td>
+</tr>
+<tr>
+  <td>数据模式异常</td>
+  <td>统计分析，看数据分布是否合理</td>
+  <td>每周出勤率都是精确到 95.0% → 可能是手动填的不是真实打卡；作业提交时间全部集中在同一分钟的 → 可能批量提交</td>
+</tr>
+<tr>
+  <td>跨系统数据矛盾</td>
+  <td>不同系统之间的数据交叉比对</td>
+  <td>教务系统显示某课程有 60 人选课，但课程平台只有 5 人有登录记录 → 平台空转</td>
+</tr>
+<tr>
+  <td>数据时效异常</td>
+  <td>检查数据最后更新时间</td>
+  <td>产业白皮书最后更新是 3 年前 → 标记为过期，触发预警</td>
+</tr>
+</table>
+</div>
+
+<div class="box box-red">
+<h3>文档说的"L3""L4"到底什么意思？</h3>
+<p>文档把 AI 参与程度分成 L1-L4，实际开发中只需要理解：</p>
+<ul>
+  <li><strong>L4 全自动（12项）：</strong>数据从系统 API 或日志自动获取 → 系统按规则自动算分数 → 直接出结果。整个过程不需要人动手。比如出勤率，系统从课程平台日志里算出来就行。</li>
+  <li><strong>L3 AI主导（5项）：</strong>AI 做了大部分工作（搜索、匹配、生成分析），但最终需要人确认一下。比如产业白皮书，AI 搜了公开数据起草了初稿，但教师得看看对不对、补充学校具体情况。</li>
+</ul>
+<p class="small">没有 L1/L2 的指标。意思是：理论上所有 17 项都不需要派专家进校打分。</p>
+</div>
+
+<hr class="hr">
+
+<!-- ===== 17项指标详解 ===== -->
+<h2>使命型 17 项指标逐项详解</h2>
+
+<div class="legend">
+  <span><span class="dot" style="background:#dbeafe;"></span> 学校提供</span>
+  <span><span class="dot" style="background:#e0e7ff;"></span> 系统采集</span>
+  <span><span class="dot" style="background:#d1fae5;"></span> 外部采集/验证</span>
+  <span><span class="dot" style="background:#fce7f3;"></span> 外部问卷</span>
+</div>
+
+<!-- A维度 -->
+<table>
+<tr class="dim-header"><td colspan="5">维度 A：课程与需求适配性（权重 30%，7 项）— 回答"课程设的方向对不对"</td></tr>
+<tr>
+  <th style="width:5%">编号</th><th style="width:18%">指标</th>
+  <th style="width:20%">评价要点（评什么）</th>
+  <th style="width:30%">证据材料（具体是什么）</th>
+  <th style="width:27%">数据来源（具体从哪来）</th>
+</tr>
+
+<tr>
+  <td>1.1.1</td>
+  <td><strong>产业深度解析</strong></td>
+  <td>学校有没有把专业服务的产业搞清楚：产业在什么发展阶段、产业链有哪些环节、产业里有哪些关键岗位、这些岗位需要什么能力</td>
+  <td>一份产业白皮书，包含三部分：<br>① 产业处在什么阶段（成长期/成熟期/转型期）<br>② 产业链图谱（上游-中游-下游有哪些环节和节点企业）<br>③ 关键岗位清单（岗位名称、所需能力项、重要程度）</td>
+  <td><strong>学校提供</strong>（教师填写）<br><br><strong>AI 预填：</strong>AI 搜索该产业的公开报告（政府统计、行业协会、上市企业年报），把搜到的产业链结构、岗位需求整理成初稿。教师在初稿基础上补充修改。<br><br><strong>外部数据来源：</strong>政府统计年鉴、行业协会网站、巨潮资讯网（上市企业年报）、招聘网站公开岗位信息</td>
+</tr>
+
+<tr>
+  <td>1.1.2</td>
+  <td><strong>课程-产业链对应性</td>
+  <td>开的课和产业需要的岗位有没有对应关系。不能开了一堆课但和产业需求没关系</td>
+  <td>一张映射表：每门核心课程 → 对应产业链哪个节点 → 对应哪些岗位能力</td>
+  <td><strong>学校提供</strong>（从培养方案里提取）<br><br><strong>AI 预填：</strong>AI 从教务系统拉取所有核心课程列表，从 1.1.1 的白皮书拉取产业链节点和岗位清单，然后用关键词/语义匹配尝试自动配对（比如课程名含"机器人控制" → 匹配产业链中游的"运动控制系统"节点）。教师确认或修正配对结果。</td>
+</tr>
+
+<tr>
+  <td>1.1.3</td>
+  <td><strong>课程目标与岗位能力匹配</td>
+  <td>每门课的教学目标是不是真的来自产业岗位需求，而不是教师凭经验编的。能不能追溯到白皮书里的岗位能力</td>
+  <td>课程大纲里每个课程目标标注"来源"：对应白皮书里哪个岗位能力编号。比如"课程目标1 → 岗位能力 H03"</td>
+  <td><strong>学校提供</strong>（教师在课程大纲模板里填）<br><br><strong>AI 预填：</strong>AI 从已有课程大纲提取课程目标文本，从白皮书提取岗位能力清单，尝试语义匹配并建议对应关系。教师确认。<br><br><strong>评价逻辑：</strong>① 有多少比例的课程目标标注了来源 ② 大纲修订时间是否在白皮书更新之后（如果白皮书更新了但大纲没跟着改，说明没有真正对齐）</td>
+</tr>
+
+<tr>
+  <td>1.2.1</td>
+  <td><strong>行业前沿课比例 + 教材时效</td>
+  <td>课程内容有没有跟上行业最新发展。教材是不是太老了</td>
+  <td>课程大纲里标注"前沿技术来源"（论文 DOI 号 / 专利号 / 标准编号），有出处的才算"前沿课"。教材 ISBN 号</td>
+  <td><strong>学校提供：</strong>教师在课程大纲里填 DOI/专利号/标准号、教材 ISBN<br><br><strong>外部验证：</strong><br>• DOI → 调 Crossref API 验证是否存在、查论文标题和年份<br>• 专利号 → 查国家知识产权局验证<br>• 标准号 → 查国家标准网验证是否现行<br>• ISBN → 查出版年份，距今 ≤3 年为合格<br><br><strong>AI 预填：</strong>AI 可根据课程主题自动搜索相关最新论文/专利/标准，建议给教师作为前沿来源</td>
+</tr>
+
+<tr>
+  <td>1.2.2</td>
+  <td><strong>综合验证课程设计</td>
+  <td>每个学年有没有至少 1 门"把前面学的都串起来考一考"的综合课。不能只靠单门课考试</td>
+  <td>培养方案里标注哪些课是"综合验证课"，以及这门课综合了哪些前置课程的能力、属于哪个递进阶段（基础/进阶/综合/实战）</td>
+  <td><strong>学校提供</strong>（培养方案）<br><br><strong>AI 预填：</strong>AI 扫描培养方案，根据课程类型（项目实践/课程设计/综合实训等）识别可能的综合验证课，教师确认。<br><br><strong>评价逻辑：</strong>① 每学年 ≥1 门 ② 总数 ≥3 门 ③ 递进阶段覆盖基础→进阶→综合→实战</td>
+</tr>
+
+<tr>
+  <td>1.2.3</td>
+  <td><strong>毕业设计</td>
+  <td>毕业设计题目是不是企业真问题，有没有企业导师参与，企业有没有验收</td>
+  <td>毕业设计选题清单（含项目编号）、企业导师指导记录、企业验收电子签章</td>
+  <td><strong>学校提供：</strong>选题清单、指导记录<br><strong>外部验证：</strong>企业验收签章（通过学校合同/签章系统验证）<br><br><strong>AI 预填：</strong>AI 从毕设管理系统拉取选题列表，尝试匹配选题关键词与横向课题库/企业项目库，标注哪些选题可能来自企业真问题。教师确认。<br><br><strong>评价逻辑：</strong>① 真题真做比例（选题能追溯到企业项目/横向课题）② 企业导师参与率 ③ 企业验收覆盖率</td>
+</tr>
+
+<tr>
+  <td>1.3.1</td>
+  <td><strong>国际标准对标 + AI能力融入</td>
+  <td>核心课程有没有对标国际工程教育标准（如 ABET）；课程目标有没有融入 AI 时代需要的三个能力：会提问、会判断信息真假、会创造意义</td>
+  <td>专业建设方案里列出对标的国际标准编号；课程大纲里有勾选框标注覆盖了 AI 三维能力中的哪些维度</td>
+  <td><strong>学校提供</strong>（教师填写）<br><br><strong>外部验证：</strong>标准编号 → 查 ABET/CDIO 官网或国际工程教育认证数据库，验证编号是否真实<br><br><strong>AI 预填：</strong>AI 可根据课程内容建议适用的国际标准条款；AI 可分析课程大纲文本，判断是否包含提问训练/信息判断/意义创造相关内容，建议勾选哪些维度<br><br><strong>评价逻辑：</strong>① 有具体标准编号（不接受"参照国际标准"这种模糊说法）② 多少比例的核心课程覆盖了 AI 三维能力</td>
+</tr>
+
+<tr class="dim-header"><td colspan="5">维度 B：教学实施有效性（权重 30%，5 项）— 回答"教师能不能把对的方向教好"</td></tr>
+<tr>
+  <th style="width:5%">编号</th><th style="width:18%">指标</th>
+  <th style="width:20%">评价要点（评什么）</th>
+  <th style="width:30%">证据材料（具体是什么）</th>
+  <th style="width:27%">数据来源（具体从哪来）</th>
+</tr>
+
+<tr>
+  <td>2.1.1</td>
+  <td><strong>横向科研转化</strong><br><span class="small" style="color:#dc2626;">关键破局点</span></td>
+  <td>教师有没有接过企业横向课题，并且把课题成果变成教学案例用在课上。企业愿意出钱请你解决问题 = 你的专业能力被产业认可</td>
+  <td>横向课题记录（课题名称、企业、金额、教师）、教学案例库（教师署名的案例）、课程大纲中引用案例的记录</td>
+  <td><strong>系统采集：</strong>科研管理系统 → 导出横向课题清单<br><strong>学校提供：</strong>教学案例库、课程大纲中案例引用<br><br><strong>AI 预填：</strong>AI 从科研系统拉取横向课题列表 → 用关键词匹配课题领域与产业白皮书方向 → 在案例库中搜索该教师署名的案例 → 在课程大纲中搜索是否引用了这些案例 → 自动输出"有横向科研转化经历且与授课相关的教师数/总教师数"<br><br><strong>评价逻辑：</strong>① 教师有横向课题 ② 课题领域与专业服务产业相关 ③ 转化为教学案例 ④ 案例在课程大纲中被引用</td>
+</tr>
+
+<tr>
+  <td>2.1.2</td>
+  <td><strong>AI 时代教师能力</td>
+  <td>教师有没有因为 AI 的出现而调整课程内容和教学方式；有没有用 AI 工具辅助教学；有没有设计学生产出导向的任务；有没有完成 AI 培训并真正用在教学上</td>
+  <td>课程大纲的版本变更记录（新旧版对比）、AI 平台使用日志、教案中是否有学生产出物要求、课程平台提交记录、教师 AI 培训完成记录和实际应用产出</td>
+  <td><strong>系统采集：</strong>课程平台版本管理（自动保存每次修改）、AI 教学平台使用日志、课程平台提交记录<br><strong>学校提供：</strong>教案、AI 培训完成记录、教师应用产出（改造方案、智能助手等）<br><br><strong>AI 预填：</strong>AI 自动做课程大纲版本 diff（对比新旧版），检测是否有 AI 相关内容的新增或修改；AI 统计 AI 平台登录次数和使用功能；AI 检查教案中是否包含"学生产出物"字段<br><br><strong>评价逻辑：</strong>① 多少比例的课程大纲有 AI 相关修改 ② 多少比例教师有 AI 平台使用记录 ③ 多少比例教师完成培训且有实际产出</td>
+</tr>
+
+<tr>
+  <td>2.2.1</td>
+  <td><strong>教学投入深度</td>
+  <td>教师有没有做到三件事：<br>① 传道 = 帮学生定方向（发布职业指引内容、学生提交学习计划）<br>② 授业 = 论证课程之间的逻辑关系（前置课→本课→后续课的依赖矩阵）<br>③ 解惑 = 回答学生问题并把好问题纳入下次修订（问答响应率 + 版本 diff 检查）</td>
+  <td>课程平台上教师发布的职业指引帖文、学生提交的学习计划、课程平台的问答记录、培养方案中的课程依赖关系矩阵</td>
+  <td><strong>系统采集：</strong>课程平台 → 职业指引帖文数量、学习计划提交记录、问答记录（提问数、回复数、回复时间）<br><strong>学校提供：</strong>培养方案中的课程依赖矩阵<br><br><strong>AI 预填：</strong>AI 自动统计帖文数、提交数、问答互动数据；AI 做大纲版本 diff 检测学生提问是否被纳入修订<br><br><strong>评价逻辑：</strong>① 是否发布了职业指引内容 ② 学生是否提交了学习计划 ③ 课程依赖矩阵是否完整 ④ 问答响应率（回复数/提问数）⑤ 学生问题是否纳入大纲修订（版本 diff 可查）</td>
+</tr>
+
+<tr>
+  <td>2.3.1</td>
+  <td><strong>学习行为数据</td>
+  <td>学生到底有没有在学习：出勤率、作业提交率、资源访问频次、平台活跃度。纯客观数据，不需要教师填</td>
+  <td>课程平台/教务系统的行为日志</td>
+  <td><strong>系统采集：</strong>课程平台日志 → 出勤打卡记录、作业提交时间戳、资源（课件/视频）访问日志、登录频次<br><br><strong>不需要 AI 预填</strong>，就是从日志表里统计<br><br><strong>异常检测：</strong><br>• 出勤率连续多周精确到 95.0% → 可疑手动填报<br>• 作业提交时间全部在同一分钟内 → 批量提交<br>• 资源访问量为 0 但出勤率 100% → 平台建了但没人真用<br>• 教务系统选课人数 60 人，平台登录人数 5 人 → 平台空转<br><br><strong>评价逻辑：</strong>直接算四个指标的数值，加权输出综合投入度指数</td>
+</tr>
+
+<tr>
+  <td>2.3.2</td>
+  <td><strong>考核与达成度闭环</td>
+  <td>① 每个课程目标有没有对应的考核任务（不能目标写了一套考的是另一套）<br>② 有没有多种过程性考核并及时反馈<br>③ 有没有写达成度报告（学生哪里没达标）<br>④ 说的改进措施下一版大纲里改了没有</td>
+  <td>课程管理平台里的课程目标列表和考核任务列表、达成度报告（包含各目标得分、薄弱环节、改进措施三部分）、下一轮课程大纲版本</td>
+  <td><strong>系统采集：</strong>课程管理平台 → 目标列表、考核任务列表、提交和反馈时间<br><strong>学校提供：</strong>达成度报告（教师填写三部分）<br><br><strong>AI 预填：</strong>AI 自动构建"目标-考核映射矩阵"（把课程目标和考核任务做配对），计算覆盖率；AI 做大纲版本 diff，检测改进措施是否在新版大纲中体现<br><br><strong>评价逻辑：</strong>① 目标-考核映射覆盖率 ② 考核种类数（≥3 种为合格）③ 反馈时间差（提交到反馈 ≤7 天）④ 达成度报告三字段完整性 ⑤ 闭环率（说要改的在下版大纲里真改了的比例）</td>
+</tr>
+
+<tr class="dim-header"><td colspan="5">维度 C：运行保障支撑度（权重 20%，2 项）— 回答"教学条件够不够"</td></tr>
+<tr>
+  <th style="width:5%">编号</th><th style="width:18%">指标</th>
+  <th style="width:20%">评价要点（评什么）</th>
+  <th style="width:30%">证据材料（具体是什么）</th>
+  <th style="width:27%">数据来源（具体从哪来）</th>
+</tr>
+
+<tr>
+  <td>3.1.1</td>
+  <td><strong>资源对教学的有效支撑</td>
+  <td>实验室设备够不够、用得好不好；校级 AI 教学基础设施（统一资源中心、知识图谱、智能助手等）建了没有、核心课程接入了多少</td>
+  <td>资产管理系统设备台账、实验管理系统使用记录、校级 AI 教学平台建设记录和课程接入数据</td>
+  <td><strong>系统采集：</strong><br>• 资产管理系统 → 设备清单（名称、数量、购入日期、状态）<br>• 实验管理系统 → 每个实验的实际开出记录、设备使用记录<br>• AI 教学平台 → 哪些课程接入了、使用频次<br><br><strong>AI 预填：</strong>AI 自动计算：实验开出率 = 实际开出实验数 / 培养方案要求开出的实验数；设备完好率 = 正常设备数 / 总设备数；课程支撑率 = 有对应设备的课程数 / 需要设备的课程数<br><br><strong>异常检测：</strong>设备台账显示有 50 台设备但使用记录为 0 → 设备闲置；某实验标记为"已开出"但无任何使用记录 → 虚报<br><br><strong>评价逻辑：</strong>实验开出率 + 设备完好率 + 课程支撑率三个数值</td>
+</tr>
+
+<tr>
+  <td>3.1.2</td>
+  <td><strong>企业真实项目驱动率</td>
+  <td>核心课程的教学环节中用了多少企业真实生产项目（不是模拟案例、不是教师编的题目）。判定标准：有企业合同编号 + 有交付物签章 + 有企业人员指导记录</td>
+  <td>教务系统中教学环节清单（标注每个环节用的是哪个项目）、学校合同管理系统的合同编号、企业验收签章</td>
+  <td><strong>系统采集：</strong>教务系统 → 教学环节列表和项目来源标记<br><strong>外部验证：</strong>合同编号 → 在学校合同管理系统里查是否真实存在；企业验收签章 → 电子签章系统验证<br><br><strong>AI 预填：</strong>AI 从教务系统拉取教学环节列表 → 逐环节检查项目来源标记 → 如果标记为企业项目则到合同系统验证合同编号 → 输出：真实项目教学环节数 / 核心课程总教学环节数<br><br><strong>评价逻辑：</strong>有合同编号 + 有签章 + 有企业指导 = 真实项目。算真实项目占比。≥30% 合格，≥60% 良好，≥80% 优秀</td>
+</tr>
+
+<tr class="dim-header"><td colspan="5">维度 D：产出与贡献（权重 20%，3 项）— 回答"培养的人到底行不行"</td></tr>
+<tr>
+  <th style="width:5%">编号</th><th style="width:18%">指标</th>
+  <th style="width:20%">评价要点（评什么）</th>
+  <th style="width:30%">证据材料（具体是什么）</th>
+  <th style="width:27%">数据来源（具体从哪来）</th>
+</tr>
+
+<tr>
+  <td>4.1.1</td>
+  <td><strong>行业就业率</td>
+  <td>毕业生有多少人在干和专业相关的工作。不是就业率，是"对口就业率"</td>
+  <td>就业管理系统中每个毕业生的就业单位名称和岗位名称</td>
+  <td><strong>系统采集：</strong>就业管理系统 → 毕业生就业单位 + 岗位信息<br><br><strong>AI 预填：</strong>AI 把每个毕业生的岗位名称/单位名称与 1.1.1 产业白皮书里的关键岗位清单做关键词匹配 → 判断这个岗位是否属于专业对口 → 自动计算对口就业率<br><br><strong>评价逻辑：</strong>对口人数 / 总就业人数。≥50% 合格，≥70% 良好，≥85% 优秀</td>
+</tr>
+
+<tr>
+  <td>4.1.2</td>
+  <td><strong>毕业生影响力</td>
+  <td>毕业 3-5 年的校友里有多少人当上了技术骨干/管理者/创业者/拿了高级认证</td>
+  <td>校友追踪系统里的职业发展数据（职位、职称、认证等，每年更新一次）</td>
+  <td><strong>系统采集：</strong>校友追踪系统 → 校友当前职位、职称、所在企业、获得的认证<br><br><strong>AI 预填：</strong>AI 用关键词匹配校友职位文本（"技术骨干""项目经理""高级工程师""高级技师""创始人"等标签）→ 自动计算比例<br><br><strong>问题：</strong>校友数据更新依赖学校主动联系校友，大部分地方院校的校友系统数据覆盖率和准确率都不高。这是整个体系最薄弱的数据环节。</td>
+</tr>
+
+<tr>
+  <td>4.1.3</td>
+  <td><strong>用人单位满意度</td>
+  <td>雇主对毕业生的评价，分 5 个维度打分：专业基础、实践能力、沟通协作、学习能力、职业素养</td>
+  <td>用人单位填写的结构化问卷（5 个维度各打分）</td>
+  <td><strong>外部采集：</strong>用人单位填写问卷<br><br><strong>AI 预填 / 自动处理：</strong><br>• 检查样本量：回收问卷数 ≥ 毕业生总数 30% 才算有效<br>• 剔除无效问卷：作答时间 <60 秒的、所有题选同一个选项的 → 视为无效<br>• 计算有效问卷的平均分<br><br><strong>评价逻辑：</strong>5 个维度平均分。≥3.5/5 合格，≥4.0/5 良好，≥4.5/5 且复招率≥80% 优秀</td>
+</tr>
+</table>
+
+<hr class="hr">
+
+<!-- ===== 数据来源汇总 ===== -->
+<h2>数据来源汇总：到底需要哪些系统、哪些数据</h2>
+
+<table>
+<tr><th style="width:15%">数据来源</th><th style="width:20%">具体是什么系统/渠道</th><th style="width:25%">提供什么数据</th><th style="width:15%">对接方式</th><th style="width:25%">用在哪些指标</th></tr>
+<tr>
+  <td><strong>教务系统</strong></td>
+  <td>学校教务管理系统</td>
+  <td>课程列表、学分学时、选课人数、教材 ISBN、教学环节安排</td>
+  <td>API 或 Excel 导出</td>
+  <td>1.1.2、1.2.1、1.2.2、3.1.2</td>
+</tr>
+<tr>
+  <td><strong>科研系统</strong></td>
+  <td>学校科研管理系统</td>
+  <td>横向课题记录（课题名称、企业、金额、教师）</td>
+  <td>API 或 Excel 导出</td>
+  <td>2.1.1</td>
+</tr>
+<tr>
+  <td><strong>课程平台</strong></td>
+  <td>学校在线教学平台（如超星/雨课堂等）</td>
+  <td>出勤打卡、作业提交记录、资源访问日志、问答记录、学生提交物、课程大纲版本</td>
+  <td>API 或 Excel 导出</td>
+  <td>2.1.2、2.2.1、2.3.1、2.3.2</td>
+</tr>
+<tr>
+  <td><strong>资产管理系统</strong></td>
+  <td>学校资产管理处</td>
+  <td>设备台账（名称、数量、购入日期、状态）</td>
+  <td>Excel 导出</td>
+  <td>3.1.1</td>
+</tr>
+<tr>
+  <td><strong>实验管理系统</strong></td>
+  <td>学校实验室管理系统</td>
+  <td>实验开出记录、设备使用记录</td>
+  <td>Excel 导出</td>
+  <td>3.1.1</td>
+</tr>
+<tr>
+  <td><strong>就业系统</strong></td>
+  <td>学校就业指导中心</td>
+  <td>毕业生就业单位、岗位信息</td>
+  <td>Excel 导出</td>
+  <td>4.1.1</td>
+</tr>
+<tr>
+  <td><strong>校友系统</strong></td>
+  <td>学校校友会</td>
+  <td>校友职业发展数据（每年更新）</td>
+  <td>Excel 导出</td>
+  <td>4.1.2</td>
+</tr>
+<tr>
+  <td><strong>合同管理系统</strong></td>
+  <td>学校财务/合同管理</td>
+  <td>企业合作合同编号、金额、期限</td>
+  <td>内部查询</td>
+  <td>3.1.2</td>
+</tr>
+<tr>
+  <td><strong>教师填写模板</strong></td>
+  <td>平台内置的表单</td>
+  <td>产业白皮书、映射矩阵、课程大纲、教案、达成度报告、毕设选题等</td>
+  <td>平台表单填写</td>
+  <td>1.1.1、1.1.2、1.1.3、1.2.2、1.2.3、1.3.1、2.3.2 等</td>
+</tr>
+<tr>
+  <td><strong>外部公开数据库</strong></td>
+  <td>Crossref（论文 DOI）、国家知识产权局（专利）、国家标准网（标准号）、ISBN 查询、行业报告网站</td>
+  <td>验证教师填的 DOI/专利号/标准号是否真实存在，教材出版年份，产业公开数据</td>
+  <td>API 调用</td>
+  <td>1.2.1（验真）、1.1.1（辅助起草）</td>
+</tr>
+<tr>
+  <td><strong>用人单位问卷</strong></td>
+  <td>平台发送问卷链接给用人单位</td>
+  <td>5 维度满意度评分</td>
+  <td>在线问卷</td>
+  <td>4.1.3</td>
+</tr>
+</table>
+
+<div class="box box-red">
+<h3>现实问题：学校系统对接没那么容易</h3>
+<p>文档里假设学校有完善的 API 接口，实际开发中最可能的落地方式是：</p>
+<ul>
+  <li><strong>第一阶段（MVP）：</strong>6 个关键模板让教师在线填写（产业白皮书、映射矩阵、培养方案、课程大纲、达成度报告、毕业设计清单）。教务/科研/就业数据通过管理员每学期导出 Excel 上传。</li>
+  <li><strong>第二阶段：</strong>逐步对接课程平台、科研系统的 API。行为数据（出勤、作业）先靠 Excel 导入。</li>
+  <li><strong>第三阶段：</strong>资产系统、校友系统、合同系统对接。</li>
+</ul>
+<p>所以开发时要设计成：<strong>有 API 就自动拉，没有 API 就 Excel 导入，两种方式都能跑</strong>。模板里 AI 预填的部分，如果系统对接了就自动填，没对接就空着让教师手动填。</p>
+</div>
+
+<hr class="hr">
+
+<!-- ===== 评价逻辑汇总 ===== -->
+<h2>评价逻辑汇总：每个指标到底怎么算分</h2>
+
+<table>
+<tr><th style="width:8%">编号</th><th style="width:15%">指标</th><th style="width:20%">合格</th><th style="width:20%">良好</th><th style="width:20%">优秀</th><th style="width:17%">核心计算逻辑</th></tr>
+<tr><td>1.1.1</td><td>产业深度解析</td><td>完成1份白皮书覆盖核心产业</td><td>覆盖所有方向，每2年更新</td><td>获区域头部企业认可引用，预判准确率≥70%</td><td>校验三模块完整性 + 更新时间</td></tr>
+<tr><td>1.1.2</td><td>课程-产业链对应性</td><td>核心课程覆盖率≥60%</td><td>≥85%</td><td>≥95%且动态更新</td><td>有对应节点的核心课数/总核心课数</td></tr>
+<tr><td>1.1.3</td><td>课程目标匹配度</td><td>60%以上课程标注目标来源</td><td>覆盖率≥85%，匹配度≥70%</td><td>覆盖率≥95%，匹配度≥85%</td><td>有来源标注的目标数/总目标数</td></tr>
+<tr><td>1.2.1</td><td>前沿课比例</td><td>前沿课≥20%，近3年教材≥50%</td><td>≥40%，≥70%</td><td>≥60%，≥85%</td><td>有验证通过的前沿来源的课数/总课数</td></tr>
+<tr><td>1.2.2</td><td>综合验证课程</td><td>≥2门覆盖2学年</td><td>≥3门覆盖全部学年</td><td>≥4门有企业真实项目</td><td>数课程数 + 检查学年覆盖</td></tr>
+<tr><td>1.2.3</td><td>毕业设计</td><td>真题真做≥40%</td><td>≥70%</td><td>≥90%，成果被企业采纳≥30%</td><td>能追溯到企业项目的选题数/总选题数</td></tr>
+<tr><td>1.3.1</td><td>国际标准+AI融入</td><td>≥1门借鉴+30%课程覆盖AI≥1维度</td><td>50%借鉴+60%覆盖2维度</td><td>80%借鉴+80%覆盖3维度</td><td>有标准编号的课程数 + AI维度勾选统计</td></tr>
+<tr><td>2.1.1</td><td>横向科研转化</td><td>有横向课题且相关比例≥20%</td><td>≥40%</td><td>≥60%</td><td>有横向+有转化案例+大纲引用的教师数/总教师数</td></tr>
+<tr><td>2.1.2</td><td>AI时代教师能力</td><td>30%课程有AI调整+30%教师有AI产出</td><td>60%</td><td>90%</td><td>大纲有AI修改的课数/总课数 + 有AI产出的教师数/总教师数</td></tr>
+<tr><td>2.2.1</td><td>教学投入深度</td><td>有传道指引+授业设计+解惑回复率≥50%</td><td>100%有传道+回复率≥80%</td><td>个性化引导+回复率≥95%</td><td>帖文数+矩阵完整性+回复数/提问数</td></tr>
+<tr><td>2.3.1</td><td>学习行为数据</td><td>出勤≥85%，作业提交≥80%</td><td>出勤≥90%，作业≥90%</td><td>全维度接入呈上升趋势</td><td>直接从日志统计四个数值</td></tr>
+<tr><td>2.3.2</td><td>考核达成度闭环</td><td>映射≥70%，考核≥3种，达成度≥60%</td><td>≥90%，≥4种，≥80%，闭环≥70%</td><td>100%，≥5种，AI辅助，闭环≥90%</td><td>映射覆盖率+考核种类数+反馈时间+闭环率</td></tr>
+<tr><td>3.1.1</td><td>资源有效支撑</td><td>实验开出率≥80%，设备完好率≥85%</td><td>≥90%，≥95%，支撑率≥80%</td><td>≥95%，≥98%，≥95%</td><td>实际开出实验/应开出实验+正常设备/总设备</td></tr>
+<tr><td>3.1.2</td><td>企业项目驱动率</td><td>≥30%</td><td>≥60%，有合同+签章</td><td>≥80%，覆盖所有核心课</td><td>验证通过的真实项目教学环节/总教学环节</td></tr>
+<tr><td>4.1.1</td><td>行业就业率</td><td>对口就业率≥50%</td><td>≥70%</td><td>≥85%且质量高于同类均值</td><td>岗位匹配白皮书的毕业生数/总就业人数</td></tr>
+<tr><td>4.1.2</td><td>毕业生影响力</td><td>骨干/管理岗≥15%</td><td>≥30%</td><td>≥45%，有行业标杆人物</td><td>匹配关键词的校友数/追踪到的校友数</td></tr>
+<tr><td>4.1.3</td><td>用人单位满意度</td><td>≥3.5/5分</td><td>≥4.0/5分</td><td>≥4.5/5分且复招率≥80%</td><td>有效问卷5维度平均分</td></tr>
+</table>
+
+<hr class="hr">
+
+<!-- ===== 开发建议 ===== -->
+<h2>开发建议：哪些先做，哪些后做</h2>
+
+<div class="box box-blue">
+<h3>第一阶段（0-6 个月）：6 个核心模板 + Excel 导入</h3>
+<table>
+<tr><th style="width:20%">做什么</th><th style="width:40%">具体内容</th><th style="width:40%">为什么先做</th></tr>
+<tr><td>产业白皮书模板</td><td>在线表单，三模块结构化填写，AI 搜索公开数据辅助起草</td><td>是一致性链条的源头，不做这个后面 5 个指标都没法评</td></tr>
+<tr><td>课程-产业链映射矩阵</td><td>从教务系统拉课程列表，从白皮书拉节点列表，AI 匹配，教师确认</td><td>直接依赖白皮书</td></tr>
+<tr><td>培养方案录入</td><td>结构化录入综合验证课属性、课程依赖矩阵</td><td>多个指标依赖</td></tr>
+<tr><td>课程大纲模板</td><td>结构化表单，含目标来源字段、前沿来源字段、AI能力勾选字段</td><td>5 个指标依赖此模板，是数据量最大的模板</td></tr>
+<tr><td>达成度报告模板</td><td>三字段表单（得分/薄弱/改进措施），下一版大纲 diff 检测闭环</td><td>考核闭环的核心</td></tr>
+<tr><td>毕业设计选题清单</td><td>选题列表 + 项目编号关联</td><td>综合验证的最终环节</td></tr>
+</table>
+<p>同时：管理员每学期从教务/科研/就业系统导出 Excel 上传。外部验证接口（DOI/专利号/标准号查询）先接 Crossref 一个试试。</p>
+</div>
+
+<div class="box box-green">
+<h3>第二阶段（6-18 个月）：行为数据 + 剩余模板</h3>
+<ul>
+  <li>对接课程平台 API（或定期导入日志 Excel），采集出勤、作业、问答数据</li>
+  <li>补全教案、教学案例卡、企业项目清单、用人单位问卷等模板</li>
+  <li>对接资产/实验管理系统 Excel 导入</li>
+  <li>教师 AI 培训记录导入</li>
+  <li>AI 教学平台使用日志对接</li>
+</ul>
+</div>
+
+<div class="box box-amber">
+<h3>第三阶段（18-36 个月）：校友追踪 + 趋势分析</h3>
+<ul>
+  <li>校友系统对接（数据质量可能不高，需配合校友会人工补录）</li>
+  <li>多学期数据趋势分析</li>
+  <li>未来型指标解锁</li>
+</ul>
+</div>
+
+</div>
+</body>
+</html>

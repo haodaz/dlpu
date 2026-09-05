@@ -1,0 +1,21 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+// 全景数据 Hub
+model PanoramicData {
+  id              String   @id @default(uuid())
+  templateCode    String   // 对应19个模板，如 "T03", "T11"
+  sourceType      String   // 数据来源: "MANUAL" (人工上传), "SYSTEM" (系统对接), "EXTERNAL" (外部抓取)
+  rawPayload      String   // 原始收集数据 (JSON字符串)
+  verifiedFields  String?  // 经过AI提炼和人工确认的全景字段 (JSON字符串)
+  status          String   @default("PENDING") // PENDING (待处理), PROCESSED (已提炼), CONFIRMED (已确认)
+  
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}

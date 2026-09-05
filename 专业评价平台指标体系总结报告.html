@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>专业评价平台指标体系总结报告</title>
+<style>
+  :root {
+    --primary: #1a3a5c;
+    --accent: #2563eb;
+    --accent-light: #dbeafe;
+    --mission: #059669;
+    --future: #7c3aed;
+    --border: #d1d5db;
+    --bg: #ffffff;
+    --bg-alt: #f8fafc;
+    --text: #1f2937;
+    --text-light: #6b7280;
+    --warn: #f59e0b;
+    --danger: #dc2626;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.75;
+    font-size: 15px;
+  }
+  .container { max-width: 1200px; margin: 0 auto; padding: 40px 30px; }
+  h1 { font-size: 28px; color: var(--primary); text-align: center; margin-bottom: 8px; letter-spacing: 1px; }
+  .subtitle { text-align: center; color: var(--text-light); font-size: 14px; margin-bottom: 40px; }
+  h2 { font-size: 22px; color: var(--primary); border-left: 4px solid var(--accent); padding-left: 12px; margin: 40px 0 20px; }
+  h3 { font-size: 17px; color: var(--primary); margin: 24px 0 12px; }
+  h4 { font-size: 15px; color: var(--text); margin: 16px 0 8px; font-weight: 600; }
+  p { margin-bottom: 10px; }
+  .tag {
+    display: inline-block; padding: 2px 10px; border-radius: 4px; font-size: 12px; font-weight: 600;
+  }
+  .tag-mission { background: #d1fae5; color: #065f46; }
+  .tag-future { background: #ede9fe; color: #5b21b6; }
+  .tag-l4 { background: #dbeafe; color: #1e40af; }
+  .tag-l3 { background: #fef3c7; color: #92400e; }
+  .tag-school { background: #fce7f3; color: #9d174d; }
+  .tag-system { background: #e0e7ff; color: #3730a3; }
+  .tag-external { background: #d1fae5; color: #065f46; }
+  .tag-template { background: #f3f4f6; color: #374151; }
+
+  table { width: 100%; border-collapse: collapse; margin: 12px 0 20px; font-size: 13px; }
+  th { background: var(--primary); color: #fff; padding: 10px 8px; text-align: left; font-weight: 600; font-size: 13px; }
+  td { padding: 8px; border: 1px solid var(--border); vertical-align: top; }
+  tr:nth-child(even) td { background: var(--bg-alt); }
+  .highlight-row td { background: #fef9c3 !important; font-weight: 500; }
+
+  .card {
+    border: 1px solid var(--border); border-radius: 8px; padding: 20px; margin: 16px 0;
+    background: var(--bg-alt);
+  }
+  .card-mission { border-left: 4px solid var(--mission); }
+  .card-future { border-left: 4px solid var(--future); }
+  .card-accent { border-left: 4px solid var(--accent); }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 16px 0; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin: 16px 0; }
+
+  .badge {
+    display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600;
+    margin-right: 6px;
+  }
+  .badge-A { background: #dbeafe; color: #1e40af; }
+  .badge-B { background: #d1fae5; color: #065f46; }
+  .badge-C { background: #fef3c7; color: #92400e; }
+  .badge-D { background: #fce7f3; color: #9d174d; }
+
+  .callout {
+    border-left: 4px solid var(--accent); background: var(--accent-light);
+    padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 16px 0;
+  }
+  .callout-warn { border-left-color: var(--warn); background: #fef3c7; }
+  .callout-danger { border-left-color: var(--danger); background: #fee2e2; }
+
+  .toc { background: var(--bg-alt); border: 1px solid var(--border); border-radius: 8px; padding: 24px; margin-bottom: 40px; }
+  .toc h3 { margin-top: 0; }
+  .toc ol { padding-left: 20px; }
+  .toc li { margin-bottom: 6px; }
+  .toc a { color: var(--accent); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+
+  .flow-diagram {
+    background: var(--bg-alt); border: 1px solid var(--border); border-radius: 8px;
+    padding: 20px; margin: 16px 0; text-align: center;
+  }
+  .flow-step {
+    display: inline-block; padding: 8px 16px; border-radius: 6px; font-size: 13px; font-weight: 600;
+    margin: 4px;
+  }
+  .flow-arrow { color: var(--text-light); font-size: 18px; margin: 0 4px; }
+
+  .indicator-card {
+    border: 1px solid var(--border); border-radius: 8px; margin: 12px 0; overflow: hidden;
+  }
+  .indicator-header {
+    padding: 12px 16px; font-weight: 600; font-size: 14px; display: flex; justify-content: space-between; align-items: center;
+  }
+  .indicator-body { padding: 16px; }
+  .indicator-body table { margin: 0; }
+  .indicator-body td:first-child { white-space: nowrap; font-weight: 600; width: 100px; color: var(--text-light); }
+
+  .section-break { border: none; border-top: 2px dashed var(--border); margin: 40px 0; }
+
+  .stat-box {
+    text-align: center; padding: 16px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg-alt);
+  }
+  .stat-num { font-size: 28px; font-weight: 700; color: var(--accent); }
+  .stat-label { font-size: 12px; color: var(--text-light); }
+
+  .small { font-size: 12px; color: var(--text-light); }
+  .center { text-align: center; }
+  .nowrap { white-space: nowrap; }
+
+  .legend { display: flex; gap: 16px; flex-wrap: wrap; margin: 12px 0; font-size: 12px; }
+  .legend-item { display: flex; align-items: center; gap: 4px; }
+  .legend-dot { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+
+  @media print { .container { max-width: 100%; padding: 20px; } }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>专业建设质量诊断系统 — 指标体系总结报告</h1>
+<p class="subtitle">使命型 17 项 + 未来型 13 项 | 证据材料 · 数据来源 · 评价标准 · AI 分析思路 | 2026-08-25 版本</p>
+
+<div class="toc">
+<h3>目录</h3>
+<ol>
+  <li><a href="#s1">体系总览：使命型与未来型的定位关系</a></li>
+  <li><a href="#s2">使命型 17 项指标体系（逐项详解）</a></li>
+  <li><a href="#s3">未来型 13 项指标体系（逐项详解）</a></li>
+  <li><a href="#s4">数据来源分类：学校提供 vs 系统提前收集</a></li>
+  <li><a href="#s5">评价标准与等级体系</a></li>
+  <li><a href="#s6">AI 分析思路与能力矩阵</a></li>
+  <li><a href="#s7">19 个证据模板与指标对应关系</a></li>
+  <li><a href="#s8">三条数据依赖链与根因追溯逻辑</a></li>
+</ol>
+</div>
+
+<!-- ========== Section 1 ========== -->
+<h2 id="s1">一、体系总览：使命型与未来型的定位关系</h2>
+
+<div class="grid-2">
+  <div class="card card-mission">
+    <h3><span class="tag tag-mission">使命型</span> 17 项指标</h3>
+    <p><strong>定位：</strong>面向所有地方本科院校，响应国家"双优工程"战略，推动从学科型向使命型转型</p>
+    <p><strong>核心逻辑：</strong>产业需求驱动 — 证明"能服务好当下"</p>
+    <p><strong>DNA：</strong>一致性（课程设什么方向）+ 有效性（教师能不能教好）</p>
+    <p><strong>破局点：</strong>产业白皮书（1.1.1 一致性源头）+ 横向项目（2.1.1 有效性源头）</p>
+    <p><strong>分级：</strong>合格 / 良好 / 优秀</p>
+  </div>
+  <div class="card card-future">
+    <h3><span class="tag tag-future">未来型</span> 13 项指标</h3>
+    <p><strong>定位：</strong>面向使命型达到优秀且有意愿探索的高校，探索第四代大学形态</p>
+    <p><strong>核心逻辑：</strong>产业趋势驱动 — 证明"能引领未来"</p>
+    <p><strong>DNA：</strong>一致性升级（课程与趋势对齐）+ 有效性升级（翻译能力）</p>
+    <p><strong>破局点：</strong>转化案例（教师将前沿技术降维为学生能学的课程模块）</p>
+    <p><strong>分级：</strong>合格 / 良好 / 优秀</p>
+  </div>
+</div>
+
+<h3>进阶路径</h3>
+<div class="flow-diagram">
+  <span class="flow-step" style="background:#d1fae5;color:#065f46;">使命型合格</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step" style="background:#d1fae5;color:#065f46;">使命型良好</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step" style="background:#d1fae5;color:#065f46;">使命型优秀</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step" style="background:#fef3c7;color:#92400e;">解锁加分项（3项）</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step" style="background:#ede9fe;color:#5b21b6;">未来型合格</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step" style="background:#ede9fe;color:#5b21b6;">未来型良好</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step" style="background:#ede9fe;color:#5b21b6;">未来型优秀</span>
+</div>
+<p class="small center">加分项 3 项：前瞻布局意识、转化实践萌芽、教师发展意愿。使命型优秀本身是完整终点，未来型是"优秀之后的方向灯"。</p>
+
+<hr class="section-break">
+
+<!-- ========== Section 2 ========== -->
+<h2 id="s2">二、使命型 17 项指标体系（逐项详解）</h2>
+
+<div class="grid-4" style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:16px 0;">
+  <div class="stat-box"><div class="stat-num">17</div><div class="stat-label">指标总数</div></div>
+  <div class="stat-box"><div class="stat-num">4</div><div class="stat-label">评价维度</div></div>
+  <div class="stat-box"><div class="stat-num">12</div><div class="stat-label">L4全自动</div></div>
+  <div class="stat-box"><div class="stat-num">5</div><div class="stat-label">L3 AI主导</div></div>
+</div>
+
+<table>
+<tr>
+  <th style="width:5%">维度</th><th style="width:6%">编号</th><th style="width:14%">三级指标</th>
+  <th style="width:20%">评价要点</th><th style="width:20%">证据材料与数据来源</th>
+  <th style="width:7%">数据提供方</th><th style="width:5%">AI等级</th><th style="width:13%">三级达标标准</th>
+  <th style="width:10%">未来型映射</th>
+</tr>
+<tr class="highlight-row"><td colspan="9"><span class="badge badge-A">A 维度</span> 课程与需求适配性（一致性维度）— 权重 30% — 7 项指标</td></tr>
+<tr>
+  <td rowspan="7">A<br><span class="small">课<br>程<br>与<br>需<br>求<br>适<br>配<br>性<br>30%</span></td>
+  <td class="nowrap">1.1.1</td><td><strong>产业深度解析</strong></td>
+  <td>对专业所服务产业进行深度解析，划分产业生命周期阶段，输出产业链图谱、关键岗位及能力需求清单</td>
+  <td><strong>证据：</strong>产业白皮书（三模块：①产业生命周期判定 ②产业链图谱/节点清单 ③关键岗位能力清单）<br><span class="tag tag-template">T03模板</span></td>
+  <td><span class="tag tag-school">学校提供</span></td>
+  <td><span class="tag tag-l3">L3</span></td>
+  <td>合格：完成1份白皮书覆盖核心产业<br>良好：覆盖所有方向，每2年更新<br>优秀：获区域头部企业认可引用，预判准确率≥70%</td>
+  <td>→ A1 产业前瞻与引领力</td>
+</tr>
+<tr>
+  <td class="nowrap">1.1.2</td><td><strong>课程-产业链对应性</strong></td>
+  <td>课程模块是否直接针对产业链节点设置，形成映射矩阵</td>
+  <td><strong>证据：</strong>培养方案中的课程-产业链节点映射矩阵（模板化提交）<br><span class="tag tag-template">T04模板</span></td>
+  <td><span class="tag tag-school">学校提供</span></td>
+  <td><span class="tag tag-l3">L3</span></td>
+  <td>合格：核心课程覆盖率≥60%<br>良好：≥85%<br>优秀：≥95%且动态更新</td>
+  <td>→ A1 产业前瞻与引领力</td>
+</tr>
+<tr>
+  <td class="nowrap">1.1.3</td><td><strong>课程目标与岗位能力匹配度</strong></td>
+  <td>课程目标是否源自岗位能力需求，有据可查、有调整记录</td>
+  <td><strong>证据：</strong>课程大纲（"目标来源"字段：每个课程目标标注对应岗位能力编号）<br><span class="tag tag-template">T11模板</span></td>
+  <td><span class="tag tag-school">学校提供</span></td>
+  <td><span class="tag tag-l3">L3</span></td>
+  <td>合格：60%以上课程标注目标来源<br>良好：覆盖率≥85%，匹配度≥70%<br>优秀：覆盖率≥95%，匹配度≥85%，形成全自动闭环</td>
+  <td>→ A1 产业前瞻与引领力</td>
+</tr>
+<tr>
+  <td class="nowrap">1.2.1</td><td><strong>行业前沿课比例（含教材时效性）</strong></td>
+  <td>行业前沿技术/新工艺/新标准融入课程的比例；教材出版年份距今≤3年占比</td>
+  <td><strong>证据：</strong>课程大纲（标注前沿技术来源：论文DOI/专利号/标准编号）+ 教务系统ISBN查询<br><span class="tag tag-external">外部验真</span></td>
+  <td><span class="tag tag-school">学校提供</span> + <span class="tag tag-system">系统查询</span></td>
+  <td><span class="tag tag-l4">L4</span></td>
+  <td>合格：前沿课≥20%，近3年教材≥50%<br>良好：≥40%，≥70%<br>优秀：≥60%，≥85%</td>
+  <td>→ B1 三层课程架构</td>
+</tr>
+<tr>
+  <td class="nowrap">1.2.2</td><td><strong>阶段性综合验证课程设计</strong></td>
+  <td>每个学年≥1门综合性项目课程，覆盖跨课程跨能力维度，有递进梯度</td>
+  <td><strong>证据：</strong>培养方案（标注综合验证课属性+前序能力模块清单+递进阶段）<br><span class="tag tag-template">T02模板</span></td>
+  <td><span class="tag tag-school">学校提供</span></td>
+  <td><span class="tag tag-l4">L4</span></td>
+  <td>合格：≥2门覆盖2学年<br>良好：≥3门覆盖全部学年<br>优秀：≥4门有企业真实项目</td>
+  <td>→ B1 三层课程架构</td>
+</tr>
+<tr>
+  <td class="nowrap">1.2.3</td><td><strong>毕业设计</strong></td>
+  <td>选题来源于企业真实需求或横向课题，有企业导师参与指导，有企业验收</td>
+  <td><strong>证据：</strong>毕业设计选题清单（含项目编号）+ 企业导师指导记录 + 企业验收电子签章<br><span class="tag tag-template">T12模板</span></td>
+  <td><span class="tag tag-school">学校提供</span> + <span class="tag tag-external">外部验证</span></td>
+  <td><span class="tag tag-l4">L4</span></td>
+  <td>合格：真题真做≥40%<br>良好：≥70%<br>优秀：≥90%，成果被企业采纳≥30%</td>
+  <td>→ 综合验证课程延伸</td>
+</tr>
+<tr>
+  <td class="nowrap">1.3.1</td><td><strong>国际标准对标与AI能力融入</strong></td>
+  <td>核心课程对标国际工程教育认证框架（ABET/CDIO）；课程目标融入AI时代新三维能力（提出问题/信息判断/创造意义）</td>
+  <td><strong>证据：</strong>专业建设方案（国际标准编号）+ 课程大纲（AI能力维度覆盖勾选字段）<br><span class="tag tag-template">T11模板</span></td>
+  <td><span class="tag tag-school">学校提供</span></td>
+  <td><span class="tag tag-l3">L3</span></td>
+  <td>合格：≥1门借鉴+30%课程覆盖AI至少1维度<br>良好：50%借鉴+60%覆盖2维度<br>优秀：80%借鉴+80%覆盖3维度</td>
+  <td>→ A3 差异化 + C1 人机协同</td>
+</tr>
+<tr class="highlight-row"><td colspan="9"><span class="badge badge-B">B 维度</span> 教学实施有效性（有效性维度）— 权重 30% — 5 项指标</td></tr>
+<tr>
+  <td rowspan="5">B<br><span class="small">教<br>学<br>实<br>施<br>有<br>效<br>性<br>30%</span></td>
+  <td class="nowrap">2.1.1</td><td><strong>横向科研转化</strong><br><span class="small" style="color:var(--danger);">有效性破局点</span></td>
+  <td>教师是否有聚焦核心产业链的横向课题经历，并转化为教学案例/项目</td>
+  <td><strong>证据：</strong>科研管理系统（横向课题记录）+ 教学案例库 + 课程大纲（案例引用记录）<br><span class="tag tag-system">系统对接</span></td>
+  <td><span class="tag tag-system">系统采集</span></td>
+  <td><span class="tag tag-l4">L4</span></td>
+  <td>合格：有横向课题且相关比例≥20%<br>良好：≥40%<br>优秀：≥60%</td>
+  <td>→ A2 学科-专业转化效能</td>
+</tr>
+<tr>
+  <td class="nowrap">2.1.2</td><td><strong>AI时代教师能力</strong></td>
+  <td>对AI冲击下的课程/教学模式有系统性反思与调整；运用AI组织教学；设计以产出为导向的任务；完成分层AI培训并产出应用</td>
+  <td><strong>证据：</strong>课程大纲版本管理 + AI平台使用日志 + 教案产出物要求 + 课程平台提交记录 + 教师分层AI培训完成记录与产出物<br><span class="tag tag-system">系统对接</span></td>
+  <td><span class="tag tag-system">系统采集</span> + <span class="tag tag-school">学校提供</span></td>
+  <td><span class="tag tag-l3">L3</span></td>
+  <td>合格：30%课程有AI调整+30%教师有AI产出<br>良好：60%<br>优秀：90%</td>
+  <td>→ D1 教师角色转型</td>
+</tr>
+<tr>
+  <td class="nowrap">2.2.1</td><td><strong>教学投入深度</strong></td>
+  <td>综合考察：①传道（职业指引+学习计划）②授业（课程依赖关系矩阵+论证）③解惑（问答响应率+问题纳入修订）</td>
+  <td><strong>证据：</strong>课程平台（职业指引内容+学习计划+问答记录）+ 培养方案（课程依赖矩阵）<br><span class="tag tag-template">T15模板</span></td>
+  <td><span class="tag tag-system">系统采集</span> + <span class="tag tag-school">学校提供</span></td>
+  <td><span class="tag tag-l4">L4</span></td>
+  <td>合格：有传道指引+授业设计+解惑回复率≥50%<br>良好：100%有传道+回复率≥80%<br>优秀：个性化引导+回复率≥95%形成闭环</td>
+  <td>→ C2 提问与创造力培养</td>
+</tr>
+<tr>
+  <td class="nowrap">2.3.1</td><td><strong>学习行为数据</strong></td>
+  <td>学生在学习过程中的实际投入行为：出勤率/作业提交率/资源访问频次/平台活跃度</td>
+  <td><strong>证据：</strong>课程平台/教务系统行为日志<br><span class="tag tag-template">T16模板</span></td>
+  <td><span class="tag tag-system">系统采集</span></td>
+  <td><span class="tag tag-l4">L4</span></td>
+  <td>合格：出勤≥85%，作业提交≥80%<br>良好：出勤≥90%，作业≥90%<br>优秀：全维度接入呈上升趋势</td>
+  <td>→ B2 学习个性化</td>
+</tr>
+<tr>
+  <td class="nowrap">2.3.2</td><td><strong>考核评价与达成度闭环</strong></td>
+  <td>目标-考核映射覆盖率；过程性考核种类与反馈时效；达成度报告完整性+改进闭环率</td>
+  <td><strong>证据：</strong>课程管理平台（目标列表+考核任务列表）+ 达成度报告 + 下一轮大纲版本diff<br><span class="tag tag-template">T08模板</span></td>
+  <td><span class="tag tag-school">学校提供</span> + <span class="tag tag-system">系统对接</span></td>
+  <td><span class="tag tag-l3">L3</span></td>
+  <td>合格：映射覆盖率≥70%，考核种类≥3种，达成度完整率≥60%<br>良好：≥90%，≥4种，≥80%，闭环率≥70%<br>优秀：100%，≥5种，AI辅助，闭环率≥90%</td>
+  <td>→ E1 能力档案与作品集</td>
+</tr>
+<tr class="highlight-row"><td colspan="9"><span class="badge badge-C">C 维度</span> 运行保障支撑度（条件维度）— 权重 20% — 2 项指标</td></tr>
+<tr>
+  <td rowspan="2">C<br><span class="small">运<br>行<br>保<br>障<br>支<br>撑<br>度<br>20%</span></td>
+  <td class="nowrap">3.1.1</td><td><strong>资源对教学的有效支撑</strong></td>
+  <td>实验设备/虚拟仿真/实训场地满足核心课程实践教学需求；校级AI教学基础设施完备度与渗透率</td>
+  <td><strong>证据：</strong>资产管理系统（设备台账）+ 实验管理系统（使用记录）+ 校级AI教学平台建设与课程接入记录<br><span class="tag tag-template">T17模板</span></td>
+  <td><span class="tag tag-system">系统采集</span></td>
+  <td><span class="tag tag-l4">L4</span></td>
+  <td>合格：实验开出率≥80%，设备完好率≥85%<br>良好：≥90%，≥95%，课程支撑率≥80%<br>优秀：≥95%，≥98%，≥95%</td>
+  <td>→ F1 产教共生深度</td>
+</tr>
+<tr>
+  <td class="nowrap">3.1.2</td><td><strong>企业真实项目驱动率</strong></td>
+  <td>核心课程教学环节中使用企业真实生产性项目的比例（有合同编号+交付物签章+企业人员指导）</td>
+  <td><strong>证据：</strong>教务系统（教学环节+项目来源标记）+ 企业合同管理系统 + 企业验收签章<br><span class="tag tag-template">T13模板</span></td>
+  <td><span class="tag tag-system">系统采集</span> + <span class="tag tag-external">外部验证</span></td>
+  <td><span class="tag tag-l4">L4</span></td>
+  <td>合格：≥30%<br>良好：≥60%，有完整合同+签章<br>优秀：≥80%，覆盖所有核心课程</td>
+  <td>→ F1 产教共生深度</td>
+</tr>
+<tr class="highlight-row"><td colspan="9"><span class="badge badge-D">D 维度</span> 产出与贡献（结果维度）— 权重 20% — 3 项指标</td></tr>
+<tr>
+  <td rowspan="3">D<br><span class="small">产<br>出<br>与<br>贡<br>献<br>20%</span></td>
+  <td class="nowrap">4.1.1</td><td><strong>行业就业率</strong></td>
+  <td>毕业生从事专业相关工作比例</td>
+  <td><strong>证据：</strong>就业管理系统（就业单位+岗位信息）<br><span class="tag tag-template">T18模板</span></td>
+  <td><span class="tag tag-system">系统采集</span></td>
+  <td><span class="tag tag-l4">L4</span></td>
+  <td>合格：对口就业率≥50%<br>良好：≥70%<br>优秀：≥85%且质量高于同类均值</td>
+  <td>→ G1 新三维能力与终身学习</td>
+</tr>
+<tr>
+  <td class="nowrap">4.1.2</td><td><strong>毕业生影响力</strong></td>
+  <td>毕业3-5年校友中担任技术骨干/管理岗/创业/高级行业认证的比例</td>
+  <td><strong>证据：</strong>校友追踪系统（职业发展数据，每年更新）<br><span class="tag tag-template">T19模板</span></td>
+  <td><span class="tag tag-system">系统采集</span></td>
+  <td><span class="tag tag-l4">L4</span></td>
+  <td>合格：技术骨干/管理岗≥15%<br>良好：≥30%<br>优秀：≥45%，有行业标杆人物</td>
+  <td>→ G1 新三维能力与终身学习</td>
+</tr>
+<tr>
+  <td class="nowrap">4.1.3</td><td><strong>用人单位满意度</strong></td>
+  <td>用人单位对毕业生综合素质的总体满意度（5维度：专业基础/实践能力/沟通协作/学习能力/职业素养）</td>
+  <td><strong>证据：</strong>用人单位问卷（样本量≥毕业生总数30%）<br><span class="tag tag-template">T14模板</span></td>
+  <td><span class="tag tag-external">外部采集</span></td>
+  <td><span class="tag tag-l4">L4</span></td>
+  <td>合格：≥3.5/5分<br>良好：≥4.0/5分<br>优秀：≥4.5/5分且复招率≥80%</td>
+  <td>→ E2 学生成长导向教师评价</td>
+</tr>
+</table>
+
+<hr class="section-break">
+
+<!-- ========== Section 3 ========== -->
+<h2 id="s3">三、未来型 13 项指标体系（逐项详解）</h2>
+
+<div class="callout">
+<p><strong>适用前提：</strong>使命型 17 项全部达到优秀 + 解锁 3 项加分项（前瞻布局意识、转化实践萌芽、教师发展意愿）+ 有意愿探索</p>
+<p><strong>与使命型的本质区别：</strong>使命型最高标准是"被动响应周期≤1学期"，未来型要求"主动预判甚至塑造产业方向"</p>
+</div>
+
+<table>
+<tr>
+  <th style="width:5%">一级</th><th style="width:5%">编号</th><th style="width:14%">二级指标</th>
+  <th style="width:20%">核心评判（理想状态）</th><th style="width:22%">证据材料与观测方式</th>
+  <th style="width:6%">数据提供方</th><th style="width:14%">三级达标标准</th><th style="width:14%">与使命型的本质跃迁</th>
+</tr>
+<tr class="highlight-row"><td colspan="8">A. 专业定位与产业共生 — 专业与产业不是"对接"而是"共生"</td></tr>
+<tr>
+  <td rowspan="4">A</td>
+  <td class="nowrap">A1</td><td><strong>产业前瞻与引领力</strong></td>
+  <td>能预判并塑造产业方向，建立产业白皮书和动态图谱，从"描述现状"升级为"预判趋势"</td>
+  <td><strong>证据：</strong>产业趋势白皮书 + 产业演进监测机制 + 趋势预判报告 + 课程模块前瞻布局覆盖率 + 新方向从识别到开课周期<br><span class="tag tag-school">学校提供</span> + <span class="tag tag-external">外部数据</span></td>
+  <td>学校+外部</td>
+  <td>合格：建立白皮书覆盖核心产业<br>良好：白皮书升级为趋势预判，≥1个判断被采纳<br>优秀：成为产业生态编排者</td>
+  <td>从响应需求→引领趋势</td>
+</tr>
+<tr>
+  <td class="nowrap">A2</td><td><strong>学科-专业转化效能</strong></td>
+  <td>学科能力转化为专业创新的效率，科研成果以可教学转化形式系统性注入课程体系</td>
+  <td><strong>证据：</strong>科研成果向教学资源转化率 + 学科前沿内容融入课程比例 + 本科生参与科研项目比例 + 跨学科课程/项目模块<br><span class="tag tag-school">学校提供</span> + <span class="tag tag-system">系统采集</span></td>
+  <td>学校+系统</td>
+  <td>合格：≥1项学科成果转化为课程<br>良好：每年≥1项，有正式流程<br>优秀：转化为新专业方向，被产业应用</td>
+  <td>从解题能力→转化翻译能力</td>
+</tr>
+<tr>
+  <td class="nowrap">A3</td><td><strong>差异化不可替代性</strong></td>
+  <td>若无此专业，区域产业链会出现明确人才缺口或技术空白</td>
+  <td><strong>证据：</strong>专业定位差异度 + 产业界品牌认知度 + 区域龙头企业人才来源 + 不可替代技术服务/咨询/标准制定<br><span class="tag tag-external">外部验证</span> + <span class="tag tag-school">学校提供</span></td>
+  <td>外部+学校</td>
+  <td>合格：清晰定位，服务特定细分<br>良好：≥2个差异化方向，细分就业率高<br>优秀：品牌效应，企业定向招聘</td>
+  <td>从对标标准→独特价值</td>
+</tr>
+<tr>
+  <td class="nowrap">A4</td><td><strong>超前人才培养设计</strong></td>
+  <td>设置面向未来3-5年产业需求的前瞻性课程模块，培养学生在产业尚未成熟时定义问题、构建方案的能力</td>
+  <td><strong>证据：</strong>前瞻课程模块≥3个 + 年度更新率≥30% + 毕业生5年内成为技术骨干比例 + 联合实验室/未来技术中心数量<br><span class="tag tag-school">学校提供</span></td>
+  <td>学校提供</td>
+  <td>合格：≥3个前瞻课程模块<br>良好：每年更新≥30%，企业共建<br>优秀：共建未来技术中心，定义行业标准</td>
+  <td>使命型无此维度（全新）</td>
+</tr>
+<tr class="highlight-row"><td colspan="8">B. 课程体系与学习体验 — 课程从"教什么"的清单变为"怎么成长"的生态</td></tr>
+<tr>
+  <td rowspan="2">B</td>
+  <td class="nowrap">B1</td><td><strong>三层课程架构成熟度</strong></td>
+  <td>初阶（AI赋能知识习得）- 中层（能力培养课堂深度）- 顶层（价值引领与人格塑造）三层递进成型</td>
+  <td><strong>证据：</strong>AI辅助学习系统覆盖率 + 课堂高阶能力培养比例 + 提问/判断力/创造力训练渗透度 + 价值引领融入专业教学比例<br><span class="tag tag-system">系统采集</span> + <span class="tag tag-school">学校提供</span></td>
+  <td>系统+学校</td>
+  <td>合格：≥40%课程分层标注<br>良好：≥80%分层，有能力出口定义<br>优秀：全部三层化，交叉层真跨学科</td>
+  <td>从横向对齐→纵向深度</td>
+</tr>
+<tr>
+  <td class="nowrap">B2</td><td><strong>学习个性化与自主性</strong></td>
+  <td>学生能自设计学习路径，拥有充分学习选择权</td>
+  <td><strong>证据：</strong>AI驱动个性化学习画像覆盖率 + 学习路径差异化率 + 自主选择学分比例 + 主动学习活动参与率<br><span class="tag tag-system">系统采集</span></td>
+  <td>系统采集</td>
+  <td>合格：≥10%课时可选<br>良好：≥30%可选+导师指导<br>优秀：全路径可选，跨专业跨层次组合</td>
+  <td>从统一安排→自主设计</td>
+</tr>
+<tr class="highlight-row"><td colspan="8">C. 教学模式与课堂形态 — 课堂从"信息传递场所"变为"智慧生长土壤"</td></tr>
+<tr>
+  <td rowspan="2">C</td>
+  <td class="nowrap">C1</td><td><strong>人机协同教学深度</strong></td>
+  <td>AI承担知识传授、练习反馈、学情诊断，真人教师专注引导讨论、激发思考、传递价值观</td>
+  <td><strong>证据：</strong>AI-真人协同教学分工覆盖率 + AI工具覆盖教学全流程比例 + 校级AI教学平台核心课程接入率 + 教学效率提升量化数据<br><span class="tag tag-system">系统采集</span></td>
+  <td>系统采集</td>
+  <td>合格：≥30%课程引入AI，有人机分工说明<br>良好：≥80%实现人机协同<br>优秀：AI实时个性化，教师聚焦创造力引导</td>
+  <td>从会用AI→重构教学</td>
+</tr>
+<tr>
+  <td class="nowrap">C2</td><td><strong>提问与创造力培养</strong></td>
+  <td>课堂从"回答问题"变为"提出问题"，培养判断力和意义创造能力</td>
+  <td><strong>证据：</strong>提问训练环节覆盖率 + 信息甄别/多源比对训练比例 + 开放性问题考核占比 + 学生创造性产出数量与质量<br><span class="tag tag-school">学校提供</span> + <span class="tag tag-system">系统采集</span></td>
+  <td>学校+系统</td>
+  <td>合格：≥50%课程问题导向+伦理讨论<br>良好：≥80%，有提问训练记录<br>优秀：学生能提出有价值新问题</td>
+  <td>从教学方法→思维转变</td>
+</tr>
+<tr class="highlight-row"><td colspan="8">D. 教师队伍与能力结构 — 教师从"知识搬运工"回归为"灵魂工程师"</td></tr>
+<tr>
+  <td rowspan="2">D</td>
+  <td class="nowrap">D1</td><td><strong>教师角色转型</strong></td>
+  <td>教师从传授者变为设计者和引导者，核心能力是"问得好"</td>
+  <td><strong>证据：</strong>课堂引导行为占比 + 师生一对一深度交流频次 + 教师产业实践经历覆盖率 + AI融合教学设计能力<br><span class="tag tag-school">学校提供</span> + <span class="tag tag-system">系统采集</span></td>
+  <td>学校+系统</td>
+  <td>合格：≥30%教师有产业经历+课程设计角色<br>良好：≥80%，从执行者变设计者<br>优秀：常态化产业参与+跨学科设计</td>
+  <td>从技术能力→角色重定义</td>
+</tr>
+<tr>
+  <td class="nowrap">D2</td><td><strong>组织治理弹性与跨域配置</strong></td>
+  <td>科层扁平化、教师跨单位流动、教学科研单元围绕真实问题灵活重组</td>
+  <td><strong>证据：</strong>学院以下柔性组织替代刚性"系"比例 + 跨学科课程从提出到开课决策周期 + 教师双聘/联聘/校企轮岗覆盖率 + 流动产出效果<br><span class="tag tag-school">学校提供</span></td>
+  <td>学校提供</td>
+  <td>合格：建立跨学科课程组/项目组，≥1项双聘机制运行<br>良好：柔性组织≥60%，跨单位流动教师≥20%/学年<br>优秀：高弹性治理，项目从提出到开课≤1学期</td>
+  <td>使命型不评（全新维度）</td>
+</tr>
+<tr class="highlight-row"><td colspan="8">E. 评价机制与能力认证 — 评价从"存量"转向"流量"</td></tr>
+<tr>
+  <td rowspan="2">E</td>
+  <td class="nowrap">E1</td><td><strong>能力档案与作品集评价</strong></td>
+  <td>用持续更新的能力档案+作品集替代纯成绩单，从文凭认证走向能力认证</td>
+  <td><strong>证据：</strong>能力档案系统覆盖率 + 证据来源多元性 + 作品集评审标准含能力维度 + 企业评价权重 + 雇主/研究生院认可度<br><span class="tag tag-system">系统采集</span> + <span class="tag tag-external">外部验证</span></td>
+  <td>系统+外部</td>
+  <td>合格：学生有作品集<br>良好：全程数字能力档案<br>优秀：微证书+灵活认证，被企业招聘使用</td>
+  <td>从达成度闭环→能力认证</td>
+</tr>
+<tr>
+  <td class="nowrap">E2</td><td><strong>学生成长导向的教师评价</strong></td>
+  <td>教师评价核心从"教学效果满意度"转向"学生能力成长贡献度"</td>
+  <td><strong>证据：</strong>学生能力成长数据在评价中权重 + 教学效果追踪周期（入学到毕业1年） + 多元主体参与评价（学生/同行/产业方/自我）<br><span class="tag tag-system">系统采集</span> + <span class="tag tag-external">外部评价</span></td>
+  <td>系统+外部</td>
+  <td>合格：学生成长数据参与评价<br>良好：学生成长数据占比≥40%<br>优秀：占比≥60%，形成教-学数据闭环</td>
+  <td>从评行为→评效果</td>
+</tr>
+<tr class="highlight-row"><td colspan="8">F. 产教生态与区域贡献 — 专业与产业是同一生态系统中的共生体</td></tr>
+<tr>
+  <td>F</td>
+  <td class="nowrap">F1</td><td><strong>产教共生深度</strong></td>
+  <td>大学是否成为产业生态的编排者，产业方从招生到就业全过程深度参与</td>
+  <td><strong>证据：</strong>产业参与人才培养环节数 + 产业学院实体化运作水平 + 校企双方资源投入对称性 + 技术服务企业数及转化率 + 毕业生区域核心产业就业率及留存率<br><span class="tag tag-school">学校提供</span> + <span class="tag tag-external">外部验证</span></td>
+  <td>学校+外部</td>
+  <td>合格：产教合作覆盖≥50%核心课程<br>良好：建立产业学院等长期机制<br>优秀：大学成为产业生态编排者</td>
+  <td>从有合作→主导生态</td>
+</tr>
+<tr class="highlight-row"><td colspan="8">G. 学生发展与成长画像 — 毕业生不是"装满了知识的容器"，而是"被点燃了的火种"</td></tr>
+<tr>
+  <td>G</td>
+  <td class="nowrap">G1</td><td><strong>新三维能力与终身学习准备度</strong></td>
+  <td>学生具备提出问题、判断信息真伪、创造意义的能力，拥有持续学习和适应变化的底层能力</td>
+  <td><strong>证据：</strong>三大核心能力入学-毕业对比增值幅度 + AI素养分层测评达标率 + 自主学习能力测评 + 毕业后持续学习行为追踪 + 成长档案完整性<br><span class="tag tag-system">系统采集</span> + <span class="tag tag-external">外部追踪</span></td>
+  <td>系统+外部</td>
+  <td>合格：≥60%有职业规划+终身学习意识<br>良好：≥80%展现自主学习行为<br>优秀：5年后仍持续学习，有追踪数据<br><span class="small">AI素养：合格≥60%通过基础AI测评；良好≥85%通过分层测评+60%课程嵌入学科AI模块；优秀AI通识必修100%覆盖</span></td>
+  <td>从就业结果→持续成长力</td>
+</tr>
+</table>
+
+<p class="small" style="margin-top:8px;">注：未来型另有 59 项三级指标详细版（7 个一级指标逐层展开），此处仅展示 13 项框架版。59 项详版为每个三级指标提供了理想状态描述、2-4 个核心观测点（证据材料）和 3-4 个参考度量方式。</p>
+
+<hr class="section-break">
+
+<!-- ========== Section 4 ========== -->
+<h2 id="s4">四、数据来源分类：学校提供 vs 系统提前收集</h2>
+
+<h3>四类数据源总览</h3>
+<table>
+<tr><th style="width:15%">数据源类型</th><th style="width:20%">来源</th><th style="width:20%">采集方式</th><th style="width:15%">涉及模板</th><th style="width:30%">涉及指标</th></tr>
+<tr>
+  <td><strong>模板提交数据</strong><br><span class="tag tag-school">学校提供</span></td>
+  <td>教师通过平台填写</td>
+  <td>表单提交 + 实时校验 + AI预填</td>
+  <td>T01-T14（14个）</td>
+  <td>1.1.1产业白皮书、1.1.2映射矩阵、1.2.2综合验证课、1.2.3毕业设计、1.3.1国际标准、2.3.2达成度报告等</td>
+</tr>
+<tr>
+  <td><strong>系统对接数据</strong><br><span class="tag tag-system">系统采集</span></td>
+  <td>教务/科研/资产/就业/课程平台</td>
+  <td>API实时同步 或 定期导出Excel解析</td>
+  <td>T15/T16/T17/T18/T19</td>
+  <td>2.1.1横向科研、2.3.1学习行为、3.1.1资源、4.1.1就业率、4.1.2校友等</td>
+</tr>
+<tr>
+  <td><strong>行为日志数据</strong><br><span class="tag tag-system">系统采集</span></td>
+  <td>课程平台自动记录</td>
+  <td>日志自动采集 + 异常检测</td>
+  <td>T15/T16</td>
+  <td>2.2.1教学投入（问答记录）、2.3.1学习行为（出勤/活跃度）</td>
+</tr>
+<tr>
+  <td><strong>外部数据</strong><br><span class="tag tag-external">外部采集</span></td>
+  <td>行业报告/论文/专利/企业合同</td>
+  <td>AI主动搜索 + 数据库查询 + 验真</td>
+  <td>T03/T05/T06/T14</td>
+  <td>1.2.1前沿课来源验真、3.1.2企业合同验证、4.1.3用人单位问卷</td>
+</tr>
+</table>
+
+<h3>按指标逐项分类</h3>
+<table>
+<tr><th style="width:8%">编号</th><th style="width:15%">指标名称</th><th style="width:30%">学校提供（模板填写）</th><th style="width:30%">系统提前收集</th><th style="width:17%">外部采集/验真</th></tr>
+<tr><td>1.1.1</td><td>产业深度解析</td><td>产业白皮书（T03）</td><td>—</td><td>—</td></tr>
+<tr><td>1.1.2</td><td>课程-产业链对应性</td><td>映射矩阵（T04）</td><td>—</td><td>—</td></tr>
+<tr><td>1.1.3</td><td>课程目标匹配度</td><td>课程大纲目标来源字段（T11）</td><td>—</td><td>—</td></tr>
+<tr><td>1.2.1</td><td>行业前沿课比例</td><td>课程大纲前沿来源标注（T11）</td><td>教务系统ISBN查询</td><td>DOI/专利号/标准编号验真</td></tr>
+<tr><td>1.2.2</td><td>综合验证课程设计</td><td>培养方案综合验证课属性（T02）</td><td>—</td><td>—</td></tr>
+<tr><td>1.2.3</td><td>毕业设计</td><td>选题清单（T12）</td><td>—</td><td>企业导师记录+电子签章验证</td></tr>
+<tr><td>1.3.1</td><td>国际标准与AI融入</td><td>专业建设方案+课程大纲（T11）</td><td>—</td><td>—</td></tr>
+<tr><td>2.1.1</td><td>横向科研转化</td><td>教学案例库引用记录</td><td>科研管理系统（课题记录）</td><td>—</td></tr>
+<tr><td>2.1.2</td><td>AI时代教师能力</td><td>教案产出物+培训记录</td><td>课程大纲版本管理+AI平台日志+课程平台提交记录</td><td>—</td></tr>
+<tr><td>2.2.1</td><td>教学投入深度</td><td>培养方案课程依赖矩阵</td><td>课程平台（指引内容+学习计划+问答记录）</td><td>—</td></tr>
+<tr><td>2.3.1</td><td>学习行为数据</td><td>—</td><td>课程平台/教务系统行为日志（T16）</td><td>—</td></tr>
+<tr><td>2.3.2</td><td>考核与达成度闭环</td><td>达成度报告（T08）</td><td>课程管理平台（目标列表+考核任务）+ 大纲版本diff</td><td>—</td></tr>
+<tr><td>3.1.1</td><td>资源有效支撑</td><td>—</td><td>资产管理系统+实验管理系统（T17）</td><td>—</td></tr>
+<tr><td>3.1.2</td><td>企业真实项目驱动率</td><td>教学环节项目来源标记</td><td>教务系统+企业合同管理系统</td><td>企业验收签章验证</td></tr>
+<tr><td>4.1.1</td><td>行业就业率</td><td>—</td><td>就业管理系统（T18）</td><td>—</td></tr>
+<tr><td>4.1.2</td><td>毕业生影响力</td><td>—</td><td>校友追踪系统（T19）</td><td>—</td></tr>
+<tr><td>4.1.3</td><td>用人单位满意度</td><td>—</td><td>—</td><td>用人单位问卷（T14）</td></tr>
+</table>
+
+<div class="callout">
+<p><strong>数据运作两层设计：</strong></p>
+<p><strong>第一层（评价专用数据）：</strong>教师通过模板直接录入 — 产业白皮书、增强版课程大纲、课程-产业链映射矩阵、达成度报告等，这些本来就不是教务系统现成的</p>
+<p><strong>第二层（行为数据）：</strong>轻量对接，能采多少采多少 — 出勤率、作业提交率、就业率、横向课题等，最简方案：每学期导出一份标准格式Excel上传即可</p>
+<p class="small">初期不要求系统全部对接。手动填写关键数据，平台也能先跑起来。</p>
+</div>
+
+<hr class="section-break">
+
+<!-- ========== Section 5 ========== -->
+<h2 id="s5">五、评价标准与等级体系</h2>
+
+<h3>三级达标标准设计原则</h3>
+<table>
+<tr><th style="width:15%">等级</th><th style="width:30%">含义</th><th style="width:25%">定位</th><th style="width:30%">核心判定</th></tr>
+<tr><td><strong>合格</strong></td><td>机制已建立、开始运转</td><td>转型起点 — "有这个意识并开始做了"</td><td>指标达到合格线阈值</td></tr>
+<tr><td><strong>良好</strong></td><td>运转常态化、数据持续改善</td><td>建设中期的合理目标 — "形成了制度化运转"</td><td>指标达到良好线阈值</td></tr>
+<tr><td><strong>优秀</strong></td><td>达到理想态、可示范推广</td><td>使命型标杆 — "做出了可复制的样板"</td><td>指标达到优秀线阈值</td></tr>
+</table>
+
+<h3>总体等级判定规则</h3>
+<table>
+<tr><th style="width:40%">场景</th><th style="width:30%">判定结果</th><th style="width:30%">含义</th></tr>
+<tr><td>全部17项达到合格</td><td><strong>合格</strong></td><td>转型已启动</td></tr>
+<tr><td>14项以上达到良好，无合格以下</td><td><strong>良好</strong></td><td>常态运转</td></tr>
+<tr><td>14项以上达到优秀，无良好以下</td><td><strong>优秀</strong></td><td>标杆水平</td></tr>
+<tr style="background:#fee2e2;"><td>任何指标低于合格</td><td><strong>不评级</strong></td><td>触发紧急改进，按依赖关系图找根因</td></tr>
+<tr style="background:#fef3c7;"><td>依赖链上游指标缺失</td><td><strong>下游"暂停评估"</strong></td><td>不参与总体评级计算</td></tr>
+</table>
+
+<h3>六层评价链（诊断逻辑骨架）</h3>
+<table>
+<tr><th style="width:12%">层级</th><th style="width:20%">回答的问题</th><th style="width:43%">核心内容</th><th style="width:25%">对应指标维度</th></tr>
+<tr><td><strong>定位层</strong></td><td>你在哪？凭什么是你？</td><td>培养目标是否清晰、专业在学校布局和区域产业中的生态位、差异化特色</td><td>—</td></tr>
+<tr><td><strong>结构层</strong></td><td>目标怎么分解？</td><td>毕业要求是否完整支撑培养目标、课程体系能否承接毕业要求</td><td>—</td></tr>
+<tr><td><strong>解析层</strong></td><td>课程对不对路？</td><td>产业白皮书、课程-产业链映射、课程大纲</td><td>A维度（一致性）</td></tr>
+<tr><td><strong>执行层</strong></td><td>教得好不好？</td><td>教案、考核、学情分析、教学投入、学习行为、资源保障</td><td>B维度+C维度</td></tr>
+<tr><td><strong>结果层</strong></td><td>产出怎么样？</td><td>达成度闭环、毕业设计真题真做</td><td>D维度</td></tr>
+<tr><td><strong>验证层</strong></td><td>社会认不认可？</td><td>行业就业率、毕业生职业发展、用人单位满意度</td><td>D维度</td></tr>
+</table>
+<p class="small"><strong>关键特性：</strong>上游断裂，下游暂停评估或精度下降。验证层反馈回定位层形成闭环。</p>
+
+<hr class="section-break">
+
+<!-- ========== Section 6 ========== -->
+<h2 id="s6">六、AI 分析思路与能力矩阵</h2>
+
+<h3>AI 能力等级定义</h3>
+<table>
+<tr><th style="width:12%">等级</th><th style="width:20%">含义</th><th style="width:25%">AI介入程度</th><th style="width:15%">使命型指标数</th><th style="width:28%">具体指标</th></tr>
+<tr style="background:#dbeafe;">
+  <td><strong>L4 全自动</strong></td><td>AI自动采集→自动校验→自动评分→结果直接输出</td><td>100%机器，零人工</td>
+  <td><strong>12项（71%）</strong></td>
+  <td>1.2.1、1.2.2、1.2.3、2.1.1、2.2.1、2.3.1、3.1.1、3.1.2、4.1.1、4.1.2、4.1.3（共12项）</td>
+</tr>
+<tr style="background:#fef3c7;">
+  <td><strong>L3 AI主导</strong></td><td>AI完成主体工作，人工做最终确认</td><td>AI 80%+，人工仅确认</td>
+  <td><strong>5项（29%）</strong></td>
+  <td>1.1.1产业深度解析、1.1.2课程-产业链对应性、1.1.3课程目标匹配度、1.3.1国际标准与AI融入、2.1.2 AI时代教师能力、2.3.2考核与达成度闭环</td>
+</tr>
+</table>
+<p class="small">核心结论：17项指标全部由AI主导完成，无需专家进校打分。</p>
+
+<h3>三个 AI 核心引擎</h3>
+<div class="grid-3">
+  <div class="card card-accent">
+    <h4>引擎一：AI 数据采集引擎</h4>
+    <p><strong>职责：</strong>从各类数据源自动采集、校验、结构化评价所需数据</p>
+    <p><strong>四类数据：</strong></p>
+    <ul style="padding-left:16px;">
+      <li>系统对接数据（API/文件解析）</li>
+      <li>模板提交数据（AI预填+实时校验）</li>
+      <li>行为日志数据（自动统计+异常检测）</li>
+      <li>外部数据（AI搜索+验真）</li>
+    </ul>
+  </div>
+  <div class="card card-accent">
+    <h4>引擎二：AI 诊断引擎（核心大脑）</h4>
+    <p><strong>职责：</strong>基于采集数据，沿依赖关系图自动诊断，输出结论和建议</p>
+    <p><strong>五项能力：</strong></p>
+    <ul style="padding-left:16px;">
+      <li>自动评分（规则引擎+阈值判定）</li>
+      <li>根因追溯（知识图谱+因果推理）</li>
+      <li>诊断报告生成（LLM+模板渲染）</li>
+      <li>改进建议匹配（语义匹配+案例库）</li>
+      <li>个性化路径规划（约束优化+LLM）</li>
+    </ul>
+  </div>
+  <div class="card card-accent">
+    <h4>引擎三：AI 追踪引擎</h4>
+    <p><strong>职责：</strong>持续监控改进过程，自动验证改进效果</p>
+    <p><strong>五项能力：</strong></p>
+    <ul style="padding-left:16px;">
+      <li>进度监控</li>
+      <li>自动重评</li>
+      <li>效果验证</li>
+      <li>趋势预警</li>
+      <li>偏离检测</li>
+    </ul>
+  </div>
+</div>
+
+<h3>根因追溯逻辑（AI 诊断核心）</h3>
+<div class="callout">
+<p><strong>诊断逻辑：</strong>当多个指标同时不达标时，AI不输出零散问题清单，而是沿依赖链向上追溯根因，输出"修1个根因解决N个问题"的改进工单。</p>
+<p><strong>追溯路径：</strong>指标不达标 → 沿依赖关系图向上追溯 → 找到直接原因（上游指标异常） → 继续追溯 → 找到根本原因（源头数据缺失/过期/异常） → 输出因果链：根因 → 传导路径 → 受影响指标</p>
+</div>
+
+<h4>样板案例（江陵工程学院·机器人工程）</h4>
+<div class="card card-accent">
+<p><strong>根因：</strong>产业白皮书过期2年4个月</p>
+<p><strong>传导路径：</strong>T03白皮书过期 → 1.1.2课程映射暂停评估 → 1.1.3目标匹配暂停评估 → 3.1.2企业项目精度下降 → 4.1.1就业对口精度下降</p>
+<p><strong>系统输出：</strong>不输出4个零散问题，而是输出1个根因工单 ——"产业白皮书过期，导致下游4项指标受损。更新白皮书即可恢复。"</p>
+</div>
+
+<h3>诊断报告四层界面</h3>
+<table>
+<tr><th style="width:12%">层级</th><th style="width:48%">内容</th><th style="width:20%">适用对象</th><th style="width:20%">阅读时间</th></tr>
+<tr><td><strong>首页</strong></td><td>整体健康度结论 + 六层链条状态（红/黄/绿）+ 最大问题 + 最大亮点</td><td>校级领导</td><td>5分钟</td></tr>
+<tr><td><strong>链条页</strong></td><td>该环节各指标达标状态 + 趋势箭头</td><td>中层管理者</td><td>—</td></tr>
+<tr><td><strong>发现页</strong></td><td>具体问题 + 证据链（可追溯到原始数据）+ 根因标注</td><td>专业负责人</td><td>—</td></tr>
+<tr><td><strong>详情页</strong></td><td>原始模板数据 + AI分析过程</td><td>教师和执行人员</td><td>—</td></tr>
+</table>
+
+<hr class="section-break">
+
+<!-- ========== Section 7 ========== -->
+<h2 id="s7">七、19 个证据模板与指标对应关系</h2>
+
+<h3>模板三类分类</h3>
+<table>
+<tr><th style="width:15%">类型</th><th style="width:10%">数量</th><th style="width:25%">核心原则</th><th style="width:15%">编号</th><th style="width:35%">说明</th></tr>
+<tr>
+  <td><strong>分析撰写型</strong></td><td>10个</td>
+  <td>教师提供原始事实，AI生成分析内容</td><td>T01-T10</td>
+  <td>字段严格分两类：教师输入字段（I-前缀，只回答"是什么"）+ AI产出字段（A-前缀，系统自动生成，教师不可编辑）</td>
+</tr>
+<tr>
+  <td><strong>结构填写型</strong></td><td>4个</td>
+  <td>按结构化骨架填写</td><td>T11-T14</td>
+  <td>课程大纲、毕业设计选题、企业项目清单、用人单位问卷</td>
+</tr>
+<tr>
+  <td><strong>数据采集型</strong></td><td>5个</td>
+  <td>数值/日期为主，追求采集准确性</td><td>T15-T19</td>
+  <td>教学投入记录、学习行为数据、教学资源清单、毕业生就业去向、校友职业发展</td>
+</tr>
+</table>
+
+<h3>19 个模板与指标对应表</h3>
+<table>
+<tr><th style="width:6%">编号</th><th style="width:20%">模板名称</th><th style="width:10%">类型</th><th style="width:8%">优先级</th><th style="width:8%">评价链段</th><th style="width:20%">对应指标</th><th style="width:28%">数据来源说明</th></tr>
+<tr><td>T01</td><td>培养目标文本</td><td>分析撰写</td><td><strong>P0</strong></td><td>定位层</td><td>—</td><td>教师输入：原始目标文本 → AI产出：目标分析</td></tr>
+<tr><td>T02</td><td>毕业要求与课程体系分析</td><td>分析撰写</td><td><strong>P0</strong></td><td>结构层</td><td>1.2.2</td><td>教师输入：课程体系结构 → AI产出：支撑度分析</td></tr>
+<tr><td>T03</td><td>产业白皮书</td><td>分析撰写</td><td><strong>P0</strong></td><td>解析层</td><td><strong>1.1.1</strong></td><td>教师输入：产业数据 → AI产出：生命周期/图谱/岗位清单</td></tr>
+<tr><td>T04</td><td>课程-产业链映射矩阵</td><td>分析撰写</td><td><strong>P0</strong></td><td>解析层</td><td><strong>1.1.2</strong></td><td>教师输入：课程-节点对应 → AI产出：覆盖率分析</td></tr>
+<tr><td>T05</td><td>教案</td><td>分析撰写</td><td>P1</td><td>执行层</td><td>2.1.4</td><td>教师输入：教学设计 → AI产出：产出物分析</td></tr>
+<tr><td>T06</td><td>教学转化案例卡</td><td>分析撰写</td><td>P1</td><td>执行层</td><td>2.1.1</td><td>教师输入：案例事实 → AI产出：转化分析</td></tr>
+<tr><td>T07</td><td>综合验证课程设计</td><td>分析撰写</td><td>P1</td><td>执行层</td><td>1.2.2</td><td>教师输入：课程设计 → AI产出：递进分析</td></tr>
+<tr><td>T08</td><td>考核与达成度分析</td><td>分析撰写</td><td><strong>P0</strong></td><td>结果层</td><td><strong>2.3.2</strong></td><td>教师输入：分值/薄弱/措施 → AI产出：闭环分析</td></tr>
+<tr><td>T09</td><td>过程性评价记录</td><td>分析撰写</td><td>P1</td><td>执行层</td><td>2.3.2</td><td>教师输入：评价记录 → AI产出：反馈分析</td></tr>
+<tr><td>T10</td><td>学情分析报告</td><td>分析撰写</td><td>P1</td><td>执行层</td><td>2.3.1</td><td>教师输入：学情数据 → AI产出：趋势分析</td></tr>
+<tr><td>T11</td><td>课程大纲（增强版）</td><td>结构填写</td><td><strong>P0</strong></td><td>解析层</td><td><strong>1.1.3/1.2.1/1.3.1/2.1.2/2.3.2</strong></td><td>结构化骨架填写，5个指标依赖此模板</td></tr>
+<tr><td>T12</td><td>毕业设计选题与成果记录</td><td>结构填写</td><td>P1</td><td>结果层</td><td>1.2.3</td><td>选题清单+项目编号+企业验收</td></tr>
+<tr><td>T13</td><td>企业项目驱动清单</td><td>结构填写</td><td>P1</td><td>执行层</td><td>3.1.2</td><td>项目来源标记+合同编号+签章</td></tr>
+<tr><td>T14</td><td>用人单位满意度</td><td>结构填写</td><td>P1</td><td>验证层</td><td>4.1.3</td><td>5维度问卷，样本量≥30%</td></tr>
+<tr><td>T15</td><td>教学投入记录</td><td>数据采集</td><td>P1</td><td>执行层</td><td>2.2.1</td><td>课程平台日志自动采集</td></tr>
+<tr><td>T16</td><td>学习行为数据</td><td>数据采集</td><td>P1</td><td>执行层</td><td>2.3.1</td><td>出勤/作业/访问/活跃度</td></tr>
+<tr><td>T17</td><td>教学资源清单</td><td>数据采集</td><td>P1</td><td>执行层</td><td>3.1.1</td><td>资产系统+实验管理系统</td></tr>
+<tr><td>T18</td><td>毕业生就业去向</td><td>数据采集</td><td>P1</td><td>验证层</td><td>4.1.1</td><td>就业系统岗位+单位信息</td></tr>
+<tr><td>T19</td><td>校友职业发展</td><td>数据采集</td><td>P2</td><td>验证层</td><td>4.1.2</td><td>校友追踪系统，每年更新</td></tr>
+</table>
+
+<h3>模板实施优先级</h3>
+<table>
+<tr><th style="width:10%">优先级</th><th style="width:15%">模板数</th><th style="width:15%">阶段</th><th style="width:15%">模板编号</th><th style="width:25%">价值定位</th></tr>
+<tr style="background:#dbeafe;"><td><strong>P0</strong></td><td>6个</td><td>第一阶段（0-6月）</td><td>T01/T02/T03/T04/T08/T11</td><td>证明"能用"</td></tr>
+<tr style="background:#d1fae5;"><td><strong>P1</strong></td><td>12个</td><td>第二阶段（6-18月）</td><td>T05-T07/T09-T10/T12-T18</td><td>证明"好用"</td></tr>
+<tr style="background:#fef3c7;"><td><strong>P2</strong></td><td>1个</td><td>第三阶段（18-36月）</td><td>T19</td><td>证明"值得持续用"</td></tr>
+</table>
+
+<h3>校验体系四层</h3>
+<table>
+<tr><th style="width:15%">校验层级</th><th style="width:40%">校验内容</th><th style="width:45%">示例</th></tr>
+<tr><td><strong>1. 字段级格式校验</strong></td><td>数据类型、必填、格式、范围</td><td>DOI格式校验、ISBN校验、日期合理性</td></tr>
+<tr><td><strong>2. 内容合理性校验</strong></td><td>逻辑一致、数值合理</td><td>设备完好率不可能>100%、就业率与区域产业不匹配</td></tr>
+<tr><td><strong>3. 跨模板交叉验证</strong></td><td>不同模板间数据一致性</td><td>T04映射矩阵节点必须存在于T03白皮书清单中；T08改进措施必须在T11下版大纲diff中体现</td></tr>
+<tr><td><strong>4. 时效性校验</strong></td><td>数据更新时间戳</td><td>产业白皮书距今>2年标记过期，触发精度下降</td></tr>
+</table>
+
+<hr class="section-break">
+
+<!-- ========== Section 8 ========== -->
+<h2 id="s8">八、三条数据依赖链与根因追溯逻辑</h2>
+
+<table>
+<tr><th style="width:8%">依赖链</th><th style="width:30%">传导路径</th><th style="width:12%">源头模板</th><th style="width:15%">影响指标</th><th style="width:10%">优先级</th><th style="width:25%">断裂后果</th></tr>
+<tr style="background:#fee2e2;">
+  <td><strong>①产业需求传导</strong></td>
+  <td>T03 → 1.1.1 → 1.1.2 → 1.1.3 → 3.1.2 / 4.1.1</td>
+  <td>T03 产业白皮书</td>
+  <td>5项</td>
+  <td><strong>最高</strong></td>
+  <td>白皮书过期→1.1.2/1.1.3暂停评估，3.1.2/4.1.1精度下降</td>
+</tr>
+<tr style="background:#fef3c7;">
+  <td><strong>②课程大纲传导</strong></td>
+  <td>T11 → 1.1.3 / 1.2.1 / 1.3.1 / 2.1.2 / 2.3.2</td>
+  <td>T11 课程大纲</td>
+  <td>5项</td>
+  <td><strong>最高</strong></td>
+  <td>大纲未更新或字段缺失→前沿课比例、AI融入、教师能力、达成度闭环全部无法评估</td>
+</tr>
+<tr style="background:#dbeafe;">
+  <td><strong>③教学行为传导</strong></td>
+  <td>课程平台 → 2.2.1 / 2.3.1 / 2.3.2</td>
+  <td>T15/T16</td>
+  <td>3项</td>
+  <td><strong>高</strong></td>
+  <td>平台空转（建了但没人用）→教学投入和学习行为数据失真</td>
+</tr>
+</table>
+
+<div class="callout callout-warn">
+<p><strong>数据就绪度自评工具（20道题三维度）</strong></p>
+<p><strong>系统基础 7 题：</strong>教务系统导出能力、科研系统、资产系统、就业系统、课程平台、校友系统、系统互通</p>
+<p><strong>数据现状 7 题：</strong>培养目标文本状态、产业调研基础、课程大纲格式、考核规范性、教案规范度、教学过程数据电子化、课程-产业映射分析基础</p>
+<p><strong>组织能力 6 题：</strong>专人负责、定期更新机制、闭环跟踪机制、数据汇总能力、AI工具接受度、预警机制</p>
+<p><strong>四级分级：</strong>A 完全具备（直接启动）/ B 部分具备（可启动需人工补充）/ C 基础薄弱（简化过渡）/ D 基本没有（暂缓先做基础建设）</p>
+</div>
+
+<h3>改进闭环流程（七环节）</h3>
+<div class="flow-diagram">
+  <span class="flow-step" style="background:#e0e7ff;color:#3730a3;">①评价结果输出</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step" style="background:#e0e7ff;color:#3730a3;">②自动生成诊断报告</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step" style="background:#e0e7ff;color:#3730a3;">③系统生成改进工单</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step" style="background:#e0e7ff;color:#3730a3;">④提交改进计划（10工作日）</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step" style="background:#e0e7ff;color:#3730a3;">⑤关键节点提醒</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step" style="background:#e0e7ff;color:#3730a3;">⑥重新采集+效果验证</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step" style="background:#e0e7ff;color:#3730a3;">⑦改进验证报告</span>
+</div>
+
+<p class="small center">改进工单分为 P0（必须立即修）/ P1（本学期改进）/ P2（持续优化）。每条诊断结论关联：对应模板、AI初稿、验证标准。教师完成改进后，系统自动重评、对比前后数据、偏离则预警。</p>
+
+<hr class="section-break">
+
+<h2>总结</h2>
+<div class="card card-accent">
+<p>本专业评价平台以 <strong>"一致性 + 有效性"</strong> 为核心 DNA，构建了 <strong>使命型 17 项</strong>（面向当下，产业需求驱动）和 <strong>未来型 13 项</strong>（面向未来，产业趋势驱动）两套递进式指标体系。</p>
+<p><strong>证据材料管理：</strong>通过 19 个结构化模板（分析撰写型/结构填写型/数据采集型）约束数据来源，每个模板字段分为教师输入和 AI 产出两类。</p>
+<p><strong>数据来源：</strong>四类数据源（模板提交/系统对接/行为日志/外部采集），约 35% 可直接系统对接自动化，约 40% 需模板约束+自动校验，约 25% 用行为数据替代主观评价。</p>
+<p><strong>评价标准：</strong>三级达标（合格/良好/优秀），总体等级按"全部合格→合格，14项以上良好→良好，14项以上优秀→优秀"判定，任何指标低于合格触发根因追溯。</p>
+<p><strong>AI 分析思路：</strong>三个核心引擎（采集→诊断→追踪），17 项指标中 12 项 L4 全自动、5 项 L3 AI主导，零专家介入。核心逻辑是沿三条依赖链追溯根因，输出"修1个根因解决N个问题"的改进工单，形成评价→诊断→改进→验证完整闭环。</p>
+</div>
+
+<p class="small center" style="margin-top:40px;color:var(--text-light);">本报告基于 2026-08-25 版本文件整理 | 文件来源：专业评价平台产品prd相关-20260825 文件夹</p>
+
+</div>
+</body>
+</html>
