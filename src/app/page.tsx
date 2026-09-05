@@ -15,17 +15,17 @@ export default function Home() {
       
       <Row gutter={24} className="mb-6">
         <Col span={8}>
-          <Card bordered={false} className="shadow-sm border-t-4 border-t-blue-500 hover:shadow-md transition-shadow">
+          <Card variant="borderless" className="shadow-sm border-t-4 border-t-blue-500 hover:shadow-md transition-shadow">
             <Statistic title="已入库数据总量 (项)" value={1128} prefix={<DatabaseOutlined className="text-blue-500" />} />
           </Card>
         </Col>
         <Col span={8}>
-          <Card bordered={false} className="shadow-sm border-t-4 border-t-green-500 hover:shadow-md transition-shadow">
+          <Card variant="borderless" className="shadow-sm border-t-4 border-t-green-500 hover:shadow-md transition-shadow">
             <Statistic title="P0 核心模板点亮进度" value={4} prefix={<FileTextOutlined className="text-green-500" />} suffix="/ 6" />
           </Card>
         </Col>
         <Col span={8}>
-          <Card bordered={false} className="shadow-sm border-t-4 border-t-purple-500 hover:shadow-md transition-shadow">
+          <Card variant="borderless" className="shadow-sm border-t-4 border-t-purple-500 hover:shadow-md transition-shadow">
             <Statistic title="触发 AI 诊断次数" value={436} prefix={<VerifiedOutlined className="text-purple-500" />} />
           </Card>
         </Col>

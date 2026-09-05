@@ -54,7 +54,7 @@ export default function PanoramicPage() {
       label: '基本信息 (Profile)',
       children: (
         <div className="flex flex-col gap-6 mt-4">
-          <Card size="small" title="实体标定" bordered={false} className="bg-gray-50 border border-gray-100">
+          <Card size="small" title="实体标定" variant="borderless" className="bg-gray-50 border border-gray-100">
             <Descriptions column={2}>
               <Descriptions.Item label="院校名称">大连工业大学 (DLPU)</Descriptions.Item>
               <Descriptions.Item label="实体类型"><Tag color="blue">公办本科</Tag></Descriptions.Item>
@@ -387,7 +387,7 @@ export default function PanoramicPage() {
         </div>
       </div>
 
-      <Card bordered={false} className="shadow-sm border-t-4 border-t-blue-500">
+      <Card variant="borderless" className="shadow-sm border-t-4 border-t-blue-500">
         <Tabs defaultActiveKey="1" items={tabItems} size="large" />
       </Card>
     </div>

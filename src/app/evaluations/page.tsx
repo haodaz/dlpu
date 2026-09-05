@@ -11,6 +11,7 @@ export default function SmartEvaluationEngine() {
   const router = useRouter();
   const [isRunning, setIsRunning] = useState(false);
   const [isFinished, setIsFinished] = useState(false);
+  const [hasError, setHasError] = useState(false);
   const [logs, setLogs] = useState<{message: string, icon?: string, status?: string}[]>([]);
   const [agents, setAgents] = useState<Record<string, any>>({});
   const [finalReport, setFinalReport] = useState<any>(null);
@@ -26,6 +27,7 @@ export default function SmartEvaluationEngine() {
   const startEvaluation = async () => {
     setIsRunning(true);
     setIsFinished(false);
+    setHasError(false);
     setLogs([]);
     setAgents({});
     setFinalReport(null);
@@ -60,6 +62,7 @@ export default function SmartEvaluationEngine() {
                 setIsFinished(true);
               } else if (event.type === 'error') {
                 setLogs(prev => [...prev, { message: `[ERROR] ${event.message}`, status: 'error' }]);
+                setHasError(true);
               }
             } catch (e) {}
           }
@@ -68,6 +71,7 @@ export default function SmartEvaluationEngine() {
     } catch (e) {
       console.error(e);
       setLogs(prev => [...prev, { message: '[SYSTEM ERROR] 连接引擎失败', status: 'error' }]);
+      setHasError(true);
     } finally {
       setIsRunning(false);
     }
@@ -233,12 +237,12 @@ export default function SmartEvaluationEngine() {
 
   // --- 初始状态 & 加载状态 (Engine Dashboard) ---
   return (
-    <div className="min-h-screen bg-slate-900 flex flex-col items-center justify-center py-10 px-4">
+    <div className="min-h-screen bg-slate-50 flex flex-col items-center justify-center py-10 px-4">
       
-      {!isRunning && !isFinished && (
-        <div className="text-center">
-          <Title level={2} className="!text-white !mb-6">专业建设协同评价引擎</Title>
-          <Paragraph className="text-slate-400 text-lg mb-12 max-w-2xl mx-auto">
+      {!isRunning && !isFinished && !hasError && (
+        <div className="text-center mt-20">
+          <Title level={2} className="!text-slate-800 !mb-6">专业建设协同评价引擎</Title>
+          <Paragraph className="text-slate-500 text-lg mb-12 max-w-2xl mx-auto">
             即将并行唤醒 9 位细分领域专属微专家，穿透全景数据并执行互联网级深度核验。
           </Paragraph>
           <Button 
@@ -246,55 +250,68 @@ export default function SmartEvaluationEngine() {
             size="large" 
             icon={<PlayCircleOutlined />} 
             onClick={startEvaluation}
-            className="bg-blue-600 hover:bg-blue-500 border-none px-12 h-14 text-lg font-bold shadow-[0_0_40px_rgba(37,99,235,0.4)] rounded-full transition-transform hover:scale-105"
+            className="bg-blue-600 hover:bg-blue-500 border-none px-12 h-14 text-lg font-bold shadow-[0_4px_15px_rgba(37,99,235,0.3)] rounded-full transition-transform hover:scale-105"
           >
             启动多智能体并发评估
           </Button>
         </div>
       )}
 
-      {isRunning && (
-        <div className="w-full max-w-6xl bg-slate-800 rounded-3xl shadow-2xl border border-slate-700 p-8 md:p-12">
+      {(isRunning || hasError) && (
+        <div className="w-full max-w-6xl bg-white rounded-3xl shadow-xl border border-slate-200 p-8 md:p-12">
           <div className="text-center mb-12">
-            <Title level={3} className="!text-white !mb-2">AI 集群深度评估中</Title>
-            <div className="text-slate-400 text-sm flex justify-center items-center gap-2">
-              <Spin indicator={<SyncOutlined spin className="text-blue-500" />} />
-              Promise.allSettled 防御性并发调度运行中...
+            <Title level={3} className="!text-slate-800 !mb-2">
+              {hasError ? '诊断过程中断' : 'AI 集群深度评估中'}
+            </Title>
+            <div className="text-slate-500 text-sm flex justify-center items-center gap-2">
+              {!hasError && <Spin indicator={<SyncOutlined spin className="text-blue-500" />} />}
+              {hasError ? '系统捕获到异常，请查看日志并重试' : 'Promise.allSettled 防御性并发调度运行中...'}
             </div>
           </div>
 
           <div className="flex flex-wrap justify-center gap-4 mb-12">
             {Object.values(agents).map((agent: any) => (
               <div key={agent.id} className={`w-40 flex flex-col items-center justify-center p-5 rounded-2xl border ${
-                  agent.status === 'working' ? 'bg-blue-900/40 border-blue-500/50 shadow-[0_0_15px_rgba(59,130,246,0.3)]' : 
-                  agent.status === 'done' ? 'bg-green-900/30 border-green-500/30' : 
-                  agent.status === 'error' ? 'bg-red-900/30 border-red-500/30' :
-                  'bg-slate-800 border-slate-700'
+                  agent.status === 'working' ? 'bg-blue-50 border-blue-200 shadow-sm' : 
+                  agent.status === 'done' ? 'bg-green-50 border-green-200' : 
+                  agent.status === 'error' ? 'bg-red-50 border-red-200' :
+                  'bg-slate-50 border-slate-200'
                 } transition-all duration-500`}>
                 <div className="text-3xl mb-3">{agent.icon}</div>
-                <div className="font-bold text-slate-200 text-xs text-center mb-3 h-8 flex items-center justify-center">{agent.name}</div>
+                <div className="font-bold text-slate-700 text-xs text-center mb-3 h-8 flex items-center justify-center">{agent.name}</div>
                 <div>{getAgentText(agent.status)}</div>
               </div>
             ))}
           </div>
 
-          <div className="relative pl-6 max-w-4xl mx-auto min-h-[300px] max-h-[400px] overflow-y-auto overflow-x-hidden custom-scrollbar">
-            <div className="absolute left-[11px] top-2 bottom-0 w-[2px] bg-gradient-to-b from-blue-500 to-purple-500 rounded-full"></div>
+          <div className="relative pl-6 max-w-4xl mx-auto min-h-[300px] max-h-[400px] overflow-y-auto overflow-x-hidden custom-scrollbar bg-slate-50 rounded-xl p-6 border border-slate-100 shadow-inner">
+            <div className="absolute left-[34px] top-6 bottom-6 w-[2px] bg-gradient-to-b from-blue-300 to-purple-300 rounded-full"></div>
             {logs.map((log, i) => (
               <div key={i} className="relative flex items-start mb-4 animate-fade-in-up">
-                <div className={`absolute -left-[23px] mt-1 bg-slate-800 rounded-full ${
-                  log.status === 'error' ? 'text-red-500' : 'text-blue-400'
+                <div className={`absolute -left-[35px] mt-1 bg-white rounded-full p-1 z-10 ${
+                  log.status === 'error' ? 'text-red-500' : 'text-blue-500'
                 }`}>
                   {log.status === 'working' ? <SyncOutlined spin /> : <CheckOutlined />}
                 </div>
-                <div className={`text-sm leading-relaxed ${log.status === 'error' ? 'text-red-400' : 'text-slate-300'}`}>
-                  <span className="text-slate-500 mr-3 font-mono opacity-50">{String(i+1).padStart(2, '0')}</span>
+                <div className={`text-sm leading-relaxed ${log.status === 'error' ? 'text-red-600 font-bold' : 'text-slate-600'}`}>
+                  <span className="text-slate-400 mr-3 font-mono opacity-60 bg-white px-2 py-0.5 rounded shadow-sm border border-slate-200">{String(i+1).padStart(2, '0')}</span>
                   {log.message}
                 </div>
               </div>
             ))}
             <div ref={logsEndRef} />
           </div>
+          
+          {hasError && (
+             <div className="mt-8 text-center">
+               <Button onClick={startEvaluation} type="primary" size="large" className="mr-4">
+                 重新尝试
+               </Button>
+               <Button onClick={() => router.push('/panoramic')} size="large">
+                 返回工作台
+               </Button>
+             </div>
+          )}
         </div>
       )}
     </div>

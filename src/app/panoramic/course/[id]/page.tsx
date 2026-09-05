@@ -189,7 +189,7 @@ export default function CourseProfilePage({ params }: { params: any }) {
             label: '定位与大纲 (T04/T11)',
             children: (
               <div className="pt-4">
-                <Card title="教学特色与产业连接" bordered={false} className="shadow-sm border-t-2 border-blue-400">
+                <Card title="教学特色与产业连接" variant="borderless" className="shadow-sm border-t-2 border-blue-400">
                   <Descriptions column={1} bordered size="middle">
                     <Descriptions.Item label="T04 设计逻辑">
                       {t04Data?.logic || '暂无数据'}
@@ -210,7 +210,7 @@ export default function CourseProfilePage({ params }: { params: any }) {
             label: '目标考核与达成度 (T08)',
             children: (
               <div className="pt-4">
-                <Card title="目标考核与达成度闭环" bordered={false} className="shadow-sm border-t-2 border-green-500">
+                <Card title="目标考核与达成度闭环" variant="borderless" className="shadow-sm border-t-2 border-green-500">
                   {t11Data?.objectives ? (
                     <Table 
                       dataSource={t11Data.objectives.map((obj: any, idx: number) => {
@@ -264,7 +264,7 @@ export default function CourseProfilePage({ params }: { params: any }) {
             children: (
               <div className="pt-4">
                 {t05Data ? (
-                  <Card title="T05 教案 (典型课次设计)" bordered={false} className="shadow-sm mb-6 border-t-2 border-indigo-500">
+                  <Card title="T05 教案 (典型课次设计)" variant="borderless" className="shadow-sm mb-6 border-t-2 border-indigo-500">
                     <Descriptions column={2} bordered size="middle">
                       <Descriptions.Item label="授课章节">{t05Data.chapter}</Descriptions.Item>
                       <Descriptions.Item label="主要教学方法">{t05Data.teachingMethods?.join('、')}</Descriptions.Item>
@@ -277,7 +277,7 @@ export default function CourseProfilePage({ params }: { params: any }) {
                 )}
 
                 {t06Data ? (
-                  <Card title="T06 过程性评价记录" bordered={false} className="shadow-sm border-t-2 border-orange-500">
+                  <Card title="T06 过程性评价记录" variant="borderless" className="shadow-sm border-t-2 border-orange-500">
                     <Descriptions column={2} bordered size="middle">
                       <Descriptions.Item label="评价批次">{t06Data.evaluationBatch}</Descriptions.Item>
                       <Descriptions.Item label="评价类型">{t06Data.evaluationType}</Descriptions.Item>
@@ -299,7 +299,7 @@ export default function CourseProfilePage({ params }: { params: any }) {
             children: (
               <div className="pt-4">
                 {t07Data ? (
-                  <Card title="T07 学情分析报告 (历届交接棒)" bordered={false} className="shadow-sm mb-6 border-t-2 border-purple-500">
+                  <Card title="T07 学情分析报告 (历届交接棒)" variant="borderless" className="shadow-sm mb-6 border-t-2 border-purple-500">
                     <Descriptions column={1} bordered size="middle">
                       <Descriptions.Item label="学期 / 届次"><Tag color="purple">{t07Data.cohort}</Tag></Descriptions.Item>
                       <Descriptions.Item label="已建立的能力基础 (优势)"><span className="text-green-700">{t07Data.strengths}</span></Descriptions.Item>
@@ -312,7 +312,7 @@ export default function CourseProfilePage({ params }: { params: any }) {
                 )}
 
                 {t09Data ? (
-                  <Card title="T09 学习行为数据 (平台客观抓取)" bordered={false} className="shadow-sm border-t-2 border-red-500">
+                  <Card title="T09 学习行为数据 (平台客观抓取)" variant="borderless" className="shadow-sm border-t-2 border-red-500">
                     <div className="grid grid-cols-4 gap-4 mb-4">
                       <div className="bg-gray-50 p-3 rounded text-center">
                         <div className="text-gray-500 text-xs mb-1">到课率</div>
@@ -348,7 +348,7 @@ export default function CourseProfilePage({ params }: { params: any }) {
                 )}
 
                 {t15Data ? (
-                  <Card title="T15 教学三维投入深度" bordered={false} className="shadow-sm border-t-2 border-orange-500 mb-6">
+                  <Card title="T15 教学三维投入深度" variant="borderless" className="shadow-sm border-t-2 border-orange-500 mb-6">
                     <Row gutter={16} className="mb-4">
                       <Col span={8}>
                         <Card type="inner" title="传道 (职业指引覆盖)" className="bg-blue-50 border-blue-100 text-center">
@@ -407,7 +407,7 @@ export default function CourseProfilePage({ params }: { params: any }) {
             children: (
               <div className="pt-4">
                 {t10Data ? (
-                  <Card title="T10 教学资源清单与使用台账 (资产与实验系统台账)" bordered={false} className="shadow-sm border-t-2 border-teal-500">
+                  <Card title="T10 教学资源清单与使用台账 (资产与实验系统台账)" variant="borderless" className="shadow-sm border-t-2 border-teal-500">
                     <Descriptions column={2} bordered size="middle" className="mb-4">
                       <Descriptions.Item label="AI 知识图谱渗透">{t10Data.aiInfrastructure?.knowledgeGraph}</Descriptions.Item>
                       <Descriptions.Item label="AI 智能学伴渗透">
@@ -454,7 +454,7 @@ export default function CourseProfilePage({ params }: { params: any }) {
                 )}
 
                 {t13Data ? (
-                  <Card title="T13 企业项目驱动清单 (合同签章验证)" bordered={false} className="shadow-sm border-t-2 border-green-500">
+                  <Card title="T13 企业项目驱动清单 (合同签章验证)" variant="borderless" className="shadow-sm border-t-2 border-green-500">
                     <Descriptions column={2} bordered size="middle" className="mb-4">
                       <Descriptions.Item label="总实训项目数">{t13Data.metrics?.totalProjects}</Descriptions.Item>
                       <Descriptions.Item label="企业真题数">

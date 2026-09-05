@@ -46,7 +46,7 @@ export default function DataFlowPage() {
         <p className="text-gray-500 mt-2">这里记录了每一次通过模板填报、API对接或AI检索产生的数据抓取日志。所有数据流均汇入全景 Hub。</p>
       </div>
 
-      <Card bordered={false} className="shadow-sm border-t-4 border-t-blue-500">
+      <Card variant="borderless" className="shadow-sm border-t-4 border-t-blue-500">
         <Table dataSource={data} columns={columns} pagination={false} rowKey="id" />
       </Card>
     </div>
