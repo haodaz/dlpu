@@ -1,9 +1,8 @@
 'use client';
 import React from 'react';
-import { Tag, Button, Table } from 'antd';
+import { Tag, Button } from 'antd';
 import { useRouter } from 'next/navigation';
 import { FormOutlined, ClockCircleOutlined, LayoutOutlined } from '@ant-design/icons';
-import type { ColumnsType } from 'antd/es/table';
 
 const templates = [
   { id: 'T01', name: '专业建设规划与方案', status: 'active', desc: '设定专业发展总体规划与建设路径。', tags: ['使命型核心', '未来型基础'] },
@@ -29,98 +28,62 @@ const templates = [
 
 export default function TemplatesPage() {
   const router = useRouter();
-
-  const columns: ColumnsType<any> = [
-    {
-      title: '模板标识',
-      dataIndex: 'id',
-      key: 'id',
-      width: '30%',
-      render: (text, record) => (
-        <div className="flex flex-col gap-1">
-          <div className="flex items-center gap-2">
-            <span className="font-semibold text-slate-800 text-sm">{record.id}</span>
-            <span className="font-medium text-slate-800 text-sm">{record.name}</span>
-          </div>
-          <div className="text-xs text-slate-500 line-clamp-1" title={record.desc}>{record.desc}</div>
-        </div>
-      ),
-    },
-    {
-      title: '状态',
-      dataIndex: 'status',
-      key: 'status',
-      width: '15%',
-      render: (status) => (
-        status === 'active' 
-          ? <Tag color="blue" className="m-0 border-blue-200 text-blue-700 bg-blue-50">已挂载引擎</Tag> 
-          : <Tag color="default" className="m-0 text-slate-500"><ClockCircleOutlined className="mr-1" />待开发</Tag>
-      )
-    },
-    {
-      title: '指标域支持',
-      key: 'tags',
-      dataIndex: 'tags',
-      width: '35%',
-      render: (_, { tags }) => (
-        <div className="flex flex-wrap gap-1.5">
-          {tags?.map((tag: string) => {
-            let colorClass = 'bg-slate-50 border-slate-200 text-slate-600';
-            if (tag.includes('使命型')) colorClass = 'bg-cyan-50 border-cyan-200 text-cyan-700';
-            if (tag.includes('未来型')) colorClass = 'bg-purple-50 border-purple-200 text-purple-700';
-            return (
-              <span key={tag} className={`px-2 py-0.5 rounded text-[11px] font-medium border ${colorClass}`}>
-                {tag}
-              </span>
-            );
-          })}
-        </div>
-      ),
-    },
-    {
-      title: '操作',
-      key: 'action',
-      width: '20%',
-      render: (_, record) => (
-        <Button 
-          type="text"
-          disabled={record.status !== 'active'}
-          className={record.status === 'active' ? 'text-blue-600 hover:text-blue-700 hover:bg-blue-50 font-medium' : ''}
-          onClick={() => router.push(`/templates/${record.id.toLowerCase()}`)}
-        >
-          {record.status === 'active' ? '录入数据' : '待联调'}
-        </Button>
-      ),
-    },
-  ];
-
-  return (
-    <div className="flex-1 flex flex-col min-h-[calc(100vh-140px)] bg-slate-50 rounded-xl overflow-hidden shadow-sm border border-slate-100">
+    <div className="flex-1 flex flex-col min-h-[calc(100vh-140px)] bg-slate-50">
       
       {/* 极简 CRM 风格 Header */}
-      <div className="bg-white px-8 py-6 border-b border-slate-200 flex items-center gap-4 shrink-0">
-        <div className="w-10 h-10 rounded bg-blue-50 flex items-center justify-center text-blue-600 text-lg">
+      <div className="px-8 py-8 flex items-center gap-4 shrink-0 max-w-6xl mx-auto w-full">
+        <div className="w-12 h-12 rounded-xl bg-blue-600 flex items-center justify-center text-white text-2xl shadow-sm">
           <LayoutOutlined />
         </div>
         <div>
-          <h1 className="text-xl font-semibold text-slate-800 m-0 leading-tight">底层模板管理中心</h1>
+          <h1 className="text-2xl font-bold text-slate-800 m-0 leading-tight">底层模板管理中心</h1>
           <p className="text-sm text-slate-500 m-0 mt-1">管理“使命型”与“未来型”19项核心模板数据规范，统一调度填报。</p>
         </div>
       </div>
 
-      {/* 核心内容区 */}
-      <main className="flex-1 overflow-y-auto p-8 custom-scrollbar">
-        <div className="max-w-6xl mx-auto">
-          <div className="bg-white rounded-lg shadow-sm border border-slate-200 overflow-hidden">
-            <Table 
-              columns={columns} 
-              dataSource={templates} 
-              pagination={false}
-              rowKey="id"
-              size="middle"
-              className="crm-table"
-            />
-          </div>
+      {/* 核心内容区：无边框包裹，卡片直铺，超大内部留白 */}
+      <main className="flex-1 overflow-y-auto px-8 pb-12 custom-scrollbar">
+        <div className="max-w-6xl mx-auto flex flex-col gap-4">
+          {templates.map((item) => (
+            <div 
+              key={item.id} 
+              className={`bg-white rounded-xl shadow-sm border border-slate-200 p-8 flex items-center justify-between hover:border-blue-400 hover:shadow-md transition-all duration-300 ${item.status === 'active' ? 'border-l-[6px] border-l-blue-500' : 'border-l-[6px] border-l-slate-300 opacity-80'}`}
+            >
+              <div className="flex-1">
+                <div className="flex items-center gap-4 mb-3 flex-wrap">
+                  <span className="font-bold text-slate-800 text-xl tracking-tight">{item.id} <span className="ml-1 text-slate-700">{item.name}</span></span>
+                  {item.status === 'active' 
+                    ? <Tag color="blue" className="m-0 border-blue-200 font-bold px-2 py-0.5">已挂载引擎</Tag> 
+                    : <Tag color="default" className="m-0 py-0.5"><ClockCircleOutlined className="mr-1" />待开发</Tag>
+                  }
+                  {item.tags?.map((tag) => {
+                    let colorClass = 'bg-slate-50 border-slate-200 text-slate-600';
+                    if (tag.includes('使命型')) colorClass = 'bg-cyan-50 border-cyan-200 text-cyan-700';
+                    if (tag.includes('未来型')) colorClass = 'bg-purple-50 border-purple-200 text-purple-700';
+                    return (
+                      <span key={tag} className={`px-2 py-0.5 rounded text-[12px] font-medium border ${colorClass}`}>
+                        {tag}
+                      </span>
+                    );
+                  })}
+                </div>
+                <p className="text-slate-500 leading-relaxed text-sm m-0 max-w-3xl">{item.desc}</p>
+              </div>
+              
+              <div className="shrink-0 ml-8">
+                <Button 
+                  type={item.status === 'active' ? 'primary' : 'default'}
+                  disabled={item.status !== 'active'}
+                  icon={<FormOutlined />}
+                  size="large"
+                  className={item.status === 'active' ? 'font-bold px-6 h-12 shadow-sm bg-blue-600 hover:bg-blue-500' : 'px-6 h-12'}
+                  onClick={() => router.push(`/templates/${item.id.toLowerCase()}`)}
+                >
+                  {item.status === 'active' ? '录入数据' : '模块待联调'}
+                </Button>
+              </div>
+            </div>
+          ))}
         </div>
       </main>
 
