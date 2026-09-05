@@ -1,6 +1,6 @@
 'use client';
 import React, { useEffect, useState, use } from 'react';
-import { Card, Tag, Badge, Breadcrumb, Typography, Spin, Descriptions, Table, Alert, Tabs, Empty } from 'antd';
+import { Card, Tag, Badge, Breadcrumb, Typography, Spin, Descriptions, Table, Alert, Tabs, Empty, Row, Col } from 'antd';
 import { HomeOutlined, DatabaseOutlined, BookOutlined } from '@ant-design/icons';
 import { useRouter } from 'next/navigation';
 
