@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { Avatar } from 'antd';
+import { Avatar, Progress, Tag } from 'antd';
 import {
   DatabaseOutlined,
   CheckCircleOutlined,
@@ -11,7 +11,12 @@ import {
   NodeIndexOutlined,
   AppstoreAddOutlined,
   BookOutlined,
-  PartitionOutlined
+  PartitionOutlined,
+  SafetyCertificateOutlined,
+  RocketOutlined,
+  UserOutlined,
+  DesktopOutlined,
+  TrophyOutlined
 } from '@ant-design/icons';
 import {
   Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis,
@@ -58,13 +63,13 @@ export default function Dashboard() {
   const router = useRouter();
 
   return (
-    <div className="flex-1 flex flex-col min-h-[calc(100vh-140px)] bg-slate-50 rounded-xl overflow-hidden shadow-sm border border-slate-100">
+    <div className="flex-1 flex gap-6 min-h-[calc(100vh-140px)] h-[calc(100vh-140px)]">
       
-      {/* Scrollable Content */}
-      <main className="flex-1 overflow-y-auto p-8 custom-scrollbar">
+      {/* ================= 左侧：核心大屏区 (Left: Main Dashboard) ================= */}
+      <main className="flex-1 flex flex-col bg-slate-50 rounded-xl shadow-sm border border-slate-100 overflow-y-auto p-8 custom-scrollbar">
         
         {/* Header Title */}
-        <div className="flex justify-between items-end mb-8">
+        <div className="flex justify-between items-end mb-8 shrink-0">
           <div>
             <h1 className="text-3xl font-black text-slate-800 tracking-tight m-0">工作台总览</h1>
             <div className="flex items-center gap-3 mt-3">
@@ -73,7 +78,7 @@ export default function Dashboard() {
             </div>
           </div>
           <div className="flex gap-3">
-            <button className="px-4 py-2 bg-white border border-slate-200 text-slate-600 font-bold rounded-lg hover:border-blue-600 hover:text-blue-600 transition-colors">
+            <button className="px-4 py-2 bg-white border border-slate-200 text-slate-600 font-bold rounded-lg hover:border-blue-600 hover:text-blue-600 transition-colors shadow-sm">
               导出全景报告
             </button>
             <button onClick={() => router.push('/evaluations')} className="px-4 py-2 bg-blue-600 text-white font-bold rounded-lg shadow hover:bg-blue-700 transition-colors">
@@ -82,8 +87,8 @@ export default function Dashboard() {
           </div>
         </div>
 
-        {/* ================= 核心指标卡 (Top Stats) ================= */}
-        <div className="grid grid-cols-4 gap-6 mb-8">
+        {/* 核心指标卡 (Top Stats) */}
+        <div className="grid grid-cols-4 gap-6 mb-8 shrink-0">
           {[
             { label: '全景数据节点', value: '1,128', icon: <DatabaseOutlined /> },
             { label: '智能体诊断总数', value: '436', icon: <CheckCircleOutlined /> },
@@ -104,8 +109,8 @@ export default function Dashboard() {
           ))}
         </div>
 
-        {/* ================= 快捷穿透入口 (Quick Actions) ================= */}
-        <div className="mb-8">
+        {/* 快捷穿透入口 (Quick Actions) */}
+        <div className="mb-8 shrink-0">
           <h2 className="text-lg font-bold text-slate-800 mb-4">快捷诊断穿透 (Quick Drill-downs)</h2>
           <div className="grid grid-cols-4 gap-6">
             <div onClick={() => router.push('/panoramic')} className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:border-blue-500 hover:shadow-md transition-all cursor-pointer flex flex-col gap-3 group">
@@ -134,19 +139,18 @@ export default function Dashboard() {
           </div>
         </div>
 
-        {/* ================= 诊断全景大屏 (Diagnostic Charts) ================= */}
-        <div className="mb-8">
+        {/* 诊断全景大屏 (Diagnostic Charts) - 包含新增的两型评估卡片 */}
+        <div className="mb-8 shrink-0">
           <h2 className="text-lg font-bold text-slate-800 mb-4">实时诊断大屏 (Diagnostic Insights)</h2>
-          <div className="grid grid-cols-3 gap-6">
+          <div className="grid grid-cols-4 gap-6">
             {/* 雷达图 */}
             <div className="col-span-1 bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
               <div className="flex justify-between items-center mb-6">
                 <h3 className="font-bold text-slate-800 text-base">系统级六维健康雷达</h3>
-                <span className="text-xs font-bold text-slate-500 border border-slate-200 rounded px-3 py-1">综合建模</span>
               </div>
-              <div className="h-64 relative">
+              <div className="h-56 relative">
                 <ResponsiveContainer width="100%" height="100%">
-                  <RadarChart cx="50%" cy="50%" outerRadius="70%" data={evalData.radarData}>
+                  <RadarChart cx="50%" cy="50%" outerRadius="65%" data={evalData.radarData}>
                     <PolarGrid stroke="#f1f5f9" />
                     <PolarAngleAxis dataKey="item" tick={{ fill: '#64748b', fontSize: 11, fontWeight: 'bold' }} />
                     <PolarRadiusAxis angle={30} domain={[0, 100]} tick={false} axisLine={false} />
@@ -161,9 +165,8 @@ export default function Dashboard() {
             <div className="col-span-2 bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
               <div className="flex justify-between items-center mb-6">
                 <h3 className="font-bold text-slate-800 text-base">微专家阵列定档追踪 (1-5档)</h3>
-                <span className="text-xs font-bold text-slate-500 border border-slate-200 rounded px-3 py-1">深度剖析</span>
               </div>
-              <div className="h-64">
+              <div className="h-56">
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={evalData.expertTiers} margin={{ top: 20, right: 0, left: -20, bottom: 0 }}>
                     <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
@@ -180,17 +183,52 @@ export default function Dashboard() {
                 </ResponsiveContainer>
               </div>
             </div>
+
+            {/* 新增: 使命型 vs 未来型 指标达成度卡片 */}
+            <div className="col-span-1 bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex flex-col">
+              <div className="flex justify-between items-center mb-6">
+                <h3 className="font-bold text-slate-800 text-base">两型指标体系 达成度</h3>
+              </div>
+              
+              <div className="flex-1 flex flex-col gap-6 justify-center">
+                {/* 使命型 */}
+                <div>
+                  <div className="flex justify-between items-center mb-2">
+                    <div className="flex items-center gap-2">
+                      <SafetyCertificateOutlined className="text-blue-500 text-lg" />
+                      <span className="font-bold text-slate-700">使命型 17项指标</span>
+                    </div>
+                    <span className="font-bold text-blue-600">14/17 达标</span>
+                  </div>
+                  <Progress percent={Math.round((14/17)*100)} showInfo={false} strokeColor="#1677ff" trailColor="#f1f5f9" strokeWidth={8} />
+                  <p className="text-[10px] text-slate-400 mt-1 leading-tight">基于“一致性+有效性”评价，解决当下产业响应能力。</p>
+                </div>
+
+                {/* 未来型 */}
+                <div>
+                  <div className="flex justify-between items-center mb-2">
+                    <div className="flex items-center gap-2">
+                      <RocketOutlined className="text-purple-500 text-lg" />
+                      <span className="font-bold text-slate-700">未来型 13项指标</span>
+                    </div>
+                    <span className="font-bold text-purple-600">3/13 探索</span>
+                  </div>
+                  <Progress percent={Math.round((3/13)*100)} showInfo={false} strokeColor="#a855f7" trailColor="#f1f5f9" strokeWidth={8} />
+                  <p className="text-[10px] text-slate-400 mt-1 leading-tight">面向第四代大学形态，评估产业趋势引领与教育重构力。</p>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
 
-        {/* ================= 底部细节区 (Bottom Details) ================= */}
-        <div className="grid grid-cols-3 gap-6">
+        {/* 底部细节区 (Bottom Details) */}
+        <div className="grid grid-cols-3 gap-6 shrink-0 pb-8">
           
           {/* 判决与高频标签 */}
           <div className="col-span-1 bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
             <div className="flex justify-between items-center mb-6">
               <h3 className="font-bold text-slate-800 text-base">AI 语义识别高频标签</h3>
-              <span className="text-sm font-bold text-blue-600 cursor-pointer hover:underline">查看全部</span>
             </div>
             <div className="flex flex-wrap gap-2">
               {evalData.tags.map((tag, i) => {
@@ -257,37 +295,89 @@ export default function Dashboard() {
             </div>
           </div>
 
-          {/* 最新系统事件 */}
-          <div className="col-span-1 bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
-            <div className="flex justify-between items-center mb-6">
-              <h3 className="font-bold text-slate-800 text-base">底层数据变动预警</h3>
-              <span className="text-sm font-bold text-blue-600 cursor-pointer hover:underline">查看日志</span>
+          {/* 模板管理中心快捷入口 */}
+          <div className="col-span-1 bg-gradient-to-br from-blue-600 to-indigo-700 p-6 rounded-2xl shadow-sm text-white flex flex-col relative overflow-hidden group cursor-pointer" onClick={() => router.push('/templates')}>
+            <div className="absolute -right-10 -top-10 w-40 h-40 bg-white opacity-10 rounded-full group-hover:scale-150 transition-transform duration-700"></div>
+            <div className="flex justify-between items-center mb-6 relative z-10">
+              <h3 className="font-bold text-white text-base">底层模板中心</h3>
             </div>
-            <div className="space-y-6 mt-4">
-              {[
-                { title: 'T19 校友数据更新', date: '2 小时前', badge: '验证成功', icon: <CrownOutlined />, color: 'text-blue-600', bg: 'bg-blue-50' },
-                { title: 'T04 能力矩阵入库', date: '3 天前', badge: '建档完成', icon: <FileDoneOutlined />, color: 'text-slate-600', bg: 'bg-slate-100' },
-                { title: '产教基地状态异常', date: '5 天前', badge: '严重偏离', icon: <WarningOutlined />, color: 'text-red-500', bg: 'bg-red-50' }
-              ].map((act, i) => (
-                <div key={i} className="flex items-start gap-4">
-                  <div className={`w-10 h-10 rounded-xl ${act.bg} ${act.color} flex items-center justify-center text-lg shrink-0`}>
-                    {act.icon}
-                  </div>
-                  <div className="flex-1 border-b border-slate-50 pb-4">
-                    <div className="flex justify-between items-center mb-1">
-                      <span className="font-bold text-sm text-slate-800">{act.title}</span>
-                      <span className="text-xs text-slate-400 font-medium">{act.date}</span>
-                    </div>
-                    <span className="text-xs font-bold text-slate-500 bg-slate-50 px-2 py-0.5 rounded">{act.badge}</span>
-                  </div>
-                </div>
-              ))}
+            <div className="flex-1 flex flex-col justify-end relative z-10">
+              <p className="text-blue-100 text-sm leading-relaxed mb-6 font-medium">
+                集中管理 T01-T19 全景数据模板。这些模板构成了**使命型**与**未来型**两大指标体系共同的数字底座。
+              </p>
+              <button className="w-full py-3 bg-white/20 hover:bg-white/30 text-white font-bold rounded-lg backdrop-blur-sm transition-colors border border-white/20">
+                进入模板管理中心 &rarr;
+              </button>
             </div>
           </div>
 
         </div>
-
       </main>
+
+      {/* ================= 右侧：用户与系统侧边栏 (Right: Sidebar) ================= */}
+      <aside className="w-80 shrink-0 bg-slate-50 rounded-xl overflow-hidden flex flex-col gap-6">
+        
+        {/* User Profile Card */}
+        <div className="bg-white p-6 rounded-xl border border-slate-100 shadow-sm">
+          <div className="flex items-center gap-4 mb-5">
+            <Avatar size={56} className="bg-blue-600 shadow-md font-bold text-xl">壮</Avatar>
+            <div>
+              <h2 className="text-lg font-black text-slate-800 m-0 leading-tight">好大壮</h2>
+              <Tag color="cyan" className="m-0 mt-1.5 font-bold border-cyan-200 text-cyan-700">权限管理员 (Admin)</Tag>
+            </div>
+          </div>
+          
+          <div className="space-y-4 pt-4 border-t border-slate-100">
+            <div className="flex justify-between items-center">
+              <div className="flex items-center gap-2 text-slate-500 text-sm">
+                <DesktopOutlined /> 当前管理专业数
+              </div>
+              <span className="font-bold text-slate-800 text-base">32 个</span>
+            </div>
+            <div className="flex justify-between items-center">
+              <div className="flex items-center gap-2 text-slate-500 text-sm">
+                <CheckCircleOutlined /> 累计核准全景数据
+              </div>
+              <span className="font-bold text-blue-600 text-base">1,845 条</span>
+            </div>
+            <div className="flex justify-between items-center">
+              <div className="flex items-center gap-2 text-slate-500 text-sm">
+                <TrophyOutlined /> 使命型达标专业
+              </div>
+              <span className="font-bold text-emerald-600 text-base">5 个</span>
+            </div>
+          </div>
+        </div>
+
+        {/* 系统事件动态日志 */}
+        <div className="bg-white p-6 rounded-xl border border-slate-100 shadow-sm flex-1 overflow-y-auto custom-scrollbar">
+          <h3 className="font-bold text-slate-800 text-base mb-6">底层数据变动预警</h3>
+          <div className="space-y-6">
+            {[
+              { title: 'T19 校友数据更新', date: '2 小时前', badge: '验证成功', icon: <CrownOutlined />, color: 'text-blue-600', bg: 'bg-blue-50' },
+              { title: 'T04 能力矩阵入库', date: '3 天前', badge: '建档完成', icon: <FileDoneOutlined />, color: 'text-slate-600', bg: 'bg-slate-100' },
+              { title: '产教基地状态异常', date: '5 天前', badge: '严重偏离', icon: <WarningOutlined />, color: 'text-red-500', bg: 'bg-red-50' },
+              { title: 'T11 教学大纲重构', date: '1 周前', badge: '版本演进', icon: <BookOutlined />, color: 'text-purple-600', bg: 'bg-purple-50' },
+            ].map((act, i) => (
+              <div key={i} className="flex items-start gap-4">
+                <div className={`w-10 h-10 rounded-xl ${act.bg} ${act.color} flex items-center justify-center text-lg shrink-0`}>
+                  {act.icon}
+                </div>
+                <div className="flex-1 border-b border-slate-50 pb-4">
+                  <div className="flex justify-between items-center mb-1">
+                    <span className="font-bold text-sm text-slate-800 leading-tight">{act.title}</span>
+                  </div>
+                  <div className="flex justify-between items-center mt-2">
+                    <span className="text-xs font-bold text-slate-500 bg-slate-50 px-2 py-0.5 rounded border border-slate-100">{act.badge}</span>
+                    <span className="text-xs text-slate-400 font-medium">{act.date}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </aside>
+
     </div>
   );
 }
