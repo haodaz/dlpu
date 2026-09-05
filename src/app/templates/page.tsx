@@ -28,6 +28,8 @@ const templates = [
 
 export default function TemplatesPage() {
   const router = useRouter();
+
+  return (
     <div className="flex-1 flex flex-col min-h-[calc(100vh-140px)] bg-slate-50">
       
       {/* 极简 CRM 风格 Header */}
