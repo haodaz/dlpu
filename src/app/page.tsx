@@ -50,7 +50,10 @@ export default function Dashboard() {
         <div className="flex justify-between items-end mb-8">
           <div>
             <h1 className="text-3xl font-black text-slate-800 tracking-tight m-0">Dashboard</h1>
-            <p className="text-slate-500 mt-2 font-medium">Dalian Polytechnic University - Smart Evaluation Center</p>
+            <div className="flex items-center gap-3 mt-3">
+              <img src="/dlpu_logo.png" alt="DLPU Logo" className="w-8 h-8 object-contain" />
+              <p className="text-slate-500 font-medium m-0">Dalian Polytechnic University - Smart Evaluation Center</p>
+            </div>
           </div>
         </div>
 
