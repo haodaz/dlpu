@@ -66,7 +66,7 @@ export default function SmartEvaluationEngine() {
             try {
               const event = JSON.parse(dataStr);
               if (event.type === 'log') {
-                setLogs(prev => [...prev, { message: event.message, status: 'done' }]);
+                setLogs(prev => [...prev, { agentId: event.agentId || 'system', message: event.message, status: 'done' }]);
               } else if (event.type === 'agent') {
                 setAgents(prev => ({ ...prev, [event.data.id]: event.data }));
               } else if (event.type === 'result') {
@@ -444,21 +444,39 @@ export default function SmartEvaluationEngine() {
             ))}
           </div>
 
-          <div className="relative pl-6 max-w-4xl mx-auto min-h-[300px] max-h-[400px] overflow-y-auto overflow-x-hidden custom-scrollbar bg-slate-50 rounded-xl p-6 border border-slate-100 shadow-inner">
-            <div className="absolute left-[34px] top-6 bottom-6 w-[2px] bg-gradient-to-b from-blue-300 to-purple-300 rounded-full"></div>
-            {logs.map((log, i) => (
-              <div key={i} className="relative flex items-start mb-4 animate-fade-in-up">
-                <div className={`absolute -left-[35px] mt-1 bg-white rounded-full p-1 z-10 ${
-                  log.status === 'error' ? 'text-red-500' : 'text-blue-500'
-                }`}>
-                  {log.status === 'working' ? <SyncOutlined spin /> : <CheckOutlined />}
+          <div className="max-w-4xl mx-auto min-h-[300px] max-h-[500px] overflow-y-auto overflow-x-hidden custom-scrollbar bg-slate-50 rounded-xl p-6 border border-slate-100 shadow-inner">
+            {Object.keys(
+              logs.reduce((acc, log) => {
+                const id = log.agentId || 'system';
+                if (!acc[id]) acc[id] = [];
+                acc[id].push(log);
+                return acc;
+              }, {} as Record<string, typeof logs>)
+            ).map(agentId => {
+              const agentLogs = logs.filter(l => (l.agentId || 'system') === agentId);
+              const agentInfo = agents[agentId] || { name: agentId === 'system' ? '系统调度总线' : agentId, icon: agentId === 'system' ? '⚙️' : '🤖' };
+              
+              return (
+                <div key={agentId} className="mb-6 bg-white p-5 rounded-xl border border-slate-200 shadow-sm animate-fade-in-up">
+                  <div className="flex items-center gap-3 mb-4 font-bold text-slate-700 text-lg border-b border-slate-100 pb-3">
+                    <span className="text-2xl">{agentInfo.icon}</span> {agentInfo.name}
+                  </div>
+                  <div className="relative pl-6">
+                    <div className="absolute left-[9px] top-2 bottom-2 w-[2px] bg-slate-200 rounded-full"></div>
+                    {agentLogs.map((log, i) => (
+                      <div key={i} className="relative flex items-start mb-4 animate-fade-in-up">
+                        <div className={`absolute -left-[22px] mt-1.5 w-2 h-2 rounded-full ring-4 ring-white z-10 ${
+                          log.status === 'error' ? 'bg-red-400' : 'bg-blue-400'
+                        }`}></div>
+                        <div className={`text-sm leading-relaxed ${log.status === 'error' ? 'text-red-600 font-bold' : 'text-slate-600'}`}>
+                          {log.message}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-                <div className={`text-sm leading-relaxed ${log.status === 'error' ? 'text-red-600 font-bold' : 'text-slate-600'}`}>
-                  <span className="text-slate-400 mr-3 font-mono opacity-60 bg-white px-2 py-0.5 rounded shadow-sm border border-slate-200">{String(i+1).padStart(2, '0')}</span>
-                  {log.message}
-                </div>
-              </div>
-            ))}
+              );
+            })}
             <div ref={logsEndRef} />
           </div>
           

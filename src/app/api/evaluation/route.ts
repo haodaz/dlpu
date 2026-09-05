@@ -42,11 +42,11 @@ export async function POST(request: Request) {
 
         try {
           // 1. 初始化界面状态
-          send({ type: 'log', message: '正在启动强防御架构智能评价引擎 (Promise.allSettled)...' });
+          send({ type: 'log', agentId: 'system', message: '正在启动强防御架构智能评价引擎 (Promise.allSettled)...' });
           send({ type: 'agent', data: { id: 'chief', name: '总司令 (Chief AI)', status: 'working', icon: '👑' } });
 
           // 2. 拉取全景数据
-          send({ type: 'log', message: '👑 总司令正在拉取底层全景数据池...' });
+          send({ type: 'log', agentId: 'chief', message: '👑 总司令正在拉取底层全景数据池...' });
           const rawData = await prisma.panoramicData.findMany();
           
           const context: EvaluationContext = {
@@ -61,7 +61,7 @@ export async function POST(request: Request) {
             }
           });
           
-          send({ type: 'log', message: `✅ 成功挂载 ${Object.keys(context.panoramicData).length} 个全景数据节点，下发给微专家。` });
+          send({ type: 'log', agentId: 'system', message: `✅ 成功挂载 ${Object.keys(context.panoramicData).length} 个全景数据节点，下发给微专家。` });
           send({ type: 'agent', data: { id: 'chief', status: 'done', icon: '👑' } });
 
           // 3. 并发启动专家集群
@@ -69,11 +69,11 @@ export async function POST(request: Request) {
             send({ type: 'agent', data: { id: exp.id, name: exp.name, status: 'working', icon: exp.icon } });
           });
           
-          send({ type: 'log', message: '🌐 9 大微专家集群已并行唤醒，各司其职中...' });
+          send({ type: 'log', agentId: 'system', message: '🌐 9 大微专家集群已并行唤醒，各司其职中...' });
 
           // 封装执行器，附带专属日志流
           const expertPromises = ALL_EXPERTS.map(async (expert) => {
-             const onLog = (msg: string) => send({ type: 'log', message: msg });
+             const onLog = (msg: string) => send({ type: 'log', agentId: expert.id, message: msg });
              try {
                 const report = await expert.evaluate(context, onLog);
                 send({ type: 'agent', data: { id: expert.id, name: expert.name, status: 'done', icon: expert.icon } });
@@ -111,10 +111,10 @@ export async function POST(request: Request) {
           // 4. 总 AI 合成与图表绘制
           send({ type: 'agent', data: { id: 'chief_synthesis', name: '总司令 (统筹裁决)', status: 'working', icon: '👑' } });
           send({ type: 'agent', data: { id: 'chart_expert', name: '图表绘制师 (数据标签)', status: 'working', icon: '📊' } });
-          send({ type: 'log', message: '👑 总司令与 📊 图表绘制师 已并行唤醒，开始生成长卷宗与可视化数据...' });
+          send({ type: 'log', agentId: 'system', message: '👑 总司令与 📊 图表绘制师 已并行唤醒，开始生成长卷宗与可视化数据...' });
           
-          const chiefLog = (msg: string) => send({ type: 'log', message: msg });
-          const chartLog = (msg: string) => send({ type: 'log', message: msg });
+          const chiefLog = (msg: string) => send({ type: 'log', agentId: 'chief_synthesis', message: msg });
+          const chartLog = (msg: string) => send({ type: 'log', agentId: 'chart_expert', message: msg });
 
           const [finalReport, chartDataMap] = await Promise.all([
             chiefEvaluate(validExpertResults, chiefLog),
@@ -132,7 +132,7 @@ export async function POST(request: Request) {
           send({ type: 'agent', data: { id: 'chart_expert', name: '图表绘制师 (数据标签)', status: 'done', icon: '📊' } });
 
           // 5. 存入数据库
-          send({ type: 'log', message: '💾 正在将万字长卷宗存入核心数据库...' });
+          send({ type: 'log', agentId: 'system', message: '💾 正在将万字长卷宗存入核心数据库...' });
           await prisma.panoramicData.create({
             data: {
               templateCode: 'EVAL_FINAL',
@@ -142,7 +142,7 @@ export async function POST(request: Request) {
             }
           });
 
-          send({ type: 'log', message: '✅ 终极评价裁决完毕，结果已绝对存证！正在渲染前端长卷...' });
+          send({ type: 'log', agentId: 'system', message: '✅ 终极评价裁决完毕，结果已绝对存证！正在渲染前端长卷...' });
           send({ type: 'agent', data: { id: 'chief_synthesis', name: '总司令 (统筹裁决)', status: 'done', icon: '👑' } });
           
           send({ type: 'result', data: finalReport });
