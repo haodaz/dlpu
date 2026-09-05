@@ -1,7 +1,7 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import { Card, Tabs, Descriptions, Tag, Row, Col, Badge, Empty, Breadcrumb, Typography, Table, Button } from 'antd';
-import { DatabaseOutlined, HomeOutlined, BuildOutlined, CheckCircleOutlined, ClusterOutlined } from '@ant-design/icons';
+import { DatabaseOutlined, HomeOutlined, BuildOutlined, CheckCircleOutlined, ClusterOutlined, TrophyOutlined } from '@ant-design/icons';
 import { useRouter } from 'next/navigation';
 
 export default function PanoramicPage() {
