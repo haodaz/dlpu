@@ -1,8 +1,8 @@
 'use client';
 import React from 'react';
-import { Card, Tag, Button, List, Typography } from 'antd';
+import { Tag, Button, List, Typography } from 'antd';
 import { useRouter } from 'next/navigation';
-import { FormOutlined, ClockCircleOutlined } from '@ant-design/icons';
+import { FormOutlined, ClockCircleOutlined, LayoutOutlined } from '@ant-design/icons';
 
 const { Title, Paragraph } = Typography;
 
@@ -32,47 +32,57 @@ export default function TemplatesPage() {
   const router = useRouter();
 
   return (
-    <div className="max-w-6xl mx-auto pb-10">
-      <div className="mb-6">
-        <Title level={2} className="!text-gray-800">模板管理中心</Title>
-        <Paragraph className="text-gray-500">
-          管理“使命型”与“未来型”19项核心模板数据。在这里，您可以浏览所有评价模板规范，并进入对应的表单进行数据填报。
-        </Paragraph>
+    <div className="bg-white rounded-xl shadow-sm border border-slate-200 min-h-[calc(100vh-140px)] flex flex-col">
+      <div className="px-8 py-6 border-b border-slate-100 flex items-center justify-between bg-slate-50/50 rounded-t-xl">
+        <div>
+          <Title level={3} className="!text-slate-800 !m-0 mb-1 flex items-center gap-2">
+            <LayoutOutlined className="text-blue-500" />
+            底层模板管理中心
+          </Title>
+          <Paragraph className="text-slate-500 m-0 text-sm">
+            管理“使命型”与“未来型”19项核心模板数据规范，统一调度填报。
+          </Paragraph>
+        </div>
       </div>
 
-      <List
-        itemLayout="horizontal"
-        dataSource={templates}
-        renderItem={(item) => (
-          <List.Item
-            className={`bg-white mb-4 rounded-lg border-l-4 ${item.status === 'active' ? 'border-l-blue-500 shadow-sm' : 'border-l-gray-300'} px-6 py-5`}
-            actions={[
-              <Button 
-                type={item.status === 'active' ? 'primary' : 'default'}
-                disabled={item.status !== 'active'}
-                icon={<FormOutlined />}
-                onClick={() => router.push(`/templates/${item.id.toLowerCase()}`)}
-                className={item.status === 'active' ? 'font-bold' : ''}
+      <div className="p-8 flex-1 bg-slate-50/30">
+        <div className="max-w-5xl mx-auto">
+          <List
+            itemLayout="horizontal"
+            dataSource={templates}
+            renderItem={(item) => (
+              <List.Item
+                className={`bg-white mb-4 rounded-xl border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all duration-300 ${item.status === 'active' ? 'border-l-[6px] border-l-blue-500' : 'border-l-[6px] border-l-slate-300 opacity-80'} px-6 py-5`}
+                actions={[
+                  <Button 
+                    type={item.status === 'active' ? 'primary' : 'default'}
+                    disabled={item.status !== 'active'}
+                    icon={<FormOutlined />}
+                    onClick={() => router.push(`/templates/${item.id.toLowerCase()}`)}
+                    className={item.status === 'active' ? 'font-bold shadow-sm' : ''}
+                    size="large"
+                  >
+                    {item.status === 'active' ? '进入填报大厅' : '模块待联调'}
+                  </Button>
+                ]}
               >
-                {item.status === 'active' ? '进入填报' : '敬请期待'}
-              </Button>
-            ]}
-          >
-            <List.Item.Meta
-              title={
-                <div className="flex items-center gap-3 mb-1">
-                  <span className="font-bold text-gray-800 text-lg">{item.id} {item.name}</span>
-                  {item.status === 'active' 
-                    ? <Tag color="blue" className="m-0 border-blue-200">已启用</Tag> 
-                    : <Tag color="default" className="m-0"><ClockCircleOutlined className="mr-1" />待开发</Tag>
+                <List.Item.Meta
+                  title={
+                    <div className="flex items-center gap-3 mb-2 mt-1">
+                      <span className="font-bold text-slate-800 text-lg tracking-tight">{item.id} <span className="ml-1 text-slate-700">{item.name}</span></span>
+                      {item.status === 'active' 
+                        ? <Tag color="blue" className="m-0 border-blue-200 font-bold px-2">已挂载引擎</Tag> 
+                        : <Tag color="default" className="m-0"><ClockCircleOutlined className="mr-1" />待开发</Tag>
+                      }
+                    </div>
                   }
-                </div>
-              }
-              description={<span className="text-gray-500">{item.desc}</span>}
-            />
-          </List.Item>
-        )}
-      />
+                  description={<span className="text-slate-500 leading-relaxed text-sm">{item.desc}</span>}
+                />
+              </List.Item>
+            )}
+          />
+        </div>
+      </div>
     </div>
   );
 }
