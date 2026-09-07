@@ -14,7 +14,52 @@
       "avgResponseTime": "1.5小时"
     },
     "diagnosis": "典型的科研反哺教学标杆，职业引航作用极强。",
-    "details": "作为资深教授，庞桂兵老师在《智能制造工程导论》课程中引入了大量国家级科研项目案例，极大拓宽了学生的产业视野。在平台答疑中，其回答不仅涉及课本知识，更延伸至行业发展前沿。"
+    "details": "作为资深教授，庞桂兵老师在《智能制造工程导论》课程中引入了大量国家级科研项目案例，极大拓宽了学生的产业视野。在平台答疑中，其回答不仅涉及课本知识，更延伸至行业发展前沿。",
+    "basicInfo": {
+      "firstName": "Guibing",
+      "lastName": "Pang",
+      "chineseName": "庞桂兵",
+      "englishName": "Pang Guibing",
+      "gender": "男",
+      "nationality": "中国",
+      "isChineseDescent": "是",
+      "hometown": "辽宁省大连市",
+      "birthDate": "1972-10-15",
+      "email": "panggb@dlpu.edu.cn",
+      "brid": "BRID-2023-P001",
+      "orcid": "0000-0002-XXXX-XXXX",
+      "researcherId": "RID-A-1234-2015",
+      "homepage": "https://jxxy.dlpu.edu.cn/faculty/pangguibing"
+    },
+    "bio": "庞桂兵，男，汉族，大连工业大学机械工程与自动化学院教授、博士生导师。长期致力于智能制造、精密模具设计及数字化加工技术的教科研工作。主持国家自然科学基金、辽宁省重点研发计划等多项课题，在国内外权威学术期刊发表论文 80 余篇，授权国家发明专利 20 余项。主编多部国家级规划教材，致力于将科研成果深度融入本科教学环节。",
+    "researchFields": "智能制造、精密模具设计、数字化加工技术、复杂曲面加工。主要贡献包括在轻工装备的柔性制造算法与精密模具成型机理方面取得突破，显著提升了本地制造业的模具寿命。",
+    "currentWork": {
+      "time": "2010年9月至今",
+      "unit": "大连工业大学",
+      "title": "教授 / 博士生导师"
+    },
+    "education": [
+      { "degree": "学士", "school": "大连理工大学", "major": "机械工程", "start": "1991", "end": "1995" },
+      { "degree": "硕士", "school": "大连理工大学", "major": "机械制造及其自动化", "start": "1995", "end": "1998" },
+      { "degree": "博士", "school": "大连理工大学", "major": "机械制造及其自动化", "start": "1998", "end": "2002" }
+    ],
+    "workExperience": [
+      { "unit": "大连工业大学", "subUnit": "机械工程与自动化学院", "title": "讲师", "start": "2002", "end": "2005", "content": "主讲机械原理课程" },
+      { "unit": "大连工业大学", "subUnit": "机械工程与自动化学院", "title": "副教授", "start": "2005", "end": "2010", "content": "教研室主任，负责模具方向建设" },
+      { "unit": "大连工业大学", "subUnit": "机械工程与自动化学院", "title": "教授", "start": "2010", "end": "至今", "content": "学科带头人，负责国家自然科学基金项目" }
+    ],
+    "awards": [
+      { "year": "2018", "level": "省部级", "name": "辽宁省科技进步二等奖", "reason": "复杂模具数字化设计与精密制造关键技术及应用" },
+      { "year": "2021", "level": "省部级", "name": "辽宁省教学成果一等奖", "reason": "以产业逻辑重构的地方高校新工科人才培养体系" }
+    ],
+    "patents": [
+      { "time": "2019-05-12", "type": "发明专利", "no": "CN110123456B", "name": "一种基于机器视觉的柔性包装在线缺陷检测装置", "inventors": "庞桂兵, 张三, 李四", "role": "第一发明人", "abstract": "本发明公开了一种基于机器视觉的柔性包装在线缺陷检测装置，解决了传统检测速度慢、精度低的问题..." },
+      { "time": "2021-08-20", "type": "发明专利", "no": "CN112987654A", "name": "一种高精密塑料模具型腔快换结构", "inventors": "庞桂兵, 王五", "role": "第一发明人", "abstract": "本申请提供了一种高精密塑料模具型腔快换结构，大幅降低了注塑产线的停机换模时间..." }
+    ],
+    "papers": [
+      { "time": "2022-03", "authors": "Pang G, Zhang S, et al.", "title": "Intelligent tool wear prediction based on deep learning in milling process", "journal": "Journal of Manufacturing Systems", "indexing": "SCI", "impactFactor": "12.1" },
+      { "time": "2023-01", "authors": "Pang G, Li L.", "title": "A novel defect detection algorithm for flexible packaging using CNN", "journal": "IEEE Transactions on Industrial Informatics", "indexing": "SCI", "impactFactor": "11.7" }
+    ]
   },
   {
     "id": "F-002",
@@ -31,7 +76,49 @@
       "avgResponseTime": "2.1小时"
     },
     "diagnosis": "极重实战的硬核讲师，授业闭环完美覆盖。",
-    "details": "杨教授主导的《机电传动控制》实验环节获得了历届学生极高评价。学情数据显示，其设计的层次化学习计划能够很好地兼顾基础薄弱的学生。线上答疑记录显示其不仅解答问题，还会提供代码及电路调试的思路指引。"
+    "details": "杨教授主导的《机电传动控制》实验环节获得了历届学生极高评价。学情数据显示，其设计的层次化学习计划能够很好地兼顾基础薄弱的学生。线上答疑记录显示其不仅解答问题，还会提供代码及电路调试的思路指引。",
+    "basicInfo": {
+      "firstName": "Jixin",
+      "lastName": "Yang",
+      "chineseName": "杨继新",
+      "englishName": "Yang Jixin",
+      "gender": "男",
+      "nationality": "中国",
+      "isChineseDescent": "是",
+      "hometown": "吉林省长春市",
+      "birthDate": "1975-04-20",
+      "email": "yangjx@dlpu.edu.cn",
+      "brid": "BRID-2023-Y002",
+      "orcid": "0000-0003-XXXX-XXXX",
+      "researcherId": "RID-B-5678-2016",
+      "homepage": "https://jxxy.dlpu.edu.cn/faculty/yangjixin"
+    },
+    "bio": "杨继新，大连工业大学机械工程与自动化学院教授。长期深耕机电传动控制、数控加工底层算法等领域。主持辽宁省自然科学基金项目、企业横向课题 10 余项。指导学生多次获得全国大学生机械创新设计大赛一等奖。",
+    "researchFields": "机电传动控制、数控系统底层开发、机器人运动学。主要贡献为开发了某型高精度五轴联动数控系统后处理算法，并在多家本地机床企业实现成果转化。",
+    "currentWork": {
+      "time": "2013年至今",
+      "unit": "大连工业大学",
+      "title": "教授"
+    },
+    "education": [
+      { "degree": "学士", "school": "哈尔滨工业大学", "major": "机械工程", "start": "1994", "end": "1998" },
+      { "degree": "硕士", "school": "哈尔滨工业大学", "major": "机电工程", "start": "1998", "end": "2001" },
+      { "degree": "博士", "school": "东北大学", "major": "机械电子工程", "start": "2003", "end": "2007" }
+    ],
+    "workExperience": [
+      { "unit": "某大型机床厂", "subUnit": "研发中心", "title": "系统工程师", "start": "2001", "end": "2003", "content": "数控系统PLC编程与驱动联调" },
+      { "unit": "大连工业大学", "subUnit": "机械学院", "title": "副教授", "start": "2008", "end": "2013", "content": "主讲数控技术" }
+    ],
+    "awards": [
+      { "year": "2019", "level": "省部级", "name": "辽宁省优秀指导教师", "reason": "指导学生获国家级学科竞赛一等奖" },
+      { "year": "2020", "level": "省部级", "name": "辽宁省科技进步三等奖", "reason": "面向复杂结构件的智能五轴数控编程关键技术" }
+    ],
+    "patents": [
+      { "time": "2020-03-15", "type": "发明专利", "no": "CN110987654B", "name": "一种五轴机床非线性误差补偿方法及系统", "inventors": "杨继新, 赵六", "role": "第一发明人", "abstract": "一种五轴联动数控机床旋转轴非线性误差的预测与补偿算法，提高了加工面表面质量..." }
+    ],
+    "papers": [
+      { "time": "2021-06", "authors": "Yang J, Zhao L.", "title": "Nonlinear error compensation for 5-axis CNC machine tools", "journal": "International Journal of Machine Tools and Manufacture", "indexing": "SCI", "impactFactor": "10.3" }
+    ]
   },
   {
     "id": "F-003",
@@ -48,7 +135,46 @@
       "avgResponseTime": "0.5小时"
     },
     "diagnosis": "无微不至的良师益友，解惑深度评分全院第一。",
-    "details": "在《包装机械设计》的教学中，齐老师展现出了极高的教学热情。线上平台数据显示，其平均答疑响应时间仅为 0.5 小时。学情分析报告(T07)表明，其对过程性评价(T06)的结果极为关注，曾多次针对低分学生进行个性化重修指导。"
+    "details": "在《包装机械设计》的教学中，齐老师展现出了极高的教学热情。线上平台数据显示，其平均答疑响应时间仅为 0.5 小时。学情分析报告(T07)表明，其对过程性评价(T06)的结果极为关注，曾多次针对低分学生进行个性化重修指导。",
+    "basicInfo": {
+      "firstName": "Wei",
+      "lastName": "Qi",
+      "chineseName": "齐威",
+      "englishName": "Qi Wei",
+      "gender": "男",
+      "nationality": "中国",
+      "isChineseDescent": "是",
+      "hometown": "辽宁省沈阳市",
+      "birthDate": "1982-08-11",
+      "email": "qiwei@dlpu.edu.cn",
+      "brid": "BRID-2023-Q003",
+      "orcid": "0000-0001-XXXX-XXXX",
+      "researcherId": "RID-C-9012-2018",
+      "homepage": "https://jxxy.dlpu.edu.cn/faculty/qiwei"
+    },
+    "bio": "齐威，大连工业大学机械工程与自动化学院副教授。主要从事轻工机械与食品包装产线的优化设计与机构学研究。深入教学一线，曾获大连工业大学教学名师、辽宁省青年教师讲课比赛一等奖，是深受学生喜爱的“最美教师”。",
+    "researchFields": "轻工机械设计、包装工艺与机构学、数字化制图。致力于食品饮料高速包装产线的执行机构轻量化设计与减振降噪研究。",
+    "currentWork": {
+      "time": "2015年至今",
+      "unit": "大连工业大学",
+      "title": "副教授"
+    },
+    "education": [
+      { "degree": "学士", "school": "大连工业大学", "major": "机械工程及自动化", "start": "2001", "end": "2005" },
+      { "degree": "博士（硕博连读）", "school": "大连理工大学", "major": "机械工程", "start": "2005", "end": "2010" }
+    ],
+    "workExperience": [
+      { "unit": "大连工业大学", "subUnit": "机械学院", "title": "讲师", "start": "2010", "end": "2015", "content": "主讲工程制图、包装机械设计" }
+    ],
+    "awards": [
+      { "year": "2021", "level": "省部级", "name": "辽宁省青年教师教学竞赛一等奖", "reason": "《工程制图》课程优秀教学展示" }
+    ],
+    "patents": [
+      { "time": "2018-10-10", "type": "实用新型", "no": "CN208765432U", "name": "一种新型纸箱折叠成型包装机构", "inventors": "齐威, 孙七", "role": "第一发明人", "abstract": "本实用新型涉及一种新型纸箱折叠成型包装机构，可有效避免折纸过程中出现的纸板撕裂问题..." }
+    ],
+    "papers": [
+      { "time": "2020-09", "authors": "Qi W, Sun Q.", "title": "Kinematic Analysis of a Novel Folding Mechanism for Packaging Machines", "journal": "Mechanism and Machine Theory", "indexing": "SCI", "impactFactor": "7.3" }
+    ]
   },
   {
     "id": "F-004",
@@ -65,6 +191,46 @@
       "avgResponseTime": "3.0小时"
     },
     "diagnosis": "产教深度绑定的实践导师，校企联合项目的桥梁。",
-    "details": "刘老师负责对接大连本地多家工业机器人集成企业，其主讲的课程中充满了真实产线上的排故案例。虽然平台答疑响应速度稍逊，但线下实操辅导的课时投入远超平均标准，在 T13(项目驱动)维度贡献巨大。"
+    "details": "刘老师负责对接大连本地多家工业机器人集成企业，其主讲的课程中充满了真实产线上的排故案例。虽然平台答疑响应速度稍逊，但线下实操辅导的课时投入远超平均标准，在 T13(项目驱动)维度贡献巨大。",
+    "basicInfo": {
+      "firstName": "Wenhua",
+      "lastName": "Liu",
+      "chineseName": "刘文华",
+      "englishName": "Liu Wenhua",
+      "gender": "女",
+      "nationality": "中国",
+      "isChineseDescent": "是",
+      "hometown": "黑龙江省哈尔滨市",
+      "birthDate": "1985-02-28",
+      "email": "liuwh@dlpu.edu.cn",
+      "brid": "BRID-2023-L004",
+      "orcid": "0000-0002-XXXX-XXXX",
+      "researcherId": "RID-D-3456-2020",
+      "homepage": "https://jxxy.dlpu.edu.cn/faculty/liuwenhua"
+    },
+    "bio": "刘文华，大连工业大学机械工程与自动化学院副教授，工业机器人技术方向带头人。曾任职于国内知名自动化系统集成外企，具有丰富的现场实战经验，是典型的“双师型”人才。致力于将真实的产线案例引入课堂。",
+    "researchFields": "工业机器人系统集成、机器视觉应用、嵌入式控制系统。核心贡献在于打通了校企联合培养壁垒，为大连金普新区多家自动化企业解决了柔性抓取难题。",
+    "currentWork": {
+      "time": "2017年至今",
+      "unit": "大连工业大学",
+      "title": "副教授"
+    },
+    "education": [
+      { "degree": "学士", "school": "大连工业大学", "major": "自动化", "start": "2004", "end": "2008" },
+      { "degree": "硕士", "school": "大连海事大学", "major": "控制工程", "start": "2008", "end": "2011" }
+    ],
+    "workExperience": [
+      { "unit": "某外资自动化集成企业", "subUnit": "工程部", "title": "高级项目工程师", "start": "2011", "end": "2015", "content": "负责汽车零部件生产线机器人工作站集成与调试" },
+      { "unit": "大连工业大学", "subUnit": "机械学院", "title": "讲师", "start": "2015", "end": "2017", "content": "机器人实验室建设负责人" }
+    ],
+    "awards": [
+      { "year": "2022", "level": "市厅级", "name": "大连市创新创业导师", "reason": "在产教融合及实训基地建设中做出突出贡献" }
+    ],
+    "patents": [
+      { "time": "2022-04-10", "type": "发明专利", "no": "CN113456789A", "name": "一种基于深度相机的工业机器人自适应抓取控制方法", "inventors": "刘文华, 钱八", "role": "第一发明人", "abstract": "提出了一种融合视觉深度信息与末端力矩反馈的机器人柔顺抓取算法，解决了异形件装配易损耗的问题..." }
+    ],
+    "papers": [
+      { "time": "2022-11", "authors": "Liu W, Qian B.", "title": "Adaptive grasping control for industrial robots based on RGB-D vision and force feedback", "journal": "Robotics and Computer-Integrated Manufacturing", "indexing": "SCI", "impactFactor": "10.4" }
+    ]
   }
 ]
