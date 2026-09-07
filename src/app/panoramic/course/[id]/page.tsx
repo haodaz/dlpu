@@ -48,59 +48,26 @@ export default function CourseProfilePage({ params }: { params: any }) {
             if (mapping) setT04Data(mapping);
           }
 
-          const t11Item = data.find((item: any) => item.templateCode === 'T11');
-          if (t11Item) {
-            const parsed = JSON.parse(t11Item.rawPayload);
-            if (parsed.courseName === courseName) setT11Data(parsed);
-          }
+          const getTemplateData = (code: string) => {
+            const matches = data.filter((item: any) => item.templateCode === code);
+            for (const match of matches) {
+              try {
+                const parsed = JSON.parse(match.rawPayload);
+                if (parsed.courseName === courseName) return parsed;
+              } catch(e) {}
+            }
+            return null;
+          };
 
-          const t08Item = data.find((item: any) => item.templateCode === 'T08');
-          if (t08Item) {
-            const parsed = JSON.parse(t08Item.rawPayload);
-            if (parsed.courseName === courseName) setT08Data(parsed);
-          }
-
-          const t05Item = data.find((item: any) => item.templateCode === 'T05');
-          if (t05Item) {
-            const parsed = JSON.parse(t05Item.rawPayload);
-            if (parsed.courseName === courseName) setT05Data(parsed);
-          }
-
-          const t06Item = data.find((item: any) => item.templateCode === 'T06');
-          if (t06Item) {
-            const parsed = JSON.parse(t06Item.rawPayload);
-            if (parsed.courseName === courseName) setT06Data(parsed);
-          }
-
-          const t07Item = data.find((item: any) => item.templateCode === 'T07');
-          if (t07Item) {
-            const parsed = JSON.parse(t07Item.rawPayload);
-            if (parsed.courseName === courseName) setT07Data(parsed);
-          }
-
-          const t09Item = data.find((item: any) => item.templateCode === 'T09');
-          if (t09Item) {
-            const parsed = JSON.parse(t09Item.rawPayload);
-            if (parsed.courseName === courseName) setT09Data(parsed);
-          }
-
-          const t10Item = data.find((item: any) => item.templateCode === 'T10');
-          if (t10Item) {
-            const parsed = JSON.parse(t10Item.rawPayload);
-            if (parsed.courseName === courseName) setT10Data(parsed);
-          }
-
-          const t13Item = data.find((item: any) => item.templateCode === 'T13');
-          if (t13Item) {
-            const parsed = JSON.parse(t13Item.rawPayload);
-            if (parsed.courseName === courseName) setT13Data(parsed);
-          }
-
-          const t15Item = data.find((item: any) => item.templateCode === 'T15');
-          if (t15Item) {
-            const parsed = JSON.parse(t15Item.rawPayload);
-            if (parsed.courseName === courseName) setT15Data(parsed);
-          }
+          setT11Data(getTemplateData('T11'));
+          setT08Data(getTemplateData('T08'));
+          setT05Data(getTemplateData('T05'));
+          setT06Data(getTemplateData('T06'));
+          setT07Data(getTemplateData('T07'));
+          setT09Data(getTemplateData('T09'));
+          setT10Data(getTemplateData('T10'));
+          setT13Data(getTemplateData('T13'));
+          setT15Data(getTemplateData('T15'));
         }
         setLoading(false);
       })
