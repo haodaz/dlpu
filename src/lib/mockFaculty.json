@@ -1,0 +1,70 @@
+[
+  {
+    "id": "F-001",
+    "name": "庞桂兵",
+    "title": "教授 / 博士生导师",
+    "department": "机械工程与自动化学院",
+    "team": "智能制造与模具团队",
+    "avatar": "https://api.dicebear.com/7.x/initials/svg?seed=PGB&backgroundColor=1e3a8a",
+    "courses": ["机械原理", "智能制造工程导论"],
+    "t15Metrics": {
+      "careerGuidanceScore": 95,
+      "learningPlanScore": 88,
+      "qaScore": 92,
+      "avgResponseTime": "1.5小时"
+    },
+    "diagnosis": "典型的科研反哺教学标杆，职业引航作用极强。",
+    "details": "作为资深教授，庞桂兵老师在《智能制造工程导论》课程中引入了大量国家级科研项目案例，极大拓宽了学生的产业视野。在平台答疑中，其回答不仅涉及课本知识，更延伸至行业发展前沿。"
+  },
+  {
+    "id": "F-002",
+    "name": "杨继新",
+    "title": "教授 / 硕士生导师",
+    "department": "机械工程与自动化学院",
+    "team": "数字化设计与制造团队",
+    "avatar": "https://api.dicebear.com/7.x/initials/svg?seed=YJX&backgroundColor=1e3a8a",
+    "courses": ["机电传动控制", "数控技术"],
+    "t15Metrics": {
+      "careerGuidanceScore": 88,
+      "learningPlanScore": 92,
+      "qaScore": 90,
+      "avgResponseTime": "2.1小时"
+    },
+    "diagnosis": "极重实战的硬核讲师，授业闭环完美覆盖。",
+    "details": "杨教授主导的《机电传动控制》实验环节获得了历届学生极高评价。学情数据显示，其设计的层次化学习计划能够很好地兼顾基础薄弱的学生。线上答疑记录显示其不仅解答问题，还会提供代码及电路调试的思路指引。"
+  },
+  {
+    "id": "F-003",
+    "name": "齐威",
+    "title": "副教授",
+    "department": "机械工程与自动化学院",
+    "team": "轻工机械与包装团队",
+    "avatar": "https://api.dicebear.com/7.x/initials/svg?seed=QW&backgroundColor=3b82f6",
+    "courses": ["包装机械设计", "工程制图"],
+    "t15Metrics": {
+      "careerGuidanceScore": 85,
+      "learningPlanScore": 94,
+      "qaScore": 96,
+      "avgResponseTime": "0.5小时"
+    },
+    "diagnosis": "无微不至的良师益友，解惑深度评分全院第一。",
+    "details": "在《包装机械设计》的教学中，齐老师展现出了极高的教学热情。线上平台数据显示，其平均答疑响应时间仅为 0.5 小时。学情分析报告(T07)表明，其对过程性评价(T06)的结果极为关注，曾多次针对低分学生进行个性化重修指导。"
+  },
+  {
+    "id": "F-004",
+    "name": "刘文华",
+    "title": "副教授",
+    "department": "机械工程与自动化学院",
+    "team": "工业机器人技术团队",
+    "avatar": "https://api.dicebear.com/7.x/initials/svg?seed=LWH&backgroundColor=3b82f6",
+    "courses": ["工业机器人控制技术", "单片机原理"],
+    "t15Metrics": {
+      "careerGuidanceScore": 90,
+      "learningPlanScore": 85,
+      "qaScore": 89,
+      "avgResponseTime": "3.0小时"
+    },
+    "diagnosis": "产教深度绑定的实践导师，校企联合项目的桥梁。",
+    "details": "刘老师负责对接大连本地多家工业机器人集成企业，其主讲的课程中充满了真实产线上的排故案例。虽然平台答疑响应速度稍逊，但线下实操辅导的课时投入远超平均标准，在 T13(项目驱动)维度贡献巨大。"
+  }
+]

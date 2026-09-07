@@ -1,8 +1,9 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import { Card, Tabs, Descriptions, Tag, Row, Col, Badge, Empty, Breadcrumb, Typography, Table, Button } from 'antd';
-import { DatabaseOutlined, HomeOutlined, BuildOutlined, CheckCircleOutlined, ClusterOutlined, TrophyOutlined } from '@ant-design/icons';
+import { DatabaseOutlined, HomeOutlined, BuildOutlined, CheckCircleOutlined, ClusterOutlined, TrophyOutlined, UserOutlined } from '@ant-design/icons';
 import { useRouter } from 'next/navigation';
+import mockFaculty from '@/lib/mockFaculty.json';
 
 export default function PanoramicPage() {
   const router = useRouter();
@@ -205,7 +206,61 @@ export default function PanoramicPage() {
       label: '师资队伍 (Faculty)',
       children: (
         <div className="mt-4">
-          <Empty description="暂未录入教师底层数据" />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {mockFaculty.map((faculty: any) => (
+              <Card key={faculty.id} className="border border-gray-200 hover:shadow-lg transition-shadow bg-white rounded-xl overflow-hidden" bodyStyle={{ padding: '0' }}>
+                <div className="flex p-6 gap-6 items-start">
+                  <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-blue-100 flex-shrink-0">
+                    <img src={faculty.avatar} alt={faculty.name} className="w-full h-full object-cover" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex justify-between items-start mb-2">
+                      <div>
+                        <h3 className="text-xl font-bold text-gray-800 m-0 leading-tight">{faculty.name}</h3>
+                        <div className="text-sm text-gray-500 mt-1">{faculty.title}</div>
+                      </div>
+                      <Tag color="blue" className="m-0 font-bold border-blue-200 text-blue-700 bg-blue-50">{faculty.team}</Tag>
+                    </div>
+                    
+                    <div className="flex gap-2 flex-wrap mt-3 mb-4">
+                      {faculty.courses.map((c: string, idx: number) => (
+                        <Tag key={idx} className="bg-gray-50 border-gray-200 text-gray-600 m-0">{c}</Tag>
+                      ))}
+                    </div>
+
+                    <div className="bg-slate-50 p-3 rounded-lg border border-slate-100 mb-4">
+                      <div className="flex justify-between text-xs mb-1">
+                        <span className="text-slate-500 font-medium">T15 教学三维投入深度:</span>
+                        <span className="font-bold text-blue-600">
+                          {Math.round((faculty.t15Metrics.careerGuidanceScore + faculty.t15Metrics.learningPlanScore + faculty.t15Metrics.qaScore) / 3)} 分
+                        </span>
+                      </div>
+                      <div className="flex gap-4 mt-2">
+                        <div className="flex-1">
+                          <div className="text-[10px] text-slate-400 mb-1">传道</div>
+                          <div className="h-1.5 bg-slate-200 rounded-full overflow-hidden"><div className="h-full bg-blue-500" style={{width: `${faculty.t15Metrics.careerGuidanceScore}%`}}></div></div>
+                        </div>
+                        <div className="flex-1">
+                          <div className="text-[10px] text-slate-400 mb-1">授业</div>
+                          <div className="h-1.5 bg-slate-200 rounded-full overflow-hidden"><div className="h-full bg-green-500" style={{width: `${faculty.t15Metrics.learningPlanScore}%`}}></div></div>
+                        </div>
+                        <div className="flex-1">
+                          <div className="text-[10px] text-slate-400 mb-1">解惑</div>
+                          <div className="h-1.5 bg-slate-200 rounded-full overflow-hidden"><div className="h-full bg-purple-500" style={{width: `${faculty.t15Metrics.qaScore}%`}}></div></div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="flex justify-end">
+                      <Button type="primary" className="bg-blue-600 font-semibold" onClick={() => router.push(`/panoramic/faculty/${faculty.id}`)}>
+                        查看人才画像
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </Card>
+            ))}
+          </div>
         </div>
       ),
     },
