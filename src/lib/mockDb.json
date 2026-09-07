@@ -248,5 +248,85 @@
     "status": "COMPLETED",
     "createdAt": "2026-09-07T01:26:11.435Z",
     "updatedAt": "2026-09-07T01:26:11.435Z"
+  },
+  {
+    "id": "6a45596e-b74c-402d-b4eb-22e6d61bc58c",
+    "templateCode": "T05",
+    "sourceType": "教案 (典型)",
+    "rawPayload": "{\"courseName\":\"机电传动控制\",\"chapter\":\"第三章 伺服电机与底层驱动\",\"duration\":4,\"teachingMethods\":[\"实验操作\",\"理论讲授\",\"虚实结合\"],\"objectives\":\"1. 知识目标：掌握伺服电机的底层控制逻辑和PWM调节。\\\\n2. 能力目标：能完成基础驱动板的选型与控制编程。\\\\n3. 重点与难点：重点在于位置环与速度环的PID整定。\",\"logicalProgression\":\"从基础电机原理过渡到现代工业精密驱动，为后续的工业机器人集成打下硬件与控制基础。\",\"industryIntegration\":\"引入某自动化企业提供的真实伺服电机测试平台，学生在真实环境中排查震荡与超调问题。\",\"studentDeliverables\":\"实验报告：位置环PID整定曲线分析与优化记录\",\"aiUsage\":\"使用AI辅助分析整定曲线并推荐初步的PID参数范围\"}",
+    "verifiedFields": null,
+    "status": "COMPLETED",
+    "createdAt": "2026-09-07T01:35:49.538Z",
+    "updatedAt": "2026-09-07T01:35:49.540Z"
+  },
+  {
+    "id": "0b119564-362c-47f2-a043-ee1a9a6284eb",
+    "templateCode": "T06",
+    "sourceType": "过程性评价记录",
+    "rawPayload": "{\"courseName\":\"机电传动控制\",\"evaluationType\":\"项目实训答辩\",\"evaluationBatch\":\"第10周 - 灌装线排故项目\",\"mappedObjectives\":[\"Obj-2: 独立排查总线掉线故障\"],\"averageScore\":88,\"passRate\":95,\"contentDescription\":\"给定电磁干扰工况，要求学生利用万用表和示波器定位总线断点并恢复通信，最后通过答辩说明排故逻辑。\",\"academicWarning\":\"发现部分学生（约30%）对屏蔽层接地的概念模糊，仅靠尝试法盲目更换接线，导致排故耗时过长，未能体现出理论指导实践的能力。\",\"teacherIntervention\":\"在第11周的理论课上集中串讲了工业现场的接地规范，并补充了接地不良的对比实验，要求之前排故耗时过长的学生重新撰写排故逻辑报告。\",\"items\":[{\"type\":\"随堂测验\",\"date\":\"2026-03-15\",\"topic\":\"伺服系统原理\",\"completionRate\":98,\"averageScore\":82,\"feedback\":\"对闭环控制概念理解不够直观，已增加仿真实验课时。\"},{\"type\":\"项目答辩\",\"date\":\"2026-05-10\",\"topic\":\"单轴平台点位控制\",\"completionRate\":100,\"averageScore\":85,\"feedback\":\"多数学生能完成基本动作，但参数整定耗时过长。\"}]}",
+    "verifiedFields": null,
+    "status": "COMPLETED",
+    "createdAt": "2026-09-07T01:35:49.540Z",
+    "updatedAt": "2026-09-07T01:35:49.540Z"
+  },
+  {
+    "id": "54e5862e-92f2-4645-8b92-394fa37f374f",
+    "templateCode": "T11",
+    "sourceType": "AI_SEARCH",
+    "rawPayload": "{\"courseName\":\"机电传动控制\",\"credits\":3.5,\"hours\":48,\"objectives\":\"使学生具备机电驱动系统的分析、选型与底层控制开发能力。\",\"features\":{\"techTraceability\":\"引入了‘柔性包装智能识别算法’及‘机器视觉在线缺陷检测’等产业最新前沿技术。\",\"researchTransfer\":\"将教师承担的‘辽宁省某食品厂包装线自动化升级项目’剥离出的真实工程难题，转化为大纲中的 6 课时综合实战项目。\"},\"courseCode\":\"ME301\",\"contentOutline\":\"第一部分：直流/交流电机原理；第二部分：步进与伺服控制技术；第三部分：工业总线与底层通信。\"}",
+    "verifiedFields": null,
+    "status": "PENDING",
+    "createdAt": "2026-09-07T01:35:49.540Z",
+    "updatedAt": "2026-09-07T01:35:49.540Z"
+  },
+  {
+    "id": "ae13963c-f578-4c81-817c-316660aee41b",
+    "templateCode": "T15",
+    "sourceType": "教学投入深度",
+    "rawPayload": "{\"courseName\":\"机电传动控制\",\"teacher\":\"李教授 / 张讲师\",\"syncDate\":\"9/5/2026\",\"metrics\":{\"careerGuidanceScore\":92,\"learningPlanScore\":88,\"qaResponseRate\":98,\"avgResponseTime\":\"2.4小时\"},\"qaSamples\":[{\"id\":\"QA-102\",\"question\":\"关于灌装机凸轮机构的死点位置，视频里提到的避开方法在实际企业中常用吗？\",\"student\":\"张* (学号: 240***12)\",\"replyTime\":\"1.2小时\",\"replyContent\":\"非常好的问题。企业中通常会串联一个辅助机构，或者使用飞轮来增加惯性度过死点。我把你这个问题补充到了第二章的难点库中。\",\"isIncorporated\":true},{\"id\":\"QA-105\",\"question\":\"老师，期末考核的项目中，企业合同验收标准我们去哪里查？\",\"student\":\"李* (学号: 240***45)\",\"replyTime\":\"0.8小时\",\"replyContent\":\"已经上传到超星平台的“扩展资源”模块，文件名为《HT-24-0019 达意科技设备验收国标》。\",\"isIncorporated\":false}],\"diagnosis\":\"三维教学投入（传道、授业、解惑）极其饱满\",\"details\":\"主讲教师在实验环节投入大量时间指导学生动手调试硬件，平台答疑频率较高。\",\"impact\":\"证实了任课教师不仅是“念PPT”，而是深度介入了学生的知识重构过程。高频高质量的“解惑”互动强力支撑了 2.3.2 达成度评估的真实性。\",\"careerGuidanceScore\":85,\"learningPlanScore\":90,\"qaScore\":88}",
+    "verifiedFields": null,
+    "status": "COMPLETED",
+    "createdAt": "2026-09-07T01:35:49.540Z",
+    "updatedAt": "2026-09-07T01:35:49.540Z"
+  },
+  {
+    "id": "714f33b4-3836-4388-bfca-d25e7a21e3e4",
+    "templateCode": "T05",
+    "sourceType": "教案 (典型)",
+    "rawPayload": "{\"courseName\":\"工业机器人控制技术\",\"chapter\":\"第四章 六轴机器人运动学逆解应用\",\"duration\":4,\"teachingMethods\":[\"项目驱动\",\"现场实操\"],\"objectives\":\"1. 知识目标：理解运动学逆解在轨迹规划中的作用。\\\\n2. 能力目标：能够利用工业机器人示教器或离线编程软件进行复杂轨迹编程。\\\\n3. 重点与难点：重点为奇异点规避；难点为连续轨迹的平滑过渡。\",\"logicalProgression\":\"建立在机电传动的基础上，将单轴控制升级为多轴空间协同控制。\",\"industryIntegration\":\"基于大连某汽车零部件厂的涂胶工作站，学生需要在虚拟仿真环境中完成车门涂胶的轨迹规划。\",\"studentDeliverables\":\"虚拟仿真导出的工业机器人运行代码及轨迹偏差分析报告\",\"aiUsage\":\"利用AI工具检查机器人代码的语法及逻辑死锁\"}",
+    "verifiedFields": null,
+    "status": "COMPLETED",
+    "createdAt": "2026-09-07T01:35:49.540Z",
+    "updatedAt": "2026-09-07T01:35:49.540Z"
+  },
+  {
+    "id": "adba12e8-f847-42b5-899e-561cb3821e0e",
+    "templateCode": "T06",
+    "sourceType": "过程性评价记录",
+    "rawPayload": "{\"courseName\":\"工业机器人控制技术\",\"evaluationType\":\"项目实训答辩\",\"evaluationBatch\":\"第10周 - 灌装线排故项目\",\"mappedObjectives\":[\"Obj-2: 独立排查总线掉线故障\"],\"averageScore\":88,\"passRate\":95,\"contentDescription\":\"给定电磁干扰工况，要求学生利用万用表和示波器定位总线断点并恢复通信，最后通过答辩说明排故逻辑。\",\"academicWarning\":\"发现部分学生（约30%）对屏蔽层接地的概念模糊，仅靠尝试法盲目更换接线，导致排故耗时过长，未能体现出理论指导实践的能力。\",\"teacherIntervention\":\"在第11周的理论课上集中串讲了工业现场的接地规范，并补充了接地不良的对比实验，要求之前排故耗时过长的学生重新撰写排故逻辑报告。\",\"items\":[{\"type\":\"实操考核\",\"date\":\"2026-04-20\",\"topic\":\"基础示教编程\",\"completionRate\":100,\"averageScore\":88,\"feedback\":\"学生对示教器操作掌握较快。\"},{\"type\":\"大作业\",\"date\":\"2026-06-05\",\"topic\":\"车门涂胶轨迹离线编程\",\"completionRate\":95,\"averageScore\":81,\"feedback\":\"部分学生在处理姿态插补时出现奇异点报警，需加强空间几何概念。\"}]}",
+    "verifiedFields": null,
+    "status": "COMPLETED",
+    "createdAt": "2026-09-07T01:35:49.541Z",
+    "updatedAt": "2026-09-07T01:35:49.541Z"
+  },
+  {
+    "id": "1234d2ab-c293-4015-a4e7-8211de1fded3",
+    "templateCode": "T11",
+    "sourceType": "AI_SEARCH",
+    "rawPayload": "{\"courseName\":\"工业机器人控制技术\",\"credits\":3,\"hours\":48,\"objectives\":\"培养学生在自动化产线中对工业机器人进行现场系统集成的实战技能。\",\"features\":{\"techTraceability\":\"引入了‘柔性包装智能识别算法’及‘机器视觉在线缺陷检测’等产业最新前沿技术。\",\"researchTransfer\":\"将教师承担的‘辽宁省某食品厂包装线自动化升级项目’剥离出的真实工程难题，转化为大纲中的 6 课时综合实战项目。\"},\"courseCode\":\"ME402\",\"contentOutline\":\"第一部分：机器人系统组成与操作；第二部分：运动学基础与轨迹规划；第三部分：机器人与外部设备的系统集成。\"}",
+    "verifiedFields": null,
+    "status": "PENDING",
+    "createdAt": "2026-09-07T01:35:49.541Z",
+    "updatedAt": "2026-09-07T01:35:49.541Z"
+  },
+  {
+    "id": "178e53a4-0262-473a-8941-0ab4970d5760",
+    "templateCode": "T15",
+    "sourceType": "教学投入深度",
+    "rawPayload": "{\"courseName\":\"工业机器人控制技术\",\"teacher\":\"李教授 / 张讲师\",\"syncDate\":\"9/5/2026\",\"metrics\":{\"careerGuidanceScore\":92,\"learningPlanScore\":88,\"qaResponseRate\":98,\"avgResponseTime\":\"2.4小时\"},\"qaSamples\":[{\"id\":\"QA-102\",\"question\":\"关于灌装机凸轮机构的死点位置，视频里提到的避开方法在实际企业中常用吗？\",\"student\":\"张* (学号: 240***12)\",\"replyTime\":\"1.2小时\",\"replyContent\":\"非常好的问题。企业中通常会串联一个辅助机构，或者使用飞轮来增加惯性度过死点。我把你这个问题补充到了第二章的难点库中。\",\"isIncorporated\":true},{\"id\":\"QA-105\",\"question\":\"老师，期末考核的项目中，企业合同验收标准我们去哪里查？\",\"student\":\"李* (学号: 240***45)\",\"replyTime\":\"0.8小时\",\"replyContent\":\"已经上传到超星平台的“扩展资源”模块，文件名为《HT-24-0019 达意科技设备验收国标》。\",\"isIncorporated\":false}],\"diagnosis\":\"三维教学投入（传道、授业、解惑）极其饱满\",\"details\":\"教师引入了大量真实工厂集成案例，并在课后组织了两次企业工程师线上交流。\",\"impact\":\"证实了任课教师不仅是“念PPT”，而是深度介入了学生的知识重构过程。高频高质量的“解惑”互动强力支撑了 2.3.2 达成度评估的真实性。\",\"careerGuidanceScore\":92,\"learningPlanScore\":85,\"qaScore\":89}",
+    "verifiedFields": null,
+    "status": "COMPLETED",
+    "createdAt": "2026-09-07T01:35:49.541Z",
+    "updatedAt": "2026-09-07T01:35:49.541Z"
   }
 ]
