@@ -1,6 +1,7 @@
 import { EvaluationExpert, EvaluationContext, ExpertResult } from '../types';
-import OpenAI from 'openai';
+import { createLLMClient, getLLMConfig, hasLLMKey } from '@/lib/evaluation/llm';
 import { searchWeb } from '@/lib/search';
+import { buildIndicatorContext } from '../contextHelper';
 
 export const practiceExpert: EvaluationExpert = {
   id: 'expert_practice',
@@ -11,6 +12,9 @@ export const practiceExpert: EvaluationExpert = {
     onLog('🚀 真题真做与项目驱动专家 开始工作：正在拉取 T12(项目课程) 与 T13(毕设选题)...');
     
     const t12Data = context.panoramicData['T12']; // 实践/项目课程
+
+    // 从「填报成果」获取该指标的已确认数据上下文
+    const indCtx = buildIndicatorContext(context, ["1.2.2","1.2.3","3.1.2"]);
     const t13Data = context.panoramicData['T13']; // 毕业设计
 
     if (!t12Data && !t13Data) {
@@ -53,6 +57,12 @@ ${JSON.stringify(t13Data || {}).substring(0, 800)}
 以下是针对其合作企业资质发起的互联网核验结果：
 ${externalData.substring(0, 800)}
 
+
+以下是该指标在「填报成果」中的已确认数据（权重与材料来源）：
+${indCtx.indicatorInfo}
+已确认填报材料：
+${indCtx.confirmedMaterials}
+
 分析指令：
 1. 提取真题真做事实：是否有清晰的跨能力综合验证课程梯度？毕设选题是否有明确的横向课题编号、企业导师记录及签章？
 2. 验证企业资质：结合互联网搜索结果，判定合作企业是否为皮包公司？是否具备对应的产业指导能力？
@@ -72,18 +82,12 @@ ${externalData.substring(0, 800)}
 }`;
 
     onLog('🧠 真题真做专家 正在结合企业背景做交叉核验及长文本推演...');
-    const apiKey = process.env.DEEPSEEK_API_KEY || process.env.DASHSCOPE_API_KEY || process.env.OPENAI_API_KEY;
-    const baseURL = process.env.DEEPSEEK_API_KEY 
-      ? 'https://api.deepseek.com/v1' 
-      : (process.env.DASHSCOPE_API_KEY ? 'https://dashscope.aliyuncs.com/compatible-mode/v1' : 'https://api.openai.com/v1');
-
-    if (!apiKey) {
+    if (!hasLLMKey()) {
       throw new Error("未配置 API_KEY，智能体拒绝工作");
     }
-
-    const client = new OpenAI({ apiKey, baseURL });
+    const client = createLLMClient();
     const response = await client.chat.completions.create({
-      model: process.env.DEEPSEEK_MODEL || 'deepseek-chat',
+      model: getLLMConfig().model,
       messages: [{ role: 'user', content: prompt }],
       response_format: { type: 'json_object' },
       max_tokens: 2000,

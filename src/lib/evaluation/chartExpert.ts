@@ -1,5 +1,5 @@
 import { ExpertResult } from './types';
-import OpenAI from 'openai';
+import { createLLMClient, getLLMConfig, hasLLMKey } from '@/lib/evaluation/llm';
 
 export interface ChartData {
   tags: string[];
@@ -18,12 +18,7 @@ export async function chartEvaluate(
 ): Promise<ChartExpertResponse> {
   onLog('📊 图表绘制师 开始工作：正在审阅 9 位专家的报告，准备抽取量化梯队图表数据...');
   
-  const apiKey = process.env.DEEPSEEK_API_KEY || process.env.DASHSCOPE_API_KEY || process.env.OPENAI_API_KEY;
-  const baseURL = process.env.DEEPSEEK_API_KEY 
-    ? 'https://api.deepseek.com/v1' 
-    : (process.env.DASHSCOPE_API_KEY ? 'https://dashscope.aliyuncs.com/compatible-mode/v1' : 'https://api.openai.com/v1');
-
-  if (!apiKey) {
+  if (!hasLLMKey()) {
     onLog('⚠️ 未找到图表绘制师的 API Key，跳过图表生成');
     return {};
   }
@@ -51,9 +46,9 @@ ${JSON.stringify(expertResults, null, 2)}
 `;
 
   try {
-    const client = new OpenAI({ apiKey, baseURL });
+    const client = createLLMClient();
     const response = await client.chat.completions.create({
-      model: process.env.DEEPSEEK_MODEL || 'deepseek-chat',
+      model: getLLMConfig().model,
       messages: [{ role: 'user', content: prompt }],
       response_format: { type: 'json_object' },
       max_tokens: 2000,

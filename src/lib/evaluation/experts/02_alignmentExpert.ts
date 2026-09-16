@@ -1,5 +1,6 @@
 import { EvaluationExpert, EvaluationContext, ExpertResult } from '../types';
-import OpenAI from 'openai';
+import { createLLMClient, getLLMConfig, hasLLMKey } from '@/lib/evaluation/llm';
+import { buildIndicatorContext } from '../contextHelper';
 
 export const alignmentExpert: EvaluationExpert = {
   id: 'expert_alignment',
@@ -10,6 +11,9 @@ export const alignmentExpert: EvaluationExpert = {
     onLog('🎯 矩阵与大纲对齐专家 开始工作：正在拉取 T04 和 T11 数据...');
     
     const t04Data = context.panoramicData['T04']; // 能力矩阵
+
+    // 从「填报成果」获取该指标的已确认数据上下文
+    const indCtx = buildIndicatorContext(context, ["1.1.2","1.1.3"]);
     const t11Data = context.panoramicData['T11']; // 课程大纲
 
     if (!t04Data || !t11Data) {
@@ -37,6 +41,12 @@ ${JSON.stringify(t04Data).substring(0, 800)}
 以下是 T11 (课程大纲) 的摘要数据：
 ${JSON.stringify(t11Data).substring(0, 1000)}
 
+
+以下是该指标在「填报成果」中的已确认数据（权重与材料来源）：
+${indCtx.indicatorInfo}
+已确认填报材料：
+${indCtx.confirmedMaterials}
+
 分析指令：
 1. 对比 T04 和 T11 的映射关系。
 2. 重点排查是否存在“空壳节点”（产业需要该能力，但没有任何课程支撑）？
@@ -57,18 +67,12 @@ ${JSON.stringify(t11Data).substring(0, 1000)}
 }`;
 
     onLog('🧠 矩阵与大纲对齐专家 正在交由大模型进行深度语义比对...');
-    const apiKey = process.env.DEEPSEEK_API_KEY || process.env.DASHSCOPE_API_KEY || process.env.OPENAI_API_KEY;
-    const baseURL = process.env.DEEPSEEK_API_KEY 
-      ? 'https://api.deepseek.com/v1' 
-      : (process.env.DASHSCOPE_API_KEY ? 'https://dashscope.aliyuncs.com/compatible-mode/v1' : 'https://api.openai.com/v1');
-
-    if (!apiKey) {
+    if (!hasLLMKey()) {
       throw new Error("未配置 API_KEY，智能体拒绝工作");
     }
-
-    const client = new OpenAI({ apiKey, baseURL });
+    const client = createLLMClient();
     const response = await client.chat.completions.create({
-      model: process.env.DEEPSEEK_MODEL || 'deepseek-chat',
+      model: getLLMConfig().model,
       messages: [{ role: 'user', content: prompt }],
       response_format: { type: 'json_object' },
       max_tokens: 2000,

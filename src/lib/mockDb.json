@@ -25,7 +25,7 @@
     "sourceType": "AI_SEARCH",
     "rawPayload": "{\"industryTitle\":\"轻工包装自动化装备产业链\",\"nodes\":[{\"layer\":\"上游 (核心零部件)\",\"items\":[{\"name\":\"伺服电机与驱动系统\",\"coreRole\":\"电机驱动控制工程师\"},{\"name\":\"精密减速器\",\"coreRole\":\"传动结构设计工程师\"},{\"name\":\"工业传感器与PLC\",\"coreRole\":\"底层逻辑编程工程师\"}]},{\"layer\":\"中游 (本体制造与集成)\",\"items\":[{\"name\":\"包装机械本体装配\",\"coreRole\":\"机械本体装配工程师\"},{\"name\":\"机电系统集成与调试\",\"coreRole\":\"系统集成调试工程师\"}]},{\"layer\":\"下游 (应用与服务)\",\"items\":[{\"name\":\"食品饮料产线应用\",\"coreRole\":\"产线运维工程师\"},{\"name\":\"售后技术支持\",\"coreRole\":\"技术支持工程师\"}]}]}",
     "verifiedFields": null,
-    "status": "PENDING",
+    "status": "COMPLETED",
     "createdAt": "2026-09-05T16:04:16.982Z",
     "updatedAt": "2026-09-05T16:04:16.982Z"
   },
@@ -35,7 +35,7 @@
     "sourceType": "AI_SEARCH",
     "rawPayload": "{\"targetT03Version\":\"2026-T03-轻工机械\",\"mappings\":[{\"courseName\":\"机电传动控制\",\"matchedNodes\":[\"伺服电机与驱动系统\",\"精密减速器\"],\"logic\":\"培养学生针对驱动组件的选型与底层控制能力。\"},{\"courseName\":\"工业机器人控制技术\",\"matchedNodes\":[\"机电系统集成与调试\",\"售后技术支持\"],\"logic\":\"培养学生在自动化产线中对工业机器人进行现场系统集成的实战技能。\"},{\"courseName\":\"包装机械设计\",\"matchedNodes\":[\"包装机械本体装配\",\"食品饮料产线应用\"],\"logic\":\"专门针对轻工食品行业的复杂包装工艺，培养本体结构设计与下游运维能力。\"}]}",
     "verifiedFields": null,
-    "status": "PENDING",
+    "status": "COMPLETED",
     "createdAt": "2026-09-05T16:08:04.791Z",
     "updatedAt": "2026-09-05T16:08:04.791Z"
   },
@@ -45,7 +45,7 @@
     "sourceType": "AI_SEARCH",
     "rawPayload": "{\"courseName\":\"包装机械设计\",\"credits\":3,\"hours\":48,\"objectives\":[{\"id\":\"Obj-1\",\"desc\":\"掌握包装机械机构学原理及常见包装工艺方法。\",\"mappedRequirement\":\"1.2 掌握机械工程基础知识，能用于机械系统及零部件的分析与计算。\"},{\"id\":\"Obj-2\",\"desc\":\"能针对特定食品包装需求，完成机械传动与执行机构的结构设计。\",\"mappedRequirement\":\"3.1 掌握机械产品全生命周期设计方法，能够设计满足轻工制造特定需求的系统或工艺流程。\"},{\"id\":\"Obj-3\",\"desc\":\"具备包装装备现场联调及处理突发工程故障的能力。\",\"mappedRequirement\":\"2.1 能应用基本科学原理，识别和判断自动化机械装备运行中的关键工程问题。\"}],\"features\":{\"techTraceability\":\"引入了‘柔性包装智能识别算法’及‘机器视觉在线缺陷检测’等产业最新前沿技术。\",\"researchTransfer\":\"将教师承担的‘辽宁省某食品厂包装线自动化升级项目’剥离出的真实工程难题，转化为大纲中的 6 课时综合实战项目。\"}}",
     "verifiedFields": null,
-    "status": "PENDING",
+    "status": "COMPLETED",
     "createdAt": "2026-09-05T16:29:03.555Z",
     "updatedAt": "2026-09-05T16:29:03.555Z"
   },
@@ -275,7 +275,7 @@
     "sourceType": "AI_SEARCH",
     "rawPayload": "{\"courseName\":\"机电传动控制\",\"credits\":3.5,\"hours\":48,\"objectives\":[{\"id\":\"Obj-1\",\"desc\":\"使学生具备机电驱动系统的分析、选型与底层控制开发能力。\",\"mappedRequirement\":\"1.2 掌握机械工程基础知识\"}],\"features\":{\"techTraceability\":\"引入了‘柔性包装智能识别算法’及‘机器视觉在线缺陷检测’等产业最新前沿技术。\",\"researchTransfer\":\"将教师承担的‘辽宁省某食品厂包装线自动化升级项目’剥离出的真实工程难题，转化为大纲中的 6 课时综合实战项目。\"},\"courseCode\":\"ME301\",\"contentOutline\":\"第一部分：直流/交流电机原理；第二部分：步进与伺服控制技术；第三部分：工业总线与底层通信。\"}",
     "verifiedFields": null,
-    "status": "PENDING",
+    "status": "COMPLETED",
     "createdAt": "2026-09-07T01:35:49.540Z",
     "updatedAt": "2026-09-07T01:35:49.540Z"
   },
@@ -315,7 +315,7 @@
     "sourceType": "AI_SEARCH",
     "rawPayload": "{\"courseName\":\"工业机器人控制技术\",\"credits\":3,\"hours\":48,\"objectives\":[{\"id\":\"Obj-1\",\"desc\":\"培养学生在自动化产线中对工业机器人进行现场系统集成的实战技能。\",\"mappedRequirement\":\"1.2 掌握机械工程基础知识\"}],\"features\":{\"techTraceability\":\"引入了‘柔性包装智能识别算法’及‘机器视觉在线缺陷检测’等产业最新前沿技术。\",\"researchTransfer\":\"将教师承担的‘辽宁省某食品厂包装线自动化升级项目’剥离出的真实工程难题，转化为大纲中的 6 课时综合实战项目。\"},\"courseCode\":\"ME402\",\"contentOutline\":\"第一部分：机器人系统组成与操作；第二部分：运动学基础与轨迹规划；第三部分：机器人与外部设备的系统集成。\"}",
     "verifiedFields": null,
-    "status": "PENDING",
+    "status": "COMPLETED",
     "createdAt": "2026-09-07T01:35:49.541Z",
     "updatedAt": "2026-09-07T01:35:49.541Z"
   },

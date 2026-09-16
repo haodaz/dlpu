@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
 import { EvaluationContext, ExpertResult } from '@/lib/evaluation/types';
+import { buildEvaluationContext } from '@/lib/data-management';
+import { indicators } from '@/lib/indicators';
 
 // 导入 9 大真实微专家
 import { industryExpert } from '@/lib/evaluation/experts/01_industryExpert';
@@ -16,10 +18,14 @@ import { alumniExpert } from '@/lib/evaluation/experts/09_alumniExpert';
 // 导入主智能体
 import { chiefEvaluate } from '@/lib/evaluation/chief';
 import { chartEvaluate } from '@/lib/evaluation/chartExpert';
+import { MOCK_EXPERTS, mockChiefEvaluate, mockChartEvaluate } from '@/lib/evaluation/mockExperts';
+import { hasLLMKey } from '@/lib/evaluation/llm';
 
 const prisma = new PrismaClient();
 
-const ALL_EXPERTS = [
+// 根据是否配置 API Key 决定使用真实专家还是 mock 专家
+const USE_MOCK = !hasLLMKey();
+const ALL_EXPERTS = USE_MOCK ? MOCK_EXPERTS : [
   industryExpert,
   alignmentExpert,
   teacherExpert,
@@ -42,32 +48,30 @@ export async function POST(request: Request) {
 
         try {
           // 1. 初始化界面状态
+          if (USE_MOCK) {
+            send({ type: 'log', agentId: 'system', message: '⚠️ 未检测到 AI API Key，当前运行于 Mock 演示模式（数据为预设模拟结果）。配置 DEEPSEEK_API_KEY / DASHSCOPE_API_KEY / OPENAI_API_KEY 后可切换为真实 AI 评估。' });
+          }
           send({ type: 'log', agentId: 'system', message: '正在启动强防御架构智能评价引擎 (Promise.allSettled)...' });
           send({ type: 'agent', data: { id: 'chief', name: '主智能体 (Chief AI)', status: 'working', icon: '👑' } });
 
-          // 2. 拉取全景数据
-          send({ type: 'log', agentId: 'chief', message: '👑 主智能体正在拉取底层全景数据池...' });
-          let rawData;
-          try {
-            rawData = await prisma.panoramicData.findMany();
-          } catch (dbError) {
-            console.warn("Database query failed (likely Vercel readonly), using static mock data.");
-            rawData = require('@/lib/mockDb.json');
-          }
+          // 2. 从「填报成果」构建评价上下文（只取已确认的数据）
+          send({ type: 'log', agentId: 'chief', message: '👑 主智能体正在从「填报成果」拉取已确认的填报数据...' });
+          const evalCtx = buildEvaluationContext();
           
           const context: EvaluationContext = {
-            panoramicData: {}
+            panoramicData: evalCtx.panoramicData,
+            confirmedItems: evalCtx.confirmedItems,
+            indicatorData: evalCtx.indicatorData,
+            pendingIndicators: evalCtx.pendingIndicators,
+            indicators,
           };
-
-          rawData.forEach(item => {
-            try {
-              context.panoramicData[item.templateCode] = JSON.parse(item.rawPayload);
-            } catch (e) {
-              context.panoramicData[item.templateCode] = item.rawPayload;
-            }
-          });
           
-          send({ type: 'log', agentId: 'system', message: `✅ 成功挂载 ${Object.keys(context.panoramicData).length} 个全景数据节点，下发给微专家。` });
+          const confirmedCount = evalCtx.confirmedItems.length;
+          const coveredIndicators = Object.keys(evalCtx.indicatorData).length;
+          send({ type: 'log', agentId: 'system', message: `✅ 已确认 ${confirmedCount} 份填报数据，覆盖 ${coveredIndicators}/17 项指标，下发给微专家。` });
+          if (evalCtx.pendingIndicators.length > 0) {
+            send({ type: 'log', agentId: 'system', message: `⚠️ ${evalCtx.pendingIndicators.length} 项指标仍有待确认数据，将基于已确认部分评估。` });
+          }
           send({ type: 'agent', data: { id: 'chief', status: 'done', icon: '👑' } });
 
           // 3. 并发启动专家集群
@@ -122,9 +126,13 @@ export async function POST(request: Request) {
           const chiefLog = (msg: string) => send({ type: 'log', agentId: 'chief_synthesis', message: msg });
           const chartLog = (msg: string) => send({ type: 'log', agentId: 'chart_expert', message: msg });
 
+          // 使用真实 or mock 的主智能体与图表绘制师
+          const chiefFn = USE_MOCK ? mockChiefEvaluate : chiefEvaluate;
+          const chartFn = USE_MOCK ? mockChartEvaluate : chartEvaluate;
+
           const [finalReport, chartDataMap] = await Promise.all([
-            chiefEvaluate(validExpertResults, chiefLog),
-            chartEvaluate(validExpertResults, chartLog)
+            chiefFn(validExpertResults, chiefLog, context),
+            chartFn(validExpertResults, chartLog)
           ]);
 
           // 将 chartData 注入到 finalReport 的对应专家结果中

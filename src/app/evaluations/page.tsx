@@ -25,7 +25,18 @@ export default function SmartEvaluationEngine() {
     const saved = localStorage.getItem('dlpu_eval_history');
     if (saved) {
       try {
-        setHistoryReports(JSON.parse(saved));
+        const list = JSON.parse(saved);
+        setHistoryReports(list);
+        // 如果 URL 带 reportId，则自动展示该报告
+        const params = new URLSearchParams(window.location.search);
+        const reportId = params.get('reportId');
+        if (reportId) {
+          const target = list.find((r: any) => String(r.id) === reportId);
+          if (target) {
+            setFinalReport(target.data);
+            setIsFinished(true);
+          }
+        }
       } catch (e) {}
     }
   }, []);
@@ -377,43 +388,6 @@ export default function SmartEvaluationEngine() {
               启动多智能体并发评估
             </Button>
           </div>
-
-          {/* History List */}
-          {historyReports.length > 0 && (
-            <div className="animate-fade-in-up">
-              <Title level={3} className="!text-slate-700 !mb-8 flex items-center gap-3">
-                <FileTextOutlined className="text-blue-500" /> 历史评级大厅 (最近报告)
-              </Title>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {historyReports.map(report => (
-                  <div 
-                    key={report.id} 
-                    className="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:shadow-xl hover:-translate-y-1 cursor-pointer transition-all duration-300 flex flex-col justify-between"
-                    onClick={() => {
-                      setFinalReport(report.data);
-                      setIsFinished(true);
-                    }}
-                  >
-                    <div>
-                      <div className="text-slate-400 text-sm mb-6 font-mono bg-slate-50 inline-block px-3 py-1 rounded-full">{report.date}</div>
-                      <div className="flex items-baseline gap-4 mb-4">
-                        <span className="text-5xl font-black text-slate-800">{report.score}</span>
-                        <span className={`px-3 py-1 rounded-full text-xs font-bold border ${getGradeColor(report.grade)}`}>
-                          {report.grade}
-                        </span>
-                      </div>
-                      <div className="text-slate-600 text-sm line-clamp-3 leading-relaxed">
-                        {report.data.diagnosis}
-                      </div>
-                    </div>
-                    <div className="mt-6 text-blue-500 text-sm font-bold flex items-center gap-1 group">
-                      查看详情 <span className="transition-transform group-hover:translate-x-1">→</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
         </div>
       )}
 

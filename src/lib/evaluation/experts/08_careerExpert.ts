@@ -1,5 +1,6 @@
 import { EvaluationExpert, EvaluationContext, ExpertResult } from '../types';
-import OpenAI from 'openai';
+import { createLLMClient, getLLMConfig, hasLLMKey } from '@/lib/evaluation/llm';
+import { buildIndicatorContext } from '../contextHelper';
 
 export const careerExpert: EvaluationExpert = {
   id: 'expert_career',
@@ -10,6 +11,9 @@ export const careerExpert: EvaluationExpert = {
     onLog('💼 初次就业质量专家 开始工作：正在抽取 T18(就业数据) 与 T03(产业白皮书) 进行对口率锚定...');
     
     const t18Data = context.panoramicData['T18']; // 就业数据
+
+    // 从「填报成果」获取该指标的已确认数据上下文
+    const indCtx = buildIndicatorContext(context, ["4.1.1","4.1.3"]);
     const t03Data = context.panoramicData['T03']; // 产业白皮书（用作靶点对齐）
 
     if (!t18Data) {
@@ -36,6 +40,12 @@ ${JSON.stringify(t03Data || { info: "未提供明确靶点，请自行判断" })
 以下是 T18 (就业与满意度数据) 的摘要：
 ${JSON.stringify(t18Data).substring(0, 1000)}
 
+
+以下是该指标在「填报成果」中的已确认数据（权重与材料来源）：
+${indCtx.indicatorInfo}
+已确认填报材料：
+${indCtx.confirmedMaterials}
+
 分析指令：
 1. 计算真实行业对口率：对比 T03 规划的岗位与 T18 实际的去向，评估有多少学生真正进入了本专业定位的核心产业链？
 2. 校验满意度真伪：分析用人单位问卷的样本量是否达标（≥30%），满意度数据是否可信？
@@ -55,18 +65,12 @@ ${JSON.stringify(t18Data).substring(0, 1000)}
 }`;
 
     onLog('🧠 初次就业质量专家 正在进行跨模板交叉推理(T18 vs T03)...');
-    const apiKey = process.env.DEEPSEEK_API_KEY || process.env.DASHSCOPE_API_KEY || process.env.OPENAI_API_KEY;
-    const baseURL = process.env.DEEPSEEK_API_KEY 
-      ? 'https://api.deepseek.com/v1' 
-      : (process.env.DASHSCOPE_API_KEY ? 'https://dashscope.aliyuncs.com/compatible-mode/v1' : 'https://api.openai.com/v1');
-
-    if (!apiKey) {
+    if (!hasLLMKey()) {
       throw new Error("未配置 API_KEY，智能体拒绝工作");
     }
-
-    const client = new OpenAI({ apiKey, baseURL });
+    const client = createLLMClient();
     const response = await client.chat.completions.create({
-      model: process.env.DEEPSEEK_MODEL || 'deepseek-chat',
+      model: getLLMConfig().model,
       messages: [{ role: 'user', content: prompt }],
       response_format: { type: 'json_object' },
       max_tokens: 2000,
