@@ -1,6 +1,7 @@
 import { EvaluationExpert, EvaluationContext, ExpertResult } from '../types';
-import OpenAI from 'openai';
+import { createLLMClient, getLLMConfig, hasLLMKey } from '@/lib/evaluation/llm';
 import { searchWeb } from '@/lib/search';
+import { buildIndicatorContext } from '../contextHelper';
 
 export const teacherExpert: EvaluationExpert = {
   id: 'expert_teacher',
@@ -11,6 +12,9 @@ export const teacherExpert: EvaluationExpert = {
     onLog('👩‍🏫 师资与投入剖析专家 开始工作：正在拉取 T15 师资力量数据...');
     
     const t15Data = context.panoramicData['T15'];
+
+    // 从「填报成果」获取该指标的已确认数据上下文
+    const indCtx = buildIndicatorContext(context, ["2.1.2","2.2.1"]);
 
     if (!t15Data) {
       onLog('⚠️ 师资与投入剖析专家 发现 T15 缺失，无法完成师资剖析。');
@@ -33,6 +37,12 @@ export const teacherExpert: EvaluationExpert = {
 以下是 T15 (师资力量及投入) 的摘要数据：
 ${JSON.stringify(t15Data).substring(0, 1000)}
 
+
+以下是该指标在「填报成果」中的已确认数据（权重与材料来源）：
+${indCtx.indicatorInfo}
+已确认填报材料：
+${indCtx.confirmedMaterials}
+
 分析指令：
 1. 提取横向科研转化事实：教师是否有横向课题经历，并真实转化为教学案例？（评 2.1.1）
 2. 提取教学投入深度事实：是否在“传道(职业指引)”、“授业(课程依赖逻辑)”、“解惑(答疑与修订)”三维都有扎实数据？（评 2.2.1）
@@ -52,18 +62,12 @@ ${JSON.stringify(t15Data).substring(0, 1000)}
 }`;
 
     onLog('🧠 师资与投入剖析专家 正在交由大模型进行三维投入深度推理...');
-    const apiKey = process.env.DEEPSEEK_API_KEY || process.env.DASHSCOPE_API_KEY || process.env.OPENAI_API_KEY;
-    const baseURL = process.env.DEEPSEEK_API_KEY 
-      ? 'https://api.deepseek.com/v1' 
-      : (process.env.DASHSCOPE_API_KEY ? 'https://dashscope.aliyuncs.com/compatible-mode/v1' : 'https://api.openai.com/v1');
-
-    if (!apiKey) {
+    if (!hasLLMKey()) {
       throw new Error("未配置 API_KEY，智能体拒绝工作");
     }
-
-    const client = new OpenAI({ apiKey, baseURL });
+    const client = createLLMClient();
     const response = await client.chat.completions.create({
-      model: process.env.DEEPSEEK_MODEL || 'deepseek-chat',
+      model: getLLMConfig().model,
       messages: [{ role: 'user', content: prompt }],
       response_format: { type: 'json_object' },
       max_tokens: 2000,

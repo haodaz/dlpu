@@ -1,6 +1,7 @@
 import { EvaluationExpert, EvaluationContext, ExpertResult } from '../types';
-import OpenAI from 'openai';
+import { createLLMClient, getLLMConfig, hasLLMKey } from '@/lib/evaluation/llm';
 import { searchWeb } from '@/lib/search';
+import { buildIndicatorContext } from '../contextHelper';
 
 export const industryExpert: EvaluationExpert = {
   id: 'expert_industry',
@@ -12,6 +13,9 @@ export const industryExpert: EvaluationExpert = {
     
     // 1. 获取 T03 专属数据
     const t03Data = context.panoramicData['T03'];
+
+    // 从「填报成果」获取该指标的已确认数据上下文
+    const indCtx = buildIndicatorContext(context, ["1.1.1"]);
     if (!t03Data) {
       onLog('⚠️ 产业白皮书审核专家 未发现 T03 数据，进行降级评估');
       return {
@@ -54,6 +58,12 @@ ${JSON.stringify(t03Data).substring(0, 800)}
 以下是外部互联网检索到的 2026 年该领域的国家宏观政策与产业现状补充：
 ${externalData.substring(0, 1000)}
 
+
+以下是该指标在「填报成果」中的已确认数据（权重与材料来源）：
+${indCtx.indicatorInfo}
+已确认填报材料：
+${indCtx.confirmedMaterials}
+
 分析指令：
 1. 提取现状事实：该专业是否输出了这三部分？是否有实质内容？
 2. 评价其有效性与评级：
@@ -73,18 +83,12 @@ ${externalData.substring(0, 1000)}
 
     // 4. 调用真实大模型进行判定
     onLog('🧠 产业白皮书审核专家 正在进行多维逻辑推理判定...');
-    const apiKey = process.env.DEEPSEEK_API_KEY || process.env.DASHSCOPE_API_KEY || process.env.OPENAI_API_KEY;
-    const baseURL = process.env.DEEPSEEK_API_KEY 
-      ? 'https://api.deepseek.com/v1' 
-      : (process.env.DASHSCOPE_API_KEY ? 'https://dashscope.aliyuncs.com/compatible-mode/v1' : 'https://api.openai.com/v1');
-
-    if (!apiKey) {
+    if (!hasLLMKey()) {
       throw new Error("未配置 API_KEY，智能体拒绝工作");
     }
-
-    const client = new OpenAI({ apiKey, baseURL });
+    const client = createLLMClient();
     const response = await client.chat.completions.create({
-      model: process.env.DEEPSEEK_MODEL || 'deepseek-chat',
+      model: getLLMConfig().model,
       messages: [{ role: 'user', content: prompt }],
       response_format: { type: 'json_object' },
       max_tokens: 2000,

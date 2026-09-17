@@ -1,5 +1,6 @@
 import { EvaluationExpert, EvaluationContext, ExpertResult } from '../types';
-import OpenAI from 'openai';
+import { createLLMClient, getLLMConfig, hasLLMKey } from '@/lib/evaluation/llm';
+import { buildIndicatorContext } from '../contextHelper';
 
 export const assetExpert: EvaluationExpert = {
   id: 'expert_asset',
@@ -10,6 +11,9 @@ export const assetExpert: EvaluationExpert = {
     onLog('🏭 资产与资源调度专家 开始工作：正在拉取 T10 设备台账与平台使用记录...');
     
     const t10Data = context.panoramicData['T10']; // 资产与资源
+
+    // 从「填报成果」获取该指标的已确认数据上下文
+    const indCtx = buildIndicatorContext(context, ["3.1.1"]);
 
     if (!t10Data) {
       onLog('⚠️ 资产与资源调度专家 发现 T10 数据缺失，退回安全模式评估。');
@@ -32,6 +36,12 @@ export const assetExpert: EvaluationExpert = {
 以下是 T10 (资产与资源) 的摘要数据：
 ${JSON.stringify(t10Data).substring(0, 1500)}
 
+
+以下是该指标在「填报成果」中的已确认数据（权重与材料来源）：
+${indCtx.indicatorInfo}
+已确认填报材料：
+${indCtx.confirmedMaterials}
+
 分析指令：
 1. 提取硬件使用事实：计算实验设备完好率与开出率，排查是否有高昂设备在核心课程中根本未被调用？
 2. 提取AI基础设施事实：校级统一资源中心、课程知识图谱、智能学伴等的建设情况如何？其在核心课程中的接入率（渗透率）是否达标？
@@ -51,18 +61,12 @@ ${JSON.stringify(t10Data).substring(0, 1500)}
 }`;
 
     onLog('🧠 资产与资源调度专家 正在交由大模型进行资产流转长文本推演...');
-    const apiKey = process.env.DEEPSEEK_API_KEY || process.env.DASHSCOPE_API_KEY || process.env.OPENAI_API_KEY;
-    const baseURL = process.env.DEEPSEEK_API_KEY 
-      ? 'https://api.deepseek.com/v1' 
-      : (process.env.DASHSCOPE_API_KEY ? 'https://dashscope.aliyuncs.com/compatible-mode/v1' : 'https://api.openai.com/v1');
-
-    if (!apiKey) {
+    if (!hasLLMKey()) {
       throw new Error("未配置 API_KEY，智能体拒绝工作");
     }
-
-    const client = new OpenAI({ apiKey, baseURL });
+    const client = createLLMClient();
     const response = await client.chat.completions.create({
-      model: process.env.DEEPSEEK_MODEL || 'deepseek-chat',
+      model: getLLMConfig().model,
       messages: [{ role: 'user', content: prompt }],
       response_format: { type: 'json_object' },
       max_tokens: 2000,

@@ -1,5 +1,6 @@
 import { EvaluationExpert, EvaluationContext, ExpertResult } from '../types';
-import OpenAI from 'openai';
+import { createLLMClient, getLLMConfig, hasLLMKey } from '@/lib/evaluation/llm';
+import { buildIndicatorContext } from '../contextHelper';
 
 export const studentExpert: EvaluationExpert = {
   id: 'expert_student',
@@ -10,6 +11,9 @@ export const studentExpert: EvaluationExpert = {
     onLog('📊 过程与行为监测专家 开始工作：正在拉取 T06 和 T09 学情及平台行为日志...');
     
     const t06Data = context.panoramicData['T06']; // 学情行为
+
+    // 从「填报成果」获取该指标的已确认数据上下文
+    const indCtx = buildIndicatorContext(context, ["2.3.1","2.3.2"]);
     const t09Data = context.panoramicData['T09']; // 平台日志
 
     if (!t06Data || !t09Data) {
@@ -36,6 +40,12 @@ ${JSON.stringify(t06Data).substring(0, 1000)}
 以下是 T09 (平台日志) 摘要数据：
 ${JSON.stringify(t09Data).substring(0, 1000)}
 
+
+以下是该指标在「填报成果」中的已确认数据（权重与材料来源）：
+${indCtx.indicatorInfo}
+已确认填报材料：
+${indCtx.confirmedMaterials}
+
 分析指令：
 1. 提取学习行为事实：评价出勤率、作业提交率、平台资源访问频次等纯客观行为指标。
 2. 提取考核闭环事实：检查目标-考核映射率，查阅过程性考核的时效，通过分析“下一轮大纲版本 diff”验证是否真有改进发生（“说要改的”是否“真的改了”）。
@@ -55,18 +65,12 @@ ${JSON.stringify(t09Data).substring(0, 1000)}
 }`;
 
     onLog('🧠 过程与行为监测专家 正在交由大模型进行长文本日志剖析...');
-    const apiKey = process.env.DEEPSEEK_API_KEY || process.env.DASHSCOPE_API_KEY || process.env.OPENAI_API_KEY;
-    const baseURL = process.env.DEEPSEEK_API_KEY 
-      ? 'https://api.deepseek.com/v1' 
-      : (process.env.DASHSCOPE_API_KEY ? 'https://dashscope.aliyuncs.com/compatible-mode/v1' : 'https://api.openai.com/v1');
-
-    if (!apiKey) {
+    if (!hasLLMKey()) {
       throw new Error("未配置 API_KEY，智能体拒绝工作");
     }
-
-    const client = new OpenAI({ apiKey, baseURL });
+    const client = createLLMClient();
     const response = await client.chat.completions.create({
-      model: process.env.DEEPSEEK_MODEL || 'deepseek-chat',
+      model: getLLMConfig().model,
       messages: [{ role: 'user', content: prompt }],
       response_format: { type: 'json_object' },
       max_tokens: 2000,

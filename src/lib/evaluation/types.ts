@@ -15,8 +15,15 @@ export interface ExpertResult {
   };
 }
 
+import type { ProcessedDataItem } from '@/lib/data-management';
+import type { Indicator } from '@/lib/indicators';
+
 export interface EvaluationContext {
-  panoramicData: Record<string, any>; // T01-T19 的原始全景数据
+  panoramicData: Record<string, any>; // T01-T19 的原始全景数据（兼容旧专家）
+  confirmedItems: ProcessedDataItem[]; // 已确认/已修改的填报数据
+  indicatorData: Record<string, ProcessedDataItem[]>; // 指标ID → 关联已确认项
+  pendingIndicators: string[]; // 仍有待确认数据的指标
+  indicators: Indicator[]; // 指标体系定义（含权重）
 }
 
 export interface EvaluationExpert {

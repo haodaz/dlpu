@@ -1,9 +1,21 @@
 'use client';
-import React, { useEffect, useState } from 'react';
-import { Card, Tabs, Descriptions, Tag, Row, Col, Badge, Empty, Breadcrumb, Typography, Table, Button } from 'antd';
-import { DatabaseOutlined, HomeOutlined, BuildOutlined, CheckCircleOutlined, ClusterOutlined, TrophyOutlined, UserOutlined } from '@ant-design/icons';
+import React, { useEffect, useState, useMemo } from 'react';
+import { Card, Tabs, Descriptions, Tag, Row, Col, Empty, Button } from 'antd';
+import {
+  BuildOutlined,
+  CheckCircleOutlined,
+  RobotOutlined,
+  CloudUploadOutlined,
+  GlobalOutlined,
+  ArrowRightOutlined,
+  ClockCircleOutlined,
+  InfoCircleOutlined,
+  PlusOutlined,
+} from '@ant-design/icons';
 import { useRouter } from 'next/navigation';
 import mockFaculty from '@/lib/mockFaculty.json';
+import { getAllProcessedData, getGlobalStat } from '@/lib/data-management';
+import { indicators } from '@/lib/indicators';
 
 export default function PanoramicPage() {
   const router = useRouter();
@@ -18,43 +30,155 @@ export default function PanoramicPage() {
   const [t18Data, setT18Data] = useState<any>(null);
   const [t19Data, setT19Data] = useState<any>(null);
 
+  const global = useMemo(() => getGlobalStat(), []);
+  const allData = useMemo(() => getAllProcessedData(), []);
+
+  // 统计：已确认的数据条数、完整度
+  const confirmedCount = useMemo(
+    () => allData.filter((d) => d.processStatus === 'confirmed' || d.processStatus === 'modified').length,
+    [allData]
+  );
+  const coverageRatio = global.totalData > 0 ? Math.round((confirmedCount / global.totalData) * 100) : 0;
+
+  // 5 个板块 → 关联指标
+  const sectionIndicators: Record<string, string[]> = {
+    '1': ['1.1.1'],           // 机构基本信息
+    '2': ['1.1.2', '1.2.1', '1.2.2', '1.3.1'], // 课程资源
+    '3': ['1.1.1'],           // 产业图谱
+    '4': ['2.1.2', '2.2.1'],  // 师资团队
+    '5': ['1.2.3', '3.1.2', '4.1.1', '4.1.2', '4.1.3'], // 实践成果
+  };
+
+  // 每个板块的完整度统计
+  const sectionStats = useMemo(() => {
+    const stats: Record<string, { confirmed: number; total: number; pending: number; missingIndicators: string[] }> = {};
+    Object.entries(sectionIndicators).forEach(([key, indIds]) => {
+      const items = allData.filter((d) => indIds.some((id) => d.relatedIndicators.includes(id)));
+      const confirmed = items.filter((d) => d.processStatus === 'confirmed' || d.processStatus === 'modified').length;
+      const pending = items.filter((d) => d.processStatus === 'pending').length;
+      // 找出没有任何已确认数据的指标
+      const missingIndicators = indIds.filter((id) => {
+        const indItems = items.filter((d) => d.relatedIndicators.includes(id));
+        return !indItems.some((d) => d.processStatus === 'confirmed' || d.processStatus === 'modified');
+      });
+      stats[key] = { confirmed, total: items.length, pending, missingIndicators };
+    });
+    return stats;
+  }, [allData]);
+
+  // 板块完整度组件
+  const SectionHeader = ({ sectionKey, name }: { sectionKey: string; name: string }) => {
+    const s = sectionStats[sectionKey];
+    const ratio = s.total > 0 ? Math.round((s.confirmed / s.total) * 100) : 0;
+    return (
+      <div className="mb-4 flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <span className="text-base font-bold text-slate-800">{name}</span>
+          <span className="text-xs text-slate-400">数据完整度 {ratio}%</span>
+          <div className="w-24 h-1.5 bg-slate-100 rounded-full overflow-hidden">
+            <div className="h-full bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full" style={{ width: `${ratio}%` }} />
+          </div>
+          <span className="text-xs text-slate-500">{s.confirmed}/{s.total} 项已确认</span>
+        </div>
+        {s.pending > 0 && (
+          <span className="text-xs text-amber-600 font-bold">{s.pending} 项待确认</span>
+        )}
+      </div>
+    );
+  };
+
+  // 缺失项提示组件
+  const MissingItems = ({ sectionKey }: { sectionKey: string }) => {
+    const s = sectionStats[sectionKey];
+    if (s.missingIndicators.length === 0 && s.pending === 0) return null;
+    return (
+      <div className="mb-4 p-3 bg-amber-50 border border-amber-200 rounded-lg">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2 text-sm">
+            <ClockCircleOutlined className="text-amber-600" />
+            <span className="text-amber-700">
+              {s.missingIndicators.length > 0 && `缺 ${s.missingIndicators.length} 项指标数据`}
+              {s.missingIndicators.length > 0 && s.pending > 0 && '，'}
+              {s.pending > 0 && `${s.pending} 项待确认`}
+            </span>
+            {s.missingIndicators.length > 0 && (
+              <div className="flex items-center gap-1 ml-2">
+                {s.missingIndicators.map((iid) => {
+                  const ind = indicators.find((x) => x.id === iid);
+                  return (
+                    <span key={iid} className="text-[10px] px-1.5 py-0.5 rounded bg-white border border-amber-200 text-amber-600 font-mono">
+                      {iid} {ind?.name}
+                    </span>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+          <button
+            onClick={() => router.push('/data-management/ai-prefill')}
+            className="text-xs font-bold text-amber-700 hover:text-amber-800 flex items-center gap-0.5"
+          >
+            <PlusOutlined /> 去补充
+          </button>
+        </div>
+      </div>
+    );
+  };
+
   useEffect(() => {
     fetch('/api/panoramic')
-      .then(res => res.json())
-      .then(result => {
+      .then((res) => res.json())
+      .then((result) => {
         if (result.success) {
           const data = result.data;
-          const t01 = data.find((item: any) => item.templateCode === 'T01');
-          const t02 = data.find((item: any) => item.templateCode === 'T02');
-          const t03 = data.find((item: any) => item.templateCode === 'T03');
-          const t04 = data.find((item: any) => item.templateCode === 'T04');
-          const t11 = data.find((item: any) => item.templateCode === 'T11');
-          const t08 = data.find((item: any) => item.templateCode === 'T08');
-          const t12 = data.find((item: any) => item.templateCode === 'T12');
-          const t14 = data.find((item: any) => item.templateCode === 'T14');
-          const t18 = data.find((item: any) => item.templateCode === 'T18');
-          const t19 = data.find((item: any) => item.templateCode === 'T19');
-
-          if (t01) setT01Data(JSON.parse(t01.rawPayload));
-          if (t02) setT02Data(JSON.parse(t02.rawPayload));
-          if (t03) setT03Data(JSON.parse(t03.rawPayload));
-          if (t04) setT04Data(JSON.parse(t04.rawPayload));
-          if (t11) setT11Data(JSON.parse(t11.rawPayload));
-          if (t08) setT08Data(JSON.parse(t08.rawPayload));
-          if (t12) setT12Data(JSON.parse(t12.rawPayload));
-          if (t14) setT14Data(JSON.parse(t14.rawPayload));
-          if (t18) setT18Data(JSON.parse(t18.rawPayload));
-          if (t19) setT19Data(JSON.parse(t19.rawPayload));
+          const find = (code: string) => data.find((item: any) => item.templateCode === code);
+          const parse = (item: any) => (item ? JSON.parse(item.rawPayload) : null);
+          setT01Data(parse(find('T01')));
+          setT02Data(parse(find('T02')));
+          setT03Data(parse(find('T03')));
+          setT04Data(parse(find('T04')));
+          setT11Data(parse(find('T11')));
+          setT08Data(parse(find('T08')));
+          setT12Data(parse(find('T12')));
+          setT14Data(parse(find('T14')));
+          setT18Data(parse(find('T18')));
+          setT19Data(parse(find('T19')));
         }
       });
   }, []);
 
+  // 给每个 Card 的元信息：来源 + 状态 + 关联指标
+  const cardMeta = {
+    profile: {
+      sources: [{ type: 'ai-prefill', label: 'AI 预填' }, { type: 'upload', label: '我上传' }],
+      status: 'confirmed' as const,
+      indicators: ['1.1.1'],
+    },
+    courses: {
+      sources: [{ type: 'upload', label: '我上传：2024年课程列表.xlsx' }, { type: 'ai-prefill', label: 'AI 预填映射矩阵' }],
+      status: 'confirmed' as const,
+      indicators: ['1.1.2', '1.2.2', '1.3.1'],
+    },
+    industry: {
+      sources: [{ type: 'ai-prefill', label: 'AI 预填：行业白皮书' }, { type: 'external', label: '外部数据：上市企业年报' }],
+      status: 'confirmed' as const,
+      indicators: ['1.1.1'],
+    },
+    outcomes: {
+      sources: [{ type: 'ai-prefill', label: 'AI 预填' }, { type: 'upload', label: '我上传：校企合同/就业数据' }],
+      status: 'pending' as const,
+      indicators: ['1.2.3', '3.1.2', '4.1.1', '4.1.2', '4.1.3'],
+    },
+  };
+
   const tabItems = [
     {
       key: '1',
-      label: '基本信息 (Profile)',
+      label: '机构基本信息',
       children: (
-        <div className="flex flex-col gap-6 mt-4">
+        <div className="flex flex-col gap-5 mt-4">
+          <SectionHeader sectionKey="1" name="机构基本信息" />
+          <MissingItems sectionKey="1" />
           <Card size="small" title="实体标定" variant="borderless" className="bg-gray-50 border border-gray-100">
             <Descriptions column={2}>
               <Descriptions.Item label="院校名称">大连工业大学 (DLPU)</Descriptions.Item>
@@ -65,7 +189,12 @@ export default function PanoramicPage() {
           </Card>
 
           {t01Data && (
-            <Card size="small" title={<><CheckCircleOutlined className="text-blue-500 mr-2" />培养目标 (T01 数据接入)</>} bordered={false} className="border border-blue-100">
+            <MetaCard
+              title="培养目标"
+              meta={cardMeta.profile}
+              indicatorId="1.1.1"
+              router={router}
+            >
               <Descriptions column={3} className="mb-4">
                 <Descriptions.Item label="当前分析专业"><span className="font-bold">{t01Data.majorName}</span></Descriptions.Item>
                 <Descriptions.Item label="学位类型">{t01Data.degreeType}</Descriptions.Item>
@@ -76,11 +205,16 @@ export default function PanoramicPage() {
                   <p key={idx} className="mb-2 last:mb-0 indent-8">{para}</p>
                 ))}
               </div>
-            </Card>
+            </MetaCard>
           )}
 
           {t02Data && (
-            <Card size="small" title={<><CheckCircleOutlined className="text-green-500 mr-2" />毕业要求 (T02 数据接入)</>} bordered={false} className="border border-green-100">
+            <MetaCard
+              title="毕业要求"
+              meta={{ ...cardMeta.profile, indicators: ['1.3.1'] }}
+              indicatorId="1.3.1"
+              router={router}
+            >
               <div className="text-xs text-gray-400 mb-4">版本: {t02Data.version} | 支撑: {t02Data.targetT01Version}</div>
               <div className="flex flex-col gap-4">
                 {t02Data.requirements.map((req: any, index: number) => (
@@ -99,82 +233,170 @@ export default function PanoramicPage() {
                   </div>
                 ))}
               </div>
-            </Card>
+            </MetaCard>
           )}
         </div>
       ),
     },
     {
       key: '2',
-      label: '课程资源 (Courses)',
+      label: '课程资源',
       children: (
-        <div className="mt-4">
-          {t04Data ? (
-            <Table 
-              dataSource={t04Data.mappings.map((m: any, idx: number) => ({ ...m, key: idx }))}
-              pagination={false}
-              className="border border-gray-100 rounded-lg shadow-sm"
-              columns={[
-                { 
-                  title: '课程名称', 
-                  dataIndex: 'courseName', 
-                  key: 'courseName',
-                  width: '20%',
-                  render: (text) => <span className="font-bold text-gray-800">{text}</span>
-                },
-                { 
-                  title: '关联产业节点 (T04)', 
-                  dataIndex: 'matchedNodes', 
-                  key: 'matchedNodes',
-                  width: '30%',
-                  render: (nodes: string[]) => (
-                    <div className="flex flex-wrap gap-1">
-                      {nodes.map((n, idx) => <Tag key={idx} color="blue">{n}</Tag>)}
-                    </div>
-                  )
-                },
-                { 
-                  title: '设计逻辑', 
-                  dataIndex: 'logic', 
-                  key: 'logic',
-                  ellipsis: true
-                },
-                {
-                  title: '操作',
-                  key: 'action',
-                  width: '12%',
-                  render: (_, record: any) => {
-                    const isTargetCourse = t11Data && record.courseName === t11Data.courseName;
-                    const hasAlert = t08Data && isTargetCourse && t08Data.achievements.some((a:any) => a.value < 0.68);
-                    return (
-                      <div className="flex items-center gap-2">
-                        <Button 
-                          type="primary" 
-                          size="small"
-                          onClick={() => router.push(`/panoramic/course/${encodeURIComponent(record.courseName)}`)}
-                        >
-                          查看画像
-                        </Button>
-                        {hasAlert && <Badge status="error" title="存在未达标项" />}
-                      </div>
-                    );
-                  }
-                }
-              ]}
-            />
-          ) : (
-            <Empty description="暂未找到课程映射数据，请先填报 T04 模板..." />
-          )}
+        <div className="mt-4 space-y-5">
+          <SectionHeader sectionKey="2" name="课程资源" />
+          <MissingItems sectionKey="2" />
+          {/* 课程列表 */}
+          <MetaCard title="课程列表" meta={cardMeta.courses} indicatorId="1.1.2" router={router}>
+            <div className="flex items-center gap-6 mb-4 text-sm">
+              <div><span className="text-slate-500">课程总数：</span><span className="font-bold text-slate-800">45 门</span></div>
+              <div><span className="text-slate-500">核心课程：</span><span className="font-bold text-blue-600">18 门</span></div>
+            </div>
+          </MetaCard>
+
+          {/* 课程-产业链映射 */}
+          <MetaCard
+            title="课程-产业链映射"
+            meta={{
+              sources: [{ type: 'ai-prefill', label: 'AI 预填（1.1.1 产业白皮书）' }, { type: 'upload', label: '我上传确认' }],
+              status: 'confirmed' as const,
+              indicators: ['1.1.2'],
+            }}
+            indicatorId="1.1.2"
+            router={router}
+          >
+            <div className="mb-3">
+              <div className="flex items-center gap-3">
+                <span className="text-sm text-slate-500">覆盖率：</span>
+                <div className="flex-1 h-2 bg-slate-100 rounded-full overflow-hidden max-w-xs">
+                  <div className="h-full bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full" style={{ width: '78%' }} />
+                </div>
+                <span className="font-bold text-blue-600">78%</span>
+              </div>
+            </div>
+            {t04Data && (
+              <div className="overflow-x-auto">
+                <table className="w-full text-xs border border-slate-200 rounded-lg">
+                  <thead>
+                    <tr className="bg-slate-50">
+                      <th className="px-3 py-2 text-left font-bold text-slate-600">课程名称</th>
+                      <th className="px-3 py-2 text-left font-bold text-slate-600">课程类型</th>
+                      <th className="px-3 py-2 text-left font-bold text-slate-600">对应产业链节点</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {t04Data.mappings.slice(0, 6).map((m: any, idx: number) => (
+                      <tr key={idx} className="hover:bg-slate-50">
+                        <td className="px-3 py-2 font-bold text-slate-700">{m.courseName}</td>
+                        <td className="px-3 py-2 text-slate-500">{m.courseType || '核心'}</td>
+                        <td className="px-3 py-2 text-slate-600">
+                          <div className="flex flex-wrap gap-1">
+                            {(m.matchedNodes || []).slice(0, 2).map((n: string, nIdx: number) => (
+                              <Tag key={nIdx} color="blue" className="m-0">{n}</Tag>
+                            ))}
+                            {(m.matchedNodes || []).length > 2 && (
+                              <span className="text-xs text-slate-400">+{(m.matchedNodes || []).length - 2}</span>
+                            )}
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+          </MetaCard>
+
+          {/* 前沿课比例 */}
+          <MetaCard
+            title="前沿课比例"
+            meta={{
+              sources: [{ type: 'ai-prefill', label: 'AI 预填（DOI/专利验证）' }, { type: 'upload', label: '我确认' }],
+              status: 'confirmed' as const,
+              indicators: ['1.2.1'],
+            }}
+            indicatorId="1.2.1"
+            router={router}
+          >
+            <div className="grid grid-cols-2 gap-4">
+              <div className="bg-purple-50 rounded-lg p-3 border border-purple-100">
+                <div className="text-xs text-purple-600 mb-1">前沿课比例</div>
+                <div className="text-2xl font-bold text-purple-700">25%</div>
+                <div className="text-[10px] text-slate-400 mt-1">含验证通过的论文/专利/标准</div>
+              </div>
+              <div className="bg-blue-50 rounded-lg p-3 border border-blue-100">
+                <div className="text-xs text-blue-600 mb-1">近3年教材比例</div>
+                <div className="text-2xl font-bold text-blue-700">60%</div>
+                <div className="text-[10px] text-slate-400 mt-1">基于 ISBN 查询出版年份</div>
+              </div>
+            </div>
+          </MetaCard>
+
+          {/* 综合验证课程 */}
+          <MetaCard
+            title="综合验证课程"
+            meta={{
+              sources: [{ type: 'ai-prefill', label: 'AI 预填（培养方案识别）' }, { type: 'upload', label: '我确认' }],
+              status: 'confirmed' as const,
+              indicators: ['1.2.2'],
+            }}
+            indicatorId="1.2.2"
+            router={router}
+          >
+            <div className="flex items-center gap-2 text-sm mb-3">
+              <span className="text-slate-500">综合验证课：</span>
+              <span className="font-bold text-slate-800">4 门</span>
+              <span className="text-slate-300">|</span>
+              <span className="text-slate-500">递进阶段：</span>
+              <span className="inline-flex items-center gap-1">
+                {['基础', '进阶', '综合', '实战'].map((p, i) => (
+                  <React.Fragment key={p}>
+                    <span className="px-2 py-0.5 rounded text-xs font-bold bg-green-50 text-green-700 border border-green-200">{p}</span>
+                    {i < 3 && <ArrowRightOutlined className="text-slate-300 text-[10px]" />}
+                  </React.Fragment>
+                ))}
+              </span>
+            </div>
+          </MetaCard>
+
+          {/* 国际标准对标 */}
+          <MetaCard
+            title="国际标准对标课程"
+            meta={{
+              sources: [{ type: 'ai-prefill', label: 'AI 预填（标准编号提取+能力检测）' }, { type: 'upload', label: '我确认' }],
+              status: 'confirmed' as const,
+              indicators: ['1.3.1'],
+            }}
+            indicatorId="1.3.1"
+            router={router}
+          >
+            <div className="grid grid-cols-2 gap-4">
+              <div className="bg-slate-50 rounded-lg p-3 border border-slate-100">
+                <div className="text-xs text-slate-600 mb-1">有标准编号的课程</div>
+                <div className="text-2xl font-bold text-slate-800">8 门</div>
+              </div>
+              <div className="bg-slate-50 rounded-lg p-3 border border-slate-100">
+                <div className="text-xs text-slate-600 mb-1">AI 三维能力覆盖</div>
+                <div className="text-2xl font-bold text-indigo-600">60%</div>
+              </div>
+            </div>
+          </MetaCard>
         </div>
       ),
     },
     {
       key: '3',
-      label: '产业图谱 (Industry)',
+      label: '产业图谱',
       children: (
         <div className="mt-4">
+          <SectionHeader sectionKey="3" name="产业图谱" />
+          <MissingItems sectionKey="3" />
           {t03Data ? (
-            <Card title={<><ClusterOutlined className="text-purple-500 mr-2" />{t03Data.industryTitle}</>} bordered={false} className="border border-purple-100 shadow-sm">
+            <MetaCard
+              title={t03Data.industryTitle}
+              meta={cardMeta.industry}
+              indicatorId="1.1.1"
+              router={router}
+            >
               <div className="flex flex-col gap-6">
                 {t03Data.nodes.map((layer: any, index: number) => (
                   <div key={index} className="relative">
@@ -194,18 +416,20 @@ export default function PanoramicPage() {
                   </div>
                 ))}
               </div>
-            </Card>
+            </MetaCard>
           ) : (
-            <Empty description="暂未找到产业图谱数据，请先填报 T03 模板..." />
+            <Empty description="暂未找到产业图谱数据" />
           )}
         </div>
       ),
     },
     {
       key: '4',
-      label: '师资队伍 (Faculty)',
+      label: '师资团队',
       children: (
         <div className="mt-4">
+          <SectionHeader sectionKey="4" name="师资团队" />
+          <MissingItems sectionKey="4" />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {mockFaculty.map((faculty: any) => (
               <Card key={faculty.id} className="border border-gray-200 hover:shadow-lg transition-shadow bg-white rounded-xl overflow-hidden" bodyStyle={{ padding: '0' }}>
@@ -221,7 +445,7 @@ export default function PanoramicPage() {
                       </div>
                       <Tag color="blue" className="m-0 font-bold border-blue-200 text-blue-700 bg-blue-50">{faculty.team}</Tag>
                     </div>
-                    
+
                     <div className="flex gap-2 flex-wrap mt-3 mb-4">
                       {faculty.courses.map((c: string, idx: number) => (
                         <Tag key={idx} className="bg-gray-50 border-gray-200 text-gray-600 m-0">{c}</Tag>
@@ -230,7 +454,7 @@ export default function PanoramicPage() {
 
                     <div className="bg-slate-50 p-3 rounded-lg border border-slate-100 mb-4">
                       <div className="flex justify-between text-xs mb-1">
-                        <span className="text-slate-500 font-medium">T15 教学三维投入深度:</span>
+                        <span className="text-slate-500 font-medium">教学三维投入深度</span>
                         <span className="font-bold text-blue-600">
                           {Math.round((faculty.t15Metrics.careerGuidanceScore + faculty.t15Metrics.learningPlanScore + faculty.t15Metrics.qaScore) / 3)} 分
                         </span>
@@ -238,15 +462,15 @@ export default function PanoramicPage() {
                       <div className="flex gap-4 mt-2">
                         <div className="flex-1">
                           <div className="text-[10px] text-slate-400 mb-1">传道</div>
-                          <div className="h-1.5 bg-slate-200 rounded-full overflow-hidden"><div className="h-full bg-blue-500" style={{width: `${faculty.t15Metrics.careerGuidanceScore}%`}}></div></div>
+                          <div className="h-1.5 bg-slate-200 rounded-full overflow-hidden"><div className="h-full bg-blue-500" style={{ width: `${faculty.t15Metrics.careerGuidanceScore}%` }} /></div>
                         </div>
                         <div className="flex-1">
                           <div className="text-[10px] text-slate-400 mb-1">授业</div>
-                          <div className="h-1.5 bg-slate-200 rounded-full overflow-hidden"><div className="h-full bg-green-500" style={{width: `${faculty.t15Metrics.learningPlanScore}%`}}></div></div>
+                          <div className="h-1.5 bg-slate-200 rounded-full overflow-hidden"><div className="h-full bg-green-500" style={{ width: `${faculty.t15Metrics.learningPlanScore}%` }} /></div>
                         </div>
                         <div className="flex-1">
                           <div className="text-[10px] text-slate-400 mb-1">解惑</div>
-                          <div className="h-1.5 bg-slate-200 rounded-full overflow-hidden"><div className="h-full bg-purple-500" style={{width: `${faculty.t15Metrics.qaScore}%`}}></div></div>
+                          <div className="h-1.5 bg-slate-200 rounded-full overflow-hidden"><div className="h-full bg-purple-500" style={{ width: `${faculty.t15Metrics.qaScore}%` }} /></div>
                         </div>
                       </div>
                     </div>
@@ -266,24 +490,37 @@ export default function PanoramicPage() {
     },
     {
       key: '5',
-      label: '实践与毕业成果 (Outcomes)',
+      label: '实践成果',
       children: (
-        <div className="mt-4">
-          {t12Data ? (
-            <Card title={<><CheckCircleOutlined className="text-blue-500 mr-2" />毕业设计真题真做验证 (T12 数据接入)</>} bordered={false} className="border border-blue-100 shadow-sm">
+        <div className="mt-4 space-y-5">
+          <SectionHeader sectionKey="5" name="实践成果" />
+          <MissingItems sectionKey="5" />
+          {t12Data && (
+            <MetaCard
+              title="毕业设计真题真做验证"
+              meta={{ ...cardMeta.outcomes, indicators: ['1.2.3'] }}
+              indicatorId="1.2.3"
+              router={router}
+            >
               <Descriptions column={3} className="mb-6">
                 <Descriptions.Item label="当前分析届次"><span className="font-bold">{t12Data.cohort}</span></Descriptions.Item>
                 <Descriptions.Item label="总课题数">{t12Data.metrics.totalProjects}</Descriptions.Item>
                 <Descriptions.Item label="参与企业导师"><span className="font-bold text-blue-600">{t12Data.metrics.enterpriseMentors} 人</span></Descriptions.Item>
               </Descriptions>
-              
+
               <div className="bg-gray-50 p-4 rounded-lg mb-6 border border-gray-200">
                 <div className="flex justify-between mb-2">
-                  <span className="font-bold text-gray-700">真题真做比例 (企业真题数 / 总课题数)</span>
-                  <span className="font-bold text-blue-600">{t12Data.metrics.realProjects} / {t12Data.metrics.totalProjects} ({Math.round((t12Data.metrics.realProjects/t12Data.metrics.totalProjects)*100)}%)</span>
+                  <span className="font-bold text-gray-700">真题真做比例</span>
+                  <span className="font-bold text-blue-600">
+                    {t12Data.metrics.realProjects} / {t12Data.metrics.totalProjects} (
+                    {Math.round((t12Data.metrics.realProjects / t12Data.metrics.totalProjects) * 100)}%)
+                  </span>
                 </div>
                 <div className="h-4 bg-gray-200 rounded-full overflow-hidden flex">
-                  <div className="h-full bg-green-500" style={{ width: `${Math.round((t12Data.metrics.realProjects/t12Data.metrics.totalProjects)*100)}%` }}></div>
+                  <div
+                    className="h-full bg-green-500"
+                    style={{ width: `${Math.round((t12Data.metrics.realProjects / t12Data.metrics.totalProjects) * 100)}%` }}
+                  />
                 </div>
               </div>
 
@@ -295,26 +532,40 @@ export default function PanoramicPage() {
               </div>
 
               <div className="text-sm font-bold text-gray-700 mb-2">底层抽样数据清单：</div>
-              <Table 
-                dataSource={t12Data.projects} 
-                pagination={false}
-                rowKey="id"
-                size="small"
-                columns={[
-                  { title: '课题编号', dataIndex: 'id' },
-                  { title: '课题名称', dataIndex: 'title' },
-                  { title: '类型', dataIndex: 'type', render: (type) => <Tag color={type === '企业真题' ? 'green' : 'default'}>{type}</Tag> },
-                  { title: '指导教师', dataIndex: 'mentor' },
-                  { title: '状态', dataIndex: 'status' },
-                ]}
-              />
-            </Card>
-          ) : (
-            <Empty description="暂未录入毕业设计等实践成果底层数据" className="mb-6" />
+              <table className="w-full text-xs border border-gray-200 rounded">
+                <thead>
+                  <tr className="bg-gray-50">
+                    <th className="px-3 py-2 text-left font-bold text-gray-600">课题编号</th>
+                    <th className="px-3 py-2 text-left font-bold text-gray-600">课题名称</th>
+                    <th className="px-3 py-2 text-left font-bold text-gray-600">类型</th>
+                    <th className="px-3 py-2 text-left font-bold text-gray-600">指导教师</th>
+                    <th className="px-3 py-2 text-left font-bold text-gray-600">状态</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {t12Data.projects.map((p: any) => (
+                    <tr key={p.id} className="hover:bg-gray-50">
+                      <td className="px-3 py-2 font-mono text-gray-500">{p.id}</td>
+                      <td className="px-3 py-2 text-gray-800">{p.title}</td>
+                      <td className="px-3 py-2">
+                        <Tag color={p.type === '企业真题' ? 'green' : 'default'}>{p.type}</Tag>
+                      </td>
+                      <td className="px-3 py-2 text-gray-600">{p.mentor}</td>
+                      <td className="px-3 py-2 text-gray-600">{p.status}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </MetaCard>
           )}
 
-          {t14Data ? (
-            <Card title={<><BuildOutlined className="text-purple-500 mr-2" />产教融合与校企合作验证 (T14 数据接入)</>} bordered={false} className="border border-purple-100 shadow-sm mt-6">
+          {t14Data && (
+            <MetaCard
+              title="产教融合与校企合作验证"
+              meta={{ ...cardMeta.outcomes, indicators: ['3.1.2'] }}
+              indicatorId="3.1.2"
+              router={router}
+            >
               <Descriptions column={3} className="mb-6">
                 <Descriptions.Item label="活跃校企协议数"><span className="font-bold text-purple-600">{t14Data.metrics.activeAgreements} 项</span></Descriptions.Item>
                 <Descriptions.Item label="部级/省级协同育人"><span className="font-bold text-blue-600">{t14Data.metrics.jointProjects} 项</span></Descriptions.Item>
@@ -329,123 +580,240 @@ export default function PanoramicPage() {
               </div>
 
               <div className="text-sm font-bold text-gray-700 mb-2">核心合作协议抽样验证：</div>
-              <Table 
-                dataSource={t14Data.agreements} 
-                pagination={false}
-                rowKey="id"
-                size="small"
-                columns={[
-                  { title: '协议编号', dataIndex: 'id', width: '15%' },
-                  { title: '协议名称', dataIndex: 'title', width: '35%' },
-                  { title: '合作方', dataIndex: 'partner', width: '20%' },
-                  { title: '类型', dataIndex: 'type', width: '15%', render: (type) => <Tag color="purple">{type}</Tag> },
-                  { title: '状态', dataIndex: 'status', width: '15%' },
-                ]}
-              />
-            </Card>
-          ) : (
-            <Empty description="暂未录入校企合作协议数据" className="mb-6" />
+              <table className="w-full text-xs border border-gray-200 rounded">
+                <thead>
+                  <tr className="bg-gray-50">
+                    <th className="px-3 py-2 text-left font-bold text-gray-600">协议编号</th>
+                    <th className="px-3 py-2 text-left font-bold text-gray-600">协议名称</th>
+                    <th className="px-3 py-2 text-left font-bold text-gray-600">合作方</th>
+                    <th className="px-3 py-2 text-left font-bold text-gray-600">类型</th>
+                    <th className="px-3 py-2 text-left font-bold text-gray-600">状态</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {t14Data.agreements.map((a: any) => (
+                    <tr key={a.id} className="hover:bg-gray-50">
+                      <td className="px-3 py-2 font-mono text-gray-500">{a.id}</td>
+                      <td className="px-3 py-2 text-gray-800">{a.title}</td>
+                      <td className="px-3 py-2 text-gray-600">{a.partner}</td>
+                      <td className="px-3 py-2"><Tag color="purple">{a.type}</Tag></td>
+                      <td className="px-3 py-2 text-gray-600">{a.status}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </MetaCard>
           )}
 
-          {t18Data ? (
-            <Card title={<><CheckCircleOutlined className="text-indigo-500 mr-2" />毕业生就业质量验证 (T18 数据接入)</>} bordered={false} className="border border-indigo-100 shadow-sm mt-6">
+          {t18Data && (
+            <MetaCard
+              title="毕业生就业质量验证"
+              meta={{ ...cardMeta.outcomes, indicators: ['4.1.1', '4.1.3'] }}
+              indicatorId="4.1.1"
+              router={router}
+            >
               <Descriptions column={4} className="mb-6">
                 <Descriptions.Item label="分析届次"><span className="font-bold">{t18Data.cohort}</span></Descriptions.Item>
-                <Descriptions.Item label="初次就业率"><span className="font-bold text-gray-700">{Math.round((t18Data.metrics.employed/t18Data.metrics.totalGraduates)*100)}%</span></Descriptions.Item>
+                <Descriptions.Item label="初次就业率"><span className="font-bold text-gray-700">{Math.round((t18Data.metrics.employed / t18Data.metrics.totalGraduates) * 100)}%</span></Descriptions.Item>
                 <Descriptions.Item label="用人单位满意度"><span className="font-bold text-green-600">{t18Data.metrics.employerSatisfaction}%</span></Descriptions.Item>
                 <Descriptions.Item label="平均起薪"><span className="font-bold text-indigo-600">{t18Data.metrics.avgSalary}</span></Descriptions.Item>
               </Descriptions>
 
               <div className="bg-gray-50 p-4 rounded-lg mb-6 border border-gray-200">
                 <div className="flex justify-between mb-2">
-                  <span className="font-bold text-gray-700">AI 计算：靶点行业精准对口率 (精准匹配白皮书)</span>
-                  <span className="font-bold text-indigo-600">{Math.round((t18Data.metrics.matchedIndustry/t18Data.metrics.employed)*100)}% ({t18Data.metrics.matchedIndustry}/{t18Data.metrics.employed})</span>
+                  <span className="font-bold text-gray-700">精准对口率（匹配产业白皮书）</span>
+                  <span className="font-bold text-indigo-600">
+                    {Math.round((t18Data.metrics.matchedIndustry / t18Data.metrics.employed) * 100)}% (
+                    {t18Data.metrics.matchedIndustry}/{t18Data.metrics.employed})
+                  </span>
                 </div>
                 <div className="h-4 bg-gray-200 rounded-full overflow-hidden flex">
-                  <div className="h-full bg-indigo-500" style={{ width: `${Math.round((t18Data.metrics.matchedIndustry/t18Data.metrics.employed)*100)}%` }}></div>
+                  <div
+                    className="h-full bg-indigo-500"
+                    style={{ width: `${Math.round((t18Data.metrics.matchedIndustry / t18Data.metrics.employed) * 100)}%` }}
+                  />
                 </div>
               </div>
 
               <div className="text-sm font-bold text-gray-700 mb-2">AI 终极培养验证报告：</div>
-              <div className="bg-indigo-50/50 p-4 rounded text-indigo-800 leading-relaxed border border-indigo-100 mb-6">
+              <div className="bg-indigo-50/50 p-4 rounded text-indigo-800 leading-relaxed border border-indigo-100">
                 {t18Data.diagnosis}: {t18Data.details}
                 <br /><br />
                 <strong>闭环达成验证：</strong>{t18Data.impact}
               </div>
-
-              <div className="text-sm font-bold text-gray-700 mb-2">就业去向抽样与诊断匹配：</div>
-              <Table 
-                dataSource={t18Data.samples} 
-                pagination={false}
-                rowKey="id"
-                size="small"
-                columns={[
-                  { title: '脱敏编号', dataIndex: 'id' },
-                  { title: '签约企业', dataIndex: 'company' },
-                  { title: '岗位', dataIndex: 'position' },
-                  { title: '起薪', dataIndex: 'salary' },
-                  { title: '对口诊断', dataIndex: 'matchStatus', render: (status) => <Tag color={status === '高度对口' ? 'indigo' : 'default'}>{status}</Tag> },
-                ]}
-              />
-            </Card>
-          ) : (
-            <Empty description="暂未录入毕业生就业与反馈数据" />
+            </MetaCard>
           )}
 
-          {t19Data ? (
-            <Card title={<><TrophyOutlined className="text-yellow-500 mr-2" />毕业生影响力追踪 (T19 长周期验证)</>} bordered={false} className="border border-yellow-200 shadow-sm mt-6">
-              <div className="text-sm font-bold text-gray-700 mb-4">全网工商库爬虫匹配结果 (企业创始人/高管身份验证)：</div>
-              <Table 
-                dataSource={t19Data.alumniList} 
-                pagination={false}
-                rowKey="name"
-                size="small"
-                className="mb-6"
-                columns={[
-                  { title: '校友姓名', dataIndex: 'name', width: '15%' },
-                  { title: '社会职务', dataIndex: 'title', width: '25%', render: (title) => <Tag color="gold">{title}</Tag> },
-                  { title: '创立/管理企业', dataIndex: 'company', width: '30%' },
-                  { title: 'AI 产业链定位', dataIndex: 'matchType', width: '30%', render: (type) => <span className="font-bold text-gray-600">{type}</span> },
-                ]}
-              />
+          {t19Data && (
+            <MetaCard
+              title="毕业生影响力追踪"
+              meta={{ ...cardMeta.outcomes, indicators: ['4.1.2'] }}
+              indicatorId="4.1.2"
+              router={router}
+            >
+              <div className="text-sm font-bold text-gray-700 mb-4">全网工商库爬虫匹配结果（企业创始人/高管身份验证）：</div>
+              <table className="w-full text-xs border border-gray-200 rounded mb-4">
+                <thead>
+                  <tr className="bg-gray-50">
+                    <th className="px-3 py-2 text-left font-bold text-gray-600">校友姓名</th>
+                    <th className="px-3 py-2 text-left font-bold text-gray-600">社会职务</th>
+                    <th className="px-3 py-2 text-left font-bold text-gray-600">创立/管理企业</th>
+                    <th className="px-3 py-2 text-left font-bold text-gray-600">产业链定位</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {t19Data.alumniList.map((a: any) => (
+                    <tr key={a.name} className="hover:bg-gray-50">
+                      <td className="px-3 py-2 font-bold text-gray-800">{a.name}</td>
+                      <td className="px-3 py-2"><Tag color="gold">{a.title}</Tag></td>
+                      <td className="px-3 py-2 text-gray-600">{a.company}</td>
+                      <td className="px-3 py-2 font-bold text-gray-700">{a.matchType}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
               <div className="bg-yellow-50 p-4 rounded text-yellow-800 leading-relaxed border border-yellow-200">
-                <strong>{t19Data.diagnosis}</strong><br/>
+                <strong>{t19Data.diagnosis}</strong><br />
                 {t19Data.details}
                 <br /><br />
                 <strong>专业终极价值闭环：</strong>{t19Data.impact}
               </div>
-            </Card>
-          ) : null}
+            </MetaCard>
+          )}
         </div>
       ),
-    }
+    },
   ];
 
   return (
-    <div className="max-w-6xl mx-auto pb-10">
-      <div className="mb-6">
-        <Breadcrumb
-          items={[
-            { title: <><HomeOutlined /> 首页</>, onClick: () => router.push('/') },
-            { title: <><DatabaseOutlined /> 全景数据</> },
-          ]}
-          className="mb-4 cursor-pointer"
-        />
-      </div>
-      {/* 极简 CRM 风格 Header */}
-      <div className="bg-white px-8 py-6 border-b border-slate-200 flex items-center gap-4 shrink-0">
-        <div className="w-10 h-10 rounded bg-blue-50 flex items-center justify-center text-blue-600 text-lg">
-          <BuildOutlined />
-        </div>
-        <div>
-          <h1 className="text-xl font-semibold text-slate-800 m-0 leading-tight">大连工业大学 Entity Profile</h1>
-          <p className="text-sm text-slate-500 m-0 mt-1">这里汇聚了所有通过底层模板填报、API对接沉淀而来的院校底座真实数据。</p>
+    <div className="min-h-[calc(100vh-140px)] bg-slate-50">
+      {/* Header */}
+      <div className="bg-white border-b border-slate-200">
+        <div className="max-w-6xl mx-auto px-8 py-5">
+          <div className="flex items-center gap-4 mb-4">
+            <div className="w-10 h-10 rounded bg-blue-50 flex items-center justify-center text-blue-600 text-lg">
+              <BuildOutlined />
+            </div>
+            <div>
+              <h1 className="text-xl font-semibold text-slate-800 m-0 leading-tight">按板块查看</h1>
+              <p className="text-sm text-slate-500 m-0 mt-0.5">按 5 个板块展示机构画像 — 确认后正式数据的整合展示</p>
+            </div>
+          </div>
+          {/* 提示条 */}
+          <div className="mb-4 p-3 bg-purple-50 border border-purple-200 rounded-lg flex items-center gap-2 text-sm">
+            <InfoCircleOutlined className="text-purple-600" />
+            <span className="text-purple-700">这是<strong>正式数据的整合展示</strong>，与
+              <button onClick={() => router.push('/filling-results/by-indicator')} className="text-blue-600 hover:underline font-bold mx-1">【按指标查看】</button>
+              是同一批数据的两种视角。
+            </span>
+          </div>
+          <div className="flex items-center gap-5 text-sm">
+            <div className="flex items-center gap-2">
+              <span className="text-slate-500">数据完整度</span>
+              <span className="font-bold text-blue-600">{coverageRatio}%</span>
+              <div className="w-24 h-1.5 bg-slate-100 rounded-full overflow-hidden">
+                <div className="h-full bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full" style={{ width: `${coverageRatio}%` }} />
+              </div>
+            </div>
+            <div className="text-slate-300">|</div>
+            <div className="text-slate-500">已确认数据 <span className="font-bold text-green-600">{confirmedCount}</span> 项</div>
+            <div className="text-slate-300">|</div>
+            <div className="text-slate-500">覆盖指标 <span className="font-bold text-amber-600">{global.coveredIndicatorCount}</span>/{indicators.length}</div>
+          </div>
         </div>
       </div>
 
-      <Card variant="borderless" className="shadow-sm border-t-4 border-t-blue-500">
+      {/* Tabs 内容 */}
+      <div className="max-w-6xl mx-auto px-8 py-6">
         <Tabs defaultActiveKey="1" items={tabItems} size="large" />
-      </Card>
+      </div>
     </div>
+  );
+}
+
+// ---------- 带 Meta 的 Card ----------
+interface CardMeta {
+  sources: { type: 'ai-prefill' | 'upload' | 'external'; label: string }[];
+  status: 'confirmed' | 'pending' | 'modified';
+  indicators: string[];
+}
+
+function MetaCard({
+  title,
+  meta,
+  indicatorId,
+  router,
+  children,
+}: {
+  title: string;
+  meta: CardMeta;
+  indicatorId?: string;
+  router: any;
+  children: React.ReactNode;
+}) {
+  const statusConfig = {
+    confirmed: { text: '已确认', color: '#059669', bg: '#ecfdf5' },
+    pending: { text: '待确认', color: '#d97706', bg: '#fffbeb' },
+    modified: { text: '已修改', color: '#1677ff', bg: '#eff6ff' },
+  }[meta.status];
+
+  const sourceIcon = {
+    'ai-prefill': <RobotOutlined className="text-purple-500" />,
+    upload: <CloudUploadOutlined className="text-green-500" />,
+    external: <GlobalOutlined className="text-cyan-500" />,
+  };
+  const sourceTypeLabel = {
+    'ai-prefill': 'AI 预填',
+    upload: '我上传',
+    external: '外部数据',
+  };
+
+  return (
+    <Card
+      size="small"
+      title={title}
+      bordered={false}
+      className="bg-white shadow-sm"
+      styles={{ body: { padding: 0 } }}
+    >
+      {/* 来源 + 状态 + 操作 — 卡片底部的 Meta 区 */}
+      <div className="px-5 pt-5">
+        {children}
+      </div>
+
+      <div className="mt-4 border-t border-slate-100 px-5 py-3 flex items-center justify-between text-xs bg-slate-50/60 rounded-b-lg">
+        <div className="flex items-center gap-3 flex-wrap">
+          <span className="text-slate-400">来源：</span>
+          {meta.sources.map((s, i) => (
+            <span key={i} className="inline-flex items-center gap-1">
+              {sourceIcon[s.type]}
+              <span className="font-medium" style={{ color: s.type === 'ai-prefill' ? '#7c3aed' : s.type === 'upload' ? '#059669' : '#0891b2' }}>
+                {sourceTypeLabel[s.type]}
+              </span>
+              <span className="text-slate-500">· {s.label.split('：').slice(1).join('：') || s.label}</span>
+              {i < meta.sources.length - 1 && <span className="text-slate-300 mx-1">+</span>}
+            </span>
+          ))}
+          <span className="text-slate-300">|</span>
+          <span className="inline-flex items-center gap-1">
+            {meta.status === 'pending' ? <ClockCircleOutlined style={{ color: statusConfig.color }} /> : <CheckCircleOutlined style={{ color: statusConfig.color }} />}
+            <span className="font-bold" style={{ color: statusConfig.color }}>状态：{statusConfig.text}</span>
+          </span>
+        </div>
+        <div className="flex items-center gap-2">
+          {meta.indicators.slice(0, 2).map((iid) => (
+            <Tag key={iid} className="m-0 text-[10px] font-mono">{iid}</Tag>
+          ))}
+          {indicatorId && (
+            <button
+              onClick={() => router.push(`/data-management/ai-prefill/detail?indicator=${indicatorId}`)}
+              className="text-xs text-blue-600 hover:text-blue-700 font-bold flex items-center gap-0.5"
+            >
+              查看 AI 预填 <ArrowRightOutlined />
+            </button>
+          )}
+        </div>
+      </div>
+    </Card>
   );
 }

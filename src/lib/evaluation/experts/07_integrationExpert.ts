@@ -1,6 +1,7 @@
 import { EvaluationExpert, EvaluationContext, ExpertResult } from '../types';
-import OpenAI from 'openai';
+import { createLLMClient, getLLMConfig, hasLLMKey } from '@/lib/evaluation/llm';
 import { searchWeb } from '@/lib/search';
+import { buildIndicatorContext } from '../contextHelper';
 
 export const integrationExpert: EvaluationExpert = {
   id: 'expert_integration',
@@ -11,6 +12,9 @@ export const integrationExpert: EvaluationExpert = {
     onLog('🤝 产教融合评估专家 开始工作：正在抽取 T14 产教融合基地/实验室协议数据...');
     
     const t14Data = context.panoramicData['T14'];
+
+    // 从「填报成果」获取该指标的已确认数据上下文
+    const indCtx = buildIndicatorContext(context, ["2.1.1","3.1.2"]);
 
     if (!t14Data) {
       onLog('⚠️ 产教融合评估专家 未发现 T14 数据，回退安全模式。');
@@ -48,6 +52,12 @@ ${JSON.stringify(t14Data).substring(0, 1000)}
 以下是对该合作平台的产业影响力进行的互联网核验结果：
 ${externalData.substring(0, 800)}
 
+
+以下是该指标在「填报成果」中的已确认数据（权重与材料来源）：
+${indCtx.indicatorInfo}
+已确认填报材料：
+${indCtx.confirmedMaterials}
+
 分析指令：
 1. 提取履约事实：协议中是否有明确的资金投入、场地共建、双向挂职或企业讲师授课的量化记录？
 2. 验证平台能级：结合外部检索，判定该平台在真实产业界中是否具备高水平的攻关能力与社会影响力？
@@ -67,18 +77,12 @@ ${externalData.substring(0, 800)}
 }`;
 
     onLog('🧠 产教融合评估专家 正在研判校企协议的实质性履约深度...');
-    const apiKey = process.env.DEEPSEEK_API_KEY || process.env.DASHSCOPE_API_KEY || process.env.OPENAI_API_KEY;
-    const baseURL = process.env.DEEPSEEK_API_KEY 
-      ? 'https://api.deepseek.com/v1' 
-      : (process.env.DASHSCOPE_API_KEY ? 'https://dashscope.aliyuncs.com/compatible-mode/v1' : 'https://api.openai.com/v1');
-
-    if (!apiKey) {
+    if (!hasLLMKey()) {
       throw new Error("未配置 API_KEY，智能体拒绝工作");
     }
-
-    const client = new OpenAI({ apiKey, baseURL });
+    const client = createLLMClient();
     const response = await client.chat.completions.create({
-      model: process.env.DEEPSEEK_MODEL || 'deepseek-chat',
+      model: getLLMConfig().model,
       messages: [{ role: 'user', content: prompt }],
       response_format: { type: 'json_object' },
       max_tokens: 2000,
