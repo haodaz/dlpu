@@ -91,7 +91,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
       label: '材料填报',
       children: [
         { key: '/data-management/my-uploads', icon: <CloudUploadOutlined />, label: '上传材料' },
-        { key: '/data-management/ai-prefill', icon: <RobotOutlined />, label: 'AI填报' },
+        { key: '/data-management/ai-prefill', icon: <RobotOutlined />, label: '指标填报' },
         { key: '/data-management/records', icon: <SwapOutlined />, label: '提交记录' },
       ],
     },

@@ -3,109 +3,115 @@ import React, { useMemo, useState } from 'react';
 import {
   CheckCircleOutlined,
   ClockCircleOutlined,
-  RobotOutlined,
-  CloudUploadOutlined,
-  GlobalOutlined,
-  ArrowRightOutlined,
-  InfoCircleOutlined,
-  PlusOutlined,
+  ExclamationCircleOutlined,
+  RightOutlined,
+  TableOutlined,
 } from '@ant-design/icons';
 import { useRouter } from 'next/navigation';
-import { indicators, dimensions, getAIActionsByIndicator } from '@/lib/indicators';
-import { getAllProcessedData, getGlobalStat, type ProcessedDataItem } from '@/lib/data-management';
+import { indicators, dimensions } from '@/lib/indicators';
+import { getAllProcessedData } from '@/lib/data-management';
 
-interface IndicatorResult {
+// 材料完成情况：done=齐备  partial=部分待确认  pending=待确认  none=暂无材料
+type MaterialStatus = 'done' | 'partial' | 'pending' | 'none';
+
+const STATUS_META: Record<
+  MaterialStatus,
+  { label: string; color: string; bg: string; border: string; icon: React.ReactNode; action: string }
+> = {
+  done: { label: '材料齐备', color: '#059669', bg: '#ecfdf5', border: '#a7f3d0', icon: <CheckCircleOutlined />, action: '查看完成内容' },
+  partial: { label: '部分待确认', color: '#2563eb', bg: '#eff6ff', border: '#bfdbfe', icon: <ClockCircleOutlined />, action: '继续填报' },
+  pending: { label: '待确认', color: '#d97706', bg: '#fffbeb', border: '#fde68a', icon: <ExclamationCircleOutlined />, action: '去确认' },
+  none: { label: '暂无材料', color: '#64748b', bg: '#f1f5f9', border: '#e2e8f0', icon: <ClockCircleOutlined />, action: '去填报' },
+};
+
+interface IndicatorRow {
   id: string;
   name: string;
+  subCategoryName: string;
   dimension: string;
   weight: number;
-  confirmedItems: ProcessedDataItem[];
-  pendingItems: ProcessedDataItem[];
-  totalActions: number;
-  isComplete: boolean;
+  total: number;
+  confirmed: number;
+  pending: number;
+  status: MaterialStatus;
+  progress: number;
 }
 
 export default function ByIndicatorPage() {
   const router = useRouter();
   const allData = useMemo(() => getAllProcessedData(), []);
-  const global = useMemo(() => getGlobalStat(), []);
   const [dimFilter, setDimFilter] = useState<string>('all');
 
-  // 为每个指标汇总已确认 / 待确认数据
-  const indicatorResults = useMemo<IndicatorResult[]>(() => {
+  // 以指标为单位，汇总其评价材料的完成情况
+  const rows = useMemo<IndicatorRow[]>(() => {
     return indicators.map((ind) => {
       const related = allData.filter((d) => d.relatedIndicators.includes(ind.id));
-      const confirmed = related.filter((d) => d.processStatus === 'confirmed' || d.processStatus === 'modified');
-      const pending = related.filter((d) => d.processStatus === 'pending');
-      const aiAct = getAIActionsByIndicator(ind.id);
+      const confirmed = related.filter((d) => d.processStatus === 'confirmed' || d.processStatus === 'modified').length;
+      const pending = related.length - confirmed;
+      const total = related.length;
+
+      let status: MaterialStatus = 'none';
+      if (total === 0) status = 'none';
+      else if (pending === 0) status = 'done';
+      else if (confirmed > 0) status = 'partial';
+      else status = 'pending';
+
       return {
         id: ind.id,
         name: ind.name,
+        subCategoryName: ind.subCategoryName,
         dimension: ind.dimension,
         weight: ind.weight,
-        confirmedItems: confirmed,
-        pendingItems: pending,
-        totalActions: aiAct?.actionCount || 0,
-        isComplete: pending.length === 0 && confirmed.length > 0,
+        total,
+        confirmed,
+        pending,
+        status,
+        progress: total ? Math.round((confirmed / total) * 100) : 0,
       };
     });
   }, [allData]);
 
-  const filtered = dimFilter === 'all'
-    ? indicatorResults
-    : indicatorResults.filter((i) => i.dimension === dimFilter);
+  const confirmedTotal = rows.reduce((s, r) => s + r.confirmed, 0);
+  const materialTotal = rows.reduce((s, r) => s + r.total, 0);
+  const coveredCount = rows.filter((r) => r.confirmed > 0).length;
+  const overallProgress = materialTotal ? Math.round((confirmedTotal / materialTotal) * 100) : 0;
 
-  const confirmedTotal = allData.filter((d) => d.processStatus === 'confirmed' || d.processStatus === 'modified').length;
+  const filtered = dimFilter === 'all' ? rows : rows.filter((r) => r.dimension === dimFilter);
 
-  const sourceIcon = (ds: string) =>
-    ds === 'ai-prefill' ? <RobotOutlined className="text-purple-400" /> :
-    ds === 'user-upload' ? <CloudUploadOutlined className="text-green-400" /> :
-    <GlobalOutlined className="text-cyan-400" />;
+  const openIndicator = (id: string) => router.push(`/data-management/ai-prefill/detail?indicator=${id}`);
 
   return (
     <div className="flex-1 flex flex-col min-h-[calc(100vh-140px)] bg-slate-50">
-      <div className="px-8 py-8 max-w-7xl mx-auto w-full">
+      <div className="px-8 py-8 max-w-6xl mx-auto w-full">
         {/* Header */}
-        <div className="flex items-center gap-4 mb-4">
+        <div className="flex items-center gap-4 mb-5">
           <div className="w-11 h-11 rounded-xl bg-green-600 flex items-center justify-center text-white text-xl shadow-sm">
-            <CheckCircleOutlined />
+            <TableOutlined />
           </div>
           <div>
             <h1 className="text-xl font-bold text-slate-800 m-0 leading-tight">按指标查看</h1>
-            <p className="text-sm text-slate-500 m-0 mt-0.5">按 17 项指标展示确认后的正式数据 — 每个指标下，我确认了哪些内容。</p>
+            <p className="text-sm text-slate-500 m-0 mt-0.5">
+              以指标为单位查看评价材料完成情况，点击任一指标可查看完成内容与最终结果。
+            </p>
           </div>
         </div>
 
-        {/* 提示条 */}
-        <div className="mb-5 p-3 bg-blue-50 border border-blue-200 rounded-lg flex items-center gap-2 text-sm">
-          <InfoCircleOutlined className="text-blue-600" />
-          <span className="text-blue-700">这里是<strong>评价的输入</strong>，AI 将按指标对确认后的数据打分。最终成果的另一种视角请查看
-            <button onClick={() => router.push('/panoramic')} className="text-purple-600 hover:underline font-bold mx-1">【按板块查看】</button>
-          </span>
-        </div>
-
-        {/* KPI 条 */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
-          <div className="bg-white rounded-xl border border-slate-200 px-4 py-3 shadow-sm">
-            <div className="text-xs text-slate-500 mb-1">数据项总数</div>
-            <div className="text-2xl font-bold text-blue-600">{global.totalData}</div>
+        {/* 总体进度 */}
+        <div className="bg-white rounded-xl border border-slate-200 shadow-sm px-5 py-4 mb-5">
+          <div className="flex items-center gap-3 mb-2">
+            <span className="text-xs font-bold text-slate-500">材料完成度</span>
+            <span className="text-lg font-bold text-green-600">{overallProgress}%</span>
+            <span className="ml-auto text-xs text-slate-400">
+              已确认 {confirmedTotal}/{materialTotal} 份 · 覆盖 {coveredCount}/{indicators.length} 项指标
+            </span>
           </div>
-          <div className="bg-white rounded-xl border border-slate-200 px-4 py-3 shadow-sm">
-            <div className="text-xs text-slate-500 mb-1">已确认</div>
-            <div className="text-2xl font-bold text-green-600">{confirmedTotal}</div>
-          </div>
-          <div className="bg-white rounded-xl border border-slate-200 px-4 py-3 shadow-sm">
-            <div className="text-xs text-slate-500 mb-1">待确认</div>
-            <div className="text-2xl font-bold text-amber-600">{global.totalData - confirmedTotal}</div>
-          </div>
-          <div className="bg-white rounded-xl border border-slate-200 px-4 py-3 shadow-sm">
-            <div className="text-xs text-slate-500 mb-1">覆盖指标</div>
-            <div className="text-2xl font-bold text-slate-800">{global.coveredIndicatorCount}/{indicators.length}</div>
+          <div className="h-2 rounded-full bg-slate-100 overflow-hidden">
+            <div className="h-full rounded-full bg-green-500 transition-all" style={{ width: `${overallProgress}%` }} />
           </div>
         </div>
 
         {/* 维度筛选 */}
-        <div className="flex items-center gap-2 mb-5 flex-wrap">
+        <div className="flex items-center gap-2 mb-4 flex-wrap">
           <span className="text-xs text-slate-400 font-bold">维度筛选：</span>
           {[
             { key: 'all', label: '全部', color: '#64748b' },
@@ -126,137 +132,77 @@ export default function ByIndicatorPage() {
           ))}
         </div>
 
-        {/* 按维度分组展示指标 */}
+        {/* 按维度分组的指标列表 */}
         <div className="space-y-6">
           {dimensions
             .filter((d) => dimFilter === 'all' || d.key === dimFilter)
             .map((dim) => {
-              const dimIndicators = filtered.filter((i) => i.dimension === dim.key);
-              if (dimIndicators.length === 0) return null;
+              const dimRows = filtered.filter((r) => r.dimension === dim.key);
+              if (dimRows.length === 0) return null;
 
               return (
                 <div key={dim.key}>
-                  {/* 维度标题 */}
-                  <div className="flex items-center gap-2 mb-3">
+                  <div className="flex items-center gap-2 mb-2">
                     <span className="w-1 h-5 rounded" style={{ backgroundColor: dim.color }} />
                     <span className="font-bold text-sm text-slate-700">
                       维度{dim.key} · {dim.name}
                     </span>
                     <span className="text-xs text-slate-400">
-                      权重 {dim.weight}% · {dimIndicators.length} 项
+                      权重 {dim.weight}% · {dimRows.length} 项
                     </span>
                   </div>
 
-                  {/* 指标卡片 */}
-                  <div className="space-y-3">
-                    {dimIndicators.map((ind) => (
-                      <div
-                        key={ind.id}
-                        className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden"
-                        style={{ borderLeft: `4px solid ${dim.color}` }}
-                      >
-                        <div className="px-5 py-4">
-                          {/* 第一行：编号 + 名称 + 状态 */}
-                          <div className="flex items-center gap-3 mb-3">
-                            <span className="font-mono text-xs text-slate-400 shrink-0">{ind.id}</span>
-                            <span className="font-bold text-slate-800 text-sm flex-1">{ind.name}</span>
-                            <span className="text-xs text-slate-400">权重 {ind.weight}%</span>
-                            {ind.isComplete ? (
-                              <span className="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full bg-green-50 text-green-600">
-                                <CheckCircleOutlined /> 数据齐备
-                              </span>
-                            ) : ind.pendingItems.length > 0 ? (
-                              <span className="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-50 text-amber-600">
-                                <ClockCircleOutlined /> {ind.pendingItems.length} 项待确认
-                              </span>
-                            ) : (
-                              <span className="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-400">
-                                暂无数据
-                              </span>
-                            )}
+                  <div className="bg-white rounded-xl border border-slate-200 shadow-sm divide-y divide-slate-100 overflow-hidden">
+                    {dimRows.map((r) => {
+                      const meta = STATUS_META[r.status];
+                      return (
+                        <div
+                          key={r.id}
+                          onClick={() => openIndicator(r.id)}
+                          className="flex items-center gap-4 px-5 py-3.5 cursor-pointer hover:bg-slate-50 transition-colors"
+                          style={{ borderLeft: `4px solid ${dim.color}` }}
+                        >
+                          {/* 指标名称 */}
+                          <div className="min-w-0 flex-1">
+                            <div className="flex items-center gap-2">
+                              <span className="font-mono text-xs text-slate-400 shrink-0">{r.id}</span>
+                              <span className="font-bold text-sm text-slate-800 truncate">{r.name}</span>
+                              <span className="text-[10px] text-slate-400 shrink-0">权重 {r.weight}%</span>
+                            </div>
+                            <div className="text-[11px] text-slate-400 mt-0.5">{r.subCategoryName}</div>
                           </div>
 
-                          {/* 第二行：确认内容 — 已确认的数据项及用到的字段 */}
-                          {ind.confirmedItems.length > 0 ? (
-                            <div className="space-y-2 mb-3">
-                              <div className="text-xs font-bold text-slate-500">确认内容</div>
-                              {ind.confirmedItems.map((item) => {
-                                const usage = item.indicatorUsages?.find((u) => u.indicatorId === ind.id);
-                                return (
-                                  <div key={item.id} className="flex items-start gap-2 text-xs bg-slate-50 rounded-lg px-3 py-2">
-                                    {sourceIcon(item.dataSource)}
-                                    <div className="flex-1 min-w-0">
-                                      <div className="flex items-center gap-2 flex-wrap">
-                                        <span className="font-bold text-slate-700">{item.displayName}</span>
-                                        <span className="text-[10px] text-slate-400">
-                                          {item.dataSource === 'ai-prefill' ? 'AI 预填' : '我上传'}
-                                          {item.processStatus === 'modified' && ' · 已修改'}
-                                        </span>
-                                      </div>
-                                      {usage && usage.usedFields.length > 0 && (
-                                        <div className="flex items-center gap-1 flex-wrap mt-1">
-                                          <span className="text-[10px] text-slate-400">用到字段：</span>
-                                          {usage.usedFields.map((f, fi) => (
-                                            <span key={fi} className="text-[10px] px-1.5 py-0.5 rounded bg-white border border-slate-200 text-slate-600">
-                                              {f}
-                                            </span>
-                                          ))}
-                                        </div>
-                                      )}
-                                    </div>
-                                    <span className="text-[10px] text-green-600 font-bold shrink-0">已确认</span>
-                                  </div>
-                                );
-                              })}
+                          {/* 材料完成情况 */}
+                          <div className="w-48 shrink-0">
+                            <div className="flex items-center justify-between text-[11px] mb-1">
+                              <span className="text-slate-500 font-bold">
+                                已确认 {r.confirmed}/{r.total} 份
+                              </span>
+                              {r.pending > 0 && <span className="text-amber-500">{r.pending} 份待确认</span>}
                             </div>
-                          ) : (
-                            <div className="text-xs text-slate-400 mb-3 italic">暂无已确认内容</div>
-                          )}
+                            <div className="h-1.5 rounded-full bg-slate-100 overflow-hidden">
+                              <div
+                                className="h-full rounded-full transition-all"
+                                style={{ width: `${r.progress}%`, backgroundColor: meta.color }}
+                              />
+                            </div>
+                          </div>
 
-                          {/* 第三行：待确认项（如果有） */}
-                          {ind.pendingItems.length > 0 && (
-                            <div className="space-y-2 mb-3">
-                              <div className="text-xs font-bold text-amber-600">待确认</div>
-                              {ind.pendingItems.map((item) => (
-                                <div key={item.id} className="flex items-center gap-2 text-xs bg-amber-50/50 rounded-lg px-3 py-2 border border-amber-100">
-                                  {sourceIcon(item.dataSource)}
-                                  <span className="text-slate-600 flex-1">{item.displayName}</span>
-                                  <span className="text-[10px] text-amber-600 font-bold">待确认</span>
-                                </div>
-                              ))}
-                            </div>
-                          )}
+                          {/* 状态 */}
+                          <span
+                            className="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full shrink-0 w-24 justify-center"
+                            style={{ color: meta.color, backgroundColor: meta.bg, border: `1px solid ${meta.border}` }}
+                          >
+                            {meta.icon} {meta.label}
+                          </span>
 
                           {/* 操作 */}
-                          <div className="flex items-center gap-3 pt-3 border-t border-slate-100">
-                            <button
-                              onClick={() => router.push(`/data-management/ai-prefill/detail?indicator=${ind.id}`)}
-                              className="text-xs text-purple-600 hover:text-purple-700 font-bold flex items-center gap-0.5"
-                            >
-                              查看 AI 填报 <ArrowRightOutlined />
-                            </button>
-                            <span className="text-slate-200">|</span>
-                            <button
-                              onClick={() => router.push(`/metrics/detail`)}
-                              className="text-xs text-blue-600 hover:text-blue-700 font-bold flex items-center gap-0.5"
-                            >
-                              指标详情 <ArrowRightOutlined />
-                            </button>
-                            {ind.pendingItems.length > 0 && (
-                              <>
-                                <span className="text-slate-200">|</span>
-                                <button
-                                  onClick={() => router.push(`/data-management/ai-prefill/detail?indicator=${ind.id}`)}
-                                  className="text-xs text-amber-600 hover:text-amber-700 font-bold flex items-center gap-0.5"
-                                >
-                                  <PlusOutlined /> 去确认
-                                </button>
-                              </>
-                            )}
-                          </div>
+                          <span className="inline-flex items-center gap-0.5 text-xs font-bold text-blue-600 shrink-0 w-24 justify-end">
+                            {meta.action} <RightOutlined className="text-[10px]" />
+                          </span>
                         </div>
-                      </div>
-                    ))}
+                      );
+                    })}
                   </div>
                 </div>
               );

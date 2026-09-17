@@ -1,8 +1,9 @@
 'use client';
-import React, { Suspense, useState, useMemo } from 'react';
-import { Button, Tooltip } from 'antd';
+import React, { Suspense, useState, useMemo, useRef } from 'react';
+import { Button, Tooltip, Input, Checkbox } from 'antd';
 import {
   ArrowLeftOutlined,
+  ArrowRightOutlined,
   SaveOutlined,
   CheckOutlined,
   CheckCircleOutlined,
@@ -13,11 +14,35 @@ import {
   RobotOutlined,
   GlobalOutlined,
   CloudUploadOutlined,
+  FileTextOutlined,
+  SwapOutlined,
+  DownloadOutlined,
+  ReloadOutlined,
+  FolderOpenOutlined,
+  ExperimentOutlined,
+  LinkOutlined,
   InfoCircleOutlined,
-  CloseCircleOutlined,
 } from '@ant-design/icons';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { indicators, getDimension, getAIActionsByIndicator } from '@/lib/indicators';
+import { indicators, getDimension, getAIActionsByIndicator, type Indicator } from '@/lib/indicators';
+import { getAllUploadMaterials } from '@/lib/my-uploads';
+import WhitepaperTool from '@/components/WhitepaperTool';
+import {
+  useFilingState,
+  setFilingMode,
+  setFilingStatus,
+  useWhitepaperRef,
+  setReferenceChecked,
+  acknowledgeWhitepaper,
+  whitepaperReferenceOf,
+  filingModeMeta,
+  filingStatusMeta,
+  WHITEPAPER_NAME,
+  WHITEPAPER_PRODUCER_ID,
+  WHITEPAPER_REFERENCES,
+  type FilingMode,
+  type FilingStatus,
+} from '@/lib/filing';
 
 // ---------- 数据结构 ----------
 type ActionSourceType = 'upload' | 'ai-prefill' | 'external';
@@ -896,41 +921,6 @@ function renderContent(action: AIActionDetail) {
   return <pre className="text-sm text-slate-700 whitespace-pre-wrap m-0 font-sans leading-relaxed">{action.content}</pre>;
 }
 
-// ---------- 来源图标 ----------
-const sourceIconMap: Record<ActionSourceType, React.ReactNode> = {
-  upload: <CloudUploadOutlined className="text-amber-500" />,
-  'ai-prefill': <RobotOutlined className="text-purple-500" />,
-  external: <GlobalOutlined className="text-cyan-500" />,
-};
-const sourceColorMap: Record<ActionSourceType, string> = {
-  upload: '#d97706',
-  'ai-prefill': '#7c3aed',
-  external: '#0891b2',
-};
-
-// ---------- 动作按钮渲染 ----------
-function ActionButton({ type, onClick }: { type: string; onClick: () => void }) {
-  const config: Record<string, { label: string; icon: React.ReactNode; className: string }> = {
-    confirm: { label: '确认', icon: <CheckCircleOutlined />, className: 'text-green-600 border-green-200 hover:bg-green-50' },
-    modify: { label: '修改', icon: <EditOutlined />, className: 'text-blue-600 border-blue-200 hover:bg-blue-50' },
-    delete: { label: '删除', icon: <DeleteOutlined />, className: 'text-red-600 border-red-200 hover:bg-red-50' },
-    supplement: { label: '补充', icon: <PlusOutlined />, className: 'text-slate-600 border-slate-200 hover:bg-slate-50' },
-    adopt: { label: '采用', icon: <CheckCircleOutlined />, className: 'text-green-600 border-green-200 hover:bg-green-50' },
-    skip: { label: '不用', icon: <CloseCircleOutlined />, className: 'text-slate-500 border-slate-200 hover:bg-slate-50' },
-    explain: { label: '说明原因', icon: <InfoCircleOutlined />, className: 'text-amber-600 border-amber-200 hover:bg-amber-50' },
-  };
-  const c = config[type];
-  if (!c) return null;
-  return (
-    <button
-      onClick={onClick}
-      className={`text-xs font-bold px-3 py-1.5 rounded-lg border flex items-center gap-1 transition-colors ${c.className}`}
-    >
-      {c.icon} {c.label}
-    </button>
-  );
-}
-
 // ---------- 置信度 badge ----------
 function ConfidenceBadge({ level, note }: { level: 'high' | 'medium' | 'low'; note?: string }) {
   const config = {
@@ -947,6 +937,702 @@ function ConfidenceBadge({ level, note }: { level: 'high' | 'medium' | 'low'; no
   );
 }
 
+// ---------- 指标信息卡 ----------
+function IndicatorInfoCard({ indicator }: { indicator: Indicator }) {
+  const tierMeta: Record<string, { color: string; bg: string }> = {
+    合格: { color: '#d97706', bg: '#fffbeb' },
+    良好: { color: '#2563eb', bg: '#eff6ff' },
+    优秀: { color: '#059669', bg: '#ecfdf5' },
+  };
+  return (
+    <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+      <div className="px-5 py-3 border-b border-slate-100 flex items-center gap-2">
+        <FileTextOutlined className="text-blue-500" />
+        <span className="font-bold text-slate-800 text-sm">指标信息</span>
+        <span className="text-xs text-slate-400 ml-1">评分方式：{indicator.scoringMethod}</span>
+      </div>
+      <div className="px-5 py-4 grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div>
+          <div className="text-xs font-semibold text-slate-400 mb-1.5">指标定义</div>
+          <p className="text-sm text-slate-700 leading-relaxed m-0">{indicator.definition}</p>
+        </div>
+        <div>
+          <div className="text-xs font-semibold text-slate-400 mb-1.5">评分标准</div>
+          <p className="text-sm text-slate-700 leading-relaxed m-0">{indicator.scoringCriteria}</p>
+        </div>
+        <div>
+          <div className="text-xs font-semibold text-slate-400 mb-1.5">达标要求</div>
+          <div className="space-y-1.5">
+            {indicator.scoringTiers.map((t) => {
+              const m = tierMeta[t.tier] || { color: '#64748b', bg: '#f1f5f9' };
+              return (
+                <div key={t.tier} className="flex items-start gap-2">
+                  <span
+                    className="shrink-0 text-[11px] font-bold px-2 py-0.5 rounded"
+                    style={{ color: m.color, backgroundColor: m.bg }}
+                  >
+                    {t.tier}
+                  </span>
+                  <span className="text-xs text-slate-600 leading-relaxed">{t.criteria}</span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ---------- 模式选择（二选一） ----------
+function ModeSelect({ onPick }: { onPick: (mode: FilingMode) => void }) {
+  const options: {
+    mode: FilingMode;
+    title: string;
+    desc: string;
+    icon: React.ReactNode;
+    accent: string;
+    bg: string;
+    border: string;
+  }[] = [
+    {
+      mode: 'direct',
+      title: '直接填报',
+      desc: '我自己做好内容，直接上传提交',
+      icon: <EditOutlined />,
+      accent: '#2563eb',
+      bg: '#eff6ff',
+      border: '#bfdbfe',
+    },
+    {
+      mode: 'ai',
+      title: 'AI辅助填报',
+      desc: '我上传原始材料，AI按指标要求生成内容，我再确认',
+      icon: <RobotOutlined />,
+      accent: '#7c3aed',
+      bg: '#f5f3ff',
+      border: '#ddd6fe',
+    },
+  ];
+  return (
+    <div className="bg-white rounded-xl border border-slate-200 shadow-sm px-6 py-8">
+      <div className="text-center mb-6">
+        <h2 className="text-lg font-bold text-slate-800 m-0">选择填报模式</h2>
+        <p className="text-sm text-slate-500 m-0 mt-1">首次进入请选择一种方式，选定后仍可随时切换。</p>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-3xl mx-auto">
+        {options.map((o) => (
+          <button
+            key={o.mode}
+            onClick={() => onPick(o.mode)}
+            className="text-left rounded-xl border-2 p-5 transition-all hover:shadow-md hover:-translate-y-[1px]"
+            style={{ borderColor: o.border, backgroundColor: o.bg }}
+          >
+            <div className="flex items-center gap-2 mb-2">
+              <span
+                className="w-9 h-9 rounded-lg flex items-center justify-center text-white text-lg"
+                style={{ backgroundColor: o.accent }}
+              >
+                {o.icon}
+              </span>
+              <span className="font-bold text-base" style={{ color: o.accent }}>
+                {o.title}
+              </span>
+            </div>
+            <p className="text-sm text-slate-600 leading-relaxed m-0">{o.desc}</p>
+            <div className="mt-3 inline-flex items-center gap-1 text-xs font-bold" style={{ color: o.accent }}>
+              选择此模式 <ArrowRightOutlined />
+            </div>
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// ---------- 直接填报 ----------
+function DirectFilling({
+  indicator,
+  status,
+  onSubmitted,
+}: {
+  indicator: Indicator;
+  status: FilingStatus;
+  onSubmitted: () => void;
+}) {
+  const [files, setFiles] = useState<string[]>([]);
+  const [content, setContent] = useState('');
+  const isSubmitted = status === 'submitted';
+
+  const addFile = () => setFiles((prev) => [...prev, `评价内容_${prev.length + 1}.docx`]);
+  const removeFile = (idx: number) => setFiles((prev) => prev.filter((_, i) => i !== idx));
+
+  return (
+    <>
+      {/* 上传区 */}
+      <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+        <div className="px-5 py-3 border-b border-slate-100 flex items-center gap-2">
+          <CloudUploadOutlined className="text-amber-500" />
+          <span className="font-bold text-slate-800 text-sm">上传已做好的评价内容</span>
+          <span className="text-xs text-slate-400 ml-1">支持文档/表格</span>
+        </div>
+        <div className="px-5 py-4">
+          {files.length === 0 ? (
+            <button
+              onClick={addFile}
+              disabled={isSubmitted}
+              className="w-full border-2 border-dashed border-slate-200 rounded-lg py-8 text-center hover:border-amber-300 hover:bg-amber-50/30 transition-colors disabled:opacity-50"
+            >
+              <CloudUploadOutlined className="text-3xl text-slate-300 mb-2" />
+              <div className="text-sm text-slate-400">点击上传已做好的评价内容（文档/表格）</div>
+            </button>
+          ) : (
+            <div className="space-y-2">
+              {files.map((f, i) => (
+                <div key={i} className="flex items-center gap-3 py-2 border-b border-slate-50 last:border-0">
+                  <FileTextOutlined className="text-blue-500" />
+                  <span className="flex-1 text-sm text-slate-700">{f}</span>
+                  {!isSubmitted && (
+                    <button onClick={() => removeFile(i)} className="text-red-500 hover:text-red-600 text-xs flex items-center gap-1">
+                      <DeleteOutlined /> 移除
+                    </button>
+                  )}
+                </div>
+              ))}
+              {!isSubmitted && (
+                <button onClick={addFile} className="text-xs font-bold text-amber-600 hover:text-amber-700 flex items-center gap-1 pt-1">
+                  <PlusOutlined /> 继续添加
+                </button>
+              )}
+            </div>
+          )}
+          <div className="text-xs text-slate-400 pt-2 leading-relaxed">材料要求：{indicator.materialRequirements}</div>
+        </div>
+      </div>
+
+      {/* 补充说明 */}
+      <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+        <div className="px-5 py-3 border-b border-slate-100 flex items-center gap-2">
+          <EditOutlined className="text-blue-500" />
+          <span className="font-bold text-slate-800 text-sm">补充说明（可选）</span>
+        </div>
+        <div className="px-5 py-4">
+          <Input.TextArea
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+            placeholder="可补充说明本次评价内容的要点或备注…"
+            autoSize={{ minRows: 4, maxRows: 10 }}
+            disabled={isSubmitted}
+          />
+        </div>
+      </div>
+
+      {/* 底部操作栏 */}
+      <div className="fixed bottom-0 left-[220px] right-0 bg-white border-t border-slate-200 px-8 py-3 shadow-[0_-2px_8px_rgba(0,0,0,0.04)] z-20">
+        <div className="max-w-6xl mx-auto flex items-center justify-between gap-4">
+          <div className="text-xs text-slate-500">
+            已上传 <span className="font-bold text-green-600">{files.length}</span> 份文件
+          </div>
+          <div className="flex items-center gap-2">
+            <Button icon={<SaveOutlined />} disabled={isSubmitted}>保存草稿</Button>
+            <Button type="primary" icon={<CheckOutlined />} disabled={isSubmitted || files.length === 0} onClick={onSubmitted}>
+              {isSubmitted ? '已提交' : '提交'}
+            </Button>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
+
+// ---------- AI 辅助填报（三步走） ----------
+type AIStep = 1 | 2 | 3;
+type GenStatus = 'idle' | 'generating' | 'done';
+
+function AIFillingPane({
+  indicator,
+  data,
+  status,
+  onSubmitted,
+}: {
+  indicator: Indicator;
+  data: IndicatorActionsData;
+  status: FilingStatus;
+  onSubmitted: () => void;
+}) {
+  const [step, setStep] = useState<AIStep>(1);
+  const [genStatus, setGenStatus] = useState<GenStatus>('idle');
+  const [genProgress, setGenProgress] = useState(0);
+  const [genLogIdx, setGenLogIdx] = useState(0);
+  const [selectedMaterials, setSelectedMaterials] = useState<Set<string>>(new Set());
+  const [extraUploads, setExtraUploads] = useState<string[]>([]);
+  const [selectedExternal, setSelectedExternal] = useState<Set<string>>(new Set());
+  // 提交修改：用户把下载后本地修改好的文档回传上来
+  const [revisedFiles, setRevisedFiles] = useState<string[]>([]);
+  const revisedInputRef = useRef<HTMLInputElement>(null);
+
+  const handleRevisedPick = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const picked = Array.from(e.target.files ?? []).map((f) => f.name);
+    if (picked.length) setRevisedFiles((prev) => [...prev, ...picked]);
+    e.target.value = '';
+  };
+  const removeRevised = (idx: number) => setRevisedFiles((prev) => prev.filter((_, i) => i !== idx));
+
+  const isSubmitted = status === 'submitted';
+
+  // 从上传材料库筛选与本指标相关的材料
+  const candidateMaterials = useMemo(
+    () => getAllUploadMaterials().filter((m) => m.relatedIndicators.includes(indicator.id)),
+    [indicator.id],
+  );
+
+  // 外部数据源候选
+  const externalOptions = useMemo(() => {
+    if (!indicator.needsExternalData) return [];
+    return (indicator.externalDataSources || '')
+      .split(/[、，,；;]/)
+      .map((s) => s.trim())
+      .filter((s) => s.length > 2)
+      .slice(0, 5);
+  }, [indicator]);
+
+  const toggleMaterial = (id: string) => {
+    setSelectedMaterials((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+  };
+  const toggleExternal = (name: string) => {
+    setSelectedExternal((prev) => {
+      const next = new Set(prev);
+      if (next.has(name)) next.delete(name);
+      else next.add(name);
+      return next;
+    });
+  };
+
+  const totalSelected = selectedMaterials.size + extraUploads.length;
+  const genLogs = [
+    '正在解析指标要求…',
+    '正在读取所选原始材料…',
+    '正在结合材料按指标要求生成评价内容…',
+    '生成完成，请确认。',
+  ];
+
+  const startGenerate = () => {
+    setStep(2);
+    setGenStatus('generating');
+    setGenProgress(0);
+    setGenLogIdx(0);
+    const timer = setInterval(() => {
+      setGenProgress((prev) => {
+        if (prev >= 100) {
+          clearInterval(timer);
+          setGenStatus('done');
+          setStep(3);
+          return 100;
+        }
+        const next = prev + 10;
+        setGenLogIdx(Math.min(Math.floor(next / 30), genLogs.length - 1));
+        return next;
+      });
+    }, 300);
+  };
+
+  const regenerate = () => {
+    setGenStatus('idle');
+    setGenProgress(0);
+    setStep(1);
+  };
+
+  const downloadContent = () => {
+    const text = data.actions
+      .map((a) => `## ${a.name}\n\n${a.content}\n\n> ${a.aiExplanation}\n`)
+      .join('\n---\n\n');
+    const blob = new Blob([text], { type: 'text/markdown;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${indicator.id}-${indicator.name}-AI生成内容.md`;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
+  const stepMeta = [
+    { num: 1 as const, label: '选原始材料' },
+    { num: 2 as const, label: 'AI 生成' },
+    { num: 3 as const, label: '用户确认' },
+  ];
+
+  return (
+    <>
+      {/* 步骤条 */}
+      <div className="bg-white rounded-xl border border-slate-200 shadow-sm px-5 py-4">
+        <div className="flex items-center justify-between max-w-2xl mx-auto">
+          {stepMeta.map((s, i) => (
+            <div key={s.num} className="flex items-center flex-1 last:flex-none">
+              <div className="flex items-center gap-2">
+                <div
+                  className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold transition-colors ${
+                    step >= s.num ? 'bg-purple-600 text-white' : 'bg-slate-100 text-slate-400'
+                  }`}
+                >
+                  {step > s.num ? <CheckOutlined /> : s.num}
+                </div>
+                <span className={`text-sm font-bold ${step >= s.num ? 'text-slate-800' : 'text-slate-400'}`}>
+                  {s.label}
+                </span>
+              </div>
+              {i < stepMeta.length - 1 && (
+                <div className={`flex-1 h-0.5 mx-3 ${step > s.num ? 'bg-purple-500' : 'bg-slate-200'}`} />
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Step 1 — 选原始材料 */}
+      {step === 1 && (
+        <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+          <div className="px-5 py-3 border-b border-slate-100 flex items-center gap-2">
+            <FolderOpenOutlined className="text-amber-500" />
+            <span className="font-bold text-slate-800 text-sm">Step 1 · 选择原始材料</span>
+          </div>
+          <div className="px-5 py-4 space-y-4">
+            <div>
+              <div className="text-xs font-semibold text-slate-400 mb-2">从「上传材料」库中选择本次要用的原始材料</div>
+              {candidateMaterials.length === 0 ? (
+                <div className="text-xs text-slate-400 py-2">该指标暂无关联的上传材料。</div>
+              ) : (
+                <div className="space-y-2">
+                  {candidateMaterials.map((m) => {
+                    const checked = selectedMaterials.has(m.id);
+                    return (
+                      <label key={m.id} className="flex items-center gap-3 py-1.5 cursor-pointer">
+                        <input type="checkbox" checked={checked} onChange={() => toggleMaterial(m.id)} className="w-4 h-4 accent-purple-600" />
+                        <FileTextOutlined className="text-slate-400" />
+                        <span className="flex-1 text-sm text-slate-700">{m.name}</span>
+                        <span className="text-xs text-slate-400">{m.format}</span>
+                      </label>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+
+            <div>
+              <div className="text-xs font-semibold text-slate-400 mb-2">也可现场补传</div>
+              {extraUploads.length > 0 && (
+                <div className="space-y-1.5 mb-2">
+                  {extraUploads.map((f, i) => (
+                    <div key={i} className="flex items-center gap-2 text-sm text-slate-600">
+                      <FileTextOutlined className="text-blue-400" /> {f}
+                      <button onClick={() => setExtraUploads((prev) => prev.filter((_, j) => j !== i))} className="text-red-400 hover:text-red-500 text-xs ml-auto">
+                        移除
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              )}
+              <button onClick={() => setExtraUploads((prev) => [...prev, `补传材料_${prev.length + 1}.xlsx`])} className="text-xs font-bold text-amber-600 hover:text-amber-700 flex items-center gap-1">
+                <PlusOutlined /> 补传材料
+              </button>
+            </div>
+
+            {externalOptions.length > 0 && (
+              <div>
+                <div className="text-xs font-semibold text-slate-400 mb-2">勾选要引用的外部数据源</div>
+                <div className="space-y-2">
+                  {externalOptions.map((ext, i) => (
+                    <label key={i} className="flex items-center gap-3 py-1.5 cursor-pointer">
+                      <input type="checkbox" checked={selectedExternal.has(ext)} onChange={() => toggleExternal(ext)} className="w-4 h-4 accent-cyan-600" />
+                      <GlobalOutlined className="text-cyan-500" />
+                      <span className="flex-1 text-sm text-slate-700">{ext}</span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+          <div className="px-5 py-3 border-t border-slate-100 flex items-center justify-between">
+            <span className="text-xs text-slate-500">
+              已选 <span className="font-bold text-purple-600">{totalSelected}</span> 项材料
+              {selectedExternal.size > 0 && <>，{selectedExternal.size} 项外部数据源</>}
+            </span>
+            <Button type="primary" icon={<ThunderboltOutlined />} disabled={totalSelected === 0} onClick={startGenerate}>
+              下一步：AI 生成
+            </Button>
+          </div>
+        </div>
+      )}
+
+      {/* Step 2 — AI 生成 */}
+      {step === 2 && (
+        <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+          <div className="px-5 py-3 border-b border-slate-100 flex items-center gap-2">
+            <RobotOutlined className="text-purple-500" />
+            <span className="font-bold text-slate-800 text-sm">Step 2 · AI 生成</span>
+          </div>
+          <div className="px-5 py-8">
+            <div className="max-w-md mx-auto text-center">
+              <div className="w-16 h-16 rounded-full bg-purple-50 flex items-center justify-center text-2xl text-purple-500 mx-auto mb-4">
+                <RobotOutlined />
+              </div>
+              <div className="text-sm font-bold text-slate-700 mb-1">{genLogs[genLogIdx]}</div>
+              <div className="text-xs text-slate-400 mb-4">
+                系统按「{indicator.name}」的指标要求，结合所选材料生成评价内容…
+              </div>
+              <div className="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+                <div className="h-full bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full transition-all" style={{ width: `${genProgress}%` }} />
+              </div>
+              <div className="text-xs text-slate-500 mt-2">{genProgress}%</div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Step 3 — 用户确认 */}
+      {step === 3 && genStatus === 'done' && (
+        <>
+          <div className="bg-purple-50 border border-purple-200 rounded-xl px-4 py-3 flex items-center gap-3 text-xs text-purple-700">
+            <CheckCircleOutlined />
+            <span>AI 已生成评价内容，请确认无误后提交。未确认不会自动提交。</span>
+          </div>
+
+          <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+            <div className="px-5 py-3 border-b border-slate-100 flex items-center gap-2">
+              <FileTextOutlined className="text-purple-500" />
+              <span className="font-bold text-slate-800 text-sm">AI 生成内容</span>
+              <span className="text-xs text-slate-400 ml-1">共 {data.actions.length} 项</span>
+            </div>
+            <div className="px-5 py-4 space-y-4">
+              {data.actions.map((action, idx) => (
+                <div key={action.id} className="border border-slate-100 rounded-lg overflow-hidden">
+                  <div className="px-4 py-2 bg-slate-50 border-b border-slate-100 flex items-center gap-2">
+                    <span className="w-6 h-6 rounded bg-purple-100 text-purple-600 text-xs font-bold flex items-center justify-center">
+                      {idx + 1}
+                    </span>
+                    <span className="font-bold text-slate-700 text-sm">{action.name}</span>
+                    <ConfidenceBadge level={action.confidence} note={action.confidenceNote} />
+                  </div>
+                  <div className="px-4 py-3">
+                    <div className="bg-slate-50 rounded-lg p-3 border border-slate-100">{renderContent(action)}</div>
+                    <div className="mt-2 text-xs text-slate-500 leading-relaxed">{action.aiExplanation}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* 提交修改：把本地修改好的文档回传 */}
+          <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+            <div className="px-5 py-3 border-b border-slate-100 flex items-center gap-2">
+              <CloudUploadOutlined className="text-purple-500" />
+              <span className="font-bold text-slate-800 text-sm">提交修改</span>
+              <span className="text-xs text-slate-400 ml-1">上传本地修改后的文档，提交时以此为准</span>
+            </div>
+            <div className="px-5 py-4">
+              <div className="flex items-start gap-2 text-xs text-slate-500 bg-slate-50 border border-slate-100 rounded-lg px-3 py-2 mb-3">
+                <InfoCircleOutlined className="text-slate-400 mt-0.5" />
+                <span className="leading-relaxed">
+                  流程：点<strong className="text-slate-700">下载</strong>导出 AI 生成内容 → 在本地修改 →
+                  在此<strong className="text-slate-700">上传修改稿</strong> → 点底部<strong className="text-slate-700">提交</strong>。
+                  上传后提交即以修改稿为准，AI 生成内容仅作为底稿留存。
+                </span>
+              </div>
+
+              {revisedFiles.length === 0 ? (
+                <button
+                  onClick={() => revisedInputRef.current?.click()}
+                  disabled={isSubmitted}
+                  className="w-full border-2 border-dashed border-slate-200 rounded-lg py-7 text-center hover:border-purple-300 hover:bg-purple-50/30 transition-colors disabled:opacity-50"
+                >
+                  <CloudUploadOutlined className="text-3xl text-slate-300 mb-2" />
+                  <div className="text-sm text-slate-400">点击上传修改后的评价内容（文档/表格）</div>
+                  <div className="text-xs text-slate-300 mt-1">支持 .doc/.docx/.xls/.xlsx/.pdf/.csv，可多选</div>
+                </button>
+              ) : (
+                <div className="space-y-2">
+                  {revisedFiles.map((f, i) => (
+                    <div key={`${f}-${i}`} className="flex items-center gap-3 py-2 border-b border-slate-50 last:border-0">
+                      <FileTextOutlined className="text-purple-500" />
+                      <span className="flex-1 text-sm text-slate-700 truncate">{f}</span>
+                      <span className="shrink-0 text-[11px] px-2 py-0.5 rounded bg-purple-50 text-purple-600 border border-purple-100">
+                        修改稿
+                      </span>
+                      {!isSubmitted && (
+                        <button
+                          onClick={() => removeRevised(i)}
+                          className="shrink-0 text-red-500 hover:text-red-600 text-xs flex items-center gap-1"
+                        >
+                          <DeleteOutlined /> 移除
+                        </button>
+                      )}
+                    </div>
+                  ))}
+                  {!isSubmitted && (
+                    <button
+                      onClick={() => revisedInputRef.current?.click()}
+                      className="text-xs font-bold text-purple-600 hover:text-purple-700 flex items-center gap-1 pt-1"
+                    >
+                      <PlusOutlined /> 继续添加
+                    </button>
+                  )}
+                </div>
+              )}
+
+              <div className="text-xs mt-3 leading-relaxed">
+                {revisedFiles.length === 0 ? (
+                  <span className="text-amber-600">
+                    尚未上传修改稿：提交时将直接采用上方 AI 生成内容。
+                  </span>
+                ) : (
+                  <span className="text-green-600">
+                    已上传 {revisedFiles.length} 份修改稿：提交时以修改稿为准。
+                  </span>
+                )}
+              </div>
+
+              <input
+                ref={revisedInputRef}
+                type="file"
+                multiple
+                accept=".doc,.docx,.xls,.xlsx,.pdf,.csv"
+                className="hidden"
+                onChange={handleRevisedPick}
+              />
+            </div>
+          </div>
+
+          <div className="fixed bottom-0 left-[220px] right-0 bg-white border-t border-slate-200 px-8 py-3 shadow-[0_-2px_8px_rgba(0,0,0,0.04)] z-20">
+            <div className="max-w-6xl mx-auto flex items-center justify-between gap-4">
+              <div className="flex items-center gap-2">
+                <Button icon={<DownloadOutlined />} onClick={downloadContent}>
+                  下载
+                </Button>
+                <Button
+                  icon={<CloudUploadOutlined />}
+                  onClick={() => revisedInputRef.current?.click()}
+                  disabled={isSubmitted}
+                >
+                  提交修改
+                </Button>
+                <Button icon={<ReloadOutlined />} onClick={regenerate} disabled={isSubmitted}>
+                  重新生成
+                </Button>
+              </div>
+              <div className="flex items-center gap-3">
+                {revisedFiles.length > 0 && (
+                  <span className="text-xs font-bold text-purple-600">将提交 {revisedFiles.length} 份修改稿</span>
+                )}
+                <Button type="primary" icon={<CheckOutlined />} disabled={isSubmitted} onClick={onSubmitted}>
+                  {isSubmitted ? '已提交' : revisedFiles.length > 0 ? '提交修改稿' : '提交'}
+                </Button>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
+    </>
+  );
+}
+
+// ---------- 产业白皮书：产出说明（1.1.1）/ 引用区（其他指标） ----------
+// 原则：不强制、不锁定、只引导。所有指标平级，谁都能先填。
+
+function WhitepaperProducerNote() {
+  return (
+    <div className="bg-amber-50 border border-amber-200 rounded-xl px-5 py-4">
+      <div className="flex items-center gap-2 mb-2">
+        <ExperimentOutlined className="text-amber-600" />
+        <span className="font-bold text-amber-800 text-sm">
+          本指标产出的《{WHITEPAPER_NAME}》可供后续 {WHITEPAPER_REFERENCES.length} 项指标引用
+        </span>
+      </div>
+      <div className="text-xs text-amber-700 leading-relaxed mb-2.5">
+        所有指标平级，谁都能先填。本指标生成的白皮书是「可用资源」，不是其他指标的前置门槛：提交后，
+        下列指标的填报页会自动带出白皮书引用（默认勾选，也可自行取消）。
+      </div>
+      <div className="flex flex-wrap gap-1.5">
+        {WHITEPAPER_REFERENCES.map((r) => {
+          const ind = indicators.find((i) => i.id === r.indicatorId);
+          return (
+            <span
+              key={r.indicatorId}
+              className="inline-flex items-center gap-1 text-xs bg-white border border-amber-200 text-amber-800 rounded px-2 py-1"
+            >
+              <span className="font-mono text-[11px] text-amber-500">{r.indicatorId}</span>
+              {ind?.name ?? r.indicatorId}
+              <span className="text-amber-500">· 引用{r.usedModule}</span>
+            </span>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+function WhitepaperReferenceCard({ indicatorId }: { indicatorId: string }) {
+  const ref = whitepaperReferenceOf(indicatorId);
+  const { available, checked, stale } = useWhitepaperRef(indicatorId);
+  if (!ref) return null;
+
+  return (
+    <div className={`rounded-xl border px-5 py-4 ${available ? 'bg-cyan-50/60 border-cyan-200' : 'bg-slate-50 border-slate-200'}`}>
+      <div className="flex items-center gap-2 mb-2 flex-wrap">
+        <LinkOutlined className={available ? 'text-cyan-600' : 'text-slate-400'} />
+        <span className={`font-bold text-sm ${available ? 'text-cyan-800' : 'text-slate-500'}`}>可引用的填报依据</span>
+        <span className="text-xs text-slate-500">
+          本指标可引用 {WHITEPAPER_PRODUCER_ID}《{WHITEPAPER_NAME}》中的「{ref.usedModule}」
+        </span>
+      </div>
+
+      <div
+        className={`flex items-start gap-2.5 rounded-lg border px-3 py-2.5 ${
+          available ? 'bg-white border-cyan-200' : 'bg-slate-100 border-slate-200'
+        }`}
+      >
+        <Checkbox
+          checked={available && checked}
+          disabled={!available}
+          onChange={(e) => setReferenceChecked(indicatorId, e.target.checked)}
+        />
+        <span className="flex-1 min-w-0">
+          <span className={`text-sm font-bold ${available ? 'text-slate-800' : 'text-slate-400'}`}>
+            {WHITEPAPER_PRODUCER_ID}《{WHITEPAPER_NAME}》
+          </span>
+          <span className={`block text-xs mt-0.5 leading-relaxed ${available ? 'text-slate-600' : 'text-slate-400'}`}>
+            {available
+              ? `已产出，勾选后其「${ref.usedModule}」将作为本指标的填报输入。不强制引用，可随时取消。`
+              : `${WHITEPAPER_PRODUCER_ID} 尚未完成，暂不可引用。你仍可正常填报本指标，不影响提交。`}
+          </span>
+        </span>
+        {!available && (
+          <span className="shrink-0 text-[11px] font-bold px-2 py-0.5 rounded bg-slate-200 text-slate-500">
+            暂不可引用
+          </span>
+        )}
+        {stale && (
+          <span className="shrink-0 inline-flex items-center gap-1 text-[11px] font-bold px-2 py-0.5 rounded bg-amber-100 text-amber-700 border border-amber-200">
+            <ReloadOutlined /> 白皮书已更新，可重新生成
+          </span>
+        )}
+      </div>
+
+      {stale && (
+        <div className="mt-2 flex items-center gap-2 flex-wrap">
+          <Button size="small" onClick={() => acknowledgeWhitepaper(indicatorId)}>
+            知道了
+          </Button>
+          <span className="text-xs text-slate-500">当前引用的是旧版本白皮书，建议基于新版重新生成填报内容。</span>
+        </div>
+      )}
+    </div>
+  );
+}
+
 // ---------- 主内容 ----------
 function DetailContent() {
   const router = useRouter();
@@ -956,31 +1642,7 @@ function DetailContent() {
   const indicator = useMemo(() => indicators.find((i) => i.id === indicatorId), [indicatorId]);
   const dim = useMemo(() => (indicator ? getDimension(indicator.dimension) : null), [indicator]);
   const data = useMemo(() => getIndicatorActionsData(indicatorId), [indicatorId]);
-
-  // 本地状态
-  const [statuses, setStatuses] = useState<Record<string, ActionStatus>>(() => {
-    const map: Record<string, ActionStatus> = {};
-    data.actions.forEach((a) => {
-      map[a.id] = a.defaultStatus || 'pending';
-    });
-    return map;
-  });
-
-  const setActionStatus = (actionId: string, status: ActionStatus) => {
-    setStatuses((prev) => ({ ...prev, [actionId]: status }));
-  };
-
-  // 统计
-  const stats = useMemo(() => {
-    const pending = Object.values(statuses).filter((s) => s === 'pending').length;
-    const confirmed = Object.values(statuses).filter((s) => s === 'confirmed' || s === 'modified').length;
-    return {
-      total: data.actions.length,
-      pending,
-      confirmed,
-      progress: data.actions.length ? Math.round((confirmed / data.actions.length) * 100) : 0,
-    };
-  }, [statuses, data.actions.length]);
+  const filing = useFilingState(indicatorId);
 
   if (!indicator || !dim) {
     return (
@@ -995,22 +1657,55 @@ function DetailContent() {
     );
   }
 
+  const { mode, status } = filing;
+  const statusMeta = filingStatusMeta[status];
+  const modeMeta = filingModeMeta[mode];
+  const isSubmitted = status === 'submitted';
+  const submit = () => {
+    setFilingStatus(indicatorId, 'submitted');
+    router.push('/data-management/records');
+  };
+
   return (
     <div className="flex-1 flex flex-col min-h-[calc(100vh-140px)] bg-slate-50">
       {/* ===== 顶部栏 ===== */}
       <div className="bg-white border-b border-slate-200 px-8 py-4 shadow-sm shrink-0">
         <div className="max-w-6xl mx-auto">
-          {/* 第一行：返回 + 指标名 + 权重/维度/确认角色 + 状态 */}
+          {/* 第一行：返回 + 指标名 + 当前状态 + 切换模式 */}
           <div className="flex items-center gap-3 flex-wrap mb-2.5">
-            <button onClick={() => router.push('/data-management/ai-prefill')} className="text-slate-500 hover:text-slate-800 flex items-center gap-1 text-sm font-medium">
+            <button
+              onClick={() => router.push('/data-management/ai-prefill')}
+              className="text-slate-500 hover:text-slate-800 flex items-center gap-1 text-sm font-medium"
+            >
               <ArrowLeftOutlined /> 返回
             </button>
             <div className="h-4 w-px bg-slate-200" />
             <span className="font-mono text-xs text-slate-400">{indicator.id}</span>
             <h1 className="font-bold text-xl text-slate-800 m-0">{indicator.name}</h1>
+
+            <div className="ml-auto flex items-center gap-2">
+              <span
+                className="inline-flex items-center text-xs font-bold px-2.5 py-1 rounded-full"
+                style={{
+                  color: statusMeta.color,
+                  backgroundColor: statusMeta.bg,
+                  border: `1px solid ${statusMeta.border}`,
+                }}
+              >
+                当前状态：{statusMeta.label}
+              </span>
+              {mode !== 'unselected' && (
+                <button
+                  onClick={() => setFilingMode(indicatorId, 'unselected')}
+                  className="inline-flex items-center gap-1 text-xs font-bold text-slate-500 hover:text-slate-800 border border-slate-200 hover:border-slate-300 px-2.5 py-1 rounded-full transition-colors"
+                >
+                  <SwapOutlined /> 切换模式
+                </button>
+              )}
+            </div>
           </div>
 
-          {/* 第二行：meta tags + 动作统计 */}
+          {/* 第二行：权重 / 维度 / 填报模式 */}
           <div className="flex items-center gap-2 flex-wrap">
             <span className="inline-flex items-center text-xs px-2.5 py-1 rounded-md bg-slate-100 text-slate-600 border border-slate-200">
               权重 <span className="font-bold text-slate-800 ml-1">{indicator.weight}%</span>
@@ -1022,138 +1717,59 @@ function DetailContent() {
               <span className="w-2 h-2 rounded-full mr-1.5" style={{ backgroundColor: dim.color }} />
               维度{dim.key} · {dim.name}
             </span>
-            <span className="inline-flex items-center text-xs px-2.5 py-1 rounded-md bg-blue-50 text-blue-700 border border-blue-200">
-              👤 {data.confirmRole}
-            </span>
-
-            <div className="ml-auto flex items-center gap-1 text-xs text-slate-500">
-              <span className="inline-flex items-center px-2.5 py-1 rounded-md bg-purple-50 text-purple-700 border border-purple-200">
-                <ThunderboltOutlined className="mr-1" /> AI预填动作 <span className="font-bold ml-0.5">{stats.total}</span> 个
-              </span>
-              <span className="inline-flex items-center px-2.5 py-1 rounded-md bg-amber-50 text-amber-700 border border-amber-200">
-                待确认 <span className="font-bold ml-0.5">{stats.pending}</span>
-              </span>
-              <span className="inline-flex items-center px-2.5 py-1 rounded-md bg-green-50 text-green-700 border border-green-200">
-                已确认 <span className="font-bold ml-0.5">{stats.confirmed}</span>
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* ===== 动作卡片列表 ===== */}
-      <div className="flex-1 max-w-6xl mx-auto w-full px-8 py-6 space-y-4 pb-24">
-        {data.actions.map((action, idx) => {
-          const status = statuses[action.id] || 'pending';
-          return (
-            <div
-              key={action.id}
-              className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden"
+            <span
+              className="inline-flex items-center text-xs px-2.5 py-1 rounded-md"
+              style={{
+                backgroundColor: modeMeta.bg,
+                color: modeMeta.color,
+                border: `1px solid ${modeMeta.border}`,
+              }}
             >
-              {/* 卡片头部 */}
-              <div className="px-5 py-3 border-b border-slate-100 flex items-center gap-3">
-                <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-500 to-indigo-500 text-white text-sm font-bold flex items-center justify-center shadow-sm">
-                  {idx + 1}
-                </div>
-                <span className="font-bold text-slate-800 text-base">{action.name}</span>
-                <ConfidenceBadge level={action.confidence} note={action.confidenceNote} />
-                <span className="ml-auto inline-flex items-center text-xs px-2 py-0.5 rounded-full whitespace-nowrap"
-                  style={{
-                    color: status === 'confirmed' ? '#059669' : status === 'modified' ? '#1677ff' : status === 'skipped' ? '#64748b' : '#d97706',
-                    backgroundColor: status === 'confirmed' ? '#ecfdf5' : status === 'modified' ? '#eff6ff' : status === 'skipped' ? '#f1f5f9' : '#fffbeb',
-                  }}>
-                  {status === 'confirmed' ? '已确认' : status === 'modified' ? '已修改' : status === 'skipped' ? '已跳过' : '待确认'}
-                </span>
-              </div>
-
-              {/* 卡片内容 */}
-              <div className="px-5 py-4 space-y-4">
-                {/* 来源 */}
-                <div>
-                  <div className="text-xs font-semibold text-slate-400 mb-1.5">来源：</div>
-                  <div className="flex flex-wrap gap-x-4 gap-y-1.5">
-                    {action.sources.map((s, i) => (
-                      <div key={i} className="inline-flex items-center gap-1.5 text-xs">
-                        {sourceIconMap[s.type]}
-                        <span className="font-medium" style={{ color: sourceColorMap[s.type] }}>
-                          {s.type === 'upload' ? '我的上传' : s.type === 'ai-prefill' ? 'AI预填' : '外部数据'}
-                        </span>
-                        <span className="text-slate-600">{s.label.split('：').slice(1).join('：') || s.label}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* AI 预填内容 */}
-                <div>
-                  <div className="text-xs font-semibold text-slate-400 mb-1.5">
-                    <span className="inline-flex items-center gap-1">
-                      <RobotOutlined className="text-purple-500" /> AI 预填内容
-                    </span>
-                  </div>
-                  <div className="bg-slate-50 rounded-lg p-4 border border-slate-100">
-                    {renderContent(action)}
-                  </div>
-                </div>
-
-                {/* AI 预填说明 */}
-                <div className="bg-blue-50/60 rounded-lg p-3 border border-blue-100">
-                  <div className="text-xs font-semibold text-blue-700 mb-1 flex items-center gap-1">
-                    <InfoCircleOutlined /> AI 预填说明
-                  </div>
-                  <p className="text-xs text-slate-600 leading-relaxed m-0">{action.aiExplanation}</p>
-                </div>
-
-                {/* 操作按钮 */}
-                <div className="flex items-center gap-2 pt-2 border-t border-slate-100">
-                  {action.actions.map((act) => (
-                    <ActionButton
-                      key={act}
-                      type={act}
-                      onClick={() => {
-                        if (act === 'confirm' || act === 'adopt') setActionStatus(action.id, 'confirmed');
-                        else if (act === 'modify') setActionStatus(action.id, 'modified');
-                        else if (act === 'delete' || act === 'skip') setActionStatus(action.id, 'skipped');
-                        else if (act === 'supplement') setActionStatus(action.id, 'modified');
-                        else if (act === 'explain') {
-                          // 弹出说明弹窗 TODO
-                          setActionStatus(action.id, 'modified');
-                        }
-                      }}
-                    />
-                  ))}
-                </div>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-
-      {/* ===== 底部操作栏（sticky） ===== */}
-      <div className="fixed bottom-0 left-[220px] right-0 bg-white border-t border-slate-200 px-8 py-3 shadow-[0_-2px_8px_rgba(0,0,0,0.04)] z-20">
-        <div className="max-w-6xl mx-auto flex items-center justify-between gap-4">
-          <div className="flex items-center gap-3 text-xs text-slate-500">
-            <div className="flex items-center gap-2">
-              <div className="w-40 h-1.5 bg-slate-100 rounded-full overflow-hidden">
-                <div className="h-full bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full transition-all" style={{ width: `${stats.progress}%` }} />
-              </div>
-              <span className="font-bold text-slate-700">{stats.progress}%</span>
-            </div>
-            <span>
-              已处理 <span className="font-bold text-green-600">{stats.confirmed}</span> / {stats.total}，
-              待处理 <span className="font-bold text-amber-600">{stats.pending}</span>
+              填报模式：{modeMeta.label}
             </span>
           </div>
-          <div className="flex items-center gap-2">
-            <Button onClick={() => {
-              const allConfirmed: Record<string, ActionStatus> = {};
-              data.actions.forEach((a) => { allConfirmed[a.id] = 'confirmed'; });
-              setStatuses(allConfirmed);
-            }}>全部确认</Button>
-            <Button icon={<SaveOutlined />}>保存草稿</Button>
-            <Button type="primary" icon={<CheckOutlined />}>提交</Button>
-          </div>
         </div>
+      </div>
+
+      {/* ===== 主体 ===== */}
+      <div className="flex-1 max-w-6xl mx-auto w-full px-8 py-6 space-y-5 pb-24">
+        <IndicatorInfoCard indicator={indicator} />
+
+        {indicatorId === WHITEPAPER_PRODUCER_ID ? (
+          <WhitepaperProducerNote />
+        ) : (
+          <WhitepaperReferenceCard indicatorId={indicatorId} />
+        )}
+
+        {mode === 'unselected' ? (
+          <ModeSelect onPick={(m) => setFilingMode(indicatorId, m)} />
+        ) : (
+          <>
+            {isSubmitted && (
+              <div className="bg-green-50 border border-green-200 rounded-xl px-5 py-4 flex items-center gap-3">
+                <CheckCircleOutlined className="text-green-600 text-lg" />
+                <div className="flex-1">
+                  <div className="font-bold text-green-700 text-sm">该指标已提交</div>
+                  <div className="text-xs text-green-600 mt-0.5">如需调整可切换模式，或重新编辑后再次提交。</div>
+                </div>
+                <Button size="small" onClick={() => router.push('/data-management/records')}>
+                  查看提交记录
+                </Button>
+                <Button size="small" onClick={() => setFilingStatus(indicatorId, 'in-progress')}>
+                  重新编辑
+                </Button>
+              </div>
+            )}
+
+            {mode === 'direct' ? (
+              <DirectFilling indicator={indicator} status={status} onSubmitted={submit} />
+            ) : indicator.tag === '起点指标' ? (
+              <WhitepaperTool indicator={indicator} status={status} onSubmitted={submit} />
+            ) : (
+              <AIFillingPane indicator={indicator} data={data} status={status} onSubmitted={submit} />
+            )}
+          </>
+        )}
       </div>
     </div>
   );

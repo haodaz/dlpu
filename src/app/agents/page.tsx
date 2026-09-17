@@ -17,7 +17,7 @@ import { useRouter } from 'next/navigation';
 type Message = {
   id: string;
   role: 'user' | 'assistant';
-  content: React.ReactNode;
+  content: string | React.ReactNode | null;
   isTyping?: boolean;
 };
 
@@ -27,7 +27,7 @@ export default function AgentsPage() {
     {
       id: 'init',
       role: 'assistant',
-      content: '您好！我是大连工业大学智能评价引擎的**总评价AI司令**。您可以向我查询底层数据状态、交流评价标准，或者让我直接为您运行一次全景评价。'
+      content: '您好！我是大连工业大学智能评价引擎的**总评价 AI 司令**。您可以向我查询底层数据状态、交流评价标准，或者让我直接为您运行一次全景评价。'
     }
   ]);
   const [inputValue, setInputValue] = useState('');
@@ -54,18 +54,18 @@ export default function AgentsPage() {
     const aiMsgId = (Date.now() + 1).toString();
     setMessages(prev => [...prev, { id: aiMsgId, role: 'assistant', content: '', isTyping: true }]);
 
-    // Smart Routing Logic
+    // Smart Routing Logic for Report Interpretation
     let responseText = '';
     
-    if (text.includes('数据') || text.includes('查询')) {
-      await new Promise(r => setTimeout(r, 1000));
-      responseText = '正在为您检索系统大盘数据...\n目前底层共收录了 1,128 个全景数据节点，覆盖了 T01-T19 全部模板。最近一次数据更新是在今天上午，T19 校友追踪模块新增了 3 条高管校友访谈记录。需要我为您深入分析某个特定模块吗？';
-    } else if (text.includes('填报') || text.includes('提供') || text.includes('T03')) {
-      await new Promise(r => setTimeout(r, 1000));
-      responseText = '针对 T03 产业白皮书模块，我建议您重点补充以下信息以提升评级：\n1. **产业生命周期判定**：补充该产业是处于成长期还是成熟期的数据支撑。\n2. **关键岗位能力矩阵**：不要仅列出岗位名称，必须附带详细的硬技能(如PLC编程)和软技能要求。\n需要我为您生成一份标准的填报示例吗？';
-    } else if (text.includes('标准') || text.includes('T11')) {
-      await new Promise(r => setTimeout(r, 1000));
-      responseText = '《包装机械设计》等主干课程的 T11 评价标准极其严格（适用“使命型17项指标体系”）：\n- **优秀级标准**：要求产业需求节点与课程目标完全闭环映射，不仅无空壳节点，且实战项目的真实企业合同驱动率需达到 70% 以上。\n- **关键红线**：一旦出现“挂名课程”或“180万以上高价设备使用率低于10%”，会直接被判定为不合格。';
+    if (text.includes('解读') || text.includes('核心发现') || text.includes('报告')) {
+      await new Promise(r => setTimeout(r, 1200));
+      responseText = `**当前评价报告核心发现**\n\n📊 **总分 88.5 分（良好 B 级）**\n\n四大维度得分率：\n- **A 课程与需求适配性**：92%（优秀）— 产业对接精准，课程映射完整\n- **B 教学实施有效性**：90%（优秀）— 考核闭环管理规范，教学投入深度高\n- **C 运行保障支撑度**：85%（良好）— 资源保障稳健，企业合作真实有效\n- **D 产出与贡献**：82%（良好）— 受校友数据薄弱影响，成为主要短板\n\n **关键发现**：\n1. 17 项指标中 10 项达良好及以上，整体表现稳健\n2. 主要短板在**校友影响力（70 分）**和**企业项目驱动率（65%）**\n3. 数据流健康度达 92%，证据链完整可追溯\n\n需要我深入分析某个维度或指标吗？`;
+    } else if (text.includes('维度') || text.includes('差异') || text.includes('短板')) {
+      await new Promise(r => setTimeout(r, 1200));
+      responseText = `**四大维度得分差异分析**\n\n| 维度 | 得分率 | 等级 | 主要优势 | 主要短板 |\n|------|--------|------|----------|----------|\n| A 课程与需求适配性 | 92% | 优秀 | 产业白皮书三模块齐全，课程 - 产业链映射 100% 覆盖 | 前沿课比例仅 33%，AI 能力覆盖不足 |\n| B 教学实施有效性 | 90% | 优秀 | 考核闭环率 85%，问答响应率 90% | 横向科研转化仅 45%，AI 教师能力 60% |\n| C 运行保障支撑度 | 85% | 良好 | 实验开出率 92%，设备完好率 96% | AI 平台接入率 80%，真实项目驱动率 65% |\n| D 产出与贡献 | 82% | 良好 | 对口就业率 75%，满意度 4.2/5 | 校友追踪覆盖率仅 60%，影响力比例 35% |\n\n📌 **改进优先级建议**：\n1. **第一阶**：提升校友数据追踪覆盖率（从 60% 提升至 80%）\n2. **第二阶**：加强 AI 平台培训，提升接入率（从 80% 提升至 95%）\n3. **第三阶**：拓展企业项目来源，提升真实项目驱动率（从 65% 提升至 80%）\n\n需要我查看具体指标的评分理由吗？`;
+    } else if (text.includes('指标') || text.includes('评分理由') || text.includes('扣分点')) {
+      await new Promise(r => setTimeout(r, 1200));
+      responseText = `**指标评分理由与扣分点示例**\n\n📋 **2.2.1 教学投入深度（92 分 · 优秀）**\n\n✅ **评分理由**：\n- 传道维度：职业指引帖文准确率 95%，学习计划提交率 95%\n- 授业维度：课程依赖矩阵完整，每门课有前置课和后续课标注\n- 解惑维度：问答响应率 90%，接近优秀标准（≥95%）\n\n⚠️ **扣分点**：\n- AI 未检测到 2 处学生提问纳入修订（语义改写而非关键词），教师手动标注，说明 AI 语义理解需加强\n\n📎 **证据链**：课程平台互动数据 Excel、职业指引帖文截图、学习计划提交统计、课程依赖矩阵\n\n---\n\n📋 **4.1.2 毕业生影响力（70 分 · 合格）**\n\n✅ **评分理由**：\n- 校友影响力比例 35%，达到良好标准（≥30%）\n- AI 匹配准确率约 90%\n\n⚠️ **扣分点**：\n- 追踪覆盖率仅 60%，低于参考线，数据基础薄弱\n- 校友数据不全、更新不及时，导致指标参考价值受限\n\n需要我查看其他指标的详细分析吗？`;
     } else if (text.includes('Run') || text.includes('评价') || text.includes('跑')) {
       // Evaluation Flow
       await new Promise(r => setTimeout(r, 800));
@@ -75,13 +75,8 @@ export default function AgentsPage() {
       const evalMsgId = (Date.now() + 2).toString();
       setMessages(prev => [...prev, { id: evalMsgId, role: 'assistant', content: <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg flex flex-col items-center gap-3 w-64"><Spin size="large" /><div className="text-sm text-slate-500 font-bold">引擎运算中 (Tool Calling)...</div><div className="text-xs text-slate-400">正在进行跨模板矩阵比对</div></div> }]);
 
-      // Call actual evaluation API
-      try {
-        await fetch('/api/evaluation', { method: 'POST' });
-        await new Promise(r => setTimeout(r, 2000)); // Add visual delay
-      } catch (e) {
-        console.error(e);
-      }
+      // Mock evaluation (no actual API call)
+      await new Promise(r => setTimeout(r, 2000));
 
       setIsEvaluating(false);
       
@@ -91,16 +86,16 @@ export default function AgentsPage() {
       setMessages(prev => [...prev, { id: finalMsgId, role: 'assistant', content: (
         <div>
           <p className="font-bold text-emerald-600 mb-2"><CheckCircleOutlined className="mr-1" /> 评价任务执行完毕！</p>
-          <p>本次全景诊断得分为 <strong>78分 (合格 C)</strong>。总线推理发现该专业呈现典型的“两端强劲、中间塌陷”的哑铃型发展格局。</p>
+          <p>本次全景诊断得分为 <strong>88.5 分（良好 B 级）</strong>。总线推理发现该专业在四大维度中，课程与需求适配性（92%）与教学实施有效性（90%）表现突出，产出与贡献（82%）受校友数据薄弱影响成为主要短板。</p>
           <div className="mt-3">
-            <Button type="primary" onClick={() => router.push('/')}>前往工作台查看雷达图报告</Button>
+            <Button type="primary" onClick={() => router.push('/evaluations')}>前往评价报告查看详细解读</Button>
           </div>
         </div>
       ) }]);
       return;
     } else {
       await new Promise(r => setTimeout(r, 1000));
-      responseText = '收到。作为您的评价司令，我可以帮您执行特定的核查任务。您可以尝试点击右侧的快捷技能，或者告诉我具体需要分析哪个维度的教学指标。';
+      responseText = '收到。作为您的评价司令，我可以帮您解读 AI 评价报告、分析维度差异、查看指标评分理由。您可以尝试点击右侧的快捷技能，或者告诉我具体需要分析哪个维度的教学指标。';
     }
 
     setMessages(prev => prev.map(m => m.id === aiMsgId ? { ...m, content: responseText, isTyping: false } : m));
@@ -114,10 +109,10 @@ export default function AgentsPage() {
   };
 
   const skills = [
-    { icon: <SearchOutlined />, text: '查询目前的大连工业大学全景数据' },
-    { icon: <EditOutlined />, text: '提供 T03 产业白皮书的补充填报信息' },
-    { icon: <ReadOutlined />, text: '解释《包装机械设计》的 T11 评价标准' },
-    { icon: <PlayCircleOutlined />, text: '立刻 Run 一次全新的宏观评价分析', isAction: true },
+    { icon: <SearchOutlined />, text: '解读当前评价报告的核心发现' },
+    { icon: <ReadOutlined />, text: '分析四大维度的得分差异与短板' },
+    { icon: <EditOutlined />, text: '查看各指标的评分理由与扣分点' },
+    { icon: <PlayCircleOutlined />, text: '立即 Run 一次全新的宏观评价分析', isAction: true },
   ];
 
   return (
@@ -149,12 +144,12 @@ export default function AgentsPage() {
                     <span className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '0.4s' }}></span>
                   </div>
                 ) : (
-                  typeof msg.content === 'string' ? msg.content.split('\n').map((line, i) => (
+                  msg.content != null && typeof msg.content === 'string' ? msg.content.split('\n').map((line, i) => (
                     <React.Fragment key={i}>
                       {line}
-                      {i !== msg.content.toString().split('\n').length - 1 && <br />}
+                      {i !== (msg.content as string).split('\n').length - 1 && <br />}
                     </React.Fragment>
-                  )) : msg.content
+                  )) : (msg.content as React.ReactNode | null)
                 )}
               </div>
 
@@ -204,22 +199,59 @@ export default function AgentsPage() {
           </div>
           <h2 className="text-xl font-black text-slate-800 m-0 mb-1">总评价 AI 司令</h2>
           <div className="flex gap-2 mt-1">
-            <Tag color="blue">模型: DeepSeek V3</Tag>
-            <Tag color="cyan">状态: 待命 (Idle)</Tag>
+            <Tag color="blue">模型：DeepSeek V3</Tag>
+            <Tag color="cyan">状态：待命 (Idle)</Tag>
           </div>
           <p className="text-xs text-slate-500 text-center mt-4 leading-relaxed bg-slate-50 p-3 rounded-lg border border-slate-100">
             我是整个评价系统的大脑。我负责统筹调度 9 位微专家智能体，执行从数据入库到图谱编织、再到矩阵打分的完整 ChatOps 工作流。
           </p>
         </div>
 
+        {/* Report Summary Card */}
+        <div className="p-4 border-b border-slate-100 bg-gradient-to-b from-emerald-50/30 to-white">
+          <div className="flex items-center gap-2 mb-3">
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center text-white text-sm font-black">报</div>
+            <div>
+              <h3 className="font-bold text-slate-700 text-sm m-0">当前评价报告</h3>
+              <p className="text-[10px] text-slate-400 m-0">使命型 17 项指标评价</p>
+            </div>
+          </div>
+          <div className="space-y-2 text-xs">
+            <div className="flex justify-between items-center">
+              <span className="text-slate-500">总分</span>
+              <span className="font-black text-lg text-emerald-600">88.5<span className="text-xs font-normal text-slate-400">分</span></span>
+            </div>
+            <div className="flex justify-between items-center">
+              <span className="text-slate-500">等级</span>
+              <span className="px-2 py-0.5 rounded text-[10px] font-black bg-blue-100 text-blue-700 border border-blue-200">良好 (B)</span>
+            </div>
+            <div className="flex justify-between items-center">
+              <span className="text-slate-500">维度 A</span>
+              <span className="font-bold text-emerald-600">92%</span>
+            </div>
+            <div className="flex justify-between items-center">
+              <span className="text-slate-500">维度 B</span>
+              <span className="font-bold text-emerald-600">90%</span>
+            </div>
+            <div className="flex justify-between items-center">
+              <span className="text-slate-500">维度 C</span>
+              <span className="font-bold text-blue-600">85%</span>
+            </div>
+            <div className="flex justify-between items-center">
+              <span className="text-slate-500">维度 D</span>
+              <span className="font-bold text-blue-600">82%</span>
+            </div>
+          </div>
+        </div>
+
         {/* Skill Panel */}
-        <div className="flex-1 p-6 overflow-y-auto custom-scrollbar">
-          <div className="flex items-center gap-2 mb-4">
+        <div className="flex-1 p-4 overflow-y-auto custom-scrollbar">
+          <div className="flex items-center gap-2 mb-3">
             <ThunderboltOutlined className="text-amber-500" />
-            <h3 className="font-bold text-slate-700 m-0">快捷指令库 (Skills)</h3>
+            <h3 className="font-bold text-slate-700 text-sm m-0">快捷指令库 (Skills)</h3>
           </div>
           
-          <div className="space-y-3">
+          <div className="space-y-2">
             {skills.map((skill, index) => (
               <div 
                 key={index}
@@ -230,15 +262,15 @@ export default function AgentsPage() {
                 }}
                 className={`p-3 rounded-lg border text-sm cursor-pointer transition-all ${
                   skill.isAction 
-                    ? 'bg-blue-50 border-blue-200 text-blue-700 hover:bg-blue-600 hover:text-white hover:border-blue-600 font-bold shadow-sm'
+                    ? 'bg-blue-50 border-blue-200 text-blue-700 hover:bg-blue-600 hover:text-white hover:border-blue-600 font-bold shadow-sm' 
                     : 'bg-white border-slate-200 text-slate-600 hover:border-blue-400 hover:text-blue-600 hover:bg-slate-50'
                 } ${isEvaluating ? 'opacity-50 cursor-not-allowed pointer-events-none' : ''}`}
               >
-                <div className="flex items-start gap-3">
+                <div className="flex items-start gap-2">
                   <div className={`mt-0.5 ${skill.isAction ? '' : 'text-slate-400'}`}>
                     {skill.icon}
                   </div>
-                  <div className="leading-tight">
+                  <div className="leading-tight text-xs">
                     {skill.text}
                   </div>
                 </div>
