@@ -23,7 +23,7 @@ build-alpha:
 deploy-alpha_ss_next:
   stage: deploy
   script:
-    - docker run --rm -e K8S_TOKEN -e K8S_APISERVER ma.applysquare.net:4567/eng/docker/kubectl:0.1 -- kubectl --insecure-skip-tls-verify -n $NAMESPACE rollout status sts/$STSNAME --timeout=24h
+    - docker run --rm -e K8S_TOKEN -e K8S_APISERVER ma.applysquare.net:4567/eng/docker/kubectl:0.1 -- kubectl --insecure-skip-tls-verify -n $NAMESPACE rollout restart sts $STSNAME
   variables:
     NAMESPACE: flora-test
     STSNAME: dlpu-alpha-frontend
@@ -57,7 +57,7 @@ build-prod:
 deploy-prod_ss_next:
   stage: deploy
   script:
-    - docker run --rm -e K8S_TOKEN -e K8S_APISERVER ma.applysquare.net:4567/eng/docker/kubectl:0.1 -- kubectl --insecure-skip-tls-verify -n $NAMESPACE rollout status sts/$STSNAME --timeout=24h
+    - docker run --rm -e K8S_TOKEN -e K8S_APISERVER ma.applysquare.net:4567/eng/docker/kubectl:0.1 -- kubectl --insecure-skip-tls-verify -n $NAMESPACE rollout restart sts $STSNAME
   variables:
     NAMESPACE: flora-prod
     STSNAME: dlpu-prod-frontend
