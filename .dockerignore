@@ -1,0 +1,19 @@
+node_modules
+.next
+.git
+.gitignore
+dist
+.DS_Store
+npm-debug.log*
+*.md
+.env*
+
+# 设计与文档类大文件，不参与镜像构建
+8、25交流版
+*.docx
+*.xlsx
+*.pdf
+excel_dump.txt
+专业评价平台指标体系总结报告.html
+使命型17项指标数据来源与评价逻辑详解.html
+使命型17项指标数据流详解.html

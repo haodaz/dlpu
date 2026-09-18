@@ -1,0 +1,71 @@
+stages:
+  - build_next
+  - deploy
+
+# ---------------- alpha ----------------
+build-alpha:
+  stage: build_next
+  script:
+    - bash ./ci/build_docker_ci.sh
+  variables:
+    DOCKERFILE_DIR: ./
+    DOCKERFILE_NAME: Dockerfile
+    DOCKER_IMAGE_TAG: ma.applysquare.net:4567/eng/docker/dlpu:alpha
+    NODE_ENV: production
+  tags:
+    - runner-v2
+  when: manual
+  needs: []
+  only:
+    - alpha
+
+deploy-alpha_ss_next:
+  stage: deploy
+  script:
+    - docker run --rm -e K8S_TOKEN -e K8S_APISERVER ma.applysquare.net:4567/eng/docker/kubectl:0.1 -- kubectl --insecure-skip-tls-verify -n $NAMESPACE rollout restart sts $STSNAME
+    - docker run --rm -e K8S_TOKEN -e K8S_APISERVER ma.applysquare.net:4567/eng/docker/kubectl:0.1 -- kubectl --insecure-skip-tls-verify -n $NAMESPACE rollout status sts/$STSNAME --timeout=24h
+  variables:
+    NAMESPACE: flora-test
+    STSNAME: dlpu-alpha-frontend
+    KUBERNETES_CPU_REQUEST: "0.001"
+    KUBERNETES_MEMORY_REQUEST: "10Mi"
+  tags:
+    - runner-v2
+  when: manual
+  needs: []
+  only:
+    - alpha
+
+# ---------------- prod ----------------
+build-prod:
+  stage: build_next
+  script:
+    - bash ./ci/build_docker_ci.sh
+  variables:
+    DOCKERFILE_DIR: ./
+    DOCKERFILE_NAME: Dockerfile
+    DOCKER_IMAGE_TAG: ma.applysquare.net:4567/eng/docker/dlpu:prod
+    NODE_ENV: production
+  tags:
+    - runner-v2
+  when: manual
+  needs: []
+  only:
+    - main
+
+deploy-prod_ss_next:
+  stage: deploy
+  script:
+    - docker run --rm -e K8S_TOKEN -e K8S_APISERVER ma.applysquare.net:4567/eng/docker/kubectl:0.1 -- kubectl --insecure-skip-tls-verify -n $NAMESPACE rollout restart sts $STSNAME
+    - docker run --rm -e K8S_TOKEN -e K8S_APISERVER ma.applysquare.net:4567/eng/docker/kubectl:0.1 -- kubectl --insecure-skip-tls-verify -n $NAMESPACE rollout status sts/$STSNAME --timeout=24h
+  variables:
+    NAMESPACE: flora-prod
+    STSNAME: dlpu-prod-frontend
+    KUBERNETES_CPU_REQUEST: "0.001"
+    KUBERNETES_MEMORY_REQUEST: "10Mi"
+  tags:
+    - runner-v2
+  when: manual
+  needs: []
+  only:
+    - main
