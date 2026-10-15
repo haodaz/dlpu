@@ -1,120 +1,114 @@
 'use client';
-import React, { useState } from 'react';
-import { Card, Table, Tag, Button, Input, Select, Space, Row, Col, Statistic, Segmented } from 'antd';
-import {
-  FileTextOutlined, CheckCircleOutlined, CloseCircleOutlined, ClockCircleOutlined,
-  EyeOutlined, DownloadOutlined, ReloadOutlined, SearchOutlined,
-} from '@ant-design/icons';
+import React, { useMemo, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { Card, Table, Button, Input, Row, Col, Statistic, Segmented, Tooltip } from 'antd';
+import { FileTextOutlined, CheckCircleOutlined, WarningOutlined, CloseCircleOutlined, SearchOutlined, EyeOutlined, BarsOutlined } from '@ant-design/icons';
+import { MAJORS, verdictMeta, DEMO_MAJOR, schoolAvg, type Major, type Verdict } from '@/lib/diagnosis';
 
-const statusMap: Record<string, { color: string; text: string }> = {
-  done: { color: 'success', text: '已完成' },
-  reviewing: { color: 'processing', text: '评价中' },
-  submitted: { color: 'warning', text: '待评价' },
-  abnormal: { color: 'error', text: '异常' },
-};
-
-const mockData = [
-  { id: 'RPT-2026-001', title: '机械工程 - 2026 春季期中诊断', department: '机械工程学院', user: '张三', score: 78, status: 'done', submittedAt: '2026-09-13 14:32' },
-  { id: 'RPT-2026-002', title: '通信工程 - 产教融合专评', department: '信息工程学院', user: '李四', score: 0, status: 'abnormal', submittedAt: '2026-09-13 10:15' },
-  { id: 'RPT-2026-003', title: '纺织工程 - 师资投入评估', department: '纺织服装学院', user: '王五', score: 0, status: 'reviewing', submittedAt: '2026-09-12 16:08' },
-  { id: 'RPT-2026-004', title: '材料科学 - 过程监测诊断', department: '材料科学与工程学院', user: '赵六', score: 65, status: 'done', submittedAt: '2026-09-11 11:42' },
-  { id: 'RPT-2026-005', title: '食品科学 - 社会反馈评估', department: '食品学院', user: '钱七', score: 0, status: 'submitted', submittedAt: '2026-09-10 09:20' },
-];
+// 评价结果:全校各专业的诊断结论(与宏观决策页的红绿灯同一份数据,保证同一专业只有一个分)
+// 演示环境只有示例专业有完整诊断数据,其余专业可看结论、不可下钻
+const overall = (m: Major) => Math.round(((m.consistency + m.effectiveness) / 2) * 10) / 10;
 
 export default function AdminReportsPage() {
-  const [statusFilter, setStatusFilter] = useState('all');
+  const router = useRouter();
+  const [verdict, setVerdict] = useState<'all' | Verdict>('all');
   const [search, setSearch] = useState('');
 
+  const rows = useMemo(
+    () =>
+      MAJORS.filter((m) => (verdict === 'all' || m.verdict === verdict) && (!search.trim() || m.name.includes(search.trim()) || m.college.includes(search.trim()))),
+    [verdict, search],
+  );
+  const count = (v: Verdict) => MAJORS.filter((m) => m.verdict === v).length;
+  const scoreCell = (v: number) => <span style={{ color: v >= 85 ? '#10b981' : v >= 75 ? '#f59e0b' : '#ef4444' }} className="font-bold">{v}</span>;
+
   const columns = [
-    { title: '报告ID', dataIndex: 'id', key: 'id', width: 140,
-      render: (v: string) => <span className="font-mono text-xs text-slate-500">{v}</span> },
-    { title: '报告标题', dataIndex: 'title', key: 'title',
-      render: (v: string) => <span className="font-bold text-slate-700">{v}</span> },
-    { title: '所属学院', dataIndex: 'department', key: 'department', width: 180 },
-    { title: '提交人', dataIndex: 'user', key: 'user', width: 100 },
-    { title: '综合得分', dataIndex: 'score', key: 'score', width: 100, sorter: true,
-      render: (v: number) => v > 0
-        ? <span style={{ color: v >= 80 ? '#10b981' : v >= 60 ? '#f59e0b' : '#ef4444' }} className="font-bold">{v}</span>
-        : <span className="text-slate-300">-</span> },
-    { title: '状态', dataIndex: 'status', key: 'status', width: 110,
-      render: (v: string) => {
-        const s = statusMap[v];
-        return <Tag color={s.color}>{s.text}</Tag>;
-      } },
-    { title: '提交时间', dataIndex: 'submittedAt', key: 'submittedAt', width: 160 },
-    { title: '操作', key: 'action', width: 180, fixed: 'right' as const,
-      render: () => (
-        <Space size="small">
-          <Button type="link" size="small" icon={<EyeOutlined />}>查看</Button>
-          <Button type="link" size="small" icon={<DownloadOutlined />}>导出</Button>
-        </Space>
-      )},
+    { title: '专业', dataIndex: 'name', key: 'name', render: (v: string) => <span className="font-bold text-slate-700">{v}</span> },
+    { title: '所属学院', dataIndex: 'college', key: 'college', width: 190 },
+    { title: '一致性', dataIndex: 'consistency', key: 'consistency', width: 90, sorter: (a: Major, b: Major) => a.consistency - b.consistency, render: scoreCell },
+    { title: '有效性', dataIndex: 'effectiveness', key: 'effectiveness', width: 90, sorter: (a: Major, b: Major) => a.effectiveness - b.effectiveness, render: scoreCell },
+    { title: '综合', key: 'overall', width: 80, sorter: (a: Major, b: Major) => overall(a) - overall(b), render: (_: unknown, m: Major) => scoreCell(overall(m)) },
+    {
+      title: '结论',
+      dataIndex: 'verdict',
+      key: 'verdict',
+      width: 90,
+      render: (v: Verdict) => (
+        <span className="text-xs font-bold px-2 py-0.5 rounded" style={{ color: verdictMeta[v].color, backgroundColor: verdictMeta[v].bg }}>
+          {verdictMeta[v].label}
+        </span>
+      ),
+    },
+    { title: '布局建议', dataIndex: 'layout', key: 'layout', width: 90 },
+    { title: '主要原因', dataIndex: 'reason', key: 'reason', render: (v: string) => <span className="text-xs text-slate-500">{v}</span> },
+    {
+      title: '操作',
+      key: 'action',
+      width: 120,
+      fixed: 'right' as const,
+      render: (_: unknown, m: Major) =>
+        m.name === DEMO_MAJOR.name ? (
+          <Button type="link" size="small" icon={<EyeOutlined />} onClick={() => router.push('/admin')}>
+            查看诊断
+          </Button>
+        ) : (
+          <Tooltip title="演示环境只有示例专业(智能制造工程)有完整诊断数据">
+            <span className="text-xs text-slate-300 px-2">仅示例可下钻</span>
+          </Tooltip>
+        ),
+    },
   ];
 
   return (
     <div className="space-y-4">
-      {/* 顶部统计 */}
       <Row gutter={[16, 16]}>
         <Col xs={12} sm={6}>
-          <Card className="shadow-sm"><Statistic title="报告总数" value={186} prefix={<FileTextOutlined />} /></Card>
+          <Card className="shadow-sm">
+            <Statistic title={`诊断专业 · 全校均分 ${schoolAvg}`} value={MAJORS.length} prefix={<FileTextOutlined />} />
+          </Card>
         </Col>
         <Col xs={12} sm={6}>
-          <Card className="shadow-sm"><Statistic title="已完成评价" value={142} valueStyle={{ color: '#10b981' }} prefix={<CheckCircleOutlined />} /></Card>
+          <Card className="shadow-sm">
+            <Statistic title="可办" value={count('GO')} styles={{ content: { color: '#10b981' } }} prefix={<CheckCircleOutlined />} />
+          </Card>
         </Col>
         <Col xs={12} sm={6}>
-          <Card className="shadow-sm"><Statistic title="待评价" value={30} valueStyle={{ color: '#f59e0b' }} prefix={<ClockCircleOutlined />} /></Card>
+          <Card className="shadow-sm">
+            <Statistic title="有风险" value={count('RISK')} styles={{ content: { color: '#f59e0b' } }} prefix={<WarningOutlined />} />
+          </Card>
         </Col>
         <Col xs={12} sm={6}>
-          <Card className="shadow-sm"><Statistic title="异常报告" value={14} valueStyle={{ color: '#ef4444' }} prefix={<CloseCircleOutlined />} /></Card>
+          <Card className="shadow-sm">
+            <Statistic title="不可办" value={count('NO')} styles={{ content: { color: '#ef4444' } }} prefix={<CloseCircleOutlined />} />
+          </Card>
         </Col>
       </Row>
 
-      {/* 筛选 + 列表 */}
-      <Card className="shadow-sm" styles={{ body: { padding: 20 } }}>
-        <div className="flex items-center justify-between flex-wrap gap-3 mb-4">
-          <Space wrap>
-            <Input
-              placeholder="搜索报告ID / 标题 / 提交人"
-              prefix={<SearchOutlined />}
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              style={{ width: 280 }}
-              allowClear
-            />
+      <Card
+        className="shadow-sm"
+        styles={{ body: { padding: 20 } }}
+        title="各专业诊断结果"
+        extra={
+          <div className="flex items-center gap-2">
             <Segmented
-              value={statusFilter}
-              onChange={setStatusFilter}
+              value={verdict}
+              onChange={(v) => setVerdict(v as typeof verdict)}
               options={[
                 { label: '全部', value: 'all' },
-                { label: '已完成', value: 'done' },
-                { label: '评价中', value: 'reviewing' },
-                { label: '待评价', value: 'submitted' },
-                { label: '异常', value: 'abnormal' },
+                { label: '可办', value: 'GO' },
+                { label: '有风险', value: 'RISK' },
+                { label: '不可办', value: 'NO' },
               ]}
             />
-            <Select
-              placeholder="学院"
-              style={{ width: 180 }}
-              allowClear
-              options={[
-                { value: 'mechanical', label: '机械工程学院' },
-                { value: 'info', label: '信息工程学院' },
-                { value: 'textile', label: '纺织服装学院' },
-              ]}
-            />
-          </Space>
-          <Space>
-            <Button icon={<ReloadOutlined />}>刷新</Button>
-            <Button type="primary" icon={<DownloadOutlined />}>批量导出</Button>
-          </Space>
-        </div>
-        <Table
-          dataSource={mockData}
-          columns={columns}
-          rowKey="id"
-          scroll={{ x: 1200 }}
-          pagination={{ pageSize: 10, showTotal: (t) => `共 ${t} 条` }}
-        />
+            <Input placeholder="搜索专业 / 学院" prefix={<SearchOutlined />} style={{ width: 200 }} allowClear value={search} onChange={(e) => setSearch(e.target.value)} />
+            <Button icon={<BarsOutlined />} onClick={() => router.push('/admin/indicators')}>
+              全校指标明细
+            </Button>
+          </div>
+        }
+      >
+        <Table dataSource={rows} columns={columns} rowKey="name" scroll={{ x: 1200 }} pagination={false} />
+        <p className="text-xs text-slate-400 mt-3 mb-0">演示数据 · 判定依据:一致性(是否对准产业需求)+ 有效性(培养是否真正达成)</p>
       </Card>
     </div>
   );

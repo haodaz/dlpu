@@ -1,4 +1,5 @@
 'use client';
+import { normalizeSourceType, SOURCE_TYPE_LAYER } from '@/lib/source-type';
 import React, { useMemo } from 'react';
 import {
   DatabaseOutlined,
@@ -65,19 +66,17 @@ export default function DataOverviewPage() {
     });
   }, [allData]);
 
-  // 来源统计
+  // 来源统计:按统一 sourceType 归入三层,互斥计数,百分比合计 100%
   const sourceStats = useMemo(() => {
-    const ai = allData.filter((d) => d.dataSource === 'ai-prefill');
-    const up = allData.filter((d) => d.dataSource === 'user-upload');
-    const ext = allData.filter((d) =>
-      d.sourceType === 'EXTERNAL_DATA' ||
-      d.relatedIndicators.some((iid) => indicators.find((x) => x.id === iid)?.needsExternalData)
-    );
+    const layerOf = (d: { sourceType: string }) => SOURCE_TYPE_LAYER[normalizeSourceType(d.sourceType)];
+    const ai = allData.filter((d) => layerOf(d) === 'AI');
+    const school = allData.filter((d) => layerOf(d) === 'SCHOOL');
+    const up = allData.filter((d) => layerOf(d) === 'TEACHER');
     const total = allData.length || 1;
     return [
       { key: 'ai', label: 'AI 预填', count: ai.length, pct: Math.round((ai.length / total) * 100), color: '#7c3aed', icon: <RobotOutlined /> },
-      { key: 'upload', label: '我上传', count: up.length, pct: Math.round((up.length / total) * 100), color: '#059669', icon: <CloudUploadOutlined /> },
-      { key: 'external', label: '外部引用', count: ext.length, pct: Math.round((ext.length / total) * 100), color: '#0891b2', icon: <GlobalOutlined /> },
+      { key: 'external', label: '学校系统导入', count: school.length, pct: Math.round((school.length / total) * 100), color: '#0891b2', icon: <GlobalOutlined /> },
+      { key: 'upload', label: '教师上传', count: up.length, pct: Math.round((up.length / total) * 100), color: '#059669', icon: <CloudUploadOutlined /> },
     ];
   }, [allData]);
 

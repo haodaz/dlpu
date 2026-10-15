@@ -27,6 +27,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { indicators, getDimension, getAIActionsByIndicator, type Indicator } from '@/lib/indicators';
 import { getAllUploadMaterials } from '@/lib/my-uploads';
 import WhitepaperTool from '@/components/WhitepaperTool';
+import { teacherItemOf, sortedIssues } from '@/lib/diagnosis';
 import {
   useFilingState,
   setFilingMode,
@@ -1634,6 +1635,44 @@ function WhitepaperReferenceCard({ indicatorId }: { indicatorId: string }) {
 }
 
 // ---------- 主内容 ----------
+// 教师填报:标准要求 + 模板范本同屏,照着范本填
+function StandardAndTemplate({ indicatorId }: { indicatorId: string }) {
+  const router = useRouter();
+  const t = teacherItemOf(indicatorId);
+  if (!t) return null;
+  const issue = sortedIssues.find((i) => i.indicatorId === indicatorId && i.level === 'TEACHER');
+  return (
+    <div data-spec="prefill-standard" className="rounded-xl border-2 border-orange-200 bg-white overflow-hidden">
+      {issue && (
+        <div className="px-5 py-3 bg-orange-50 border-b border-orange-100 text-sm text-orange-800">
+          <span className="font-bold">为什么推送给您:</span>
+          {issue.detail}
+        </div>
+      )}
+      <div className="grid grid-cols-1 md:grid-cols-[1.5fr_1fr]">
+        <div className="p-5 md:border-r border-slate-100">
+          <div className="text-sm font-bold text-slate-800 mb-2">标准要求 · 做成什么样算达标</div>
+          <ul className="m-0 pl-4 space-y-1.5 text-sm text-slate-700">
+            {t.standard.map((s) => (
+              <li key={s}>{s}</li>
+            ))}
+          </ul>
+        </div>
+        <div className="p-5 bg-slate-50/60">
+          <div className="text-sm font-bold text-slate-800 mb-2">模板范本</div>
+          <button
+            onClick={() => router.push(`/templates/${t.templateId}`)}
+            className="w-full text-left rounded-lg border border-blue-200 bg-white px-4 py-3 hover:border-blue-400"
+          >
+            <div className="text-sm font-bold text-blue-700">{t.templateName}</div>
+            <div className="text-xs text-slate-500 mt-0.5">打开范本,照着填</div>
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function DetailContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -1733,6 +1772,7 @@ function DetailContent() {
 
       {/* ===== 主体 ===== */}
       <div className="flex-1 max-w-6xl mx-auto w-full px-8 py-6 space-y-5 pb-24">
+        <StandardAndTemplate indicatorId={indicatorId} />
         <IndicatorInfoCard indicator={indicator} />
 
         {indicatorId === WHITEPAPER_PRODUCER_ID ? (

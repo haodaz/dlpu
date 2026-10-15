@@ -8,9 +8,10 @@ import {
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, ResponsiveContainer, Cell,
 } from 'recharts';
+import { schoolAvg } from '@/lib/diagnosis';
 
 const mockUniversities = [
-  { id: 'DLPU', name: '大连工业大学', majors: 32, submitted: 186, avgScore: 78.4, qualifiedRate: 75.0, status: 'normal' },
+  { id: 'DLPU', name: '大连工业大学', majors: 32, submitted: 186, avgScore: schoolAvg, qualifiedRate: 75.0, status: 'normal' },
   { id: 'DLUT', name: '大连理工大学', majors: 56, submitted: 52, avgScore: 85.2, qualifiedRate: 92.8, status: 'normal' },
   { id: 'DLU', name: '大连大学', majors: 40, submitted: 38, avgScore: 76.8, qualifiedRate: 73.5, status: 'normal' },
   { id: 'DLJU', name: '大连交通大学', majors: 35, submitted: 30, avgScore: 72.1, qualifiedRate: 65.7, status: 'warning' },
@@ -19,7 +20,7 @@ const mockUniversities = [
 ];
 
 const scoreDistribution = [
-  { name: '大连工业大学', score: 78.4 },
+  { name: '大连工业大学', score: schoolAvg },
   { name: '大连理工大学', score: 85.2 },
   { name: '大连大学', score: 76.8 },
   { name: '大连交通大学', score: 72.1 },

@@ -2,20 +2,111 @@ generator client {
   provider = "prisma-client-js"
 }
 
+// 数据库位置由 DATABASE_URL 决定(如 file:/app/data/app.db);表结构在应用启动时自动创建(src/lib/db.ts)
 datasource db {
   provider = "sqlite"
-  url      = "file:./dev.db"
+  url      = env("DATABASE_URL")
 }
 
 // 全景数据 Hub
 model PanoramicData {
   id              String   @id @default(uuid())
   templateCode    String   // 对应19个模板，如 "T03", "T11"
-  sourceType      String   // 数据来源: "MANUAL" (人工上传), "SYSTEM" (系统对接), "EXTERNAL" (外部抓取)
+  sourceType      String   // 数据来源(全域唯一取值,见 src/lib/source-type.ts): "MANUAL" 教师上传 / "SYSTEM" 学校系统导入 / "AI_SEARCH" AI 搜索 / "MULTI_AGENT_AI" 多智能体生成
   rawPayload      String   // 原始收集数据 (JSON字符串)
   verifiedFields  String?  // 经过AI提炼和人工确认的全景字段 (JSON字符串)
   status          String   @default("PENDING") // PENDING (待处理), PROCESSED (已提炼), CONFIRMED (已确认)
   
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
+}
+
+// ---------- 闭环:诊断 → 整改 → 评价 → 下一轮 ----------
+
+// 评价轮次:同一时刻只有一个 ACTIVE 轮次;发起下一轮时归档上一轮(用于纵向回看)
+model EvaluationCycle {
+  id                 String   @id @default(uuid())
+  cycleNo            Int      @unique
+  period             String   // 如 "2026-2027 学年"
+  focusDimension     String   // 本年度重点环节
+  status             String   @default("ACTIVE") // ACTIVE / ARCHIVED
+  parentCycleId      String?
+  consistencyScore   Float?   // 归档时记录两大核心指标结果
+  effectivenessScore Float?
+  resolvedCount      Int?
+  totalCount         Int?
+  createdAt          DateTime @default(now())
+  archivedAt         DateTime?
+
+  tasks RectificationTask[]
+}
+
+// 整改任务:由诊断问题生成,分教师层面 / 管理层面,可派发、可跟踪
+model RectificationTask {
+  id          String   @id @default(uuid())
+  cycleId     String
+  issueId     String   // 诊断问题编号(ISS-xx)
+  majorId     String
+  indicatorId String
+  issueDesc   String
+  ownerRole   String   // TEACHER / MANAGEMENT
+  assignee    String
+  standard    String?  // 整改建议 / 标准要求
+  templateUrl String?  // 范本
+  dueDate     String
+  status      String   @default("todo") // todo / doing / done
+  resolvedAt  DateTime?
+  updatedBy   String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  cycle EvaluationCycle @relation(fields: [cycleId], references: [id], onDelete: Cascade)
+
+  @@unique([cycleId, issueId])
+}
+
+// 指标填报状态机(取代前端内存 Map)
+model FilingRecord {
+  indicatorId     String   @id
+  mode            String   // unselected / direct / ai
+  status          String   // not-started / in-progress / pending / submitted / supplement
+  refChecked      Boolean? // 是否勾选引用产业白皮书(仅引用指标)
+  refAckRevision  Int      @default(0)
+  updatedBy       String?
+  updatedAt       DateTime @updatedAt
+}
+
+// ---------- 数据接入(中台:不动原系统,只要学校把数据交出来) ----------
+
+model DataSource {
+  id          String   @id // DS-01
+  name        String
+  type        String   // rest / database / file / crawler 等
+  endpoint    String
+  indicatorId String
+  frequency   String
+  status      String   @default("online") // online / offline / syncing
+  lastSync    DateTime?
+  createdAt   DateTime @default(now())
+}
+
+model DataImportLog {
+  id           String   @id @default(uuid())
+  sourceType   String   // 统一 sourceType(SYSTEM 等)
+  sourceSystem String   // 来源系统 / 数据源名称
+  sourceId     String?
+  templateCode String?
+  fileName     String?
+  rowCount     Int
+  successCount Int
+  errorDetail  String?
+  importedBy   String?
+  createdAt    DateTime @default(now())
+}
+
+// 学校级开关与设置(是否已导入数据、三视角可见范围、白皮书版本等)
+model AppSetting {
+  key       String   @id
+  value     String   // JSON
+  updatedAt DateTime @updatedAt
 }

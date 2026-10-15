@@ -1,5 +1,7 @@
 'use client';
 import React, { useState } from 'react';
+import { VIEW_GROUP_META, type ViewGroup } from '@/lib/diagnosis';
+import { useViewVisibility } from '@/lib/diagnosis-state';
 import { Card, Table, Tag, Button, Input, Select, Space, Modal, Form, Row, Col, Statistic, Segmented, Switch } from 'antd';
 import {
   PlusOutlined, EditOutlined, DeleteOutlined, KeyOutlined,
@@ -61,6 +63,7 @@ export default function AdminUsersPage() {
 
   return (
     <div className="space-y-4">
+      <ViewVisibilityCard />
       <Row gutter={[16, 16]}>
         <Col xs={12} sm={6}>
           <Card className="shadow-sm"><Statistic title="用户总数" value={5} prefix={<UserOutlined />} /></Card>
@@ -168,5 +171,31 @@ export default function AdminUsersPage() {
         </Form>
       </Modal>
     </div>
+  );
+}
+
+// 三视角可见范围:管理员内部的三类页面视角由教务部门自行开关(先做前端显隐,后接权限)
+function ViewVisibilityCard() {
+  const [visible, setVisible] = useViewVisibility();
+  const groups = Object.keys(VIEW_GROUP_META) as ViewGroup[];
+  return (
+    <Card data-spec="view-visibility" className="shadow-sm" title="管理员视角可见范围" styles={{ body: { padding: 16 } }}>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+        {groups.map((g) => (
+          <div key={g} className="flex items-center justify-between rounded-lg border border-slate-200 px-4 py-3">
+            <div>
+              <div className="font-bold text-slate-700">{VIEW_GROUP_META[g].label}</div>
+              <div className="text-xs text-slate-400">面向 {VIEW_GROUP_META[g].audience}</div>
+            </div>
+            <Switch
+              checked={visible[g]}
+              disabled={visible[g] && groups.filter((x) => visible[x]).length === 1}
+              onChange={(v) => setVisible({ ...visible, [g]: v })}
+            />
+          </div>
+        ))}
+      </div>
+      <p className="text-xs text-slate-400 mt-3 mb-0">关闭后,该视角从管理员菜单中隐藏(至少保留一个)。当前为前端显隐,接入统一权限后按账号生效。</p>
+    </Card>
   );
 }

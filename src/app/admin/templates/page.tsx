@@ -1,140 +1,113 @@
 'use client';
-import React, { useState } from 'react';
-import { Card, Table, Tag, Button, Input, Space, Modal, Form, Row, Col, Statistic, Segmented } from 'antd';
-import {
-  PlusOutlined, EditOutlined, DeleteOutlined, EyeOutlined, CopyOutlined,
-  ProfileOutlined, AppstoreOutlined,
-} from '@ant-design/icons';
+import React, { useMemo, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { Card, Table, Tag, Button, Row, Col, Statistic, Segmented } from 'antd';
+import { ProfileOutlined, EyeOutlined, UserOutlined, CloudServerOutlined, RobotOutlined } from '@ant-design/icons';
+import { TEMPLATES, type TemplateEntry } from '@/lib/templates';
+import type { SourceType } from '@/lib/diagnosis';
+import SourceTag from '@/components/diagnosis/SourceTag';
 
-const categoryMap: Record<string, { color: string; text: string }> = {
-  mission: { color: 'blue', text: '使命型' },
-  future: { color: 'purple', text: '未来型' },
-  shared: { color: 'default', text: '通用' },
-};
-
-const statusMap: Record<string, { color: string; text: string }> = {
-  published: { color: 'success', text: '已发布' },
-  draft: { color: 'default', text: '草稿' },
-  deprecated: { color: 'warning', text: '已废弃' },
-};
-
-const mockTemplates = [
-  { id: 'TPL-01', name: '产业链图谱模板', category: 'mission', indicators: 8, version: 'v2.3', status: 'published', updatedAt: '2026-09-01' },
-  { id: 'TPL-02', name: '能力矩阵模板', category: 'shared', indicators: 12, version: 'v3.1', status: 'published', updatedAt: '2026-08-25' },
-  { id: 'TPL-03', name: '师资投入模板', category: 'mission', indicators: 6, version: 'v1.5', status: 'published', updatedAt: '2026-08-12' },
-  { id: 'TPL-04', name: '产教融合基地模板', category: 'mission', indicators: 7, version: 'v2.0', status: 'published', updatedAt: '2026-07-30' },
-  { id: 'TPL-05', name: '校友追踪模板', category: 'shared', indicators: 5, version: 'v1.2', status: 'published', updatedAt: '2026-07-15' },
-  { id: 'TPL-06', name: '第四代大学特征模板', category: 'future', indicators: 9, version: 'v0.3', status: 'draft', updatedAt: '2026-09-10' },
-  { id: 'TPL-07', name: '教育形态重构力模板', category: 'future', indicators: 6, version: 'v0.1', status: 'draft', updatedAt: '2026-09-08' },
-];
-
+// 模板与范本(管理员):与教师端「模板库」同一份目录,只在 src/lib/templates.ts 维护
+// 教师范本会嵌入教师的填报流程(问题卡片与填报页同屏给出)
 export default function AdminTemplatesPage() {
-  const [modalOpen, setModalOpen] = useState(false);
-  const [form] = Form.useForm();
+  const router = useRouter();
+  const [owner, setOwner] = useState<'all' | SourceType>('all');
+  const rows = useMemo(() => TEMPLATES.filter((t) => owner === 'all' || t.owner === owner), [owner]);
+  const count = (o: SourceType) => TEMPLATES.filter((t) => t.owner === o).length;
 
   const columns = [
-    { title: '模板ID', dataIndex: 'id', key: 'id', width: 100,
-      render: (v: string) => <span className="font-mono text-xs text-slate-500">{v}</span> },
-    { title: '模板名称', dataIndex: 'name', key: 'name',
-      render: (v: string) => <span className="font-bold text-slate-700">{v}</span> },
-    { title: '所属体系', dataIndex: 'category', key: 'category', width: 110,
-      render: (v: string) => {
-        const c = categoryMap[v];
-        return <Tag color={c.color}>{c.text}</Tag>;
-      } },
-    { title: '指标数', dataIndex: 'indicators', key: 'indicators', width: 90, sorter: true },
-    { title: '版本', dataIndex: 'version', key: 'version', width: 100,
-      render: (v: string) => <Tag color="blue">{v}</Tag> },
-    { title: '状态', dataIndex: 'status', key: 'status', width: 100,
-      render: (v: string) => {
-        const s = statusMap[v];
-        return <Tag color={s.color}>{s.text}</Tag>;
-      } },
-    { title: '更新时间', dataIndex: 'updatedAt', key: 'updatedAt', width: 130 },
-    { title: '操作', key: 'action', width: 260, fixed: 'right' as const,
-      render: (_: any, record: any) => (
-        <Space size="small">
-          <Button type="link" size="small" icon={<EyeOutlined />}>预览</Button>
-          <Button type="link" size="small" icon={<EditOutlined />} disabled={record.status === 'deprecated'}>编辑</Button>
-          <Button type="link" size="small" icon={<CopyOutlined />}>克隆</Button>
-          <Button type="link" size="small" danger icon={<DeleteOutlined />} disabled={record.status === 'published'}>删除</Button>
-        </Space>
-      )},
+    { title: '编号', dataIndex: 'id', key: 'id', width: 80, render: (v: string) => <span className="font-mono text-xs text-slate-500">{v}</span> },
+    {
+      title: '模板',
+      key: 'name',
+      render: (_: unknown, t: TemplateEntry) => (
+        <div>
+          <span className="font-bold text-slate-700">{t.name}</span>
+          {t.isTeacherSample && (
+            <Tag color="orange" className="ml-2">
+              教师范本
+            </Tag>
+          )}
+          <div className="text-xs text-slate-400 mt-0.5">{t.desc}</div>
+        </div>
+      ),
+    },
+    {
+      title: '关联指标',
+      dataIndex: 'indicators',
+      key: 'indicators',
+      width: 200,
+      render: (v: string[]) => (
+        <span className="text-xs font-mono">
+          {v.map((id) => (
+            <a key={id} className="mr-2 text-blue-600 hover:underline" onClick={() => router.push(`/admin/indicator-analysis?id=${id}`)}>
+              {id}
+            </a>
+          ))}
+        </span>
+      ),
+    },
+    { title: '由谁填', dataIndex: 'owner', key: 'owner', width: 130, render: (v: SourceType) => <SourceTag source={v} full /> },
+    {
+      title: '',
+      key: 'action',
+      width: 110,
+      render: (_: unknown, t: TemplateEntry) => (
+        <Button type="link" size="small" icon={<EyeOutlined />} onClick={() => router.push(t.path)}>
+          打开模板
+        </Button>
+      ),
+    },
   ];
 
   return (
     <div className="space-y-4">
       <Row gutter={[16, 16]}>
         <Col xs={12} sm={6}>
-          <Card className="shadow-sm"><Statistic title="模板总数" value={7} prefix={<ProfileOutlined />} /></Card>
+          <Card className="shadow-sm">
+            <Statistic title="模板总数" value={TEMPLATES.length} prefix={<ProfileOutlined />} />
+          </Card>
         </Col>
         <Col xs={12} sm={6}>
-          <Card className="shadow-sm"><Statistic title="已发布" value={5} valueStyle={{ color: '#10b981' }} prefix={<AppstoreOutlined />} /></Card>
+          <Card className="shadow-sm">
+            <Statistic title="教师填报(含范本)" value={count('TEACHER')} styles={{ content: { color: '#d97706' } }} prefix={<UserOutlined />} />
+          </Card>
         </Col>
         <Col xs={12} sm={6}>
-          <Card className="shadow-sm"><Statistic title="草稿" value={2} valueStyle={{ color: '#94a3b8' }} prefix={<EditOutlined />} /></Card>
+          <Card className="shadow-sm">
+            <Statistic title="学校系统导入" value={count('SCHOOL')} styles={{ content: { color: '#0284c7' } }} prefix={<CloudServerOutlined />} />
+          </Card>
         </Col>
         <Col xs={12} sm={6}>
-          <Card className="shadow-sm"><Statistic title="关联指标数" value={53} prefix={<ProfileOutlined />} /></Card>
+          <Card className="shadow-sm">
+            <Statistic title="AI 采集" value={count('AI')} styles={{ content: { color: '#7c3aed' } }} prefix={<RobotOutlined />} />
+          </Card>
         </Col>
       </Row>
 
       <Card
+        data-spec="tpl-catalog"
         className="shadow-sm"
         styles={{ body: { padding: 20 } }}
-        title="模板列表"
+        title="模板与范本"
         extra={
-          <Space>
-            <Segmented
-              options={[
-                { label: '全部', value: 'all' },
-                { label: '使命型', value: 'mission' },
-                { label: '未来型', value: 'future' },
-                { label: '通用', value: 'shared' },
-              ]}
-            />
-            <Input placeholder="搜索模板名称" style={{ width: 200 }} allowClear />
-            <Button type="primary" icon={<PlusOutlined />} onClick={() => setModalOpen(true)}>新建模板</Button>
-          </Space>
+          <Segmented
+            value={owner}
+            onChange={(v) => setOwner(v as typeof owner)}
+            options={[
+              { label: '全部', value: 'all' },
+              { label: '教师', value: 'TEACHER' },
+              { label: '学校系统', value: 'SCHOOL' },
+              { label: 'AI 采集', value: 'AI' },
+            ]}
+          />
         }
       >
-        <Table
-          dataSource={mockTemplates}
-          columns={columns}
-          rowKey="id"
-          scroll={{ x: 1300 }}
-          pagination={{ pageSize: 10 }}
-        />
+        <Table dataSource={rows} columns={columns} rowKey="id" pagination={false} />
+        <p className="text-xs text-slate-400 mt-3 mb-0">
+          T16(持续改进与大纲演进)、T17(教学资源台账存证)已并入 AI 自动存证,不再单独维护模板。模板目录只在一处维护:src/lib/templates.ts。
+        </p>
       </Card>
-
-      <Modal
-        title="新建指标模板"
-        open={modalOpen}
-        onCancel={() => setModalOpen(false)}
-        onOk={() => { form.submit(); setModalOpen(false); }}
-        width={600}
-      >
-        <Form form={form} layout="vertical" className="mt-4">
-          <Form.Item label="模板名称" name="name" rules={[{ required: true, message: '请输入模板名称' }]}>
-            <Input placeholder="例：产业链图谱模板" />
-          </Form.Item>
-          <Form.Item label="所属体系" name="category" rules={[{ required: true, message: '请选择所属体系' }]}>
-            <Segmented
-              options={[
-                { label: '使命型', value: 'mission' },
-                { label: '未来型', value: 'future' },
-                { label: '通用', value: 'shared' },
-              ]}
-            />
-          </Form.Item>
-          <Form.Item label="版本号" name="version" rules={[{ required: true, message: '请输入版本号' }]}>
-            <Input placeholder="例：v1.0" />
-          </Form.Item>
-          <Form.Item label="描述" name="description">
-            <Input.TextArea rows={3} placeholder="模板用途说明" />
-          </Form.Item>
-        </Form>
-      </Modal>
     </div>
   );
 }

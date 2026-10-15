@@ -24,3 +24,32 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* 打印:只保留正文(整改报告等直接打印分发) */
+@media print {
+  .ant-layout-sider,
+  .ant-layout-header,
+  .no-print {
+    display: none !important;
+  }
+  .ant-layout,
+  .ant-layout-content {
+    margin: 0 !important;
+    background: #fff !important;
+  }
+  .print-break {
+    break-before: page;
+  }
+}
+
+/* ── 产品方案模式(移植自 yida-company / zhijipro spec.js) ── */
+.spec-frame { position: fixed; border: 1.5px dashed rgba(96, 85, 245, .55); border-radius: 14px; background: rgba(96, 85, 245, .025); pointer-events: none; z-index: 2050; transition: all .15s; }
+.spec-frame > span { position: absolute; top: -11px; left: 10px; background: #6055f5; color: #fff; font-size: 11.5px; font-weight: 600; padding: 1px 9px; border-radius: 999px; white-space: nowrap; box-shadow: 0 2px 8px rgba(96, 85, 245, .35); display: inline-flex; align-items: center; gap: 4px; }
+.spec-frame.new > span i { width: 6px; height: 6px; border-radius: 50%; background: #fbbf24; display: inline-block; }
+.spec-frame.sel { border: 2px solid #f59e0b; background: rgba(245, 158, 11, .06); }
+.spec-frame.sel > span { background: #f59e0b; }
+.spec-frame.dim { opacity: .35; }
+.spec-frame.side > span { top: 12px; left: auto; right: -12px; writing-mode: vertical-rl; padding: 9px 1px; }
+@keyframes specGlow { 0%, 100% { box-shadow: 0 0 0 0 rgba(245,158,11,.45), 0 0 14px rgba(245,158,11,.35); } 50% { box-shadow: 0 0 0 7px rgba(245,158,11,0), 0 0 26px rgba(245,158,11,.6); } }
+.spec-glow { animation: specGlow 1.8s ease-in-out infinite; }
+body.spec-on [data-spec] { cursor: help; }
