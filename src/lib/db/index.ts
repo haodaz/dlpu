@@ -7,8 +7,11 @@ import { PrismaClient } from '@prisma/client';
 import { DDL } from './ddl';
 import { seedDatabase } from './seed';
 
+// Vercel 等只读文件系统只有 /tmp 可写:数据随实例重启重置为演示数据(演示环境可接受)
+export const writableDataDir = () => (process.env.VERCEL ? '/tmp/dlpu-data' : path.join(process.cwd(), 'data'));
+
 function databaseUrl(): string {
-  const url = process.env.DATABASE_URL || `file:${path.join(process.cwd(), 'data', 'app.db')}`;
+  const url = process.env.DATABASE_URL || `file:${path.join(writableDataDir(), 'app.db')}`;
   if (url.startsWith('file:')) fs.mkdirSync(path.dirname(url.slice('file:'.length)), { recursive: true });
   return url;
 }

@@ -78,7 +78,9 @@ class FileStore implements FlywheelStore {
 let store: FlywheelStore | null = null;
 
 export function getStore(): FlywheelStore {
-  if (!store) store = new FileStore(process.env.INDUSTRY_DATA_DIR || path.join(process.cwd(), 'data', 'industry-flywheel'));
+  // Vercel 只读文件系统只有 /tmp 可写(随实例重启清空)
+  const base = process.env.VERCEL ? '/tmp/dlpu-data' : path.join(process.cwd(), 'data');
+  if (!store) store = new FileStore(process.env.INDUSTRY_DATA_DIR || path.join(base, 'industry-flywheel'));
   return store;
 }
 
