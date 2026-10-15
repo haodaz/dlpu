@@ -1,6 +1,7 @@
 'use client';
 import React, { useState } from 'react';
-import { useViewVisibility, VIEW_GROUP_META, type ViewGroup } from '@/lib/diagnosis';
+import { VIEW_GROUP_META, type ViewGroup } from '@/lib/diagnosis';
+import { useViewVisibility } from '@/lib/diagnosis-state';
 import { Card, Table, Tag, Button, Input, Select, Space, Modal, Form, Row, Col, Statistic, Segmented, Switch } from 'antd';
 import {
   PlusOutlined, EditOutlined, DeleteOutlined, KeyOutlined,

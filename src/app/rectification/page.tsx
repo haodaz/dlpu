@@ -3,18 +3,8 @@ import React, { useState } from 'react';
 import { Button, Segmented, Select, Modal } from 'antd';
 import { useRouter } from 'next/navigation';
 import { PrinterOutlined, FileDoneOutlined, DownloadOutlined, ReloadOutlined, StarFilled } from '@ant-design/icons';
-import {
-  sortedIssues,
-  teacherItemOf,
-  useTaskStatus,
-  useResolvedIssues,
-  useCycle,
-  coreResult,
-  ANNUAL_FOCUS,
-  DEMO_MAJOR,
-  type IssueLevel,
-  type TaskStatus,
-} from '@/lib/diagnosis';
+import { sortedIssues, teacherItemOf, coreResult, ANNUAL_FOCUS, DEMO_MAJOR, type IssueLevel } from '@/lib/diagnosis';
+import { useTaskStatus, useResolvedIssues, useCycle, type TaskStatus } from '@/lib/diagnosis-state';
 import { getIndicatorById } from '@/lib/indicators';
 import { TENANT_NAME } from '@/lib/brand';
 

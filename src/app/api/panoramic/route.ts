@@ -1,9 +1,8 @@
 import { NextResponse } from 'next/server';
-import { PrismaClient } from '@prisma/client';
 import mockDb from '@/lib/mockDb.json';
 import { normalizeSourceType } from '@/lib/source-type';
-
-const prisma = new PrismaClient();
+import { getDb } from '@/lib/db';
+import { guard, denied } from '@/lib/api-guard';
 
 // 数据库不可用时降级到演示数据,但必须显式告诉前端(degraded + 原因),不再静默回落
 const degradedReason = (e: unknown) => {
@@ -16,6 +15,8 @@ const degradedReason = (e: unknown) => {
 };
 
 export async function POST(req: Request) {
+  const caller = await guard(req, 'user');
+  if (denied(caller)) return caller;
   try {
     const body = await req.json();
     const { templateCode, rawPayload } = body;
@@ -23,7 +24,8 @@ export async function POST(req: Request) {
     const sourceType = normalizeSourceType(body.sourceType);
 
     try {
-      const data = await prisma.panoramicData.create({
+      const db = await getDb();
+      const data = await db.panoramicData.create({
         data: { templateCode, sourceType, rawPayload: JSON.stringify(rawPayload), status: 'PENDING' },
       });
       return NextResponse.json({ success: true, degraded: false, data });
@@ -42,9 +44,12 @@ export async function POST(req: Request) {
   }
 }
 
-export async function GET() {
+export async function GET(req: Request) {
+  const caller = await guard(req, 'user');
+  if (denied(caller)) return caller;
   try {
-    const rows = await prisma.panoramicData.findMany({ orderBy: { createdAt: 'desc' } });
+    const db = await getDb();
+    const rows = await db.panoramicData.findMany({ orderBy: { createdAt: 'desc' } });
     return NextResponse.json({ success: true, degraded: false, data: rows.map((r) => ({ ...r, sourceType: normalizeSourceType(r.sourceType) })) });
   } catch (dbError) {
     console.warn('[panoramic] 数据库查询失败,返回演示数据:', (dbError as Error).message);

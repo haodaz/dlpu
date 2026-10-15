@@ -40,7 +40,9 @@ import Image from 'next/image';
 import { useRouter, usePathname } from 'next/navigation';
 import { PRODUCT_NAME, PRODUCT_TAGLINE, TENANT_NAME } from '@/lib/brand';
 import SpecMode from '@/components/spec/SpecMode';
-import { useViewVisibility } from '@/lib/diagnosis';
+import { useViewVisibility } from '@/lib/diagnosis-state';
+import { useDegradedReason } from '@/lib/synced-store';
+import DegradedBanner from '@/components/DegradedBanner';
 
 const { Header, Sider, Content } = Layout;
 
@@ -163,6 +165,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
 
   // 三视角可见范围:由「用户与权限」页开关(先做前端显隐,后接权限)
   const [visible] = useViewVisibility();
+  const degradedReason = useDegradedReason();
   const VIEW_KEYS: Record<string, keyof typeof visible> = {
     '/decision': 'decision',
     '/industry-report': 'decision',
@@ -325,6 +328,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
         </Header>
 
         <Content style={{ margin: '24px 32px 48px', overflow: 'initial' }}>
+          <DegradedBanner reason={degradedReason} />
           {children}
         </Content>
       </Layout>

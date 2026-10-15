@@ -10,7 +10,8 @@ import {
   ArrowRightOutlined,
   ExperimentOutlined,
 } from '@ant-design/icons';
-import { MAJORS, verdictMeta, useDataImported, schoolAvg, DEMO_MAJOR, type Verdict, type Layout } from '@/lib/diagnosis';
+import { MAJORS, verdictMeta, schoolAvg, DEMO_MAJOR, type Verdict, type Layout } from '@/lib/diagnosis';
+import { useDataImported } from '@/lib/diagnosis-state';
 import { POLICY_POINTS, POLICY_SOURCE_NOTE, REGION_PREVIEW } from '@/lib/policy';
 import MeetingMode from '@/components/diagnosis/MeetingMode';
 import { TENANT_REGION } from '@/lib/brand';

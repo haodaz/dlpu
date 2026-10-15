@@ -2,15 +2,12 @@ import { getStore } from '@/lib/industry-report/store';
 import { markReviewed, deleteKbEntry, type IndustryKb, type KbListName } from '@/lib/industry-report/flywheel';
 import type { RunRecord, RunSummary } from '@/lib/industry-report/runs';
 import { regionInfo } from '@/lib/industry-report/pingfang';
-import { getToken, checkIsAdmin } from '@/lib/auth';
+import { guard, denied } from '@/lib/api-guard';
 
-// 访问控制:服务器设置 INDUSTRY_LOG_REQUIRE_ADMIN=true 后,检索记录 / 知识库 / 删除 / 审核回流只对管理员开放
-// (本地演示无登录,不设置即放开;地区摘要只含聚合结论,不做限制)
+// 检索记录 / 知识库 / 删除 / 审核回流只对管理员开放(API_REQUIRE_AUTH=true 时生效);地区摘要只含聚合结论,不做限制
 async function denyIfNotAdmin(request: Request): Promise<Response | null> {
-  if (process.env.INDUSTRY_LOG_REQUIRE_ADMIN !== 'true') return null;
-  const token = await getToken(request);
-  if (token && (await checkIsAdmin(token).catch(() => false))) return null;
-  return Response.json({ error: '仅管理员可访问产业检索日志' }, { status: 403 });
+  const g = await guard(request, 'admin');
+  return denied(g) ? g : null;
 }
 
 // 产业检索日志(管理员)

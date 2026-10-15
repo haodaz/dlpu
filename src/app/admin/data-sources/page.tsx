@@ -1,13 +1,15 @@
 'use client';
-import React, { useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Card, Table, Tag, Button, Input, Space, Modal, Form, Row, Col, Statistic, Segmented, Badge, Select, message } from 'antd';
+import { Alert, Card, Table, Tag, Button, Input, Space, Modal, Form, Row, Col, Statistic, Segmented, Badge, Select, message } from 'antd';
 import {
   PlusOutlined, DeleteOutlined, LinkOutlined,
-  CloudServerOutlined, ApiOutlined, DatabaseOutlined, CheckCircleOutlined, SyncOutlined, ArrowRightOutlined,
+  CloudServerOutlined, ApiOutlined, DatabaseOutlined, CheckCircleOutlined, SyncOutlined, ArrowRightOutlined, FileTextOutlined,
 } from '@ant-design/icons';
 import { indicators } from '@/lib/indicators';
-import { sourceMeta, sourceOf, useDataImported } from '@/lib/diagnosis';
+import { sourceMeta, sourceOf } from '@/lib/diagnosis';
+import { useDataImported } from '@/lib/diagnosis-state';
+import DegradedBanner from '@/components/DegradedBanner';
 
 const typeMap: Record<string, { color: string; text: string; icon: React.ReactNode }> = {
   rest: { color: 'blue', text: 'REST API', icon: <ApiOutlined /> },
@@ -16,16 +18,13 @@ const typeMap: Record<string, { color: string; text: string; icon: React.ReactNo
   webhooks: { color: 'purple', text: 'Webhook', icon: <LinkOutlined /> },
 };
 
-type DataSource = { id: string; name: string; type: string; endpoint: string; indicator: string; status: string; lastSync: string; frequency: string };
+// 数据源与导入日志都存数据库(/api/data-sources);学校系统通过 /api/data-import 按规范推送数据
+type DataSource = { id: string; name: string; type: string; endpoint: string; indicatorId: string; status: string; lastSync: string | null; frequency: string };
+type ImportLog = { id: string; createdAt: string; sourceSystem: string; templateCode: string | null; rowCount: number; successCount: number; errorDetail: string | null; importedBy: string | null };
+type ImportAlert = { level: 'error' | 'warning'; title: string; detail: string; sourceId: string | null };
+type Snapshot = { sources: DataSource[]; logs: ImportLog[]; alerts: ImportAlert[] };
 
-const initialDataSources: DataSource[] = [
-  { id: 'DS-01', name: '教育部学科评估数据', type: 'rest', endpoint: 'https://api.moe.gov.cn/csa/v1', indicator: '1.1.1 产业深度解析', status: 'online', lastSync: '2026-09-16 03:00', frequency: '每日' },
-  { id: 'DS-02', name: '科技部项目库', type: 'rest', endpoint: 'https://api.most.gov.cn/projects', indicator: '2.1.1 横向科研转化', status: 'online', lastSync: '2026-09-16 03:00', frequency: '每日' },
-  { id: 'DS-03', name: '专利数据库 (CNIPA)', type: 'database', endpoint: 'jdbc:postgresql://cnipa.internal', indicator: '1.3.1 国际标准对标 + AI 能力融入', status: 'online', lastSync: '2026-09-15 22:00', frequency: '每日' },
-  { id: 'DS-04', name: '企业工商信息', type: 'rest', endpoint: 'https://api.qcc.com/v2/company', indicator: '3.1.2 企业真实项目驱动率', status: 'degraded', lastSync: '2026-09-16 03:00', frequency: '每日' },
-  { id: 'DS-05', name: '校友职业轨迹 (LinkedIn)', type: 'webhooks', endpoint: 'webhook://linkedin/in/trajectory', indicator: '4.1.2 毕业生影响力', status: 'offline', lastSync: '2026-09-10 03:00', frequency: '每周' },
-  { id: 'DS-06', name: '高德人才地图', type: 'file', endpoint: 's3://talent-map/daily.json', indicator: '4.1.1 行业就业率', status: 'online', lastSync: '2026-09-16 06:00', frequency: '每日' },
-];
+const indicatorText = (id: string) => `${id} ${indicators.find((i) => i.id === id)?.name ?? ''}`.trim();
 
 const statusMap: Record<string, { status: 'success' | 'processing' | 'error' | 'default'; text: string }> = {
   online: { status: 'success', text: '正常' },
@@ -33,21 +32,12 @@ const statusMap: Record<string, { status: 'success' | 'processing' | 'error' | '
   offline: { status: 'error', text: '离线' },
 };
 
-const freqText: Record<string, string> = { hourly: '每小时', daily: '每日', weekly: '每周', manual: '手动' };
-
-const nowText = () => {
-  const d = new Date();
+const timeText = (iso: string | null) => {
+  if (!iso) return '—';
+  const d = new Date(iso);
   const p = (n: number) => String(n).padStart(2, '0');
   return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())} ${p(d.getHours())}:${p(d.getMinutes())}`;
 };
-
-interface ImportLog {
-  time: string;
-  source: string;
-  rows: number;
-  success: number;
-  error?: string;
-}
 
 // 数据上传视角:只要求学校把现有系统数据交出来,不改动原系统(中台)
 // 三层来源:AI 自动采集 / 学校系统导入 / 教师仅填无源项
@@ -56,14 +46,43 @@ export default function AdminDataSourcesPage() {
   const [modalOpen, setModalOpen] = useState(false);
   const [msg, msgHolder] = message.useMessage();
   const [form] = Form.useForm();
-  const [sources, setSources] = useState<DataSource[]>(initialDataSources);
+  const [snap, setSnap] = useState<Snapshot>({ sources: [], logs: [], alerts: [] });
+  const [loading, setLoading] = useState(true);
+  const [degraded, setDegraded] = useState<string | null>(null);
   const [typeFilter, setTypeFilter] = useState('all');
   const [search, setSearch] = useState('');
-  const [logs, setLogs] = useState<ImportLog[]>([
-    { time: '2026-09-16 03:00', source: '教育部学科评估数据', rows: 1240, success: 1240 },
-    { time: '2026-09-16 03:00', source: '企业工商信息', rows: 860, success: 702, error: '158 条企业统一信用代码校验失败,已降级为上次同步结果' },
-    { time: '2026-09-10 03:00', source: '校友职业轨迹 (LinkedIn)', rows: 0, success: 0, error: '接口鉴权过期,连接失败' },
-  ]);
+  const { sources, logs, alerts } = snap;
+
+  // 处理 /api/data-sources 的响应:降级 / 出错 / 成功
+  const handle = useCallback(
+    async (res: Response): Promise<(Snapshot & { synced?: boolean }) | null> => {
+      setLoading(false);
+      const json = await res.json().catch(() => null);
+      if (json?.degraded) {
+        setDegraded(json.degradedReason);
+        return null;
+      }
+      if (!res.ok || !json?.success) {
+        msg.error(json?.error ?? `请求失败 ${res.status}`);
+        return null;
+      }
+      setDegraded(null);
+      setSnap(json);
+      return json;
+    },
+    [msg],
+  );
+  const offline = () => {
+    setLoading(false);
+    setDegraded('无法连接服务器');
+    return null;
+  };
+  const call = (body: object) =>
+    fetch('/api/data-sources', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) }).then(handle, offline);
+
+  useEffect(() => {
+    fetch('/api/data-sources', { cache: 'no-store' }).then(handle, offline);
+  }, [handle]);
   const [, setImported] = useDataImported();
 
   const shown = useMemo(
@@ -74,30 +93,19 @@ export default function AdminDataSourcesPage() {
     [sources, typeFilter, search],
   );
 
-  const sync = (d: DataSource) => {
-    const time = nowText();
-    const ok = d.status !== 'offline';
-    const rows = 200 + d.name.length * 37;
-    setSources((list) => list.map((x) => (x.id === d.id ? { ...x, lastSync: time, status: ok ? 'online' : 'offline' } : x)));
-    setLogs((l) => [
-      { time, source: d.name, rows: ok ? rows : 0, success: ok ? rows : 0, error: ok ? undefined : '连接失败,请检查接入端点' },
-      ...l,
-    ]);
-    if (ok) msg.success(`${d.name} 同步完成`);
-    else msg.error(`${d.name} 同步失败`);
+  const sync = async (d: DataSource) => {
+    const r = await call({ action: 'sync', id: d.id });
+    if (!r) return;
+    if (r.synced) msg.success(`${d.name} 同步完成`);
+    else msg.error(`${d.name} 同步失败,已记入导入日志`);
   };
 
-  const onFinish = (v: { name: string; type: string; endpoint: string; indicator: string; frequency: string }) => {
-    const ind = indicators.find((i) => i.id === v.indicator);
-    const id = `DS-${String(sources.length + 1).padStart(2, '0')}`;
-    setSources((list) => [
-      ...list,
-      { id, name: v.name, type: v.type, endpoint: v.endpoint, indicator: `${ind?.id} ${ind?.name}`, status: 'online', lastSync: nowText(), frequency: freqText[v.frequency] },
-    ]);
-    setLogs((l) => [{ time: nowText(), source: v.name, rows: 320, success: 320 }, ...l]);
+  const onFinish = async (v: { name: string; type: string; endpoint: string; indicator: string; frequency: string }) => {
+    const r = await call({ action: 'create', name: v.name, type: v.type, endpoint: v.endpoint, indicatorId: v.indicator, frequency: v.frequency });
+    if (!r) return;
     form.resetFields();
     setModalOpen(false);
-    msg.success('数据源已接入并完成首次同步');
+    msg.success('数据源已接入');
   };
 
   const online = sources.filter((d) => d.status === 'online').length;
@@ -114,15 +122,15 @@ export default function AdminDataSourcesPage() {
       } },
     { title: '接入端点', dataIndex: 'endpoint', key: 'endpoint', width: 280,
       render: (v: string) => <span className="font-mono text-xs text-slate-500 break-all">{v}</span> },
-    { title: '关联指标', dataIndex: 'indicator', key: 'indicator', width: 200,
-      render: (v: string) => <Tag color="blue">{v}</Tag> },
+    { title: '关联指标', dataIndex: 'indicatorId', key: 'indicatorId', width: 200,
+      render: (v: string) => <Tag color="blue">{indicatorText(v)}</Tag> },
     { title: '状态', dataIndex: 'status', key: 'status', width: 100,
       render: (v: string) => {
         const s = statusMap[v];
         return <Badge status={s.status} text={s.text} />;
       } },
     { title: '同步频率', dataIndex: 'frequency', key: 'frequency', width: 90 },
-    { title: '最近同步', dataIndex: 'lastSync', key: 'lastSync', width: 160 },
+    { title: '最近同步', dataIndex: 'lastSync', key: 'lastSync', width: 160, render: (v: string | null) => timeText(v) },
     { title: '操作', key: 'action', width: 160, fixed: 'right' as const,
       render: (_: unknown, record: DataSource) => (
         <Space size="small">
@@ -133,7 +141,7 @@ export default function AdminDataSourcesPage() {
             danger
             icon={<DeleteOutlined />}
             disabled={record.status === 'online'}
-            onClick={() => setSources((list) => list.filter((x) => x.id !== record.id))}
+            onClick={() => void call({ action: 'remove', id: record.id })}
           >
             移除
           </Button>
@@ -150,6 +158,16 @@ export default function AdminDataSourcesPage() {
   return (
     <div className="space-y-4">
       {msgHolder}
+      <DegradedBanner reason={degraded} />
+      {alerts.length > 0 && (
+        <Card data-spec="ds-alerts" className="shadow-sm" title={`数据接入告警(${alerts.length})`} styles={{ body: { padding: 16 } }}>
+          <div className="space-y-2">
+            {alerts.map((a, i) => (
+              <Alert key={i} type={a.level} showIcon message={a.title} description={a.detail} />
+            ))}
+          </div>
+        </Card>
+      )}
       <Card data-spec="ds-layers" className="shadow-sm" styles={{ body: { padding: 20 } }}>
         <div className="flex items-start justify-between gap-4 flex-wrap">
           <div>
@@ -216,27 +234,32 @@ export default function AdminDataSourcesPage() {
               ]}
             />
             <Input placeholder="搜索数据源名称" style={{ width: 200 }} allowClear value={search} onChange={(e) => setSearch(e.target.value)} />
+            <Button icon={<FileTextOutlined />} href="/docs/data-integration-spec.md" target="_blank">接入规范</Button>
             <Button type="primary" icon={<PlusOutlined />} onClick={() => setModalOpen(true)}>接入数据源</Button>
           </Space>
         }
       >
-        <Table dataSource={shown} columns={columns} rowKey="id" scroll={{ x: 1300 }} pagination={{ pageSize: 10 }} />
+        <Table dataSource={shown} columns={columns} rowKey="id" loading={loading} scroll={{ x: 1300 }} pagination={{ pageSize: 10 }} />
       </Card>
 
       <Card data-spec="ds-log" className="shadow-sm" title="导入日志" styles={{ body: { padding: 0 } }}>
         <Table
-          dataSource={logs.map((l, i) => ({ ...l, key: i }))}
+          dataSource={logs}
+          rowKey="id"
           size="small"
+          loading={loading}
           pagination={{ pageSize: 5 }}
           columns={[
-            { title: '时间', dataIndex: 'time', width: 160 },
-            { title: '数据源', dataIndex: 'source' },
-            { title: '行数', dataIndex: 'rows', width: 90 },
-            { title: '成功', dataIndex: 'success', width: 90 },
+            { title: '时间', dataIndex: 'createdAt', width: 160, render: (v: string) => timeText(v) },
+            { title: '来源系统', dataIndex: 'sourceSystem' },
+            { title: '模板', dataIndex: 'templateCode', width: 80, render: (v: string | null) => v ?? '—' },
+            { title: '行数', dataIndex: 'rowCount', width: 80 },
+            { title: '成功', dataIndex: 'successCount', width: 80 },
+            { title: '导入方', dataIndex: 'importedBy', width: 110, render: (v: string | null) => v ?? '—' },
             {
               title: '结果',
-              dataIndex: 'error',
-              render: (e?: string) => (e ? <span className="text-red-500 text-xs">{e}</span> : <Tag color="success">成功</Tag>),
+              dataIndex: 'errorDetail',
+              render: (e: string | null) => (e ? <span className="text-red-500 text-xs">{e}</span> : <Tag color="success">成功</Tag>),
             },
           ]}
         />

@@ -3,7 +3,8 @@ import React from 'react';
 import { Button } from 'antd';
 import { useRouter } from 'next/navigation';
 import { CheckOutlined, ArrowRightOutlined, AimOutlined, ReloadOutlined, StarFilled } from '@ant-design/icons';
-import { sortedIssues, useResolvedIssues, type IssueLevel } from '@/lib/diagnosis';
+import { sortedIssues, type IssueLevel } from '@/lib/diagnosis';
+import { useResolvedIssues } from '@/lib/diagnosis-state';
 import { getIndicatorById } from '@/lib/indicators';
 
 // 「一次只给一个问题」:只渲染队首 1 条,整改完再露出下一条

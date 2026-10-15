@@ -46,3 +46,5 @@ next-env.d.ts
 
 # 产业检索飞轮本地数据(上云前的临时存储)
 /data/industry-flywheel/
+/data/*.db
+/data/*.db-journal

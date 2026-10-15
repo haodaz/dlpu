@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
-import { PrismaClient } from '@prisma/client';
+import { getDb } from '@/lib/db';
+import { guard, denied } from '@/lib/api-guard';
 import { EvaluationContext, ExpertResult } from '@/lib/evaluation/types';
 import { buildEvaluationContext } from '@/lib/data-management';
 import { indicators } from '@/lib/indicators';
@@ -21,7 +22,6 @@ import { chartEvaluate } from '@/lib/evaluation/chartExpert';
 import { MOCK_EXPERTS, mockChiefEvaluate, mockChartEvaluate } from '@/lib/evaluation/mockExperts';
 import { hasLLMKey } from '@/lib/evaluation/llm';
 
-const prisma = new PrismaClient();
 
 // 根据是否配置 API Key 决定使用真实专家还是 mock 专家
 const USE_MOCK = !hasLLMKey();
@@ -38,6 +38,8 @@ const ALL_EXPERTS = USE_MOCK ? MOCK_EXPERTS : [
 ];
 
 export async function POST(request: Request) {
+  const caller = await guard(request, 'user');
+  if (denied(caller)) return caller;
   try {
     const encoder = new TextEncoder();
     const stream = new ReadableStream({
@@ -148,7 +150,8 @@ export async function POST(request: Request) {
           // 5. 存入数据库
           send({ type: 'log', agentId: 'system', message: '💾 正在将万字长卷宗存入核心数据库...' });
           try {
-            await prisma.panoramicData.create({
+            const db = await getDb();
+            await db.panoramicData.create({
               data: {
                 templateCode: 'EVAL_FINAL',
                 sourceType: 'MULTI_AGENT_AI',
@@ -156,10 +159,11 @@ export async function POST(request: Request) {
                 status: 'CONFIRMED'
               }
             });
+            send({ type: 'log', agentId: 'system', message: '✅ 终极评价裁决完毕，报告已存档。正在渲染前端长卷...' });
           } catch (dbError) {
-            console.warn("Database create failed (likely Vercel readonly), skipping DB write.");
-          } 
-          send({ type: 'log', agentId: 'system', message: '✅ 终极评价裁决完毕，结果已绝对存证！正在渲染前端长卷...' });
+            console.warn('[evaluation] 报告存档失败:', (dbError as Error).message);
+            send({ type: 'log', agentId: 'system', message: '⚠️ 数据库不可用，本次报告未存档（仅保存在本机浏览器的历史记录中）。正在渲染前端长卷...' });
+          }
           send({ type: 'agent', data: { id: 'chief_synthesis', name: '主智能体 (统筹裁决)', status: 'done', icon: '👑' } });
           
           send({ type: 'result', data: finalReport });

@@ -1,15 +1,8 @@
 'use client';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { CloseOutlined, LeftOutlined, RightOutlined } from '@ant-design/icons';
-import {
-  MAJORS,
-  verdictMeta,
-  coreResult,
-  sortedIssues,
-  useResolvedIssues,
-  DEMO_MAJOR,
-  type Verdict,
-} from '@/lib/diagnosis';
+import { MAJORS, verdictMeta, coreResult, sortedIssues, DEMO_MAJOR, type Verdict } from '@/lib/diagnosis';
+import { useResolvedIssues } from '@/lib/diagnosis-state';
 import { PRODUCT_NAME, TENANT_NAME } from '@/lib/brand';
 
 // 会议模式(大屏):年度教育教学工作会议三环节连续演示

@@ -4,12 +4,15 @@ import { ingestReport } from '@/lib/industry-report/flywheel';
 import { getStore } from '@/lib/industry-report/store';
 import type { ProgressEvent, ReportInput } from '@/lib/industry-report/types';
 import type { RunRecord, RunSummary } from '@/lib/industry-report/runs';
+import { guard, denied } from '@/lib/api-guard';
 
 // 产业分析报告生成:SSE 推送每一步进度,最后推送完整报告
 // 每次生成都写入检索日志,并把结果沉淀进产业知识库(飞轮)
 export const maxDuration = 300;
 
 export async function POST(request: Request) {
+  const caller = await guard(request, 'user');
+  if (denied(caller)) return caller;
   const body = (await request.json().catch(() => ({}))) as Partial<ReportInput> & {
     user?: { role?: string; name?: string };
     entry?: string;

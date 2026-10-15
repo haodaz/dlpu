@@ -1,0 +1,38 @@
+// 空库时写入演示数据(学校内部数据均为演示数据);只在对应表为空时执行,不覆盖已有记录
+import type { PrismaClient } from '@prisma/client';
+import mockDb from '@/lib/mockDb.json';
+import { normalizeSourceType } from '@/lib/source-type';
+import { indicators } from '@/lib/indicators';
+import { seedState } from '@/lib/filing-core';
+import { DATA_SOURCE_SEED, IMPORT_LOG_SEED } from '@/lib/data-sources';
+import { activeCycle } from './closed-loop';
+
+type MockRow = { id: string; templateCode: string; sourceType?: string; rawPayload: string; status?: string; createdAt?: string };
+
+export async function seedDatabase(db: PrismaClient) {
+  if ((await db.panoramicData.count()) === 0) {
+    await db.panoramicData.createMany({
+      data: (mockDb as MockRow[]).map((r) => ({
+        id: r.id,
+        templateCode: r.templateCode,
+        sourceType: normalizeSourceType(r.sourceType),
+        rawPayload: typeof r.rawPayload === 'string' ? r.rawPayload : JSON.stringify(r.rawPayload),
+        status: r.status ?? 'PENDING',
+        createdAt: r.createdAt ? new Date(r.createdAt) : undefined,
+      })),
+    });
+  }
+
+  if ((await db.filingRecord.count()) === 0) {
+    await db.filingRecord.createMany({ data: indicators.map((i) => ({ indicatorId: i.id, ...seedState(i.id) })) });
+  }
+
+  if ((await db.dataSource.count()) === 0) {
+    await db.dataSource.createMany({ data: DATA_SOURCE_SEED.map((d) => ({ ...d, lastSync: new Date(d.lastSync) })) });
+    await db.dataImportLog.createMany({
+      data: IMPORT_LOG_SEED.map((l) => ({ ...l, sourceType: 'SYSTEM', createdAt: new Date(l.createdAt) })),
+    });
+  }
+
+  await activeCycle(db); // 没有轮次时创建第 1 轮及其整改任务
+}

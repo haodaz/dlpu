@@ -6,7 +6,6 @@
 // - 全校专业红绿灯(宏观决策视角)
 // 口径待产品定稿,目前按会议纪要原则给出演示版本。
 
-import { useSyncExternalStore } from 'react';
 import { indicators } from './indicators';
 import { MOCK_REPORT } from './mock-evaluation-report';
 
@@ -273,87 +272,6 @@ export const sortedIssues = [...ISSUES].sort((a, b) => a.priority - b.priority);
 
 // ---------- 本地演示状态(localStorage) ----------
 // 用 storage 事件 + 自定义事件让同页多个组件同步
-const EVT = 'diagnosis-state-change';
-
-function writeJSON(key: string, value: unknown) {
-  try {
-    localStorage.setItem(key, JSON.stringify(value));
-  } catch {
-    // 忽略:隐私模式等场景下仅本次会话生效
-  }
-  window.dispatchEvent(new Event(EVT));
-}
-
-const SSR = '__ssr__';
-
-function subscribe(cb: () => void) {
-  window.addEventListener(EVT, cb);
-  window.addEventListener('storage', cb);
-  return () => {
-    window.removeEventListener(EVT, cb);
-    window.removeEventListener('storage', cb);
-  };
-}
-
-// 返回 [值, 写入, 是否已在客户端读到 localStorage]
-function useStored<T>(key: string, fallback: T): [T, (v: T) => void, boolean] {
-  const raw = useSyncExternalStore(
-    subscribe,
-    () => {
-      try {
-        return localStorage.getItem(key);
-      } catch {
-        return null;
-      }
-    },
-    () => SSR,
-  );
-  const ready = raw !== SSR;
-  let value = fallback;
-  if (ready && raw) {
-    try {
-      value = JSON.parse(raw) as T;
-    } catch {
-      value = fallback;
-    }
-  }
-  return [value, (v: T) => writeJSON(key, v), ready];
-}
-
-// 学校是否已导入专业数据(决定首页/决策页走获客态还是决策态)
-export function useDataImported() {
-  return useStored<boolean>('dx_data_imported', false);
-}
-
-// 已整改的问题 id
-export function useResolvedIssues() {
-  const [ids, setIds, ready] = useStored<string[]>('dx_resolved_issues', []);
-  return {
-    resolved: ids,
-    ready,
-    resolve: (id: string) => setIds(Array.from(new Set([...ids, id]))),
-    unresolve: (id: string) => setIds(ids.filter((x) => x !== id)),
-    reset: () => setIds([]),
-  };
-}
-
-// 整改任务状态(派发 → 进行中 → 已完成)
-export type TaskStatus = 'todo' | 'doing' | 'done';
-export function useTaskStatus() {
-  const [map, setMap, ready] = useStored<Record<string, TaskStatus>>('dx_task_status', {});
-  return {
-    statusOf: (id: string): TaskStatus => map[id] ?? 'todo',
-    ready,
-    setStatus: (id: string, s: TaskStatus) => setMap({ ...map, [id]: s }),
-    resetAll: () => setMap({}),
-  };
-}
-
-// 评价轮次
-export function useCycle() {
-  return useStored<number>('dx_cycle', 1);
-}
-
 // ---------- 全校专业红绿灯(宏观决策视角) ----------
 export type Verdict = 'GO' | 'RISK' | 'NO';
 export type Layout = '保留' | '优化' | '缩减' | '停招';
@@ -438,6 +356,3 @@ export const VIEW_GROUP_META: Record<ViewGroup, { label: string; audience: strin
   management: { label: '管理分析', audience: '教务处 / 学院' },
   upload: { label: '数据上传', audience: '教务操作人员' },
 };
-export function useViewVisibility() {
-  return useStored<Record<ViewGroup, boolean>>('dx_view_visibility', { decision: true, management: true, upload: true });
-}

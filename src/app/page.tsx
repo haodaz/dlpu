@@ -10,7 +10,8 @@ import {
   SmileOutlined,
   HistoryOutlined,
 } from '@ant-design/icons';
-import { sortedIssues, teacherItemOf, useResolvedIssues } from '@/lib/diagnosis';
+import { sortedIssues, teacherItemOf } from '@/lib/diagnosis';
+import { useResolvedIssues } from '@/lib/diagnosis-state';
 import { getIndicatorById } from '@/lib/indicators';
 
 // 专业教师首页:按需触达
