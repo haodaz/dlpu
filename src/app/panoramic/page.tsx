@@ -1,4 +1,5 @@
 'use client';
+import DegradedBanner from '@/components/DegradedBanner';
 import React, { useEffect, useState, useMemo } from 'react';
 import { Card, Tabs, Descriptions, Tag, Row, Col, Empty, Button } from 'antd';
 import {
@@ -19,6 +20,7 @@ import { indicators } from '@/lib/indicators';
 
 export default function PanoramicPage() {
   const router = useRouter();
+  const [degraded, setDegraded] = useState<string | null>(null);
   const [t01Data, setT01Data] = useState<any>(null);
   const [t02Data, setT02Data] = useState<any>(null);
   const [t03Data, setT03Data] = useState<any>(null);
@@ -129,6 +131,7 @@ export default function PanoramicPage() {
     fetch('/api/panoramic')
       .then((res) => res.json())
       .then((result) => {
+        if (result.degraded) setDegraded(result.degradedReason);
         if (result.success) {
           const data = result.data;
           const find = (code: string) => data.find((item: any) => item.templateCode === code);
@@ -148,7 +151,7 @@ export default function PanoramicPage() {
   }, []);
 
   // 给每个 Card 的元信息：来源 + 状态 + 关联指标
-  const cardMeta = {
+  const cardMeta: Record<string, CardMeta> = {
     profile: {
       sources: [{ type: 'ai-prefill', label: 'AI 预填' }, { type: 'upload', label: '我上传' }],
       status: 'confirmed' as const,
@@ -687,6 +690,7 @@ export default function PanoramicPage() {
 
   return (
     <div className="min-h-[calc(100vh-140px)] bg-slate-50">
+      <DegradedBanner reason={degraded} />
       {/* Header */}
       <div className="bg-white border-b border-slate-200">
         <div className="max-w-6xl mx-auto px-8 py-5">

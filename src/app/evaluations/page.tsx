@@ -3,7 +3,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Button, Tag, Spin } from 'antd';
 import { PlayCircleOutlined, SyncOutlined, CheckOutlined, HomeOutlined, DownloadOutlined, PrinterOutlined } from '@ant-design/icons';
 import { useRouter } from 'next/navigation';
-import { MOCK_REPORT } from '@/lib/mock-evaluation-report';
 
 // ========== Utility helpers ==========
 const COLORS = {
@@ -152,7 +151,7 @@ function ProfessionalReportView({ report }: { report: ReportData }) {
         <div className="flex gap-2">
           <Button icon={<PrinterOutlined />} onClick={() => window.print()}>打印</Button>
           <Button icon={<DownloadOutlined />} onClick={handleExportHTML}>导出 HTML</Button>
-          <Button onClick={() => { router.push('/panoramic'); }}>返回工作台</Button>
+          <Button onClick={() => { router.push('/panoramic'); }}>返回填报成果</Button>
         </div>
       </div>
 
@@ -713,65 +712,50 @@ export default function SmartEvaluationEngine() {
     setAgents({});
     setFinalReport(null);
 
-    // 模拟 AI 评估过程（静态 mock 数据）
-    const mockLogs = [
-      { agentId: 'system', message: '正在初始化评价引擎...' },
-      { agentId: 'system', message: '已加载 17 项指标数据' },
-      { agentId: 'expert_industry', message: '正在分析产业白皮书数据...' },
-      { agentId: 'expert_alignment', message: '正在分析课程 - 产业链映射...' },
-      { agentId: 'expert_teacher', message: '正在分析师资投入数据...' },
-      { agentId: 'expert_student', message: '正在分析学习行为数据...' },
-      { agentId: 'expert_asset', message: '正在分析资产配置数据...' },
-      { agentId: 'expert_practice', message: '正在分析产教融合数据...' },
-      { agentId: 'expert_career', message: '正在分析就业质量数据...' },
-      { agentId: 'expert_alumni', message: '正在分析校友发展数据...' },
-      { agentId: 'system', message: '所有微专家评估完成，正在生成综合报告...' },
-      { agentId: 'system', message: '报告生成完成！' },
-    ];
-
-    const mockAgents = {
-      expert_industry: { id: 'expert_industry', name: '产业分析专家', icon: '🏭', status: 'working' },
-      expert_alignment: { id: 'expert_alignment', name: '课程映射专家', icon: '📚', status: 'working' },
-      expert_teacher: { id: 'expert_teacher', name: '师资评估专家', icon: '👨‍🏫', status: 'working' },
-      expert_student: { id: 'expert_student', name: '学情分析专家', icon: '📊', status: 'working' },
-      expert_asset: { id: 'expert_asset', name: '资产审计专家', icon: '🏗️', status: 'working' },
-      expert_practice: { id: 'expert_practice', name: '产教融合专家', icon: '🤝', status: 'working' },
-      expert_career: { id: 'expert_career', name: '就业质量专家', icon: '💼', status: 'working' },
-      expert_alumni: { id: 'expert_alumni', name: '校友发展专家', icon: '', status: 'working' },
+    // 调用真实评价引擎(/api/evaluation,SSE):9 位微专家并行 → 主智能体统筹 → 图表绘制师
+    // 未配置模型密钥时,后端自动使用预设的 Mock 专家结果
+    const saveHistory = (report: ReportData) => {
+      const newReport = { id: Date.now(), date: new Date().toLocaleString(), grade: report.grade, score: report.totalScore, data: report };
+      setHistoryReports((prev) => {
+        const updated = [newReport, ...prev].slice(0, 10);
+        localStorage.setItem('dlpu_eval_history', JSON.stringify(updated));
+        return updated;
+      });
     };
 
-    // 模拟异步过程
-    await new Promise(resolve => setTimeout(resolve, 1000));
-
-    // 逐步显示日志
-    for (const log of mockLogs) {
-      await new Promise(resolve => setTimeout(resolve, 300));
-      setLogs(prev => [...prev, { agentId: log.agentId, message: log.message, status: 'done' }]);
+    try {
+      const res = await fetch('/api/evaluation', { method: 'POST' });
+      if (!res.ok || !res.body) throw new Error(`评价引擎请求失败 ${res.status}`);
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+      let buf = '';
+      let report: ReportData | null = null;
+      for (;;) {
+        const { value, done } = await reader.read();
+        if (done) break;
+        buf += decoder.decode(value, { stream: true });
+        const parts = buf.split('\n\n');
+        buf = parts.pop() ?? '';
+        for (const part of parts) {
+          const line = part.replace(/^data: /, '').trim();
+          if (!line) continue;
+          const e = JSON.parse(line);
+          if (e.type === 'log') setLogs((prev) => [...prev, { agentId: e.agentId, message: e.message, status: 'done' }]);
+          if (e.type === 'agent' && e.data?.id) setAgents((prev) => ({ ...prev, [e.data.id]: { ...(prev[e.data.id] ?? {}), ...e.data } }));
+          if (e.type === 'error') throw new Error(e.message);
+          if (e.type === 'result') report = e.data as ReportData;
+        }
+      }
+      if (!report) throw new Error('评价引擎没有返回结果');
+      setFinalReport(report);
+      setIsFinished(true);
+      saveHistory(report);
+    } catch (err) {
+      setHasError(true);
+      setLogs((prev) => [...prev, { agentId: 'system', message: `❌ ${(err as Error).message}`, status: 'error' }]);
+    } finally {
+      setIsRunning(false);
     }
-
-    // 标记所有专家完成
-    Object.values(mockAgents).forEach(agent => {
-      setAgents(prev => ({ ...prev, [agent.id]: { ...agent, status: 'done' } }));
-    });
-
-    // 使用 mock 报告数据
-    await new Promise(resolve => setTimeout(resolve, 500));
-    setFinalReport(MOCK_REPORT);
-    setIsFinished(true);
-
-    // 保存到历史
-    const newReport = {
-      id: Date.now(),
-      date: new Date().toLocaleString(),
-      grade: MOCK_REPORT.grade,
-      score: MOCK_REPORT.totalScore,
-      data: MOCK_REPORT
-    };
-    setHistoryReports(prev => {
-      const updated = [newReport, ...prev].slice(0, 10);
-      localStorage.setItem('dlpu_eval_history', JSON.stringify(updated));
-      return updated;
-    });
   };
 
   // ---------- Professional Report View ----------

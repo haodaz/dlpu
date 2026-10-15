@@ -4,6 +4,7 @@ import { ConfigProvider } from "antd";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import AppLayout from "@/components/AppLayout";
+import { PRODUCT_FULL_NAME, PRODUCT_DESCRIPTION } from "@/lib/brand";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,8 +17,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "平方创想 - 院校治理工作台",
-  description: "大连工业大学专业评价体系全景数据 Hub",
+  title: PRODUCT_FULL_NAME,
+  description: PRODUCT_DESCRIPTION,
 };
 
 export default function RootLayout({

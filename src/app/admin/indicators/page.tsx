@@ -1,74 +1,101 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { Card, Table, Tag, Button, Input, Select, Space, Tree, Row, Col, Statistic } from 'antd';
 import {
   SearchOutlined, BarsOutlined, ProfileOutlined, EyeOutlined,
-  CheckCircleOutlined, ClockCircleOutlined,
+  CheckCircleOutlined, ClockCircleOutlined, ArrowLeftOutlined,
 } from '@ant-design/icons';
+import { indicators, dimensions } from '@/lib/indicators';
+import { MOCK_REPORT } from '@/lib/mock-evaluation-report';
+import { sourceOf } from '@/lib/diagnosis';
+import SourceTag from '@/components/diagnosis/SourceTag';
+
+// 指标体系统一使用 src/lib/indicators.ts 的 17 项(编号 1.1.1 ~ 4.1.3),
+// 此页不再维护独立的指标清单。全校平均得分/合格率为演示数据,
+// 由示例评价报告的单项得分按固定规则推导,保证每次刷新一致。
+const round1 = (n: number) => Math.round(n * 10) / 10;
+
+const rows = indicators.map((ind, idx) => {
+  const reportScore = MOCK_REPORT.indicators?.find((i) => i.id === ind.id)?.score ?? 80;
+  const avgScore = round1(reportScore - 11 + (idx % 3));
+  const qualifiedRate = round1(Math.max(20, Math.min(98, avgScore - 5 + (idx % 4) * 2)));
+  const dim = dimensions.find((d) => d.key === ind.dimension)!;
+  return {
+    code: ind.id,
+    name: ind.name,
+    dimension: ind.dimension,
+    dimensionName: dim.name,
+    dimensionColor: dim.color,
+    subCategoryId: ind.subCategoryId,
+    subCategoryName: ind.subCategoryName,
+    weight: ind.weight,
+    avgScore,
+    qualifiedRate,
+    status: avgScore >= 70 ? 'normal' : 'weak',
+  };
+});
 
 const treeData = [
   {
-    title: '使命型指标体系 (17项)',
-    key: 'mission',
-    children: [
-      { title: '产业对齐 (4项)', key: 'alignment', children: [
-        { title: 'M01 产业链图谱完整度', key: 'm01' },
-        { title: 'M02 课程对接产业率', key: 'm02' },
-        { title: 'M03 行业导师占比', key: 'm03' },
-        { title: 'M04 共建基地活跃度', key: 'm04' },
-      ] },
-      { title: '师资投入 (3项)', key: 'faculty', children: [
-        { title: 'M05 双师型教师比例', key: 'm05' },
-        { title: 'M06 行业导师占比', key: 'm06' },
-        { title: 'M07 教师产业实践时长', key: 'm07' },
-      ] },
-    ],
+    title: `使命型指标体系 (${indicators.length}项)`,
+    key: 'root',
+    children: dimensions.map((d) => ({
+      title: `${d.key} ${d.name} (${indicators.filter((i) => i.dimension === d.key).length}项)`,
+      key: `dim-${d.key}`,
+      children: d.subCategories.map((s) => ({
+        title: `${s.id} ${s.name}`,
+        key: `sub-${s.id}`,
+        children: indicators
+          .filter((i) => i.subCategoryId === s.id)
+          .map((i) => ({ title: `${i.id} ${i.name}`, key: `ind-${i.id}` })),
+      })),
+    })),
   },
-  {
-    title: '未来型指标体系 (13项)',
-    key: 'future',
-    children: [
-      { title: '前瞻布局 (4项)', key: 'foresight', children: [
-        { title: 'F01 产业趋势引领度', key: 'f01' },
-        { title: 'F02 教育形态重构力', key: 'f02' },
-        { title: 'F03 跨界融合度', key: 'f03' },
-        { title: 'F04 第四代大学特征', key: 'f04' },
-      ] },
-    ],
-  },
-];
-
-const mockIndicators = [
-  { code: 'M01', name: '产业链图谱完整度', category: '使命型-产业对齐', unit: '%', target: 85, avgScore: 72.5, qualifiedRate: 68.2, status: 'normal' },
-  { code: 'M02', name: '课程对接产业率', category: '使命型-产业对齐', unit: '%', target: 80, avgScore: 58.2, qualifiedRate: 42.3, status: 'weak' },
-  { code: 'M03', name: '行业导师占比', category: '使命型-产业对齐', unit: '%', target: 30, avgScore: 52.1, qualifiedRate: 38.7, status: 'weak' },
-  { code: 'M05', name: '双师型教师比例', category: '使命型-师资投入', unit: '%', target: 50, avgScore: 67.8, qualifiedRate: 71.5, status: 'normal' },
-  { code: 'F01', name: '产业趋势引领度', category: '未来型-前瞻布局', unit: '分', target: 80, avgScore: 45.6, qualifiedRate: 18.2, status: 'weak' },
-  { code: 'F02', name: '教育形态重构力', category: '未来型-前瞻布局', unit: '分', target: 75, avgScore: 38.9, qualifiedRate: 8.5, status: 'weak' },
 ];
 
 const statusTagMap: Record<string, { color: string; text: string }> = {
   normal: { color: 'success', text: '达标' },
   weak: { color: 'error', text: '薄弱' },
-  pending: { color: 'default', text: '未启动' },
 };
 
 export default function AdminIndicatorsPage() {
+  const router = useRouter();
   const [search, setSearch] = useState('');
+  const [statusFilter, setStatusFilter] = useState<string | undefined>();
+  const [node, setNode] = useState('root');
+
+  const filtered = useMemo(
+    () =>
+      rows.filter((r) => {
+        if (node.startsWith('dim-') && r.dimension !== node.slice(4)) return false;
+        if (node.startsWith('sub-') && r.subCategoryId !== node.slice(4)) return false;
+        if (node.startsWith('ind-') && r.code !== node.slice(4)) return false;
+        if (statusFilter && r.status !== statusFilter) return false;
+        const kw = search.trim();
+        if (kw && !r.code.includes(kw) && !r.name.includes(kw)) return false;
+        return true;
+      }),
+    [node, statusFilter, search],
+  );
+
+  const weakCount = rows.filter((r) => r.status === 'weak').length;
 
   const columns = [
-    { title: '指标代码', dataIndex: 'code', key: 'code', width: 100,
+    { title: '编号', dataIndex: 'code', key: 'code', width: 90,
       render: (v: string) => <span className="font-mono text-xs text-slate-500">{v}</span> },
     { title: '指标名称', dataIndex: 'name', key: 'name',
       render: (v: string) => <span className="font-bold text-slate-700">{v}</span> },
-    { title: '所属分类', dataIndex: 'category', key: 'category', width: 180,
-      render: (v: string) => <Tag color="blue">{v}</Tag> },
-    { title: '单位', dataIndex: 'unit', key: 'unit', width: 70 },
-    { title: '目标值', dataIndex: 'target', key: 'target', width: 90,
-      render: (v: number) => <span className="text-slate-700">{v}</span> },
-    { title: '平均得分', dataIndex: 'avgScore', key: 'avgScore', width: 110, sorter: true,
-      render: (v: number) => <span style={{ color: v >= 70 ? '#10b981' : v >= 50 ? '#f59e0b' : '#ef4444' }} className="font-bold">{v}</span> },
-    { title: '合格率', dataIndex: 'qualifiedRate', key: 'qualifiedRate', width: 100, sorter: true,
+    { title: '所属维度', dataIndex: 'dimensionName', key: 'dimensionName', width: 180,
+      render: (v: string, r: (typeof rows)[number]) => <Tag color={r.dimensionColor}>{v}</Tag> },
+    { title: '二级分类', dataIndex: 'subCategoryName', key: 'subCategoryName', width: 150 },
+    { title: '数据来源', key: 'source', width: 120,
+      render: (_: unknown, r: (typeof rows)[number]) => <SourceTag source={sourceOf(r.code)} full /> },
+    { title: '权重', dataIndex: 'weight', key: 'weight', width: 80, sorter: (a: (typeof rows)[number], b: (typeof rows)[number]) => a.weight - b.weight,
+      render: (v: number) => <span className="text-slate-700">{v}%</span> },
+    { title: '平均得分', dataIndex: 'avgScore', key: 'avgScore', width: 110, sorter: (a: (typeof rows)[number], b: (typeof rows)[number]) => a.avgScore - b.avgScore,
+      render: (v: number) => <span style={{ color: v >= 75 ? '#10b981' : v >= 70 ? '#f59e0b' : '#ef4444' }} className="font-bold">{v}</span> },
+    { title: '合格率', dataIndex: 'qualifiedRate', key: 'qualifiedRate', width: 100, sorter: (a: (typeof rows)[number], b: (typeof rows)[number]) => a.qualifiedRate - b.qualifiedRate,
       render: (v: number) => <span className="font-bold">{v}%</span> },
     { title: '状态', dataIndex: 'status', key: 'status', width: 90,
       render: (v: string) => {
@@ -76,32 +103,41 @@ export default function AdminIndicatorsPage() {
         return <Tag color={s.color}>{s.text}</Tag>;
       } },
     { title: '操作', key: 'action', width: 100, fixed: 'right' as const,
-      render: () => <Button type="link" size="small" icon={<EyeOutlined />}>详情</Button> },
+      render: (_: unknown, r: (typeof rows)[number]) => (
+        <Button type="link" size="small" icon={<EyeOutlined />} onClick={() => router.push(`/admin/indicator-analysis?id=${r.code}`)}>详情</Button>
+      ) },
   ];
 
   return (
     <div className="space-y-4">
+      {/* 下钻页:指标不再是菜单入口,从评价结果下钻而来 */}
+      <div className="flex items-center gap-3">
+        <Button icon={<ArrowLeftOutlined />} onClick={() => router.back()}>返回</Button>
+        <span className="text-sm text-slate-500">指标分析 · 这个结论背后的分析逻辑</span>
+      </div>
       <Row gutter={[16, 16]}>
         <Col xs={12} sm={6}>
-          <Card className="shadow-sm"><Statistic title="指标总数" value={30} prefix={<BarsOutlined />} /></Card>
+          <Card className="shadow-sm"><Statistic title="指标总数" value={indicators.length} prefix={<BarsOutlined />} /></Card>
         </Col>
         <Col xs={12} sm={6}>
-          <Card className="shadow-sm"><Statistic title="使命型" value={17} valueStyle={{ color: '#1677ff' }} prefix={<ProfileOutlined />} /></Card>
+          <Card className="shadow-sm"><Statistic title="评价维度" value={dimensions.length} styles={{ content: { color: '#1677ff' } }} prefix={<ProfileOutlined />} /></Card>
         </Col>
         <Col xs={12} sm={6}>
-          <Card className="shadow-sm"><Statistic title="未来型" value={13} valueStyle={{ color: '#a855f7' }} prefix={<ProfileOutlined />} /></Card>
+          <Card className="shadow-sm"><Statistic title="达标指标" value={rows.length - weakCount} styles={{ content: { color: '#10b981' } }} prefix={<CheckCircleOutlined />} /></Card>
         </Col>
         <Col xs={12} sm={6}>
-          <Card className="shadow-sm"><Statistic title="薄弱指标" value={12} valueStyle={{ color: '#ef4444' }} prefix={<ClockCircleOutlined />} /></Card>
+          <Card className="shadow-sm"><Statistic title="薄弱指标" value={weakCount} styles={{ content: { color: '#ef4444' } }} prefix={<ClockCircleOutlined />} /></Card>
         </Col>
       </Row>
 
-      <div className="flex gap-4">
-        {/* 左侧指标树 */}
-        <Card title="指标体系结构" className="shadow-sm w-72 shrink-0" styles={{ body: { padding: 12 } }}>
+      <div data-spec="indicators-table" className="flex gap-4">
+        {/* 左侧指标树:点击节点筛选右侧列表 */}
+        <Card title="指标体系结构" className="shadow-sm w-80 shrink-0" styles={{ body: { padding: 12 } }}>
           <Tree
             treeData={treeData}
-            defaultExpandAll
+            defaultExpandedKeys={['root', ...dimensions.map((d) => `dim-${d.key}`)]}
+            selectedKeys={[node]}
+            onSelect={(keys) => setNode((keys[0] as string) ?? 'root')}
             showLine
             className="text-sm"
           />
@@ -114,7 +150,7 @@ export default function AdminIndicatorsPage() {
           title={
             <Space>
               <Input
-                placeholder="搜索指标代码/名称"
+                placeholder="搜索指标编号/名称"
                 prefix={<SearchOutlined />}
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
@@ -122,23 +158,25 @@ export default function AdminIndicatorsPage() {
                 allowClear
               />
               <Select
-                placeholder="分类筛选"
-                style={{ width: 180 }}
+                placeholder="状态筛选"
+                style={{ width: 140 }}
                 allowClear
+                value={statusFilter}
+                onChange={setStatusFilter}
                 options={[
-                  { value: 'mission', label: '使命型' },
-                  { value: 'future', label: '未来型' },
+                  { value: 'normal', label: '达标' },
+                  { value: 'weak', label: '薄弱' },
                 ]}
               />
             </Space>
           }
         >
           <Table
-            dataSource={mockIndicators}
+            dataSource={filtered}
             columns={columns}
             rowKey="code"
             scroll={{ x: 1100 }}
-            pagination={{ pageSize: 10 }}
+            pagination={{ pageSize: 10, showTotal: (t) => `共 ${t} 项` }}
           />
         </Card>
       </div>

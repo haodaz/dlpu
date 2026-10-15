@@ -2,6 +2,7 @@
 // 复用 mockDb.json，将 T01-T19 数据映射到 8 类材料类型
 
 import mockData from './mockDb.json';
+import { isAISource, normalizeSourceType } from './source-type';
 
 // ---------- 8 类材料类型 ----------
 export type MaterialCategoryKey =
@@ -245,7 +246,7 @@ function getDefaultPrefill(code: string, displayName: string): {
 export type DataSourceType = 'ai-prefill' | 'user-upload';
 
 function isAIPrefill(sourceType: string): boolean {
-  return sourceType === 'AI_SEARCH' || sourceType === 'MULTI_AGENT_AI';
+  return isAISource(sourceType);
 }
 
 // ---------- 处理后的数据条目 ----------
@@ -352,7 +353,7 @@ function processItem(raw: any): ProcessedDataItem | null {
   return {
     id: raw.id,
     templateCode: code,
-    sourceType: raw.sourceType,
+    sourceType: normalizeSourceType(raw.sourceType),
     displayName: mapping.displayName,
     category: mapping.category,
     relatedIndicators: mapping.relatedIndicators,
@@ -362,7 +363,7 @@ function processItem(raw: any): ProcessedDataItem | null {
     processStatus,
     confidence: ds === 'ai-prefill' ? hashConfidence(raw.id) : 100,
     prefillSource: ds === 'ai-prefill'
-      ? (raw.sourceType === 'AI_SEARCH' ? 'AI 搜索' : '多智能体生成')
+      ? (normalizeSourceType(raw.sourceType) === 'AI_SEARCH' ? 'AI 搜索' : '多智能体生成')
       : '用户上传',
     status: raw.status,
     createdAt: raw.createdAt,

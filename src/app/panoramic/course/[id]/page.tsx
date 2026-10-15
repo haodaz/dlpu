@@ -1,4 +1,5 @@
 'use client';
+import DegradedBanner from '@/components/DegradedBanner';
 import React, { useEffect, useState, use } from 'react';
 import { Card, Tag, Badge, Breadcrumb, Typography, Spin, Descriptions, Table, Alert, Tabs, Empty, Row, Col } from 'antd';
 import { HomeOutlined, DatabaseOutlined, BookOutlined } from '@ant-design/icons';
@@ -16,6 +17,7 @@ export default function CourseProfilePage({ params }: { params: any }) {
     : '';
 
   const [loading, setLoading] = useState(true);
+  const [degraded, setDegraded] = useState<string | null>(null);
   const [t04Data, setT04Data] = useState<any>(null);
   const [t11Data, setT11Data] = useState<any>(null);
   const [t08Data, setT08Data] = useState<any>(null);
@@ -38,6 +40,7 @@ export default function CourseProfilePage({ params }: { params: any }) {
     fetch('/api/panoramic')
       .then(res => res.json())
       .then(result => {
+        if (result.degraded) setDegraded(result.degradedReason);
         if (result.success) {
           const data = result.data;
           
@@ -97,6 +100,7 @@ export default function CourseProfilePage({ params }: { params: any }) {
 
   return (
     <div className="max-w-6xl mx-auto pb-10">
+      <DegradedBanner reason={degraded} />
       <div className="mb-6">
         <Breadcrumb
           items={[

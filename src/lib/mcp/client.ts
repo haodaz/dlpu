@@ -108,7 +108,8 @@ export class McpClient {
 
   async callTool<T = unknown>(name: string, args: Record<string, unknown> = {}): Promise<T> {
     await this.start();
-    console.log(`[MCP CALL] ${name} args:`, JSON.stringify(args));
+    // 日志里隐去访问令牌,避免密钥落到服务器日志
+    console.log(`[MCP CALL] ${name} args:`, JSON.stringify({ ...args, ...('bearerToken' in args ? { bearerToken: '***' } : {}) }));
     const result = await this.request('tools/call', { name, arguments: args }, 120000);
 
 

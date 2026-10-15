@@ -33,7 +33,8 @@ function DetailContent() {
     current.scoringMethod === '定量评分' ? '#059669' : current.scoringMethod === '定性评价' ? '#d97706' : '#1677ff';
 
   const goFiling = () => router.push(`/data-management/ai-prefill?indicator=${current.id}`);
-  const goBack = () => router.push('/metrics');
+  // 指标页只从诊断结论下钻进入,返回上一页即回到结论
+  const goBack = () => router.back();
 
   return (
     <div className="flex-1 flex flex-col min-h-[calc(100vh-140px)] bg-slate-50">
@@ -264,7 +265,7 @@ function DetailContent() {
               onClick={goBack}
               className="flex items-center gap-1 text-sm text-slate-600 hover:text-slate-800 transition-colors px-4 py-2 rounded-lg hover:bg-slate-100"
             >
-              <ArrowLeftOutlined /> 返回总览
+              <ArrowLeftOutlined /> 返回
             </button>
             <button
               onClick={goFiling}

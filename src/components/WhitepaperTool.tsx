@@ -1,5 +1,9 @@
 'use client';
 import React, { useMemo, useRef, useState } from 'react';
+import { ReportView } from '@/components/industry-report/ReportView';
+import { TENANT_REGION } from '@/lib/brand';
+import { Progress, useReportGenerator } from '@/components/industry-report/Generator';
+import type { IndustryReport } from '@/lib/industry-report/types';
 import { Button, Input, Tooltip } from 'antd';
 import {
   CheckOutlined,
@@ -251,9 +255,9 @@ export default function WhitepaperTool({
   const [seed, setSeed] = useState(0);
 
   // 演示用预填值，便于直接测试生成效果
-  const [majorName, setMajorName] = useState('工业机器人技术');
+  const [majorName, setMajorName] = useState('智能制造工程');
   const [industryName, setIndustryName] = useState('智能制造');
-  const [region, setRegion] = useState('全国');
+  const [region, setRegion] = useState(TENANT_REGION);
 
   const [materials, setMaterials] = useState<Record<WhitepaperModuleKey, SearchMaterial[]> | null>(null);
   const [result, setResult] = useState<WhitepaperResult | null>(null);
@@ -269,6 +273,17 @@ export default function WhitepaperTool({
     e.target.value = '';
   };
   const removeRevised = (idx: number) => setRevisedFiles((prev) => prev.filter((_, i) => i !== idx));
+
+  // 智能生成:真实流水线(联网检索 + 平方数据 + OpenAlex + 阿里云模型),点了才跑;默认仍展示演示数据
+  const smart = useReportGenerator();
+  const [smartOpen, setSmartOpen] = useState(false);
+  const [smartReport, setSmartReport] = useState<IndustryReport | null>(null);
+  const runSmart = async () => {
+    setSmartOpen(true);
+    setSmartReport(null);
+    const r = await smart.generate({ industry: industryName, region, major: majorName }, 'whitepaper');
+    if (r) setSmartReport(r);
+  };
 
   const isSubmitted = status === 'submitted';
   const input = { majorName, industryName, region };
@@ -368,6 +383,33 @@ export default function WhitepaperTool({
     { num: 3 as const, label: '白皮书预览确认' },
   ];
 
+  if (smartOpen) {
+    return (
+      <>
+        <div className="bg-indigo-50 border border-indigo-200 rounded-xl px-5 py-4 flex items-start justify-between gap-4 flex-wrap">
+          <div>
+            <div className="font-bold text-indigo-800 text-sm">智能生成 · {industryName}({region})</div>
+            <div className="text-xs text-indigo-700 mt-1 leading-relaxed">
+              论文数据来自 OpenAlex,政策 / 产业集群 / 就业方向优先取平方数据,其余来自阿里云联网检索;数值按公式计算,模型只做抽取与解读。约需 3 分钟。
+            </div>
+          </div>
+          <div className="flex gap-2">
+            <Button disabled={smart.running} onClick={() => setSmartOpen(false)}>
+              返回演示版
+            </Button>
+            {smartReport && (
+              <Button type="primary" icon={<CheckOutlined />} disabled={isSubmitted} onClick={onSubmitted}>
+                {isSubmitted ? '已提交' : '确认并提交'}
+              </Button>
+            )}
+          </div>
+        </div>
+        {(smart.running || smart.error) && <Progress steps={smart.steps} logs={smart.logs} error={smart.error} running={smart.running} />}
+        {smartReport && !smart.running && <ReportView report={smartReport} />}
+      </>
+    );
+  }
+
   return (
     <>
       {/* 起点指标说明 */}
@@ -411,7 +453,7 @@ export default function WhitepaperTool({
 
       {/* ===== Stage 1：输入 + 联网搜索 ===== */}
       {stage === 1 && (
-        <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+        <div data-spec="whitepaper-smart" className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
           <div className="px-5 py-3 border-b border-slate-100 flex items-center gap-2">
             <SearchOutlined className="text-blue-500" />
             <span className="font-bold text-slate-800 text-sm">输入服务方向并采集素材</span>
@@ -468,11 +510,16 @@ export default function WhitepaperTool({
           </div>
           <div className="px-5 py-3 border-t border-slate-100 flex items-center justify-between">
             <span className="text-xs text-slate-500">
-              素材越充分，AI 提取的结构化数据越准确。
+              「生成演示版」使用展示数据,秒出;「智能生成」真实联网检索与 AI 分析,约 3 分钟。
             </span>
-            <Button type="primary" icon={<ThunderboltOutlined />} disabled={!canSearch} onClick={() => runPipeline(seed)}>
-              开始搜索并生成
-            </Button>
+            <div className="flex gap-2">
+              <Button icon={<ThunderboltOutlined />} disabled={!canSearch} onClick={() => runPipeline(seed)}>
+                生成演示版
+              </Button>
+              <Button type="primary" icon={<RobotOutlined />} disabled={!canSearch} onClick={runSmart}>
+                智能生成
+              </Button>
+            </div>
           </div>
         </div>
       )}

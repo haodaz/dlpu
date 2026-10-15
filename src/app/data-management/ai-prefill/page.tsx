@@ -12,6 +12,8 @@ import {
 } from '@ant-design/icons';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { indicators, dimensions } from '@/lib/indicators';
+import { TEACHER_INDICATOR_IDS, teacherItemOf, sourceOf } from '@/lib/diagnosis';
+import SourceTag from '@/components/diagnosis/SourceTag';
 import {
   filingModeMeta,
   filingStatusMeta,
@@ -68,6 +70,8 @@ function IndicatorFilingContent() {
   const [search, setSearch] = useState('');
   const [dimensionFilter, setDimensionFilter] = useState<DimensionFilter>('all');
   const [statusFilter, setStatusFilter] = useState<StatusFilter>('all');
+  // 教师默认只看自己负责的无源数据项;学校可导入 / AI 采集的指标不出现在待办里
+  const [showAll, setShowAll] = useState(false);
 
   // 订阅内存态填报状态：任一指标状态变化都会触发本组件重渲染
   useFilingRevision();
@@ -79,6 +83,7 @@ function IndicatorFilingContent() {
     weight: dim.weight,
     indicators: indicators
       .filter((ind) => ind.dimension === dim.key)
+      .filter((ind) => showAll || TEACHER_INDICATOR_IDS.includes(ind.id))
       .map((ind) => {
         const state = getFilingState(ind.id);
         return {
@@ -111,7 +116,7 @@ function IndicatorFilingContent() {
     }))
     .filter((g) => g.indicators.length > 0);
 
-  // 所有指标平铺为同一层级：不锁定、不按依赖分区，维度只作为卡片上的一个标签
+  // 指标平铺为同一层级，维度只作为卡片上的一个标签
   const flatRows = filteredGroups.flatMap((g) =>
     g.indicators.map((ind) => ({ ...ind, dimKey: g.key, dimColor: g.color })),
   );
@@ -145,9 +150,11 @@ function IndicatorFilingContent() {
             <FormOutlined />
           </div>
           <div>
-            <h1 className="text-2xl font-bold text-slate-800 m-0 leading-tight">指标填报</h1>
+            <h1 className="text-2xl font-bold text-slate-800 m-0 leading-tight">待填报指标</h1>
             <p className="text-sm text-slate-500 m-0 mt-1">
-              按指标组织，每个指标进入后可选择「直接填报」或「AI 辅助填报」。
+              {showAll
+                ? '全部 17 项指标(只读参考):多数由 AI 自动采集或学校系统导入，无需您填写。'
+                : `只列出需要您本人填报的 ${TEACHER_INDICATOR_IDS.length} 类无源数据：教案、学情分析、形成性评价、综合性课程设计。`}
             </p>
           </div>
         </div>
@@ -174,6 +181,14 @@ function IndicatorFilingContent() {
           <span className="text-slate-500">
             已选模式 <span className="font-bold text-purple-600">{stats.modeSelected}</span> 项
           </span>
+          <button
+            onClick={() => setShowAll(!showAll)}
+            className="ml-auto text-xs text-slate-400 hover:text-purple-600"
+          >
+            {showAll
+              ? '只看我需要填的'
+              : `其余 ${indicators.length - TEACHER_INDICATOR_IDS.length} 项由学校系统导入 / AI 采集 · 查看`}
+          </button>
         </div>
       </div>
 
@@ -221,7 +236,7 @@ function IndicatorFilingContent() {
             暂无匹配的指标
           </div>
         ) : (
-          <div className="space-y-2.5">
+          <div data-spec="prefill-list" className="space-y-2.5">
             {flatRows.map((ind) => {
               const modeMeta = filingModeMeta[ind.mode];
               const statusMeta = filingStatusMeta[ind.status];
@@ -241,7 +256,15 @@ function IndicatorFilingContent() {
                     {/* 第一行：编号 + 名称 + 状态 + 模式 + 进入 */}
                     <div className="flex items-center gap-3 mb-2">
                       <span className="font-mono text-xs text-slate-400 w-14 shrink-0">{ind.indicatorId}</span>
-                      <span className="font-bold text-slate-800 text-base flex-1">{ind.indicatorName}</span>
+                      <span className="font-bold text-slate-800 text-base flex-1">
+                        {ind.indicatorName}
+                        {teacherItemOf(ind.indicatorId) && (
+                          <span className="ml-2 text-xs font-normal text-slate-400">
+                            {teacherItemOf(ind.indicatorId)!.kind} · 范本 {teacherItemOf(ind.indicatorId)!.templateName}
+                          </span>
+                        )}
+                      </span>
+                      <SourceTag source={sourceOf(ind.indicatorId)} full />
 
                       <span
                         className="shrink-0 inline-flex items-center text-xs font-bold px-2.5 py-1 rounded-full"
