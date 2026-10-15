@@ -28,6 +28,8 @@ export interface TeacherItem {
   templateId: string; // 对应 /templates/tXX
   templateName: string;
   standard: string[]; // 标准要求(做成什么样算达标)
+  effort: string; // 预计用时
+  aiAssist: string; // AI 能帮老师做到哪一步
 }
 
 export const TEACHER_ITEMS: TeacherItem[] = [
@@ -41,6 +43,8 @@ export const TEACHER_ITEMS: TeacherItem[] = [
       '教学目标、重难点、案例引入、逻辑递进四部分齐全',
       '附 AI 平台使用记录或学生产出物截图作为佐证',
     ],
+    effort: '约 40 分钟',
+    aiAssist: 'AI 可根据您上传的课件先起草一版教案,您只需补上课堂里真实发生的部分',
   },
   {
     indicatorId: '2.3.1',
@@ -52,6 +56,8 @@ export const TEACHER_ITEMS: TeacherItem[] = [
       '明确指出 1-2 个能力短板,并说明对后续课程的交接建议',
       '引用课程平台行为数据(出勤、作业、互动),不得只写主观判断',
     ],
+    effort: '约 30 分钟',
+    aiAssist: '上一届的成绩与平台数据已自动带入,对比表格不用您手算',
   },
   {
     indicatorId: '2.3.2',
@@ -63,6 +69,8 @@ export const TEACHER_ITEMS: TeacherItem[] = [
       '记录至少 3 次日常测验/项目表现,可追溯到学生个人',
       '给出达成度计算结果与下一轮改进措施',
     ],
+    effort: '约 30 分钟',
+    aiAssist: '课程平台的测验与作业记录已自动导入,您只需核对并补充评语',
   },
   {
     indicatorId: '1.2.2',
@@ -74,8 +82,13 @@ export const TEACHER_ITEMS: TeacherItem[] = [
       '覆盖 ≥ 3 门前序课程的知识点,并在大纲中标明贯通关系',
       '有明确的验收标准与评分细则',
     ],
+    effort: '约 60 分钟',
+    aiAssist: 'AI 可从企业项目库推荐 3 个候选题目,您挑一个改写即可',
   },
 ];
+
+// 演示教师(学校内部数据均为演示数据)
+export const DEMO_TEACHER = { name: '郝壮', call: '郝老师', course: '包装机械设计', contact: '教务处教学质量科' };
 
 export const TEACHER_INDICATOR_IDS = TEACHER_ITEMS.map((t) => t.indicatorId);
 
