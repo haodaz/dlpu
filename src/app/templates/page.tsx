@@ -16,7 +16,7 @@ export default function TemplatesPage() {
     <div className="flex-1 flex flex-col min-h-[calc(100vh-140px)] bg-slate-50">
       
       {/* 极简 CRM 风格 Header */}
-      <div className="px-8 py-8 flex items-center gap-4 shrink-0 max-w-6xl mx-auto w-full">
+      <div className="px-0 md:px-8 py-8 flex items-center gap-4 shrink-0 max-w-6xl mx-auto w-full">
         <div className="w-12 h-12 rounded-xl bg-blue-600 flex items-center justify-center text-white text-2xl shadow-sm">
           <LayoutOutlined />
         </div>
@@ -32,7 +32,7 @@ export default function TemplatesPage() {
           {templates.map((item) => (
             <div 
               key={item.id} 
-              className={`bg-white rounded-xl shadow-sm border border-slate-200 p-8 flex items-center justify-between hover:border-blue-400 hover:shadow-md transition-all duration-300 border-l-[6px] ${item.isTeacherSample ? 'border-l-orange-400' : 'border-l-blue-500'}`}
+              className={`bg-white rounded-xl shadow-sm border border-slate-200 p-5 md:p-8 flex flex-col md:flex-row items-start md:items-center gap-4 justify-between hover:border-blue-400 hover:shadow-md transition-all duration-300 border-l-[6px] ${item.isTeacherSample ? 'border-l-orange-400' : 'border-l-blue-500'}`}
             >
               <div className="flex-1">
                 <div className="flex items-center gap-4 mb-3 flex-wrap">

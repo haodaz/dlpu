@@ -144,7 +144,7 @@ function IndicatorFilingContent() {
   return (
     <div className="flex-1 flex flex-col min-h-[calc(100vh-140px)] bg-slate-50">
       {/* ===== 顶部 ===== */}
-      <div className="px-8 py-8 shrink-0 max-w-7xl mx-auto w-full">
+      <div className="px-0 md:px-8 py-8 shrink-0 max-w-7xl mx-auto w-full">
         <div className="flex items-center gap-4 mb-5">
           <div className="w-12 h-12 rounded-xl bg-purple-600 flex items-center justify-center text-white text-2xl shadow-sm">
             <FormOutlined />
@@ -193,7 +193,7 @@ function IndicatorFilingContent() {
       </div>
 
       {/* ===== 筛选栏 ===== */}
-      <div className="px-8 shrink-0 max-w-7xl mx-auto w-full pb-5">
+      <div className="px-0 md:px-8 shrink-0 max-w-7xl mx-auto w-full pb-5">
         <div className="bg-white rounded-xl border border-slate-200 p-4 shadow-sm">
           <div className="flex items-center gap-3 flex-wrap">
             <Select
@@ -230,7 +230,7 @@ function IndicatorFilingContent() {
       </div>
 
       {/* ===== 指标平铺列表（不锁定、不分区） ===== */}
-      <div className="px-8 shrink-0 max-w-7xl mx-auto w-full pb-12">
+      <div className="px-0 md:px-8 shrink-0 max-w-7xl mx-auto w-full pb-12">
         {flatRows.length === 0 ? (
           <div className="bg-white rounded-xl border border-slate-200 p-16 text-center text-slate-400 text-sm shadow-sm">
             暂无匹配的指标
@@ -254,9 +254,9 @@ function IndicatorFilingContent() {
                 >
                   <div className="px-5 py-3.5">
                     {/* 第一行：编号 + 名称 + 状态 + 模式 + 进入 */}
-                    <div className="flex items-center gap-3 mb-2">
+                    <div className="flex items-center flex-wrap gap-x-3 gap-y-2 mb-2">
                       <span className="font-mono text-xs text-slate-400 w-14 shrink-0">{ind.indicatorId}</span>
-                      <span className="font-bold text-slate-800 text-base flex-1">
+                      <span className="font-bold text-slate-800 text-base flex-1 min-w-[13rem]">
                         {ind.indicatorName}
                         {teacherItemOf(ind.indicatorId) && (
                           <span className="ml-2 text-xs font-normal text-slate-400">

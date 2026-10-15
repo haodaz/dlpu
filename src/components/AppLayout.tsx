@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Layout, Menu, Avatar, Dropdown, theme, Segmented, Tooltip } from 'antd';
+import { Layout, Menu, Avatar, Dropdown, theme, Segmented, Tooltip, Grid, Drawer } from 'antd';
 import type { MenuProps } from 'antd';
 import {
   DashboardOutlined,
@@ -35,6 +35,7 @@ import {
   ScheduleOutlined,
   FundViewOutlined,
   ClusterOutlined,
+  MenuOutlined,
 } from '@ant-design/icons';
 import Image from 'next/image';
 import { useRouter, usePathname } from 'next/navigation';
@@ -73,6 +74,10 @@ const findParentKeys = (items: NavItem[], target: string, parents: string[] = []
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   const [collapsed, setCollapsed] = useState(false);
+  // 手机宽度(< 768px):左侧菜单收进抽屉,由顶栏按钮呼出
+  const screens = Grid.useBreakpoint();
+  const mobile = screens.md === false;
+  const [drawerOpen, setDrawerOpen] = useState(false);
   const [role, setRole] = useState<Role>('user');
   const router = useRouter();
   const pathname = usePathname();
@@ -202,28 +207,11 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedKey, role]);
 
-  return (
-    <Layout hasSider style={{ minHeight: '100vh', background: '#f8fafc' }}>
-      <Sider 
-        width={256} 
-        theme="light" 
-        collapsible 
-        collapsed={collapsed} 
-        onCollapse={(value) => setCollapsed(value)}
-        style={{ 
-          overflow: 'auto', 
-          height: '100vh', 
-          position: 'fixed', 
-          left: 0, 
-          top: 0, 
-          bottom: 0,
-          borderRight: '1px solid #f1f5f9',
-          boxShadow: '1px 0 10px rgba(0,0,0,0.02)',
-          zIndex: 100
-        }}
-      >
+  // 侧栏内容:桌面端放在 Sider,手机端放在抽屉里
+  const sidebar = (narrow: boolean) => (
+    <>
         <div className="h-16 flex items-center justify-center border-b border-gray-100 px-4">
-          {!collapsed ? (
+          {!narrow ? (
             <div className="relative w-full h-9">
                <Image src="/fanglue_logo.png" alt={`${PRODUCT_NAME} Logo`} fill className="object-contain object-left" priority />
             </div>
@@ -233,7 +221,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
             </div>
           )}
         </div>
-        {!collapsed && (
+        {!narrow && (
           <div className="p-4 bg-slate-50 border-b border-slate-100 flex items-center gap-3">
             <div className="relative w-10 h-10 shrink-0">
               <Image src="/dlpu_logo.png" alt="DLPU Logo" fill className="object-contain" />
@@ -251,21 +239,64 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           onOpenChange={setOpenKeys}
           style={{ borderRight: 0, padding: '12px 8px' }}
           items={menuItems as MenuProps['items']}
-          onClick={({ key }) => router.push(key)}
+          onClick={({ key }) => {
+            router.push(key);
+            setDrawerOpen(false);
+          }}
           className="custom-menu"
         />
         </div>
-      </Sider>
+    </>
+  );
+
+  return (
+    <Layout hasSider style={{ minHeight: '100vh', background: '#f8fafc' }}>
+      {/* 手机端(< 768px)由 CSS 直接隐藏侧栏、去掉左边距,首帧即正确,不等 JS 判断屏宽 */}
+        <Sider
+          className="max-md:!hidden"
+          width={256}
+          theme="light"
+          collapsible
+          collapsed={collapsed}
+          onCollapse={(value) => setCollapsed(value)}
+          style={{
+            overflow: 'auto',
+            height: '100vh',
+            position: 'fixed',
+            left: 0,
+            top: 0,
+            bottom: 0,
+            borderRight: '1px solid #f1f5f9',
+            boxShadow: '1px 0 10px rgba(0,0,0,0.02)',
+            zIndex: 100,
+          }}
+        >
+          {sidebar(collapsed)}
+        </Sider>
+      {mobile && (
+        <Drawer
+          placement="left"
+          open={drawerOpen}
+          onClose={() => setDrawerOpen(false)}
+          size={264}
+          closable={false}
+          styles={{ body: { padding: 0 } }}
+        >
+          {sidebar(false)}
+        </Drawer>
+      )}
 
       {/* Main Layout Area - Margin dynamically updates based on collapsed state */}
-      <Layout 
-        style={{ 
-          marginLeft: collapsed ? 80 : 256, 
+      <Layout
+        className="max-md:!ml-0"
+        style={{
+          marginLeft: collapsed ? 80 : 256,
           transition: 'all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1)',
           background: '#f8fafc' 
         }}
       >
         <Header
+          className="max-md:!px-3"
           style={{
             padding: '0 24px',
             background: 'rgba(255, 255, 255, 0.8)',
@@ -282,13 +313,22 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           }}
         >
           {/* 左侧：当前视角标识 */}
-          <div className="flex items-center gap-2">
-            <span className={`text-xs font-bold px-2.5 py-1 rounded-md border ${
+          <div className="flex items-center gap-2 min-w-0">
+            {mobile && (
+              <button
+                aria-label="打开菜单"
+                onClick={() => setDrawerOpen(true)}
+                className="w-9 h-9 -ml-1 rounded-lg flex items-center justify-center text-slate-600 hover:bg-slate-100 text-lg"
+              >
+                <MenuOutlined />
+              </button>
+            )}
+            <span className={`text-xs font-bold px-2.5 py-1 rounded-md border whitespace-nowrap leading-normal ${
               role === 'admin'
                 ? 'bg-purple-50 text-purple-700 border-purple-200'
                 : 'bg-blue-50 text-blue-700 border-blue-200'
             }`}>
-              {role === 'admin' ? '管理员视角' : '专业教师视角'}
+              {mobile ? (role === 'admin' ? '管理员' : '教师') : role === 'admin' ? '管理员视角' : '专业教师视角'}
             </span>
             <span className="text-sm text-slate-400 font-medium hidden md:inline">
               {PRODUCT_TAGLINE}
@@ -296,8 +336,8 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           </div>
 
           {/* 右侧：角色切换 + 操作区 */}
-          <div className="flex items-center gap-4">
-            <SpecMode />
+          <div className={`flex items-center ${mobile ? 'gap-2.5' : 'gap-4'}`}>
+            {!mobile && <SpecMode />}
             {/* 角色切换按钮 */}
             <Tooltip title="切换教师/管理员视角">
               <span data-spec="topbar" className="inline-flex">
@@ -305,29 +345,36 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                 value={role}
                 onChange={handleRoleChange}
                 size="small"
-                options={[
-                  { label: '教师', value: 'user', icon: <UserOutlined /> },
-                  { label: '管理员', value: 'admin', icon: <CrownOutlined /> },
-                ]}
+                options={
+                  mobile
+                    ? [
+                        { label: '教师', value: 'user' },
+                        { label: '管理', value: 'admin' },
+                      ]
+                    : [
+                        { label: '教师', value: 'user', icon: <UserOutlined /> },
+                        { label: '管理员', value: 'admin', icon: <CrownOutlined /> },
+                      ]
+                }
               />
               </span>
             </Tooltip>
 
-            <SearchOutlined className="text-lg text-slate-400 cursor-pointer hover:text-blue-600 transition-colors" />
-            <div className="relative">
+            {!mobile && <SearchOutlined className="text-lg text-slate-400 cursor-pointer hover:text-blue-600 transition-colors" />}
+            <div className="relative leading-none">
               <BellOutlined className="text-lg text-slate-400 cursor-pointer hover:text-blue-600 transition-colors" />
               <span className="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full border border-white"></span>
             </div>
             <Dropdown menu={{ items: [{ key: 'logout', label: '退出登录', danger: true }] }} placement="bottomRight">
-              <div className="flex items-center gap-2 cursor-pointer bg-white px-3 py-1.5 rounded-full border border-slate-200 hover:bg-slate-50 hover:border-blue-300 transition-all shadow-sm">
+              <div className={`flex items-center gap-2 cursor-pointer bg-white rounded-full border border-slate-200 hover:bg-slate-50 hover:border-blue-300 transition-all shadow-sm ${mobile ? 'p-1' : 'px-3 py-1.5'}`}>
                 <Avatar size="small" style={{ backgroundColor: role === 'admin' ? '#7c3aed' : '#1677ff', fontWeight: 'bold' }}>郝</Avatar>
-                <span className="text-sm font-bold text-slate-700">郝壮</span>
+                {!mobile && <span className="text-sm font-bold text-slate-700">郝壮</span>}
               </div>
             </Dropdown>
           </div>
         </Header>
 
-        <Content style={{ margin: '24px 32px 48px', overflow: 'initial' }}>
+        <Content className="max-md:!mx-4 max-md:!mt-4" style={{ margin: '24px 32px 48px', overflow: 'initial' }}>
           <DegradedBanner reason={degradedReason} />
           {children}
         </Content>

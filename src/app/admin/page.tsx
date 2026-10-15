@@ -118,7 +118,7 @@ export default function AdminDashboard() {
           <h1 className="text-xl font-bold text-slate-800 m-0">管理分析 · {DEMO_MAJOR.name}</h1>
           <p className="text-sm text-slate-500 m-0 mt-1">面向教务处 / 学院 · 先看结论,问题出在哪个环节再按需展开</p>
         </div>
-        <div className="flex gap-2">
+        <div className="flex gap-2 flex-wrap">
           <Button icon={<BarsOutlined />} onClick={() => router.push('/admin/major')}>指标明细</Button>
           <Button icon={<FileDoneOutlined />} onClick={() => router.push('/rectification')}>整改报告</Button>
           <span data-spec="meeting-btn">

@@ -102,7 +102,7 @@ export default function MyUploadsPage() {
   return (
     <div className="flex-1 flex flex-col min-h-[calc(100vh-140px)] bg-slate-50">
       {/* ===== 顶部 ===== */}
-      <div className="px-8 py-8 shrink-0 max-w-7xl mx-auto w-full">
+      <div className="px-0 md:px-8 py-8 shrink-0 max-w-7xl mx-auto w-full">
         <div className="flex items-center gap-4 mb-6">
           <div className="w-12 h-12 rounded-xl bg-green-600 flex items-center justify-center text-white text-2xl shadow-sm">
             <FormOutlined />
@@ -147,7 +147,7 @@ export default function MyUploadsPage() {
       </div>
 
       {/* ===== Tab 切换 ===== */}
-      <div className="px-8 shrink-0 max-w-7xl mx-auto w-full pb-4">
+      <div className="px-0 md:px-8 shrink-0 max-w-7xl mx-auto w-full pb-4">
         <div className="bg-white rounded-xl border border-slate-200 p-1.5 shadow-sm inline-flex">
           <TabButton active={tab === 'materials'} onClick={() => setTab('materials')} icon={<AppstoreOutlined />} label="材料清单" count={stat.total} />
           <TabButton active={tab === 'records'} onClick={() => setTab('records')} icon={<FileTextOutlined />} label="上传记录" count={records.length} />
@@ -155,7 +155,7 @@ export default function MyUploadsPage() {
       </div>
 
       {/* ===== 筛选栏 ===== */}
-      <div className="px-8 shrink-0 max-w-7xl mx-auto w-full pb-5">
+      <div className="px-0 md:px-8 shrink-0 max-w-7xl mx-auto w-full pb-5">
         <div className="bg-white rounded-xl border border-slate-200 p-4 shadow-sm">
           <div className="flex items-center gap-3 flex-wrap">
             <Input
@@ -194,7 +194,7 @@ export default function MyUploadsPage() {
       </div>
 
       {/* ===== 内容区 ===== */}
-      <div className="px-8 shrink-0 max-w-7xl mx-auto w-full pb-12">
+      <div className="px-0 md:px-8 shrink-0 max-w-7xl mx-auto w-full pb-12">
         {tab === 'materials' ? (
           <MaterialsTab groups={filteredGroups} router={router} onAction={handleAction} />
         ) : (
@@ -266,7 +266,7 @@ function MaterialsTab({ groups, router, onAction }: { groups: ReturnType<typeof 
         const processing = g.items.filter((m) => m.status === 'processing').length;
         const pending = g.items.filter((m) => m.status === 'pending').length;
         return (
-          <div key={g.category.key} className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden" style={{ borderLeft: `4px solid ${g.category.color}` }}>
+          <div key={g.category.key} className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-x-auto" style={{ borderLeft: `4px solid ${g.category.color}` }}>
             {/* 分组标题 */}
             <div className="flex items-center justify-between p-4 bg-slate-50 border-b border-slate-100">
               <div className="flex items-center gap-2">
@@ -286,7 +286,7 @@ function MaterialsTab({ groups, router, onAction }: { groups: ReturnType<typeof 
               </div>
             </div>
             {/* 表头 */}
-            <div className="grid grid-cols-[280px_1fr_100px_140px] items-center px-5 py-2.5 bg-slate-50/50 border-b border-slate-100 text-xs font-bold text-slate-400 text-center">
+            <div className="grid grid-cols-[280px_1fr_100px_140px] min-w-[720px] items-center px-5 py-2.5 bg-slate-50/50 border-b border-slate-100 text-xs font-bold text-slate-400 text-center">
               <span>内容</span>
               <span>对应指标</span>
               <span>状态</span>
@@ -315,7 +315,7 @@ function MaterialRow({ material, onViewIndicator, onAction }: { material: Upload
   }[material.status];
 
   return (
-    <div className="grid grid-cols-[280px_1fr_100px_140px] items-center hover:bg-slate-50 transition-colors">
+    <div className="grid grid-cols-[280px_1fr_100px_140px] min-w-[720px] items-center hover:bg-slate-50 transition-colors">
       {/* ===== 第 1 列：内容（编号 + 名称 + 格式 + 来源） ===== */}
       <div className="flex items-start gap-3 px-5 py-3.5 min-w-0 border-r border-slate-100">
         <span className="text-xs font-mono text-slate-400 w-8 shrink-0 pt-0.5">#{material.no}</span>

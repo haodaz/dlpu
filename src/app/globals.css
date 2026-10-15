@@ -53,3 +53,23 @@ body {
 @keyframes specGlow { 0%, 100% { box-shadow: 0 0 0 0 rgba(245,158,11,.45), 0 0 14px rgba(245,158,11,.35); } 50% { box-shadow: 0 0 0 7px rgba(245,158,11,0), 0 0 26px rgba(245,158,11,.6); } }
 .spec-glow { animation: specGlow 1.8s ease-in-out infinite; }
 body.spec-on [data-spec] { cursor: help; }
+
+/* ---------- 手机端(< 768px)通用适配:只作用于小屏,桌面端不变 ---------- */
+@media (max-width: 767px) {
+  /* 卡片标题栏:右侧的筛选 / 搜索 / 按钮换到下一行,不撑破屏幕 */
+  .ant-card-head-wrapper { flex-wrap: wrap; row-gap: 8px; }
+  .ant-card-head { padding-block: 10px; }
+  .ant-card-extra { margin-inline-start: 0 !important; width: 100%; }
+  .ant-card-extra .ant-space { flex-wrap: wrap; }
+  .ant-card-extra .ant-input-affix-wrapper,
+  .ant-card-extra .ant-input { width: 100% !important; }
+  .ant-card-body { padding: 14px !important; }
+  /* 表格:列不再被挤成竖排,改为表格内横向滑动 */
+  .ant-table-content, .ant-table-body { overflow-x: auto !important; }
+  .ant-table-content > table, .ant-table-body > table { min-width: 640px; }
+  /* 分段选择器 / 标签页过长时在自身内滑动 */
+  .ant-segmented { max-width: 100%; overflow-x: auto; }
+  .ant-tabs-nav { max-width: 100%; }
+  /* 弹窗贴边留白 */
+  .ant-modal { max-width: calc(100vw - 24px) !important; }
+}

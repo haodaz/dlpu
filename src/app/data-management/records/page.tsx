@@ -122,7 +122,7 @@ function RecordsContent() {
   return (
     <div className="flex-1 flex flex-col min-h-[calc(100vh-140px)] bg-slate-50">
       {/* ===== 顶部 ===== */}
-      <div className="px-8 py-8 shrink-0 max-w-7xl mx-auto w-full">
+      <div className="px-0 md:px-8 py-8 shrink-0 max-w-7xl mx-auto w-full">
         <div className="flex items-center gap-4 mb-4">
           <div className="w-12 h-12 rounded-xl bg-blue-600 flex items-center justify-center text-white text-2xl shadow-sm">
             <SwapOutlined />
@@ -152,7 +152,7 @@ function RecordsContent() {
       </div>
 
       {/* ===== 筛选栏 ===== */}
-      <div className="px-8 shrink-0 max-w-7xl mx-auto w-full pb-5">
+      <div className="px-0 md:px-8 shrink-0 max-w-7xl mx-auto w-full pb-5">
         <div className="bg-white rounded-xl border border-slate-200 p-4 shadow-sm">
           <div className="flex items-center gap-3 flex-wrap">
             <Input
@@ -221,10 +221,10 @@ function RecordsContent() {
       </div>
 
       {/* ===== 列表 ===== */}
-      <div className="px-8 shrink-0 max-w-7xl mx-auto w-full pb-12">
-        <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+      <div className="px-0 md:px-8 shrink-0 max-w-7xl mx-auto w-full pb-12">
+        <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-x-auto">
           {/* 表头 */}
-          <div className="grid grid-cols-[180px_100px_80px_80px_1fr_160px_80px] gap-2 px-5 py-3 border-b border-slate-100 bg-slate-50 text-xs font-bold text-slate-500">
+          <div className="grid grid-cols-[180px_100px_80px_80px_1fr_160px_80px] min-w-[860px] gap-2 px-5 py-3 border-b border-slate-100 bg-slate-50 text-xs font-bold text-slate-500">
             <span>时间</span>
             <span>材料</span>
             <span>动作</span>
@@ -240,7 +240,7 @@ function RecordsContent() {
               const st = statusConfig[r.status];
               const cat = materialCategories.find((c) => c.key === r.category);
               return (
-                <div key={r.id} className="grid grid-cols-[180px_100px_80px_80px_1fr_160px_80px] gap-2 px-5 py-3 hover:bg-slate-50 transition-colors text-sm items-center">
+                <div key={r.id} className="grid grid-cols-[180px_100px_80px_80px_1fr_160px_80px] min-w-[860px] gap-2 px-5 py-3 hover:bg-slate-50 transition-colors text-sm items-center">
                   {/* 时间 */}
                   <span className="text-xs text-slate-500 font-mono">{r.timestamp}</span>
                   {/* 材料 */}

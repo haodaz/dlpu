@@ -63,7 +63,7 @@ export default function RectificationPage() {
             <p className="text-sm text-slate-500 m-0 mt-0.5">由诊断结论自动生成 · 第 {cycle} 轮 · 已完成 {doneCount}/{sortedIssues.length}</p>
           </div>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 flex-wrap">
           <Segmented
             value={level}
             onChange={(v) => setLevel(v as typeof level)}
@@ -92,7 +92,7 @@ export default function RectificationPage() {
 
         <section className="mb-8">
           <h3 className="text-base font-bold text-slate-800 mb-3">一、诊断结论</h3>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {cores.map((r) => (
               <div key={r.key} className="rounded-xl border border-slate-200 p-4">
                 <div className="flex items-baseline justify-between">

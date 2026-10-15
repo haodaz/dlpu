@@ -113,7 +113,7 @@ export default function AdminDataSourcesPage() {
   const columns = [
     { title: '数据源ID', dataIndex: 'id', key: 'id', width: 100,
       render: (v: string) => <span className="font-mono text-xs text-slate-500">{v}</span> },
-    { title: '数据源名称', dataIndex: 'name', key: 'name',
+    { title: '数据源名称', dataIndex: 'name', key: 'name', width: 190,
       render: (v: string) => <span className="font-bold text-slate-700">{v}</span> },
     { title: '类型', dataIndex: 'type', key: 'type', width: 130,
       render: (v: string) => {
@@ -163,7 +163,7 @@ export default function AdminDataSourcesPage() {
         <Card data-spec="ds-alerts" className="shadow-sm" title={`数据接入告警(${alerts.length})`} styles={{ body: { padding: 16 } }}>
           <div className="space-y-2">
             {alerts.map((a, i) => (
-              <Alert key={i} type={a.level} showIcon message={a.title} description={a.detail} />
+              <Alert key={i} type={a.level} showIcon title={a.title} description={a.detail} />
             ))}
           </div>
         </Card>
@@ -239,7 +239,7 @@ export default function AdminDataSourcesPage() {
           </Space>
         }
       >
-        <Table dataSource={shown} columns={columns} rowKey="id" loading={loading} scroll={{ x: 1300 }} pagination={{ pageSize: 10 }} />
+        <Table dataSource={shown} columns={columns} rowKey="id" loading={loading} scroll={{ x: 1450 }} pagination={{ pageSize: 10 }} />
       </Card>
 
       <Card data-spec="ds-log" className="shadow-sm" title="导入日志" styles={{ body: { padding: 0 } }}>
@@ -247,6 +247,7 @@ export default function AdminDataSourcesPage() {
           dataSource={logs}
           rowKey="id"
           size="small"
+          scroll={{ x: 860 }}
           loading={loading}
           pagination={{ pageSize: 5 }}
           columns={[
