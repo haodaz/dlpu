@@ -1,0 +1,1070 @@
+{
+ "industry": "软件和信息技术服务",
+ "province": "江苏",
+ "collectedAt": "2026-10-16T10:48:14.796Z",
+ "origin": "base",
+ "sources": [
+  {
+   "id": 1,
+   "title": "关于做好2025年享受税收优惠政策的集成电路企业或项目、软件企业清单制定工作的通知",
+   "url": "https://www.ndrc.gov.cn/xwdt/tzgg/202504/t20250401_1396948_ext.html"
+  },
+  {
+   "id": 2,
+   "title": "国务院政策例行吹风会文字实录(2025年11月10日) ",
+   "url": "https://www.gov.cn/zccfh/2025zccfh/20251110/wzsl/202511/content_7047770.htm"
+  },
+  {
+   "id": 3,
+   "title": "关于大力实施可再生能源替代行动的指导意见(发改能源〔2024〕1537号)",
+   "url": "https://www.ndrc.gov.cn/xxgk/zcfb/tz/202410/t20241030_1394119_ext.html"
+  },
+  {
+   "id": 4,
+   "title": "关于印发《贯彻实施〈国家标准化发展纲要〉",
+   "url": "https://www.sac.gov.cn/zt/gjbzhfzgyzt/zxdt/art/2024/art_1a6fba2dd701444494c199822fd520f0.html"
+  },
+  {
+   "id": 5,
+   "title": "工业和信息化部 国家发展改革委 财政部 税务总局关于开展2025年度享受增值税加计抵减政策的集成电路企业清单制定工作的通知",
+   "url": "https://www.chinasme.org.cn/html/mcms/daohang/zhengcehuibian/1968527596900261890.html"
+  },
+  {
+   "id": 6,
+   "title": "网络空间安全动态(202537期)",
+   "url": "https://metc.njtc.edu.cn/info/1141/5992.htm"
+  },
+  {
+   "id": 7,
+   "title": "关于印发《贯彻实施〈国家标准化发展纲要〉行动计划(2024—2025年)》的通知",
+   "url": "https://mzt.guizhou.gov.cn/xwzx/mzyw/202404/t20240404_84149775.html"
+  },
+  {
+   "id": 8,
+   "title": "本周“发展改革热点,我知道”(12月30日至1月3日)",
+   "url": "https://www.ndrc.gov.cn/fggz/202501/t20250106_1395459.html"
+  },
+  {
+   "id": 9,
+   "title": "国家发展改革委10月份新闻发布会",
+   "url": "https://www.ndrc.gov.cn/xwdt/wszb/10yxwfbh1/"
+  },
+  {
+   "id": 10,
+   "title": "2024年重大网络安全政策法规盘点 ",
+   "url": "https://www.sohu.com/a/839779168_121124365"
+  },
+  {
+   "id": 11,
+   "title": "全国软件业务收入",
+   "url": "https://baike.baidu.com/item/全国软件业务收入/67732492"
+  },
+  {
+   "id": 12,
+   "title": "湖南省软件和信息技术服务业发展蓝皮书(2023-2024)",
+   "url": "https://baike.baidu.com/item/湖南省软件和信息技术服务业发展蓝皮书(2023-2024)/65031580"
+  },
+  {
+   "id": 13,
+   "title": "基础软件产品收入",
+   "url": "https://baike.baidu.com/item/基础软件产品收入/68397963"
+  },
+  {
+   "id": 14,
+   "title": "2021年江苏省海洋经济统计公报",
+   "url": "https://baike.baidu.com/item/2021年江苏省海洋经济统计公报/60943245"
+  },
+  {
+   "id": 15,
+   "title": "江苏省数据局",
+   "url": "https://baike.baidu.com/item/江苏省数据局/63924205"
+  },
+  {
+   "id": 16,
+   "title": "柳州东通投资发展有限公司\n2025年跟踪评级报告",
+   "url": "https://pdf.dfcfw.com/pdf/H2_AN202509011737650217_1.pdf"
+  },
+  {
+   "id": 17,
+   "title": "清远市",
+   "url": "https://baike.baidu.com/item/清远市/2556676"
+  },
+  {
+   "id": 18,
+   "title": "2025年前三季度苏州经济运行情况分析:GDP同比增长5.5%(图)-中商情报网",
+   "url": "https://www.askci.com/news/data/hongguan/20251030/095813276178949235345271.shtml"
+  },
+  {
+   "id": 19,
+   "title": "突破“半壁江山” 江苏高新技术产业产值占规模以上工业比重达50.7%",
+   "url": "https://www.stcn.com/article/detail/1605875.html"
+  },
+  {
+   "id": 20,
+   "title": "常熟市2025年政府工作报告 ",
+   "url": "http://www.changshu.gov.cn/zgcs/c100379/202501/b83932acb35e429f870a32e1a3ec12aa.shtml"
+  },
+  {
+   "id": 21,
+   "title": "2024干得怎么样?江苏13市交出这些“成绩单”",
+   "url": "https://tj.jiangsu.gov.cn/art/2025/1/17/art_87245_11473058.html"
+  },
+  {
+   "id": 22,
+   "title": "南京市2024年国民经济和社会发展计划执行情况与2025年国民经济和社会发展计划报告",
+   "url": "https://fgw.nanjing.gov.cn/njsfzhggwyh/202501/t20250126_5066749.html"
+  },
+  {
+   "id": 23,
+   "title": "“十三五”国家战略性新兴产业发展规划",
+   "url": "https://syl.hrbust.edu.cn/info/1092/1063.htm"
+  },
+  {
+   "id": 24,
+   "title": "国民经济和社会发展规划",
+   "url": "http://dj.rencheng.gov.cn/art/2025/10/27/art_62076_2819318.html"
+  },
+  {
+   "id": 25,
+   "title": "元创周报丨Meta雷朋第三代智能眼镜:AI场景理解+续航升级",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzA3Nzk0NzU0OA==&mid=2657002349&idx=2&sn=85e0d5d2cec9119adfdf81c7469b1a10&chksm=8556022b63ed6b7949f63a0c392a5c5bdea8b23b2e6de5c77b37ee7ff0cd09999883cfcbe99e&scene=27"
+  },
+  {
+   "id": 26,
+   "title": "2024年上半年工作情况和下半年重点工作安排 ",
+   "url": "https://www.yhrd.cn/_t167/c8/6d/c19803a378989/page.psp"
+  },
+  {
+   "id": 27,
+   "title": "生产性服务业较快增长 生活性服务业明显改善",
+   "url": "https://fzggw.jiangsu.gov.cn/art/2024/3/5/art_4639_11165998.html"
+  },
+  {
+   "id": 28,
+   "title": "徐州上半年服务业稳健前行 数字转型激发新活力",
+   "url": "https://www.jiangsu.gov.cn/art/2024/7/31/art_84324_11313913.html"
+  },
+  {
+   "id": 29,
+   "title": "省政府办公厅关于印发江苏省“十四五”数字经济发展规划的通知",
+   "url": "http://www.yz.gov.cn/yzsjjfzj/xxgktzgg/202109/2985ebeece2245198af6108c8e7c5ed9.shtml"
+  },
+  {
+   "id": 30,
+   "title": "31省市数字经济发展规划(2024)",
+   "url": "https://blog.csdn.net/kymdidicom/article/details/135965363"
+  },
+  {
+   "id": 31,
+   "title": "深入推进数字经济创新发展",
+   "url": "http://www.xinhuanet.com/tech/20240612/2f46721900f5455293e7a90c059eca9f/c.html"
+  },
+  {
+   "id": 32,
+   "title": "每日信息速递 2024.07.29",
+   "url": "https://pdf.dfcfw.com/pdf/H3_AP202407291638419167_1.pdf"
+  },
+  {
+   "id": 33,
+   "title": "深入推进数字经济创新发展",
+   "url": "https://www.sx-dj.gov.cn/dylt/dkll/1800714876607614978.html"
+  },
+  {
+   "id": 34,
+   "title": "2024我国数字经济发展概况(附500强榜单) ",
+   "url": "https://news.sohu.com/a/804708935_121706679"
+  },
+  {
+   "id": 35,
+   "title": "上半年数字经济增加值增长7.8%",
+   "url": "https://www.163.com/dy/article/J7TFCHT30514R9KQ.html"
+  },
+  {
+   "id": 36,
+   "title": "省政府办公厅关于印发江苏省加快生产性服务业高质量发展行动方案(2025-2027年)",
+   "url": "https://www.suqian.gov.cn/cnsq/cyzc/202501/e1db2f51d790491aad73bd3ee7475820.shtml"
+  },
+  {
+   "id": 37,
+   "title": "市政府关于印发苏州市推进软件产业高质量发展行动计划(2026～2027年)的通知 ",
+   "url": "https://www.suzhou.gov.cn/szsrmzf/szfgfxwjk/202601/a66f6d4709324ae4b68efbda40cdddbe.shtml"
+  },
+  {
+   "id": 38,
+   "title": "中共南京市委 南京市人民政府",
+   "url": "https://www.nanjing.gov.cn/zdgk/202508/t20250807_5623949.html"
+  },
+  {
+   "id": 39,
+   "title": "对省十四届人大二次会议第1121号建议的答复",
+   "url": "http://gxt.jiangsu.gov.cn/art/2024/10/24/art_80192_11400447.html"
+  },
+  {
+   "id": 40,
+   "title": "市政府关于印发苏州市服务业扩能提质行动方案(2026～2030年)的通知 ",
+   "url": "https://www.suzhou.gov.cn/szsrmzf/zfwj/202606/0015c7564d694e3f8539d37a6cd6fcfb.shtml"
+  },
+  {
+   "id": 41,
+   "title": "《苏州市加快推动软件产业高质量发展的若干政策措施》解读 ",
+   "url": "https://www.suzhou.gov.cn/szsrmzf/wzjd/202501/5103d6d76b62474d90b0026281bfd091.shtml"
+  },
+  {
+   "id": 42,
+   "title": "苏州市人民政府关于印发苏州市加快推动软件产业高质量发展的若干政策措施的通知",
+   "url": "https://www.suzhou.gov.cn/szsrmzf/szfgfxwjk/202501/d69842d66e3740e09a6bc9de6e95f614/files/763ae6ab6536442a84d0fcbd66eb9200.doc"
+  },
+  {
+   "id": 43,
+   "title": "镇江市推进数字经济高质量发展行动方案出台",
+   "url": "https://www.jiangsu.gov.cn/art/2025/1/26/art_87819_11483165.html"
+  },
+  {
+   "id": 44,
+   "title": "推进江苏城市高质量发展行动方案",
+   "url": "https://www.jiangsu.gov.cn/art/2026/3/18/art_90945_11752101.html"
+  },
+  {
+   "id": 45,
+   "title": "省政府办公厅关于印发江苏省数字经济高质量发展三年行动计划(2025-2027年)的通知",
+   "url": "https://www.jiangsu.gov.cn/art/2025/4/16/art_84418_11543741.html"
+  },
+  {
+   "id": 46,
+   "title": "江苏省人民政府 政府办公室(厅)文件 省政府办公厅关于印发江苏省数字经济高质量发展三年行动计划(2025-2027年)的通知",
+   "url": "https://www.jiangsu.gov.cn/art/2025/4/16/art_46144_11543740.html"
+  },
+  {
+   "id": 47,
+   "title": "江苏发布数字经济高质量发展三年行动计划 支持利用“源网荷储”等新型电力系统模式",
+   "url": "https://news.bjx.com.cn/html/20250417/1437300.shtml"
+  },
+  {
+   "id": 48,
+   "title": "泰州市人民政府办公室关于印发泰州市数字经济高质量发展三年行动计划(2025—2027年)的通知",
+   "url": "http://w.taizhou.gov.cn/dwzw/dzqk/zfgb/2025nd8910q/szfbgswj/art/2025/art_a80c5832837347de841c07ca1e778754.html"
+  },
+  {
+   "id": 49,
+   "title": "用电“半年报”亮出江苏经济“长阳线”",
+   "url": "https://www.jiangsu.gov.cn/art/2025/7/20/art_60095_11604614.html"
+  },
+  {
+   "id": 50,
+   "title": "连云港市海州区加速释放数字经济活力",
+   "url": "https://www.jiangsu.gov.cn/art/2025/2/26/art_88959_11500028.html"
+  },
+  {
+   "id": 51,
+   "title": "南京徐庄软件园",
+   "url": "https://baike.baidu.com/item/南京徐庄软件园/4262231"
+  },
+  {
+   "id": 52,
+   "title": "蓬勃之力来自高水平创新",
+   "url": "https://www.163.com/dy/article/HFF8485305345B2A.html"
+  },
+  {
+   "id": 53,
+   "title": "中共南京市委 南京市人民政府",
+   "url": "https://www.nanjing.gov.cn/zgnjsjb/jrtt/202601/t20260126_5778137.html"
+  },
+  {
+   "id": 54,
+   "title": "培育首版次软件名品 打造高质量软件名园",
+   "url": "https://yangzhou.gov.cn/zwgk/yzzx/art/2025/art_84ff9764af5d44e383cde46142724418.html"
+  },
+  {
+   "id": 55,
+   "title": "2026南京软件大会 ",
+   "url": "https://www.nanjing.gov.cn/hdjl/xwfbh/2026njrjdh/index_20041.html"
+  },
+  {
+   "id": 56,
+   "title": "苏州(太湖)软件产业园|打造工业软件产业创新集群",
+   "url": "https://cloud.tencent.com/developer/news/1411600"
+  },
+  {
+   "id": 57,
+   "title": "省工业和信息化厅关于印发江苏省软件名园管理办法的通知",
+   "url": "https://www.suqian.gov.cn/cnsq/cyzc/202401/9d87eb00df7e48898f77fe24ac0ad95e.shtml"
+  },
+  {
+   "id": 58,
+   "title": "【投资江苏】2025年江苏省重点产业投资全景分析(附重点产业布局、园区分布、投资保障等)",
+   "url": "https://m.askci.com/news/chanye/20251014/174542276043081902437817_7.shtml"
+  },
+  {
+   "id": 59,
+   "title": "姜堰高新区(罗塘街道)",
+   "url": "https://www.taizhou.gov.cn/qjtz/tzskfqjj/art/2026/art_a34c1084972a47b5a096114a42b4be23.html"
+  },
+  {
+   "id": 60,
+   "title": "南京易司拓软件科技有限公司",
+   "url": "https://baike.baidu.com/item/南京易司拓软件科技有限公司/20032601"
+  },
+  {
+   "id": 61,
+   "title": "华夏软件龙头混合发起式A",
+   "url": "http://finance.sina.com.cn/fund/quotesold/020593/bc.shtml"
+  },
+  {
+   "id": 62,
+   "title": "南京恒略信息技术有限公司",
+   "url": "https://baike.baidu.com/item/南京恒略信息技术有限公司/51823758"
+  },
+  {
+   "id": 63,
+   "title": "南京蒙柏信息产业有限公司",
+   "url": "https://baike.baidu.com/item/南京蒙柏信息产业有限公司/21459940"
+  },
+  {
+   "id": 64,
+   "title": "汇丰晋信恒生龙头指数A",
+   "url": "http://finance.sina.com.cn/fund/quotesold/540012/bc.shtml"
+  },
+  {
+   "id": 65,
+   "title": "华西信息工程江苏有限公司",
+   "url": "https://baike.baidu.com/item/华西信息工程江苏有限公司/52511966"
+  },
+  {
+   "id": 66,
+   "title": "易方达中证龙头企业指数A",
+   "url": "http://finance.sina.com.cn/fund/quotesold/012756/bc.shtml"
+  },
+  {
+   "id": 67,
+   "title": "头部券商融资能力与资产负债表运用增强,重估空间或将进一步打开_腾讯新闻",
+   "url": "https://new.qq.com/rain/a/20261009A067GA00"
+  },
+  {
+   "id": 68,
+   "title": "> 同花顺个股数据 ",
+   "url": "https://data.eastmoney.com/stockdata/300033.html"
+  },
+  {
+   "id": 69,
+   "title": "深市上市公司公告(11月19日)",
+   "url": "https://stock.10jqka.com.cn/20251119/c672578140.shtml"
+  },
+  {
+   "id": 70,
+   "title": "龙坤(无锡)智慧科技有限公司",
+   "url": "https://baike.baidu.com/item/龙坤（无锡）智慧科技有限公司/68700554"
+  },
+  {
+   "id": 71,
+   "title": "2025南京软件大会",
+   "url": "https://baike.baidu.com/item/2025南京软件大会/65762134"
+  },
+  {
+   "id": 72,
+   "title": "南京国图信息产业有限公司",
+   "url": "https://baike.baidu.com/item/南京国图信息产业有限公司/24539689"
+  },
+  {
+   "id": 73,
+   "title": "内蒙古纵横伟业软件与技术服务有限公司",
+   "url": "https://baike.baidu.com/item/内蒙古纵横伟业软件与技术服务有限公司/7129857"
+  },
+  {
+   "id": 74,
+   "title": "京东集团南京研发中心",
+   "url": "https://baike.baidu.com/item/京东集团南京研发中心/66985041"
+  },
+  {
+   "id": 75,
+   "title": "苏企融",
+   "url": "https://baike.baidu.com/item/苏企融/69330312"
+  },
+  {
+   "id": 76,
+   "title": "纳溪区江南职业中学产教融合基地",
+   "url": "https://baike.baidu.com/item/纳溪区江南职业中学产教融合基地/69412913"
+  },
+  {
+   "id": 77,
+   "title": "2025年山东省国民经济和社会发展统计公报",
+   "url": "https://mp.weixin.qq.com/s?__biz=MjM5MzQ4NDUyMw==&mid=2650047217&idx=1&sn=11536fe78565ea0fc1cb61aaa720ae2b&scene=27&chksm=c838aad43828485545b5e772025e3d188f207c6fb80d88cf82cd083c60129613f6194aeeba2a&scene=27"
+  },
+  {
+   "id": 78,
+   "title": "青岛市城阳区人民政府办公室关于印发《青岛市城阳区数字经济发展规划(2021-2025年)》的通知",
+   "url": "http://www.shandong.gov.cn/jpaas-jpolicy-web-server/front/info/detail?iid=86073451904f4a479a87955eefccf103"
+  },
+  {
+   "id": 79,
+   "title": "苏政办发[2024]41号 江苏省人民政府办公厅关于印发江苏省加快生产性服务业高质量发展行动方案(2025-2027年)的通知",
+   "url": "https://www.shui5.cn/article/00/187093.html"
+  },
+  {
+   "id": 80,
+   "title": "政府信息公开",
+   "url": "https://www.zhuhai.gov.cn/gxj/gkmlpt/content/3/3769/post_3769342.html"
+  },
+  {
+   "id": 81,
+   "title": "业务档案(2021-2024年)及文书档案(2024-2025年)整理及数字化采购公告",
+   "url": "http://www.ccgp.gov.cn/cggg/dfgg/jzxcs/202504/t20250402_24390927.htm"
+  },
+  {
+   "id": 82,
+   "title": "2025年江苏省政府工作报告",
+   "url": "http://www.js.gov.cn/art/2025/1/26/art_60096_11480219.html"
+  },
+  {
+   "id": 83,
+   "title": "江苏省政府2025年政府工作报告",
+   "url": "http://www.js.gov.cn/art/2025/1/26/art_84319_11480387.html"
+  },
+  {
+   "id": 84,
+   "title": "两会受权发布|关于2024年国民经济和社会发展计划执行情况与2025年国民经济和社会发展计划草案的报告",
+   "url": "https://www.gwgpac.org/page208?article_id=3215&pagenum=all"
+  },
+  {
+   "id": 85,
+   "title": "南京市政府工作报告",
+   "url": "https://www.zgjssw.gov.cn/shixianchuanzhen/nanjing/202501/t20250124_8451638.shtml"
+  },
+  {
+   "id": 86,
+   "title": "2025年网信大事回眸之信息化发展篇——信息化赋能高质量发展 ",
+   "url": "https://www.cac.gov.cn/2025-12/31/c_1768823209559750.htm"
+  },
+  {
+   "id": 87,
+   "title": "【江苏软件技术工程师招聘网_2026年江苏软件技术工程师招聘信息】-江苏猎聘",
+   "url": "https://www.liepin.com/city-jiangsu/zpruanjianjishugongchengshi/"
+  },
+  {
+   "id": 88,
+   "title": "江苏欣网视讯软件技术有限公司 ",
+   "url": "https://jobs.51job.com/nanjing-jyq/co2839621.html"
+  },
+  {
+   "id": 89,
+   "title": "江苏瑞新信息技术股份有限公司徐州分公司招聘",
+   "url": "https://www.zhipin.com/gongsis/l156496205.html"
+  },
+  {
+   "id": 90,
+   "title": "江苏创新服务公司信息化产品经理本科工资待遇",
+   "url": "https://www.jobui.com/salary/jiangsu-xinxihuachanpinjingli/edu2/ind-chuangxinfuwu/"
+  },
+  {
+   "id": 91,
+   "title": "江苏网擎信息技术有限公司",
+   "url": "https://www.zhipin.com/companys/ee6221d960b4eef91nd409y8FlM~.html"
+  },
+  {
+   "id": 92,
+   "title": "江苏华高软件技术有限公司",
+   "url": "https://www.liepin.com/company/gs52647317/"
+  },
+  {
+   "id": 93,
+   "title": "江苏电子商务公司信息流剪辑师工资待遇",
+   "url": "https://www.jobui.com/salary/jiangsu-xinxiliujianjishi/ind-dianzishangwu/"
+  },
+  {
+   "id": 94,
+   "title": "南京信息化服务公司数据开发工资待遇",
+   "url": "https://www.jobui.com/salary/nanjing-shujukaifa/ind-xinxihuafuwu/"
+  },
+  {
+   "id": 95,
+   "title": "江苏汉软工业智能技术有限公司 ",
+   "url": "https://jobs.51job.com/all/coUzFQM1Q0ATYBYlEzAGE.html"
+  },
+  {
+   "id": 96,
+   "title": "南京发电技术公司开发工程师工资待遇",
+   "url": "https://www.jobui.com/salary/nanjing-kaifagongchengshi/ind-fadianjishu/"
+  },
+  {
+   "id": 97,
+   "title": "无锡紧缺人才目录2026年",
+   "url": "https://aiqicha.baidu.com/details/rankList?query=4de2a55d5a95c4f0028848923f8eca22&type=20"
+  },
+  {
+   "id": 98,
+   "title": "软件和信息服务",
+   "url": "https://baike.baidu.com/item/软件和信息服务/18901215"
+  },
+  {
+   "id": 99,
+   "title": "2026年第三季度张家港市人力资源市场供求状况分析",
+   "url": "https://www.zjg.gov.cn/zjgszwz/rcscgqzkfx/202610/f77685a3f5614a6099838a4615d4a4c7.shtml"
+  },
+  {
+   "id": 100,
+   "title": "青年人才与苏州“双向奔赴” ",
+   "url": "http://www.sipac.gov.cn/szgyyq/mtjj/202603/cf45b4144a8a4674b026e43cf8488284.shtml"
+  },
+  {
+   "id": 101,
+   "title": "急!“平均月薪20804元”,这类人才紧缺",
+   "url": "https://mp.weixin.qq.com/s?__biz=MjM5OTU2OTEwMg==&mid=2652168810&idx=2&sn=08a1e8d77b89611ccddc98a53b017fdb&chksm=bd8071289a3a94e2ba1803d53366d8b473b93ce686ec0f79d7b03e747ea5efa3cfe2876c9b6a&scene=27"
+  },
+  {
+   "id": 102,
+   "title": "急!“平均月薪20804元”,这类人才紧缺",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzAwMzYzODEyOQ==&mid=2653279576&idx=1&sn=61f944a9f157ec20ae52c12bb069448c&chksm=817cfade014ea16a70781d5611be8888eabe0f730141177e6cbe450b84c4e0d5e64b665533ab&scene=27"
+  },
+  {
+   "id": 103,
+   "title": "江苏省“十四五”软件和信息技术服务业发展规划",
+   "url": "https://www.ourjiangsu.com/2023/r/20230504/1683185493387.shtml"
+  },
+  {
+   "id": 104,
+   "title": "急!“平均月薪20804元”,这类人才紧缺",
+   "url": "https://mp.weixin.qq.com/s?__biz=MjM5ODY3ODcyMA==&mid=2655288346&idx=3&sn=92b328aed7a446a6fabde56863540e03&chksm=bc353097fd1da7eb9b32861dbbf2eaaacf1acb061ba5d1b96630c2f3d1f3ca36a95ea08a2b03&scene=27"
+  },
+  {
+   "id": 105,
+   "title": "百日千万招聘专项行动:23.1万岗位释放,四大行业专场折射哪些人才缺口 ",
+   "url": "https://www.sohu.com/a/1085623365_122269659"
+  },
+  {
+   "id": 106,
+   "title": "年度报告",
+   "url": "http://money.finance.sina.com.cn/corp/go.php/vCB_Bulletin/stockid/300346/page_type/sjdbg.phtml"
+  },
+  {
+   "id": 107,
+   "title": "年度报告",
+   "url": "http://money.finance.sina.com.cn/corp/go.php/vCB_Bulletin/stockid/300346/page_type/ndbg.phtml"
+  },
+  {
+   "id": 108,
+   "title": "年度报告",
+   "url": "http://vip.stock.finance.sina.com.cn/corp/go.php/vCB_Bulletin/stockid/300346/page_type/zqbg.phtml"
+  },
+  {
+   "id": 109,
+   "title": "公司公告_南大光电:2024年度独立董事述职报告(权小锋)新浪财经_新浪网",
+   "url": "http://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?id=10845387"
+  },
+  {
+   "id": 110,
+   "title": "南大光电:接受通过全景网“投资者关系互动平台”参与2023年度网上业绩说明会的投资者调研 ",
+   "url": "https://www.nbd.com.cn/articles/2024-04-11/3322945.html"
+  },
+  {
+   "id": 111,
+   "title": "南大光电:2024年年度审计报告 ",
+   "url": "http://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?stockid=300346&id=10845384"
+  },
+  {
+   "id": 112,
+   "title": "南大光电2023年年度董事会经营评述",
+   "url": "http://news.10jqka.com.cn/20240409/c656716051.shtml"
+  },
+  {
+   "id": 113,
+   "title": "案例评析vol.41 | 南大光电的第二曲线:从MO源龙头到电子特气新秀",
+   "url": "https://side.cuhk.edu.cn/zh-hans/article/897"
+  },
+  {
+   "id": 114,
+   "title": "南大光电2024年度日常关联交易预计增至7140万元",
+   "url": "https://wap.eastmoney.com/a/202411193244342589.html"
+  },
+  {
+   "id": 115,
+   "title": "深圳市聚飞光电股份有限公司 2024年半年度报告披露提示性公告",
+   "url": "https://pdf.dfcfw.com/pdf/H2_AN202408281639533878_1.pdf"
+  },
+  {
+   "id": 116,
+   "title": "航天晨光(600501.SH):2024年年报净利润为-3.79亿元,同比由盈转亏",
+   "url": "https://finance.sina.cn/2025-04-26/detail-ineumyri8972937.d.html"
+  },
+  {
+   "id": 117,
+   "title": "航天晨光:航天晨光股份有限公司2024年度“提质增效重回报”行动方案",
+   "url": "https://m.10jqka.com.cn/sn/20240830/49103679.shtml"
+  },
+  {
+   "id": 118,
+   "title": "公告精选:埃夫特拟投建埃夫特机器人超级工厂暨全球总部项目;亚翔集成上半年净利润同比增加220%",
+   "url": "https://www.stcn.com/article/detail/1274918.html"
+  },
+  {
+   "id": 119,
+   "title": "航天晨光2023年年度董事会经营评述",
+   "url": "https://yuanchuang.10jqka.com.cn/20240429/c657417677.shtml"
+  },
+  {
+   "id": 120,
+   "title": "航天晨光:独立董事2023年度述职报告(卢光武)(已离任) ",
+   "url": "http://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?stockid=600501&id=10156983"
+  },
+  {
+   "id": 121,
+   "title": "航天晨光:航天晨光股份有限公司董事会审计委员会2023年度履职情况报告",
+   "url": "https://m.10jqka.com.cn/sn/20240429/47459441.shtml"
+  },
+  {
+   "id": 122,
+   "title": "航天晨光股份有限公司 2024年半年度业绩预告",
+   "url": "http://finance.sina.com.cn/jjxw/2024-07-10/doc-inccquyq9868800.shtml"
+  },
+  {
+   "id": 123,
+   "title": "航天晨光:9月20日将召开2024年半年度业绩说明会",
+   "url": "http://www.zqrb.cn/gscy/ggkx/2024-09-09/A1725868074895.html"
+  },
+  {
+   "id": 124,
+   "title": "IPO审4过4",
+   "url": "https://zhuanlan.zhihu.com/p/4538091076"
+  },
+  {
+   "id": 125,
+   "title": "沪市上市公司公告(12月12日)",
+   "url": "https://stock.10jqka.com.cn/20241212/c664423702.shtml"
+  }
+ ],
+ "scale": [
+  {
+   "metric": "软件和信息技术服务业营业收入增速",
+   "value": "12.9%",
+   "unit": "%",
+   "year": "2025",
+   "scope": "苏州市(1-8月规上)",
+   "src": [
+    18
+   ]
+  },
+  {
+   "metric": "信息传输、软件和信息技术服务业增加值增速",
+   "value": "8.1%",
+   "unit": "%",
+   "year": "2025",
+   "scope": "苏州市(前三季度)",
+   "src": [
+    18
+   ]
+  },
+  {
+   "metric": "软件业务收入",
+   "value": "1400亿元",
+   "unit": "亿元",
+   "year": "2024",
+   "scope": "南京市建邺区(预计)",
+   "src": [
+    26
+   ]
+  },
+  {
+   "metric": "软件业务收入增速",
+   "value": "7.5%",
+   "unit": "%",
+   "year": "2024",
+   "scope": "南京市建邺区(预计)",
+   "src": [
+    26
+   ]
+  },
+  {
+   "metric": "数字经济核心产业营业收入增速",
+   "value": "23.8%",
+   "unit": "%",
+   "year": "2024",
+   "scope": "徐州市(上半年规上服务业)",
+   "src": [
+    28
+   ]
+  },
+  {
+   "metric": "软件业务收入",
+   "value": "2500亿元",
+   "unit": "亿元",
+   "year": "2021",
+   "scope": "中国(南京)软件谷",
+   "src": [
+    52
+   ]
+  }
+ ],
+ "segments": [
+  {
+   "name": "工业软件",
+   "desc": "研发设计类（CAD/CAE/CAM/EDA）、工业操作系统、工业垂直大模型、嵌入式软件等。",
+   "src": [
+    36,
+    37,
+    38,
+    42
+   ]
+  },
+  {
+   "name": "基础软件",
+   "desc": "高可靠分布式数据库、自主创新中间件、服务器/移动操作系统适配开发。",
+   "src": [
+    37,
+    42
+   ]
+  },
+  {
+   "name": "信创产业",
+   "desc": "信创适配中心、信创实验室、软硬件协同优化与测试体系、自主技术路线核心产品体系。",
+   "src": [
+    38,
+    41,
+    42
+   ]
+  },
+  {
+   "name": "人工智能融合应用",
+   "desc": "AI智能体、脑机接口、具身智能；垂直领域大模型；“模型即服务”“智能体即服务”新模式。",
+   "src": [
+    38,
+    40,
+    42
+   ]
+  },
+  {
+   "name": "数据要素服务",
+   "desc": "数据标注、合成、安全；国家数据产业集聚区试点；可信数据空间；“来数加工”跨境服务场景。",
+   "src": [
+    40,
+    45
+   ]
+  },
+  {
+   "name": "集成电路设计服务",
+   "desc": "高性能计算芯片、高端传感器芯片、车规级芯片等高附加值设计服务。",
+   "src": [
+    40
+   ]
+  }
+ ],
+ "cities": [
+  {
+   "city": "南京市",
+   "focus": "全省软件产业“第一高地”，聚焦通信软件、大数据与信息安全、互联网、人工智能、芯片、信创。",
+   "companies": [
+    "华为",
+    "中兴通讯",
+    "浩鲸科技",
+    "诚迈科技",
+    "润和软件",
+    "航天科工",
+    "亿嘉和",
+    "中兴光电子"
+   ],
+   "src": [
+    52,
+    53
+   ]
+  },
+  {
+   "city": "苏州市",
+   "focus": "聚焦工业软件、信创、数字经济，围绕工业软件自主可控开展软件定义制造应用。",
+   "companies": [
+    "数码大方",
+    "追觅",
+    "达梦数据",
+    "微软云芯智联",
+    "华为",
+    "博世汽车",
+    "亨通光电",
+    "莱克电气"
+   ],
+   "src": [
+    56
+   ]
+  },
+  {
+   "city": "扬州市",
+   "focus": "以网络视听、地理信息、互联网平台服务、大数据存储分析为特色。",
+   "companies": [
+    "咪咕",
+    "美团",
+    "饿了么",
+    "易图地信",
+    "腾讯",
+    "中国电信",
+    "中国移动",
+    "航盛科技"
+   ],
+   "src": [
+    54
+   ]
+  },
+  {
+   "city": "泰州市",
+   "focus": "聚焦“软件+制造”融合，支撑汽车零部件、第三代半导体、生物医药三大主导产业的数字化升级。",
+   "companies": [
+    "苏中药业",
+    "修正华东研发制造中心"
+   ],
+   "src": [
+    59
+   ]
+  }
+ ],
+ "listed": [
+  {
+   "company": "航天晨光",
+   "code": "600501",
+   "city": "南京市",
+   "rdExpense": "1.69亿元",
+   "rdRatio": "6.99%",
+   "year": "2024",
+   "src": [
+    116
+   ]
+  }
+ ],
+ "financing": [
+  {
+   "company": "龙坤(无锡)智慧科技有限公司",
+   "event": "A轮融资",
+   "amount": "",
+   "date": "2025年",
+   "src": [
+    70
+   ]
+  },
+  {
+   "company": "京东集团",
+   "event": "南京研发中心项目开工建设",
+   "amount": "35亿元",
+   "date": "2025年11月24日",
+   "src": [
+    74
+   ]
+  },
+  {
+   "company": "南京市",
+   "event": "设立工业软件专项基金",
+   "amount": "10亿元",
+   "date": "2025年",
+   "src": [
+    71
+   ]
+  }
+ ],
+ "policies": [
+  {
+   "level": "部委级",
+   "name": "《关于做好2025年享受税收优惠政策的集成电路企业或项目、软件企业清单制定工作的通知》",
+   "issuer": "国家发展改革委",
+   "year": "2025",
+   "gist": "明确将“国家鼓励的重点软件企业”纳入清单管理范围，适用相关税收优惠政策。",
+   "src": [
+    1
+   ]
+  },
+  {
+   "level": "部委级",
+   "name": "《关于开展2025年度享受增值税加计抵减政策的集成电路企业清单制定工作的通知》",
+   "issuer": "工信部",
+   "year": "2025",
+   "gist": "明确将集成电路设计企业（属于软件和信息技术服务业重要子类）纳入增值税加计抵减范围。",
+   "src": [
+    5
+   ]
+  },
+  {
+   "level": "国家级",
+   "name": "《贯彻实施〈国家标准化发展纲要〉行动计划（2024—2025年）》",
+   "issuer": "国务院",
+   "year": "2024",
+   "gist": "明确将‘基础软件、工业软件、应用软件标准体系建设’列为重点任务，要求尽快出台产业急需标准。",
+   "src": [
+    4
+   ]
+  },
+  {
+   "level": "国家级",
+   "name": "《关于加快场景培育和开放推动新场景大规模应用的实施意见》",
+   "issuer": "国务院办公厅",
+   "year": "2025",
+   "gist": "将软件和信息技术服务作为新技术新产品新场景应用的核心载体，支持在政务服务等领域开展规模化验证与落地。",
+   "src": [
+    2
+   ]
+  },
+  {
+   "level": "部委级",
+   "name": "《政务领域人工智能大模型部署应用指引》",
+   "issuer": "中央网信办、国家发展改革委",
+   "year": "2025",
+   "gist": "明确政务部门应探索大模型+软件平台集成应用，推动国产基础软件、中间件、AI框架生态适配与替代。",
+   "src": [
+    6
+   ]
+  },
+  {
+   "level": "部委级",
+   "name": "《关于促进数据产业高质量发展的指导意见》",
+   "issuer": "国家发展改革委、国家数据局等六部门",
+   "year": "2025",
+   "gist": "将“数据采集、存储、加工、分析、交易、安全等全链条软件与技术服务企业”列为数据产业主体重点培育对象。",
+   "src": [
+    8
+   ]
+  },
+  {
+   "level": "省级",
+   "name": "《江苏省加快生产性服务业高质量发展行动方案（2025–2027年）》",
+   "issuer": "江苏省人民政府办公厅",
+   "year": "2024",
+   "gist": "将软件信息业列为首要重点任务，提出到2027年规模以上软件和信息技术服务业营业收入年均增长8%等目标。",
+   "src": [
+    79
+   ]
+  }
+ ],
+ "jobs": [
+  {
+   "title": "软件技术工程师",
+   "city": "苏州",
+   "salary": "¥10–15k·15薪",
+   "skills": [],
+   "src": [
+    87
+   ]
+  },
+  {
+   "title": "具身智能算法研究员（VLA/世界模型方向）",
+   "city": "南京",
+   "salary": "¥20–30k",
+   "skills": [
+    "VLA",
+    "世界模型",
+    "仿真验证",
+    "力控",
+    "RGB-action建模"
+   ],
+   "src": [
+    88
+   ]
+  },
+  {
+   "title": "大模型算法工程师",
+   "city": "徐州",
+   "salary": "¥30–40k",
+   "skills": [
+    "Transformer架构优化",
+    "行业垂域微调"
+   ],
+   "src": [
+    89
+   ]
+  },
+  {
+   "title": "信息化产品经理",
+   "city": "南京",
+   "salary": "¥10–50k",
+   "skills": [],
+   "src": [
+    90
+   ]
+  },
+  {
+   "title": "数据开发工程师",
+   "city": "南京",
+   "salary": "¥10–30k",
+   "skills": [
+    "Python",
+    "SQL",
+    "Spark/Flink",
+    "DataCore",
+    "Hadoop生态"
+   ],
+   "src": [
+    94
+   ]
+  },
+  {
+   "title": "机器人产品结构工程师",
+   "city": "南京",
+   "salary": "¥15–25k",
+   "skills": [
+    "SolidWorks",
+    "UG",
+    "3D打印"
+   ],
+   "src": [
+    88
+   ]
+  },
+  {
+   "title": "网络安全等级保护测评师",
+   "city": "常州",
+   "salary": "",
+   "skills": [
+    "CISP",
+    "CISAW",
+    "CCIE",
+    "应急响应",
+    "渗透测试"
+   ],
+   "src": [
+    91
+   ]
+  },
+  {
+   "title": "渗透测试工程师",
+   "city": "常州",
+   "salary": "",
+   "skills": [
+    "Wireshark",
+    "Metasploit",
+    "等保2.0合规体系"
+   ],
+   "src": [
+    91
+   ]
+  }
+ ],
+ "demand": [
+  {
+   "text": "2026年一季度，江苏省新质生产力相关产业中，“信息传输、计算机服务和软件业”在张家港市招聘需求中占比达8.96%（位列第三）。",
+   "src": [
+    99
+   ]
+  },
+  {
+   "text": "据赛迪智库《关键软件领域人才白皮书（2020年）》预测，到2025年我国软件行业新增人才缺口将达192万人；该缺口在2026年仍持续扩大。",
+   "src": [
+    98
+   ]
+  },
+  {
+   "text": "人工智能工程师为当前最紧缺岗位，平均招聘月薪高达20804元，居各技术岗首位。",
+   "src": [
+    101
+   ]
+  },
+  {
+   "text": "张家港市2026年第三季度岗位总需求53867个，其中信息传输、计算机服务和软件业需求4824人，占总量8.96%，且求人倍率达1.20。",
+   "src": [
+    99
+   ]
+  },
+  {
+   "text": "苏州在新质生产力职位增速上达24.8%（全国第三），仅次于武汉（28.3%）、南京（20.5%）。",
+   "src": [
+    101
+   ]
+  }
+ ],
+ "aliases": [
+  "软件",
+  "信息技术",
+  "数字经济",
+  "大数据",
+  "人工智能",
+  "计算机"
+ ]
+}

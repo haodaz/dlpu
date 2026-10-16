@@ -1,0 +1,1030 @@
+{
+ "industry": "纺织服装",
+ "province": "江苏",
+ "collectedAt": "2026-10-16T10:36:26.062Z",
+ "origin": "base",
+ "sources": [
+  {
+   "id": 1,
+   "title": "工信部、国家发改委联合印发《关于产业用纺织品行业高质量发展的指导意见》",
+   "url": "https://zhuanlan.zhihu.com/p/502569830"
+  },
+  {
+   "id": 2,
+   "title": "国务院政策例行吹风会文字实录(2025年11月27日) ",
+   "url": "https://www.gov.cn/zccfh/2025zccfh/20251127/wzsl/202511/content_7049672.htm"
+  },
+  {
+   "id": 3,
+   "title": "《关于加快推动再生纤维与制服产业协同绿色发展的工作方案》政策解读",
+   "url": "https://fgw.putian.gov.cn/xxgk/bwwj/zcjd/202406/t20240611_1925395.htm"
+  },
+  {
+   "id": 4,
+   "title": "关于印发《贯彻实施〈国家标准化发展纲要〉行动计划(2024—2025年)》的通知",
+   "url": "https://www.gov.cn/zhengce/zhengceku/202403/content_6942541.htm"
+  },
+  {
+   "id": 5,
+   "title": "国家发展改革委等部门关于印发《再生材料应用推广行动方案》的通知(发改环资〔2025〕1681号)",
+   "url": "https://www.ndrc.gov.cn/fggz/hjyzy/zyzhlyhxhjj/202601/t20260108_1403120_ext.html"
+  },
+  {
+   "id": 6,
+   "title": "工业和信息化部 国家发展改革委 商务部 文化和旅游部 中国人民银行 市场监管总局印发《关于增强消费品供需适配性进一步促进消费的实施方案》的通知",
+   "url": "https://www.gzzf.gov.cn/jgsz/zfbm/gyhkxjsj/zfxxgk/fdzdgknr/myjj_5750240/myjjgl_5750241/202511/t20251128_88993550.html"
+  },
+  {
+   "id": 7,
+   "title": "字号:默认大超大|打印|",
+   "url": "https://www.gov.cn/gongbao/2025/issue_11846/202502/content_7002782.html"
+  },
+  {
+   "id": 8,
+   "title": "国务院新闻办公室将于2025年2月20日(星期四)上午10时举行国务院政策例行吹风会,请商务部副部长兼国际贸易谈判副代表凌激和国家发展改革委、工业和信息化部、市场监管总局有关负责人介绍扩大高水平对外开放,做好2025年稳外资工作有关情况,并答记者问。 ",
+   "url": "https://www.gov.cn/xinwen/2025zccfh/3/index.htm"
+  },
+  {
+   "id": 9,
+   "title": "关于印发《贯彻实施〈国家标准化发展纲要〉行动计划(2024—2025年)》的通知",
+   "url": "https://hbdrc.hebei.gov.cn/ztzl/sbgxyjhx/gjzc/202406/t20240617_114494.html"
+  },
+  {
+   "id": 10,
+   "title": "国家发展改革委12月份新闻发布会",
+   "url": "https://www.ndrc.gov.cn/xwdt/wszb/12yxwfbh/"
+  },
+  {
+   "id": 11,
+   "title": "政府工作报告中的“宿迁使命和实践” | 高端纺织何以成为宿迁第二个千亿级产业",
+   "url": "https://cj.sina.com.cn/articles/view/5862134626/15d69136202001f38s"
+  },
+  {
+   "id": 12,
+   "title": "2025年江苏江阴市新质生产力发展研判:推动产业朝着集聚化、特色化、协同化和品牌化方向发展",
+   "url": "http://mt.sohu.com/a/889440521_120950077"
+  },
+  {
+   "id": 13,
+   "title": "江苏宿迁:“织”就新千亿产业",
+   "url": "http://suqian.gov.cn/cnsq/mtjj/202502/073c51fd7f09480986ff53b8e240e409.shtml"
+  },
+  {
+   "id": 14,
+   "title": "“创新‘宿’度”系列报道",
+   "url": "http://suqian.gov.cn/cnsq/sqyw/202505/60368b32b6e143d5bb3bf6836d281603.shtml"
+  },
+  {
+   "id": 15,
+   "title": "市政府办公室文件",
+   "url": "https://www.zjg.gov.cn/zjg/c100039/202504/1e495fe75ba948419a51859015a228cd.shtml"
+  },
+  {
+   "id": 16,
+   "title": "2025年中国纺织行业深度分析(附现状、规模、竞争格局与趋势​)",
+   "url": "https://www.chinairn.com/scfx/20250312/094655101.shtml"
+  },
+  {
+   "id": 17,
+   "title": "宿迁全面加快现代化产业体系建设 迈向产业发展的“高铁时代”",
+   "url": "https://zgjssw.jschina.com.cn/shixianchuanzhen/suqian/202502/t20250214_8456615.shtml"
+  },
+  {
+   "id": 18,
+   "title": "苏州承韵纺织科技有限公司",
+   "url": "https://baike.baidu.com/item/苏州承韵纺织科技有限公司/52263991"
+  },
+  {
+   "id": 19,
+   "title": "2024年江苏省国民经济和社会发展统计公报",
+   "url": "https://baike.baidu.com/item/2024年江苏省国民经济和社会发展统计公报/65493685"
+  },
+  {
+   "id": 20,
+   "title": "清远市",
+   "url": "https://baike.baidu.com/item/清远市/2556676"
+  },
+  {
+   "id": 21,
+   "title": "2024年1-7月纺织行业运行情况",
+   "url": "https://wap.miit.gov.cn/gxsj/tjfx/xfpgy/fz/art/2024/art_4cfccf41558c41c0b7a2a1e7eb4c9279.html"
+  },
+  {
+   "id": 22,
+   "title": "2024年1—6月纺织行业运行情况",
+   "url": "https://www.miit.gov.cn/jgsj/xfpgys/fz/art/2024/art_22fb4a5be03947faa3a84b8bc33ecb39.html"
+  },
+  {
+   "id": 23,
+   "title": "“数”说纺织 || 2024年前三季度我国纺织行业规上企业工业增加值同比增长4.5% ",
+   "url": "https://mp.weixin.qq.com/s?__biz=Mzg2MTcyODQ3Ng==&mid=2247665356&idx=3&sn=3be51cab4955d572eaaa50febea3b2dd&chksm=cf26c5fb8d916d6eff44e48cf17bf2b9b286a5f2bd87e6ce03e0527ec0d8b471d9a684bf7a72&scene=27"
+  },
+  {
+   "id": 24,
+   "title": "2024年3月份规模以上工业增加值增长4.5% ",
+   "url": "https://www.gov.cn/lianbo/bumen/202404/content_6945517.htm"
+  },
+  {
+   "id": 25,
+   "title": "2024年8月份规模以上工业增加值增长4.5% ",
+   "url": "https://www.gov.cn/lianbo/bumen/202409/content_6974526.htm"
+  },
+  {
+   "id": 26,
+   "title": "前8月规上纺织企业利润总额增长14.4% ",
+   "url": "https://www.zjsjw.gov.cn/shizhengzhaibao/202410/t20241025_22965154.shtml"
+  },
+  {
+   "id": 27,
+   "title": "2024年1—6月全省经济运行简况",
+   "url": "https://www.jiangsu.gov.cn/art/2024/7/24/art_34151_11305109.html"
+  },
+  {
+   "id": 28,
+   "title": "数据| 2024年上半年我国纺织行业经济运行基本平稳 ",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzIzMjk0MDA3NQ==&mid=2247518123&idx=1&sn=9b75ef0daea6d81c1feb084fa17758fb&chksm=e946e4b78172292355bc7fad71d78e936209add159cc62860ce77b7cc28a12e6918aa4c80352&scene=27"
+  },
+  {
+   "id": 29,
+   "title": "2024年1—2月份规模以上工业增加值增长7.0% ",
+   "url": "https://www.stats.gov.cn/sj/zxfb/202403/t20240322_1948129.html"
+  },
+  {
+   "id": 30,
+   "title": "数说江苏75年|一个个“第一”,见证经济支柱的诞生",
+   "url": "https://www.jiangsu.gov.cn/art/2024/10/3/art_90848_11377237.html"
+  },
+  {
+   "id": 31,
+   "title": "宿迁实施新一轮千亿级产业攻坚三年行动计划",
+   "url": "https://www.jiangsu.gov.cn/art/2025/3/30/art_88959_11528805.html"
+  },
+  {
+   "id": 32,
+   "title": "定了!宿迁将再推3个千亿级产业 ",
+   "url": "https://mp.weixin.qq.com/s?__biz=MjM5NTE3NDQyMw==&mid=2651359621&idx=1&sn=8d520a23010199a7dd027f10cdaa1d83&chksm=bc1e68a65aa9f562a344f52ed709d7b2497a549797c2b54ed8f9375c90bd15d559c5ca979419&scene=27"
+  },
+  {
+   "id": 33,
+   "title": "以发展“含绿量”提升增长“含金量”",
+   "url": "https://www.suqian.gov.cn/cnsq/sqyw/202510/c127a7a9813b4e32a678cab5e57acb42.shtml"
+  },
+  {
+   "id": 34,
+   "title": "以发展“含绿量”提升增长“含金量”",
+   "url": "https://www.sq1996.com/c/2025/1013/697476.shtml"
+  },
+  {
+   "id": 35,
+   "title": "江苏县域经济为什么强?",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzAwNTEyNTA2Mw==&mid=2651094383&idx=1&sn=6c4be82f6e38735dd06c03ae789ccb70&chksm=814762c580f738687cba32a7d8dd25f73cadac6e1ca1ee0ce788af619272e3d6c177dd0291e8&scene=27"
+  },
+  {
+   "id": 36,
+   "title": "宿迁观察丨以发展“含绿量”提升增长“含金量” ",
+   "url": "https://www.sohu.com/a/943308511_412025"
+  },
+  {
+   "id": 37,
+   "title": "2024干得怎么样?江苏13市交出这些“成绩单”",
+   "url": "https://tj.jiangsu.gov.cn/art/2025/1/17/art_87245_11473058.html"
+  },
+  {
+   "id": 38,
+   "title": "稳中有进夯基础 进中提质赋新能——2025年前三季度苏州市经济运行情况 ",
+   "url": "http://tjj.suzhou.gov.cn/sztjj/xwfbh/202510/6d331098ea0e449f9c169a9f0d3e20c9.shtml"
+  },
+  {
+   "id": 39,
+   "title": "行业聚焦 | 二十四条举措!江苏推动纺织服装产业高质量发展 ",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzA4OTkyNTIxMQ==&mid=2247547490&idx=2&sn=5a8ea2405ab5fe301d45c0982085fc94&chksm=90110956a7668040b9d04244aa607aa328896d11e976ee769434fd937c79dd83df47db639ac5&scene=27"
+  },
+  {
+   "id": 40,
+   "title": "江苏推动纺织服装产业高质量发展;8月纺织服装出口增速放缓",
+   "url": "https://www.163.com/dy/article/HH7E0PJU0552R05V.html"
+  },
+  {
+   "id": 41,
+   "title": "关于持续促进我省纺织行业高质量发展的对策建议",
+   "url": "https://jsnews.jschina.com.cn/zt2025/jsrmjyzj/jdz/202603/t20260330_s69ca1b2be4b09a6c3e096671.shtml"
+  },
+  {
+   "id": 42,
+   "title": "加快推进设备更新和技术改造 为工业发展注入新质生产力 ",
+   "url": "https://www.jiangsu.gov.cn/col/col91010/index.html"
+  },
+  {
+   "id": 43,
+   "title": "盛泽镇专题召开党委会议 | 统筹推进纺织产业高质量发展与安全生产工作",
+   "url": "https://mp.weixin.qq.com/s?__biz=MjM5MjU2MTEwMA==&mid=2650924832&idx=2&sn=b89576b323d29a0bf08978bd53e0fc13&chksm=bc80fdec70464b454df831b592320e9c83417a7e70357a27a79ebf14360d81c6d8d62ce44b0c&scene=27"
+  },
+  {
+   "id": 44,
+   "title": "年度重点工作任务分解、执行及落实情况",
+   "url": "https://www.zongyang.gov.cn/openness/OpennessContent/show/1143743.html"
+  },
+  {
+   "id": 45,
+   "title": "奕纺联纺织中小企业产业创新中心",
+   "url": "https://baike.baidu.com/item/奕纺联纺织中小企业产业创新中心/69385760"
+  },
+  {
+   "id": 46,
+   "title": "省政府办公厅关于印发促进银发经济高质量发展实施方案的通知",
+   "url": "https://www.jiangsu.gov.cn/art/2024/9/29/art_87051_11403266.html"
+  },
+  {
+   "id": 47,
+   "title": "关于印发“人工智能+制造”镇江行动方案(2026—2028年)的通知",
+   "url": "http://www.zhenjiang.gov.cn/zhenjiang/szfbwj/202609/f43474dff8d7402591689270b95d9db3.shtml"
+  },
+  {
+   "id": 48,
+   "title": "江苏推动传统产业焕新升级纪实",
+   "url": "https://www.jiangsu.gov.cn/art/2025/5/26/art_87819_11570979.html"
+  },
+  {
+   "id": 49,
+   "title": "新质领航迈向“智造之城”",
+   "url": "https://news.2500sz.com/doc/2025/10/21/1177087.shtml"
+  },
+  {
+   "id": 50,
+   "title": "协同传统产业和新兴产业发展,深化“两个创新”融合——",
+   "url": "https://www.jiangsu.gov.cn/art/2025/7/26/art_89419_11609790.html"
+  },
+  {
+   "id": 51,
+   "title": "2025年前三季度苏州市经济运行情况 ",
+   "url": "https://www.suzhou.gov.cn/szsrmzf/tjsjjd/202510/39ee453a9e4f4627ac060c174110a6d5.shtml"
+  },
+  {
+   "id": 52,
+   "title": "苏州前三季度GDP同比增长5.5%",
+   "url": "https://www.jiangsu.gov.cn/art/2025/10/29/art_84324_11668817.html"
+  },
+  {
+   "id": 53,
+   "title": "2026年毛织造加工行业政策研究报告及未来五至十年专精特新与隐形冠军",
+   "url": "https://www.renrendoc.com/paper/538716509.html"
+  },
+  {
+   "id": 54,
+   "title": "2026年其他机织服装制造行业产业研究报告及未来五至十年政策驱动与市场机遇展望",
+   "url": "https://www.renrendoc.com/paper/538759949.html"
+  },
+  {
+   "id": 55,
+   "title": "2026趋势分析与行业市场调研深度报告纺织原料行业未来发展预测与投资",
+   "url": "https://www.renrendoc.com/paper/538677028.html"
+  },
+  {
+   "id": 56,
+   "title": "2026年其他家用纺织制成品制造行业研究报告及未来五至十年技术突破与应用落地",
+   "url": "https://www.renrendoc.com/paper/538334261.html"
+  },
+  {
+   "id": 57,
+   "title": "2026年纺织带和帘子布制造行业战略咨询报告及未来五至十年研发投入与专利布局",
+   "url": "https://www.renrendoc.com/paper/538636576.html"
+  },
+  {
+   "id": 58,
+   "title": "2026年其他家用纺织制成品制造行业年度综合研究报告及未来五至十年合规风险与监管应对",
+   "url": "https://www.renrendoc.com/paper/538599221.html"
+  },
+  {
+   "id": 59,
+   "title": "2026年化纤织造加工行业年度综合研究报告及未来五至十年合规风险与监管应对",
+   "url": "https://www.renrendoc.com/paper/538763125.html"
+  },
+  {
+   "id": 60,
+   "title": "2026年江苏省政府工作报告",
+   "url": "https://tj.jiangsu.gov.cn/art/2026/2/9/art_87245_11727571.html"
+  },
+  {
+   "id": 61,
+   "title": "2026珠三角现代纺织服装品牌建设行业行情分析营销策略创新评估报告",
+   "url": "https://www.renrendoc.com/paper/538577497.html"
+  },
+  {
+   "id": 62,
+   "title": "江苏省服装协会",
+   "url": "https://baike.baidu.com/item/江苏省服装协会/7797342"
+  },
+  {
+   "id": 63,
+   "title": "江苏省中小企业特色产业集群",
+   "url": "https://baike.baidu.com/item/江苏省中小企业特色产业集群/63597816"
+  },
+  {
+   "id": 64,
+   "title": "周勇董事长赴苏州参加第十五届江苏(盛泽)纺织品博览会暨中国东方丝绸市场成立40周年高质量发展大会并开展调研",
+   "url": "http://finance.sina.com.cn/roll/2026-10-10/doc-iniuufia0621937.shtml"
+  },
+  {
+   "id": 65,
+   "title": "江苏再添6个中小企业特色产业集群",
+   "url": "https://www.jiangsu.gov.cn/art/2025/11/7/art_88302_11670950.html"
+  },
+  {
+   "id": 66,
+   "title": "江苏省服装服饰行业协会",
+   "url": "https://baike.baidu.com/item/江苏省服装服饰行业协会/12983189"
+  },
+  {
+   "id": 67,
+   "title": "关于印发《于都县制造业重点产业链现代化建设“5313”行动计划(2024—2026年)》的通知",
+   "url": "https://www.yudu.gov.cn/ydxxxgk/c108335/202407/31d73262c8b64a0ab6968aaa1874efec.shtml"
+  },
+  {
+   "id": 68,
+   "title": "市政府办公室印发关于强化机制推进产业创新集群和新兴服务业细分领域发展的工作意见的通知 ",
+   "url": "https://www.suzhou.gov.cn/szsrmzf/zfbgswj/202209/d4d4d4a7fde44d0caea8d7d7936ca2de.shtml"
+  },
+  {
+   "id": 69,
+   "title": "江苏省促进中小企业特色产业集群发展管理办法",
+   "url": "https://baike.baidu.com/item/江苏省促进中小企业特色产业集群发展管理办法/62766403"
+  },
+  {
+   "id": 70,
+   "title": "联发股份涨2.04%,成交额271.76万元,主力资金净流出13.73万元 ",
+   "url": "https://www.sohu.com/a/1088414848_122014422"
+  },
+  {
+   "id": 71,
+   "title": "> 洪兴股份个股数据 ",
+   "url": "https://data.eastmoney.com/stockdata/001209.html"
+  },
+  {
+   "id": 72,
+   "title": "金鹰股份涨1.07%,成交额3379.42万元,近3日主力净流入-280.65万 ",
+   "url": "https://www.sohu.com/a/1088582458_122014422"
+  },
+  {
+   "id": 73,
+   "title": "> 鲁 泰A个股数据 ",
+   "url": "https://data.eastmoney.com/stockdata/000726.html"
+  },
+  {
+   "id": 74,
+   "title": "惠同新材:湖南惠同新材料股份有限公司关于回复北京证券交易所问询函的公告 ",
+   "url": "http://money.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?id=12381303&stockid=920751"
+  },
+  {
+   "id": 75,
+   "title": "纺织服装板块2022年报&23年一季报总结: 品牌服饰23Q1业绩靓丽,趋势向好,看好估值业绩双重修复持续兑现",
+   "url": "https://pdf.dfcfw.com/pdf/H3_AP202305081586380661_1.pdf"
+  },
+  {
+   "id": 76,
+   "title": "万事好通·惠企通企业综合服务平台",
+   "url": "https://hqt.nantong.gov.cn/hqzcDetail.html?policyId=10741"
+  },
+  {
+   "id": 77,
+   "title": "南通纺织产业向“新”攀登",
+   "url": "http://www.js.xinhuanet.com/20241023/9fc6f27144ca4e36a24f7d6b9d85979b/c.html"
+  },
+  {
+   "id": 78,
+   "title": "县域经济下的秘密:江浙百强县特色优势产业盘点",
+   "url": "https://js.ifeng.com/c/8CWzudWJkJI"
+  },
+  {
+   "id": 79,
+   "title": "南通产业带",
+   "url": "https://www.ebrun.com/cyd/41.shtml"
+  },
+  {
+   "id": 80,
+   "title": "射阳临海:立足“三个聚焦”培育纺织产业 激发纺织发展新动能",
+   "url": "http://www.js.xinhuanet.com/20241211/c0b3eef9015e4cdc99dc347fc6d148ab/c.html"
+  },
+  {
+   "id": 81,
+   "title": "苏州工业园区恒昌纺织有限公司",
+   "url": "https://baike.baidu.com/item/苏州工业园区恒昌纺织有限公司/21068448"
+  },
+  {
+   "id": 82,
+   "title": "新沂经开区:关于高端纺织园发展趋势、问题及对策的调查研究",
+   "url": "http://www.jskfq.org.cn/News/Detail?AID=6bc3cde1cfde424e95b9e8ec061c5d9f"
+  },
+  {
+   "id": 83,
+   "title": "产业集群成势、龙头企业云集!宿迁泗阳唱响“千里运河最美县”投资品牌",
+   "url": "https://www.nbs.cn/news/7/202511/t20251112_770072.html"
+  },
+  {
+   "id": 84,
+   "title": "江苏高端纺织奋力冲击“世界级”",
+   "url": "https://jszwb.jiangsu.gov.cn/art/2023/10/20/art_71797_11045872.html"
+  },
+  {
+   "id": 85,
+   "title": "助力产业链内循环,推动纺织产业智能化升级——江苏省先进纺织工程技术中心亮相南通纺织服装产业对接会",
+   "url": "https://www.jcet.edu.cn/info/1002/270023.htm"
+  },
+  {
+   "id": 86,
+   "title": "江苏红豆实业股份有限公司关于控股股东为公司拟申请敞口授信额度提供担保的公告",
+   "url": "http://finance.sina.com.cn/roll/2025-03-05/doc-inenpwev8082609.shtml"
+  },
+  {
+   "id": 87,
+   "title": "深市上市公司公告(9月9日)",
+   "url": "https://stock.10jqka.com.cn/20250909/c670986114.shtml"
+  },
+  {
+   "id": 88,
+   "title": "2025年非银金融行业:私募股权投资市场月报(2025年11月)",
+   "url": "https://www.vzkoo.com/read/4618830515649122304.html"
+  },
+  {
+   "id": 89,
+   "title": "两会受权发布|关于2024年国民经济和社会发展计划执行情况与2025年国民经济和社会发展计划草案的报告",
+   "url": "https://www.gwgpac.org/page208?article_id=3215&pagenum=all"
+  },
+  {
+   "id": 90,
+   "title": "国家发改委重磅报告|2025“重点领域重大投资项目”、“两重”、“两新”主要政策举措出炉_发展_建设_支持",
+   "url": "https://news.sohu.com/a/870987040_480400"
+  },
+  {
+   "id": 91,
+   "title": "2025年1月15日广东省省长王伟中在广东省第十四届人民代表大会第三次会议上作政府工作报告",
+   "url": "http://www.gd.gov.cn/gkmlpt/content/4/4656/post_4656813.html"
+  },
+  {
+   "id": 92,
+   "title": "关于福建省2024年国民经济和社会发展计划执行情况与2025年国民经济和社会发展计划草案的报告 ",
+   "url": "https://www.fj.gov.cn/zwgk/ztzl/tjzfznzb/ggdt/202502/t20250212_6713963.htm"
+  },
+  {
+   "id": 93,
+   "title": "黄文涛:2025下半年A股投资策略——变革大时代,赢在新赛道",
+   "url": "https://new.qq.com/rain/a/20250619A04BI500"
+  },
+  {
+   "id": 94,
+   "title": "【已废止】金华市人民政府印发关于推动经济高质量发展若干政策举措(2025年版)的通知",
+   "url": "https://www.jinhua.gov.cn/art/2025/2/17/art_1229856891_1818154.html"
+  },
+  {
+   "id": 95,
+   "title": "重磅!2024年中国纺织行业政策汇总及解读(全)巩固纺织强国地位 ",
+   "url": "https://www.sohu.com/a/794333544_99922905"
+  },
+  {
+   "id": 96,
+   "title": "2025年江苏省政府工作报告",
+   "url": "http://www.js.gov.cn/art/2025/1/26/art_60096_11480219.html"
+  },
+  {
+   "id": 97,
+   "title": "江苏省政府2025年政府工作报告",
+   "url": "http://www.js.gov.cn/art/2025/1/26/art_84319_11480387.html"
+  },
+  {
+   "id": 98,
+   "title": "《贯彻实施〈国家标准化发展纲要〉行动计划(2024—2025年)》提出持续完善两化融合标准体系,加快数字化转型关键急需标准制修订 ",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzkyNTIwNjIzNA==&mid=2247511444&idx=1&sn=10d9b74c6d70782e7ce4d0c692b3b35a&chksm=c1c8fe21f6bf773716f79409533775296c84cbb59d55f254ae902e7dd8e2cb4ecce2fcb91109&scene=27"
+  },
+  {
+   "id": 99,
+   "title": "城市24小时 | 竞逐“人工智能之城”,苏州出手了 ",
+   "url": "https://www.sohu.com/a/859315576_120415830"
+  },
+  {
+   "id": 100,
+   "title": "政府工作报告",
+   "url": "https://www.wxrb.com/doc/2025/01/16/384733.shtml"
+  },
+  {
+   "id": 101,
+   "title": "政府工作报告 ",
+   "url": "https://www.nx.gov.cn/zwxx_11337/wzttx/202503/t20250312_4852953_wap.html"
+  },
+  {
+   "id": 102,
+   "title": "重要发布",
+   "url": "https://www.xjpcsc.gov.cn/article/6906155049cf4fcb96fb6a91a25f49b4"
+  },
+  {
+   "id": 103,
+   "title": "最全丨31省份2025年优化营商环境重点工作任务汇总",
+   "url": "https://www.163.com/dy/article/JNUJ14Q90518KCLG.html"
+  },
+  {
+   "id": 104,
+   "title": "https://new.qq.com/rain/a/20250318A09K2100",
+   "url": "https://new.qq.com/rain/a/20250318A09K2100"
+  },
+  {
+   "id": 105,
+   "title": "【南通服装服饰/纺织/皮革招聘网_2026年南通服装服饰/纺织/皮革招聘信息】-南通猎聘",
+   "url": "https://www.liepin.com/city-nantong/zpfengrengong/"
+  },
+  {
+   "id": 106,
+   "title": "服装助理",
+   "url": "https://www.zhipin.com/job_detail/3e720900e7b00e271HFy2967E1ZV.html"
+  },
+  {
+   "id": 107,
+   "title": "服装机修工(技术中心)",
+   "url": "https://www.zhipin.com/job_detail/2ea56ef1142259e21HV93dW1EFNR.html"
+  },
+  {
+   "id": 108,
+   "title": "正雄企业 设计师助理 招聘(工资待遇要求) ",
+   "url": "https://www.jobui.com/company/9009801/salary/j/shejishizhuli/"
+  },
+  {
+   "id": 109,
+   "title": "服装技术员",
+   "url": "https://www.zhipin.com/job_detail/a430d97810f6419103x_2t67E1ZT.html"
+  },
+  {
+   "id": 110,
+   "title": "江苏珈诚纺织有限公司",
+   "url": "https://www.jobui.com/company/15423877/"
+  },
+  {
+   "id": 111,
+   "title": "申皇纺织",
+   "url": "https://www.jobui.com/company/20339096/"
+  },
+  {
+   "id": 112,
+   "title": "服装工程师(IE)",
+   "url": "https://www.zhipin.com/job_detail/c08c3bfcfed935921XN-0966F1BT.html"
+  },
+  {
+   "id": 113,
+   "title": "日晖纺织科技 外贸业务 招聘(工资待遇要求) ",
+   "url": "https://www.jobui.com/company/683254/salary/j/waimaoyewu/"
+  },
+  {
+   "id": 114,
+   "title": "国泰国盛 面料业务 招聘(工资待遇要求) ",
+   "url": "https://www.jobui.com/company/13500048/salary/j/mianliaoyewu/"
+  },
+  {
+   "id": 115,
+   "title": "2026年服装行业现状 / 格局 / 痛点 + 发展趋势 + 调研解析",
+   "url": "https://www.chinairn.com/scfx/20261008/180247814.shtml"
+  },
+  {
+   "id": 116,
+   "title": "2026年化纤织造加工行业产业分析报告及未来五至十年产业链与价值链重构分析",
+   "url": "https://www.renrendoc.com/paper/538600137.html"
+  },
+  {
+   "id": 117,
+   "title": "2026及未来5年中国混纺提花色织装饰布数据监测研究报告",
+   "url": "https://www.renrendoc.com/paper/538639850.html"
+  },
+  {
+   "id": 118,
+   "title": "2026中南亚纺织服装产业发展趋势分析及企业国际化市场布局",
+   "url": "https://www.renrendoc.com/paper/538591418.html"
+  },
+  {
+   "id": 119,
+   "title": "2026中国智能制造人才培养体系构建与市场需求缺口评估",
+   "url": "https://www.renrendoc.com/paper/538590085.html"
+  },
+  {
+   "id": 120,
+   "title": "2026年纺织行业发展前景研判报告及未来五至十年服务化与定制化趋势",
+   "url": "https://www.renrendoc.com/paper/538278081.html"
+  },
+  {
+   "id": 121,
+   "title": "2026中国专业服装定制行业市场供需调研及高端时尚投资评估规划分析研究报告",
+   "url": "https://www.renrendoc.com/paper/538510462.html"
+  },
+  {
+   "id": 122,
+   "title": "2026中职学校专业设置与市场需求衔接人才培养就业分析报告",
+   "url": "https://www.renrendoc.com/paper/538686684.html"
+  },
+  {
+   "id": 123,
+   "title": "2026轻工业市场深度分析及发展状态与投资规划研究报告",
+   "url": "https://www.renrendoc.com/paper/538676287.html"
+  },
+  {
+   "id": 124,
+   "title": "联发股份前三季度营收35.93亿元同比增8.22%,净利润1.31亿元同比降8.87%,毛利率下降1.20个百分点 ",
+   "url": "https://m.sohu.com/a/819893926_122014422"
+  },
+  {
+   "id": 125,
+   "title": "联发股份:2024年上半年净利润4923.51万元 同比下降56.64%",
+   "url": "https://finance.sina.cn/2024-08-23/detail-inckrxzy2592327.d.html"
+  },
+  {
+   "id": 126,
+   "title": "联发股份:预计2024年半年度盈利4500.00万至5600.00万 净利润同比下降60.37%至50.68%",
+   "url": "https://yuanchuang.10jqka.com.cn/20240711/c659731570.shtml"
+  },
+  {
+   "id": 127,
+   "title": "联发股份跌2.07%,成交额1362.89万元,主力资金净流入56.03万元 ",
+   "url": "https://www.sohu.com/a/1086563387_122014422"
+  },
+  {
+   "id": 128,
+   "title": "南山智尚:和信会计师事务所(特殊普通合伙)关于山东南山智尚科技股份有限公司申请向特定对象发行股票的审核问询函的回复(修订稿) ",
+   "url": "http://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?id=10361748"
+  },
+  {
+   "id": 129,
+   "title": "南山智尚:和信会计师事务所(特殊普通合伙)关于山东南山智尚科技股份有限公司申请向特定对象发行股票的审核问询函的回复(修订稿)(2024年半年度财务数据更新版) ",
+   "url": "http://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?id=10527889"
+  },
+  {
+   "id": 130,
+   "title": "聚焦| 印染龙头有“默契” ",
+   "url": "https://mp.weixin.qq.com/s?__biz=MjM5Nzc0NDIxNA==&mid=2656657680&idx=1&sn=fc6da2b83448d9b73c11d8b059eb1051&chksm=bcfe45c84fab671d068744904b20e8c5a83aecb544211c204193cdfe9d093503ade6269f5a15&scene=27"
+  },
+  {
+   "id": 131,
+   "title": "2024年政府工作报告三季度工作进展情况表",
+   "url": "http://www.jimo.gov.cn/zwgk/fdzwgk/zybszxgk/zfgzbg/202409/t20240906_8239283.shtml"
+  },
+  {
+   "id": 132,
+   "title": "厦门建发股份有限公司 2024 年半年度报告",
+   "url": "https://pdf.dfcfw.com/pdf/H2_AN202408301639651517_1.pdf"
+  }
+ ],
+ "scale": [
+  {
+   "metric": "高端纺织产业产值",
+   "value": "1018.2",
+   "unit": "亿元",
+   "year": "2024",
+   "scope": "宿迁市",
+   "src": [
+    11,
+    13,
+    14,
+    32,
+    33,
+    34,
+    36
+   ]
+  },
+  {
+   "metric": "高端纺织规上产值",
+   "value": "318.08",
+   "unit": "亿元",
+   "year": "2024",
+   "scope": "泗阳县",
+   "src": [
+    83
+   ]
+  }
+ ],
+ "segments": [
+  {
+   "name": "仿真纤维材料",
+   "desc": "苏州市吴江区入选2025年度工信部中小企业特色产业集群，聚焦仿真丝、差别化纤维等高附加值细分领域。",
+   "src": [
+    65,
+    64
+   ]
+  },
+  {
+   "name": "智能基础零部件",
+   "desc": "盐城市盐都区为2024年认定的省级中小企业特色产业集群，为服装智能制造装备提供关键零部件配套。",
+   "src": [
+    63
+   ]
+  },
+  {
+   "name": "数控机床功能部件",
+   "desc": "南京市溧水区属2025年新晋国家级特色产业集群，支撑服装机械国产替代与柔性化产线升级。",
+   "src": [
+    65
+   ]
+  },
+  {
+   "name": "毛织造加工",
+   "desc": "政策明确支持毛织造行业“专精特新”与“隐形冠军”企业培育，强化技术创新与品牌国际化。",
+   "src": [
+    53
+   ]
+  },
+  {
+   "name": "化纤织造加工",
+   "desc": "以智能化、数字化转型为核心，重点发展再生纤维、生物基纤维等环保材料织造。",
+   "src": [
+    55,
+    59
+   ]
+  },
+  {
+   "name": "家用纺织制成品",
+   "desc": "南通是全国知名家纺产业基地，正加速抗菌防螨、温感调湿等功能性整理技术突破。",
+   "src": [
+    56,
+    58
+   ]
+  }
+ ],
+ "cities": [
+  {
+   "city": "南通市",
+   "focus": "家纺领域龙头集聚地及化纤与织造链主企业核心基地。",
+   "companies": [
+    "恒科",
+    "华峰",
+    "桐昆",
+    "金鹰",
+    "海安鑫缘"
+   ],
+   "src": [
+    76,
+    77
+   ]
+  },
+  {
+   "city": "常熟市",
+   "focus": "羽绒服产业龙头总部所在地，带动绒类产品生产基地发展。",
+   "companies": [
+    "波司登集团"
+   ],
+   "src": [
+    78
+   ]
+  },
+  {
+   "city": "宿迁市",
+   "focus": "高端纺织主导产业聚集区，推动化纤—织造—家纺全链条发展。",
+   "companies": [
+    "新凤鸣集团",
+    "盛虹集团"
+   ],
+   "src": [
+    83
+   ]
+  },
+  {
+   "city": "新沂市",
+   "focus": "依托化纤龙头建设高端纺织产业园，形成向下游延伸的产业体系。",
+   "companies": [
+    "新凤鸣集团"
+   ],
+   "src": [
+    82
+   ]
+  },
+  {
+   "city": "射阳县",
+   "focus": "印染与智能纺织龙头落户地，布局生态染整及超细纤维全产业链。",
+   "companies": [
+    "沙印集团",
+    "上海题桥纺织",
+    "江苏巨鸿",
+    "上海兰邦特种纤维"
+   ],
+   "src": [
+    80
+   ]
+  },
+  {
+   "city": "苏州市",
+   "focus": "骨干纺织制造企业聚集地，涵盖棉布/纺织品制造与服装生产。",
+   "companies": [
+    "苏州工业园区恒昌纺织有限公司"
+   ],
+   "src": [
+    81
+   ]
+  }
+ ],
+ "listed": [],
+ "financing": [],
+ "policies": [
+  {
+   "level": "部委级",
+   "name": "《关于产业用纺织品行业高质量发展的指导意见》",
+   "issuer": "工业和信息化部、国家发展改革委",
+   "year": "2022",
+   "gist": "提出规模以上企业工业增加值年均增长约6%、骨干企业研发经费占比达3%等目标，推动产业用纺织品高质量发展。",
+   "src": [
+    1
+   ]
+  },
+  {
+   "level": "部委级",
+   "name": "《再生材料应用推广行动方案》",
+   "issuer": "国家发展改革委、工信部、财政部、生态环境部、商务部、海关总署、市场监管总局",
+   "year": "2025",
+   "gist": "将再生纺织纤维纳入重点推广品类，明确提出在纺织服装等领域稳步提升再生材料替代使用比例。",
+   "src": [
+    5
+   ]
+  },
+  {
+   "level": "部委级",
+   "name": "《关于增强消费品供需适配性进一步促进消费的实施方案》",
+   "issuer": "工信部、国家发展改革委、商务部、文旅部、人民银行、市场监管总局",
+   "year": "2025",
+   "gist": "将现代纺织列为重点行业，支持建设中试验证平台，实施柔性制造改造计划及全链条数字化体系。",
+   "src": [
+    6
+   ]
+  },
+  {
+   "level": "部委级",
+   "name": "《贯彻实施〈国家标准化发展纲要〉行动计划（2024—2025年）》",
+   "issuer": "市场监管总局牵头，工信部、发改委等17部门",
+   "year": "2024",
+   "gist": "加快研制高性能纤维、绿色印染、智能纺织装备及废旧纺织品回收等关键技术标准，建立再生纤维标识及碳足迹核算体系。",
+   "src": [
+    4
+   ]
+  },
+  {
+   "level": "部委级",
+   "name": "《关于加强人力资源服务助力制造业高质量发展的意见》",
+   "issuer": "人社部、国家发改委、工信部、商务部、全国工商联",
+   "year": "2024",
+   "gist": "支持纺织产业集群地建设人力资源服务公共平台，鼓励培育专注纺织新材料等领域的专精特新人力资源服务机构。",
+   "src": [
+    7
+   ]
+  },
+  {
+   "level": "部委级",
+   "name": "《纺织工业提质升级实施方案（2023—2025年）》",
+   "issuer": "工信部、国家发改委、商务部、市场监管总局",
+   "year": "",
+   "gist": "明确到2025年规模以上纺织企业研发经费投入强度达1.3%，70%规上企业基本实现数字化网络化，形成20家全球知名品牌。",
+   "src": [
+    95
+   ]
+  },
+  {
+   "level": "省级",
+   "name": "江苏省2025年政府工作报告",
+   "issuer": "江苏省政府",
+   "year": "2025",
+   "gist": "强调全省完成工业领域设备更新，纺织印染、化纤装备智能化改造是重点领域，纺织服装受益于“苏新消费”及以旧换新政策。",
+   "src": [
+    96
+   ]
+  }
+ ],
+ "jobs": [
+  {
+   "title": "柔性导电纺织研发工程师",
+   "city": "南通",
+   "salary": "20–35k",
+   "skills": [
+    "柔性电子材料开发",
+    "导电纤维/织物集成",
+    "跨学科实验设计能力"
+   ],
+   "src": [
+    105
+   ]
+  },
+  {
+   "title": "服装/纺织工艺师",
+   "city": "南通通州区",
+   "salary": "10–12k",
+   "skills": [
+    "工艺单编制",
+    "样衣问题分析",
+    "产线异常处理"
+   ],
+   "src": [
+    105
+   ]
+  },
+  {
+   "title": "工艺技术岗（纺织）",
+   "city": "启东",
+   "salary": "15–22k·14薪",
+   "skills": [
+    "纺织新材料应用",
+    "工艺参数优化",
+    "跨部门协同推进量产"
+   ],
+   "src": [
+    105
+   ]
+  },
+  {
+   "title": "服装技术员",
+   "city": "南京",
+   "salary": "",
+   "skills": [
+    "样衣品质管控",
+    "版型意见转化",
+    "ERP系统操作",
+    "英语沟通能力"
+   ],
+   "src": [
+    109
+   ]
+  },
+  {
+   "title": "外贸业务",
+   "city": "常州/无锡",
+   "salary": "8–30k",
+   "skills": [
+    "英语书面与口语能力",
+    "面料知识",
+    "客户谈判",
+    "L/C与信用证操作"
+   ],
+   "src": [
+    113
+   ]
+  },
+  {
+   "title": "采购经理/总监（服装纺织采购）",
+   "city": "南通",
+   "salary": "",
+   "skills": [
+    "供应商评估与审计",
+    "成本压降策略",
+    "合规风控"
+   ],
+   "src": [
+    105
+   ]
+  },
+  {
+   "title": "服装机修工（技术中心）",
+   "city": "张家港",
+   "salary": "10–15万元",
+   "skills": [
+    "平缝/包缝/绷缝等设备维修",
+    "新设备试用评估",
+    "小工具自主开发能力"
+   ],
+   "src": [
+    107
+   ]
+  },
+  {
+   "title": "设计师助理",
+   "city": "苏州工业园区",
+   "salary": "7–9k·13薪",
+   "skills": [
+    "PS/AI/CorelDRAW等绘图软件",
+    "市场流行趋势敏感度",
+    "手绘与电脑稿结合能力"
+   ],
+   "src": [
+    108
+   ]
+  },
+  {
+   "title": "质量体系专员（服装/纺织）",
+   "city": "南通",
+   "salary": "7–9k",
+   "skills": [
+    "内审组织",
+    "文件编写",
+    "客户验厂应对",
+    "CAPA推动"
+   ],
+   "src": [
+    105
+   ]
+  }
+ ],
+ "demand": [
+  {
+   "text": "技术技能型专业人才市场缺口预计达500万人左右。",
+   "src": [
+    122
+   ]
+  },
+  {
+   "text": "强制要求规上企业2026年起配备专职碳管理岗与工业软件运维岗。",
+   "src": [
+    116
+   ]
+  }
+ ],
+ "aliases": [
+  "纺织",
+  "服装",
+  "服饰",
+  "时尚"
+ ]
+}

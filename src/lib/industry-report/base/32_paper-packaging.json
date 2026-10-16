@@ -1,0 +1,1013 @@
+{
+ "industry": "造纸与包装印刷",
+ "province": "江苏",
+ "collectedAt": "2026-10-16T10:38:55.231Z",
+ "origin": "base",
+ "sources": [
+  {
+   "id": 1,
+   "title": "国务院政策例行吹风会文字实录(2025年11月27日) ",
+   "url": "https://www.gov.cn/zccfh/2025zccfh/20251127/wzsl/202511/content_7049672.htm"
+  },
+  {
+   "id": 2,
+   "title": "介绍增强消费品供需适配性进一步促进消费政策措施有关情况",
+   "url": "https://www.gov.cn/xinwen/2025zccfh/14/index.htm"
+  },
+  {
+   "id": 3,
+   "title": "经国务院同意,五部门印发重要行动方案(全文)",
+   "url": "https://swj.xianyang.gov.cn/zzms/dtyw/202502/t20250221_1917883.html"
+  },
+  {
+   "id": 4,
+   "title": "字号:默认大超大|打印|",
+   "url": "https://www.gov.cn/gongbao/2025/issue_11846/202502/content_7002782.html"
+  },
+  {
+   "id": 5,
+   "title": "《西部地区鼓励类产业目录(2025年本)》 2024年第28号令",
+   "url": "https://www.ndrc.gov.cn/xxgk/zcfb/fzggwl/202411/t20241129_1394744.html"
+  },
+  {
+   "id": 6,
+   "title": "国务院新闻办公室将于2025年2月20日(星期四)上午10时举行国务院政策例行吹风会,请商务部副部长兼国际贸易谈判副代表凌激和国家发展改革委、工业和信息化部、市场监管总局有关负责人介绍扩大高水平对外开放,做好2025年稳外资工作有关情况,并答记者问。 ",
+   "url": "https://www.gov.cn/xinwen/2025zccfh/3/index.htm"
+  },
+  {
+   "id": 7,
+   "title": "国家发展改革委12月份新闻发布会",
+   "url": "https://www.ndrc.gov.cn/xwdt/wszb/12yxwfbh/"
+  },
+  {
+   "id": 8,
+   "title": "国家发展改革委发布重要“指引”,2025年第一场专题新闻发布会详解→",
+   "url": "http://fgw.changsha.gov.cn/zfxxgk/gzdt_38518/gzdt/202501/t20250108_11710839.html"
+  },
+  {
+   "id": 9,
+   "title": "国家发展改革委10月份新闻发布会",
+   "url": "https://www.ndrc.gov.cn/xwdt/wszb/10yxwfbh1/"
+  },
+  {
+   "id": 10,
+   "title": "本周“发展改革热点,我知道”(12月22至12月26日)",
+   "url": "https://www.ndrc.gov.cn/fggz/202512/t20251229_1402689_ext.html"
+  },
+  {
+   "id": 11,
+   "title": "国家统计局副局长就2024年前三季度国民经济运行情况答记者问 ",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzU5OTM2MTUxMA==&mid=2247490061&idx=2&sn=9b81952a6c61d2a05588228d0797491a&chksm=ffb4c41a12239a5c5d8b85ca40b6dc6656ccfbb2159bba121b37790a4eb0ffb909cd80d8fc25&scene=27"
+  },
+  {
+   "id": 12,
+   "title": "2024年中国工业增加值、规模以上工业企业营业收入、利润总额、产品销售率以及出口交货值统计分析:中国工业增加值逐年增加,规模以上企业盈利能力增强[图]",
+   "url": "https://m.chyxx.com/industry/1197642.html"
+  },
+  {
+   "id": 13,
+   "title": "2023年成绩因何而来?2024年经济工作怎么做?(上)",
+   "url": "https://www.jiangsu.gov.cn/art/2024/1/29/art_60095_11138003.html"
+  },
+  {
+   "id": 14,
+   "title": "招商特训营半月刊7|2024年1-6月全国宏观经济数据及相关行业情况",
+   "url": "https://www.sg.gov.cn/sgsgxqgl/gkmlpt/content/2/2656/post_2656031.html"
+  },
+  {
+   "id": 15,
+   "title": "2024年产业发展调研报告",
+   "url": "https://www.diyifanwen.com/fanwen/diaoyanbaogao/14984809.html"
+  },
+  {
+   "id": 16,
+   "title": "关于2023年相城区国民经济和社会发展计划执行情况及2024年相城区国民经济和社会发展计划草案的报告 ",
+   "url": "http://www.szxc.gov.cn/szxcrmzf/c108771/202405/a383c9e4184c462f968e115b15be680c.shtml"
+  },
+  {
+   "id": 17,
+   "title": "国务院新闻办发布会介绍2024年8月份国民经济运行情况",
+   "url": "https://www.chinatt315.org.cn/zcjd/2024-9/15/244856.html"
+  },
+  {
+   "id": 18,
+   "title": "国新办举行新闻发布会 介绍2024年前三季度国民经济运行情况",
+   "url": "http://www.scio.gov.cn/live/2024/34986/tw/"
+  },
+  {
+   "id": 19,
+   "title": "国新办举行新闻发布会 介绍2024年8月份国民经济运行情况",
+   "url": "http://www.scio.gov.cn/live/2024/34699/tw/"
+  },
+  {
+   "id": 20,
+   "title": "市政府办公室关于印发宿迁市加快推动传统产业焕新三年行动方案(2024-2026年)的通知 ",
+   "url": "https://www.suqian.gov.cn/zfb/zcfg/202408/0297e1ea57494354b4350895c22228bf.shtml"
+  },
+  {
+   "id": 21,
+   "title": "经济大省挑大梁|这一年来,江苏顶住外部冲击、有力应对挑战,经济总体保持平稳向好",
+   "url": "https://www.ishaanxi.com/c/2025/1204/3570504.shtml"
+  },
+  {
+   "id": 22,
+   "title": "数读·解码江苏经济2025年一季报①",
+   "url": "https://www.jiangsu.gov.cn/art/2025/4/24/art_34153_11550920.html"
+  },
+  {
+   "id": 23,
+   "title": "江苏经济总量今年将突破14万亿元!巨轮破浪,经济高质量发展成色足",
+   "url": "https://doc.jiangsu.gov.cn/art/2025/12/11/art_78721_11689246.html"
+  },
+  {
+   "id": 24,
+   "title": "2025年中国塑料薄膜行业产量走势、区域分布及重点企业营收",
+   "url": "https://www.163.com/dy/article/KAOD3VJ205568W0A.html"
+  },
+  {
+   "id": 25,
+   "title": "瑞安市人民政府办公室关于印发2025年瑞安市重点建设计划的通知 ",
+   "url": "https://www.ruian.gov.cn/art/2025/4/7/art_1229579044_4285896.html"
+  },
+  {
+   "id": 26,
+   "title": "2025第五届中国沧州•东光塑料包装国际博览会盛大开幕",
+   "url": "http://www.dongguang.gov.cn/dongguang/c101019/202508/ece66bf58f67429498f0b8438389a2fe.shtml"
+  },
+  {
+   "id": 27,
+   "title": "2025年上半年包装饮用水行业签约及开工项目盘点!",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzA5MjMwMDI3NQ==&mid=2652163545&idx=1&sn=c17c1ce9c7e6c4cc263494ab0b33d08a&chksm=8a06715ed982f3cbcbebe69731aaa31219efe39a3e747a0752b7b5123007ebed566fdacc17f0&scene=27"
+  },
+  {
+   "id": 28,
+   "title": "https://new.qq.com/rain/a/20251220A062L200",
+   "url": "https://new.qq.com/rain/a/20251220A062L200"
+  },
+  {
+   "id": 29,
+   "title": "【期刊】2025年第5期《造纸信息》精彩内容 ",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzA3NDE2MzEzMg==&mid=2654796721&idx=1&sn=8bdea650f3770850ba5ff99aecef2b07&chksm=8530d840eb7f5b137d41264794130bfa35ca7198cd2913f90dca3debc412f2e526f704188678&scene=27"
+  },
+  {
+   "id": 30,
+   "title": "【月报】2025年6月废纸行业月报",
+   "url": "https://www.163.com/dy/article/K997H9EG0512UCIM.html"
+  },
+  {
+   "id": 31,
+   "title": "林产加工及纸业",
+   "url": "https://baike.baidu.com/item/林产加工及纸业/67674848"
+  },
+  {
+   "id": 32,
+   "title": "广西造纸产业",
+   "url": "https://baike.baidu.com/item/广西造纸产业/67241979"
+  },
+  {
+   "id": 33,
+   "title": "2025年全国科技经费投入统计公报",
+   "url": "https://finance.sina.cn/2026-10-16/detail-inivmiic6971340.d.html"
+  },
+  {
+   "id": 34,
+   "title": "2025年麻涌镇政府工作报告",
+   "url": "https://www.dg.gov.cn/dgmcz/gkmlpt/content/4/4353/mpost_4353815.html"
+  },
+  {
+   "id": 35,
+   "title": "港北区工业和信息化局 2025 年财源建设完成情况",
+   "url": "http://www.gbq.gov.cn/ztzl/ndzdgz/ndzdgz/gzjzjcg/t25959754.shtml"
+  },
+  {
+   "id": 36,
+   "title": "2025年前三季度叙永县经济运行情况",
+   "url": "https://www.xuyong.gov.cn/zwgk/fdzdgknr/tjxx1/tjxx/content_142100"
+  },
+  {
+   "id": 37,
+   "title": "焕新蝶变:传统产业催生新动能",
+   "url": "http://m.qunzh.com/qzxlk/jczx/2025/202514/202507/t20250721_110152.html"
+  },
+  {
+   "id": 38,
+   "title": "2025年各地印刷管理工作怎么干?印刷处长划重点→ ",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzA5MjA4NzU0Ng==&mid=2649628394&idx=1&sn=3b734308ca84d5eaec08173156041933&chksm=8966f9a65d09f92c6214e9cc8b9e05d0ec4d1f0a14552491d4880fca01d97f3ea6dc1d31b38e&scene=27"
+  },
+  {
+   "id": 39,
+   "title": "“十四五”以来推进印刷业高质量发展综述",
+   "url": "https://cpiidc.nppa.gov.cn/xwzx/gzdt/202507/t20250707_920122.html"
+  },
+  {
+   "id": 40,
+   "title": "上游观察 | 一条京杭大运河撬动千亿产业链",
+   "url": "https://www.cqcb.com/shangyouguancha1/2025-08-21/5940391_pc.html"
+  },
+  {
+   "id": 41,
+   "title": "产业·资讯 | AI 赋能、谷子经济……2025印刷业十大创新场景盘点",
+   "url": "https://mp.weixin.qq.com/s?__biz=MjM5MjQ3NDIwMQ==&mid=2649685131&idx=1&sn=6350f0c2dedfe7d42cec2b9fee26ef16&chksm=bf66d15579bca5f90c5cdf241e2f19864427a197339decc8cb5b2b7b67c3ee66243629cf03f0&scene=27"
+  },
+  {
+   "id": 42,
+   "title": "砥砺出发·昂扬向新 | 苏州市工业互联网产业联盟1月工作简报 ",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzU5MDYxMTgyMw==&mid=2247550095&idx=1&sn=a62f23608d7da20d589f73f8c8678fb1&chksm=ff5d70951d0452a255b7119cb5650490d440dad25261c0cb05e6e6187aef1202317f286a4286&scene=27"
+  },
+  {
+   "id": 43,
+   "title": "印刷行业减碳迫在眉睫,柔版技术成为破局关键",
+   "url": "http://www.chinadevelopment.com.cn/xc/2025/1114/1969162.shtml"
+  },
+  {
+   "id": 44,
+   "title": "《群众》杂志刊载!春聚吴江,何以“示范”! ",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzAwNjMxMjEzMA==&mid=2655589077&idx=1&sn=522d0f5e54b6c7bf4abf6b9aa8a00b00&chksm=8125170169336a21e74d9f9f86a966d443b72be218b81f1234078f2ebf204ce65ba30469406f&scene=27"
+  },
+  {
+   "id": 45,
+   "title": "新闻出版传媒产业年度发展报告",
+   "url": "https://read.qq.com/read/1031232339/7"
+  },
+  {
+   "id": 46,
+   "title": "春聚吴江,何以“示范”",
+   "url": "https://web.toutiao.com/article/7488909721588580901/"
+  },
+  {
+   "id": 47,
+   "title": "春聚吴江:精心绘制示范区新图卷",
+   "url": "http://m.qunzh.com/qzxlk/jczx/2025/202406/202503/t20250325_109100.html"
+  },
+  {
+   "id": 48,
+   "title": "2026-2031年中国柔性基板行业发展前景预测与投资战略规划分析报告",
+   "url": "https://bg.qianzhan.com/report/detail/0f9d1b3f4a224929.html"
+  },
+  {
+   "id": 49,
+   "title": "出版教育国际会议",
+   "url": "https://baike.baidu.com/item/出版教育国际会议/65805273"
+  },
+  {
+   "id": 50,
+   "title": "无锡市关于构建“465”现代产业体系加快重点产业集群建设的实施意见",
+   "url": "https://www.ourjiangsu.com/a/r/c/20230425/1682387920747.shtml"
+  },
+  {
+   "id": 51,
+   "title": "盐城市人民政府办公室文件",
+   "url": "http://www.yancheng.gov.cn/module/download/downfile.jsp?classid=0&filename=a0215dd43ae4451eb9e7cf6854889bc9.doc"
+  },
+  {
+   "id": 52,
+   "title": "淮安市文化产业多点开花 多元业态齐头并进",
+   "url": "https://www.jiangsu.gov.cn/art/2025/2/27/art_91317_11512409.html"
+  },
+  {
+   "id": 53,
+   "title": "江苏电商创新发展大会",
+   "url": "https://baike.baidu.com/item/江苏电商创新发展大会/69130531"
+  },
+  {
+   "id": 54,
+   "title": "“中国制造业第一县”无锡江阴攀高向新奏响最强音 ",
+   "url": "https://www.sohu.com/a/953804617_120388781"
+  },
+  {
+   "id": 55,
+   "title": "前瞻产业园区周报第30期:广东省人民政府设立雷州经济开发区,瑞士罗氏集团山东首个国际合作项目落户新华制药",
+   "url": "https://ecoapp.qianzhan.com/detials/210928-9dfa7b0f.html"
+  },
+  {
+   "id": 56,
+   "title": "国内市场上强筋壮骨,国际竞争中逆风翻盘——从光伏产业看江苏的世界聚合力",
+   "url": "https://jsnews.jschina.com.cn/jsyw/202310/t20231008_3295641.shtml"
+  },
+  {
+   "id": 57,
+   "title": "江苏省政协十三届八次常委会会议大会发言图文实录",
+   "url": "https://www.jszx.gov.cn/wszb/szx13js8ccwh/"
+  },
+  {
+   "id": 58,
+   "title": "2026中国造纸产业创新发展论坛",
+   "url": "https://baike.baidu.com/item/2026中国造纸产业创新发展论坛/68398051"
+  },
+  {
+   "id": 59,
+   "title": "区政府办公室关于印发《宿豫区特色优势产业发展三年行动计划(2026—2028年)》的通知",
+   "url": "https://www.suqian.gov.cn/zcwjk/suyu/202609/803a631e1ef7438b91ac5c156c1c5240.shtml"
+  },
+  {
+   "id": 60,
+   "title": "2026年政府工作报告重点工作进展情况表(半年度) ",
+   "url": "https://www.fuyang.gov.cn/col/col1229167290/art/2026/art_71eb16638d1c4c26864ac11495776af4.html"
+  },
+  {
+   "id": 61,
+   "title": "工信部等三部门印发《轻工纺织产业发展“十五五”规划》 ",
+   "url": "https://www.zgsr.gov.cn/gxj/qtygwj/202610/9612b96ba2184d37b421b17572581573.shtml"
+  },
+  {
+   "id": 62,
+   "title": "企业惠民政策大讲堂(第三十五期)工信部印发《工业绿色低碳发展“十五五”规划》",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzU4NTU3NzA0NA==&mid=2247515043&idx=2&sn=183b00fbfebdf59fc4e5f0f9ad0e2da3&chksm=fc90aa378c17f122923468cb550e0df8f48d37057669fd3bdd0a8ac65a991db7e99525edd599&scene=27"
+  },
+  {
+   "id": 63,
+   "title": "2026-2031年中国热电联产行业市场前瞻与投资战略规划分析报告",
+   "url": "https://bg.qianzhan.com/report/detail/89090c65872e41fd.html"
+  },
+  {
+   "id": 64,
+   "title": "政府信息公开",
+   "url": "https://www.suixian.gov.cn/zwgk/fdzdgknr/ghjh/wnghgy/content_27555"
+  },
+  {
+   "id": 65,
+   "title": "深市上市公司公告(6月4日)",
+   "url": "https://stock.10jqka.com.cn/20260604/c677204268.shtml"
+  },
+  {
+   "id": 66,
+   "title": "江苏彩华包装集团有限公司",
+   "url": "https://baike.baidu.com/item/江苏彩华包装集团有限公司/20015251"
+  },
+  {
+   "id": 67,
+   "title": "江天、博理两大项目基地开工",
+   "url": "http://finance.sina.cn/2026-10-14/detail-inivezmf8415121.d.html"
+  },
+  {
+   "id": 68,
+   "title": "河源水产业园",
+   "url": "https://baike.baidu.com/item/河源水产业园/59088211"
+  },
+  {
+   "id": 69,
+   "title": "2025年07月25日山东柏霖包装科技有限公司年产6000万套新型包装材料扩建项目山东省临沂市兰陵县尚岩镇智造新城园区内(青山社区周埝沟村),工业大道与青松路交汇北侧.pdf",
+   "url": "https://m.book118.com/html/2026/1014/8130051022010134.shtm"
+  },
+  {
+   "id": 70,
+   "title": "中国新型包装产业试验基地(沈阳)",
+   "url": "https://baike.baidu.com/item/中国新型包装产业试验基地（沈阳）/15765599"
+  },
+  {
+   "id": 71,
+   "title": "黑龙江省服务外包装产业发展研究报告",
+   "url": "https://baike.baidu.com/item/黑龙江省服务外包装产业发展研究报告/854360"
+  },
+  {
+   "id": 72,
+   "title": "国内所有先进封装公司汇总(截止2023年10月)",
+   "url": "https://zhuanlan.zhihu.com/p/704036755"
+  },
+  {
+   "id": 73,
+   "title": "2024年1—3月全省工业生产持续向好",
+   "url": "https://www.jiangsu.gov.cn/art/2024/4/22/art_88350_11223993.html"
+  },
+  {
+   "id": 74,
+   "title": "2024年前三季度淮安市经济运行情况",
+   "url": "https://tjj.huaian.gov.cn/col/11847_682474/content/17303904/1730449417248bGjqCYpY.html"
+  },
+  {
+   "id": 75,
+   "title": "2024年1-9月份工业企业运行情况分析",
+   "url": "https://www.zhongfang.gov.cn/zhongfang/c104781/202411/ad1bff2c2cca44a08790c8d576e2f38e.shtml?from=app"
+  },
+  {
+   "id": 76,
+   "title": "2024年前三季度淮安GDP同比增长7.0%",
+   "url": "https://js.ifeng.com/c/8e9ozX1hf8h"
+  },
+  {
+   "id": 77,
+   "title": "2024 年江苏省时政汇总",
+   "url": "https://www.bilibili.com/read/cv39974557"
+  },
+  {
+   "id": 78,
+   "title": "2024 年江苏省时政汇总",
+   "url": "https://www.bilibili.com/opus/1006215377525407747"
+  },
+  {
+   "id": 79,
+   "title": "建设项目环境影响报告表",
+   "url": "http://www.szwz.gov.cn/szwz/jshp/202406/0d23056c759340ef8402be76a9be4719/files/d8cc66bb67af4884bed15fd5a830608e.pdf"
+  },
+  {
+   "id": 80,
+   "title": "晶华新材2024年半年度董事会经营评述",
+   "url": "https://yuanchuang.10jqka.com.cn/20240812/c660702353.shtml"
+  },
+  {
+   "id": 81,
+   "title": "金科环境接待1家机构调研 ",
+   "url": "https://news.sohu.com/a/810985941_114984"
+  },
+  {
+   "id": 82,
+   "title": "包装股有哪些上市公司?(10/14) - 南方财富网",
+   "url": "https://www.southmoney.com/baozhuang/202610/2807221.html"
+  },
+  {
+   "id": 83,
+   "title": "安捷包装",
+   "url": "https://xinsanban.eastmoney.com/QuoteCenter/871696.html"
+  },
+  {
+   "id": 84,
+   "title": "关于2026年半年度业绩说明会召开",
+   "url": "https://epaper.cs.com.cn/zgzqb/html/2026-10/15/nw.D110000zgzqb_20261015_7-B002.htm"
+  },
+  {
+   "id": 85,
+   "title": "金雨茂物投资管理股份有限公司",
+   "url": "https://baike.baidu.com/item/金雨茂物投资管理股份有限公司/24492531"
+  },
+  {
+   "id": 86,
+   "title": "国产标签印刷设备领军企业,高端包装印刷打开成长空间——炜冈科技首次覆盖报告",
+   "url": "https://k.sina.com.cn/article_5953740931_162dee08306704210a.html"
+  },
+  {
+   "id": 87,
+   "title": "合兴包装上市公司信息",
+   "url": "https://m.hx168.com.cn/stock/F10/002228.html"
+  },
+  {
+   "id": 88,
+   "title": "合兴包装[002228]",
+   "url": "https://baike.baidu.com/item/合兴包装[002228]/19151429"
+  },
+  {
+   "id": 89,
+   "title": "源达策略周报:9月CPI 温和回升 投资建议“红利底仓+景气成长”",
+   "url": "http://finance.sina.cn/2026-10-16/detail-inivmiip8450963.d.html"
+  },
+  {
+   "id": 90,
+   "title": "【风口研报】PCB牛股业绩大幅预增!龙头三季报密集预喜 行业景气度有望持续攀升",
+   "url": "https://finance.eastmoney.com/a/202610133894116944.html"
+  },
+  {
+   "id": 91,
+   "title": "前三季度 A 股并购重组提速:34 家公司上会同比增 36%,过会率约 97% ",
+   "url": "https://caifuhao.eastmoney.com/news/20261008185420595576830"
+  },
+  {
+   "id": 92,
+   "title": "关于江苏省2024年国民经济和社会发展计划执行情况与2025年国民经济和社会发展计划草案的报告(摘要)",
+   "url": "https://www.jiangsu.gov.cn/art/2025/1/27/art_91625_11481588.html"
+  },
+  {
+   "id": 93,
+   "title": "关于江苏省2024年国民经济和社会发展计划执行情况与2025年国民经济和社会发展计划草案的报告(摘要)",
+   "url": "https://www.wxrb.com/doc/2025/01/27/386573.shtml"
+  },
+  {
+   "id": 94,
+   "title": "江苏省政府2025年政府工作报告",
+   "url": "http://www.js.gov.cn/art/2025/1/26/art_84319_11480387.html"
+  },
+  {
+   "id": 95,
+   "title": "2025年江苏省政府工作报告",
+   "url": "http://www.js.gov.cn/art/2025/1/26/art_60096_11480219.html"
+  },
+  {
+   "id": 96,
+   "title": "两会受权发布|关于2024年国民经济和社会发展计划执行情况与2025年国民经济和社会发展计划草案的报告",
+   "url": "https://www.gwgpac.org/page208?article_id=3215&pagenum=all"
+  },
+  {
+   "id": 97,
+   "title": "南京市政府工作报告",
+   "url": "https://www.zgjssw.gov.cn/shixianchuanzhen/nanjing/202501/t20250124_8451638.shtml"
+  },
+  {
+   "id": 98,
+   "title": "政府工作报告(全文)",
+   "url": "https://www.ln.gov.cn/web/qmzx/2025qglh/gwyzfgzbg/2025031219195939087/index.shtml"
+  },
+  {
+   "id": 99,
+   "title": "化州市文楼镇2024年工作总结及2025年工作计划",
+   "url": "http://www.huazhou.gov.cn/mmhzwlzf/gkmlpt/content/1/1498/post_1498491.html"
+  },
+  {
+   "id": 100,
+   "title": "国务院1月重要政策 ",
+   "url": "https://www.gov.cn/yaowen/liebiao/202501/content_7001810.htm"
+  },
+  {
+   "id": 101,
+   "title": "2026年第三季度张家港市人力资源市场供求状况分析",
+   "url": "https://www.zjg.gov.cn/zjgszwz/rcscgqzkfx/202610/f77685a3f5614a6099838a4615d4a4c7.shtml"
+  },
+  {
+   "id": 102,
+   "title": "2026年企业人才引进现状调研、问题剖析及优化对策报告.docx",
+   "url": "https://m.book118.com/html/2026/1008/5040233100013331.shtm"
+  },
+  {
+   "id": 103,
+   "title": "2026‑2031年中国平面设计行业市场调查研究及发展前景预测报告.docx 24页VIP",
+   "url": "https://m.book118.com/html/2026/1010/5111123231013331.shtm"
+  },
+  {
+   "id": 104,
+   "title": "2026及未来5年中国消毒餐具热收缩包装机数据监测研究报告",
+   "url": "https://www.renrendoc.com/paper/538639355.html"
+  },
+  {
+   "id": 105,
+   "title": "2026年智能包装机械创新应用与发展报告",
+   "url": "https://www.renrendoc.com/paper/538408331.html"
+  },
+  {
+   "id": 106,
+   "title": "2026及未来5年中国液体酱汁包装机数据监测研究报告",
+   "url": "https://www.renrendoc.com/paper/538639572.html"
+  },
+  {
+   "id": 107,
+   "title": "2026年包装服务行业现状及趋势分析报告及未来五至十年AI赋能与效率革命",
+   "url": "https://www.renrendoc.com/paper/538517067.html"
+  },
+  {
+   "id": 108,
+   "title": "2026中国智能制造人才培养体系构建与市场需求缺口评估",
+   "url": "https://www.renrendoc.com/paper/538590085.html"
+  },
+  {
+   "id": 109,
+   "title": "> 2026年薪酬调研报告(精选21篇)",
+   "url": "https://www.diyifanwen.com/fanwen/diaoyanbaogao/22525735.html"
+  },
+  {
+   "id": 110,
+   "title": "剧透”未来五年:这些工作要火新华社2026年3月23日新华深读|“十五五”规划1_财富号_东方财富网",
+   "url": "https://caifuhao.eastmoney.com/news/20260323113902085835550"
+  },
+  {
+   "id": 111,
+   "title": "包装工 招聘(工资待遇要求) ",
+   "url": "https://www.jobui.com/company/13242550/salary/j/baozhuanggong/"
+  },
+  {
+   "id": 112,
+   "title": "宇驰包装 编织 招聘(工资待遇要求) ",
+   "url": "https://www.jobui.com/company/15618202/salary/j/bianzhi/"
+  },
+  {
+   "id": 113,
+   "title": "前程包装",
+   "url": "https://www.jobui.com/company/10345309/"
+  },
+  {
+   "id": 114,
+   "title": "苏州 外贸业务助理 招聘(工资待遇要求) ",
+   "url": "https://www.jobui.com/company/1437651/salary/j/waimaoyewuzhuli/"
+  },
+  {
+   "id": 115,
+   "title": "「包装组长招聘」_江南新材招聘-BOSS直聘",
+   "url": "https://www.zhipin.com/job_detail/6748ff2956a5f74003B-2tW9EFtZ.html"
+  },
+  {
+   "id": 116,
+   "title": "江苏苏富包装有限公司",
+   "url": "https://www.jobui.com/company/17222324/salary/"
+  },
+  {
+   "id": 117,
+   "title": "包装工",
+   "url": "https://baike.baidu.com/item/包装工/4861966"
+  },
+  {
+   "id": 118,
+   "title": "欧凯包装 区域销售 招聘(工资待遇要求) ",
+   "url": "https://www.jobui.com/company/10375650/salary/j/quyuxiaoshou/"
+  },
+  {
+   "id": 119,
+   "title": "马培德 包装设计 招聘(工资待遇要求) ",
+   "url": "https://www.jobui.com/company/48010/salary/j/baozhuangsheji/"
+  },
+  {
+   "id": 120,
+   "title": "泰州联达包装科技有限公司",
+   "url": "https://baike.baidu.com/item/泰州联达包装科技有限公司/52214194"
+  },
+  {
+   "id": 121,
+   "title": "华源控股:2024年净利润同比增长739% 拟10派1元",
+   "url": "https://wap.eastmoney.com/a/202504013362618830.html"
+  },
+  {
+   "id": 122,
+   "title": "证券代码:002787 证券简称:华源控股 公告编号:2024-036",
+   "url": "https://finance.sina.cn/2024-04-20/detail-inasmhpk4836131.d.html"
+  },
+  {
+   "id": 123,
+   "title": "一分钟看财报丨华源控股:2024年三季度报告",
+   "url": "https://www.yicai.com/video/102353440.html"
+  },
+  {
+   "id": 124,
+   "title": "华源控股:第四届董事会第十七次会议决议公告 ",
+   "url": "http://money.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?id=9830777"
+  },
+  {
+   "id": 125,
+   "title": "证券代码:002787 证券简称:华源控股 公告编号:2024-023",
+   "url": "https://finance.sina.cn/2024-03-29/detail-inapxfth5163337.d.html"
+  },
+  {
+   "id": 126,
+   "title": "注意!华源控股将于8月19日召开股东大会",
+   "url": "https://www.nbd.com.cn/rss/zaker/articles/3485749.html"
+  },
+  {
+   "id": 127,
+   "title": "苏州华源控股股份有限公司财报解读:净利润暴增739%,研发投入与现金流状况引关注 ",
+   "url": "https://www.sohu.com/a/878388636_122014422"
+  },
+  {
+   "id": 128,
+   "title": "华源控股:002787华源控股投资者关系管理信息20241016",
+   "url": "https://m.10jqka.com.cn/sn/20241016/49539481.shtml"
+  },
+  {
+   "id": 129,
+   "title": "华源控股:2024年度净利润约7074万元,同比增加739% ",
+   "url": "https://m.nbd.com.cn/articles/2025-04-01/3815589.html"
+  },
+  {
+   "id": 130,
+   "title": "新浪财经客户端",
+   "url": "https://guba.sina.cn/view_16788_32876.html"
+  }
+ ],
+ "scale": [
+  {
+   "metric": "机制纸及纸板产量",
+   "value": "1725.78",
+   "unit": "万吨",
+   "year": "2024",
+   "scope": "全省",
+   "src": [
+    30
+   ]
+  },
+  {
+   "metric": "机制纸及纸板产量同比增长率",
+   "value": "14.21",
+   "unit": "%",
+   "year": "2024",
+   "scope": "全省",
+   "src": [
+    30
+   ]
+  },
+  {
+   "metric": "重点企业机制纸及纸板总产量",
+   "value": "1690",
+   "unit": "万吨",
+   "year": "2024",
+   "scope": "全省",
+   "src": [
+    30
+   ]
+  },
+  {
+   "metric": "重点企业机制纸及纸板产量同比增长率",
+   "value": "6.1",
+   "unit": "%",
+   "year": "2024",
+   "scope": "全省",
+   "src": [
+    30
+   ]
+  },
+  {
+   "metric": "印刷包装产业产值",
+   "value": "1.02",
+   "unit": "亿元",
+   "year": "2024",
+   "scope": "淮安市",
+   "src": [
+    75
+   ]
+  },
+  {
+   "metric": "印刷包装产业产值同比增长率",
+   "value": "19.7",
+   "unit": "%",
+   "year": "2024",
+   "scope": "淮安市",
+   "src": [
+    75
+   ]
+  },
+  {
+   "metric": "印刷包装产业增加值",
+   "value": "0.25",
+   "unit": "亿元",
+   "year": "2024",
+   "scope": "淮安市",
+   "src": [
+    75
+   ]
+  },
+  {
+   "metric": "印刷包装产业增加值同比增长率",
+   "value": "32.6",
+   "unit": "%",
+   "year": "2024",
+   "scope": "淮安市",
+   "src": [
+    75
+   ]
+  }
+ ],
+ "segments": [
+  {
+   "name": "高端印刷包装",
+   "desc": "淮安市已形成以印刷包装为重要主链的现代文化产业体系，推动向智能化、绿色化、高附加值升级。",
+   "src": [
+    52
+   ]
+  },
+  {
+   "name": "数字出版与智能印刷",
+   "desc": "涵盖智能排版、AI内容生成、按需印刷（POD）、AR/VR融合印刷等新兴方向。",
+   "src": [
+    49
+   ]
+  },
+  {
+   "name": "特种印刷材料与基板",
+   "desc": "江苏在柔性基板（PI/PE）领域属全国重点布局区域，广泛应用于柔性电路、可穿戴电子、智能标签等高端印刷电子场景。",
+   "src": [
+    51
+   ]
+  },
+  {
+   "name": "绿色印刷与低碳装备",
+   "desc": "推动印刷业绿色转型，新型显示装备企业投产达效，设备广泛用于高精度印刷式OLED、Micro-LED等先进显示面板制造。",
+   "src": [
+    52
+   ]
+  },
+  {
+   "name": "橡塑新材料",
+   "desc": "宿迁市宿豫区将其列为重点突破的特色优势产业，下游广泛应用于纸基复合包装、造纸用功能性助剂等关键配套环节。",
+   "src": [
+    59
+   ]
+  },
+  {
+   "name": "生物基纤维材料",
+   "desc": "聚焦“以纸代塑、绿链协同”“生物基纤维材料产业链”等议题，与江苏造纸企业向绿色低碳、高值化、功能化转型高度契合。",
+   "src": [
+    58
+   ]
+  }
+ ],
+ "cities": [
+  {
+   "city": "苏州市",
+   "focus": "江苏包装产业最密集、能级最高的区域，形成高端软包装研发制造高地及智能化、绿色化包装与先进材料融合示范区。",
+   "companies": [
+    "江苏彩华包装集团有限公司",
+    "苏州江天包装科技股份有限公司",
+    "苏州博理新材料科技有限公司"
+   ],
+   "src": [
+    66,
+    67
+   ]
+  },
+  {
+   "city": "昆山市",
+   "focus": "依托长三角供应链与外资品牌集群优势，形成高端软包装研发制造高地，集聚上下游吹膜、印刷、检测等配套企业。",
+   "companies": [
+    "江苏彩华包装集团有限公司"
+   ],
+   "src": [
+    66
+   ]
+  },
+  {
+   "city": "吴江区",
+   "focus": "双龙头并进，叠加开发区“4321”现代产业体系部署，正打造智能化、绿色化包装与先进材料融合示范区。",
+   "companies": [
+    "苏州江天包装科技股份有限公司",
+    "苏州博理新材料科技有限公司"
+   ],
+   "src": [
+    67
+   ]
+  },
+  {
+   "city": "江阴市",
+   "focus": "先进封装技术深度赋能高可靠性电子包装、特种功能防护包装等交叉领域，构成江苏包装产业的“技术上游支撑极”。",
+   "companies": [
+    "瀚宇博德科技"
+   ],
+   "src": [
+    72,
+    54
+   ]
+  },
+  {
+   "city": "淮安市",
+   "focus": "已形成以印刷包装为重要主链的现代文化产业体系，推动印刷包装向智能化、绿色化、高附加值升级。",
+   "companies": [
+    "弘晟包装",
+    "金邮纸业"
+   ],
+   "src": [
+    52
+   ]
+  },
+  {
+   "city": "盐城市",
+   "focus": "聚力发展高端印制电路板，建设全球有影响力的高端印制电路板产业集群，并提出发展绿色算力港间接支撑印刷电子产线低碳化改造。",
+   "companies": [],
+   "src": [
+    51
+   ]
+  }
+ ],
+ "listed": [
+  {
+   "company": "华源控股",
+   "code": "002787",
+   "city": "苏州市",
+   "rdExpense": "8925.72万元",
+   "rdRatio": "3.64%",
+   "year": "2024",
+   "src": [
+    121
+   ]
+  }
+ ],
+ "financing": [
+  {
+   "company": "苏州江天包装科技股份有限公司",
+   "event": "投资项目",
+   "amount": "超5亿元",
+   "date": "",
+   "src": [
+    67
+   ]
+  },
+  {
+   "company": "苏州博理新材料科技有限公司",
+   "event": "投资项目",
+   "amount": "5亿元",
+   "date": "",
+   "src": [
+    67
+   ]
+  }
+ ],
+ "policies": [
+  {
+   "level": "部委级",
+   "name": "《关于增强消费品供需适配性进一步促进消费的实施方案》",
+   "issuer": "工业和信息化部、国家发展改革委、商务部、文化和旅游部、市场监管总局",
+   "year": "2025",
+   "gist": "支持企业加强包装设计创新，将绿色低碳包装材料研发应用、可循环快递包装推广作为重点技术路径予以引导。",
+   "src": [
+    1
+   ]
+  },
+  {
+   "level": "部委级",
+   "name": "《关于加快废旧物资循环利用体系建设的指导意见》",
+   "issuer": "国家发展改革委等部门",
+   "year": "",
+   "gist": "将塑料污染治理、快递包装绿色转型、商品过度包装治理列为年度重点任务。",
+   "src": [
+    2
+   ]
+  },
+  {
+   "level": "部委级",
+   "name": "商品过度包装强制性国家标准（GB 23350-2021）",
+   "issuer": "市场监管总局、工信部、国家邮政局等",
+   "year": "2024",
+   "gist": "开展执法专项行动，覆盖食品、化妆品等重点领域，治理商品过度包装。",
+   "src": [
+    3
+   ]
+  },
+  {
+   "level": "部委级",
+   "name": "《关于加强人力资源服务助力制造业高质量发展的意见》",
+   "issuer": "人力资源社会保障部、国家发展改革委、工信部等五部门",
+   "year": "2024",
+   "gist": "支持先进包装机械、智能包装生产线、生物基可降解材料等细分领域企业引育高端人才、共建创新联合体。",
+   "src": [
+    4
+   ]
+  },
+  {
+   "level": "部委级",
+   "name": "《轻工业数字化转型实施方案》",
+   "issuer": "工信部",
+   "year": "",
+   "gist": "将高性能包装材料、数字印刷包装、智能包装装备列为关键配套能力予以扶持。",
+   "src": [
+    4
+   ]
+  },
+  {
+   "level": "部委级",
+   "name": "《纺织服装、食品、家电等重点行业稳增长工作方案》",
+   "issuer": "工信部",
+   "year": "",
+   "gist": "将高性能包装材料、数字印刷包装、智能包装装备列为关键配套能力予以扶持。",
+   "src": [
+    4
+   ]
+  }
+ ],
+ "jobs": [
+  {
+   "title": "包装设计",
+   "city": "",
+   "salary": "¥6,000–¥8,000",
+   "skills": [
+    "包装结构设计",
+    "平面视觉表达",
+    "熟悉材料工艺与打样流程"
+   ],
+   "src": [
+    119
+   ]
+  },
+  {
+   "title": "外贸业务助理",
+   "city": "苏州",
+   "salary": "¥10,000–¥13,000（13薪）",
+   "skills": [
+    "英语CET-4/专四以上",
+    "外贸单证制作",
+    "客户询盘跟进",
+    "订单全流程协调",
+    "Office及外贸系统操作"
+   ],
+   "src": [
+    114
+   ]
+  }
+ ],
+ "demand": [
+  {
+   "text": "张家港市2026年第三季度人力资源市场数据显示，全市岗位总需求53,867个次，其中制造业占比55.42%（29,852人），包装机械、智能包装设备制造及下游食品/医药/日化等包装应用企业是制造业用人主力之一。",
+   "src": [
+    101
+   ]
+  },
+  {
+   "text": "智能制造领域整体人才缺口高达30%以上，在江苏重点产业集群中，机器人工程师、工业互联网架构师、AI视觉检测算法工程师、伺服控制系统调试员等岗位长期空缺。",
+   "src": [
+    108
+   ]
+  },
+  {
+   "text": "企业普遍反映“招不到、留不住”熟练技工，尤其在包装设备装配调试、无菌灌装线维护、热收缩包装机参数优化、GMP洁净车间自动化运维等实操性强的岗位上，持证高级工/技师占比不足35%。",
+   "src": [
+    102
+   ]
+  },
+  {
+   "text": "张家港市人社局调研显示，超65%的存量包装设备进入强制性技术改造或淘汰窗口期，倒逼企业急需具备伺服驱动调试、在线清洗验证（CIP）、HACCP合规操作能力的现场工程师。",
+   "src": [
+    106
+   ]
+  },
+  {
+   "text": "张家港市2026年三季度求人倍率达1.20（即每1位求职者对应1.2个岗位），为近五年最高值，印证制造业岗位“供不应求”的基本面。",
+   "src": [
+    101
+   ]
+  }
+ ],
+ "aliases": [
+  "包装",
+  "印刷",
+  "造纸",
+  "轻工"
+ ]
+}

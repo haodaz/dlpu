@@ -4,6 +4,8 @@
  * 每份说明 = 标签 / 标题 / 一句话 / 怎么用 [小标题, 说明] / 对应会议要求 [会议要求, 本页做法] / 实现落点
  * 新模块 = 元素上加 data-spec + 这里加一份。依据:9.23 会议纪要与修改反馈总结。
  */
+import { BASE_COVERAGE } from '@/lib/industry-report/base/coverage';
+
 export type SpecLayer = 'frame' | 'page';
 export const LAYER_NAME: Record<SpecLayer, string> = { frame: '框架', page: '本页面' };
 
@@ -340,8 +342,10 @@ export const SPEC_NOTES: Record<string, SpecNote> = {
     layer: 'page',
     label: '生成报告',
     title: '输入产业、区域、服务专业,一键生成',
-    lead: '先查该产业的历史检索沉淀;有历史时只检索上次之后的变化,约 2-3 分钟。勾选「忽略历史,全量检索」可强制全量。',
+    lead: '先查代码内预查底库与历史检索沉淀:底库已覆盖的「省份 × 产业」约 1 分钟出报告,内容最扎实;未覆盖的现查(约 3-5 分钟)并回流知识库。下面按省份列出底库覆盖与数据丰富度,演示时优先选「丰富」的组合。',
     points: [
+      ...coveragePoints(),
+      ['评级口径', '七类数据(规模、细分方向、城市分布、上市公司研发、投融资、政策、岗位薪资)中有数据的类数 ≥ 6 且规模指标 ≥ 3 条为「丰富」,≥ 4 类为「一般」,其余「偏薄」。产业名可用别名,如输入「智能制造」「食品」「软件」也能命中。'],
       ['数据来源', '论文:OpenAlex;政策 / 产业集群 / 专业就业方向:优先平方数据;其余:阿里云联网检索;模型:阿里云通义千问。'],
       ['每次生成都会记录', '进入管理员的「产业检索日志」,并沉淀进产业知识库。'],
     ],
@@ -455,3 +459,21 @@ export const SPEC_NOTES: Record<string, SpecNote> = {
     impl: ['src/lib/industry-report/flywheel.ts', 'src/lib/industry-report/store.ts(存储接口,上云时替换实现)'],
   },
 };
+
+// 预查底库覆盖情况(由 scripts/prefetch-industry-base.ts 生成的 coverage.ts),按省份汇总为说明条目
+function coveragePoints(): [string, string][] {
+  const provinces = Array.from(new Set(BASE_COVERAGE.map((c) => c.province)));
+  return provinces.map((prov) => {
+    const rows = BASE_COVERAGE.filter((c) => c.province === prov);
+    const text = (['丰富', '一般', '偏薄'] as const)
+      .map((g) => {
+        const list = rows.filter((c) => c.grade === g);
+        if (!list.length) return '';
+        const items = list.map((c) => (g === '丰富' || !c.missing.length ? c.industry : `${c.industry}(缺${c.missing.join('、')})`));
+        return `${g === '丰富' ? '★ ' : ''}${g}:${items.join('、')}`;
+      })
+      .filter(Boolean)
+      .join(';');
+    return [`${prov} · 底库 ${rows.length} 个产业`, text];
+  });
+}

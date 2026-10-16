@@ -1,0 +1,1109 @@
+{
+ "industry": "新材料",
+ "province": "浙江",
+ "collectedAt": "2026-10-16T11:09:46.661Z",
+ "origin": "base",
+ "sources": [
+  {
+   "id": 1,
+   "title": "政策资讯|工信部举行“标准提升引领原材料工业优化升级”新闻发布会 ",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzIzNzgwNDQwNg==&mid=2247514632&idx=2&sn=e6f08f899c23067ee65d98c1e045baaa&chksm=e9a4875a6ffb090eb1e718c78f1d4f4038109ff70d7efd9ca917bfb361b242a20be7ce42ea34&scene=27"
+  },
+  {
+   "id": 2,
+   "title": "贵州省工业和信息化厅等九部门关于印发贵州省推动建材行业稳增长促转型增效益的实施意见的通知",
+   "url": "http://www.trs.gov.cn/zwgk/zdlyxxgk/gyfz/202410/t20241009_85794289.html"
+  },
+  {
+   "id": 3,
+   "title": "工信部等九部门联合印发《精细化工产业创新发展实施方案(2024—2027年)》",
+   "url": "https://gxj.haibei.gov.cn/xwdt/tzgg/8993061.html"
+  },
+  {
+   "id": 4,
+   "title": "工业和信息化部、国家发展改革委、财政部、生态环境部、农业农村部、应急管理部、中国科学院、中国工程院、国家能源局等九部门关于印发《精细化工产业创新发展 实施方案(2024—2027年)》的通知",
+   "url": "https://fdi.swt.fujian.gov.cn/show-21612.html"
+  },
+  {
+   "id": 5,
+   "title": "先进制造2025|化工新材料产业发展未来可期——2024中国化工新材料产业发展研究(先进制造观察第3期)",
+   "url": "https://finance.sina.cn/2025-03-06/detail-inensrzp6927137.d.html"
+  },
+  {
+   "id": 6,
+   "title": "国新办就2025年上半年工业和信息化发展情况举行新闻发布会",
+   "url": "https://scca.miit.gov.cn/xwdt/xydt/art/2025/art_bb34f77782404d6aa25a3e6d7b7c307a.html"
+  },
+  {
+   "id": 7,
+   "title": "工业和信息化部节能与综合利用司负责同志解读",
+   "url": "http://gdj.gansu.gov.cn/gdj/c109238/202511/174235364.shtml"
+  },
+  {
+   "id": 8,
+   "title": "浙江推进绿色石化和新材料产业集群建设 ",
+   "url": "https://www.zj.gov.cn/art/2024/5/9/art_1554467_60209844.html"
+  },
+  {
+   "id": 9,
+   "title": "浙江推进绿色石化和新材料产业集群建设",
+   "url": "http://www.lanxi.gov.cn/art/2024/5/27/art_1229792291_59299112.html"
+  },
+  {
+   "id": 10,
+   "title": "浙江推进绿色石化和新材料产业集群建设",
+   "url": "https://www.zhuji.gov.cn/art/2024/5/9/art_1229422129_59131520.html"
+  },
+  {
+   "id": 11,
+   "title": "嘉兴市经信工作2023年总结和2024年思路",
+   "url": "https://jxj.jiaxing.gov.cn/art/2024/3/28/art_1229399354_5284415.html"
+  },
+  {
+   "id": 12,
+   "title": "8%,浙江工业的底气和预期 “稳”的基础不断夯实 ",
+   "url": "https://www.zj.gov.cn/art/2024/7/22/art_1554467_60222771.html"
+  },
+  {
+   "id": 13,
+   "title": "2024年1-5月温州经济运行情况 ",
+   "url": "https://wztjj.wenzhou.gov.cn/art/2024/6/26/art_1229429195_4242834.html"
+  },
+  {
+   "id": 14,
+   "title": "浙江省科学技术厅对省十四届人大二次会议温138号建议的答复 ",
+   "url": "https://www.zj.gov.cn/art/2024/7/15/art_1229496093_72787.html"
+  },
+  {
+   "id": 15,
+   "title": "浙江宁波:数字引领 绘制新质生产力壮丽画卷",
+   "url": "https://www.scdsjzx.cn/scdsjzx/qianyanzixun/2024/9/6/83b3849eeea44778814aa3fd23a2890f.shtml"
+  },
+  {
+   "id": 16,
+   "title": "规模位居全国第四 从一个产业园看浙江新材料求“新”之路",
+   "url": "https://cs.zjol.com.cn/kzl/202506/t20250612_31050159.shtml"
+  },
+  {
+   "id": 17,
+   "title": "浙江省药品监督管理局关于印发《2025年浙江省药品监管工作要点》的通知",
+   "url": "https://zlzx.zjamr.zj.gov.cn/news/330600108/12590.html"
+  },
+  {
+   "id": 18,
+   "title": "衢州市发展和改革委员会关于对市政协八届四次会议第053号提案的答复",
+   "url": "http://fgw.qz.gov.cn/col/col1551827/art/2025/art_f0c058022ac6405ab9b4a6c7325c7832.html"
+  },
+  {
+   "id": 19,
+   "title": "浙报整版丨湖州:产业新潮涌 汇聚新动能 ",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzIyMTAyMTc0OQ==&mid=2650403714&idx=1&sn=3937177a559bfa4f1aed76f4093eac93&chksm=8e1b742e174eedc4517c4773dfc366536bdc846f075ac2fcd98835ca76beca018ce3dc1da5d3&scene=27"
+  },
+  {
+   "id": 20,
+   "title": "兰溪市经信局2024年工作总结和2025年工作计划",
+   "url": "http://www.lanxi.gov.cn/art/2025/5/13/art_1229790125_4225918.html"
+  },
+  {
+   "id": 21,
+   "title": "2025年浙江省舟山市新质生产力发展研判:链群筑基强化新质根基,海洋领航促进产业兴盛[图] ",
+   "url": "https://caifuhao.eastmoney.com/news/20250806101815570096290"
+  },
+  {
+   "id": 22,
+   "title": "解码浙江衢州“十五五”产业发展路线图:2030年建成“中国氟谷”",
+   "url": "http://www.cb.com.cn/index/show/bzyc/cv/cv135269281648"
+  },
+  {
+   "id": 23,
+   "title": "2025年浙江省舟山市新质生产力发展研判:链群筑基强化新质根基,海洋领航促进产业兴盛",
+   "url": "https://news.sohu.com/a/921253356_120950077"
+  },
+  {
+   "id": 24,
+   "title": "全国排名第五 宁波制造产值、增加值何以实现突破-新闻中心-中国宁波网",
+   "url": "https://news.cnnb.com.cn/system/2025/02/09/030647094.shtml"
+  },
+  {
+   "id": 25,
+   "title": "浙江省经济和信息化厅关于省政协十三届四次会议第698号提案的答复 A ",
+   "url": "https://www.zj.gov.cn/col/col1229709047/art/2026/art_82fb9191ef5f0c0566f5d5ba8031b001.html"
+  },
+  {
+   "id": 26,
+   "title": "浙江6部门印发方案,聚力打造海洋新材料新兴产业",
+   "url": "https://zj87.jxt.zj.gov.cn/zlzq/web/views/article/news/detail.html?id=304785"
+  },
+  {
+   "id": 27,
+   "title": "浙江省新材料产业发展“十四五”规划",
+   "url": "https://baike.baidu.com/item/浙江省新材料产业发展“十四五”规划/59073823"
+  },
+  {
+   "id": 28,
+   "title": "浙江省人民政府办公厅关于印发浙江省加快新材料产业发展行动计划(2019-2022年)的通知 ",
+   "url": "https://www.zj.gov.cn/art/2019/4/24/art_1229019365_61770.html"
+  },
+  {
+   "id": 29,
+   "title": "浙江省人民政府办公厅关于石化化工行业转型升级的实施意见(2026—2028年) ",
+   "url": "https://www.zj.gov.cn/col/col1229017139/art/2026/art_f8b860203b7c447ab8ff9dc1096fc237.html"
+  },
+  {
+   "id": 30,
+   "title": "浙江省经济和信息化厅关于开展2025年度浙江省重点首批次新材料应用示范指导目录和工程化攻关指导目录征集工作的通知",
+   "url": "https://zj87.jxt.zj.gov.cn/zlzq/web/views/article/news/detail.html?id=275236"
+  },
+  {
+   "id": 31,
+   "title": "衢州市人民政府办公室关于印发数字衢州“十五五”实施方案的通知(衢政办发〔2026〕16号) ",
+   "url": "https://www.qz.gov.cn/col/col1229039949/2026/d8q/sfbwj/art/2026/art_cc139e1565104671a00211607f04dfc6.html"
+  },
+  {
+   "id": 32,
+   "title": "关于印发《浙江省加快新场景建设应用推动科技和产业高质量发展行动方案(2026-2027年)》的通知",
+   "url": "https://zj87.jxt.zj.gov.cn/zjhqpt/views/policy/detail.html?id=60848"
+  },
+  {
+   "id": 33,
+   "title": "浙江省国民经济和社会发展第十五个五年规划纲要(2026年1月17日浙江省第十四届人民代表大会第四次会议通过) ",
+   "url": "https://www.xiuzhou.gov.cn/col/col1229411710/art/2026/art_ae4cb39b7373476aaac5dda10c2eabd6.html"
+  },
+  {
+   "id": 34,
+   "title": "关于《浙江省新材料中试平台发展和中试项目建设管理办法(试行)》政策解读",
+   "url": "https://jxt.zj.gov.cn/art/2025/7/23/art_1229123409_2560442.html"
+  },
+  {
+   "id": 35,
+   "title": "“浙”里何以聚新材? — 浙江开发区新材料产业发展纪实 ",
+   "url": "https://news.sohu.com/a/907719824_120109369"
+  },
+  {
+   "id": 36,
+   "title": "年度回顾与展望 | 中国新材料产业迎来爆发式增长",
+   "url": "http://finance.sina.cn/2025-01-14/detail-ineexcef8911522.d.html"
+  },
+  {
+   "id": 37,
+   "title": "【友情链接】|“十五五”新材料产业发展规划(2025-2030年)",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzU5OTI0ODY2Mg==&mid=2247626728&idx=5&sn=c0ffaac23d2d0c88e9adb8e4a7a4afe6&chksm=ff98865779e43b6fc4e1ffb70a0efce2660fba1630863a557bda7f0e20709f423e970d9cf6b9&scene=27"
+  },
+  {
+   "id": 38,
+   "title": "2025年激光产业迎投资热潮,重大项目接连落地",
+   "url": "https://weibo.com/ttarticle/p/show?id=2309405131765147893950"
+  },
+  {
+   "id": 39,
+   "title": "2025年激光产业迎投资热潮,重大项目接连落地 ",
+   "url": "https://business.sohu.com/a/856829757_121387316"
+  },
+  {
+   "id": 40,
+   "title": "总投资超1086亿,BOE、维信诺、乾照光电等27大MLED、OLED新型显示项目6月最新进展",
+   "url": "https://cj.sina.com.cn/article/norm_detail?url=https%3A%2F%2Ffinance.sina.com.cn%2Ftech%2Froll%2F2025-07-02%2Fdoc-infczzsk8056989.shtml"
+  },
+  {
+   "id": 41,
+   "title": "水性环保工艺低成本生产纳米气凝胶材料,「圣润新材料」获北极光创投Pre-A轮融资|36氪首发",
+   "url": "https://cj.sina.cn/articles/view/5953190035/162d678930190140da"
+  },
+  {
+   "id": 42,
+   "title": "锚定现代化 改革再深化·浙江制造向“新”力(一)集成电路“强筋壮骨” 浙产芯片“攀高逐新”",
+   "url": "https://www.hhtznews.com.cn/content/2024-08/05/content_9712281.htm"
+  },
+  {
+   "id": 43,
+   "title": "【通知】“2024绿色先进氟材料技术国际会议”将于10月底在浙江金华召开 ",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzI2NDUwMzkxMA==&mid=2247519126&idx=1&sn=52902c6e3fb52dc375bf43709332e632&chksm=eb120e1e1f05833857722f41bb6ec191b0b54c87670e5e67432513bb046e3d15979b2a8e8d44&scene=27"
+  },
+  {
+   "id": 44,
+   "title": "“2024胡润中国新材料企业百强榜”出炉,三棵树、华秦科技等榜上有名",
+   "url": "http://finance.sina.cn/2024-08-02/detail-inchhnux1934056.d.html"
+  },
+  {
+   "id": 45,
+   "title": "抢抓机遇期 科创板超80家新材料公司助力新质生产力加速发展",
+   "url": "https://wap.eastmoney.com/a/202403143011358381.html"
+  },
+  {
+   "id": 46,
+   "title": "四个超50亿,多个半导体项目最新进展披露! ",
+   "url": "https://business.sohu.com/a/760146788_117925"
+  },
+  {
+   "id": 47,
+   "title": "江苏着力推动新材料产业高质量发展",
+   "url": "https://jszwb.jiangsu.gov.cn/art/2024/10/17/art_71797_11389524.html"
+  },
+  {
+   "id": 48,
+   "title": "行业动态",
+   "url": "http://www.acri.org.cn/industryNews/details?id=1&num=20&newListID=35808"
+  },
+  {
+   "id": 49,
+   "title": "2024年中国建材行业研究报告 ",
+   "url": "https://www.sohu.com/a/786353017_99995154"
+  },
+  {
+   "id": 50,
+   "title": "关于发布上海市2024年度“科技创新行动计划”集成电路领域基础研究项目申报指南的通知 ",
+   "url": "https://stcsm.sh.gov.cn/zwgk/kyjhxm/xmsb/20240919/38be7f08e543400b964b1d502deb638b.html"
+  },
+  {
+   "id": 51,
+   "title": "https://new.qq.com/rain/a/20261016A057MI00",
+   "url": "https://new.qq.com/rain/a/20261016A057MI00"
+  },
+  {
+   "id": 52,
+   "title": "2026先进纤维材料创新大会",
+   "url": "https://baike.baidu.com/item/2026先进纤维材料创新大会/69326591"
+  },
+  {
+   "id": 53,
+   "title": "上虞:打造现代化产业集群 擦亮先进制造业基地标识",
+   "url": "https://jxt.zj.gov.cn/col/col1562850/art/2026/art_71c1be964c084922800898ba48797364.html"
+  },
+  {
+   "id": 54,
+   "title": "浙江:培育世界级新材料产业集群 ",
+   "url": "https://stock.10jqka.com.cn/20260310/c675184783.shtml"
+  },
+  {
+   "id": 55,
+   "title": "2026先进纤维材料创新大会:专家齐聚共绘纺织产业新蓝图 ",
+   "url": "https://tech.gmw.cn/2026-05/28/content_38795672.htm"
+  },
+  {
+   "id": 56,
+   "title": "新材料和新能源赛道:前沿新材料行业深度报告",
+   "url": "http://www.zcni.zju.edu.cn/redir.php?catalog_id=245&object_id=22054"
+  },
+  {
+   "id": 57,
+   "title": "向新聚力 融合致远——2026先进纤维材料创新大会为产业高质量发展注入新动能",
+   "url": "https://www.texleader.com.cn/article-35516.html"
+  },
+  {
+   "id": 58,
+   "title": "迭代“135N”集群体系!嘉兴这场发布会亮出“硬指标” ",
+   "url": "https://news.sohu.com/a/1048159179_121123876"
+  },
+  {
+   "id": 59,
+   "title": "2026年全球及中国取向硅钢产业链、市场规模、竞争格局及未来展望",
+   "url": "https://web.toutiao.com/article/7641799020347752987/"
+  },
+  {
+   "id": 60,
+   "title": "沪市上市公司公告(4月9日)",
+   "url": "https://stock.10jqka.com.cn/20260409/c675851268.shtml"
+  },
+  {
+   "id": 61,
+   "title": "全省“优等”,海盐新增5家→",
+   "url": "https://finance.sina.cn/2026-10-15/detail-inivhyan4568888.d.html"
+  },
+  {
+   "id": 62,
+   "title": "金华厂房出售性价比盘点|2026年5个值得考察的产业园区 ",
+   "url": "https://m.sohu.com/a/1087208489_122841809"
+  },
+  {
+   "id": 63,
+   "title": "浙江德清地区新材料产业的发展现状分析 ",
+   "url": "https://news.sohu.com/a/1040310322_122912616"
+  },
+  {
+   "id": 64,
+   "title": "2026金华性价比厂房出售公司推荐:5家企业实测数据对比 ",
+   "url": "https://m.sohu.com/a/1087209060_122841809"
+  },
+  {
+   "id": 65,
+   "title": "智造新城入选全省人工智能赋能制造业试点名单",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzA5Mjg1MDYzOQ==&mid=2651281254&idx=1&sn=1afbf687aaa238de28c843c4e45d59e9&chksm=8aa88e0cf7d3678df56c0ce440a5f5bc12116153075713171e2326fb96bd716c44e234043971&scene=27"
+  },
+  {
+   "id": 66,
+   "title": "浙江省经济和信息化厅关于公布2025年省级特色产业园名单的通知",
+   "url": "https://jxt.zj.gov.cn/col/col1229886900/art/2026/art_9c787058b1244df1aff478126ce32943.html"
+  },
+  {
+   "id": 67,
+   "title": "江山经济开发区",
+   "url": "https://www.jiangshan.gov.cn/col/col1229091884/art/2026/art_48ccec64e79f408eb31190492a26574d.html"
+  },
+  {
+   "id": 68,
+   "title": "2026年政府工作报告 ",
+   "url": "https://www.shangyu.gov.cn/col/col1229416174/art/2026/art_2cf98e8e778c4330bb1b7a99e43c4518.html"
+  },
+  {
+   "id": 69,
+   "title": "金山与云南宁洱携手四十载,300多个帮扶项目“开花结果” ",
+   "url": "https://www.shanghai.gov.cn/nw15343/20261015/8d0225cb2a80427ea6f37b977aaef736.html"
+  },
+  {
+   "id": 70,
+   "title": "规上企业99家!重大项目接连落地!柳州做强钢铁及关键金属新材料产业",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzA5ODA1MzkzMA==&mid=2650271366&idx=1&sn=eaafc630f806c45bdc3380f2b23aed29&chksm=89e6f9a83eacdacfc310719a59cb3da821b6831eae0dbf8992e34c2db2ae6bd45ec1b2072ab0&scene=27"
+  },
+  {
+   "id": 71,
+   "title": "对钦北区政协七届五次会议第2025075号提案的答复",
+   "url": "http://www.qinbei.gov.cn/zfxxgk/fdzdgk/jytadf/zxta/t27242228.shtml"
+  },
+  {
+   "id": 72,
+   "title": "从“书架”到“货架” 耐心资本推动中国新材料产业突围",
+   "url": "https://finance.cnr.cn/gundong/20250526/t20250526_527185342.shtml"
+  },
+  {
+   "id": 73,
+   "title": "洪波“甬”起——宁波新材料从“看不见的突破”迈向“看得见的跃升”",
+   "url": "http://news.10jqka.com.cn/20250729/c669963524.shtml"
+  },
+  {
+   "id": 74,
+   "title": "洪波“甬”起——宁波新材料从“看不见的突破”迈向“看得见的跃升”",
+   "url": "https://paper.cnstock.com/html/2025-07/29/content_2099261.htm"
+  },
+  {
+   "id": 75,
+   "title": "浙江日报 数字报纸",
+   "url": "https://zjrb.zjol.com.cn/html/2025-05/10/content_3821157.htm"
+  },
+  {
+   "id": 76,
+   "title": "衢州发展的金融科技投资和金融投资,以及它们之间的协同效应 ",
+   "url": "https://caifuhao.eastmoney.com/news/20250715165312641660550"
+  },
+  {
+   "id": 77,
+   "title": "财经下午茶20251219 | 上证指数涨0.36%",
+   "url": "https://stock.10jqka.com.cn/20251219/c673350360.shtml"
+  },
+  {
+   "id": 78,
+   "title": "操盘必读:影响股市利好或利空消息_2025年5月26日_财经新闻",
+   "url": "http://finance.sina.com.cn/stock/cpbd/2025-05-26/doc-inexvvxm8119964.shtml"
+  },
+  {
+   "id": 79,
+   "title": "永杰新材料股份有限公司",
+   "url": "https://baike.baidu.com/item/永杰新材料股份有限公司/20008326"
+  },
+  {
+   "id": 80,
+   "title": "浙江新和成股份有限公司",
+   "url": "https://baike.baidu.com/item/浙江新和成股份有限公司/7704986"
+  },
+  {
+   "id": 81,
+   "title": "皇冠新材(001381)新股概览,10月19日开始网上申购 ",
+   "url": "https://www.sohu.com/a/1088526352_115377"
+  },
+  {
+   "id": 82,
+   "title": "惠同新材:2026年半年度报告 ",
+   "url": "http://money.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?id=12486819&stockid=920751"
+  },
+  {
+   "id": 83,
+   "title": "(26-0061)浙江婺城经济开发区新材料产业园项目监理中标结果公告[A3300000090006470001001]",
+   "url": "https://ggzy.zj.gov.cn/jyxxgk/002001/002001005/20261016/9a5315b5-fb37-40fa-978d-d33a99a3df16.html"
+  },
+  {
+   "id": 84,
+   "title": "> 齐翔腾达个股数据 ",
+   "url": "https://data.eastmoney.com/stockdata/002408.html"
+  },
+  {
+   "id": 85,
+   "title": "> 锡业股份个股数据 ",
+   "url": "https://data.eastmoney.com/stockdata/000960.html"
+  },
+  {
+   "id": 86,
+   "title": "> 飞凯材料个股数据 ",
+   "url": "https://data.eastmoney.com/stockdata/300398.html"
+  },
+  {
+   "id": 87,
+   "title": "安宁股份:关于四川安宁铁钛股份有限公司申请向特定对象发行股票的第二轮审核问询函之回复报告(修订稿) ",
+   "url": "http://money.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?id=9635827&stockid=002978"
+  },
+  {
+   "id": 88,
+   "title": "前海开源新经济灵活配置混合型证券投资基金",
+   "url": "https://baike.baidu.com/item/前海开源新经济灵活配置混合型证券投资基金/19702246"
+  },
+  {
+   "id": 89,
+   "title": "先进材料",
+   "url": "https://baike.baidu.com/item/先进材料/68153419"
+  },
+  {
+   "id": 90,
+   "title": "浙江制造精品",
+   "url": "https://baike.baidu.com/item/浙江制造精品/69351633"
+  },
+  {
+   "id": 91,
+   "title": "政协委员提案",
+   "url": "https://fzggw.jiaxing.gov.cn/col/col1229500259/art/2026/art_5df8f33d469f4f5a84c9ab70318a90d6.html"
+  },
+  {
+   "id": 92,
+   "title": "实施2025年生产制造方式转型工业领域设备更新示范项目通知",
+   "url": "https://hqpt.jxt.zj.gov.cn/zjhqpt/views/policy/detail.html?id=56182"
+  },
+  {
+   "id": 93,
+   "title": "韶山市人民政府关于印发《韶山市国民经济和社会发展第十五个五年规划纲要》的通知 韶政发〔2026〕5号 ",
+   "url": "https://www.shaoshan.gov.cn/11698/11707/content_1458248.html"
+  },
+  {
+   "id": 94,
+   "title": "美畅股份:2026年半年度报告 ",
+   "url": "http://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?stockid=300861&id=12538181"
+  },
+  {
+   "id": 95,
+   "title": "德清县人民政府办公室关于印发强化企业创新主体地位 推动创新链产业链融合发展的实施方案的通知",
+   "url": "https://www.deqing.gov.cn/col/col1229877279/art/2025/art_1344334387.html"
+  },
+  {
+   "id": 96,
+   "title": "浙江省绿色低碳转型促进条例",
+   "url": "https://baike.baidu.com/item/浙江省绿色低碳转型促进条例/64977884"
+  },
+  {
+   "id": 97,
+   "title": "浙江省推动消费品以旧换新行动方案",
+   "url": "https://baike.baidu.com/item/浙江省推动消费品以旧换新行动方案/64364279"
+  },
+  {
+   "id": 98,
+   "title": "湖州 应用工程师 招聘(工资待遇要求) ",
+   "url": "https://www.jobui.com/company/11473423/salary/j/yingyonggongchengshi/"
+  },
+  {
+   "id": 99,
+   "title": "浙江茵创新材料科技有限公司2026年10月公开招聘公告",
+   "url": "https://zj.huatu.com/2026/1009/1971346.html"
+  },
+  {
+   "id": 100,
+   "title": "嘉兴友山科技会计本科招聘(工资待遇要求)| 浙江友山新材料科技有限公司 - 职友集",
+   "url": "https://www.jobui.com/company/21533934/salary/j/huiji/jiaxing/edu2/"
+  },
+  {
+   "id": 101,
+   "title": "浙江海利得新材料股份有限公司招聘公告",
+   "url": "https://hg.zzuli.edu.cn/2023/0413/c4433a284921/page.htm"
+  },
+  {
+   "id": 102,
+   "title": "“云上招聘”送岗位丨岗位多、机会大!找工作看这里~ ",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzA3NzAyODM2Ng==&mid=2649650140&idx=1&sn=301dfdee4b6c1833385a52a4896905a9&chksm=87429ebdb03517ab77421389996f7eda195f13017b66a8e24980b76d8d258152f15a90ecca29&scene=27"
+  },
+  {
+   "id": 103,
+   "title": "3-5年经验浙江不粘涂料公司采购本科工资待遇",
+   "url": "https://www.jobui.com/salary/zhejiang-caigou/edu2/exp2/ind-buzhantuliao/"
+  },
+  {
+   "id": 104,
+   "title": "常山这家公司招人!月薪过万、食宿全免",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzA5ODkyNTUxMg==&mid=2651629672&idx=1&sn=2ac3947d31967ec756894575d9c2eab6&scene=27&chksm=13bdd46e66220b33d4c3c7884ebfbab993d42fff4654b4d34cc737b9511f76cba8df7112cc79&scene=27"
+  },
+  {
+   "id": 105,
+   "title": "工会送岗位 | 最近这些单位正在招人!",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzI0NDE0OTY5OA==&mid=2650942506&idx=3&sn=c454ddde6d5cffd87d91078aebb1a29b&chksm=f30ab14ad97824bf468223d69ea7052069dc5984044ab273aa3fd3b163d2ae3a0851a4edb207&scene=27"
+  },
+  {
+   "id": 106,
+   "title": "浙江驭能 贴合技术员 招聘(工资待遇要求) 新职位提醒",
+   "url": "https://www.jobui.com/company/16635742/salary/j/tiehejishuyuan/"
+  },
+  {
+   "id": 107,
+   "title": "凯鑫森 操作工 招聘(工资待遇要求) ",
+   "url": "https://m.jobui.com/company/23703304/salary/j/caozuogong/"
+  },
+  {
+   "id": 108,
+   "title": "百万缺口、一将难求:四大新兴支柱产业打响“人才争夺战” ",
+   "url": "https://news.sohu.com/a/1052512856_115321"
+  },
+  {
+   "id": 109,
+   "title": "“平均招聘月薪20804元”,这类人才紧缺!",
+   "url": "http://finance.sina.com.cn/jjxw/2026-04-23/doc-inhvnhra5049457.shtml"
+  },
+  {
+   "id": 110,
+   "title": "急,“平均月薪20804元”,这类人才紧缺",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzAwMjAwMDMwMg==&mid=2651936808&idx=1&sn=1546458f5ec6ace5c79b25005a463fb2&chksm=807c89613215bacfeaf4114df6931613af51be69d49b79accc542f96b61e1cfc25ff0415eb71&scene=27"
+  },
+  {
+   "id": 111,
+   "title": "急!“平均月薪20804元”,这类人才紧缺",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzAxMzM1NTU4Nw==&mid=2651046917&idx=2&sn=23647dfb79610aa562ad11b0603ee7ae&chksm=81a9bc3353502b7ca89055adb6364bf5bb5249e40a2733d88cee6afd5835fd3079db2f0e2ea5&scene=27"
+  },
+  {
+   "id": 112,
+   "title": "新质产业人才紧缺 核心专业需求领跑春招",
+   "url": "https://gdjy.axhu.edu.cn/contents/3428/265389.html"
+  },
+  {
+   "id": 113,
+   "title": "急!“平均月薪20804元”,这类人才紧缺",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzA4MjM3MjYwNw==&mid=2652819148&idx=1&sn=f85e61fb29a3118a92ae1148b23ef101&chksm=85cfdba6f3824a3ae83354afbec07a574bc19dcb0d131f948c9ecfb4dca4c9d940cbd6bf7f74&scene=27"
+  },
+  {
+   "id": 114,
+   "title": "急,“平均月薪20804元”,这类人才紧缺",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzA4MjQxNjQzMA==&mid=2769053412&idx=1&sn=61af84e7c2e64735843302fd63671432&chksm=be7d07f3c25c40cbcc119e5be8eaad12f50e4de59d31ebeb1d0a0c8342b7c2560052832e5571&scene=27"
+  },
+  {
+   "id": 115,
+   "title": "平均月薪超2万元!这类人才紧缺",
+   "url": "https://mp.weixin.qq.com/s?__biz=MjM5MTQzNzgyMA==&mid=2650758174&idx=1&sn=3581934d51b9a2854546b796e81b6b1c&chksm=bf136a6b29cae5b0c4bd0f7419089fdedbd54d84ca1c3e6ffcd8d9a621c1ee50ec96b33ec210&scene=27"
+  },
+  {
+   "id": 116,
+   "title": "新材料产业的人才困境与对策 ",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzAxMjY2OTkxOA==&mid=2652042936&idx=3&sn=41542d2df8a9ae380d17b7b1efab18f4&chksm=80481009b73f991f106017ed0350d17ce10778ba79b294a66d9de05f6b2df42874a3609f41c3&scene=27"
+  },
+  {
+   "id": 117,
+   "title": "于丽丽",
+   "url": "https://baike.baidu.com/item/于丽丽/62581162"
+  },
+  {
+   "id": 118,
+   "title": "2026年怀亮等国内优质工程塑料生产企业名单梳理 ",
+   "url": "https://www.sohu.com/a/1087843845_122694503"
+  },
+  {
+   "id": 119,
+   "title": "2026-2032年中国氨基酸行业市场运营格局及竞争战略分析报告",
+   "url": "https://zhuanlan.zhihu.com/p/1992994754049372823"
+  },
+  {
+   "id": 120,
+   "title": "2026年预糊化淀粉供应商盘点 宏元纤维素等企业梳理 ",
+   "url": "https://news.sohu.com/a/1087857807_122615712"
+  },
+  {
+   "id": 121,
+   "title": "皇冠新材核心产品单价持续下行:研发费用率弱同行,分红1.58亿再补流1亿",
+   "url": "https://stock.stockstar.com/IG2026020900016341.shtml"
+  },
+  {
+   "id": 122,
+   "title": "皇冠新材核心产品单价下行:研发费用率弱同行,分红1.58亿再补流",
+   "url": "https://zhuanlan.zhihu.com/p/2003969260662306231"
+  },
+  {
+   "id": 123,
+   "title": "IPO专题:新股精要-国内功能性复合材料领先厂商皇冠新材",
+   "url": "https://stock.finance.sina.com.cn/stock/go.php/vReport_Show/kind/search/rptid/845174642761/index.phtml"
+  },
+  {
+   "id": 124,
+   "title": "皇冠新材(001381):功能性胶粘材料领先企业 下游领域多点开花",
+   "url": "https://stock.finance.sina.com.cn/stock/go.php/vReport_Show/kind/search/rptid/845290241357/index.phtml"
+  },
+  {
+   "id": 125,
+   "title": "皇冠新材料科技股份有限公司",
+   "url": "https://baike.baidu.com/item/皇冠新材料科技股份有限公司/63473058"
+  },
+  {
+   "id": 126,
+   "title": "皇冠新材IPO落地 产品升级+市占率超10%驱动估值提升",
+   "url": "https://www.cfi.net.cn/p20261013000470.html"
+  },
+  {
+   "id": 127,
+   "title": "皇冠新材IPO落地 产品升级+市占率超10%驱动估值提升",
+   "url": "https://sj.cfi.cn/newspage.aspx?id=20261013000470&client=phone"
+  },
+  {
+   "id": 128,
+   "title": "皇冠新材IPO:业绩增速放缓,营收复合增长率更垫底同行!毛利率逆同行下滑趋势走高,大手笔分红1.58亿后又补流1亿元必要性存疑",
+   "url": "http://finance.sina.com.cn/roll/2025-12-02/doc-infzmiey2118746.shtml"
+  },
+  {
+   "id": 129,
+   "title": "上海起帆电缆股份有限公司 关于 2024 年半年度募集资金存放与使用情况的专项报告",
+   "url": "https://pdf.dfcfw.com/pdf/H2_AN202408291639565948_1.pdf"
+  },
+  {
+   "id": 130,
+   "title": "中材/丰电金凯威/深圳通微/阿泰可 | 2024势银氢燃年会赞助商②",
+   "url": "https://zhuanlan.zhihu.com/p/5549906139"
+  },
+  {
+   "id": 131,
+   "title": "IPO审4过4",
+   "url": "https://xueqiu.com/8336960922/310784397"
+  },
+  {
+   "id": 132,
+   "title": "【IPO金选】永杰新材 净利润波幅较大 双瑞股份 应收账款占比高",
+   "url": "https://www.jrtzb.com.cn/405gsfx/202410/82637682.html"
+  },
+  {
+   "id": 133,
+   "title": "永杰新材 净利润波幅较大 双瑞股份 应收账款占比高 ",
+   "url": "https://www.sohu.com/a/821379585_387251"
+  },
+  {
+   "id": 134,
+   "title": "永杰新材净利润波幅较大双瑞股份应收账款占比高 ",
+   "url": "https://caifuhao.eastmoney.com/news/20241029080622520126180"
+  },
+  {
+   "id": 135,
+   "title": "IPO金选|一家净利润波幅较大,应收账款占比高……本周两公司闯关情况引关注",
+   "url": "https://www.163.com/dy/article/JFK6IKMC0530S72V.html"
+  },
+  {
+   "id": 136,
+   "title": "IPO金选|一家净利润波幅较大,应收账款占比高……本周两公司闯关情况引关注 ",
+   "url": "https://www.sohu.com/a/821341534_387251"
+  },
+  {
+   "id": 137,
+   "title": "同日4家IPO企业上会,2家曾被抽中现场检查!",
+   "url": "http://finance.sina.com.cn/roll/2024-10-28/doc-incuakcf9784452.shtml"
+  },
+  {
+   "id": 138,
+   "title": "江南新材过会:今年IPO过关第46家 中信证券过4单",
+   "url": "http://news.10jqka.com.cn/20241116/c663595634.shtml"
+  },
+  {
+   "id": 139,
+   "title": "宏海科技过会:今年IPO过关第49家 中信建投过7单",
+   "url": "https://finance.sina.cn/2024-11-30/detail-incxvpns7751160.d.html"
+  },
+  {
+   "id": 140,
+   "title": "IPO逐渐常态化,本周4家IPO上会审核!",
+   "url": "http://finance.sina.com.cn/roll/2024-10-28/doc-incuacvi9867239.shtml"
+  }
+ ],
+ "scale": [
+  {
+   "metric": "高端新材料产业集群营业收入",
+   "value": "7600亿元",
+   "unit": "亿元",
+   "year": "2024",
+   "scope": "全省",
+   "src": [
+    8,
+    9,
+    10
+   ]
+  },
+  {
+   "metric": "嘉兴市新材料产业产值",
+   "value": "2350亿元",
+   "unit": "亿元",
+   "year": "2023",
+   "scope": "嘉兴市",
+   "src": [
+    11
+   ]
+  },
+  {
+   "metric": "杭州市规上新材料企业工业总产值",
+   "value": "1605.4亿元",
+   "unit": "亿元",
+   "year": "2024",
+   "scope": "杭州市",
+   "src": [
+    16
+   ]
+  },
+  {
+   "metric": "上虞先进高分子材料产业平台规上工业产值",
+   "value": "1096.8亿元",
+   "unit": "亿元",
+   "year": "2024",
+   "scope": "绍兴市上虞区",
+   "src": [
+    17
+   ]
+  },
+  {
+   "metric": "衢州市新材料产值",
+   "value": "接近千亿元",
+   "unit": "亿元",
+   "year": "2024",
+   "scope": "衢州市",
+   "src": [
+    18
+   ]
+  },
+  {
+   "metric": "杭州湾上虞经济技术开发区先进高分子新材料产业总产值",
+   "value": "491.22亿元",
+   "unit": "亿元",
+   "year": "2024",
+   "scope": "杭州湾上虞经济技术开发区",
+   "src": [
+    35
+   ]
+  },
+  {
+   "metric": "浙江省集成电路产业营业收入",
+   "value": "首超1000亿元",
+   "unit": "亿元",
+   "year": "2024",
+   "scope": "全省",
+   "src": [
+    42
+   ]
+  },
+  {
+   "metric": "衢州智造新城新材料产业链产值",
+   "value": "860亿元",
+   "unit": "亿元",
+   "year": "2025",
+   "scope": "衢州智造新城",
+   "src": [
+    65
+   ]
+  }
+ ],
+ "segments": [
+  {
+   "name": "新一代信息技术材料",
+   "desc": "包括集成电路用溅射靶材、12英寸硅单晶棒、先进半导体材料、新型显示材料。",
+   "src": [
+    28
+   ]
+  },
+  {
+   "name": "生物医药材料",
+   "desc": "重点发展高端功能植/介入医用材料。",
+   "src": [
+    28
+   ]
+  },
+  {
+   "name": "高端装备材料",
+   "desc": "涵盖特种合金、航空发动机高温合金、飞机复合材料。",
+   "src": [
+    28,
+    25
+   ]
+  },
+  {
+   "name": "新能源与交通材料",
+   "desc": "包括新能源电池材料（钴新材料、锂电正负极）、高性能磁性材料、碳纤维及复合材料。",
+   "src": [
+    28,
+    27
+   ]
+  },
+  {
+   "name": "先进纤维材料",
+   "desc": "聚焦生物基纤维、高性能液晶聚芳酯纤维、低原纤化莱赛尔纤维等方向。",
+   "src": [
+    52,
+    55,
+    51
+   ]
+  },
+  {
+   "name": "海洋新材料",
+   "desc": "包括新型深海结构材料、绿色长效防护材料、智能仿生功能材料、海洋特种化工材料。",
+   "src": [
+    26
+   ]
+  }
+ ],
+ "cities": [
+  {
+   "city": "衢州",
+   "focus": "氟硅新材料核心高地，全省“415X”高端新材料集群核心引擎。",
+   "companies": [
+    "巨化集团",
+    "氟化公司",
+    "电化厂"
+   ],
+   "src": [
+    65
+   ]
+  },
+  {
+   "city": "湖州",
+   "focus": "金属软磁与精细化工双强，主攻高牌号硅钢、软磁合金及再生低碳纤维。",
+   "companies": [
+    "金磊高牌号软磁",
+    "汇隆新材料",
+    "慧金金属雾化制粉",
+    "维利特低空防护新材料",
+    "五龙新材",
+    "润禾有机硅",
+    "科赛新材料"
+   ],
+   "src": [
+    63
+   ]
+  },
+  {
+   "city": "嘉兴",
+   "focus": "绿色制造标杆集群，涵盖锂电、特种钢材、通讯连接器等领域。",
+   "companies": [
+    "浙江冠宇电池有限公司",
+    "浙江中达新材料股份有限公司",
+    "安费诺永亿（海盐）通讯电子",
+    "嘉兴光泰照明",
+    "浙商中拓新材料"
+   ],
+   "src": [
+    61
+   ]
+  },
+  {
+   "city": "金华",
+   "focus": "镁铝新材料智造新势力，打造新材料产业化载体。",
+   "companies": [
+    "浙江甘石新材料科技有限公司"
+   ],
+   "src": [
+    62,
+    64
+   ]
+  },
+  {
+   "city": "江山",
+   "focus": "新材料项目加速落地，招引新能源、新材料类重大项目。",
+   "companies": [
+    "江汇新材料"
+   ],
+   "src": [
+    67
+   ]
+  },
+  {
+   "city": "宁波",
+   "focus": "专精特新与科创型载体密集，承载新材料研发转化功能。",
+   "companies": [
+    "宁波中意启迪科技城",
+    "甬港现代科技园"
+   ],
+   "src": [
+    66
+   ]
+  }
+ ],
+ "listed": [],
+ "financing": [
+  {
+   "company": "浙江祖海新材料有限公司",
+   "event": "签约年产5万吨特种合成材料项目",
+   "amount": "总投资额33.5亿元",
+   "date": "2025年",
+   "src": [
+    71
+   ]
+  },
+  {
+   "company": "衢州市衢发瑞新能源材料有限公司",
+   "event": "投资项目",
+   "amount": "总投资50亿元",
+   "date": "2025年",
+   "src": [
+    76
+   ]
+  }
+ ],
+ "policies": [
+  {
+   "level": "部委级",
+   "name": "《精细化工产业创新发展实施方案（2024—2027年）》",
+   "issuer": "工业和信息化部、国家发展改革委、财政部、生态环境部、农业农村部、应急管理部、中国科学院、中国工程院、国家能源局",
+   "year": "2024",
+   "gist": "将精细化学品和化工新材料统称为“精细化工”，定位为石化化工行业高质量发展的“关键引擎”，提出攻克关键产品、突破绿色化智能化技术、培育世界一流企业及专精特新企业等目标。",
+   "src": [
+    3
+   ]
+  },
+  {
+   "level": "国家级",
+   "name": "《2024—2025年节能降碳行动方案》",
+   "issuer": "国务院",
+   "year": "2024",
+   "gist": "推动化工新材料在节能材料、储能技术、新能源设备中的应用，特别强调光伏组件封装材料、新能源汽车用高性能纤维与电池材料等方向的需求增长。",
+   "src": [
+    2
+   ]
+  },
+  {
+   "level": "部委级",
+   "name": "《标准提升引领原材料工业优化升级行动方案（2025—2027年）》",
+   "issuer": "工业和信息化部联合生态环境部、应急管理部、国家标准化管理委员会等部门",
+   "year": "2024",
+   "gist": "以国家标准提升为抓手，推动包括先进金属材料、无机非金属材料、化工新材料在内的原材料工业整体升级，强化新材料在质量、能效、安全、环保等方面的标准化引领。",
+   "src": [
+    1
+   ]
+  },
+  {
+   "level": "省级",
+   "name": "《浙江省推动大规模设备更新和消费品以旧换新若干举措》",
+   "issuer": "浙江省政府",
+   "year": "2024",
+   "gist": "将高端新材料领域列为设备更新重点支持方向，涵盖先进无机非金属、钢铁合金、有色金属合金、电子专用材料以及高端聚烯烃、电子化学品等关键新材料。",
+   "src": [
+    92
+   ]
+  },
+  {
+   "level": "省级",
+   "name": "《浙江省工信领域推动设备更新和消费品以旧换新实施方案》",
+   "issuer": "浙江省制造强省建设领导小组办公室",
+   "year": "2024",
+   "gist": "进一步细化新材料相关产线设备更新、试验检测装备升级、绿色安全新材料装备推广等要求。",
+   "src": [
+    92
+   ]
+  }
+ ],
+ "jobs": [
+  {
+   "title": "应用工程师（分散剂方向）",
+   "city": "湖州",
+   "salary": "￥30,000–50,000",
+   "skills": [
+    "博士学历，化工、材料等相关专业",
+    "3年以上有机合成产品开发项目负责人经验",
+    "具备小试→中试→大试→放大生产全流程经验",
+    "熟练掌握聚氨酯分散剂、SMA分散剂、丙烯酸嵌段共聚、有机磷酸酯、聚酯超分散剂等方向研发能力",
+    "熟练使用化学分析与计算软件（如ChemDraw、Origin、MATLAB等）及数据处理工具"
+   ],
+   "src": [
+    98
+   ]
+  },
+  {
+   "title": "研发技术类（高分子/化学方向）",
+   "city": "海宁",
+   "salary": "本科6–8K，硕士8–12K，博士“一人一议”（高于12K）",
+   "skills": [
+    "高分子材料、应用化学、分析化学、纺织工程等专业背景",
+    "具备实验设计、配方优化、性能测试（如DSC、TGA、流变、力学）等实操能力",
+    "英语四级以上，部分岗位需阅读英文技术文献或参与国际项目对接"
+   ],
+   "src": [
+    101
+   ]
+  },
+  {
+   "title": "工艺工程师",
+   "city": "临安",
+   "salary": "面议（行业同类岗位参考区间￥8,000–15,000）",
+   "skills": [
+    "本科及以上学历，高分子材料、化学工程、材料科学与工程等相关专业",
+    "熟悉塑料/薄膜/电子材料生产工艺（如涂布、挤出、流延、热压等）",
+    "具备DOE、SPC、FMEA等工艺改善工具应用经验者优先"
+   ],
+   "src": [
+    102
+   ]
+  },
+  {
+   "title": "会计",
+   "city": "嘉兴",
+   "salary": "￥15,000–50,000",
+   "skills": [
+    "本科及以上，财务、会计、审计专业",
+    "熟悉制造业成本核算、ERP系统（如SAP/用友U8）、税务申报及高新技术企业研发费用归集",
+    "具备初级/中级会计职称，有锂电材料或化工行业财务经验者加分"
+   ],
+   "src": [
+    100
+   ]
+  },
+  {
+   "title": "采购员（不粘涂料/新材料方向）",
+   "city": "",
+   "salary": "￥10,000–20,000",
+   "skills": [
+    "本科，材料、化工、供应链管理相关专业",
+    "熟悉树脂（PTFE、PFA、ETFE）、助剂、钛白粉等关键原材料特性与供应商评估",
+    "具备合同谈判、VMI管理、进口清关协调经验，英语可读写为佳"
+   ],
+   "src": [
+    103
+   ]
+  },
+  {
+   "title": "生物降解材料改性工程师",
+   "city": "绍兴",
+   "salary": "",
+   "skills": [
+    "硕士及以上，高分子加工或聚合物改性方向",
+    "熟悉EN13432/ASTM D6400降解标准测试流程",
+    "具备与农技推广单位或终端品牌方协同开发经验者高度优先"
+   ],
+   "src": [
+    99
+   ]
+  }
+ ],
+ "demand": [
+  {
+   "text": "2026年一季度，新材料行业招聘职位数同比增长超三成（>30%），增幅在新质生产力各行业中位居前列，与机器人行业并列第一。",
+   "src": [
+    109
+   ]
+  },
+  {
+   "text": "2026年春节后一个月（即2月），新材料行业招聘职位数同比增速达32.6%，应届生岗位数同比激增70.7%，凸显对新生力量的迫切吸纳。",
+   "src": [
+    108
+   ]
+  },
+  {
+   "text": "新材料行业平均招聘月薪突破10000元，位列新质产业前三（与机器人、光电子并列）。",
+   "src": [
+    109
+   ]
+  },
+  {
+   "text": "据《制造业人才发展规划指南》及后续研判，2025年全国新材料产业人才缺口预计达400万人。",
+   "src": [
+    116
+   ]
+  },
+  {
+   "text": "实务层面，新材料企业高技能人才求人倍率远高于2（即1个岗位平均需对接超2名求职者），部分关键岗位“五六个月招不到合适人选”。",
+   "src": [
+    116
+   ]
+  }
+ ],
+ "aliases": [
+  "材料",
+  "高分子材料",
+  "先进材料",
+  "功能材料"
+ ]
+}

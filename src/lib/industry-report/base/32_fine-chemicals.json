@@ -1,0 +1,1047 @@
+{
+ "industry": "精细化工",
+ "province": "江苏",
+ "collectedAt": "2026-10-16T10:41:38.464Z",
+ "origin": "base",
+ "sources": [
+  {
+   "id": 1,
+   "title": "工业和信息化部、国家发展改革委、财政部、生态环境部、农业农村部、应急管理部、中国科学院、中国工程院、国家能源局等九部门关于印发《精细化工产业创新发展 实施方案(2024—2027年)》的通知",
+   "url": "https://fdi.swt.fujian.gov.cn/show-21612.html"
+  },
+  {
+   "id": 2,
+   "title": "国务院政策例行吹风会文字实录(2025年11月27日) ",
+   "url": "https://www.gov.cn/zccfh/2025zccfh/20251127/wzsl/202511/content_7049672.htm"
+  },
+  {
+   "id": 3,
+   "title": "关于大力实施可再生能源替代行动的指导意见(发改能源〔2024〕1537号)",
+   "url": "https://www.ndrc.gov.cn/xxgk/zcfb/tz/202410/t20241030_1394119_ext.html"
+  },
+  {
+   "id": 4,
+   "title": "国家发改委重磅报告|2025“重点领域重大投资项目”、“两重”、“两新”主要政策举措出炉_发展_建设_支持",
+   "url": "https://news.sohu.com/a/870987040_480400"
+  },
+  {
+   "id": 5,
+   "title": "共81项!2024年涉煤政策盘点! ",
+   "url": "https://news.sohu.com/a/845884098_121613509"
+  },
+  {
+   "id": 6,
+   "title": "7月以来国务院各部门出台多项重要政策,一起关注",
+   "url": "https://www.cinic.org.cn/xw/zcdt/1548358.html"
+  },
+  {
+   "id": 7,
+   "title": "工信参考(2024年7月15日)",
+   "url": "https://gxj.lanzhou.gov.cn/art/2024/7/15/art_2709_1370703.html"
+  },
+  {
+   "id": 8,
+   "title": "招商特训营半月刊7|2024年1-6月全国宏观经济数据及相关行业情况",
+   "url": "https://www.sg.gov.cn/bmpdlm/gxqglwyh/xwzx/content/post_2656030.html"
+  },
+  {
+   "id": 9,
+   "title": "2024年政府工作报告",
+   "url": "http://jixilishu.gov.cn/lsq/6c2d2f080cef44feae9cc5d87ebee23d/202402/c06_287783.shtml"
+  },
+  {
+   "id": 10,
+   "title": "中国精细化工行业发展现状及投资策略分析报告2024-2030年",
+   "url": "https://maimai.cn/article/detail?fid=1832982441&efid=oVUJrz0Dvl2l5130PE1iVA"
+  },
+  {
+   "id": 11,
+   "title": "2024年大荔县政府工作报告",
+   "url": "https://www.dalisn.gov.cn/zfxxgk/fdzdgknr/zfgzbg/1767736843137073153.html"
+  },
+  {
+   "id": 12,
+   "title": "重庆市涪陵区工业发展领导小组 关于印发涪陵区工业发展“十百千万”工程、 “五大”行动、“四大”专项方案的通知",
+   "url": "http://www.fl.gov.cn/zfxxgk_206/zfxxgkml/yhyshj/zcwj/kjcx/202501/t20250121_14191934.html"
+  },
+  {
+   "id": 13,
+   "title": "昔阳县人民政府 关于印发昔阳县国民经济和社会发展 第十四个五年规划和 2035 年远景目标纲要的 通知",
+   "url": "https://www.xiyang.gov.cn/Upload/main/InfoPublicity/PublicInformation/File/2024/05/21/202405211521471377.pdf"
+  },
+  {
+   "id": 14,
+   "title": "四川省上市公司协会通讯2024年21期(总第364期)",
+   "url": "https://www.sclca.net.cn/newsinfo/7505870.html"
+  },
+  {
+   "id": 15,
+   "title": "政府工作报告(2024年)",
+   "url": "https://www.ql.gov.cn/gov/public/detail/zfgzbg/64040.html"
+  },
+  {
+   "id": 16,
+   "title": "江苏六部门联合出台方案,推动这一产业创新发展",
+   "url": "https://news.2500sz.com/doc/2026/08/06/1223045.shtml"
+  },
+  {
+   "id": 17,
+   "title": "区政府办公室关于印发《宿豫区特色精细化工(橡塑)新材料产业高质量发展实施方案(2026—2028年)》的通知 ",
+   "url": "http://www.suyu.gov.cn/suyu/qzfbgswj/202603/7f9b9e4573dc45da999cd515386986a1.shtml"
+  },
+  {
+   "id": 18,
+   "title": "省政府关于加快推动化工产业高质量发展的意见",
+   "url": "https://www.jiangsu.gov.cn/art/2024/11/27/art_84418_11429647.html"
+  },
+  {
+   "id": 19,
+   "title": "关于印发“人工智能+制造”镇江行动方案(2026—2028年)的通知",
+   "url": "http://www.zhenjiang.gov.cn/zhenjiang/szfbwj/202609/f43474dff8d7402591689270b95d9db3.shtml"
+  },
+  {
+   "id": 20,
+   "title": "盐城市推动制造业高质量发展行动方案",
+   "url": "http://www.yancheng.gov.cn/module/download/downfile.jsp?filename=8757bf52c1a24b9e914e8f90be69455a.doc"
+  },
+  {
+   "id": 21,
+   "title": "《江苏省加快生产性服务业高质量发展行动方案(2025—2027年)》出炉 ",
+   "url": "https://www.jiangsu.gov.cn/art/2024/12/31/art_91317_11460514.html"
+  },
+  {
+   "id": 22,
+   "title": "南京印发生产性服务业高质量发展行动方案",
+   "url": "https://www.jiangsu.gov.cn/art/2025/8/14/art_91317_11625515.html"
+  },
+  {
+   "id": 23,
+   "title": "江苏省发展和改革委员会 政策文件 省发展改革委 省工业和信息化厅关于印发《江苏省推动氢能产业高质量发展行动方案(2025-2030年)》的通知",
+   "url": "https://fzggw.jiangsu.gov.cn/art/2025/2/19/art_84097_11495748.html"
+  },
+  {
+   "id": 24,
+   "title": "市政府办公室文件",
+   "url": "https://www.zjg.gov.cn/zjg/c100039/202112/a86c1c9dca494e389c14e41cee7a4f29.shtml"
+  },
+  {
+   "id": 25,
+   "title": "市政府办公室关于印发宿迁市“十四五”科技创新规划的通知 ",
+   "url": "http://suqian.gov.cn/zfb/zcfg/202201/c7f60def576c4aa68f2aa78fa8cdf9af.shtml"
+  },
+  {
+   "id": 26,
+   "title": "【学习】工业大省挑大梁,广东 江苏 山东 浙江 福建工信系统2026年工作思路早知道!",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzIzODcyMTMzMQ==&mid=2247527037&idx=7&sn=00352e40b82490d7424c3d291d976706&chksm=e8c50a6825df8e14b3dc0621fc7bb85d0bb77852990c31cc9324456af6cdfe3ab8f75b7b5671&scene=27"
+  },
+  {
+   "id": 27,
+   "title": "南通市国民经济和社会发展 第十四个五年规划和二〇三五年 远景目标纲要",
+   "url": "https://www.nantong.gov.cn/ntsfgw/upload/cd8f97af-d29c-4ca3-a005-a5b67c5b13b0.doc"
+  },
+  {
+   "id": 28,
+   "title": "2024干得怎么样?江苏13市交出这些“成绩单”",
+   "url": "https://www.jiangsu.gov.cn/art/2025/1/17/art_91625_11473146.html"
+  },
+  {
+   "id": 29,
+   "title": "预见2025:《2025年中国催化剂行业全景图谱》(附市场规模、竞争格局和发展趋势等)",
+   "url": "https://stock.stockstar.com/IG2025021800012205.shtml"
+  },
+  {
+   "id": 30,
+   "title": "江苏省工业和信息化厅文件",
+   "url": "http://gxt.jiangsu.gov.cn/module/download/downfile.jsp?classid=0&filename=2eecbda3058b428888634c0ec1c5bd2f.doc"
+  },
+  {
+   "id": 31,
+   "title": "【国际在线】从江苏张家港“制、储、输、用”产业链看——工业重镇发力氢能产业(经济新方位·能源新业态)",
+   "url": "https://www.seu.edu.cn/2025/0304/c124a520135/page.htm"
+  },
+  {
+   "id": 32,
+   "title": "【专题研究】转型背景下城投债券新增及地方债务可持续性观察(无锡篇)",
+   "url": "http://finance.sina.com.cn/money/bond/2025-06-05/doc-ineyzhce1582052.shtml"
+  },
+  {
+   "id": 33,
+   "title": "提升本质安全水平 增强核心竞争力 ",
+   "url": "https://www.jiangsu.gov.cn/art/2024/12/1/art_60095_11432967.html"
+  },
+  {
+   "id": 34,
+   "title": "江苏连云港:打造万亿级石化产业集群",
+   "url": "https://www.163.com/dy/article/JK8ECHL3053469M5.html"
+  },
+  {
+   "id": 35,
+   "title": "对省十四届人大一次会议第1152号建议的答复",
+   "url": "http://gxt.jiangsu.gov.cn/art/2023/6/12/art_80192_11079522.html"
+  },
+  {
+   "id": 36,
+   "title": "不同省份化工产业的发展方向是什么?(一) ",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzAwMDMwMzk3Ng==&mid=2666112466&idx=1&sn=d0b3d5f087e09b161f2c41bbd9fad5cd&chksm=809ab26b28c4720c1cf10c228a88b61d694291e2f2d3c1af9520694ea39b8841f5686fef171f&scene=27"
+  },
+  {
+   "id": 37,
+   "title": "徐圩新区:聚力打造全球领先的高端绿色石化产业集群",
+   "url": "https://xh.xhby.net/pc/con/202512/18/content_1513545.html"
+  },
+  {
+   "id": 38,
+   "title": "江苏省石化产业规划布局方案",
+   "url": "https://fzggw.jiangsu.gov.cn/webpic/P020160225408237535816.pdf"
+  },
+  {
+   "id": 39,
+   "title": "《精细化工产业创新发展实施方案(2024—2027年)》解读",
+   "url": "https://fzggw.jiangsu.gov.cn/art/2024/7/16/art_4640_11297900.html"
+  },
+  {
+   "id": 40,
+   "title": "徐圩新区:加快打造万亿石化产业集群 ",
+   "url": "http://www.xwxq.gov.cn/xxxq/xwzx2/content/33faf2b6-9162-44a2-864f-92651e825905.html"
+  },
+  {
+   "id": 41,
+   "title": "对省十四届人大二次会议第1173号建议的答复",
+   "url": "http://gxt.jiangsu.gov.cn/art/2024/10/24/art_80192_11400472.html"
+  },
+  {
+   "id": 42,
+   "title": "盐城市传统产业转型升级迈出坚实步伐",
+   "url": "http://www.yancheng.gov.cn/art/2026/7/7/art_33925_4436429.html"
+  },
+  {
+   "id": 43,
+   "title": "苏利股份跌3.79%,成交额3704.49万元,后市是否有机会?",
+   "url": "https://finance.sina.cn/2026-10-15/detail-inivhtus1462820.d.html"
+  },
+  {
+   "id": 44,
+   "title": "江苏隆诚精细化工有限公司",
+   "url": "https://baike.baidu.com/item/江苏隆诚精细化工有限公司/51239269"
+  },
+  {
+   "id": 45,
+   "title": "精细化工龙头百川股份突发:董事长郑铁江被留置,上周还在主持股东会",
+   "url": "https://finance.sina.cn/2025-07-01/detail-infcytxe3238818.d.html"
+  },
+  {
+   "id": 46,
+   "title": "科思股份跌0.39%,成交额2562.14万元,今日主力净流入158.06万",
+   "url": "http://finance.sina.com.cn/stock/aiassist/ggsp/2026-10-14/doc-iniveqvs1224432.shtml"
+  },
+  {
+   "id": 47,
+   "title": "科思股份跌2.23%,成交额2487.78万元,近5日主力净流入-188.72万",
+   "url": "http://finance.sina.com.cn/stock/aiassist/ggsp/2026-10-15/doc-inivhyaq1340444.shtml"
+  },
+  {
+   "id": 48,
+   "title": "浙江新和成股份有限公司",
+   "url": "https://baike.baidu.com/item/浙江新和成股份有限公司/7704986"
+  },
+  {
+   "id": 49,
+   "title": "精细化工龙头百川股份董事长被留置,股价应声下跌,去年刚扭亏",
+   "url": "https://finance.sina.cn/2025-07-02/detail-infeanhk2537793.d.html"
+  },
+  {
+   "id": 50,
+   "title": "> 新农股份个股数据 ",
+   "url": "https://data.eastmoney.com/stockdata/002942.html"
+  },
+  {
+   "id": 51,
+   "title": "> 怡达股份个股数据 ",
+   "url": "https://data.eastmoney.com/stockdata/300721.html"
+  },
+  {
+   "id": 52,
+   "title": "万物智汇发布精细化工与新材料行业MOM智能管理平台V3.0",
+   "url": "http://finance.sina.com.cn/jjxw/2026-10-09/doc-iniurmnm7853588.shtml"
+  },
+  {
+   "id": 53,
+   "title": "江苏中丹集团股份有限公司",
+   "url": "https://baike.baidu.com/item/江苏中丹集团股份有限公司/5788515"
+  },
+  {
+   "id": 54,
+   "title": "国内20多家氟化工产业园区名单梳理,值得收藏! ",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzA4NTg0MTQyMw==&mid=2651972724&idx=1&sn=41009a8128b004ccf26af65700295595&chksm=85b560e29d4850aaa97ba495a4eea629c54fca08702588fa77ed3a22630ba8a05c8218497a14&scene=27"
+  },
+  {
+   "id": 55,
+   "title": "苏州台协 ",
+   "url": "https://mp.weixin.qq.com/s?__biz=MjM5ODI0NTkzNA==&mid=2651391369&idx=2&sn=77973f185e56a8693456e61eee94fd8a&chksm=bc7fadd277ae2c149887f23f8624326cd48a99854642323797d16d4d5679060d59aa9fc2b5e8&scene=27"
+  },
+  {
+   "id": 56,
+   "title": "投资南通| 一文看懂南通市化工新材料产业发展现状与投资机会前瞻(附化工新材料产业现状、空间布局、投资机会分析等)",
+   "url": "http://finance.sina.com.cn/roll/2026-08-17/doc-ininqtnu9139663.shtml"
+  },
+  {
+   "id": 57,
+   "title": "2024化工园区100强“出炉”:山东17家,江苏12家,宁波拔得头筹 ",
+   "url": "http://mt.sohu.com/a/794351017_121948396"
+  },
+  {
+   "id": 58,
+   "title": "十年投资超万亿!中国7大石化基地发展分析 ",
+   "url": "https://news.sohu.com/a/948254362_121241230"
+  },
+  {
+   "id": 59,
+   "title": "连云港化工产业“新”潮澎湃",
+   "url": "http://www.js.xinhuanet.com/20250113/4069696a9cb94ce89ff34a9a6b049c8f/c.html"
+  },
+  {
+   "id": 60,
+   "title": "艾科维IPO:业绩大变脸关联方暗藏玄机,巨额分红董监高提前套现",
+   "url": "https://www.163.com/dy/article/KHEB6VDI05536AJ0.html"
+  },
+  {
+   "id": 61,
+   "title": "南通江天化学股份有限公司",
+   "url": "https://pdf.dfcfw.com/pdf/H2_AN202504171658010084_1.pdf"
+  },
+  {
+   "id": 62,
+   "title": "亿方新材料",
+   "url": "https://www.tianyancha.com/brand/be1ca751292"
+  },
+  {
+   "id": 63,
+   "title": "2025全国精细化工创新发展大会暨广东国际精细化工技术及装备展览会",
+   "url": "https://maimai.cn/article/detail?fid=1867390475&efid=a6h_MEnOqXK98HMyAAau2w"
+  },
+  {
+   "id": 64,
+   "title": "珠海政务-助推精细化工产业加速“破千亿” 珠海高端化学品产业发展暨电子新材料企业洽谈会举办",
+   "url": "https://www.zhuhai.gov.cn/sjb/xw/yw/content/post_3774277.html"
+  },
+  {
+   "id": 65,
+   "title": "【中原化工】基础化工行业月报:石化化工行业稳增长工作方案出台,推动行业进一步提质升级 ",
+   "url": "https://www.sohu.com/a/944380725_122014422"
+  },
+  {
+   "id": 66,
+   "title": "和县2024年第四季度重点工作任务完成情况",
+   "url": "https://www.hx.gov.cn/xxgk/openness/detail/content/67872c7d88668891438b4568.html"
+  },
+  {
+   "id": 67,
+   "title": "2025年上半年宁陵县政府工作报告重点工作责任分解方案落实情况 ",
+   "url": "https://www.ningling.gov.cn/zwgk/fdzdgknr/ndzdgzrwfjzhqk/ndzdgzjzhwcqk/content_235138"
+  },
+  {
+   "id": 68,
+   "title": "【会议】兰州新区召开2025第二届化工中试基地创新发展促进会",
+   "url": "https://www.yhs518.com/archives/97175.html"
+  },
+  {
+   "id": 69,
+   "title": "江苏省工业和信息化厅",
+   "url": "https://baike.baidu.com/item/江苏省工业和信息化厅/22992482"
+  },
+  {
+   "id": 70,
+   "title": "天原股份:四川宜宾氯碱老厂,2024年亏5亿,2026年上半年利润暴涨11倍,水合肼精细化工转型,PB 0.94倍 ",
+   "url": "https://caifuhao.eastmoney.com/news/20261016123829552778930"
+  },
+  {
+   "id": 71,
+   "title": "江苏省贯彻落实扩大内需战略实施方案",
+   "url": "https://baike.baidu.com/item/江苏省贯彻落实扩大内需战略实施方案/63043696"
+  },
+  {
+   "id": 72,
+   "title": "重磅发布!中国乙醇酸行业市场竞争格局及未来发展前景研究报告 ",
+   "url": "https://www.sohu.com/a/1087961584_120950077"
+  },
+  {
+   "id": 73,
+   "title": "江苏氢能产业集群",
+   "url": "https://baike.baidu.com/item/江苏氢能产业集群/69317066"
+  },
+  {
+   "id": 74,
+   "title": "江苏省支持人工智能OPC创新发展若干措施",
+   "url": "https://baike.baidu.com/item/江苏省支持人工智能OPC创新发展若干措施/68349589"
+  },
+  {
+   "id": 75,
+   "title": "电子化学品",
+   "url": "https://baike.baidu.com/item/电子化学品/3822530"
+  },
+  {
+   "id": 76,
+   "title": "> 华软科技个股数据 ",
+   "url": "https://data.eastmoney.com/stockdata/002453.html"
+  },
+  {
+   "id": 77,
+   "title": "江苏省安全生产行政处罚裁量权基准(2026版)",
+   "url": "https://baike.baidu.com/item/江苏省安全生产行政处罚裁量权基准(2026版)/69300756"
+  },
+  {
+   "id": 78,
+   "title": "江苏省旅游度假区高质量发展行动方案(2024—2026年)",
+   "url": "https://baike.baidu.com/item/江苏省旅游度假区高质量发展行动方案（2024—2026年）/65153319"
+  },
+  {
+   "id": 79,
+   "title": "苏州工业园区 2026 年度重点产业紧缺技能人才职业(工种)目录",
+   "url": "https://www.suzhou.gov.cn/szsrmzf/gzjzeg/202606/defe455d5a54465390d9c4a0137b6a7f/files/559fd1ace2ef4c668f16c3889db6f760.pdf"
+  },
+  {
+   "id": 80,
+   "title": "苏州工业园区 2026 年度重点产业紧缺 专业人才需求目录",
+   "url": "https://www.suzhou.gov.cn/szsrmzf/gzjzeg/202606/4fcb454531614f2a891c6c212aeb5dcd/files/63193f587a7242cfadf929d73a8fca56.pdf"
+  },
+  {
+   "id": 81,
+   "title": "“9·20”全国高校毕业生及海内外高层次人才交流大会招聘岗位需求信息(第一批) ",
+   "url": "https://www.sohu.com/a/1073366138_121106832"
+  },
+  {
+   "id": 82,
+   "title": "秋招广播站丨“9·20”全国高校毕业生及海内外高层次人才交流大会招聘岗位需求信息(第一批)",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzU2OTU1NTMwNA==&mid=2247557118&idx=1&sn=168785d4e575821a542d2461b8107beb&chksm=fdc4b293a4ae420af91ff9cf86d86e328d41a99ba0d90de345b8f8ba57c27bfa6c0f5c3bd3dd&scene=27"
+  },
+  {
+   "id": 83,
+   "title": "“9·20”全国高校毕业生及海内外高层次人才交流大会招聘岗位需求信息(第一批)",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzI5OTE4NDM2MA==&mid=2247565007&idx=4&sn=eba4698db75ffaf737f870fc7fa7714c&chksm=edd537d69a8df11e942d310bacfbf60a60a7fe072dc1bd07e9d45458dda3063799e939d343d7&scene=27"
+  },
+  {
+   "id": 84,
+   "title": "2026年潜江市重点产业急需紧缺技能人才职业(工种)参考目录",
+   "url": "https://www.hbqj.gov.cn/xxgk/zc/qtwj/gsgg/202607/t20260720_5980393.html"
+  },
+  {
+   "id": 85,
+   "title": "【招聘信息】“9·20”全国高校毕业生及海内外高层次人才交流大会招聘岗位需求信息(第一批)",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzA5Nzc2MjY2NA==&mid=2662940998&idx=2&sn=cca60fb19db83ac5e7f887ad7883cc02&chksm=8ad78006d67476ba64ae54b742f4fa19ead6b3e2ccdc72f11a947f91e79e9e62be6fb71f976a&scene=27"
+  },
+  {
+   "id": 86,
+   "title": "精细化工技术",
+   "url": "https://baike.baidu.com/item/精细化工技术/53484479"
+  },
+  {
+   "id": 87,
+   "title": "苏州市 2025 年度 重点产业紧缺专业人才 需求目录",
+   "url": "https://www.suzhou.gov.cn/szsrmzf/zyzct/202511/69afd9a1e9da4db3a5e9c4015647b3ac/files/a418b43704a045278180832e69601294.pdf"
+  },
+  {
+   "id": 88,
+   "title": "2026年潜江市重点产业急需紧缺技能人才职业(工种)参考目录 _ 公示公告 _ 潜江市人民政府 ",
+   "url": "https://www.hbqj.gov.cn/srlzyhshbzj/xwzx/gsgg/202607/t20260720_5980393.html"
+  },
+  {
+   "id": 89,
+   "title": "江苏禾裕泰化学有限公司",
+   "url": "https://m.jobui.com/company/12590296/salary"
+  },
+  {
+   "id": 90,
+   "title": "化工厂多岗招聘 月入最高10000+",
+   "url": "https://mp.weixin.qq.com/s?__biz=MjM5MDE4MTM0MQ==&mid=2652995319&idx=1&sn=a4cc53cfcad9ed2a4568d55a26147edb&chksm=bcb25e083bdc3ba13dba52d512a1c82160ea2a294cfc05298ddc41773b7643bd3a7e6c89d321&scene=27"
+  },
+  {
+   "id": 91,
+   "title": "顶峰油脂化工(泰兴)有限公司",
+   "url": "https://www.jobui.com/company/17354070/salary/p2/"
+  },
+  {
+   "id": 92,
+   "title": "丙烯酸乳液总工程师",
+   "url": "https://www.chenhr.com/job/mSxGP"
+  },
+  {
+   "id": 93,
+   "title": "江苏赛科化学有限公司",
+   "url": "https://www.jobui.com/company/15489201/salary/edu3/"
+  },
+  {
+   "id": 94,
+   "title": "工会送岗位 | 最近这些单位正在招人!",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzI0NDE0OTY5OA==&mid=2650942506&idx=3&sn=c454ddde6d5cffd87d91078aebb1a29b&chksm=f30ab14ad97824bf468223d69ea7052069dc5984044ab273aa3fd3b163d2ae3a0851a4edb207&scene=27"
+  },
+  {
+   "id": 95,
+   "title": "苏州市森菲达化工有限公司",
+   "url": "https://www.qcc.com/cjoblist/6b5a0c3406302163035c963b0a7540d4"
+  },
+  {
+   "id": 96,
+   "title": "江苏海力化工有限公司",
+   "url": "https://www.jobui.com/company/14794202/jobs/analysis/"
+  },
+  {
+   "id": 97,
+   "title": "2026年10月10日现场招聘会",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzI0NTA5MDYxNg==&mid=2654102742&idx=1&sn=abbbd605b3cab837a1f03940fcb22614&chksm=f3bd45667aa1708e10f27e654efd57486a2cbbd311f8baec95d2c5f221ea65f6a899623cdf74&scene=27"
+  },
+  {
+   "id": 98,
+   "title": "找工作、想跳槽?4月26日,海门人力资源市场这些岗位任你选 ",
+   "url": "https://www.sohu.com/a/310324031_120024185"
+  },
+  {
+   "id": 99,
+   "title": "百川股份:6.56 -2.24% -0.15 002455 搜狐证券",
+   "url": "https://q.stock.sohu.com/cn/455/002455/index.shtml?spm=stockpc.cn_002455.loginpop.7.1775012003482sOXvORG"
+  },
+  {
+   "id": 100,
+   "title": "江苏百川高科新材料股份有限公司",
+   "url": "https://baike.baidu.com/item/江苏百川高科新材料股份有限公司/24548070"
+  },
+  {
+   "id": 101,
+   "title": "百川股份:2023年半年度报告 ",
+   "url": "http://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?stockid=002455&id=9487197"
+  },
+  {
+   "id": 102,
+   "title": "江苏华西村股份有限公司",
+   "url": "https://d.ocn.com.cn/company/finance/000936.shtml"
+  },
+  {
+   "id": 103,
+   "title": "江苏长电科技股份有限公司",
+   "url": "https://d.ocn.com.cn/company/finance/600584.shtml"
+  },
+  {
+   "id": 104,
+   "title": "深市上市公司公告(1月4日)",
+   "url": "https://stock.10jqka.com.cn/20240104/c653786287.shtml"
+  },
+  {
+   "id": 105,
+   "title": "宁波长鸿高分子科技股份有限公司 关于上海证券交易所对公司2024年半年度报告的信 息披露监管工作函的回复公告",
+   "url": "https://pdf.dfcfw.com/pdf/H2_AN202411201640985149_1.pdf"
+  },
+  {
+   "id": 106,
+   "title": "一周太阳能光热资讯(5.27~6.2) ",
+   "url": "https://www.sohu.com/a/783214787_120093798"
+  },
+  {
+   "id": 107,
+   "title": "2024年你看好那哪些股票?",
+   "url": "https://www.zhihu.com/question/659450025"
+  },
+  {
+   "id": 108,
+   "title": "https://new.qq.com/rain/a/20240918A07VN700",
+   "url": "https://new.qq.com/rain/a/20240918A07VN700"
+  },
+  {
+   "id": 109,
+   "title": "江苏苏利精细化工股份有限公司关于召开2024年第三次临时股东大会的通知",
+   "url": "http://finance.sina.com.cn/roll/2024-07-03/doc-incausuz6952937.shtml"
+  },
+  {
+   "id": 110,
+   "title": "苏利股份:江苏苏利精细化工股份有限公司2023年度主要经营数据",
+   "url": "https://m.10jqka.com.cn/sn/20240423/47173889.shtml"
+  },
+  {
+   "id": 111,
+   "title": "苏利股份:2024年年度股东大会会议资料 ",
+   "url": "http://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?stockid=603585&id=11105321"
+  },
+  {
+   "id": 112,
+   "title": "苏利股份:2023年半年度报告 ",
+   "url": "http://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?stockid=603585&id=9465002"
+  },
+  {
+   "id": 113,
+   "title": "苏利股份终止不超6亿元定增 2023年净利润降93.63% ",
+   "url": "http://finance.ce.cn/stock/gsgdbd/202404/24/t20240424_38981975.shtml"
+  },
+  {
+   "id": 114,
+   "title": "苏利股份:江苏苏利精细化工股份有限公司2023年年度业绩预减公告",
+   "url": "https://m.10jqka.com.cn/sn/20240129/45922589.shtml"
+  },
+  {
+   "id": 115,
+   "title": "苏利股份:苏利股份2024年第三季度主要经营数据公告",
+   "url": "https://m.tianyancha.com/pilu/announcement/006d866ae6b5d67a3e56cb71c15bab85"
+  },
+  {
+   "id": 116,
+   "title": "江苏苏利精细化工股份有限公司关于对控股子公司增资的公告",
+   "url": "https://finance.sina.cn/2024-12-11/detail-incyzkhc4483891.d.html"
+  },
+  {
+   "id": 117,
+   "title": "沪市上市公司公告(4月24日)",
+   "url": "https://stock.10jqka.com.cn/20240424/c657218985.shtml"
+  },
+  {
+   "id": 118,
+   "title": "江苏怡达化学股份有限公司",
+   "url": "https://baike.baidu.com/item/江苏怡达化学股份有限公司/19996942"
+  },
+  {
+   "id": 119,
+   "title": "江苏怡达化学股份有限公司",
+   "url": "https://www.tianyancha.com/scertificate/202846580-8f5e"
+  },
+  {
+   "id": 120,
+   "title": "怡达股份:北京植德律师事务所关于江苏怡达化学股份有限公司合规性专项核查报告",
+   "url": "https://data.eastmoney.com/notices/detail/300721/AN202609291830002271,JUU2JTgwJUExJUU4JUJFJUJFJUU4JTgyJUExJUU0JUJCJUJE.html"
+  },
+  {
+   "id": 121,
+   "title": "江苏怡达化学股份有限公司 2024 年度业绩预告",
+   "url": "https://pdf.dfcfw.com/pdf/H2_AN202501171642299689_1.pdf"
+  },
+  {
+   "id": 122,
+   "title": "江苏怡达化学股份有限公司财报解读:经营活动现金流大增127%,净利润扭亏为盈",
+   "url": "https://finance.sina.cn/2025-03-27/detail-ineraynm7988204.d.html"
+  },
+  {
+   "id": 123,
+   "title": "北京植德律师事务所 关于江苏怡达化学股份有限公司 2024年第二次临时股东大会的 法律意见书 植德京(会)字[2024]0108号",
+   "url": "https://pdf.dfcfw.com/pdf/H2_AN202408141639273539_1.pdf"
+  },
+  {
+   "id": 124,
+   "title": "定增6.36亿!怡达股份扩产20万吨醇醚,加码电子级湿电子化学品",
+   "url": "https://hzeyun.com/detail/2620736"
+  },
+  {
+   "id": 125,
+   "title": "怡达股份:江苏怡达化学股份有限公司章程 ",
+   "url": "http://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?stockid=300721&id=8388088"
+  },
+  {
+   "id": 126,
+   "title": "科思股份去年营收24亿,研发费用同比增长41.25%",
+   "url": "https://m.bjnews.com.cn/detail/1713358121129961.html"
+  },
+  {
+   "id": 127,
+   "title": "科思股份2024年半年度业绩报告及财务深度分析",
+   "url": "https://xueqiu.com/8986480164/301334363"
+  },
+  {
+   "id": 128,
+   "title": "第三季度营收净利润双降,防晒剂龙头科思股份“光环”渐暗",
+   "url": "https://www.bjnews.com.cn/detail/1730104805168514.html"
+  },
+  {
+   "id": 129,
+   "title": "第三季度营收净利润双降,防晒剂龙头科思股份“光环”渐暗",
+   "url": "https://finance.eastmoney.com/a/202410283219695138.html"
+  },
+  {
+   "id": 130,
+   "title": "科思股份:2024年前三季度净利润5.14亿元 同比下降4.11%",
+   "url": "https://wap.eastmoney.com/a/202410233215294358.html"
+  },
+  {
+   "id": 131,
+   "title": "科思股份:2024年上半年净利润同比增长20.24% 拟10派6元",
+   "url": "https://emwap.eastmoney.com/info/detail/202408183158705878"
+  },
+  {
+   "id": 132,
+   "title": "全国工商联公布民企研发投入、发明专利500强榜单",
+   "url": "https://www.nanjing.gov.cn/njxx/202409/t20240927_4774547.html"
+  },
+  {
+   "id": 133,
+   "title": "药石科技2024年半年度报告:营收7.45亿元,归母净利润0.99亿元 ",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzAwODA5MjQ3Ng==&mid=2653279523&idx=6&sn=98f11de813f17a897ef9faf6b5207f15&chksm=81425269afe43a3420b71afca02b0cafa7e21dcce5de3c2acfcdfdfa50efc5c6983db5752d47&scene=27"
+  },
+  {
+   "id": 134,
+   "title": "《二〇二四南京市民营经济发展报告》正式发布",
+   "url": "https://www.nanjing.gov.cn/njxx/202411/t20241123_5016831.html"
+  }
+ ],
+ "scale": [
+  {
+   "metric": "规上产值目标",
+   "value": "150亿元",
+   "unit": "亿元",
+   "year": "2028",
+   "scope": "宿迁市宿豫区",
+   "src": [
+    17
+   ]
+  },
+  {
+   "metric": "精细化率",
+   "value": "66%",
+   "unit": "%",
+   "year": "2024",
+   "scope": "泰兴经济开发区",
+   "src": [
+    36
+   ]
+  }
+ ],
+ "segments": [
+  {
+   "name": "高端聚烯烃",
+   "desc": "江苏省精细化工产业创新发展工作方案明确的十大细分领域之一。",
+   "src": [
+    16
+   ]
+  },
+  {
+   "name": "特种工程塑料",
+   "desc": "江苏省精细化工产业创新发展工作方案明确的十大细分领域之一。",
+   "src": [
+    16
+   ]
+  },
+  {
+   "name": "聚氨酯材料",
+   "desc": "江苏省精细化工产业创新发展工作方案明确的十大细分领域之一。",
+   "src": [
+    16
+   ]
+  },
+  {
+   "name": "氟硅材料",
+   "desc": "江苏省精细化工产业创新发展工作方案明确的十大细分领域之一。",
+   "src": [
+    16
+   ]
+  },
+  {
+   "name": "电子化学品",
+   "desc": "江苏省精细化工产业创新发展工作方案明确的十大细分领域之一。",
+   "src": [
+    16
+   ]
+  },
+  {
+   "name": "生物基化学品",
+   "desc": "江苏省精细化工产业创新发展工作方案明确的十大细分领域之一。",
+   "src": [
+    16
+   ]
+  }
+ ],
+ "cities": [
+  {
+   "city": "泰州市",
+   "focus": "农药中间体、功能性化学品、染料，精细化率达66%。",
+   "companies": [
+    "江苏中丹集团股份有限公司",
+    "扬农化工"
+   ],
+   "src": [
+    36,
+    53
+   ]
+  },
+  {
+   "city": "无锡市",
+   "focus": "高分子材料（合成树脂、辐射固化材料）、环保型精细化学品。",
+   "companies": [
+    "江苏三木集团有限公司",
+    "无锡百川化工股份有限公司"
+   ],
+   "src": [
+    45
+   ]
+  },
+  {
+   "city": "苏州市",
+   "focus": "氟碳化学品（HFC系列）、新型制冷剂、含氟聚合物及氟硅新材料。",
+   "companies": [
+    "太仓中化环保化工",
+    "中化蓝天霍尼韦尔新材料"
+   ],
+   "src": [
+    54
+   ]
+  },
+  {
+   "city": "南通市",
+   "focus": "新能源材料（POE、隔膜）、电子化学品、特种环氧树脂。",
+   "companies": [
+    "南通江天化学股份有限公司"
+   ],
+   "src": [
+    56,
+    61
+   ]
+  },
+  {
+   "city": "淮安市",
+   "focus": "化工新材料、盐化工延伸精细化学品。",
+   "companies": [],
+   "src": [
+    54
+   ]
+  },
+  {
+   "city": "南京市",
+   "focus": "日用化学品原料（防晒剂等）的研发、生产和销售。",
+   "companies": [
+    "南京科思化学股份有限公司"
+   ],
+   "src": [
+    46
+   ]
+  }
+ ],
+ "listed": [
+  {
+   "company": "南京科思化学股份有限公司",
+   "code": "300856",
+   "city": "南京市",
+   "rdExpense": "64,941,442.08元",
+   "rdRatio": "",
+   "year": "2024",
+   "src": [
+    127
+   ]
+  }
+ ],
+ "financing": [
+  {
+   "company": "连云港化工产业园区客商",
+   "event": "项目签约",
+   "amount": "102亿元",
+   "date": "2024年12月中旬",
+   "src": [
+    59
+   ]
+  },
+  {
+   "company": "有机硅胶项目",
+   "event": "投资项目落地",
+   "amount": "40亿元",
+   "date": "2024年12月中旬",
+   "src": [
+    59
+   ]
+  },
+  {
+   "company": "江苏艾科维科技股份有限公司",
+   "event": "IPO拟募集资金",
+   "amount": "6亿元",
+   "date": "2025年",
+   "src": [
+    60
+   ]
+  }
+ ],
+ "policies": [
+  {
+   "level": "部委级",
+   "name": "精细化工产业创新发展实施方案（2024—2027年）",
+   "issuer": "工业和信息化部、国家发展改革委、财政部、生态环境部、农业农村部、应急管理部、中国科学院、中国工程院、国家能源局",
+   "year": "2024",
+   "gist": "总体目标到2027年石化化工产业精细化延伸取得积极进展，培育5家以上世界一流企业、500家以上专精特新“小巨人”企业、20家以上以精细化工为主导的特色园区。",
+   "src": [
+    1
+   ]
+  },
+  {
+   "level": "省级",
+   "name": "江苏省贯彻落实扩大内需战略实施方案",
+   "issuer": "江苏省",
+   "year": "2023",
+   "gist": "实施期贯穿“十四五”，含对精细化工下游应用如日化、医药、电子化学品等的内需拉动安排。",
+   "src": [
+    71
+   ]
+  },
+  {
+   "level": "省级",
+   "name": "江苏省推动氢能产业高质量发展行动方案（2025—2030年）",
+   "issuer": "江苏省",
+   "year": "2025",
+   "gist": "其中氢气提纯、储运材料、催化剂等环节涉及精细化工技术支撑。",
+   "src": [
+    73
+   ]
+  },
+  {
+   "level": "省级",
+   "name": "江苏省物联网产业发展三年行动计划",
+   "issuer": "江苏省",
+   "year": "2026",
+   "gist": "支持传感器、智能仪表等在精细化工过程控制中的集成应用。",
+   "src": [
+    69
+   ]
+  }
+ ],
+ "jobs": [
+  {
+   "title": "工艺员",
+   "city": "淮安",
+   "salary": "￥4.5K–15K",
+   "skills": [
+    "熟悉化工工艺流程"
+   ],
+   "src": [
+    89
+   ]
+  },
+  {
+   "title": "电仪工",
+   "city": "淮安",
+   "salary": "￥4.5K–15K",
+   "skills": [],
+   "src": [
+    89
+   ]
+  },
+  {
+   "title": "维修工",
+   "city": "淮安",
+   "salary": "￥4.5K–15K",
+   "skills": [
+    "设备维护实操能力"
+   ],
+   "src": [
+    89
+   ]
+  },
+  {
+   "title": "QA",
+   "city": "淮安",
+   "salary": "￥4.5K–15K",
+   "skills": [],
+   "src": [
+    89
+   ]
+  },
+  {
+   "title": "化验员",
+   "city": "淮安",
+   "salary": "￥4.5K–15K",
+   "skills": [],
+   "src": [
+    89
+   ]
+  },
+  {
+   "title": "化学分析员",
+   "city": "",
+   "salary": "￥4.3K–7.6K",
+   "skills": [
+    "滴定",
+    "色度",
+    "灼烧残渣",
+    "密度",
+    "含水等分析经验",
+    "熟悉实验室管理体系",
+    "独立填写原始记录与分析报告"
+   ],
+   "src": [
+    90
+   ]
+  },
+  {
+   "title": "仪器分析员",
+   "city": "",
+   "salary": "￥6K–12K",
+   "skills": [
+    "GC",
+    "HPLC",
+    "UV",
+    "ICP",
+    "GC-MS等仪器操作与维护经验",
+    "方法开发",
+    "建立仪器操作维护手册并完成校验"
+   ],
+   "src": [
+    90
+   ]
+  },
+  {
+   "title": "丙烯酸乳液总工程师",
+   "city": "",
+   "salary": "基本工资≥￥15,000 + 绩效工资￥15,000/月",
+   "skills": [
+    "丙烯酸酯乳液合成经验",
+    "配方开发与客户定制响应",
+    "熟练使用FTIR",
+    "GPC",
+    "粒径仪等分析设备",
+    "实验室到产线转化协调能力"
+   ],
+   "src": [
+    92
+   ]
+  },
+  {
+   "title": "机械/仪器仪表类岗位",
+   "city": "",
+   "salary": "￥4.5K–30K",
+   "skills": [
+    "仪表自动化调试",
+    "DCS/PLC基础应用",
+    "化工设备检维修",
+    "ISO质量体系执行"
+   ],
+   "src": [
+    93
+   ]
+  }
+ ],
+ "demand": [
+  {
+   "text": "目前知识库中未检索到江苏省省级或苏州市级发布的、专门针对“精细化工”类别的紧缺岗位目录。",
+   "src": [
+    79
+   ]
+  },
+  {
+   "text": "苏州工业园区2026年紧缺目录聚焦于“新一代信息技术”“半导体”“智能消费终端”等方向，未单列精细化工相关职业（工种）。",
+   "src": [
+    80
+   ]
+  },
+  {
+   "text": "行业对掌握绿色合成、智能控制、质量检测等复合能力的技术技能人才有持续需求。",
+   "src": [
+    86
+   ]
+  },
+  {
+   "text": "江苏省尚未在已公开的2026年紧缺人才目录（如苏州工业园区、省属国企招聘清单）中单独列出“精细化工工程师”“配方研究员”“工艺优化师”等典型岗位。",
+   "src": [
+    86
+   ]
+  },
+  {
+   "text": "知识库中无江苏省人社部门发布的精细化工领域具体缺口人数、供需比或紧缺等级（如A/B/C级）等统计数据。",
+   "src": [
+    86
+   ]
+  }
+ ],
+ "aliases": [
+  "化工",
+  "石化",
+  "精细化学品",
+  "日化",
+  "轻化工"
+ ]
+}

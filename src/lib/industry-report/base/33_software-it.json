@@ -1,0 +1,973 @@
+{
+ "industry": "软件和信息技术服务",
+ "province": "浙江",
+ "collectedAt": "2026-10-16T11:12:52.025Z",
+ "origin": "base",
+ "sources": [
+  {
+   "id": 1,
+   "title": "关于做好2025年享受税收优惠政策的集成电路企业或项目、软件企业清单制定工作的通知",
+   "url": "https://www.ndrc.gov.cn/xwdt/tzgg/202504/t20250401_1396948_ext.html"
+  },
+  {
+   "id": 2,
+   "title": "国务院政策例行吹风会文字实录(2025年11月10日) ",
+   "url": "https://www.gov.cn/zccfh/2025zccfh/20251110/wzsl/202511/content_7047770.htm"
+  },
+  {
+   "id": 3,
+   "title": "关于大力实施可再生能源替代行动的指导意见(发改能源〔2024〕1537号)",
+   "url": "https://www.ndrc.gov.cn/xxgk/zcfb/tz/202410/t20241030_1394119_ext.html"
+  },
+  {
+   "id": 4,
+   "title": "关于印发《贯彻实施〈国家标准化发展纲要〉",
+   "url": "https://www.sac.gov.cn/zt/gjbzhfzgyzt/zxdt/art/2024/art_1a6fba2dd701444494c199822fd520f0.html"
+  },
+  {
+   "id": 5,
+   "title": "工业和信息化部 国家发展改革委 财政部 税务总局关于开展2025年度享受增值税加计抵减政策的集成电路企业清单制定工作的通知",
+   "url": "https://www.chinasme.org.cn/html/mcms/daohang/zhengcehuibian/1968527596900261890.html"
+  },
+  {
+   "id": 6,
+   "title": "网络空间安全动态(202537期)",
+   "url": "https://metc.njtc.edu.cn/info/1141/5992.htm"
+  },
+  {
+   "id": 7,
+   "title": "关于印发《贯彻实施〈国家标准化发展纲要〉行动计划(2024—2025年)》的通知",
+   "url": "https://mzt.guizhou.gov.cn/xwzx/mzyw/202404/t20240404_84149775.html"
+  },
+  {
+   "id": 8,
+   "title": "本周“发展改革热点,我知道”(12月30日至1月3日)",
+   "url": "https://www.ndrc.gov.cn/fggz/202501/t20250106_1395459.html"
+  },
+  {
+   "id": 9,
+   "title": "国家发展改革委10月份新闻发布会",
+   "url": "https://www.ndrc.gov.cn/xwdt/wszb/10yxwfbh1/"
+  },
+  {
+   "id": 10,
+   "title": "2024年重大网络安全政策法规盘点 ",
+   "url": "https://www.sohu.com/a/839779168_121124365"
+  },
+  {
+   "id": 11,
+   "title": "杭州市人民政府办公厅关于印发杭州市新一轮推进软件和信息技术服务业高质量发展的若干政策的通知",
+   "url": "https://baike.baidu.com/item/杭州市人民政府办公厅关于印发杭州市新一轮推进软件和信息技术服务业高质量发展的若干政策的通知/69373671"
+  },
+  {
+   "id": 12,
+   "title": "关于《杭州市新一轮推进软件和信息技术服务业高质量发展的若干政策》政策解读",
+   "url": "https://zfgb.hangzhou.gov.cn/mobile_detail.shtml?doc_id=530344&a=0.42709914373592395"
+  },
+  {
+   "id": 13,
+   "title": "GDP同比增长5.6%!2024浙江经济“半年报”出炉",
+   "url": "https://m.thepaper.cn/newsDetail_forward_28116105"
+  },
+  {
+   "id": 14,
+   "title": "2024年上半年上城区经济运行情况 ",
+   "url": "https://www.hzsc.gov.cn/art/2024/10/10/art_1229353257_4304433.html"
+  },
+  {
+   "id": 15,
+   "title": "题目",
+   "url": "https://easylearn.baidu.com/edu-page/tiangong/questiondetail?id=1850462154472524281&fr=search"
+  },
+  {
+   "id": 16,
+   "title": "国务院新闻办发布会介绍2024年7月份国民经济运行情况",
+   "url": "http://www.maqu.gov.cn/info/1976/24186.htm"
+  },
+  {
+   "id": 17,
+   "title": "国务院新闻办就2023年国民经济运行情况举行发布会 ",
+   "url": "https://www.gov.cn/lianbo/fabu/202401/content_6926619.htm"
+  },
+  {
+   "id": 18,
+   "title": "国新办举行新闻发布会 介绍2024年11月份国民经济运行情况图文实录",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzkyODE5NDkwNw==&mid=2247557524&idx=1&sn=4a37851693a5fde47cdb3dd5958012f4&chksm=c21f29a0f568a0b6698824003fe699518a6bdb95103295d0c433c116dbb79a714b61a671e08d&scene=27"
+  },
+  {
+   "id": 19,
+   "title": "2024年杭州市政府工作报告 ",
+   "url": "https://www.hangzhou.gov.cn/art/2024/2/23/art_1229063401_4241383.html"
+  },
+  {
+   "id": 20,
+   "title": "国新办举行新闻发布会 介绍2024年前三季度国民经济运行情况图文实录",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzkyODE5NDkwNw==&mid=2247555195&idx=1&sn=ae121713b4c8c7e67da95f366f52f5d2&chksm=c21ed04ff5695959c73ba4d5c7a65cc719696027bdd071e62049c9d5709986d313775c433806&scene=27"
+  },
+  {
+   "id": 21,
+   "title": "国家统计局新闻发言人就2024年7月份国民经济运行情况答记者问(图)",
+   "url": "http://www.yuhua.gov.cn/zwgk97/xxgkml/384213/384639/853586/384648/202408/t20240816_11523291.html"
+  },
+  {
+   "id": 22,
+   "title": "国新办举行新闻发布会 介绍2024年一季度国民经济运行情况",
+   "url": "http://www.scio.gov.cn/live/2024/33762/tw/"
+  },
+  {
+   "id": 23,
+   "title": "“数字浙江”,再赴新征程 ",
+   "url": "https://www.zjwx.gov.cn/col/col1694818/art/2025/art_bcfa1020c39d918c8faa9a74bda8590e.html"
+  },
+  {
+   "id": 24,
+   "title": "“数字浙江”,再赴新征程 浙江数字经济增加值连续11年保持两位数增长",
+   "url": "https://www.hhtznews.com.cn/content/content_9852331.html"
+  },
+  {
+   "id": 25,
+   "title": "浙江杭州:提升“软实力” 打造数字经济新增长点 ",
+   "url": "https://www.stdaily.com/web/gdxw/2025-02/11/content_295585.html"
+  },
+  {
+   "id": 26,
+   "title": "杭州从电商之都迈向“中国硅谷” 数字经济与科技产业协同发展成关键密码",
+   "url": "https://www.stcn.com/article/detail/1539841.html"
+  },
+  {
+   "id": 27,
+   "title": "杭州从电商之都迈向“中国硅谷” 数字经济与科技产业协同发展成关键密码",
+   "url": "https://finance.eastmoney.com/a/202502243327811727.html"
+  },
+  {
+   "id": 28,
+   "title": "2025年浙江省舟山市新质生产力发展研判:链群筑基强化新质根基,海洋领航促进产业兴盛[图] ",
+   "url": "https://caifuhao.eastmoney.com/news/20250806101815570096290"
+  },
+  {
+   "id": 29,
+   "title": "2025年浙江省舟山市新质生产力发展研判:链群筑基强化新质根基,海洋领航促进产业兴盛",
+   "url": "https://news.sohu.com/a/921253356_120950077"
+  },
+  {
+   "id": 30,
+   "title": "全国软件业务收入",
+   "url": "https://baike.baidu.com/item/全国软件业务收入/67732492"
+  },
+  {
+   "id": 31,
+   "title": "软件业利润总额",
+   "url": "https://baike.baidu.com/item/软件业利润总额/68859494"
+  },
+  {
+   "id": 32,
+   "title": "浙江数商",
+   "url": "https://baike.baidu.com/item/浙江数商/67284197"
+  },
+  {
+   "id": 33,
+   "title": "2025年度中国服务器产业发展研究报告",
+   "url": "https://baike.baidu.com/item/2025年度中国服务器产业发展研究报告/68765976"
+  },
+  {
+   "id": 34,
+   "title": "浙江已实现规上工业企业数字化改造全覆盖,2025年开展“AI大模型+传统制造业”试点",
+   "url": "https://www.163.com/dy/article/JKOFMFJM05199NPP.html"
+  },
+  {
+   "id": 35,
+   "title": "数据公布!7月浙江经济运行总体平稳",
+   "url": "https://zj87.jxt.zj.gov.cn/zlzq/web/views/article/news/detail.html?id=251577"
+  },
+  {
+   "id": 36,
+   "title": "台州:在数字经济新赛道上加速奔跑",
+   "url": "https://news.xinmin.cn/2024/04/25/32637174.html"
+  },
+  {
+   "id": 37,
+   "title": "义乌市经信局",
+   "url": "https://www.yw.gov.cn/art/2024/4/9/art_1229129448_4149910.html"
+  },
+  {
+   "id": 38,
+   "title": "黄岩区经信科技局2024年工作总结和2025年工作重点 ",
+   "url": "https://www.zjhy.gov.cn/art/2024/12/11/art_1621867_59114354.html"
+  },
+  {
+   "id": 39,
+   "title": "永嘉县经济和信息化局2024年第三季度 重点工作任务的执行和落实情况",
+   "url": "https://www.yj.gov.cn/art/2024/10/11/art_1229780966_59110843.html"
+  },
+  {
+   "id": 40,
+   "title": "2023年浙江经济总量首破八万亿,经营主体数量突破千万户",
+   "url": "http://finance.sina.com.cn/roll/2024-01-23/doc-inaenrkf3810489.shtml"
+  },
+  {
+   "id": 41,
+   "title": "首页智库概况 数字化发展 工作要闻 研究成果 人才招聘 智库联盟 ",
+   "url": "http://zjdg.zju.edu.cn/newsinfo.php?cid=12&id=253"
+  },
+  {
+   "id": 42,
+   "title": "浙江和达科技股份有限公司",
+   "url": "https://baike.baidu.com/item/浙江和达科技股份有限公司/18137384"
+  },
+  {
+   "id": 43,
+   "title": "浙江核新同花顺网络信息股份有限公司",
+   "url": "https://baike.baidu.com/item/浙江核新同花顺网络信息股份有限公司/68787949"
+  },
+  {
+   "id": 44,
+   "title": "同花顺",
+   "url": "https://baike.baidu.com/item/同花顺/3044367"
+  },
+  {
+   "id": 45,
+   "title": "软件行业细分龙头-办公软件-金融科技软件-工业软件-人工智能软件-基础软件-网络工程",
+   "url": "https://zhuanlan.zhihu.com/p/1959321793451004690"
+  },
+  {
+   "id": 46,
+   "title": "国家发展改革委举行专题新闻发布会 介绍推进服务业扩能提质有关情况",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzU3Mzc3NzY1Ng==&mid=2247616056&idx=1&sn=64fde4991c8b3615f2e435b33b458bb8&scene=27&chksm=f44d6d7f9bbfa9d583ef9be65f1c87c630679856ebe9629965a9fea442a03f0af62e11c2716f&scene=27"
+  },
+  {
+   "id": 47,
+   "title": "浙江省国民经济和社会发展第十五个五年规划纲要",
+   "url": "https://baike.baidu.com/item/浙江省国民经济和社会发展第十五个五年规划纲要/67227814"
+  },
+  {
+   "id": 48,
+   "title": "浙江省经济和信息化厅关于省政协十三届四次会议第366号提案的答复 A ",
+   "url": "https://www.zj.gov.cn/col/col1229709047/art/2026/art_6dd944dd6a85b487c4ffdd6a89e6d747.html"
+  },
+  {
+   "id": 49,
+   "title": "浙江省经济和信息化厅关于省政协十三届四次会议第244号提案的答复 A",
+   "url": "https://jxt.zj.gov.cn/col/col1229123456/art/2026/art_5da2c3006f914a7a9dc61a819e4269ea.html"
+  },
+  {
+   "id": 50,
+   "title": "浙江省人民政府关于印发“十五五”数字浙江建设规划的通知 ",
+   "url": "https://www.zj.gov.cn/col/col1229019364/art/2026/art_9f0be6697aa4446f9ce699fd02bec022.html"
+  },
+  {
+   "id": 51,
+   "title": "部门概况 ",
+   "url": "https://fgc.zjnu.edu.cn/16716/list.htm"
+  },
+  {
+   "id": 52,
+   "title": "【地方政策】浙江省人民政府印发《“十五五”数字浙江建设规划》,推动平台经济产业模式和企业组织形态变革,培育智能原生新业态",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzU1MDE5MzYxNQ==&mid=2247542365&idx=3&sn=725d58ebc856c469fbd91a56207c66c1&chksm=fa85cf5c1f2f54656af0995d44638c8e7228f7350dff6d7e7a1d1d0aff756aa50d2bf576ecd5&scene=27"
+  },
+  {
+   "id": 53,
+   "title": "浙江省政府下达2024年国民经济和社会发展计划",
+   "url": "http://www.zj.xinhuanet.com/20240221/6cab467367624741a20537cf19633a26/c.html"
+  },
+  {
+   "id": 54,
+   "title": "浙江省发布2024年国民经济和社会发展计划",
+   "url": "https://zjnews.zjol.com.cn/zjnews/202402/t20240221_26662362.shtml"
+  },
+  {
+   "id": 55,
+   "title": "人工智能产业同质化竞争如何破局?丽水莲都以数据筑基走出差异化发展之路",
+   "url": "https://cs.zjol.com.cn/jms/202610/t20261012_31960349.shtml"
+  },
+  {
+   "id": 56,
+   "title": "【他山之石】《2026年浙江省推进产业数据价值化与数字基础设施发展工作要点》印发 ",
+   "url": "https://news.sohu.com/a/999025619_121106991"
+  },
+  {
+   "id": 57,
+   "title": "市府办文件 ",
+   "url": "https://www.qz.gov.cn/col/col1229563913/art/2026/art_25f08991b4534fd7bf35fa729d5bac2f.html"
+  },
+  {
+   "id": 58,
+   "title": "政府信息公开",
+   "url": "https://www.zhuhai.gov.cn/gxj/gkmlpt/content/3/3769/post_3769342.html"
+  },
+  {
+   "id": 59,
+   "title": "2025年浙江省政府工作报告(全文) ",
+   "url": "https://www.pazjw.gov.cn/zhuanti/zjlh2025/zjlh_jj/202501/t20250121_30786426.shtml"
+  },
+  {
+   "id": 60,
+   "title": "权威发布!2025年浙江省政府工作报告(全文)",
+   "url": "https://jxt.zj.gov.cn/art/2025/1/21/art_1660147_58933630.html"
+  },
+  {
+   "id": 61,
+   "title": "浙江余杭经济开发区2024年工作总结和2025年工作计划 ",
+   "url": "https://www.yuhang.gov.cn/art/2025/3/27/art_1229548725_4341307.html"
+  },
+  {
+   "id": 62,
+   "title": "两会受权发布|关于2024年国民经济和社会发展计划执行情况与2025年国民经济和社会发展计划草案的报告",
+   "url": "https://www.gwgpac.org/page208?article_id=3215&pagenum=all"
+  },
+  {
+   "id": 63,
+   "title": "杭州市科学技术局2024年法治政府建设年度报告 ",
+   "url": "https://kj.hangzhou.gov.cn/art/2025/1/26/art_1228972114_58927984.html"
+  },
+  {
+   "id": 64,
+   "title": "2025年网信大事回眸之信息化发展篇——信息化赋能高质量发展 ",
+   "url": "https://www.cac.gov.cn/2025-12/31/c_1768823209559750.htm"
+  },
+  {
+   "id": 65,
+   "title": "推动全国碳市场、CCER、绿证市场建设|关于2024年国民经济和社会发展计划执行情况与2025年国民经济和社会发展计划草案的报告",
+   "url": "https://mp.weixin.qq.com/s?__biz=MjM5NzI5NTc0MQ==&mid=2649967051&idx=1&sn=1be48ffbe12f57e98c01ac5e86546f40&chksm=bf30305b3b662c220125b76b1927e27ca219de8c40decd4744ae8908e7cbc442219634b3910c&scene=27"
+  },
+  {
+   "id": 66,
+   "title": "关于2024年国民经济和社会发展计划执行情况与2025年国民经济和社会发展计划草案的报告 ",
+   "url": "https://www.nmg.gov.cn/zwyw/qgyw/202503/t20250314_2681465.html"
+  },
+  {
+   "id": 67,
+   "title": "金华市婺城区人民政府关于印发关于推动经济高质量发展若干政策举措(2025年版)的通知 ",
+   "url": "https://www.wuch.gov.cn/art/2025/4/9/art_1229715721_1818650.html"
+  },
+  {
+   "id": 68,
+   "title": "iFinD区域舆情日报20251219",
+   "url": "http://news.10jqka.com.cn/20251219/c673367542.shtml"
+  },
+  {
+   "id": 69,
+   "title": "【已废止】金华市人民政府印发关于推动经济高质量发展若干政策举措(2025年版)的通知",
+   "url": "https://www.jinhua.gov.cn/art/2025/2/17/art_1229856891_1818154.html"
+  },
+  {
+   "id": 70,
+   "title": "投资界LP周报 | 巨无霸母基金要来了",
+   "url": "https://news.pedaily.cn/202503/546896.shtml"
+  },
+  {
+   "id": 71,
+   "title": "国新办就2025年上半年工业和信息化发展情况举行新闻发布会",
+   "url": "https://www.miit.gov.cn/xwfb/bldhd/art/2025/art_ee70dcf2aa474bd791a7b290e7617635.html"
+  },
+  {
+   "id": 72,
+   "title": "垫江县经济和信息化委员会2025年部门预算情况说明",
+   "url": "http://www.cqsdj.gov.cn/bmjz/bm/jjhxxhwyh/zwgk_72064/fdzdgknr_72066/ysjs_72073/ysgk/202501/t20250123_14198836.html"
+  },
+  {
+   "id": 73,
+   "title": "国联民生证券股份有限公司 第五届监事会第十七次会议决议公告 ",
+   "url": "http://m.epaper.zqrb.cn/html/2025-03/27/content_1130801.htm"
+  },
+  {
+   "id": 74,
+   "title": "2025世界机器人大会来了!国常会通过“人工智能+”行动意见;网信办约谈英伟达;浙江人工智能核心产业营收3000亿丨浙江物联一周",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzA5OTk5NjMxOA==&mid=2664553259&idx=1&sn=b1cb4bd1ed842424bec61f27710cfefb&chksm=8a92c259fde51e2c8721760197691af168101d83d557f79e1bb5cbdeca6fcc824781fcf977dc&scene=27"
+  },
+  {
+   "id": 75,
+   "title": "财经下午茶20251031 | 沪指本月累计涨1.85%",
+   "url": "http://news.10jqka.com.cn/20251031/c672158849.shtml"
+  },
+  {
+   "id": 76,
+   "title": "支持人工智能、机器人关键技术攻关,多地放大招 ",
+   "url": "https://caifuhao.eastmoney.com/news/20250320192913056026260"
+  },
+  {
+   "id": 77,
+   "title": "浙江省",
+   "url": "https://zj87.jxt.zj.gov.cn/?action=viewQuery&ID=1134"
+  },
+  {
+   "id": 78,
+   "title": "浙江省",
+   "url": "https://zj87.jxt.zj.gov.cn/?action=custprovincedetail&id=665820"
+  },
+  {
+   "id": 79,
+   "title": "浙江省",
+   "url": "https://zj87.jxt.zj.gov.cn/"
+  },
+  {
+   "id": 80,
+   "title": "【区级】杭州市萧山区人民政府2026年《政府工作报告》重点任务半年度执行情况 ",
+   "url": "https://www.xiaoshan.gov.cn/col/col1229487622/art/2026/art_ca68a2d843b34beb8227598e488f101d.html"
+  },
+  {
+   "id": 81,
+   "title": "惠企政策",
+   "url": "https://hqpt.jxt.zj.gov.cn/zjhqpt/views/policy-zw/list.html"
+  },
+  {
+   "id": 82,
+   "title": "关于组织开展2026年浙江省企业技术中心认定与评价工作的通知",
+   "url": "https://jxt.zj.gov.cn/col/col1229886900/art/2026/art_fe02713a43f8412db4e4d398caa8aed8.html"
+  },
+  {
+   "id": 83,
+   "title": "关于开展2026年浙江省人工智能应用场景、应用标杆企业、人工智能服务商及“数智优品”培育工作的通知",
+   "url": "https://jxt.zj.gov.cn/col/col1229886900/art/2026/art_55758503b29c4c69aedbae9f6327551e.html"
+  },
+  {
+   "id": 84,
+   "title": "平台首页 政策资讯 申报导航 企业服务 政务服务 厂房租赁 企业问卷 企业诊断 亩均论英雄平台 政策兑现 ",
+   "url": "http://xsqf.xiaoshan.gov.cn/#/home"
+  },
+  {
+   "id": 85,
+   "title": "2026 年最新、最热门职业岗位有哪些?AI ESG 分析师名列榜首|秋招求职参考 ",
+   "url": "https://www.sohu.com/a/1088060486_121773866"
+  },
+  {
+   "id": 86,
+   "title": "CS实验室行业报告:AI算法工程师就业分析报告",
+   "url": "https://blog.csdn.net/qiwsir/article/details/160122860"
+  },
+  {
+   "id": 87,
+   "title": "人工智能人才",
+   "url": "https://baike.baidu.com/item/人工智能人才/23736526"
+  },
+  {
+   "id": 88,
+   "title": "关于平湖市2025年国民经济和社会发展计划执行情况及2026年国民经济和社会发展计划草案的报告 ",
+   "url": "https://www.pinghu.gov.cn/col/col1229591438/art/2026/art_44ed2237db52467ca4ca125354177c5d.html"
+  },
+  {
+   "id": 89,
+   "title": "驾驭人才与技术的交汇点:2025年中国IT就业格局与2028年展望",
+   "url": "https://blog.csdn.net/weixin_53105865/article/details/149108773"
+  },
+  {
+   "id": 90,
+   "title": "陕西省2026年政府工作报告 ",
+   "url": "https://www.shaanxi.gov.cn/zfxxgk/zfgzbg/szfgzbg/202602/t20260202_3609862.html"
+  },
+  {
+   "id": 91,
+   "title": "和达科技(688296.SH):2024年年报净利润为-563.61万元",
+   "url": "https://wap.eastmoney.com/a/202504163378139785.html"
+  },
+  {
+   "id": 92,
+   "title": "和达科技:2024年亏损563.61万元",
+   "url": "https://finance.eastmoney.com/a/202504163377736496.html"
+  },
+  {
+   "id": 93,
+   "title": "和达科技:2024年亏损563.61万元",
+   "url": "https://wap.eastmoney.com/a/202504163377736496.html"
+  },
+  {
+   "id": 94,
+   "title": "浙江这3项指标,创历史新高",
+   "url": "https://zj87.jxt.zj.gov.cn/zlzq/web/views/article/news/detail.html?id=273877"
+  },
+  {
+   "id": 95,
+   "title": "浙江和达科技2024年报解读:营收增长39.74%,净亏损仍需关注",
+   "url": "https://finance.sina.cn/2025-04-15/detail-inethcvv5357764.d.html"
+  },
+  {
+   "id": 96,
+   "title": "和达科技",
+   "url": "https://emweb.eastmoney.com/PC_HSF10/NewFinanceAnalysis/Index?type=soft&code=SH688296"
+  },
+  {
+   "id": 97,
+   "title": "和达科技:和达科技2025年年度报告",
+   "url": "https://data.eastmoney.com/notices/detail/688296/AN202604161821268630.html"
+  },
+  {
+   "id": 98,
+   "title": "和达科技:2024年前三季度盈利258.63万元 同比扭亏",
+   "url": "https://finance.eastmoney.com/a/202410303223226454.html"
+  },
+  {
+   "id": 99,
+   "title": "和达科技",
+   "url": "https://stockdata.cnstock.com/stock/sh688296.html"
+  },
+  {
+   "id": 100,
+   "title": "恒生电子:市场原因导致收入端持续承压",
+   "url": "http://finance.sina.cn/2024-11-18/detail-incwnwwk6799947.d.html"
+  },
+  {
+   "id": 101,
+   "title": "“卷王”恒生电子:利润五年原地踏步,超高研发投入的尽头在哪?",
+   "url": "https://k.sina.com.cn/article_1850649324_6e4eaaec02001cpjs.html"
+  },
+  {
+   "id": 102,
+   "title": "“卷王”恒生电子:利润五年原地踏步,超高研发投入的尽头在哪?",
+   "url": "https://www.163.com/dy/article/IU9QBBEO051984TV.html"
+  },
+  {
+   "id": 103,
+   "title": "https://new.qq.com/rain/a/20240130A0295X00",
+   "url": "https://new.qq.com/rain/a/20240130A0295X00"
+  },
+  {
+   "id": 104,
+   "title": "恒生电子业绩重回增长轨道 技术领先四年投入超80亿研发",
+   "url": "https://www.163.com/dy/article/IPMMDG0H0530KCTU.html"
+  },
+  {
+   "id": 105,
+   "title": "恒生电子业绩重回增长轨道 技术领先四年投入超80亿研发",
+   "url": "http://finance.sina.com.cn/roll/2024-01-30/doc-inafharq7560781.shtml"
+  },
+  {
+   "id": 106,
+   "title": "恒生电子2023年营收净利双增长",
+   "url": "http://www.zqrb.cn/gscy/gongsi/2024-03-25/A1711363020796.html"
+  },
+  {
+   "id": 107,
+   "title": "营收突破70亿元,轻营销重研发是恒生电子腾飞的秘诀?",
+   "url": "https://blog.csdn.net/YMPzUELX3AIAp7Q/article/details/137102593"
+  },
+  {
+   "id": 108,
+   "title": "恒生电子(SH:600570)2024半年报解读",
+   "url": "https://xueqiu.com/1011481130/306228411"
+  },
+  {
+   "id": 109,
+   "title": "【公司研究】恒生电子 600570",
+   "url": "https://finance.sina.cn/fund/jjgdxw/2024-10-11/detail-incseumt8261115.d.html"
+  }
+ ],
+ "scale": [
+  {
+   "metric": "信息传输、软件和信息技术服务业增加值增速",
+   "value": "9.4%",
+   "unit": "%",
+   "year": "2024",
+   "scope": "全省",
+   "src": [
+    13
+   ]
+  },
+  {
+   "metric": "数字经济核心产业服务业营业收入增速",
+   "value": "8.2%",
+   "unit": "%",
+   "year": "2024",
+   "scope": "全省",
+   "src": [
+    35
+   ]
+  },
+  {
+   "metric": "数字经济核心产业投资增速",
+   "value": "36.9%",
+   "unit": "%",
+   "year": "2023",
+   "scope": "全省",
+   "src": [
+    40
+   ]
+  },
+  {
+   "metric": "数字经济增加值",
+   "value": "4.8万亿元",
+   "unit": "万亿元",
+   "year": "2024",
+   "scope": "全省",
+   "src": [
+    23,
+    24
+   ]
+  },
+  {
+   "metric": "数字经济增加值占GDP比重",
+   "value": "53.3%",
+   "unit": "%",
+   "year": "2024",
+   "scope": "全省",
+   "src": [
+    23,
+    24
+   ]
+  },
+  {
+   "metric": "人工智能核心产业营收",
+   "value": "超3000亿元",
+   "unit": "亿元",
+   "year": "2025",
+   "scope": "全省",
+   "src": [
+    74
+   ]
+  },
+  {
+   "metric": "大数据领域重点监测企业数据服务年度营收目标",
+   "value": "超4000亿元",
+   "unit": "亿元",
+   "year": "2026",
+   "scope": "全省",
+   "src": [
+    32
+   ]
+  },
+  {
+   "metric": "上城区信息传输、软件和信息技术服务业营业收入增速",
+   "value": "18.5%",
+   "unit": "%",
+   "year": "2024",
+   "scope": "杭州市上城区",
+   "src": [
+    14
+   ]
+  }
+ ],
+ "segments": [
+  {
+   "name": "基础软件",
+   "desc": "政策明确聚焦操作系统、数据库、中间件、编译器等基础软件领域。",
+   "src": [
+    11
+   ]
+  },
+  {
+   "name": "工业软件",
+   "desc": "政策明确聚焦CAD/CAE/CAM/PLM/MES/EDA等工业软件领域。",
+   "src": [
+    11
+   ]
+  },
+  {
+   "name": "智能机器人",
+   "desc": "浙江前瞻性布局智能机器人（含人形机器人）等人工智能相关细分赛道。",
+   "src": [
+    49
+   ]
+  },
+  {
+   "name": "低空经济",
+   "desc": "浙江前瞻性布局低空载重飞行器等低空经济范畴的软件技术。",
+   "src": [
+    49
+   ]
+  },
+  {
+   "name": "类脑智能",
+   "desc": "浙江前瞻性布局类脑智能等潜力产业相关软件技术。",
+   "src": [
+    49
+   ]
+  },
+  {
+   "name": "高端软件",
+   "desc": "浙江重点打造世界级数字产业集群，其中包括高端软件集群。",
+   "src": [
+    49
+   ]
+  }
+ ],
+ "cities": [
+  {
+   "city": "杭州",
+   "focus": "绝对核心集聚地，构成全省软件产业第一梯队，政策响应度与企业申报量居全省首位。",
+   "companies": [
+    "浙江和达科技股份有限公司",
+    "浙江核新同花顺网络信息股份有限公司",
+    "杭州宏杉科技股份有限公司",
+    "利尔达科技集团股份有限公司",
+    "杭州深渡智鉴科技有限公司",
+    "杭州中字软科技有限公司",
+    "杭州玉尊信息科技有限公司",
+    "工路（杭州）信息技术有限公司"
+   ],
+   "src": [
+    42,
+    44,
+    84
+   ]
+  },
+  {
+   "city": "嘉兴",
+   "focus": "拥有软件和信息技术服务业A股龙头代表企业。",
+   "companies": [
+    "浙江和达科技股份有限公司"
+   ],
+   "src": [
+    42
+   ]
+  }
+ ],
+ "listed": [
+  {
+   "company": "浙江和达科技股份有限公司",
+   "code": "688296",
+   "city": "嘉兴",
+   "rdExpense": "6259.45万元",
+   "rdRatio": "13.06%",
+   "year": "2024",
+   "src": [
+    92,
+    95,
+    91
+   ]
+  },
+  {
+   "company": "恒生电子",
+   "code": "",
+   "city": "杭州",
+   "rdExpense": "16.85亿元",
+   "rdRatio": "40.24%",
+   "year": "2024",
+   "src": [
+    100
+   ]
+  }
+ ],
+ "financing": [],
+ "policies": [
+  {
+   "level": "部委级",
+   "name": "《关于做好2025年享受税收优惠政策的集成电路企业或项目、软件企业清单制定工作的通知》",
+   "issuer": "国家发展改革委",
+   "year": "2025",
+   "gist": "明确将“国家鼓励的重点软件企业”纳入清单管理范围，适用相关税收优惠政策。",
+   "src": [
+    1
+   ]
+  },
+  {
+   "level": "部委级",
+   "name": "《关于开展2025年度享受增值税加计抵减政策的集成电路企业清单制定工作的通知》",
+   "issuer": "工业和信息化部",
+   "year": "2025",
+   "gist": "将集成电路设计企业（属于软件和信息技术服务业重要子类）纳入增值税加计抵减范围。",
+   "src": [
+    5
+   ]
+  },
+  {
+   "level": "国家级",
+   "name": "《贯彻实施〈国家标准化发展纲要〉行动计划（2024—2025年）》",
+   "issuer": "国务院",
+   "year": "2024",
+   "gist": "明确将‘基础软件、工业软件、应用软件标准体系建设’列为重点任务，要求尽快出台产业急需标准。",
+   "src": [
+    4
+   ]
+  },
+  {
+   "level": "国家级",
+   "name": "《关于加快场景培育和开放推动新场景大规模应用的实施意见》",
+   "issuer": "国务院办公厅",
+   "year": "2025",
+   "gist": "将软件和信息技术服务作为新技术新产品新场景应用的核心载体，支持在政务服务等领域开展规模化验证与落地。",
+   "src": [
+    2
+   ]
+  },
+  {
+   "level": "部委级",
+   "name": "《政务领域人工智能大模型部署应用指引》",
+   "issuer": "中央网信办、国家发展改革委",
+   "year": "2025",
+   "gist": "明确政务部门应探索大模型+软件平台集成应用，推动国产基础软件、中间件、AI框架生态适配与替代。",
+   "src": [
+    6
+   ]
+  },
+  {
+   "level": "部委级",
+   "name": "《关于促进数据产业高质量发展的指导意见》",
+   "issuer": "国家发展改革委、国家数据局等六部门",
+   "year": "2025",
+   "gist": "将“数据采集、存储、加工、分析、交易、安全等全链条软件与技术服务企业”列为数据产业主体重点培育对象。",
+   "src": [
+    8
+   ]
+  },
+  {
+   "level": "省级",
+   "name": "浙江省政府工作报告（2025年）",
+   "issuer": "浙江省政府",
+   "year": "2025",
+   "gist": "明确将“软件和信息技术服务业”嵌入重大战略部署，推进数字产业化强基工程、人工智能+行动等。",
+   "src": [
+    59
+   ]
+  },
+  {
+   "level": "市级",
+   "name": "《强化企业科技创新主体地位加快科技企业高质量发展的若干措施》",
+   "issuer": "杭州市",
+   "year": "",
+   "gist": "明确对软件企业研发费用加计扣除、首版次软件保险补贴、信创适配攻关给予资金支持。",
+   "src": [
+    63
+   ]
+  }
+ ],
+ "jobs": [
+  {
+   "title": "大模型算法工程师",
+   "city": "",
+   "salary": "年薪100万+",
+   "skills": [
+    "PyTorch",
+    "TensorFlow",
+    "LLM微调",
+    "RAG/Agent开发"
+   ],
+   "src": [
+    86
+   ]
+  },
+  {
+   "title": "AIGC算法工程师",
+   "city": "",
+   "salary": "",
+   "skills": [
+    "PyTorch",
+    "TensorFlow",
+    "LLM微调",
+    "RAG/Agent开发"
+   ],
+   "src": [
+    87
+   ]
+  },
+  {
+   "title": "AI工程师",
+   "city": "",
+   "salary": "",
+   "skills": [
+    "PyTorch",
+    "TensorFlow",
+    "LLM微调",
+    "RAG/Agent开发"
+   ],
+   "src": [
+    87
+   ]
+  },
+  {
+   "title": "Agent架构师",
+   "city": "",
+   "salary": "",
+   "skills": [
+    "PyTorch",
+    "TensorFlow",
+    "LLM微调",
+    "RAG/Agent开发"
+   ],
+   "src": [
+    87
+   ]
+  },
+  {
+   "title": "AI手机场景工程化工程师",
+   "city": "",
+   "salary": "",
+   "skills": [
+    "软硬协同能力",
+    "RTOS",
+    "NPU部署",
+    "传感器融合"
+   ],
+   "src": [
+    87
+   ]
+  },
+  {
+   "title": "具身智能开发工程师",
+   "city": "",
+   "salary": "",
+   "skills": [
+    "软硬协同能力",
+    "RTOS",
+    "NPU部署",
+    "传感器融合"
+   ],
+   "src": [
+    87
+   ]
+  },
+  {
+   "title": "边缘AI推理工程师",
+   "city": "",
+   "salary": "",
+   "skills": [
+    "软硬协同能力",
+    "RTOS",
+    "NPU部署",
+    "传感器融合"
+   ],
+   "src": [
+    87
+   ]
+  },
+  {
+   "title": "AI安全与对齐专家",
+   "city": "",
+   "salary": "",
+   "skills": [
+    "技术能力",
+    "法律/金融/可持续发展知识"
+   ],
+   "src": [
+    85
+   ]
+  }
+ ],
+ "demand": [
+  {
+   "text": "截至2025年，中国人工智能人才缺口已达500万人；2024年高校人工智能专业在校生仅约4万人，供需严重失衡。",
+   "src": [
+    87
+   ]
+  },
+  {
+   "text": "AI岗位数量同比暴涨约12倍，AI岗位占新经济岗位比重跃升至26.23%。",
+   "src": [
+    86
+   ]
+  },
+  {
+   "text": "高性能计算工程师供需比仅为0.15（7岗抢1人），SLAM、规控、导航、云计算等岗位同样严重短缺。",
+   "src": [
+    86
+   ]
+  },
+  {
+   "text": "前程无忧2026年调研显示，96.7%的浙江标杆企业认为人才技能“复合型要求提高”，“AI深度应用能力”成为员工培养首要目标（占比78.9%）。",
+   "src": [
+    87
+   ]
+  },
+  {
+   "text": "平湖市（隶属浙江嘉兴）2026年数据显示：软件信息营收达68.9亿元，同比增长115.6%，增速远超多数行业，反映区域软件和信息技术服务业正处于爆发式扩张阶段。",
+   "src": [
+    88
+   ]
+  }
+ ],
+ "aliases": [
+  "软件",
+  "信息技术",
+  "数字经济",
+  "大数据",
+  "人工智能",
+  "计算机"
+ ]
+}

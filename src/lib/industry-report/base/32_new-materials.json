@@ -1,0 +1,1159 @@
+{
+ "industry": "新材料",
+ "province": "江苏",
+ "collectedAt": "2026-10-16T10:45:05.960Z",
+ "origin": "base",
+ "sources": [
+  {
+   "id": 1,
+   "title": "政策资讯|工信部举行“标准提升引领原材料工业优化升级”新闻发布会 ",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzIzNzgwNDQwNg==&mid=2247514632&idx=2&sn=e6f08f899c23067ee65d98c1e045baaa&chksm=e9a4875a6ffb090eb1e718c78f1d4f4038109ff70d7efd9ca917bfb361b242a20be7ce42ea34&scene=27"
+  },
+  {
+   "id": 2,
+   "title": "贵州省工业和信息化厅等九部门关于印发贵州省推动建材行业稳增长促转型增效益的实施意见的通知",
+   "url": "http://www.trs.gov.cn/zwgk/zdlyxxgk/gyfz/202410/t20241009_85794289.html"
+  },
+  {
+   "id": 3,
+   "title": "工信部等九部门联合印发《精细化工产业创新发展实施方案(2024—2027年)》",
+   "url": "https://gxj.haibei.gov.cn/xwdt/tzgg/8993061.html"
+  },
+  {
+   "id": 4,
+   "title": "工业和信息化部、国家发展改革委、财政部、生态环境部、农业农村部、应急管理部、中国科学院、中国工程院、国家能源局等九部门关于印发《精细化工产业创新发展 实施方案(2024—2027年)》的通知",
+   "url": "https://fdi.swt.fujian.gov.cn/show-21612.html"
+  },
+  {
+   "id": 5,
+   "title": "先进制造2025|化工新材料产业发展未来可期——2024中国化工新材料产业发展研究(先进制造观察第3期)",
+   "url": "https://finance.sina.cn/2025-03-06/detail-inensrzp6927137.d.html"
+  },
+  {
+   "id": 6,
+   "title": "国新办就2025年上半年工业和信息化发展情况举行新闻发布会",
+   "url": "https://scca.miit.gov.cn/xwdt/xydt/art/2025/art_bb34f77782404d6aa25a3e6d7b7c307a.html"
+  },
+  {
+   "id": 7,
+   "title": "工业和信息化部节能与综合利用司负责同志解读",
+   "url": "http://gdj.gansu.gov.cn/gdj/c109238/202511/174235364.shtml"
+  },
+  {
+   "id": 8,
+   "title": "从“规模扩大”到“质效提升”",
+   "url": "https://www.suqian.gov.cn/cnsq/sqyw/202509/3e5884754cc7408d9d8ee9a5ed521bb7.shtml"
+  },
+  {
+   "id": 9,
+   "title": "【产业图谱】全面!2025年苏州市主导产业——先进材料产业布局全景图谱(附产业地位、产业政策、产业布局图谱、产业发展现状、产业发展规划)",
+   "url": "https://www.163.com/dy/article/JMQR48PG051480KF.html"
+  },
+  {
+   "id": 10,
+   "title": "https://new.qq.com/rain/a/20250813A05QXI00",
+   "url": "https://new.qq.com/rain/a/20250813A05QXI00"
+  },
+  {
+   "id": 11,
+   "title": "江苏淮安:GDP增速6.8%领跑全省,千亿级新兴产业崛起 ",
+   "url": "https://news.sohu.com/a/923678125_120388781"
+  },
+  {
+   "id": 12,
+   "title": "定了!宿迁将再推3个千亿级产业",
+   "url": "https://i.ifeng.com/c/8hs8Yl9CBRP"
+  },
+  {
+   "id": 13,
+   "title": "【投资江苏】2025年江苏省重点产业投资全景分析(附重点产业布局、园区分布、投资保障等)",
+   "url": "https://m.askci.com/news/chanye/20251014/174542276043081902437817.shtml"
+  },
+  {
+   "id": 14,
+   "title": "南通市人民政府办公室关于印发南通市推进新型工业化2025年行动方案的通知 ",
+   "url": "https://www.nantong.gov.cn/ntsrmzf/2025ndyq/content/468477f6-0e58-46a5-8b18-df828a8437c2.html"
+  },
+  {
+   "id": 15,
+   "title": "市政府办公室关于印发南通市推进新型工业化2025年行动方案的通知 ",
+   "url": "https://www.nantong.gov.cn/ntsrmzf/szfbwj/content/3e914f79-7735-4dd1-ac02-927203bf5026.html"
+  },
+  {
+   "id": 16,
+   "title": "2024江苏经济年中观察及下半年趋势分析·解读追赶者(扬盐竞逐篇) ",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzA5ODEyMzYwMA==&mid=2701607741&idx=1&sn=80d58ce315c51c6837b2456bef719436&chksm=b5d65b33c8a9d1d2349cde5923594324f45383dffe9f46f721576c22c0ae9631ca2028c178ef&scene=27"
+  },
+  {
+   "id": 17,
+   "title": "2024年上半年泰州市规模以上工业运行情况分析",
+   "url": "http://tjj.taizhou.gov.cn/tjzl/tjfx/art/2024/art_4faba0cd0e2c4fa3b9b6a32bab7ef567.html"
+  },
+  {
+   "id": 18,
+   "title": "工业经济发展稳健 重点产业增势良好 ",
+   "url": "https://www.nantong.gov.cn/ntsrmzf/tjfx2/content/954ae7df-5798-4055-8d36-c476583b2e9f.html"
+  },
+  {
+   "id": 19,
+   "title": "2024年1-9月份工业企业运行情况分析",
+   "url": "https://www.zhongfang.gov.cn/zhongfang/c104781/202411/ad1bff2c2cca44a08790c8d576e2f38e.shtml?from=app"
+  },
+  {
+   "id": 20,
+   "title": "关于海安市2024年上半年国民经济和社会发展计划执行情况的报告——2024年7月30日在市十七届人大常委会第二十次会议上 ",
+   "url": "https://www.haian.gov.cn/hasrmzf/jjyshfzjh/content/ba11389a-67f3-4a68-a7e3-23ab84382745.html"
+  },
+  {
+   "id": 21,
+   "title": "两个“单项冠军”的PK",
+   "url": "https://jsjjb.xhby.net/pc/con/202410/28/content_1383126.html"
+  },
+  {
+   "id": 22,
+   "title": "每周资讯||江苏数金汇(2024.10.28-2024.11.07) ",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzA4MDMwMDI4Mw==&mid=2651874313&idx=1&sn=48b04d648b51c6f85405ba73ef007cdd&chksm=85aeb20a0ffe559db9e52132ae7b4016f8371bbeb40f351e704a30adbbee579befb778d913a1&scene=27"
+  },
+  {
+   "id": 23,
+   "title": "解读2024年国民经济“半年答卷”:一份可圈可点的成绩单",
+   "url": "http://www.81.cn/yw_208727/16325249.html"
+  },
+  {
+   "id": 24,
+   "title": "江苏六部门联合出台方案,推动这一产业创新发展",
+   "url": "https://news.2500sz.com/doc/2026/08/06/1223045.shtml"
+  },
+  {
+   "id": 25,
+   "title": "江苏着力推动新材料产业高质量发展",
+   "url": "https://www.jiangsu.gov.cn/art/2024/10/17/art_91077_11389599.html"
+  },
+  {
+   "id": 26,
+   "title": "区政府办公室关于印发《宿豫区特色精细化工(橡塑)新材料产业高质量发展实施方案(2026—2028年)》的通知 ",
+   "url": "http://www.suyu.gov.cn/suyu/qzfbgswj/202603/7f9b9e4573dc45da999cd515386986a1.shtml"
+  },
+  {
+   "id": 27,
+   "title": "江苏以“质量三强”建设构筑高质量发展新格局",
+   "url": "https://finance.sina.cn/2026-10-16/detail-inivkfvy1454506.d.html"
+  },
+  {
+   "id": 28,
+   "title": "加快推进设备更新和技术改造 为工业发展注入新质生产力 ",
+   "url": "https://www.jiangsu.gov.cn/col/col91010/index.html"
+  },
+  {
+   "id": 29,
+   "title": "全文|中共中央 国务院关于发展新质生产力的意见",
+   "url": "http://sthjt.jiangsu.gov.cn/art/2026/10/13/art_84028_11841299.html"
+  },
+  {
+   "id": 30,
+   "title": "扬州市出台六大主导产业集群高质量发展实施方案",
+   "url": "https://www.jiangsu.gov.cn/art/2023/9/20/art_88959_11023513.html"
+  },
+  {
+   "id": 31,
+   "title": "江苏交控:以正确政绩观领航,在“通达之道”上书写高质量发展答卷",
+   "url": "https://zgjssw.gov.cn/jicengdangjian/guoqi/202609/t20260903_8591677.shtml"
+  },
+  {
+   "id": 32,
+   "title": "政府工作报告(2026年) ",
+   "url": "http://www.qidong.gov.cn/qdsrmzf/zfgzbg/content/c713be4d-e8dd-4c33-8bb8-683b472f9204.html"
+  },
+  {
+   "id": 33,
+   "title": "江苏着力推动新材料产业高质量发展",
+   "url": "https://jszwb.jiangsu.gov.cn/art/2024/10/17/art_71797_11389524.html"
+  },
+  {
+   "id": 34,
+   "title": "江苏鑫海高导新材料有限公司璀璨亮相2024 SMM金属产业年会,共绘行业新蓝图!",
+   "url": "https://news.smm.cn/news/102986592"
+  },
+  {
+   "id": 35,
+   "title": "【直播】全球锂产业、储能市场展望 磷酸铁锂电池成本分析 锂电池出海挑战",
+   "url": "https://news.smm.cn/news/103003655"
+  },
+  {
+   "id": 36,
+   "title": "索通发展2024年半年度董事会经营评述",
+   "url": "https://yuanchuang.10jqka.com.cn/20240820/c660977022.shtml"
+  },
+  {
+   "id": 37,
+   "title": "天宜上佳2024年半年度董事会经营评述",
+   "url": "http://yuanchuang.10jqka.com.cn/20240819/c660934770.shtml"
+  },
+  {
+   "id": 38,
+   "title": "规上工业增加值1882亿元比增8.8%",
+   "url": "https://www.huizhou.gov.cn/zwgk/hzsz/zwyw/content/mpost_5383984.html"
+  },
+  {
+   "id": 39,
+   "title": "抢抓机遇期 科创板超80家新材料公司助力新质生产力加速发展",
+   "url": "https://wap.eastmoney.com/a/202403143011358381.html"
+  },
+  {
+   "id": 40,
+   "title": "沪市上市公司公告(10月14日)",
+   "url": "https://stock.10jqka.com.cn/20241014/c662369395.shtml"
+  },
+  {
+   "id": 41,
+   "title": "行业动态",
+   "url": "http://www.acri.org.cn/industryNews/details?id=1&num=20&newListID=35806"
+  },
+  {
+   "id": 42,
+   "title": "行业动态",
+   "url": "http://www.acri.org.cn/industryNews/details?id=1&num=20&newListID=35631"
+  },
+  {
+   "id": 43,
+   "title": "“十五五”新材料产业发展规划",
+   "url": "https://finance.sina.cn/2025-11-15/detail-infxmzea3582515.d.html"
+  },
+  {
+   "id": 44,
+   "title": "打开“十五五”新材料产业发展规划(高性能复合材料、高性能碳纤维、轻量化材料)新浪_财富号_东方财富网",
+   "url": "https://caifuhao.eastmoney.com/news/20251121100731313958190"
+  },
+  {
+   "id": 45,
+   "title": "“十五五”新材料产业发展规划(高性能复合材料、高性能碳纤维、轻量化材料)",
+   "url": "https://dy.163.com/article/KEB8RLPA05568W0A.html"
+  },
+  {
+   "id": 46,
+   "title": "《泰州市2025年—2030年节能环保产业发展规划》公开征求意见",
+   "url": "https://mhuanbao.bjx.com.cn/mnews/20250815/1456184.shtml"
+  },
+  {
+   "id": 47,
+   "title": "碳纤维行业研究——轻量化核心材料",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzU4MjU1OTMyMQ==&mid=2247534071&idx=5&sn=a9ca6c1de87f21bfe4679f2aafcc0183&chksm=fcfce2014bee757647824d0e4da17efce5655810b1d14bec71f925a2c0fad89d86ca619cf1c5&scene=27"
+  },
+  {
+   "id": 48,
+   "title": "“十五五”新材料产业发展规划(下)",
+   "url": "https://ccia.xin/guonazixun/3043.html"
+  },
+  {
+   "id": 49,
+   "title": "2025材料科学发展大会暨江苏省新材料集群融合创新推进活动举办",
+   "url": "https://www.jiangsu.gov.cn/art/2025/4/28/art_84323_11562552.html"
+  },
+  {
+   "id": 50,
+   "title": "金湖县推动新材料产业聚链成势",
+   "url": "https://www.jiangsu.gov.cn/art/2025/4/14/art_84324_11544723.html"
+  },
+  {
+   "id": 51,
+   "title": "苏南特钢材料集群",
+   "url": "https://baike.baidu.com/item/苏南特钢材料集群/67924592"
+  },
+  {
+   "id": 52,
+   "title": "江苏省工业和信息化厅",
+   "url": "https://baike.baidu.com/item/江苏省工业和信息化厅/22992482"
+  },
+  {
+   "id": 53,
+   "title": "江苏着力推动新材料产业高质量发展",
+   "url": "https://www.jiangsu.gov.cn/art/2024/10/17/art_60096_11389487.html"
+  },
+  {
+   "id": 54,
+   "title": "江苏省工业和信息化厅",
+   "url": "http://gxt.jiangsu.gov.cn/art/2024/10/23/art_80192_11396333.html"
+  },
+  {
+   "id": 55,
+   "title": "从“一粒种子”到千亿集群 园区纳米产业产值突破1800亿元",
+   "url": "https://k.sina.com.cn/article_5953740931_162dee083067042320.html"
+  },
+  {
+   "id": 56,
+   "title": "“十四五”苏州材料产业发展再创新高",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzA5NjIzODg0OA==&mid=2651845479&idx=2&sn=57269210cb88c8e5d46659ec88ed606e&chksm=8afc4ca948036713fda4ac307afadd925c24cda4631eece89945c70cb6b74bca2910fca3d3f4&scene=27"
+  },
+  {
+   "id": 57,
+   "title": "先进材料",
+   "url": "https://baike.baidu.com/item/先进材料/68153419"
+  },
+  {
+   "id": 58,
+   "title": "苏州扬子江新型材料股份有限公司",
+   "url": "https://baike.baidu.com/item/苏州扬子江新型材料股份有限公司/19985731"
+  },
+  {
+   "id": 59,
+   "title": "江苏麟龙新材料股份有限公司",
+   "url": "https://baike.baidu.com/item/江苏麟龙新材料股份有限公司/20063780"
+  },
+  {
+   "id": 60,
+   "title": "惠同新材:2026年半年度报告 ",
+   "url": "http://money.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?id=12486819&stockid=920751"
+  },
+  {
+   "id": 61,
+   "title": "天奇股份:募集说明书(注册稿) ",
+   "url": "http://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?stockid=002009&id=12625307"
+  },
+  {
+   "id": 62,
+   "title": "> 齐翔腾达个股数据 ",
+   "url": "https://data.eastmoney.com/stockdata/002408.html"
+  },
+  {
+   "id": 63,
+   "title": "> 飞凯材料个股数据 ",
+   "url": "https://data.eastmoney.com/stockdata/300398.html"
+  },
+  {
+   "id": 64,
+   "title": "> 万润股份个股数据 ",
+   "url": "https://data.eastmoney.com/stockdata/002643.html"
+  },
+  {
+   "id": 65,
+   "title": "> 锡业股份个股数据 ",
+   "url": "https://data.eastmoney.com/stockdata/000960.html"
+  },
+  {
+   "id": 66,
+   "title": "【财经】涂料树脂龙头投资设立合伙企业,跨界布局涂层新材料 ",
+   "url": "https://www.sohu.com/a/1087747383_425738"
+  },
+  {
+   "id": 67,
+   "title": "前海开源新经济灵活配置混合型证券投资基金",
+   "url": "https://baike.baidu.com/item/前海开源新经济灵活配置混合型证券投资基金/19702246"
+  },
+  {
+   "id": 68,
+   "title": "江苏斯迪克新材料科技股份有限公司",
+   "url": "https://baike.baidu.com/item/江苏斯迪克新材料科技股份有限公司/20264995"
+  },
+  {
+   "id": 69,
+   "title": "江苏2个园区8家企业创建首批国家新兴产业发展示范基地",
+   "url": "http://www.js.gov.cn/art/2026/10/6/art_92848_11838523.html"
+  },
+  {
+   "id": 70,
+   "title": "江苏丰远新材料科技有限公司",
+   "url": "https://baike.baidu.com/item/江苏丰远新材料科技有限公司/20907513"
+  },
+  {
+   "id": 71,
+   "title": "【就业促进周】江苏省新材料新能源领域龙头企业吉林大学专场招聘会",
+   "url": "https://jdjyw.jlu.edu.cn/portal/recruit/details?id=e0f44bfb0a7c497c98a87c9142cb4e4b"
+  },
+  {
+   "id": 72,
+   "title": "“十四五”苏州材料产业发展再创新高 ",
+   "url": "http://gxj.suzhou.gov.cn/szeic/clgy/202602/a01a4769fdc04970bdf9660522d96096.shtml"
+  },
+  {
+   "id": 73,
+   "title": "江苏九鼎新材料股份有限公司",
+   "url": "https://baike.baidu.com/item/江苏九鼎新材料股份有限公司/9909303"
+  },
+  {
+   "id": 74,
+   "title": "南京江北新材料科技园",
+   "url": "https://baike.baidu.com/item/南京江北新材料科技园/23510485"
+  },
+  {
+   "id": 75,
+   "title": "淮安新材料产业园",
+   "url": "https://baike.baidu.com/item/淮安新材料产业园/56556190"
+  },
+  {
+   "id": 76,
+   "title": "无锡光电新材料科技园管理区",
+   "url": "https://baike.baidu.com/item/无锡光电新材料科技园管理区/59899398"
+  },
+  {
+   "id": 77,
+   "title": "宿迁新材料产业向更高“千亿能级”迈进",
+   "url": "https://js.cri.cn/20260930/ffd7b621-3e24-48e9-beb7-cc12337c158e.html"
+  },
+  {
+   "id": 78,
+   "title": "投早投小 “硬科技”吸金出圈",
+   "url": "https://www.cnr.cn/jsfw/xwtt/20250417/t20250417_527137649.shtml"
+  },
+  {
+   "id": 79,
+   "title": "2025年第一季度产业重点事件回顾 ",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzAxMzMwNjExMQ==&mid=2652959362&idx=2&sn=60b3d911b62c203d61301dc61d6f8582&chksm=813837b46e8f35d8b125d9f79280bf8a166c3ce3da16f9b220bf6beb8f2dbbc0fb982fb9979d&scene=27"
+  },
+  {
+   "id": 80,
+   "title": "红链聚合力 智汇新材料丨2025年全国科技工作者日锡山区主场活动——省级学会与锡山区新材料产业链专场交流活动成功举办",
+   "url": "https://dangqun.jsxishan.gov.cn/kx/doc/2025/06/04/1328724.shtml"
+  },
+  {
+   "id": 81,
+   "title": "“独角兽”养成记",
+   "url": "http://yangzhou.gov.cn/xwzx/zwyw/art/2025/art_bccef6c24ef54eefb2029c06cd1aa501.html"
+  },
+  {
+   "id": 82,
+   "title": "荷都红链丨金湖县5月产业链党建活动动态 ",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzAwNTgwMTE2MQ==&mid=2652140023&idx=1&sn=39a50434a3e21c71d074e84ec9f5ec4b&chksm=814485856de69830bdbcb8b3a2113c800245a7065dc39a3f164f2a7fcbe4869b5e7b79e97674&scene=27"
+  },
+  {
+   "id": 83,
+   "title": "2025年苏州企业可申报项目汇总 ",
+   "url": "https://news.sohu.com/a/926081859_121711689"
+  },
+  {
+   "id": 84,
+   "title": "2025年苏州企业如何领百万补贴?申报指南速领~",
+   "url": "https://dy.163.com/article/K7E4CMD90553DAUH.html"
+  },
+  {
+   "id": 85,
+   "title": "江苏省三首两新认定",
+   "url": "https://baike.baidu.com/item/江苏省三首两新认定/69167315"
+  },
+  {
+   "id": 86,
+   "title": "制造强省·材料先行绿色工艺及装备对接活动",
+   "url": "https://baike.baidu.com/item/制造强省·材料先行绿色工艺及装备对接活动/69334877"
+  },
+  {
+   "id": 87,
+   "title": "江苏氢能产业集群",
+   "url": "https://baike.baidu.com/item/江苏氢能产业集群/69317066"
+  },
+  {
+   "id": 88,
+   "title": "江苏省发展和改革委员会 政策文件 省发展改革委 省工业和信息化厅关于印发《江苏省推动氢能产业高质量发展行动方案(2025-2030年)》的通知",
+   "url": "https://fzggw.jiangsu.gov.cn/art/2025/2/19/art_84097_11495748.html"
+  },
+  {
+   "id": 89,
+   "title": "翔丰华:2026年度向特定对象发行A股股票募集说明书(注册稿) ",
+   "url": "http://money.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?id=12644695"
+  },
+  {
+   "id": 90,
+   "title": "2025年07月29日山东国铭新材料有限公司年产30万吨金属磨料项目矿业循环经济产业园青山社区西南偏南690m(国铭铸管股份有限公司厂内).pdf",
+   "url": "https://m.book118.com/html/2026/1014/6224043030012232.shtm"
+  },
+  {
+   "id": 91,
+   "title": "【云聘合集2026第185期】连云港东睦新材料、连云港诺信食品配料、江苏铭毅智造科技、江苏华海诚科新材料股份有限公司",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzA4MTM5NDgwMg==&mid=2453777946&idx=1&sn=519acdd12e0b9b003db8457749bceb28&chksm=89d0b1e23904c9d8973d265088fb5948af01862414eed9083cf56cf7c8e16746e2ff33bc3f31&scene=27"
+  },
+  {
+   "id": 92,
+   "title": "「兆鋆新材怎么样」江苏兆鋆新材料股份有限公司 - 职友集",
+   "url": "https://www.jobui.com/company/12218956/"
+  },
+  {
+   "id": 93,
+   "title": "设备工 招聘(工资待遇要求) ",
+   "url": "https://www.jobui.com/company/16773506/salary/j/shebeigong/"
+  },
+  {
+   "id": 94,
+   "title": "2026江苏氢骐科技有限公司招聘(青骐骥集团)",
+   "url": "https://cz.bendibao.com/job/2026109/77413.shtm"
+  },
+  {
+   "id": 95,
+   "title": "无锡 研发部 招聘(工资待遇要求) ",
+   "url": "https://www.jobui.com/company/19118385/salary/j/yanfabu/"
+  },
+  {
+   "id": 96,
+   "title": "世界5oo强【恒力集团】苏州",
+   "url": "https://www.zhipin.com/job_detail/3d5d6ee96893e9671nF-2Ni5EVRT.html"
+  },
+  {
+   "id": 97,
+   "title": "锂电池隔膜技术支持工程师",
+   "url": "https://www.zhipin.com/job_detail/6e0e006b1e7259c81HZ92dm_ElVT.html"
+  },
+  {
+   "id": 98,
+   "title": "江苏PE保护膜公司技术部工资待遇",
+   "url": "https://www.jobui.com/salary/jiangsu-jishubu/ind-pebaohumo/"
+  },
+  {
+   "id": 99,
+   "title": "【热聘】环晟新能源(江苏)有限公司2026年招聘工作人员",
+   "url": "https://www.163.com/dy/article/L92740K20514D7BC.html"
+  },
+  {
+   "id": 100,
+   "title": "报告发布丨材料相关岗位人才需求分析简报",
+   "url": "https://mp.weixin.qq.com/s?__biz=MjM5MjIwNDA5MA==&mid=2648010331&idx=2&sn=6151584b999c2c86670e6b0f5f7da6da&chksm=be881a0e89ff9318d2a91e948d7a15a7d7293bc7b109b58658af4dfdede8e108a9566e7ea84e&scene=27"
+  },
+  {
+   "id": 101,
+   "title": "百万缺口、一将难求:四大新兴支柱产业打响“人才争夺战” ",
+   "url": "https://news.sohu.com/a/1052512856_115321"
+  },
+  {
+   "id": 102,
+   "title": "江苏淮安:强要素之基 筑发展之台 构建高质量充分就业新格局 ",
+   "url": "https://news.2500sz.com/doc/2026/05/26/1212026.shtml"
+  },
+  {
+   "id": 103,
+   "title": "重磅发布|常州市重点产业紧缺技能人才需求调研报告(一):一文读懂常州市技能人才供需全貌",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzUzNjkxNjEzOQ==&mid=2247599959&idx=1&sn=f6d679508ab03c53aa76d8d9fbf763d3&chksm=fb280e991b4916feaa80f0efac42d5796aeb4fb569c6c7dc67b86e5a8aa184d65b8d6737886d&scene=27"
+  },
+  {
+   "id": 104,
+   "title": "2026年第三季度张家港市人力资源市场供求状况分析",
+   "url": "https://www.zjg.gov.cn/zjgszwz/rcscgqzkfx/202610/f77685a3f5614a6099838a4615d4a4c7.shtml"
+  },
+  {
+   "id": 105,
+   "title": "2025年新材料人才供需情况分析,新材料人才供需洞察机遇与挑战 ",
+   "url": "https://business.sohu.com/a/907078421_120574999"
+  },
+  {
+   "id": 106,
+   "title": "清单发布|常州市重点产业紧缺技能人才需求调研报告(三):收藏备用!常州市紧缺技能人才完整需求清单正式发布",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzUzNjkxNjEzOQ==&mid=2247602203&idx=1&sn=0d9f97b124238317f708679ab4bc5567&chksm=fb0739bcd09644e3eb052e05fc8934617fe9d662f6e82686390987b7cade362ce2d04430b02b&scene=27"
+  },
+  {
+   "id": 107,
+   "title": "金属包装材料行业:增长引擎切换至绿色高端 差异化竞争",
+   "url": "https://cj.sina.com.cn/articles/view/7345208878/1b5cefe2e00101bhsk"
+  },
+  {
+   "id": 108,
+   "title": "各地最急需紧缺什么人才?从《人才需求目录》读懂就业“风口”",
+   "url": "https://xz.chsi.com.cn/xz/zyts/202504/20250418/2293376876.html"
+  },
+  {
+   "id": 109,
+   "title": "斯迪克2024年财报:营收26.91亿元,同升36.68%",
+   "url": "https://finance.sina.cn/tech/2025-04-20/detail-inetvtut7039006.d.html"
+  },
+  {
+   "id": 110,
+   "title": "斯迪克2024年年报解读:营收大增但扣非净利下滑46.44%",
+   "url": "http://finance.sina.com.cn/stock/aigc/stockfs/2025-04-20/doc-inetvawy2924688.shtml"
+  },
+  {
+   "id": 111,
+   "title": "【山证新材料】斯迪克2024年中报点评——新项目投产推动营收高增长,业绩拐点可期",
+   "url": "https://finance.sina.cn/2024-09-12/detail-incnvyqw6721606.d.html"
+  },
+  {
+   "id": 112,
+   "title": "斯迪克:2024年度董事会工作报告 ",
+   "url": "http://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?stockid=300806&id=10911704"
+  },
+  {
+   "id": 113,
+   "title": "斯迪克:2024年半年度募集资金存放与使用情况的专项报告 ",
+   "url": "http://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?id=10442818"
+  },
+  {
+   "id": 114,
+   "title": "斯迪克:关于向2024年限制性股票激励计划激励对象授予限制性股票的公告",
+   "url": "https://data.eastmoney.com/notices/detail/300806/AN202412161641318645,斯迪克.html"
+  },
+  {
+   "id": 115,
+   "title": "斯迪克:关于公司控股股东、实际控制人、部分董监高及核心中层管理人员增持公司股票计划期限届满暨增持完成的公告",
+   "url": "https://m.10jqka.com.cn/sn/20240613/48109355.shtml"
+  },
+  {
+   "id": 116,
+   "title": "新三板重要公告汇总(2024年11月1日)",
+   "url": "https://stock.stockstar.com/IG2024110100048397.shtml"
+  },
+  {
+   "id": 117,
+   "title": "杭州华旺新材料科技股份有限公司",
+   "url": "https://epaper.cs.com.cn/zgzqb/html/2024-08/16/nw.D110000zgzqb_20240816_2-B048.htm"
+  },
+  {
+   "id": 118,
+   "title": "九鼎新材:2024年净利润同比下降23.85% 拟10派0.14元",
+   "url": "https://finance.eastmoney.com/a/202504223384319494.html"
+  },
+  {
+   "id": 119,
+   "title": "九鼎新材:2024年业绩增长 2025年剑指16亿营收",
+   "url": "https://m.hexun.com/hkstock/2025-04-22/218625520.html"
+  },
+  {
+   "id": 120,
+   "title": "九鼎新材2024年年报解读:经营活动现金流大增77.16%,营收却下滑17.22%",
+   "url": "http://finance.sina.com.cn/stock/aigc/stockfs/2025-04-22/doc-inetytxe4466145.shtml"
+  },
+  {
+   "id": 121,
+   "title": "九鼎新材2024年年报解读:经营活动现金流大增77.16%,营收却下滑17.22% ",
+   "url": "https://m.sohu.com/a/887421097_122014422"
+  },
+  {
+   "id": 122,
+   "title": "九鼎新材2024年扣非净利润同比增长超46%,回归九鼎集团后经营稳定性持续提升",
+   "url": "https://stock.stockstar.com/IG2025042200034880.shtml"
+  },
+  {
+   "id": 123,
+   "title": "九鼎新材:公司2024年度业绩快报",
+   "url": "https://m.10jqka.com.cn/sn/20250224/50895885.shtml"
+  },
+  {
+   "id": 124,
+   "title": "江苏九鼎新材料股份有限公司2025年度业绩报告解读",
+   "url": "http://finance.sina.com.cn/stock/aigc/stockfs/2026-04-20/doc-inhveaac0831283.shtml"
+  },
+  {
+   "id": 125,
+   "title": "九鼎新材2024年扣非净利润同比增长超46%,回归九鼎集团后经营稳定性持续提升",
+   "url": "https://finance.eastmoney.com/a/202504223384582325.html"
+  },
+  {
+   "id": 126,
+   "title": "九鼎新材预计2024年扣非净利润逆势增长55.25%",
+   "url": "https://wap.eastmoney.com/a/202502263330144038.html"
+  },
+  {
+   "id": 127,
+   "title": "苏州苏大维格科技集团股份有限公司",
+   "url": "https://baike.baidu.com/item/苏州苏大维格科技集团股份有限公司/24545250"
+  },
+  {
+   "id": 128,
+   "title": "苏大维格跌3.33%,成交额3374.17万元,主力资金净流出7.49万元",
+   "url": "https://m.163.com/dy/article/L8Q1SJRB05568W0A.html"
+  },
+  {
+   "id": 129,
+   "title": "2026年中国苏打掩模版行业重点上市企业对比分析:扩产兑现期,本土企业冲刺高端掩膜领域[图]",
+   "url": "https://www.chyxx.com/industry/1283384.html"
+  },
+  {
+   "id": 130,
+   "title": "锦泓集团: 锦泓时装集团股份有限公司主体及“维格转债”2024年度跟踪评级报告",
+   "url": "https://stock.stockstar.com/SN2024062400033662.shtml"
+  },
+  {
+   "id": 131,
+   "title": "苏州苏大维格光电科技股份有限公司首次公开发行股票并在创业板上市招股意向书",
+   "url": "http://vip.stock.finance.sina.com.cn/corp/view/vISSUE_RaiseExplanationDetail.php?stockid=300331&id=923664"
+  },
+  {
+   "id": 132,
+   "title": "同和药业获60家机构调研: 2023年二厂区一期转固4亿多,土建项目基本转固了,设备的转固会在2024年下半年进行,2024年下半年折旧同比可能会增加3000万左右(附调研问答)",
+   "url": "https://stock.10jqka.com.cn/20240902/c661372048.shtml"
+  },
+  {
+   "id": 133,
+   "title": "深市上市公司公告(9月6日)",
+   "url": "http://news.10jqka.com.cn/20240906/c661491723.shtml"
+  },
+  {
+   "id": 134,
+   "title": "沪市上市公司公告(12月18日)",
+   "url": "https://stock.10jqka.com.cn/20241218/c664613848.shtml"
+  },
+  {
+   "id": 135,
+   "title": "深市上市公司公告(12月26日)",
+   "url": "https://stock.10jqka.com.cn/20241226/c664899499.shtml"
+  },
+  {
+   "id": 136,
+   "title": "2024年万润股份研究报告:研发驱动成长,造就百年万润",
+   "url": "https://www.vzkoo.com/read/202402204ee2fcf8f04a0bcac150658c.html"
+  }
+ ],
+ "scale": [
+  {
+   "metric": "新材料产业产值",
+   "value": "898.3亿元",
+   "unit": "亿元",
+   "year": "2024",
+   "scope": "宿迁市",
+   "src": [
+    8,
+    12
+   ]
+  },
+  {
+   "metric": "先进材料产业产值占规上工业总产值比重",
+   "value": "22.71%",
+   "unit": "%",
+   "year": "2024",
+   "scope": "苏州市",
+   "src": [
+    9
+   ]
+  },
+  {
+   "metric": "六大主导产业集群规上企业开票销售收入",
+   "value": "4000.7亿元",
+   "unit": "亿元",
+   "year": "2024",
+   "scope": "扬州市",
+   "src": [
+    16,
+    21
+   ]
+  },
+  {
+   "metric": "化工及新材料产业产值同比增长",
+   "value": "2.9%",
+   "unit": "%",
+   "year": "2024",
+   "scope": "泰州市",
+   "src": [
+    17
+   ]
+  },
+  {
+   "metric": "苏南特钢材料集群主导产业产值",
+   "value": "8215亿元",
+   "unit": "亿元",
+   "year": "2023",
+   "scope": "苏南特钢材料集群",
+   "src": [
+    51
+   ]
+  },
+  {
+   "metric": "纳米产业产值",
+   "value": "1800亿元",
+   "unit": "亿元",
+   "year": "2025",
+   "scope": "苏州工业园区",
+   "src": [
+    55
+   ]
+  },
+  {
+   "metric": "新材料产业规上产值",
+   "value": "10211亿元",
+   "unit": "亿元",
+   "year": "2025",
+   "scope": "苏州市",
+   "src": [
+    72,
+    77
+   ]
+  }
+ ],
+ "segments": [
+  {
+   "name": "高端聚烯烃等十大领域",
+   "desc": "江苏省精细化工创新发展方案明确将高端聚烯烃、特种工程塑料、聚氨酯材料等列为十大重点攻关领域。",
+   "src": [
+    1
+   ]
+  },
+  {
+   "name": "特色精细化工橡塑新材料",
+   "desc": "宿豫区聚焦橡塑助剂、高性能弹性体、改性工程塑料、绿色可降解材料等细分方向。",
+   "src": [
+    3
+   ]
+  },
+  {
+   "name": "纳米新材料",
+   "desc": "苏州工业园区聚焦电子信息材料、生物医用材料、纳米功能材料、传感器与光电器件四大方向。",
+   "src": [
+    55
+   ]
+  },
+  {
+   "name": "特钢及高端合金材料",
+   "desc": "苏南特钢集群形成高性能特种钢板、高端特钢棒材、优特钢线材、高品质不锈钢、高端合金五条优势产业链。",
+   "src": [
+    51
+   ]
+  },
+  {
+   "name": "化工新材料",
+   "desc": "重点发展功能高分子材料、电子专用材料、生物基聚氨酯、茂金属聚乙烯、POE等高端产品。",
+   "src": [
+    54,
+    53
+   ]
+  },
+  {
+   "name": "先进碳材料与复合材料",
+   "desc": "以高性能纤维、先进高分子材料、新型无机非金属材料、碳纤维及复合材料为主导。",
+   "src": [
+    50,
+    53
+   ]
+  }
+ ],
+ "cities": [
+  {
+   "city": "苏州市",
+   "focus": "全省新材料产业核心引擎，拥有纳米新材料国家先进制造业集群，规上产值居全省首位。",
+   "companies": [
+    "恒力",
+    "盛虹",
+    "沙钢",
+    "赛伍应用",
+    "南大光电",
+    "苏大维格",
+    "信达生物制药",
+    "微康益生菌"
+   ],
+   "src": [
+    72,
+    77
+   ]
+  },
+  {
+   "city": "宿迁市",
+   "focus": "快速崛起的“膜材料之都”，形成泗洪新型膜材料产业园等集聚区，新材料产值突破千亿元。",
+   "companies": [
+    "江苏斯迪克新材料科技股份有限公司",
+    "江苏丰远新材料科技有限公司",
+    "沭阳鑫达新材料有限公司",
+    "天能电池集团江苏沭阳公司"
+   ],
+   "src": [
+    68,
+    70,
+    71,
+    77
+   ]
+  },
+  {
+   "city": "南京市",
+   "focus": "以江北新材料科技园为载体，聚焦先进材料与生命健康双轮驱动，集聚多家世界500强。",
+   "companies": [
+    "南京埃斯顿自动化股份有限公司"
+   ],
+   "src": [
+    69,
+    74
+   ]
+  },
+  {
+   "city": "无锡市",
+   "focus": "依托无锡光电新材料科技园，主攻光电功能材料、半导体封装材料、新能源材料。",
+   "companies": [
+    "盛合晶微半导体",
+    "卓胜微电子",
+    "光舟半导体",
+    "赛富乐斯"
+   ],
+   "src": [
+    76,
+    78
+   ]
+  },
+  {
+   "city": "南通市",
+   "focus": "以九鼎新材为代表，强化玻纤深加工与航空航天配套材料优势。",
+   "companies": [
+    "江苏九鼎新材料股份有限公司"
+   ],
+   "src": [
+    73
+   ]
+  },
+  {
+   "city": "淮安市",
+   "focus": "以淮安新材料产业园为主阵地，聚焦绿色建材新材料，推动建筑产业现代化转型。",
+   "companies": [],
+   "src": [
+    75
+   ]
+  }
+ ],
+ "listed": [
+  {
+   "company": "江苏斯迪克新材料科技股份有限公司",
+   "code": "300806",
+   "city": "宿迁市",
+   "rdExpense": "24,022.94万元",
+   "rdRatio": "8.93%",
+   "year": "2024",
+   "src": [
+    109
+   ]
+  },
+  {
+   "company": "江苏九鼎新材料股份有限公司",
+   "code": "002201",
+   "city": "南通市",
+   "rdExpense": "7129.14万元",
+   "rdRatio": "5.01%",
+   "year": "2024",
+   "src": [
+    118,
+    119,
+    120
+   ]
+  }
+ ],
+ "financing": [
+  {
+   "company": "纳力新材料科技有限公司",
+   "event": "A+轮融资",
+   "amount": "近10亿元",
+   "date": "2025年1月",
+   "src": [
+    78
+   ]
+  },
+  {
+   "company": "盛合晶微半导体",
+   "event": "D轮融资",
+   "amount": "7亿美元",
+   "date": "2025年一季度",
+   "src": [
+    78
+   ]
+  },
+  {
+   "company": "卓胜微电子",
+   "event": "主板定向增发",
+   "amount": "35亿元",
+   "date": "2025年一季度",
+   "src": [
+    78
+   ]
+  },
+  {
+   "company": "芯弦半导体",
+   "event": "Pre-A+轮融资",
+   "amount": "近亿元",
+   "date": "2025年3月",
+   "src": [
+    78
+   ]
+  }
+ ],
+ "policies": [
+  {
+   "level": "部委级",
+   "name": "《精细化工产业创新发展实施方案（2024—2027年）》",
+   "issuer": "工业和信息化部、国家发展改革委、财政部、生态环境部、农业农村部、应急管理部、中国科学院、中国工程院、国家能源局",
+   "year": "2024",
+   "gist": "将精细化学品和化工新材料统称为“精细化工”，定位为石化化工行业高质量发展的“关键引擎”，提出攻克关键产品、突破绿色化安全化智能化关键技术等目标。",
+   "src": [
+    3
+   ]
+  },
+  {
+   "level": "国家级",
+   "name": "《2024—2025年节能降碳行动方案》",
+   "issuer": "国务院",
+   "year": "2024",
+   "gist": "推动化工新材料在节能材料、储能技术、新能源设备中的应用，特别强调光伏组件封装材料、新能源汽车用高性能纤维与电池材料等方向的需求增长。",
+   "src": [
+    2
+   ]
+  },
+  {
+   "level": "部委级",
+   "name": "《标准提升引领原材料工业优化升级行动方案（2025—2027年）》",
+   "issuer": "工业和信息化部联合生态环境部、应急管理部、国家标准化管理委员会等部门",
+   "year": "2024",
+   "gist": "以国家标准提升为抓手，推动包括先进金属材料、无机非金属材料、化工新材料在内的原材料工业整体升级，强化新材料在质量、能效、安全、环保等方面的标准化引领。",
+   "src": [
+    1
+   ]
+  },
+  {
+   "level": "省级",
+   "name": "《江苏省氢能产业发展中长期规划（2024—2035年）》",
+   "issuer": "江苏省发展改革委",
+   "year": "2024",
+   "gist": "作为江苏省顶层设计文件之一，将新材料发展深度嵌入省级“1650”产业体系并持续强化政策供给。",
+   "src": [
+    87
+   ]
+  },
+  {
+   "level": "省级",
+   "name": "《江苏省推动氢能产业高质量发展行动方案（2025—2030年）》",
+   "issuer": "江苏省发展改革委、省工信厅",
+   "year": "2025",
+   "gist": "明确将新型储氢材料、燃料电池关键材料、电解水制氢催化剂等新材料列为攻关重点，并设定2027年产业规模突破1000亿元目标。",
+   "src": [
+    87
+   ]
+  },
+  {
+   "level": "省级",
+   "name": "《江苏省新技术新产品认定管理办法（试行）》",
+   "issuer": "江苏省工信厅",
+   "year": "2025",
+   "gist": "首次建立“三首两新”认定体系——即首台（套）重大装备、首批次新材料、首版次软件，以及“两新”（新技术、新产品）。",
+   "src": [
+    85
+   ]
+  },
+  {
+   "level": "省级",
+   "name": "《江苏省加快场景培育和开放若干措施》",
+   "issuer": "江苏省发展改革委、科技厅、工信厅、国资委、数据局",
+   "year": "2026",
+   "gist": "支持场景创新孵化的新技术新产品纳入省级“三首两新”认定名单，强化新材料在绿色工艺、轨道交通、氢能等真实场景中的验证与推广。",
+   "src": [
+    85
+   ]
+  }
+ ],
+ "jobs": [
+  {
+   "title": "研发部高级工程师（树脂/高分子材料方向）",
+   "city": "无锡/宜兴",
+   "salary": "年薪35–45万元 + 股权激励 + 研发成果分红",
+   "skills": [
+    "树脂开发与应用",
+    "工艺设计优化",
+    "专利申报",
+    "技术文档编写"
+   ],
+   "src": [
+    95
+   ]
+  },
+  {
+   "title": "锂电池隔膜技术支持工程师",
+   "city": "",
+   "salary": "",
+   "skills": [
+    "熟悉锂电池隔膜性能指标",
+    "注塑/涂布工艺",
+    "客户试料全流程",
+    "客户需求挖掘",
+    "竞品技术分析"
+   ],
+   "src": [
+    97
+   ]
+  },
+  {
+   "title": "设备工",
+   "city": "",
+   "salary": "￥10K–50K",
+   "skills": [
+    "设备维护",
+    "机械原理基础",
+    "PLC或自动化系统认知"
+   ],
+   "src": [
+    93
+   ]
+  },
+  {
+   "title": "设备倒班助理工程师",
+   "city": "",
+   "salary": "￥9K–12K",
+   "skills": [
+    "焊机/丝印工序设备实操经验",
+    "点检",
+    "基础保养",
+    "换线调试",
+    "故障响应"
+   ],
+   "src": [
+    99
+   ]
+  },
+  {
+   "title": "组件操作员（倒班）",
+   "city": "",
+   "salary": "￥8K–10K",
+   "skills": [
+    "丝印",
+    "焊机",
+    "叠焊"
+   ],
+   "src": [
+    99
+   ]
+  },
+  {
+   "title": "仓库管理员（外协件方向）",
+   "city": "",
+   "salary": "税前￥5500–6000元",
+   "skills": [
+    "持有有效叉车证（N1/N2）",
+    "独立仓管经验",
+    "熟悉Excel或进销存系统"
+   ],
+   "src": [
+    94
+   ]
+  },
+  {
+   "title": "质检员",
+   "city": "苏州",
+   "salary": "综合收入5000元起步",
+   "skills": [
+    "基本质量意识",
+    "执行规范能力"
+   ],
+   "src": [
+    96
+   ]
+  }
+ ],
+ "demand": [
+  {
+   "text": "我国新材料产业人才总量2015年为600万人，2020年达900万人，2025年预计达1000万人，人才缺口扩大至400万人。",
+   "src": [
+    100
+   ]
+  },
+  {
+   "text": "常州市本次调研覆盖新材料企业160家（占全部1006家样本的15.9%），分布于新北区（57家）、武进区（34家）、溧阳市（16家）等重点区域。",
+   "src": [
+    103
+   ]
+  },
+  {
+   "text": "新材料相关紧缺岗位纳入606个条目，其中一线操作类岗位占比超64%；学历要求以本科及以上（44.2%）和大专/高职（30.7%）为主；经验偏好集中在1–3年（37.2%）和3–5年（27.0%）。",
+   "src": [
+    106
+   ]
+  },
+  {
+   "text": "淮安市中天钢铁（淮安）新材料有限公司2024年末在岗4500人，2025年产能提升至70万吨，计划员工增至6000人，年内新增用工1500人。",
+   "src": [
+    102
+   ]
+  },
+  {
+   "text": "张家港市2026年第三季度人力资源市场数据显示，制造业岗位需求占全市总需求55.42%（29852人），其中新材料作为第二产业核心子类，与智能装备、新能源汽车零部件共同构成用工主力。",
+   "src": [
+    104
+   ]
+  }
+ ],
+ "aliases": [
+  "材料",
+  "高分子材料",
+  "先进材料",
+  "功能材料"
+ ]
+}

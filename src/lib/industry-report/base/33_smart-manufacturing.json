@@ -1,0 +1,1081 @@
+{
+ "industry": "智能制造与高端装备",
+ "province": "浙江",
+ "collectedAt": "2026-10-16T10:54:40.615Z",
+ "origin": "base",
+ "sources": [
+  {
+   "id": 1,
+   "title": "智能工厂梯度培育行动",
+   "url": "https://baike.baidu.com/item/智能工厂梯度培育行动/69090217"
+  },
+  {
+   "id": 2,
+   "title": "民爆行业落实《国家智能制造标准体系建设指南》实施方案",
+   "url": "https://baike.baidu.com/item/民爆行业落实《国家智能制造标准体系建设指南》实施方案/67080834"
+  },
+  {
+   "id": 3,
+   "title": "工业和信息化部关于优化业务准入促进卫星通信产业发展的指导意见",
+   "url": "https://baike.baidu.com/item/工业和信息化部关于优化业务准入促进卫星通信产业发展的指导意见/66742256"
+  },
+  {
+   "id": 4,
+   "title": "智洋创新:2026年度向特定对象发行A股股票募集说明书(申报稿) ",
+   "url": "http://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?id=12642491"
+  },
+  {
+   "id": 5,
+   "title": "智洋创新:1-1智洋创新科技股份有限公司向特定对象发行股票证券募集说明书(申报稿) ",
+   "url": "http://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?id=12641600"
+  },
+  {
+   "id": 6,
+   "title": "国家发展改革委国家能源局关于促进新能源消纳和调控的指导意见",
+   "url": "https://baike.baidu.com/item/国家发展改革委国家能源局关于促进新能源消纳和调控的指导意见/67249874"
+  },
+  {
+   "id": 7,
+   "title": "天奇股份:募集说明书(注册稿) ",
+   "url": "http://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?stockid=002009&id=12625307"
+  },
+  {
+   "id": 8,
+   "title": "诚邦股份:以简易程序向特定对象发行股票证券募集说明书(注册稿) ",
+   "url": "http://money.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?id=12642241"
+  },
+  {
+   "id": 9,
+   "title": "翔丰华:2026年度向特定对象发行A股股票募集说明书(注册稿) ",
+   "url": "http://money.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?id=12644695"
+  },
+  {
+   "id": 10,
+   "title": "中科电气:2026年度向特定对象发行A股股票并在创业板上市募集说明书(申报稿) ",
+   "url": "http://money.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?id=12644683"
+  },
+  {
+   "id": 11,
+   "title": "浙江省智能制造装备行业市场规模及发展前景分析 预计2025年产业链年产值将突破5000亿元",
+   "url": "https://www.mmsonline.com.cn/info/331658.shtml"
+  },
+  {
+   "id": 12,
+   "title": "计划总结 ",
+   "url": "http://www.zjcx.gov.cn/xxgk/zfbmxxgk/zxxjjhxxhjzxxzxqyj/fdzdgknr/jhzj/art/2025/art_47d8566fdf4e475eb54b2d5a6351f49a.html"
+  },
+  {
+   "id": 13,
+   "title": "泾川县强工业行动实施方案(2022-2025年) ",
+   "url": "http://www.jingchuan.gov.cn/bmxzxxgk/bmxxgk/gxj/fdzdgknr/lzyj/bmwj/art/2024/art_377b69d46558441cb205e731c87158ce.html"
+  },
+  {
+   "id": 14,
+   "title": "关于平湖市2024年国民经济和社会发展计划执行情况及2025年国民经济和社会发展计划草案的报告 ",
+   "url": "https://www.pinghu.gov.cn/art/2025/3/7/art_1229591438_5471684.html"
+  },
+  {
+   "id": 15,
+   "title": "政府工作报告",
+   "url": "https://zfgb.hangzhou.gov.cn/148/106220253/t124220253064/529295.shtml"
+  },
+  {
+   "id": 16,
+   "title": "政府工作报告",
+   "url": "https://zfgb.hangzhou.gov.cn/mobile_detail.shtml?doc_id=529295&a=0.3282062611966414"
+  },
+  {
+   "id": 17,
+   "title": "宁波市政府工作报告-新闻中心-中国宁波网",
+   "url": "https://news.cnnb.com.cn/system/2025/01/14/030642243.shtml"
+  },
+  {
+   "id": 18,
+   "title": "正式交付,年产值有望突破10亿元!三门这个产业园进入实质性运营阶段 ",
+   "url": "https://sdxw.iqilu.com/share/YS0yMS0xNjUyNTQzNg.html"
+  },
+  {
+   "id": 19,
+   "title": "长三角万亿城市2024:创新引领,协同共振",
+   "url": "http://finance.sina.com.cn/jjxw/2025-01-28/doc-inehnnhf8588832.shtml"
+  },
+  {
+   "id": 20,
+   "title": "浙江举行2024年一季度经济运行情况新闻发布会 ",
+   "url": "http://www.scio.gov.cn/xwfb/dfxwfb/gssfbh/zj_13836/202404/t20240423_844436.html"
+  },
+  {
+   "id": 21,
+   "title": "设备更新 新政发布 | 《浙江省工信领域推动设备更",
+   "url": "http://www.cima.org.cn/nnews.asp?vid=42060"
+  },
+  {
+   "id": 22,
+   "title": "浙江举行前三季度经济运行情况新闻发布会 ",
+   "url": "http://www.scio.gov.cn/xwfb/dfxwfb/gssfbh/zj_13836/202410/t20241024_870932.html"
+  },
+  {
+   "id": 23,
+   "title": "工业经济稳步提升,基础仍需加固——2024年前三季度规模以上工业经济运行简析 ",
+   "url": "https://www.longquan.gov.cn/art/2024/11/13/art_1229386516_5396821.html"
+  },
+  {
+   "id": 24,
+   "title": "前三季度浙江GDP同比增长5.4%",
+   "url": "https://www.hhtznews.com.cn/content/content_9738155.html"
+  },
+  {
+   "id": 25,
+   "title": "数据发布 | 2024年前三季度杭州经济运行情况 ",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzA4MDU2NTIwMg==&mid=2649603962&idx=1&sn=84eb07b5dedec4a2aa027e85c074edc6&chksm=867d78e1ae5ad7d54167faf5486ef9200e2199f056917c3bfda47b5d4e6d98ff5bc19cb277a8&scene=27"
+  },
+  {
+   "id": 26,
+   "title": "2024年前三季度杭州经济运行情况",
+   "url": "https://www.hangzhou.gov.cn/art/2024/10/24/art_1229063407_4308866.html"
+  },
+  {
+   "id": 27,
+   "title": "2024年一季度杭州经济运行情况",
+   "url": "https://www.hangzhou.gov.cn/art/2024/4/25/art_1229243368_59096295.html"
+  },
+  {
+   "id": 28,
+   "title": "【2024年政府工作报告重点工作进展】半年度嘉兴经济运行简况 ",
+   "url": "https://www.jiaxing.gov.cn/art/2024/9/4/art_1229426504_5369274.html"
+  },
+  {
+   "id": 29,
+   "title": "上海、浙江、安徽,同日公布!",
+   "url": "http://news.cnr.cn/native/gd/20241024/t20241024_526951061.shtml"
+  },
+  {
+   "id": 30,
+   "title": "浙江已实现规上工业企业数字化改造全覆盖,2025年开展“AI大模型+传统制造业”试点",
+   "url": "https://www.21jingji.com/article/20241231/herald/77547a8d8f9ae280e179f99483b6929c.html"
+  },
+  {
+   "id": 31,
+   "title": "武义县制造业高质量发展领导小组办公室关于印发《武义县工信领域推动设备更新和消费品以旧换新实施方案》的通知 ",
+   "url": "https://www.zjwy.gov.cn/art/2024/7/4/art_1229799104_59320988.html"
+  },
+  {
+   "id": 32,
+   "title": "新质生产力攀“高”逐“新”",
+   "url": "https://www.yw.gov.cn/art/2024/10/8/art_1229129657_59503516.html"
+  },
+  {
+   "id": 33,
+   "title": "台州:在数字经济新赛道上加速奔跑",
+   "url": "https://news.xinmin.cn/2024/04/25/32637174.html"
+  },
+  {
+   "id": 34,
+   "title": "浙江省经济和信息化厅关于省政协十三届二次会议第21号提案的答复 A ",
+   "url": "https://www.zj.gov.cn/art/2024/12/10/art_1229709047_5422198.html"
+  },
+  {
+   "id": 35,
+   "title": "临川区工信局2023年工作总结及2024年工作安排和打算",
+   "url": "https://www.jxlc.gov.cn/art/2024/10/21/art_21418_4228890.html"
+  },
+  {
+   "id": 36,
+   "title": "工作报告",
+   "url": "http://www.lanxi.gov.cn/art/2024/2/9/art_1229560839_4133934.html"
+  },
+  {
+   "id": 37,
+   "title": "洁美科技2024年半年度董事会经营评述",
+   "url": "https://yuanchuang.10jqka.com.cn/20240815/c660835269.shtml"
+  },
+  {
+   "id": 38,
+   "title": "国新办举行“推动高质量发展”系列主题新闻发布会(工业和信息化部)",
+   "url": "http://gxt.nmg.gov.cn/hdjl/xwfbh/202408/t20240827_2563939.html"
+  },
+  {
+   "id": 39,
+   "title": "关于印发《浙江省加快新场景建设应用推动科技和产业高质量发展行动方案(2026-2027年)》的通知",
+   "url": "https://zj87.jxt.zj.gov.cn/zjhqpt/views/policy/detail.html?id=60848"
+  },
+  {
+   "id": 40,
+   "title": "浙江省国民经济和社会发展第十五个五年规划纲要(2026年1月17日浙江省第十四届人民代表大会第四次会议通过) ",
+   "url": "https://www.xiuzhou.gov.cn/col/col1229411710/art/2026/art_ae4cb39b7373476aaac5dda10c2eabd6.html"
+  },
+  {
+   "id": 41,
+   "title": "海宁市人民政府关于印发海宁市贯彻浙江省推动经济高质量发展若干政策(2026年版)承接落实方案的通知 ",
+   "url": "https://www.haining.gov.cn/col/col1229561908/art/2026/art_9f6f98904a3e4c5fa268d4863592cfbe.html"
+  },
+  {
+   "id": 42,
+   "title": "浙江省国民经济和社会发展第十五个五年规划纲要",
+   "url": "https://zjrb.zjol.com.cn/html/2026-02/10/content_3887098.htm"
+  },
+  {
+   "id": 43,
+   "title": "浙江省经济和信息化厅关于省政协十三届四次会议第504号提案的答复 A ",
+   "url": "https://www.zj.gov.cn/col/col1229709047/art/2026/art_2da0a4b5447bc5c7bd2a025a8e7b7bba.html"
+  },
+  {
+   "id": 44,
+   "title": "2026年浙江省政府工作报告(全文)",
+   "url": "https://ybj.zj.gov.cn/art/2026/1/22/art_1229896774_58843688.html"
+  },
+  {
+   "id": 45,
+   "title": "浙江省人民政府关于印发浙江省“十五五”建设高能级开放强省规划的通知 ",
+   "url": "https://www.zj.gov.cn/col/col1229019364/art/2026/art_ddb36541b934400d95357cedeb4faa73.html"
+  },
+  {
+   "id": 46,
+   "title": "政府工作报告",
+   "url": "https://www.zj.gov.cn/col/col1229019379/art/2026/art_dc38ffc48b3f449a8fefaa1a2349c9b8.html"
+  },
+  {
+   "id": 47,
+   "title": "浙江省人民政府办公厅关于印发浙江省“十五五”现代物流发展规划的通知 ",
+   "url": "https://www.zj.gov.cn/col/col1229019365/art/2026/art_e31ec8deea284307b1443d3572f7415f.html"
+  },
+  {
+   "id": 48,
+   "title": "瑞安市人民政府办公室关于印发2025年瑞安市重点建设计划的通知 ",
+   "url": "https://www.ruian.gov.cn/art/2025/4/7/art_1229579044_4285896.html"
+  },
+  {
+   "id": 49,
+   "title": "金融赋能产业集群发展 助力制造强国提质增速",
+   "url": "https://finance.eastmoney.com/a/202511013552248624.html"
+  },
+  {
+   "id": 50,
+   "title": "省发展改革委 省财政厅关于印发《2025年浙江省推动大规模设备更新和消费品以旧换新实施方案》的通知 ",
+   "url": "https://www.zj.gov.cn/art/2025/1/27/art_1229856055_2546398.html"
+  },
+  {
+   "id": 51,
+   "title": "装备制造行业发展的现状、挑战与未来路径",
+   "url": "https://www.fjlib.net/zt/fjstsgjcxx/jjsd/202509/t20250929_479046.htm"
+  },
+  {
+   "id": 52,
+   "title": "投资杭州 | 一文看懂杭州市高端装备发展现状与投资机会前瞻(附高端装备产业现状、空间布局、投资机会分析等)",
+   "url": "https://www.163.com/dy/article/KFJTT4N5051480KF.html"
+  },
+  {
+   "id": 53,
+   "title": "浙江省人民政府关于印发浙江省产业集聚区发展总体规划(2011—2020年)的通知 ",
+   "url": "https://www.zj.gov.cn/col/col1656332/2026nfb/d33qzd907qfb/art/2026/art_a7f5f53330ca4f0c8008882cba65727c.html"
+  },
+  {
+   "id": 54,
+   "title": "海宁高新技术产业园区",
+   "url": "https://baike.baidu.com/item/海宁高新技术产业园区/68219749"
+  },
+  {
+   "id": 55,
+   "title": "2025年浙江绍兴市新质生产力发展研判:大力实施先进制造业强市建设“4151”计划,重点打造“10+2”产业集群[图]",
+   "url": "https://m.chyxx.com/industry/1225747.html"
+  },
+  {
+   "id": 56,
+   "title": "投资杭州|临平经济技术开发区投资指南 ",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzI4Mjc3OTg2Ng==&mid=2247577499&idx=1&sn=3e0edfe981960caf1293ac199f25fed1&chksm=eabb3633f5ad7a80e87b72cba8ea2c7599937a9485b797cace726fea62bb1d4d361360ecf471&scene=27"
+  },
+  {
+   "id": 57,
+   "title": "【产业图谱】2025年嘉兴市重点产业规划布局产业链全景图谱(附产业布局、发展现状、重点企业等)",
+   "url": "https://m.askci.com/news/chanye/20250226/092909274053334844358742.shtml"
+  },
+  {
+   "id": 58,
+   "title": "【产业图谱】2024年杭州市重点产业规划布局全景图谱",
+   "url": "https://3g.163.com/news/article/JF65QDAF05198SOQ.html"
+  },
+  {
+   "id": 59,
+   "title": "杭州经济技术开发区:产业新城打开发展新空间",
+   "url": "https://www.zjkfq.org.cn/newsinfo/7971313.html"
+  },
+  {
+   "id": 60,
+   "title": "产业新城打开发展新空间 ——来自杭州经济技术开发区的调查",
+   "url": "https://wap.eastmoney.com/a/202501143295599326.html"
+  },
+  {
+   "id": 61,
+   "title": "https://new.qq.com/rain/a/20250312A05EL400",
+   "url": "https://new.qq.com/rain/a/20250312A05EL400"
+  },
+  {
+   "id": 62,
+   "title": "盘点80个国家级先进制造业集群 ",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzUyNjM4Njc5Ng==&mid=2247576545&idx=1&sn=ee0151ba19438baeef032a79f8d6e6f5&chksm=fb49daf2d8071893c1f84ee4574ed756e0fc0bece4539080c066ae269be7cc934c892c3fe35e&scene=27"
+  },
+  {
+   "id": 63,
+   "title": "禾川科技:向特定对象发行股票证券募集说明书(注册稿) ",
+   "url": "http://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?id=12646271"
+  },
+  {
+   "id": 64,
+   "title": "盘面还在磨底,高端装备三季报集体亮剑!硬核制造要崛起? ",
+   "url": "https://caifuhao.eastmoney.com/news/20261014225557377250760"
+  },
+  {
+   "id": 65,
+   "title": "宝盈先进制造灵活配置混合型证券投资基金",
+   "url": "https://baike.baidu.com/item/宝盈先进制造灵活配置混合型证券投资基金/19704391"
+  },
+  {
+   "id": 66,
+   "title": "软控股份跌3.04%,成交额7601.12万元,近3日主力净流入-770.82万",
+   "url": "http://finance.sina.com.cn/stock/aiassist/ggsp/2026-10-15/doc-inivhtus1450303.shtml"
+  },
+  {
+   "id": 67,
+   "title": "浙江佳驰科技有限公司",
+   "url": "https://baike.baidu.com/item/浙江佳驰科技有限公司/69335612"
+  },
+  {
+   "id": 68,
+   "title": "汉缆股份跌6.61%,成交额2.60亿元,后市是否有机会?",
+   "url": "http://finance.sina.com.cn/stock/aiassist/ggsp/2026-10-15/doc-inivhtuq4684074.shtml"
+  },
+  {
+   "id": 69,
+   "title": "汇丰晋信智造先锋股票型证券投资基金",
+   "url": "https://baike.baidu.com/item/汇丰晋信智造先锋股票型证券投资基金/19764647"
+  },
+  {
+   "id": 70,
+   "title": "浙江制造精品",
+   "url": "https://baike.baidu.com/item/浙江制造精品/69351633"
+  },
+  {
+   "id": 71,
+   "title": "浙江金台丘陵山区农机装备集群",
+   "url": "https://baike.baidu.com/item/浙江金台丘陵山区农机装备集群/67424340"
+  },
+  {
+   "id": 72,
+   "title": "专用设备制造行业:政策引导研发攻关叠加定制化模式落地 下游多赛道扩容带动智能装备需求增长 ",
+   "url": "https://www.sohu.com/a/1088680759_120469565"
+  },
+  {
+   "id": 73,
+   "title": "全球先进制造业基地",
+   "url": "https://baike.baidu.com/item/全球先进制造业基地/69329455"
+  },
+  {
+   "id": 74,
+   "title": "专用设备制造业:政策驱使及新基建带动需求 技术布局细分领域深化筑建多重壁垒",
+   "url": "https://q.stock.sohu.com/cn/news.html?textId=1067315844&tab=200&type=120&code=cn_301018&date=2026/1013"
+  },
+  {
+   "id": 75,
+   "title": "江苏省工业和信息化厅",
+   "url": "https://baike.baidu.com/item/江苏省工业和信息化厅/22992482"
+  },
+  {
+   "id": 76,
+   "title": "浙江省推动消费品以旧换新行动方案",
+   "url": "https://baike.baidu.com/item/浙江省推动消费品以旧换新行动方案/64364279"
+  },
+  {
+   "id": 77,
+   "title": "2025-2030高端装备制造业技术创新与产业链协同发展报告.docx",
+   "url": "https://m.book118.com/html/2026/1015/6044031052012232.shtm"
+  },
+  {
+   "id": 78,
+   "title": "2024装备制造业发展大会",
+   "url": "https://baike.baidu.com/item/2024装备制造业发展大会/65003927"
+  },
+  {
+   "id": 79,
+   "title": "浙江(瑞安)机械装备展览会",
+   "url": "https://baike.baidu.com/item/浙江（瑞安）机械装备展览会/65002520"
+  },
+  {
+   "id": 80,
+   "title": "普工/操作工招聘工资_浙江英洛华装备制造2026年普工/操作工工资待遇-BOSS直聘",
+   "url": "https://www.zhipin.com/job_detail/d1f494f00306d55d03V-29i7FVFS.html"
+  },
+  {
+   "id": 81,
+   "title": "【杭州机床工装工程师招聘网_2026年杭州机床工装工程师招聘信息】-杭州猎聘",
+   "url": "https://www.liepin.com/city-hz/zpjichuanggongzhuanggongchengshi/"
+  },
+  {
+   "id": 82,
+   "title": "绍兴 装配工 招聘(工资待遇要求) ",
+   "url": "https://www.jobui.com/company/21617901/salary/j/zhuangpeigong/"
+  },
+  {
+   "id": 83,
+   "title": "杭州萧山区装备制造公司分析本科工资待遇",
+   "url": "https://www.jobui.com/salary/hangzhou-fenxi/area110107/edu2/ind-zhuangbeizhizao/"
+  },
+  {
+   "id": 84,
+   "title": "车间主任是什么职位_浙江浙煤智能钻探装备2026年车间主任前景待遇-BOSS直聘",
+   "url": "https://www.zhipin.com/job_detail/6a05dcdb02e04e3d1HZ73N--GFRY.html"
+  },
+  {
+   "id": 85,
+   "title": "杭州装备制造公司分析工资待遇",
+   "url": "https://www.jobui.com/salary/hangzhou-fenxi/ind-zhuangbeizhizao/"
+  },
+  {
+   "id": 86,
+   "title": "生产总监(机械加工)",
+   "url": "https://www.zhipin.com/job_detail/a529e58b289e025b1HZ82N64EVpQ.html"
+  },
+  {
+   "id": 87,
+   "title": "设备装配调试工程师",
+   "url": "https://www.zhipin.com/job_detail/297be13231c76bcf1HR839W4GFVZ.html"
+  },
+  {
+   "id": 88,
+   "title": "技术部经理",
+   "url": "https://www.zhipin.com/job_detail/aafe97a135047b321HZ_39q7F1RZ.html"
+  },
+  {
+   "id": 89,
+   "title": "浙江金马逊智能制造股份有限公司",
+   "url": "https://www.qcc.com/cjoblist/dc6be6cad750203665c31e598dc291d0"
+  },
+  {
+   "id": 90,
+   "title": "杭州:到2025年人工智能产业基金规模突破1000亿元",
+   "url": "https://wap.eastmoney.com/a/202506053422802222.html"
+  },
+  {
+   "id": 91,
+   "title": "首个“国字号”产业集群!年产值超170亿元!",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzA4NzkyOTAzMA==&mid=2652141588&idx=1&sn=c7dafbd1e9f6b3f4374e82b2eb2f7358&chksm=8a371ae9081f47da1deb055123680167e3084fed0ec166cfd4497bac27b525ae901d78a4bccb&scene=27"
+  },
+  {
+   "id": 92,
+   "title": "信息量极大!涉及东片征迁、道路、学校等! ",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzAxNjAzNzA0MA==&mid=2650558251&idx=2&sn=29d60eca31074dadc62f7e797d8dbc36&chksm=8249e8665577138711d516e764063d57d2ac3d86667379fd930c0cacd3e8cf29dee4ebefbfe3&scene=27"
+  },
+  {
+   "id": 93,
+   "title": "2025年市政府工作报告全文来了 ",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzIyNjQxNTkzNw==&mid=2247664821&idx=3&sn=1c64f26d1e8a225abb99e3cc1f6eb4dc&chksm=e9955af5ff029b285c3b9f94e5db2ff81257285c0a1eedfb6cd6c684586916e5e8a78f2df496&scene=27"
+  },
+  {
+   "id": 94,
+   "title": "永嘉县人民政府办公室关于印发永嘉县促进科技创新和产业创新深度融合 加快推进新型工业化三年攻坚行动方案(2025-2027年)的通知",
+   "url": "https://www.yj.gov.cn/col/col1229155880/art/2025/art_b42aaa8de6a845b1ac1c6fa6c4f9765a.html"
+  },
+  {
+   "id": 95,
+   "title": "杭州各区进入“两会”时间 今年有哪些新动作值得关注?",
+   "url": "https://hznews.hangzhou.com.cn/chengshi/content/2025-05/29/content_9005466_0.htm"
+  },
+  {
+   "id": 96,
+   "title": "台州市人民政府印发关于推动经济高质量发展若干政策(2025年版)的通知",
+   "url": "https://zjnews.zjol.com.cn/yc/xfxwj/202510/t20251005_31270049.shtml?mode=m2pc"
+  },
+  {
+   "id": 97,
+   "title": "长三角万亿城市2024:创新引领,协同共振",
+   "url": "https://www.thepaper.cn/newsDetail_forward_30042265"
+  },
+  {
+   "id": 98,
+   "title": "国民经济和社会发展规划",
+   "url": "https://yunyang.gov.cn/zwgk_257/zfxxgkml/ghjh/gmjjhshfzgh/202501/t20250126_14226060.html"
+  },
+  {
+   "id": 99,
+   "title": "2026全国PLC培训机构版图观察:55.6万套工业机器人背后的区域供给地图,长三角、珠三角、环渤海与中西部四大板块工控培训资源与择校策略全梳理",
+   "url": "https://www.cnblogs.com/hdsj/p/23286731"
+  },
+  {
+   "id": 100,
+   "title": "行业人才需求数据表",
+   "url": "https://www.sgpjbg.com/searchtag/26697011.html"
+  },
+  {
+   "id": 101,
+   "title": "2026装备制造业市场生态分析及智能制造与市场需求报告",
+   "url": "https://www.renrendoc.com/paper/538592487.html"
+  },
+  {
+   "id": 102,
+   "title": "宁波技师学院2026年招生简章",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzA5Nzk4MzI3MA==&mid=2650180734&idx=1&sn=b9563d2034f8424a1d17f86c82501529&chksm=89d8aaa16c24b5a0394e8c8ce3553e4def1d1a96cf555ce770cd7ca3b8c1943c952771382db2&scene=27"
+  },
+  {
+   "id": 103,
+   "title": "2026装备制造业行业转型升级分析及智能制造推进策略与人力资源优化管理",
+   "url": "https://www.renrendoc.com/paper/538588852.html"
+  },
+  {
+   "id": 104,
+   "title": "2026年浙江专升本智能制造工程专业招生院校大全(共计3所)",
+   "url": "https://zsb.xdf.cn/202603/15130168.html"
+  },
+  {
+   "id": 105,
+   "title": "制造业人才发展规划指南",
+   "url": "https://www.miit.gov.cn/cms_files/filemanager/oldfile/miit/n1146285/n1146352/n3054355/n3057267/n3057273/c5499862/part/5499877.doc"
+  },
+  {
+   "id": 106,
+   "title": "适应装备制造产业集群发展的技术技能人才培养研究",
+   "url": "https://www.chinazy.org/info/1006/13198.htm"
+  },
+  {
+   "id": 107,
+   "title": "微信公众平台",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzU4NTU0NTQ1Ng==&mid=2247577273&idx=5&sn=10cb308ea40cebf965a715995dc3befa&chksm=fc46deee150288cedf1f9ea2c992c938c9d634b5659380719e0fbc5c84bd27e900e932154f1c&scene=27"
+  },
+  {
+   "id": 108,
+   "title": "宁波市鄞州区经济和信息化局关于对区政协十七届五次会议第35号提案的答复 ",
+   "url": "https://www.nbyz.gov.cn/col/col1229820351/art/2026/art_0f4a74e83b05443d8a41da8f27d415a8.html"
+  },
+  {
+   "id": 109,
+   "title": "《中国制造2025浙江行动纲要》的政策解读",
+   "url": "https://www.zj.gov.cn/art/2016/2/17/art_1229019366_64964.html"
+  },
+  {
+   "id": 110,
+   "title": "杭州市临平区2026年政府工作报告 ",
+   "url": "https://www.linping.gov.cn/col/col1229592721/art/2026/art_a145f8565f1748e6aaf6168230fd9461.html"
+  },
+  {
+   "id": 111,
+   "title": "上虞:打造现代化产业集群 擦亮先进制造业基地标识",
+   "url": "https://jxt.zj.gov.cn/col/col1562850/art/2026/art_71c1be964c084922800898ba48797364.html"
+  },
+  {
+   "id": 112,
+   "title": "诸暨市人民政府关于印发诸暨市国民经济和社会发展第十五个五年规划纲要的通知 ",
+   "url": "https://www.zhuji.gov.cn/col/col1229079889/art/2026/art_88f90621ff8f4e4cbee711dd8710e5e1.html"
+  },
+  {
+   "id": 113,
+   "title": "浙江省人民政府关于印发浙江省全球先进制造业基地建设“十四五” 规划的通知",
+   "url": "https://jxt.zj.gov.cn/col/col1229123418/art/2026/art_435296b87a9b4278a2b60c77fc8bfa83.html"
+  },
+  {
+   "id": 114,
+   "title": "浙江省人民政府关于印发中国制造2025浙江行动纲要的通知 ",
+   "url": "https://www.zj.gov.cn/art/2016/1/19/art_1229621641_2405971.html"
+  },
+  {
+   "id": 115,
+   "title": "人工智能产业同质化竞争如何破局?丽水莲都以数据筑基走出差异化发展之路",
+   "url": "https://cs.zjol.com.cn/jms/202610/t20261012_31960349.shtml"
+  },
+  {
+   "id": 116,
+   "title": "信胜科技研发费用率持续下降:理财上亿分红超7000万,补流金额减少",
+   "url": "https://user.guancha.cn/main/content?id=1584975"
+  },
+  {
+   "id": 117,
+   "title": "信胜科技上市研判之四:",
+   "url": "https://caifuhao.eastmoney.com/news/20260820052608245433590"
+  },
+  {
+   "id": 118,
+   "title": "信胜科技:最近三年及一期的财务报告和审计报告",
+   "url": "https://data.eastmoney.com/notices/detail/920093/AN202608101827815551.html"
+  },
+  {
+   "id": 119,
+   "title": "立信会计师事务所(特殊普通合伙)关于信胜科技第一轮问询的回复(2025年年报财务数据更新版)",
+   "url": "https://xinsanban.eastmoney.com/Article/NoticeContent?id=AN202604211821395992&pageIndex=84"
+  },
+  {
+   "id": 120,
+   "title": "浙江信胜缝制设备有限公司",
+   "url": "https://baike.baidu.com/item/浙江信胜缝制设备有限公司/20919489"
+  },
+  {
+   "id": 121,
+   "title": "卖刺绣机年入 10 亿,信胜科技将IPO募资转借姨夫参股公司遭问询",
+   "url": "https://www.163.com/dy/article/KNBUR99H0519875F.html"
+  },
+  {
+   "id": 122,
+   "title": "信胜科技 ",
+   "url": "https://emweb.securities.eastmoney.com/CompanyBigNews/index?pos=2&type=soft&code=BJ920093"
+  },
+  {
+   "id": 123,
+   "title": "信胜科技上市:以技术筑底、以品质立身,织就中国智造新标杆",
+   "url": "https://stock.10jqka.com.cn/20260821/c679164207.shtml"
+  },
+  {
+   "id": 124,
+   "title": "浙江信胜科技股份有限公司",
+   "url": "https://www.tianyancha.com/steam/75875625-3118"
+  },
+  {
+   "id": 125,
+   "title": "信胜科技:最近三年及一期的财务报告和审计报告",
+   "url": "https://data.eastmoney.com/notices/detail/874573/AN202608101827815551.html"
+  }
+ ],
+ "scale": [
+  {
+   "metric": "智能装备产业链年产值",
+   "value": "5000亿元",
+   "unit": "亿元",
+   "year": "2025",
+   "scope": "全省",
+   "src": [
+    11
+   ]
+  },
+  {
+   "metric": "高档数控机床增加值",
+   "value": "505亿元",
+   "unit": "亿元",
+   "year": "2020",
+   "scope": "全省",
+   "src": [
+    11
+   ]
+  },
+  {
+   "metric": "现代物流装备增加值",
+   "value": "199亿元",
+   "unit": "亿元",
+   "year": "2020",
+   "scope": "全省",
+   "src": [
+    11
+   ]
+  },
+  {
+   "metric": "整体产业增加值",
+   "value": "774亿元",
+   "unit": "亿元",
+   "year": "2020",
+   "scope": "全省",
+   "src": [
+    11
+   ]
+  },
+  {
+   "metric": "整体产业增加值",
+   "value": "333亿元",
+   "unit": "亿元",
+   "year": "2016",
+   "scope": "全省",
+   "src": [
+    11
+   ]
+  },
+  {
+   "metric": "装备制造业增加值同比增长",
+   "value": "+9.2%",
+   "unit": "%",
+   "year": "2024",
+   "scope": "全省",
+   "src": [
+    20
+   ]
+  },
+  {
+   "metric": "高新技术产业产值",
+   "value": "5.95万亿元",
+   "unit": "万亿元",
+   "year": "2024",
+   "scope": "全省",
+   "src": [
+    30
+   ]
+  }
+ ],
+ "segments": [
+  {
+   "name": "机器人与智能装备",
+   "desc": "含工业机器人、服务机器人、特种机器人，属浙江智能制造核心细分领域。",
+   "src": [
+    109
+   ]
+  },
+  {
+   "name": "新能源汽车与现代交通装备",
+   "desc": "涵盖智能网联、车规级芯片、智能底盘系统等方向。",
+   "src": [
+    109
+   ]
+  },
+  {
+   "name": "高端船舶与海洋工程装备",
+   "desc": "聚焦智能化建造、数字孪生运维等技术应用。",
+   "src": [
+    109
+   ]
+  },
+  {
+   "name": "工业软件与云计算大数据",
+   "desc": "包括工业操作系统、低代码平台、数字孪生引擎等支撑技术。",
+   "src": [
+    109
+   ]
+  },
+  {
+   "name": "专用集成电路与新型元器件",
+   "desc": "涉及AI加速芯片、高精度传感器、智能功率模块等关键部件。",
+   "src": [
+    109
+   ]
+  },
+  {
+   "name": "生物医药和高性能医疗器械",
+   "desc": "包含智能诊断装备、手术机器人、AI辅助研发平台等智能医疗方向。",
+   "src": [
+    109
+   ]
+  }
+ ],
+ "cities": [
+  {
+   "city": "杭州",
+   "focus": "全省装备制造业创新策源地与高端化主引擎，聚焦智能装备、航空航天配套、工业母机、新能源智能汽车。",
+   "companies": [
+    "西奥电梯",
+    "春风动力",
+    "杭汽轮",
+    "运达风电"
+   ],
+   "src": [
+    56,
+    59,
+    60
+   ]
+  },
+  {
+   "city": "绍兴",
+   "focus": "以高端智能装备、交通装备（汽车+航空航天）为产业集群重点方向，强化整机与核心部件协同。",
+   "companies": [
+    "日发精机",
+    "万丰奥威"
+   ],
+   "src": [
+    55
+   ]
+  },
+  {
+   "city": "嘉兴",
+   "focus": "发展智能光伏装备、核电关联装备、工业母机、新能源汽车零部件，是长三角区域性集群承载地。",
+   "companies": [],
+   "src": [
+    57
+   ]
+  }
+ ],
+ "listed": [],
+ "financing": [
+  {
+   "company": "浙江贝尔控制阀门有限公司",
+   "event": "投资项目",
+   "amount": "2.925亿元",
+   "date": "2025年",
+   "src": [
+    48
+   ]
+  },
+  {
+   "company": "绍兴圆锦新材料",
+   "event": "项目签约",
+   "amount": "208亿元",
+   "date": "2025年",
+   "src": [
+    51
+   ]
+  }
+ ],
+ "policies": [
+  {
+   "level": "国家级",
+   "name": "制造业数字化转型行动方案",
+   "issuer": "国务院办公厅",
+   "year": "",
+   "gist": "作为智能工厂梯度培育行动的政策依据与顶层设计。",
+   "src": [
+    1
+   ]
+  },
+  {
+   "level": "部委级",
+   "name": "关于开展2024年度智能工厂梯度培育行动的通知",
+   "issuer": "工业和信息化部等六部门",
+   "year": "2024",
+   "gist": "正式启动智能工厂梯度培育工作，明确基础级、先进级、卓越级、领航级四个层级。",
+   "src": [
+    1
+   ]
+  },
+  {
+   "level": "部委级",
+   "name": "关于开展2025年度智能工厂梯度培育行动的通知",
+   "issuer": "工业和信息化部等六部门",
+   "year": "2025",
+   "gist": "进一步扩大遴选范围、强化标杆引领，推动智能制造装备等在装备制造业企业中的规模化应用。",
+   "src": [
+    1
+   ]
+  },
+  {
+   "level": "部委级",
+   "name": "关于开展2026年度智能工厂梯度培育行动的通知",
+   "issuer": "工业和信息化部等六部门",
+   "year": "2026",
+   "gist": "首次对人工智能技术场景应用比例提出量化要求，凸显对高端装备制造业融合AI、数字孪生等新技术的刚性引导。",
+   "src": [
+    1
+   ]
+  },
+  {
+   "level": "部委级",
+   "name": "民爆行业落实〈国家智能制造标准体系建设指南〉实施方案",
+   "issuer": "工信部办公厅",
+   "year": "2025",
+   "gist": "聚焦民爆专用装备智能化升级，属于高端特种装备制造细分领域的重要标准落地举措。",
+   "src": [
+    2
+   ]
+  },
+  {
+   "level": "部委级",
+   "name": "工业和信息化部关于优化业务准入促进卫星通信产业发展的指导意见",
+   "issuer": "工业和信息化部",
+   "year": "2025",
+   "gist": "支持低轨卫星互联网建设及终端直连等新型装备研发制造，属高端信息装备制造业政策延伸。",
+   "src": [
+    3
+   ]
+  },
+  {
+   "level": "省级",
+   "name": "浙江省推动大规模设备更新和消费品以旧换新若干举措",
+   "issuer": "浙江省政府",
+   "year": "2024",
+   "gist": "将制造业设备更新作为首要任务，明确支持企业开展数控化、智能化、绿色化技术改造。",
+   "src": [
+    76
+   ]
+  },
+  {
+   "level": "省级",
+   "name": "金台丘陵山区农机装备集群培育提升方案（2025—2027年）",
+   "issuer": "浙江省相关部门",
+   "year": "2025",
+   "gist": "全国首个针对丘陵山区特色装备的省级集群专项方案，提出到2027年集群总产值突破1200亿元。",
+   "src": [
+    71
+   ]
+  },
+  {
+   "level": "省级",
+   "name": "浙江省全球先进制造业基地建设“十四五”规划",
+   "issuer": "浙江省政府",
+   "year": "2025",
+   "gist": "装备制造业被列为核心支撑产业，重点发展高端装备、智能制造装备、节能环保装备等新兴产业。",
+   "src": [
+    73
+   ]
+  }
+ ],
+ "jobs": [
+  {
+   "title": "设备装配调试工程师",
+   "city": "",
+   "salary": "¥8k–¥15k",
+   "skills": [
+    "深海装备方向",
+    "3–5年经验"
+   ],
+   "src": [
+    87
+   ]
+  },
+  {
+   "title": "工装工程师",
+   "city": "",
+   "salary": "¥6k–¥25k",
+   "skills": [
+    "航空/汽车/自动化方向"
+   ],
+   "src": [
+    81
+   ]
+  },
+  {
+   "title": "装配工艺工程师",
+   "city": "",
+   "salary": "¥6k–¥25k",
+   "skills": [
+    "CAD",
+    "SolidWorks",
+    "机加工工艺",
+    "公差配合",
+    "激光切割",
+    "数控弯管",
+    "液压系统装配"
+   ],
+   "src": [
+    82
+   ]
+  },
+  {
+   "title": "机床设计工程师",
+   "city": "",
+   "salary": "¥18k–¥35k·14薪",
+   "skills": [
+    "5年以上经验"
+   ],
+   "src": [
+    81
+   ]
+  },
+  {
+   "title": "高级机械工程师",
+   "city": "",
+   "salary": "¥18k–¥35k·14薪",
+   "skills": [
+    "机床",
+    "5年以上经验"
+   ],
+   "src": [
+    81
+   ]
+  },
+  {
+   "title": "夹具工装工程师",
+   "city": "",
+   "salary": "¥20–25k·14薪",
+   "skills": [],
+   "src": [
+    81
+   ]
+  },
+  {
+   "title": "生产总监",
+   "city": "",
+   "salary": "",
+   "skills": [
+    "ERP",
+    "MES系统应用能力",
+    "大专以上",
+    "40周岁内"
+   ],
+   "src": [
+    86
+   ]
+  },
+  {
+   "title": "智能产线调试员",
+   "city": "温州",
+   "salary": "日薪突破800元",
+   "skills": [
+    "PLC编程（西门子/三菱）",
+    "EtherCAT通信",
+    "HMI组态",
+    "故障诊断"
+   ],
+   "src": [
+    102
+   ]
+  },
+  {
+   "title": "PLC程序员",
+   "city": "宁波",
+   "salary": "",
+   "skills": [
+    "PLC编程",
+    "自动化系统集成"
+   ],
+   "src": [
+    102
+   ]
+  },
+  {
+   "title": "工业机器人运维工程师",
+   "city": "温州",
+   "salary": "年薪18万元起",
+   "skills": [
+    "PLC编程",
+    "EtherCAT通信",
+    "HMI组态",
+    "故障诊断"
+   ],
+   "src": [
+    102
+   ]
+  },
+  {
+   "title": "工业机器人系统集成师",
+   "city": "宁波",
+   "salary": "",
+   "skills": [
+    "机器人本体调试",
+    "视觉检测",
+    "MES/SCADA对接",
+    "数字孪生应用基础"
+   ],
+   "src": [
+    102
+   ]
+  }
+ ],
+ "demand": [
+  {
+   "text": "到2025年我国制造业人才缺口达2985.7万人，缺口率48%。",
+   "src": [
+    100
+   ]
+  },
+  {
+   "text": "2026年最新数据显示，制造业重点领域高技能人才缺口约3000万人，其中智能制造复合岗位求人倍率达2.3。",
+   "src": [
+    106
+   ]
+  },
+  {
+   "text": "浙江宁波、温州、杭州等地高端装备制造用工需求同比增长23%，但人岗匹配成功率不足40%。",
+   "src": [
+    100
+   ]
+  },
+  {
+   "text": "温州市人社局2023年三季度数据显示：传统制造岗以年均15%速度萎缩，而高端装备制造、数字服务领域用工需求同比增23%。",
+   "src": [
+    106
+   ]
+  },
+  {
+   "text": "浙江省高职院校装备制造大类专业占高职专科总数9.1%，但毕业生中能直接胜任上述紧缺岗位的比例仍偏低。",
+   "src": [
+    106
+   ]
+  }
+ ],
+ "aliases": [
+  "智能制造",
+  "高端装备",
+  "装备制造",
+  "工业机器人",
+  "机器人",
+  "数控机床",
+  "机械"
+ ]
+}

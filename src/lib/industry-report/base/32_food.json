@@ -1,0 +1,1246 @@
+{
+ "industry": "食品加工",
+ "province": "江苏",
+ "collectedAt": "2026-10-16T10:33:27.321Z",
+ "origin": "base",
+ "sources": [
+  {
+   "id": 1,
+   "title": "关于2024年国民经济和社会发展计划执行情况与2025年国民经济和社会发展计划草案的报告(摘要) ",
+   "url": "https://www.gov.cn/yaowen/liebiao/202503/content_7010838.htm"
+  },
+  {
+   "id": 2,
+   "title": "关于大力实施可再生能源替代行动的指导意见(发改能源〔2024〕1537号)",
+   "url": "https://www.ndrc.gov.cn/xxgk/zcfb/tz/202410/t20241030_1394119_ext.html"
+  },
+  {
+   "id": 3,
+   "title": "关于印发《贯彻实施〈国家标准化发展纲要〉",
+   "url": "https://www.sac.gov.cn/zt/gjbzhfzgyzt/zxdt/art/2024/art_1a6fba2dd701444494c199822fd520f0.html"
+  },
+  {
+   "id": 4,
+   "title": "关于印发《贯彻实施〈国家标准化发展纲要〉行动计划(2024—2025年)》的通知",
+   "url": "https://mzt.guizhou.gov.cn/xwzx/mzyw/202404/t20240404_84149775.html"
+  },
+  {
+   "id": 5,
+   "title": "国务院2月重要政策 ",
+   "url": "https://www.gov.cn/yaowen/liebiao/202503/content_7009349.htm"
+  },
+  {
+   "id": 6,
+   "title": "本周“发展改革热点,我知道”(1月20至1月24日)",
+   "url": "https://www.ndrc.gov.cn/fggz/202501/t20250126_1395936_ext.html"
+  },
+  {
+   "id": 7,
+   "title": "国务院办公厅关于转发商务部、国家发展改革委《2025年稳外资行动方案》的通知",
+   "url": "http://www.yph.gov.cn/yphx/c107828/202508/bcef3b08eafc44e4b7c134db110aab64.shtml"
+  },
+  {
+   "id": 8,
+   "title": "国务院办公厅关于转发商务部、国家发展改革委 《2025年稳外资行动方案》的通知",
+   "url": "https://fgw.hubei.gov.cn/fbjd/xxgkml/jgzn/nsjg/myjjfzc/tzgg/202502/t20250220_5548462.shtml"
+  },
+  {
+   "id": 9,
+   "title": "本周“发展改革热点,我知道”(12月30日至1月3日)",
+   "url": "https://www.ndrc.gov.cn/fggz/202501/t20250106_1395459.html"
+  },
+  {
+   "id": 10,
+   "title": "国务院办公厅关于转发商务部、国家发展改革委《2025年稳外资行动方案》的通知",
+   "url": "https://fgw.hubei.gov.cn/fbjd/xxgkml/jgzn/nsjg/wjc/tzgg/202508/t20250819_5750485.shtml"
+  },
+  {
+   "id": 11,
+   "title": "强政策 兴项目 育主体 1—10月全省规模以上农产品加工业产值达2370.99亿元,同比增长5.34% ",
+   "url": "http://www.agri.cn/zx/xxlb/jl/202512/t20251230_8798873.htm"
+  },
+  {
+   "id": 12,
+   "title": "[江苏]江苏出台三年行动计划 促进农产品加工业优化升级 ",
+   "url": "https://nync.ln.gov.cn/nync/index/nyyw/zsqgnyxxlb/2025120416340499809/index.shtml"
+  },
+  {
+   "id": 13,
+   "title": "开创乡村全面振兴新局面:重磅报告预测2025农业农村发展趋势 ",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzU3Mjg4OTk0OQ==&mid=2247517133&idx=1&sn=bc63b4f3ecb0c78051292c9dc1f0a528&chksm=fd0b14b6af3396185a3e5c7bf72019f70046e6f85fde2308dcacf10f1bd57c34a5bed02c9fae&scene=27"
+  },
+  {
+   "id": 14,
+   "title": "2025年上半年南京经济运行情况",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzIyNzQ1MTQ4NQ==&mid=2247528704&idx=1&sn=b9b461b249fc8d28d2e258bb8d2a8710&chksm=e97d45fcafe956c0754b1922fb594d277c02c257a73718bbbde12911f44f5527da965c254b88&scene=27"
+  },
+  {
+   "id": 15,
+   "title": "2025年上半年工作总结和下半年工作安排 ",
+   "url": "https://www.susong.gov.cn/public/2000003701/2030080952.html"
+  },
+  {
+   "id": 16,
+   "title": "《2025中国农业农村发展趋势报告》重磅发布",
+   "url": "https://www.capiac.org.cn/index.php?s=news&c=show&id=2040"
+  },
+  {
+   "id": 17,
+   "title": "关于海安市2025年上半年国民经济和社会发展计划执行情况的报告 ",
+   "url": "https://www.haian.gov.cn/hasfgw/ghjh/content/ae4b61e9-74c4-40b0-9a63-2e4531432f9a.html"
+  },
+  {
+   "id": 18,
+   "title": "(2023年统计年报和2024年定期统计报表) 国家统计局制定 江苏省统计局补充、印制",
+   "url": "https://tj.jiangsu.gov.cn/module/download/downfile.jsp?filename=eae3c4905ac04060912c75494e382f2e.doc"
+  },
+  {
+   "id": 19,
+   "title": "2024年1-10月统计月报",
+   "url": "https://www.xuanzhou.gov.cn/OpennessContent/show/3450263.html"
+  },
+  {
+   "id": 20,
+   "title": "【新闻发布会解读】相山区统计局党组成员、副局长耿莉参加新闻发布会解读2024年上半年全市经济运行情况_相山区人民政府信息公开网",
+   "url": "https://www.hbxs.gov.cn/zwgk/public/130/64559455.html"
+  },
+  {
+   "id": 21,
+   "title": "政府新闻发布会实录",
+   "url": "https://www.hbxs.gov.cn/zwgk/public/33/64469766.html"
+  },
+  {
+   "id": 22,
+   "title": "上半年经济数据出炉,国家统计局从十方面细致解读 ",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzAxMzQxNTM5NA==&mid=2650126196&idx=2&sn=cf6c2e9bd1c9a9582288c59c0a66f7f1&chksm=8296cebad70b304eee8280deeec991ccb65fa99e9057a41fbf8ab2756adc8b7060b33107d4dd&scene=27"
+  },
+  {
+   "id": 23,
+   "title": "推进乡村全面振兴——2024中国农业农村发展趋势报告发布",
+   "url": "https://www.rmlt.com.cn/2024/0119/693459.shtml"
+  },
+  {
+   "id": 24,
+   "title": "2024年前三季度全省经济运行总体平稳 ",
+   "url": "https://tjj.hlj.gov.cn/tjj/c106736/202410/c00_31780897.shtml"
+  },
+  {
+   "id": 25,
+   "title": "国家统计局10位司局长解读2024年中国经济“三季报”",
+   "url": "https://finance.eastmoney.com/a/202410183210709951.html"
+  },
+  {
+   "id": 26,
+   "title": "南靖县2024年1-9月经济运行情况报告",
+   "url": "http://www.fjnj.gov.cn/cms/siteresource/article.shtml?id=830636073760430004&siteId=60421366101740001"
+  },
+  {
+   "id": 27,
+   "title": "发展方向-2025-2031年中国现代农业专业市场现状及产业链分析报告-共研网 ",
+   "url": "https://www.gelonghui.com/p/1463924"
+  },
+  {
+   "id": 28,
+   "title": "宿迁实施新一轮千亿级产业攻坚三年行动计划",
+   "url": "https://www.jiangsu.gov.cn/art/2025/3/30/art_88959_11528805.html"
+  },
+  {
+   "id": 29,
+   "title": "定了!宿迁将再推3个千亿级产业 ",
+   "url": "https://mp.weixin.qq.com/s?__biz=MjM5NTE3NDQyMw==&mid=2651359621&idx=1&sn=8d520a23010199a7dd027f10cdaa1d83&chksm=bc1e68a65aa9f562a344f52ed709d7b2497a549797c2b54ed8f9375c90bd15d559c5ca979419&scene=27"
+  },
+  {
+   "id": 30,
+   "title": "常熟市2025年政府工作报告 ",
+   "url": "http://www.changshu.gov.cn/zgcs/c100379/202501/b83932acb35e429f870a32e1a3ec12aa.shtml"
+  },
+  {
+   "id": 31,
+   "title": "宿迁观察丨以发展“含绿量”提升增长“含金量” ",
+   "url": "https://www.sohu.com/a/943308511_412025"
+  },
+  {
+   "id": 32,
+   "title": "南通市国民经济和社会发展 第十五个五年规划纲要",
+   "url": "https://www.nantong.gov.cn/ntsrmzf/upload/5a340351-6a85-45ad-94c3-7c17640fe52b.doc"
+  },
+  {
+   "id": 33,
+   "title": "连云港市海州区国民经济和 社会发展第十四个五年规划 和二〇三五年远景目标纲要",
+   "url": "http://www.lyghz.gov.cn/lyghzqrmzf/upload/768be4ff-7f5b-4373-8f14-9d8dc604708d.doc"
+  },
+  {
+   "id": 34,
+   "title": "关于连云港市2024年国民经济和社会发展计划执行情况与2025年国民经济和社会发展计划草案的报告 ",
+   "url": "https://www.lyg.gov.cn/zglygzfmhwz/lhbg_lh2025/content/eb3ac57d-548e-4cff-9501-f9c4306b865e.html"
+  },
+  {
+   "id": 35,
+   "title": "第113届全国糖酒商品交易会新闻发布会(第二场) ",
+   "url": "https://www.nanjing.gov.cn/hdjl/xwfbh/d113jqgtjspjyhxwfbhd2c/index_20041.html"
+  },
+  {
+   "id": 36,
+   "title": "2025年重要时政汇编第51周时政周报(12.15-12.21)",
+   "url": "https://sydw.huatu.com/2025/1223/2844435.html"
+  },
+  {
+   "id": 37,
+   "title": "江苏省“十五五”农业农村现代化规划",
+   "url": "https://baike.baidu.com/item/江苏省“十五五”农业农村现代化规划/69155749"
+  },
+  {
+   "id": 38,
+   "title": "我校召开2026年产教融合高质量发展专项(订单班建设与行企投入)推进会",
+   "url": "https://www.szai.edu.cn/cjrh/info/1201/1145.htm"
+  },
+  {
+   "id": 39,
+   "title": "吴兴区人民政府关于印发吴兴区国民经济和社会发展第十五个五年规划纲要的通知",
+   "url": "https://www.wuxing.gov.cn/col/col1229518297/swwgh/fzgh/art/2026/art_3e77d2760b844511a5ccd05184088320.html"
+  },
+  {
+   "id": 40,
+   "title": "政府工作报告(2026年) ",
+   "url": "http://www.qidong.gov.cn/qdsrmzf/zfgzbg/content/c713be4d-e8dd-4c33-8bb8-683b472f9204.html"
+  },
+  {
+   "id": 41,
+   "title": "国务院关于印发《加快农业农村现代化",
+   "url": "https://www.gov.cn/gongbao/2026/issue_12806/202606/content_7072477.html"
+  },
+  {
+   "id": 42,
+   "title": "中共南京市委 南京市人民政府",
+   "url": "https://www.nanjing.gov.cn/zdgk/202607/t20260714_5876587.html"
+  },
+  {
+   "id": 43,
+   "title": "市政府关于印发南京市服务业扩能提质行动方案(2026—2030年)的通知",
+   "url": "https://www.nanjing.gov.cn/xxgkn/zfgb/202607/t20260731_5886409.html"
+  },
+  {
+   "id": 44,
+   "title": "高台县人民政府办公室关于印发《高台县推进辣椒产业高质量发展实施意见》的通知 ",
+   "url": "http://www.gaotai.gov.cn/zfxxgk/zfwj_6432/zfwj_9419/agwzlfl/gzbf/202604/t20260408_1529392.html"
+  },
+  {
+   "id": 45,
+   "title": "博兴县市场监督管理局关于印发2026年食品生产安全监管工作要点的和监督检查工作计划的通知",
+   "url": "http://www.boxing.gov.cn/art/2026/3/30/art_327672_10595456.html"
+  },
+  {
+   "id": 46,
+   "title": "政府工作报告——2026年1月22日在双鸭山市第十七届人民代表大会第五次会议上",
+   "url": "http://www.shuangyashan.gov.cn/sys/d83a395e787241e0a02a9528a12ed5ea/202601/c07_242086.shtml"
+  },
+  {
+   "id": 47,
+   "title": "2024年3月份规模以上工业增加值增长4.5% ",
+   "url": "https://www.gov.cn/lianbo/bumen/202404/content_6945517.htm"
+  },
+  {
+   "id": 48,
+   "title": "2024年8月份规模以上工业增加值增长4.5% ",
+   "url": "https://www.gov.cn/lianbo/bumen/202409/content_6974526.htm"
+  },
+  {
+   "id": 49,
+   "title": "2024年1-11月份无锡市国民经济运行情况简析",
+   "url": "https://www.wuxi.gov.cn/doc/2024/12/27/4466466.shtml"
+  },
+  {
+   "id": 50,
+   "title": "2024年上半年江苏经济运行情况分析:GDP同比增长5.8%(图)",
+   "url": "https://www.askci.com/news/data/hongguan/20240725/155638272189419858835552.shtml"
+  },
+  {
+   "id": 51,
+   "title": "2024年1—6月全省经济运行简况",
+   "url": "https://www.jiangsu.gov.cn/art/2024/7/24/art_34151_11305109.html"
+  },
+  {
+   "id": 52,
+   "title": "2024年前三季度淮安GDP同比增长7.0% ",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzAwMzA4MzUyMw==&mid=2651886472&idx=1&sn=f971cade68b7e456066aeb9bf11a11f0&chksm=805236fa030ed5337331cab8e6c3063052c8daf628a43e95b0a9b64bb9c3a1520d3bff82b175&scene=27"
+  },
+  {
+   "id": 53,
+   "title": "2024年1—9月全省经济运行简况",
+   "url": "https://www.jiangsu.gov.cn/art/2024/10/24/art_34151_11401445.html"
+  },
+  {
+   "id": 54,
+   "title": "2024年一季度苏州市经济运行情况新闻发布稿 ",
+   "url": "http://tjj.suzhou.gov.cn/sztjj/sjfbyjd/202404/a3fd96488f514b708eab7dc7cfb7e3d9.shtml"
+  },
+  {
+   "id": 55,
+   "title": "2024年前三季度南京市经济运行情况 ",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzAxMTMwNTc5OQ==&mid=2650537557&idx=1&sn=110e68f87b003b34925f7138bfb4a68a&chksm=82e63d5bfb50b2cf33251f669ca01e1de36cd79b9ede4235b8a56c3ebf94b912f337a0b7fa94&scene=27"
+  },
+  {
+   "id": 56,
+   "title": "2024年前三季度淮安市经济运行情况",
+   "url": "https://tjj.huaian.gov.cn/col/11847_682474/content/17303904/1730449417248bGjqCYpY.html"
+  },
+  {
+   "id": 57,
+   "title": "江苏省新型食品集群",
+   "url": "https://baike.baidu.com/item/江苏省新型食品集群/68970165"
+  },
+  {
+   "id": 58,
+   "title": "江苏优之食品有限公司",
+   "url": "https://baike.baidu.com/item/江苏优之食品有限公司/20873946"
+  },
+  {
+   "id": 59,
+   "title": "聚焦制造强省建设,江苏发布150个博士后揭榜领题榜单",
+   "url": "https://www.xhby.net/js/yaowen/202303/t20230317_7869087.shtml"
+  },
+  {
+   "id": 60,
+   "title": "市政府办公室关于印发《宜兴市生命健康产业集群发展三年行动计划(2023—2025年)》的通知",
+   "url": "https://www.yixing.gov.cn/doc/2024/05/07/1226359.shtml"
+  },
+  {
+   "id": 61,
+   "title": "工业和信息化部等十一部门关于培育传统优势食品产区",
+   "url": "https://www.miit.gov.cn/jgsj/xfpgys/sp/art/2023/art_d5b925a639f34efdb35a0f70ec84f15c.html"
+  },
+  {
+   "id": 62,
+   "title": "武威市人民政府关于印发武威市国民经济和社会发展第十五个五年规划纲要的通知",
+   "url": "https://www.gswuwei.gov.cn/art/2026/6/23/art_74_1656738.html"
+  },
+  {
+   "id": 63,
+   "title": "新乡市人民政府办公室关于印发新乡市煤炭行业提质升级行动计划等8个行动计划的通知_新乡市政务公开网",
+   "url": "https://www.xinxiang.gov.cn/zwgk/public/6638640/9685897.html"
+  },
+  {
+   "id": 64,
+   "title": "扬州传统产业焕发新生机,“网眼中的新型工业化”春意融融振奋人心 ",
+   "url": "https://www.sohu.com/a/837166641_121448078"
+  },
+  {
+   "id": 65,
+   "title": "政府工作报告",
+   "url": "https://www.shantou.gov.cn/gkmlpt/content/2/2413/post_2413963.html"
+  },
+  {
+   "id": 66,
+   "title": "北海市食品产业发展规划 (2023—2030 年)",
+   "url": "http://www.beihai.gov.cn/xxgkbm/bhsgyhxxhj/zcfg_10/P020251118333872583962.pdf"
+  },
+  {
+   "id": 67,
+   "title": "集群筑梦蓄势勃发高标准规划建设都市食品产业园 ",
+   "url": "http://www.njgc.gov.cn/jrgc/gcyw/202602/t20260203_5785865.html"
+  },
+  {
+   "id": 68,
+   "title": "535现代化产业体系",
+   "url": "https://baike.baidu.com/item/535现代化产业体系/68769227"
+  },
+  {
+   "id": 69,
+   "title": "因地制宜加快发展特色优势产业",
+   "url": "http://m.qunzh.com/qzxlk/jczx/2026/202604/202602/t20260226_112212.html"
+  },
+  {
+   "id": 70,
+   "title": "江苏这样加速传统产业焕新,“制”胜未来",
+   "url": "https://yrd.huanqiu.com/article/4RhiqpSuqI7"
+  },
+  {
+   "id": 71,
+   "title": "宿城区人民政府关于印发《宿城区加快产业集聚企业领航产品创新切实推动工业经济提质增效三年行动方案(2026—2028年)》的通知",
+   "url": "https://www.sqsc.gov.cn/scq/qzfwj/202604/c656b62a5ba14017a03e140f3765884c.shtml"
+  },
+  {
+   "id": 72,
+   "title": "区政府办公室关于印发《宿城区进一步加强特色优势产业发展的工作方案》的通知 ",
+   "url": "https://www.sqsc.gov.cn/scq/qzfbgs/202604/d8b00fed5e064c44a5166f100de2ce4f.shtml"
+  },
+  {
+   "id": 73,
+   "title": "市政府工作报告",
+   "url": "http://www.yancheng.gov.cn/art/2026/1/21/art_13200_4399077.html"
+  },
+  {
+   "id": 74,
+   "title": "2026年如东县政府工作报告",
+   "url": "https://www.rudong.gov.cn/rdxrmzf/xzfzfgzbg/content/89f27ce9-9c61-4597-86e7-d7a0404a72e1.htm"
+  },
+  {
+   "id": 75,
+   "title": "市政府办公室文件",
+   "url": "https://www.zjg.gov.cn/zjg/c100039/202112/a86c1c9dca494e389c14e41cee7a4f29.shtml"
+  },
+  {
+   "id": 76,
+   "title": "维维股份股票",
+   "url": "https://m.hx168.com.cn/stock/F10/600300.html"
+  },
+  {
+   "id": 77,
+   "title": "> 朗源股份个股数据 ",
+   "url": "https://data.eastmoney.com/stockdata/300175.html"
+  },
+  {
+   "id": 78,
+   "title": "苏垦农发2022年半年度董事会经营评述",
+   "url": "https://stock.stockstar.com/IG2022081800004963.shtml"
+  },
+  {
+   "id": 79,
+   "title": "> 国联水产个股数据 ",
+   "url": "https://data.eastmoney.com/stockdata/300094.html"
+  },
+  {
+   "id": 80,
+   "title": "苏垦农发2023年年度董事会经营评述",
+   "url": "https://stock.stockstar.com/IG2024041800037813.shtml"
+  },
+  {
+   "id": 81,
+   "title": "> 双汇发展个股数据 ",
+   "url": "https://data.eastmoney.com/stockdata/000895.html"
+  },
+  {
+   "id": 82,
+   "title": "仙坛股份:2022年年度报告 ",
+   "url": "http://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?stockid=002746&id=9052420"
+  },
+  {
+   "id": 83,
+   "title": "【得利斯】最新消息,股票行情,分析,走势_摩尔投研",
+   "url": "https://www.moer.cn/stockcode.htm?code=cn_sz002330"
+  },
+  {
+   "id": 84,
+   "title": "汇通达上市提振江苏“三农”板块",
+   "url": "https://k.sina.com.cn/article_5675440730_152485a5a02001cfxf.html"
+  },
+  {
+   "id": 85,
+   "title": "华统股份:可转换公司债券上市公告书 ",
+   "url": "http://vip.stock.finance.sina.com.cn/corp/view/vISSUE_MarketBulletinDetail.php?stockid=002840&id=6257295"
+  },
+  {
+   "id": 86,
+   "title": "江苏省农业农村重大项目建设暨项目招引推进会即将举办| 附:重点招商项目(一) ",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzA4MzM2NDAzNA==&mid=2650219957&idx=1&sn=5cea69362155fbb2f5fff4a9da563936&chksm=86c3d938d97496c5c69482574baac2c17546c3d230773300aa9f194dd1a33523c8bbd596b88e&scene=27"
+  },
+  {
+   "id": 87,
+   "title": "代区长沈伯宏2025年1月7日在扬州市江都区第十七届人民代表大会第四次会议上的政府工作报告",
+   "url": "http://www.jiangdu.gov.cn/zfxxgk/fdzdgknr/zfgzbg/art/2025/art_5e20a3dac7844ecf8f9fed1761c3ba45.html"
+  },
+  {
+   "id": 88,
+   "title": "对市政协十五届四次会议第373号提案的答复 ",
+   "url": "https://www.suzhou.gov.cn/szsrmzf/bmwj/202512/7b57749963604a2ea4dbf1b1463adc36.shtml"
+  },
+  {
+   "id": 89,
+   "title": "2025年扬州市广陵区人民政府工作报告",
+   "url": "https://www.yzglq.gov.cn/zfxxgk/fdzdgknr/zfgzbg/art/2025/art_14832a6c9eef40efbc122773e5d210b7.html"
+  },
+  {
+   "id": 90,
+   "title": "《新街镇2025年招商引资工作实施方案》的解读",
+   "url": "http://www.zgsuixian.gov.cn/jcxxgk/zb/sxxjz/zc_18840/zcjd_14064/202503/t20250325_1316129.shtml"
+  },
+  {
+   "id": 91,
+   "title": "江苏出台三年行动计划促进农产品加工业优化升级",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzI0Mjg5MDM5NA==&mid=2247781992&idx=5&sn=b5cd09047e64ec73d066aab8838ecd20&chksm=e88e84bf25397179187eb96a27bf0e2a6985a4efd273b794b95675357f8ebccb76d98a0f40ec&scene=27"
+  },
+  {
+   "id": 92,
+   "title": "石塘镇2025年工作总结",
+   "url": "https://www.sgrh.gov.cn/sgrhstz/gkmlpt/content/2/2799/post_2799620.html"
+  },
+  {
+   "id": 93,
+   "title": "盐城人今早出门穿厚点!太冷了",
+   "url": "https://www.163.com/dy/article/KEIAIFA805565ZLF.html"
+  },
+  {
+   "id": 94,
+   "title": "东兰县长寿生态食品加工园冷链配套设施项目实施方案",
+   "url": "http://www.donglan.gov.cn/xxgk/zdlyxxgk/zdjsxm/t19692568.shtml"
+  },
+  {
+   "id": 95,
+   "title": "收藏!2025年宿迁市《政府工作报告》全文来了 ",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzAxMDE4NzkxMw==&mid=2650367881&idx=1&sn=40cc002116b53d32430b48932284819b&chksm=82929a1a74e3b31ef08d37fb81b5f7690562f1339fede55792f531d70a8f02765f3cd514ad73&scene=27"
+  },
+  {
+   "id": 96,
+   "title": "苏州湖强农业科技有限公司",
+   "url": "https://baike.baidu.com/item/苏州湖强农业科技有限公司/68738657"
+  },
+  {
+   "id": 97,
+   "title": "2026年农产品加工园区产业融合发展路径与实践探索.pptx",
+   "url": "https://m.book118.com/html/2026/0416/8015027063010063.shtm"
+  },
+  {
+   "id": 98,
+   "title": "江苏正大苏垦猪业有限公司",
+   "url": "https://baike.baidu.com/item/江苏正大苏垦猪业有限公司/9816308"
+  },
+  {
+   "id": 99,
+   "title": "江苏南通:海门农产品加工业“链”上发力 ",
+   "url": "https://news.sohu.com/a/1067858721_362042"
+  },
+  {
+   "id": 100,
+   "title": "江苏大鹤现代农业有限公司",
+   "url": "https://baike.baidu.com/item/江苏大鹤现代农业有限公司/52983089"
+  },
+  {
+   "id": 101,
+   "title": "2026年政府工作报告",
+   "url": "https://www.jiangcheng.gov.cn/gkmlpt/content/0/922/mpost_922423.html"
+  },
+  {
+   "id": 102,
+   "title": "政府工作报告",
+   "url": "https://www.xz.gov.cn/govxxgk/014051247/2026-02-26/a3c1af86-8081-4b24-816f-a4faf7accdde.html"
+  },
+  {
+   "id": 103,
+   "title": "中共宿迁市委 宿迁市人民政府关于加快农业农村现代化 扎实做好2026年乡村全面振兴重点工作的实施意见 ",
+   "url": "https://www.suqian.gov.cn/zfb/zcfg/202606/3c5c1238cdd84dab977549b28e4f27fd.shtml"
+  },
+  {
+   "id": 104,
+   "title": "中共城口县委农村工作暨实施乡村振兴战略领导小组办公室关于印发《城口县2026年优势特色产业培育行动扶持政策》等3个文件的通知",
+   "url": "https://www.cqck.gov.cn/bm/nyncw/zwgk_70831/fdzdgknr_70834/lzyj_70835/xzgfxwj_70836/202603/t20260302_15480880.html"
+  },
+  {
+   "id": 105,
+   "title": "关于储备2025 年度省级现代农业发展补助专项农产品加工提升项目、“苏韵乡情”休闲农业宣传推介项目的通知",
+   "url": "https://nyncj.huaian.gov.cn/col/12158_715536/art/o/17383392/17388233089720AOHhLdE.html"
+  },
+  {
+   "id": 106,
+   "title": "自治区促进农产品加工业高质量发展三年行动方案(2025—2027年) ",
+   "url": "http://nynct.xinjiang.gov.cn/xjnynct/c113595/202508/90729a666af840d4982e8530bb5cb40d.shtml"
+  },
+  {
+   "id": 107,
+   "title": "中共中央国务院关于进一步深化农村改革扎实推进乡村全面振兴的意见(2025年中央一号文件)_萧县人民政府",
+   "url": "https://www.ahxx.gov.cn/grassroots/277/162260391.html"
+  },
+  {
+   "id": 108,
+   "title": "关于政协第十四届全国委员会第三次会议第00155号(农业水利类021号)提案答复的函 ",
+   "url": "http://www.agri.cn/zx/hxgg/202506/t20250624_8743640.htm"
+  },
+  {
+   "id": 109,
+   "title": "电商和供应链产品经理",
+   "url": "https://www.zhipin.com/job_detail/53bd6e630569be951XN_2d61EldR.html"
+  },
+  {
+   "id": 110,
+   "title": "食品研发员",
+   "url": "https://www.zhipin.com/job_detail/a72a314177543fe81XVz2dW0GFpT.html"
+  },
+  {
+   "id": 111,
+   "title": "「雨润农产品集团招聘」_2026年雨润农产品集团招聘信息- 智通直聘",
+   "url": "https://www.job5156.com/gongsi/gs8f0f8ab271a78d63feb76e53c6de10c8/"
+  },
+  {
+   "id": 112,
+   "title": "“春暖农民工”服务行动农产品加工业专场——2026年公主岭市春风行动暨就业援助季活动(七)",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzI0OTIxNzczMQ==&mid=2247490174&idx=1&sn=546c326457ee2cc9dee418806bfef061&chksm=e809f20a39a78d110cadf6e51d812dd235b2cd23bd8ec92f05653bbe110e232a7a92a680ded8&scene=27"
+  },
+  {
+   "id": 113,
+   "title": "泰兴市新源农产品加工投资发展有限公司",
+   "url": "https://baike.baidu.com/item/泰兴市新源农产品加工投资发展有限公司/21051811"
+  },
+  {
+   "id": 114,
+   "title": "2026中国农科院农产品加工所植物蛋白结构与功能调控团队合同制科研助理招聘公告",
+   "url": "https://www.offcn.com/sydw/2026/0525/1140462.html"
+  },
+  {
+   "id": 115,
+   "title": "禽业生产副总(鸡)招聘工资_华统股份2026年禽业生产副总(鸡)工资待遇-BOSS直聘",
+   "url": "https://www.zhipin.com/job_detail/c1cfb7eaa7380b2f03F_39m4ElNS.html"
+  },
+  {
+   "id": 116,
+   "title": "连锁业务员",
+   "url": "https://www.zhipin.com/job_detail/774feed6c11300171nV83N-9F1dT.html"
+  },
+  {
+   "id": 117,
+   "title": "江苏出台三年行动计划促进农产品加工业优化升级 ",
+   "url": "https://www.gov.cn/lianbo/difang/202511/content_7048865.htm"
+  },
+  {
+   "id": 118,
+   "title": "中国农业科学院农产品加工研究所食物营养与功能性食品创新团队合同制科研助理招聘启事",
+   "url": "https://ifst.caas.cn/xwzx/zpxx/3b4a7f90da9f4c929aec989f11f7bff5.htm"
+  },
+  {
+   "id": 119,
+   "title": "2026葡萄干行业人力资源短缺问题与技能培训体系构建",
+   "url": "https://www.renrendoc.com/paper/537934819.html"
+  },
+  {
+   "id": 120,
+   "title": "2026农产品加工行业技术革新市场需求变化供应链管理竞争报告",
+   "url": "https://www.renrendoc.com/paper/538414911.html"
+  },
+  {
+   "id": 121,
+   "title": "农副产品交易平台报告",
+   "url": "https://www.sgpjbg.com/searchtag/26753003.html"
+  },
+  {
+   "id": 122,
+   "title": "2026农业农产品行业供需关系分析与发展模式研究",
+   "url": "https://www.renrendoc.com/paper/538569559.html"
+  },
+  {
+   "id": 123,
+   "title": "2026农产品深加工技术革新与产业发展机会分析",
+   "url": "https://www.renrendoc.com/paper/538351045.html"
+  },
+  {
+   "id": 124,
+   "title": "2026年及未来5年中国农产品行业发展趋势预测及投资战略咨询报告.docx 59页",
+   "url": "https://max.book118.com/html/2026/1014/7063201026011161.shtm"
+  },
+  {
+   "id": 125,
+   "title": "2026农产品精深加工行业市场前景分析及品牌建设路径与冷链物流方案",
+   "url": "https://www.renrendoc.com/paper/538413514.html"
+  },
+  {
+   "id": 126,
+   "title": "全球粮荒浪潮下的中国经济压舱石:夏粮3014.9亿斤丰收的宏观价值、产业链重塑与长期经济红利",
+   "url": "https://zhuanlan.zhihu.com/p/2073100714499491614"
+  },
+  {
+   "id": 127,
+   "title": "崇阳县国民经济和社会发展 第十五个五年规划纲要",
+   "url": "http://www.chongyang.gov.cn/xxgk/dfbmptlj/bmxxgkpt/fgj_19078/fdzdgknr_19900/ghxx_33561/202606/t20260618_4879549.shtml"
+  },
+  {
+   "id": 128,
+   "title": "苏垦农发2023年营收121.68亿元 2024年目标140亿元",
+   "url": "https://ggjd.cnstock.com/company/scp_ggjd/tjd_bbdj/202404/5220593.htm"
+  },
+  {
+   "id": 129,
+   "title": "一分钟看财报丨苏垦农发:2024年一季度报告",
+   "url": "https://m.yicai.com/video/102100591.html"
+  },
+  {
+   "id": 130,
+   "title": "一分钟看财报丨苏垦农发:2024年半年度报告",
+   "url": "https://www.yicai.com/video/102240792.html"
+  },
+  {
+   "id": 131,
+   "title": "粮油生意怎么样?13家粮油企业2024中报成绩单 ",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzA4MDA5NjkwMQ==&mid=2651130361&idx=1&sn=9d4de9d1c0265316c8094fd82d0e3d61&chksm=85ea206974459944e3fdab7e1b0cec4a7cb1fc6dc353fcc3d7746b0cb9267f767dd87ee93f6f&scene=27"
+  },
+  {
+   "id": 132,
+   "title": "苏垦农发:2023年净利同比下降1.20% 拟10派3元 ",
+   "url": "https://www.sohu.com/a/772786564_120988533"
+  },
+  {
+   "id": 133,
+   "title": "苏垦农发2024年半年度董事会经营评述",
+   "url": "https://yuanchuang.10jqka.com.cn/20240820/c660976992.shtml"
+  },
+  {
+   "id": 134,
+   "title": "苏垦农发:2024年上半年净利润同比增长4.84% 拟10派0.6元",
+   "url": "https://finance.eastmoney.com/a/202408203160664860.html"
+  },
+  {
+   "id": 135,
+   "title": "苏垦农发:2023年净利同比下降1.20% 拟10派3元",
+   "url": "https://finance.eastmoney.com/news/1354,202404193050870091.html"
+  },
+  {
+   "id": 136,
+   "title": "苏垦农发:上半年扣非净利润增长14.90% 盈利提升与高端化打开成长空间",
+   "url": "http://news.10jqka.com.cn/20240820/c660980597.shtml"
+  },
+  {
+   "id": 137,
+   "title": "公告精选:*ST天成股票已触及交易类退市指标;沧州明珠实控人拟变更为沧州市国资委",
+   "url": "https://www.163.com/dy/article/J7G95SEF053469RG.html"
+  },
+  {
+   "id": 138,
+   "title": "汇通控股:2024年净利润同比增长7.05% 拟10派5元",
+   "url": "https://finance.sina.cn/2025-04-18/detail-inetparp3138584.d.html"
+  },
+  {
+   "id": 139,
+   "title": "汇通达网络(09878.HK)2024年中报:提质量优结构,上半年实现营收328.6亿元",
+   "url": "https://finance.sina.cn/2024-08-28/detail-incmfisy4861010.d.html"
+  },
+  {
+   "id": 140,
+   "title": "600 亿营收、4.6 亿净利!汇通达 2024 财报出炉",
+   "url": "https://finance.sina.cn/stock/relnews/hk/2025-03-28/detail-inerfcmm7080109.d.html"
+  },
+  {
+   "id": 141,
+   "title": "2024年强势收官!汇通达网络(09878)涨超6% 组织架构调整加速战略升级",
+   "url": "https://stock.10jqka.com.cn/hks/20241231/c665062396.shtml"
+  },
+  {
+   "id": 142,
+   "title": "汇通达网络:公司上半年实现收入32,855,766千元",
+   "url": "https://hk.jrj.com.cn/2024/09/26170343533988.shtml"
+  },
+  {
+   "id": 143,
+   "title": "13家互联网企业营业收入超1000亿元",
+   "url": "https://zhuanlan.zhihu.com/p/690124165"
+  },
+  {
+   "id": 144,
+   "title": "汇通达网络(9878.HK)供应链能力再升级,开启增长新篇章",
+   "url": "https://xueqiu.com/1333325987/302848908"
+  },
+  {
+   "id": 145,
+   "title": "年度报告",
+   "url": "https://vip.stock.finance.sina.com.cn/corp/go.php/vCB_Bulletin/stockid/600300/page_type/zqbg.phtml"
+  },
+  {
+   "id": 146,
+   "title": "维维股份:维维食品饮料股份有限公司2024年年度报告",
+   "url": "https://data.eastmoney.com/notices/detail/600300/AN202504181658463500,JUU3JUJCJUI0JUU3JUJCJUI0JUU4JTgyJUExJUU0JUJCJUJE.html"
+  },
+  {
+   "id": 147,
+   "title": "维维股份:2024年报净利润4.11亿 同比增长96.65%",
+   "url": "https://m.10jqka.com.cn/20250418/c667575255.shtml"
+  },
+  {
+   "id": 148,
+   "title": "维维食品饮料股份有限公司 ",
+   "url": "https://business.sohu.com/a/764503236_120988533"
+  },
+  {
+   "id": 149,
+   "title": "维维股份(600300.SH)发布2024年度业绩,归母净利润4.11亿元,同比增长96.26%",
+   "url": "https://stock.hexun.com/2025-04-18/218568291.html"
+  },
+  {
+   "id": 150,
+   "title": "维维股份2024年年报解读:净利润大增96.26%,经营现金流却下滑57.17%",
+   "url": "http://finance.sina.com.cn/stock/aigc/stockfs/2025-04-18/doc-inetquyn4687756.shtml"
+  },
+  {
+   "id": 151,
+   "title": "> 维维股份个股数据 ",
+   "url": "https://data.eastmoney.com/stockdata/600300.html"
+  },
+  {
+   "id": 152,
+   "title": "维维股份:2024年年度股东大会会议资料 ",
+   "url": "http://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?stockid=600300&id=11090352"
+  },
+  {
+   "id": 153,
+   "title": "维维股份:2024年半年度净利润约1.51亿元,同比增加145.08%",
+   "url": "https://www.nbd.com.cn/rss/zaker/articles/3536984.html"
+  },
+  {
+   "id": 154,
+   "title": "公司公告_维维股份:关于2024年半年度业绩说明会召开情况的公告新浪财经_新浪网",
+   "url": "http://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?id=10538530"
+  }
+ ],
+ "scale": [
+  {
+   "metric": "规模以上农产品加工企业数量",
+   "value": "超9000家",
+   "unit": "家",
+   "year": "2024",
+   "scope": "全省",
+   "src": [
+    12
+   ]
+  },
+  {
+   "metric": "新型食品集群营业收入",
+   "value": "超7100亿元",
+   "unit": "亿元",
+   "year": "2023",
+   "scope": "全省",
+   "src": [
+    57
+   ]
+  },
+  {
+   "metric": "规上食品工业企业数量",
+   "value": "超2000家",
+   "unit": "家",
+   "year": "2023",
+   "scope": "全省",
+   "src": [
+    57
+   ]
+  },
+  {
+   "metric": "规模以上农产品加工业企业营业收入",
+   "value": "2389亿元",
+   "unit": "亿元",
+   "year": "2025",
+   "scope": "苏州市",
+   "src": [
+    88
+   ]
+  },
+  {
+   "metric": "规模以上农产品加工业企业数量",
+   "value": "966家",
+   "unit": "家",
+   "year": "2025",
+   "scope": "苏州市",
+   "src": [
+    88
+   ]
+  },
+  {
+   "metric": "绿色食品产业产值目标",
+   "value": "突破1000亿元",
+   "unit": "亿元",
+   "year": "2025",
+   "scope": "宿迁市",
+   "src": [
+    28,
+    29
+   ]
+  },
+  {
+   "metric": "新型食品产业集群产值目标",
+   "value": "80亿元",
+   "unit": "亿元",
+   "year": "2028",
+   "scope": "宿迁市宿城区",
+   "src": [
+    71,
+    72
+   ]
+  },
+  {
+   "metric": "企业销售收入",
+   "value": "10.72亿元",
+   "unit": "亿元",
+   "year": "2026",
+   "scope": "南通市海门区",
+   "src": [
+    99
+   ]
+  }
+ ],
+ "segments": [
+  {
+   "name": "健康与特医食品",
+   "desc": "聚焦特医食品、保健食品、食品添加剂研发与产业化，兴化为核心承载地。",
+   "src": [
+    57,
+    60
+   ]
+  },
+  {
+   "name": "绿色有机食品",
+   "desc": "支持有机食品、低糖低脂功能食品、可降解包装食品，绿色食品认证数量全国第一。",
+   "src": [
+    57
+   ]
+  },
+  {
+   "name": "预制菜与休闲食品",
+   "desc": "发展高端预制菜、明胶果汁软糖等健康零食，南京都市食品产业园为重点载体。",
+   "src": [
+    67
+   ]
+  },
+  {
+   "name": "植物基与发酵食品",
+   "desc": "融合生物技术开发植物基食品、益生菌与发酵食品等创新性产品。",
+   "src": [
+    67
+   ]
+  },
+  {
+   "name": "食品智能装备",
+   "desc": "聚焦智能化产线、高效节能装备、食品专用机器人及AI质检系统更新。",
+   "src": [
+    57
+   ]
+  },
+  {
+   "name": "地方特色食品",
+   "desc": "推动靖江肉脯、淮安大米、镇江香醋等地理标志产品向标准化、品牌化发展。",
+   "src": [
+    61
+   ]
+  }
+ ],
+ "cities": [
+  {
+   "city": "苏州市",
+   "focus": "大闸蟹、出口水产品、高端预制食品及粮油加工，规模居全省首位。",
+   "companies": [
+    "苏州湖强农业科技有限公司",
+    "中粮东海粮油"
+   ],
+   "src": [
+    96,
+    88
+   ]
+  },
+  {
+   "city": "南通市",
+   "focus": "即食蔬菜、特医食品、儿童营养食品、出口冻品，海门区为集聚区。",
+   "companies": [
+    "泰森食品",
+    "百卡弗食品有限公司",
+    "南通顺星农副产品有限公司"
+   ],
+   "src": [
+    99
+   ]
+  },
+  {
+   "city": "盐城市",
+   "focus": "生猪、禽蛋、水产、稻米精深加工，拥有省级农业产业化重点龙头企业集群。",
+   "companies": [
+    "江苏正大苏垦猪业有限公司",
+    "江苏大鹤现代农业有限公司"
+   ],
+   "src": [
+    98,
+    100
+   ]
+  },
+  {
+   "city": "宿迁市",
+   "focus": "设施果蔬、食用菌、畜禽加工及绿色食品产业，冲刺千亿级集群。",
+   "companies": [],
+   "src": [
+    28,
+    103
+   ]
+  },
+  {
+   "city": "南京市",
+   "focus": "高端预制菜、海外休闲食品、功能性糖果，拥有长三角首个食品产业公园。",
+   "companies": [
+    "江苏欧贝食品科技",
+    "南京弘源达食品"
+   ],
+   "src": [
+    67
+   ]
+  },
+  {
+   "city": "泰州市",
+   "focus": "健康食品产业高地，承担省级新型食品集群协同创新对接活动。",
+   "companies": [
+    "江苏优之食品有限公司"
+   ],
+   "src": [
+    57,
+    58
+   ]
+  }
+ ],
+ "listed": [],
+ "financing": [],
+ "policies": [
+  {
+   "level": "国家级",
+   "name": "《乡村全面振兴规划（2024—2027年）》",
+   "issuer": "中共中央、国务院",
+   "year": "2024",
+   "gist": "明确要求大力发展农产品加工流通业，支持建设产地冷藏保鲜设施和区域性农产品精深加工基地。",
+   "src": [
+    6
+   ]
+  },
+  {
+   "level": "部委级",
+   "name": "《贯彻实施〈国家标准化发展纲要〉行动计划（2024—2025年）》",
+   "issuer": "国家发展改革委、工信部、市场监管总局等15部门",
+   "year": "",
+   "gist": "在食品加工装备等重点领域强化标准攻关，加快研制农产品分级分选、贮藏保鲜、精深加工等关键标准。",
+   "src": [
+    3
+   ]
+  },
+  {
+   "level": "部委级",
+   "name": "《贯彻实施〈国家标准化发展纲要〉行动计划（2024—2025年）》",
+   "issuer": "国家发展改革委、工信部、市场监管总局等15部门",
+   "year": "",
+   "gist": "推动农产品加工领域标准与国际接轨，支撑绿色低碳转型。",
+   "src": [
+    4
+   ]
+  },
+  {
+   "level": "部委级",
+   "name": "《关于大力实施可再生能源替代行动的指导意见》",
+   "issuer": "国家发改委",
+   "year": "2024",
+   "gist": "支持农产品加工企业开展生物质能替代、余热回收利用等绿色技改，将农产品加工园区纳入可再生能源综合应用试点范围。",
+   "src": [
+    2
+   ]
+  },
+  {
+   "level": "省级",
+   "name": "《江苏省促进农产品加工业优化升级三年行动计划（2025—2027年）》",
+   "issuer": "江苏省农业农村厅",
+   "year": "",
+   "gist": "部署农产品加工单项冠军企业培育、新兴产业壮大、园区提升、集群建设、融合发展及联农带农提质增效六大专项行动。",
+   "src": [
+    12
+   ]
+  },
+  {
+   "level": "省级",
+   "name": "《江苏省促进农产品加工业优化升级三年行动计划（2025—2027年）》",
+   "issuer": "江苏省农业农村厅",
+   "year": "",
+   "gist": "提出打造农产品加工科技创新带、优质农产品生产加工区、农产品加工集群，构建农业龙头企业矩阵。",
+   "src": [
+    91
+   ]
+  },
+  {
+   "level": "省级",
+   "name": "《江苏省促进农产品加工业优化升级三年行动计划（2025—2027年）》",
+   "issuer": "江苏省农业农村厅",
+   "year": "",
+   "gist": "提出打造农产品加工科技创新带、优质农产品生产加工区、农产品加工集群，构建农业龙头企业矩阵。",
+   "src": [
+    108
+   ]
+  }
+ ],
+ "jobs": [
+  {
+   "title": "食品研发员",
+   "city": "泰州/南京",
+   "salary": "¥5000–¥8000/月",
+   "skills": [
+    "新产品研发",
+    "工艺改进",
+    "标签审核",
+    "原辅料测试",
+    "HACCP/ISO22000体系",
+    "实验设计",
+    "成本核算",
+    "包装设计协同"
+   ],
+   "src": [
+    110
+   ]
+  },
+  {
+   "title": "电商和供应链产品经理",
+   "city": "泰州",
+   "salary": "综合年薪预估12–18万元",
+   "skills": [
+    "生鲜电商产品规划",
+    "用户增长策略",
+    "供应链协同优化",
+    "竞品与市场分析",
+    "Axure",
+    "墨刀",
+    "SQL",
+    "Excel数据分析"
+   ],
+   "src": [
+    109
+   ]
+  },
+  {
+   "title": "生产车间主任",
+   "city": "",
+   "salary": "约¥6000–¥9000/月",
+   "skills": [
+    "食品/农产品加工车间管理",
+    "GMP",
+    "SC认证流程",
+    "统筹排产",
+    "质量管控"
+   ],
+   "src": [
+    112
+   ]
+  },
+  {
+   "title": "综合维修工",
+   "city": "",
+   "salary": "¥3200–¥3700/月",
+   "skills": [
+    "低压电工证",
+    "强电",
+    "水暖",
+    "土建综合维修"
+   ],
+   "src": [
+    112
+   ]
+  },
+  {
+   "title": "库管员",
+   "city": "",
+   "salary": "¥3000+/月 + 奖金",
+   "skills": [
+    "ERP/WMS系统",
+    "冷链仓储",
+    "农产品出入库管理"
+   ],
+   "src": [
+    112
+   ]
+  },
+  {
+   "title": "科研助理",
+   "city": "北京/江苏",
+   "salary": "面议",
+   "skills": [
+    "植物蛋白结构调控",
+    "食物营养与功能性成分开发",
+    "实验室操作",
+    "HPLC",
+    "质谱",
+    "流变仪",
+    "技术报告撰写",
+    "英文文献阅读"
+   ],
+   "src": [
+    114
+   ]
+  },
+  {
+   "title": "科研助理",
+   "city": "北京/江苏",
+   "salary": "面议",
+   "skills": [
+    "植物蛋白结构调控",
+    "食物营养与功能性成分开发",
+    "实验室操作",
+    "HPLC",
+    "质谱",
+    "流变仪",
+    "技术报告撰写",
+    "英文文献阅读"
+   ],
+   "src": [
+    118
+   ]
+  },
+  {
+   "title": "功能物提取工程师",
+   "city": "",
+   "salary": "",
+   "skills": [
+    "植物多酚",
+    "海洋肽",
+    "益生元等功能成分分离纯化",
+    "生物工程",
+    "制药工程"
+   ],
+   "src": [
+    117
+   ]
+  },
+  {
+   "title": "数字农业应用专员",
+   "city": "",
+   "salary": "",
+   "skills": [
+    "IoT设备管理",
+    "MES系统",
+    "AI图像识别"
+   ],
+   "src": [
+    117
+   ]
+  },
+  {
+   "title": "联农带农项目协调员",
+   "city": "",
+   "salary": "",
+   "skills": [
+    "合作社运营",
+    "订单农业履约",
+    "乡村振兴债券申报逻辑"
+   ],
+   "src": [
+    117
+   ]
+  }
+ ],
+ "demand": [
+  {
+   "text": "参照全国葡萄干行业（作为农产品加工细分领域代表）的结构性短缺模型，其劳动力供给缺口达15%–20%，其中季节性临时工缺口常年超30%。",
+   "src": [
+    119
+   ]
+  },
+  {
+   "text": "懂PLC编程、机械调试、故障诊断的技工严重不足，供需比失衡达1:5。",
+   "src": [
+    119
+   ]
+  },
+  {
+   "text": "海门鹿鹿通食品等企业销售收入同比增71.51%，倒逼产品研发提速，但兼具食品科学、营养学、工业化量产经验的工程师极度短缺。",
+   "src": [
+    99
+   ]
+  },
+  {
+   "text": "抖音日均发农特产品2448万单，需融合农业种植数据、加工排程、电商订单进行智能协同的数字化供应链管理人才几乎空白。",
+   "src": [
+    121
+   ]
+  },
+  {
+   "text": "顺星公司新增3000吨出村进城量，叠加预制菜、功能性食品等新兴赛道扩张，实际用工需求强度高于全国均值。",
+   "src": [
+    99
+   ]
+  }
+ ],
+ "aliases": [
+  "食品",
+  "食品制造",
+  "农产品加工",
+  "预制菜",
+  "海洋食品"
+ ]
+}

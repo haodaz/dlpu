@@ -1,0 +1,910 @@
+{
+ "industry": "食品加工",
+ "province": "浙江",
+ "collectedAt": "2026-10-16T10:57:10.519Z",
+ "origin": "base",
+ "sources": [
+  {
+   "id": 1,
+   "title": "关于2024年国民经济和社会发展计划执行情况与2025年国民经济和社会发展计划草案的报告(摘要) ",
+   "url": "https://www.gov.cn/yaowen/liebiao/202503/content_7010838.htm"
+  },
+  {
+   "id": 2,
+   "title": "关于大力实施可再生能源替代行动的指导意见(发改能源〔2024〕1537号)",
+   "url": "https://www.ndrc.gov.cn/xxgk/zcfb/tz/202410/t20241030_1394119_ext.html"
+  },
+  {
+   "id": 3,
+   "title": "关于印发《贯彻实施〈国家标准化发展纲要〉",
+   "url": "https://www.sac.gov.cn/zt/gjbzhfzgyzt/zxdt/art/2024/art_1a6fba2dd701444494c199822fd520f0.html"
+  },
+  {
+   "id": 4,
+   "title": "关于印发《贯彻实施〈国家标准化发展纲要〉行动计划(2024—2025年)》的通知",
+   "url": "https://mzt.guizhou.gov.cn/xwzx/mzyw/202404/t20240404_84149775.html"
+  },
+  {
+   "id": 5,
+   "title": "国务院2月重要政策 ",
+   "url": "https://www.gov.cn/yaowen/liebiao/202503/content_7009349.htm"
+  },
+  {
+   "id": 6,
+   "title": "本周“发展改革热点,我知道”(1月20至1月24日)",
+   "url": "https://www.ndrc.gov.cn/fggz/202501/t20250126_1395936_ext.html"
+  },
+  {
+   "id": 7,
+   "title": "国务院办公厅关于转发商务部、国家发展改革委《2025年稳外资行动方案》的通知",
+   "url": "http://www.yph.gov.cn/yphx/c107828/202508/bcef3b08eafc44e4b7c134db110aab64.shtml"
+  },
+  {
+   "id": 8,
+   "title": "国务院办公厅关于转发商务部、国家发展改革委 《2025年稳外资行动方案》的通知",
+   "url": "https://fgw.hubei.gov.cn/fbjd/xxgkml/jgzn/nsjg/myjjfzc/tzgg/202502/t20250220_5548462.shtml"
+  },
+  {
+   "id": 9,
+   "title": "本周“发展改革热点,我知道”(12月30日至1月3日)",
+   "url": "https://www.ndrc.gov.cn/fggz/202501/t20250106_1395459.html"
+  },
+  {
+   "id": 10,
+   "title": "国务院办公厅关于转发商务部、国家发展改革委《2025年稳外资行动方案》的通知",
+   "url": "https://fgw.hubei.gov.cn/fbjd/xxgkml/jgzn/nsjg/wjc/tzgg/202508/t20250819_5750485.shtml"
+  },
+  {
+   "id": 11,
+   "title": "强政策 兴项目 育主体 1—10月全省规模以上农产品加工业产值达2370.99亿元,同比增长5.34% ",
+   "url": "http://www.agri.cn/zx/xxlb/jl/202512/t20251230_8798873.htm"
+  },
+  {
+   "id": 12,
+   "title": "2025年第6期统计视窗 ",
+   "url": "https://www.jindong.gov.cn/art/2025/8/4/art_1229429565_4268119.html"
+  },
+  {
+   "id": 13,
+   "title": "2025年第8期统计视窗 ",
+   "url": "https://www.jindong.gov.cn/art/2025/11/5/art_1229429565_4309557.html"
+  },
+  {
+   "id": 14,
+   "title": "开创乡村全面振兴新局面:重磅报告预测2025农业农村发展趋势 ",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzU3Mjg4OTk0OQ==&mid=2247517133&idx=1&sn=bc63b4f3ecb0c78051292c9dc1f0a528&chksm=fd0b14b6af3396185a3e5c7bf72019f70046e6f85fde2308dcacf10f1bd57c34a5bed02c9fae&scene=27"
+  },
+  {
+   "id": 15,
+   "title": "2025年上半年工作总结和下半年工作安排 ",
+   "url": "https://www.susong.gov.cn/public/2000003701/2030080952.html"
+  },
+  {
+   "id": 16,
+   "title": "仙居县农业农村局2024年工作总结与2025年工作计划",
+   "url": "https://www.zjxj.gov.cn/art/2025/5/23/art_1635154_59027717.html"
+  },
+  {
+   "id": 17,
+   "title": "宁波高水平建设农业强市“1135”行动2025年工作要点",
+   "url": "https://nyncj.ningbo.gov.cn/art/2025/3/4/art_1229058307_4601252.html"
+  },
+  {
+   "id": 18,
+   "title": "《2025中国农业农村发展趋势报告》重磅发布",
+   "url": "https://www.capiac.org.cn/index.php?s=news&c=show&id=2040"
+  },
+  {
+   "id": 19,
+   "title": "【2025浙江公务员遴选重要考点】2025年宁波市政府工作报告",
+   "url": "https://www.gongxuanwang.com/articleDetail/153279"
+  },
+  {
+   "id": 20,
+   "title": "2025食博会·预博会新闻发布会",
+   "url": "https://www.dg.gov.cn/zwgk/jdhy/xwfbh/content/post_4346282.html"
+  },
+  {
+   "id": 21,
+   "title": "2024年1-10月统计月报",
+   "url": "https://www.xuanzhou.gov.cn/OpennessContent/show/3450263.html"
+  },
+  {
+   "id": 22,
+   "title": "【数据解读】前三季度兰溪经济运行情况",
+   "url": "http://www.lanxi.gov.cn/art/2024/11/4/art_1229792084_4193333.html"
+  },
+  {
+   "id": 23,
+   "title": "2024年一季度义县经济运行分析情况",
+   "url": "http://www.lnyx.gov.cn/info/1237/23318.htm"
+  },
+  {
+   "id": 24,
+   "title": "2024年前三季度全省经济运行总体平稳 ",
+   "url": "https://tjj.hlj.gov.cn/tjj/c106736/202410/c00_31780897.shtml"
+  },
+  {
+   "id": 25,
+   "title": "上半年经济数据出炉,国家统计局从十方面细致解读 ",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzAxMzQxNTM5NA==&mid=2650126196&idx=2&sn=cf6c2e9bd1c9a9582288c59c0a66f7f1&chksm=8296cebad70b304eee8280deeec991ccb65fa99e9057a41fbf8ab2756adc8b7060b33107d4dd&scene=27"
+  },
+  {
+   "id": 26,
+   "title": "> 总结计划 ",
+   "url": "http://www.sxlc.gov.cn/lczw/zfxxgk/bmxxgk/zfzcbm/nywyh_122649/nyncjgknr/jcxx_122660/zjjh_122661/202403/t20240318_2878032.html"
+  },
+  {
+   "id": 27,
+   "title": "2024年前三季度广东经济运行简况",
+   "url": "http://www.gd.gov.cn/zwgk/sjfb/sjkx/content/mpost_4511649.html"
+  },
+  {
+   "id": 28,
+   "title": "2023年国民经济回升向好 高质量发展扎实推进 ",
+   "url": "http://www.linyou.gov.cn/col1668/col1677/202403/t20240313_306910.html"
+  },
+  {
+   "id": 29,
+   "title": "推进乡村全面振兴——2024中国农业农村发展趋势报告发布",
+   "url": "https://www.rmlt.com.cn/2024/0119/693459.shtml"
+  },
+  {
+   "id": 30,
+   "title": "国家统计局10位司局长解读2024年中国经济“三季报”",
+   "url": "https://finance.eastmoney.com/a/202410183210709951.html"
+  },
+  {
+   "id": 31,
+   "title": "浙江省人民政府办公厅关于印发浙江省“十五五”财政规划的通知 ",
+   "url": "https://www.zj.gov.cn/col/col1229019365/art/2026/art_7780971f2fb5469dbdbfdcdcda1b286e.html"
+  },
+  {
+   "id": 32,
+   "title": "关于印发《浙江省加快新场景建设应用推动科技和产业高质量发展行动方案(2026-2027年)》的通知",
+   "url": "https://zj87.jxt.zj.gov.cn/zjhqpt/views/policy/detail.html?id=60848"
+  },
+  {
+   "id": 33,
+   "title": "浙江省国民经济和社会发展第十五个五年规划纲要(2026年1月17日浙江省第十四届人民代表大会第四次会议通过) ",
+   "url": "https://www.xiuzhou.gov.cn/col/col1229411710/art/2026/art_ae4cb39b7373476aaac5dda10c2eabd6.html"
+  },
+  {
+   "id": 34,
+   "title": "浙江省国民经济和社会发展第十五个五年规划纲要",
+   "url": "https://fgc.zjnu.edu.cn/2026/0210/c16724a547310/page.htm"
+  },
+  {
+   "id": 35,
+   "title": "浙江省国民经济和社会发展第十五个五年规划纲要",
+   "url": "https://ybj.zj.gov.cn/col/col1655538/art/2026/art_b622e6f2dda44cdb9cd17ed63087e2c1.html"
+  },
+  {
+   "id": 36,
+   "title": "交通运输部召开2026年推动“四好农村路”高质量发展现场会 蔡洪代表浙江汇报交流 ",
+   "url": "https://jtyst.zj.gov.cn/col/col1676377/art/2026/art_168e1a9ac1b348629b9573db5eb4a1c6.html"
+  },
+  {
+   "id": 37,
+   "title": "浙江省委省政府印发《关于2026年深化以“千万工程”牵引城乡融合发展缩小“三大差距”推进共同富裕先行示范的工作方案》的通知",
+   "url": "https://www.hzdj.gov.cn/folder5009/2026-03-27/FExoomeH6tK3ewEn.html"
+  },
+  {
+   "id": 38,
+   "title": "国务院关于印发《加快农业农村现代化",
+   "url": "https://www.gov.cn/gongbao/2026/issue_12806/202606/content_7072477.html"
+  },
+  {
+   "id": 39,
+   "title": "龙港入选!浙江省级重点产业集群名单更新",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzA3OTM1MTEzMQ==&mid=2654178972&idx=1&sn=5838b49d7b3569f5b6c8aa13991e0136&chksm=85f96ff81734618aa7b1c7985c3bd8c98da030ddf8b8a3c15c4caf002a212b4e69920b09590e&scene=27"
+  },
+  {
+   "id": 40,
+   "title": "重磅!龙港这一产业入选省级重点产业集群,为印刷包装强链补链赋能!",
+   "url": "https://mp.weixin.qq.com/s?__biz=MjM5ODkzMjMyNA==&mid=2653463666&idx=1&sn=7befda061b3626aa1454142f649cb7e5&chksm=bc11969d55cb59ab5946bb4ed08dbf927bda1eacf94baf9187ce2219f850a47be286375237ea&scene=27"
+  },
+  {
+   "id": 41,
+   "title": "禾盛新材:2026年度以简易程序向特定对象发行股票预案(修订稿) ",
+   "url": "http://money.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?id=12642537"
+  },
+  {
+   "id": 42,
+   "title": "顶层文件一则信号 ",
+   "url": "https://k.sina.cn/article_5953190046_162d6789e06703ug96.html"
+  },
+  {
+   "id": 43,
+   "title": "浙江省人民政府办公厅关于石化化工行业转型升级的实施意见(2026—2028年) ",
+   "url": "https://www.zj.gov.cn/col/col1229017139/art/2026/art_f8b860203b7c447ab8ff9dc1096fc237.html"
+  },
+  {
+   "id": 44,
+   "title": "中国开发区网·中国开发区协会—最具影响力的开发区行业门户网站",
+   "url": "https://www.cadz.org.cn/index.php/News/info/id/79256.html"
+  },
+  {
+   "id": 45,
+   "title": "为市场主体减负2500亿元以上、实施“三个千亿”投资工程……浙江今年定下这些小目标!",
+   "url": "https://i.ifeng.com/c/8OrV9hf4or7"
+  },
+  {
+   "id": 46,
+   "title": "浙江省经信厅党组书记、厅长詹敏:打好“415X”先进制造业集群培育组合拳",
+   "url": "https://www.miit.gov.cn/ztzl/rdzt/xxgyhqk/tjyd/tssj/art/2025/art_06dcc3f383c24b658a326a5e3b8ee4ca.html"
+  },
+  {
+   "id": 47,
+   "title": "2026年其他食品制造行业投资前景报告及未来五至十年战略布局与增长路径",
+   "url": "https://www.renrendoc.com/paper/538636545.html"
+  },
+  {
+   "id": 48,
+   "title": "2026年农副食品加工专用设备制造行业发展趋势报告及未来五至十年产业升级与格局演变",
+   "url": "https://www.renrendoc.com/paper/538715197.html"
+  },
+  {
+   "id": 49,
+   "title": "2026年其他罐头食品制造行业产业洞察报告及未来五至十年需求升级与结构演变",
+   "url": "https://www.renrendoc.com/paper/538519033.html"
+  },
+  {
+   "id": 50,
+   "title": "2026年其他农副食品加工行业产业链安全评估报告及未来五至十年品牌溢价与忠诚度管理",
+   "url": "https://www.renrendoc.com/paper/538517028.html"
+  },
+  {
+   "id": 51,
+   "title": "2026年农副食品加工行业投资规划建议报告及未来五至十年存量博弈与增量突破",
+   "url": "https://www.renrendoc.com/paper/538715348.html"
+  },
+  {
+   "id": 52,
+   "title": "2026中国食品加工机械产业发展瓶颈及转型升级策略研究报告",
+   "url": "https://www.renrendoc.com/paper/538509723.html"
+  },
+  {
+   "id": 53,
+   "title": "2026年杂粮加工行业产业研究报告及未来五至十年政策驱动与市场机遇展望",
+   "url": "https://www.renrendoc.com/paper/538601266.html"
+  },
+  {
+   "id": 54,
+   "title": "2026轻工业行业市场现状供需分析发展前景投资评估规划研究报告",
+   "url": "https://www.renrendoc.com/paper/538568942.html"
+  },
+  {
+   "id": 55,
+   "title": "嘉兴市人民政府关于印发嘉兴市“十五五”商务高质量发展规划的通知 ",
+   "url": "https://www.jiaxing.gov.cn/col/col1229567741/art/2026/art_57b8149038994a3293fbaa72768af946.html"
+  },
+  {
+   "id": 56,
+   "title": "财经下午茶20260304 | 十四届全国人大四次会议开幕",
+   "url": "https://stock.10jqka.com.cn/20260304/c675070801.shtml"
+  },
+  {
+   "id": 57,
+   "title": "祖名豆制品股份有限公司",
+   "url": "https://baike.baidu.com/item/祖名豆制品股份有限公司/7409880"
+  },
+  {
+   "id": 58,
+   "title": "华统股份 (002840) ",
+   "url": "https://www.futunn.com/stock/002840-SZ/company?code=VRTX"
+  },
+  {
+   "id": 59,
+   "title": "> 双汇发展个股数据 ",
+   "url": "https://data.eastmoney.com/stockdata/000895.html"
+  },
+  {
+   "id": 60,
+   "title": "大北农:2022年度向特定对象发行股票募集说明书(修订稿) ",
+   "url": "http://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?stockid=002385&id=9192248"
+  },
+  {
+   "id": 61,
+   "title": "华统股份:可转换公司债券上市公告书 ",
+   "url": "http://vip.stock.finance.sina.com.cn/corp/view/vISSUE_MarketBulletinDetail.php?stockid=002840&id=6257295"
+  },
+  {
+   "id": 62,
+   "title": "> 国联水产个股数据 ",
+   "url": "https://data.eastmoney.com/stockdata/300094.html"
+  },
+  {
+   "id": 63,
+   "title": "华统股份研究报告:区域屠宰龙头布局养殖,上行周期业绩持续释放 ",
+   "url": "https://caifuhao.eastmoney.com/news/20220829105608578524460"
+  },
+  {
+   "id": 64,
+   "title": "正虹科技:1-1募集说明书 ",
+   "url": "http://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?stockid=000702&id=8930942"
+  },
+  {
+   "id": 65,
+   "title": "> 乖宝宠物个股数据 ",
+   "url": "https://data.eastmoney.com/stockdata/301498.html"
+  },
+  {
+   "id": 66,
+   "title": "【得利斯】最新消息,股票行情,分析,走势_摩尔投研",
+   "url": "https://www.moer.cn/stockcode.htm?code=cn_sz002330"
+  },
+  {
+   "id": 67,
+   "title": "黄岩新农都智慧农产品产业园",
+   "url": "https://baike.baidu.com/item/黄岩新农都智慧农产品产业园/69305717"
+  },
+  {
+   "id": 68,
+   "title": "2026年政府工作报告 ",
+   "url": "https://www.yexian.gov.cn/contents/21087/465635.html"
+  },
+  {
+   "id": 69,
+   "title": "2026年泰和县《政府工作报告》重点工作任务上半年落实情况一览表",
+   "url": "https://www.jxth.gov.cn/xxgk-show-10250965.html"
+  },
+  {
+   "id": 70,
+   "title": "政府工作报告(2026年1月14日在烈山区第十一届人民代表大会第六次会议上通过)_烈山区人民政府信息公开网",
+   "url": "https://www.lieshan.gov.cn/zwgk/public/37/64906845.html"
+  },
+  {
+   "id": 71,
+   "title": "江陵县人民政府办公室关于分解落实《政府工作报告》及2026年民生实事项目的通知",
+   "url": "http://zwgk.jiangling.gov.cn/7604/102220263/t110220263024/671677.shtml"
+  },
+  {
+   "id": 72,
+   "title": "政府工作报告",
+   "url": "https://www.poyang.gov.cn/pyxlhx/zfgzbggd/202605/dbde9e327afc484b995c377a02792690.shtml"
+  },
+  {
+   "id": 73,
+   "title": "奉节县人民政府工作报告(2026年)",
+   "url": "http://cqfj.gov.cn/zwgk_168/zfxxgkmls/zfgzbg/202602/t20260212_15436677.html"
+  },
+  {
+   "id": 74,
+   "title": "国民经济和社会发展规划 ",
+   "url": "https://www.gzpt.gov.cn/zwgk_500411/zfxxgkml/jcxxgk/ghjh/gmjjhshfzgh/202605/t20260521_90198923.html"
+  },
+  {
+   "id": 75,
+   "title": "关于怀远县2025年国民经济和社会发展计划执行情况与2026年国民经济和社会发展计划草案的报告 ",
+   "url": "https://www.ahhy.gov.cn/zfxxgk/public/content/52802113"
+  },
+  {
+   "id": 76,
+   "title": "关于印发烈山区人民政府2026年工作要点的通知_烈山区人民政府信息公开网",
+   "url": "https://www.lieshan.gov.cn/zwgk/public/37/64930242.html"
+  },
+  {
+   "id": 77,
+   "title": "138家农业龙头企业来疆考察投资 ",
+   "url": "https://www.xjbc.gov.cn/tzbc/tzdt/20250829/i1323677.html"
+  },
+  {
+   "id": 78,
+   "title": "宿松县农业农村局2025年上半年农业产业发展重点工作落实情况 ",
+   "url": "https://www.susong.gov.cn/public/2000003701/2030080984.html"
+  },
+  {
+   "id": 79,
+   "title": "政府工作报告",
+   "url": "https://www.scnj.gov.cn/public/6598671/13997066.html"
+  },
+  {
+   "id": 80,
+   "title": "【重点工作完成情况】2025年烈山区重点工作任务第一季度进展情况_烈山区人民政府信息公开网",
+   "url": "https://www.lieshan.gov.cn/zwgk/public/37/64721736.html"
+  },
+  {
+   "id": 81,
+   "title": "最高激励3000万!浙江全力支持现代农业“土特产富”全链发展",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzI0Mjg5MDM5NA==&mid=2247777839&idx=5&sn=924b7af61b5b5e0a06bcac595ebd47bf&chksm=e84f134ca74439ee178edd3c66fe8d67d26c7741c6c5eeed250880f52797ca6ae07a1f59d7b5&scene=27"
+  },
+  {
+   "id": 82,
+   "title": "瑞安市人民政府关于印发瑞安市产业政策(2025版)的通知 ",
+   "url": "https://www.ruian.gov.cn/art/2025/4/30/art_1229167418_2039007.html"
+  },
+  {
+   "id": 83,
+   "title": "聚集产业链 激活新动能——平凉市2025年上半年农业及农产品加工招商提质扩量",
+   "url": "https://nync.pingliang.gov.cn/xwdt/nyyw/art/2025/art_c7b8b13a133542a9a60346bee6f335c1.html"
+  },
+  {
+   "id": 84,
+   "title": "2024年8月份规模以上工业增加值增长4.5% ",
+   "url": "https://www.gov.cn/lianbo/bumen/202409/content_6974526.htm"
+  },
+  {
+   "id": 85,
+   "title": "上半年利润同比增长17.1% 轻工业经济运行回升向好 ",
+   "url": "https://www.gov.cn/yaowen/liebiao/202408/content_6969922.htm"
+  },
+  {
+   "id": 86,
+   "title": "2024年3月份规模以上工业增加值增长4.5% ",
+   "url": "https://www.gov.cn/lianbo/bumen/202404/content_6945517.htm"
+  },
+  {
+   "id": 87,
+   "title": "2024年上半年杭州经济运行情况",
+   "url": "http://www.zcom.gov.cn/art/2024/7/24/art_1384592_58945440.html"
+  },
+  {
+   "id": 88,
+   "title": "2024年前三季度丽水市经济运行情况 ",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzAwOTE1NzM5OQ==&mid=2655259938&idx=1&sn=da41d2872c63e41063fdab1ec4496b46&chksm=81dd3d8fb362292ae4f79bebc56040c12ebbd9f7ac39c9bcf602195e6a36cf81d38351f0bd4d&scene=27"
+  },
+  {
+   "id": 89,
+   "title": "数据发布 | 2024年前三季度杭州经济运行情况 ",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzAxNTA2MjU4Nw==&mid=2650387817&idx=1&sn=ba63db9547167ac9f59c32fcc8d0b65a&chksm=8263841c0cab6445a9f9feeb55667fd8765f3a4cef1bc23b65a90aed6cd346f2241ad2a36e14&scene=27"
+  },
+  {
+   "id": 90,
+   "title": "2024年前三季度温州经济运行情况 ",
+   "url": "https://wztjj.wenzhou.gov.cn/art/2024/10/29/art_1229429195_4262036.html"
+  },
+  {
+   "id": 91,
+   "title": "2024年浙江省政府工作报告(全文) ",
+   "url": "https://www.zjskw.gov.cn/art/2024/1/31/art_1229556999_56820.html"
+  },
+  {
+   "id": 92,
+   "title": "招商特训营半月刊7|2024年1-6月全国宏观经济数据及相关行业情况",
+   "url": "https://www.sg.gov.cn/sgsgxqgl/gkmlpt/content/2/2656/post_2656031.html"
+  },
+  {
+   "id": 93,
+   "title": "2024年3月份全国规模以上工业增加值增长4.5%",
+   "url": "https://gxt.ln.gov.cn/gxt/zhzx/xyxx/2024041616400613577/index.shtml"
+  },
+  {
+   "id": 94,
+   "title": "浙江省农业农村厅关于省十四届人大三次会议金78号建议的答复 ",
+   "url": "https://www.zj.gov.cn/art/2025/10/22/art_1229709046_5664379.html"
+  },
+  {
+   "id": 95,
+   "title": "自治区促进农产品加工业高质量发展三年行动方案(2025—2027年) ",
+   "url": "http://nynct.xinjiang.gov.cn/xjnynct/c113595/202508/90729a666af840d4982e8530bb5cb40d.shtml"
+  },
+  {
+   "id": 96,
+   "title": "牡丹江市人民政府办公室关于印发牡丹江市加快推进农产品加工业高质量发展三年行动实施方案(2024—2026年)的通知",
+   "url": "https://mdj.gov.cn/mdjsrmzf/c105301/202403/c03_858766.shtml"
+  },
+  {
+   "id": 97,
+   "title": "2025年中央第一号文件《乡村全面振兴规划(2024-2027年)》_黄冈市政务公开",
+   "url": "https://www.wuxue.gov.cn/zwgk/grassroots/6636598/1542754.html"
+  },
+  {
+   "id": 98,
+   "title": "中共中央 国务院印发《乡村全面振兴规划(2024—2027年)》 ",
+   "url": "https://www.gov.cn/zhengce/202501/content_7000499.htm"
+  },
+  {
+   "id": 99,
+   "title": "中共中央 国务院印发《乡村全面振兴规划(2024—2027年)》 _ 时政要闻 _ 省工信厅 ",
+   "url": "https://gxt.fujian.gov.cn/zwgk/xw/gjdt/202501/t20250123_6707106.htm"
+  },
+  {
+   "id": 100,
+   "title": "关于政协第十四届全国委员会第三次会议第00155号(农业水利类021号)提案答复的函 ",
+   "url": "http://www.agri.cn/zx/hxgg/202506/t20250624_8743640.htm"
+  },
+  {
+   "id": 101,
+   "title": "成县2025年农业产业发展20个实施方案政策解读",
+   "url": "https://www.gscx.gov.cn/zfxxgk/public/32128392/148004137.html"
+  },
+  {
+   "id": 102,
+   "title": "2026农产品加工行业市场需求供给现状分析投资价值规划报告",
+   "url": "https://www.renrendoc.com/paper/538415536.html"
+  },
+  {
+   "id": 103,
+   "title": "2026农产品深加工行业发展趋势研判及企业转型方案",
+   "url": "https://www.renrendoc.com/paper/538506498.html"
+  },
+  {
+   "id": 104,
+   "title": "2026农业农产品行业供需关系分析与发展模式研究",
+   "url": "https://www.renrendoc.com/paper/538569559.html"
+  },
+  {
+   "id": 105,
+   "title": "农副产品交易平台报告",
+   "url": "https://www.sgpjbg.com/searchtag/26753003.html"
+  },
+  {
+   "id": 106,
+   "title": "2026竹笋加工业市场宏观研研及行业设计与发展计划研究验证报告",
+   "url": "https://www.renrendoc.com/paper/538592691.html"
+  },
+  {
+   "id": 107,
+   "title": "2026农产品精深加工行业市场前景分析及品牌建设路径与冷链物流方案",
+   "url": "https://www.renrendoc.com/paper/538413514.html"
+  },
+  {
+   "id": 108,
+   "title": "> 2026年基层调研报告(精选15篇)",
+   "url": "https://www.diyifanwen.com/p/22295823.html"
+  },
+  {
+   "id": 109,
+   "title": "> 2026年工业园区调研报告(通用19篇)",
+   "url": "https://www.diyifanwen.com/d/22754080.html"
+  },
+  {
+   "id": 110,
+   "title": "2026农业农村电商农产品上行智慧营销策略研究体系",
+   "url": "https://www.renrendoc.com/paper/538414699.html"
+  },
+  {
+   "id": 111,
+   "title": "把农业建成现代化大产业",
+   "url": "https://www.jingjiribao.cn/static/detail.jsp?id=638899"
+  },
+  {
+   "id": 112,
+   "title": "食品研发员",
+   "url": "https://www.zhipin.com/job_detail/a72a314177543fe81XVz2dW0GFpT.html"
+  },
+  {
+   "id": 113,
+   "title": "猪场饲养员",
+   "url": "https://www.zhipin.com/job_detail/49dacaeaecd0498403170t-5F1VU.html"
+  },
+  {
+   "id": 114,
+   "title": "“春暖农民工”服务行动农产品加工业专场——2026年公主岭市春风行动暨就业援助季活动(七)",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzI0OTIxNzczMQ==&mid=2247490174&idx=1&sn=546c326457ee2cc9dee418806bfef061&chksm=e809f20a39a78d110cadf6e51d812dd235b2cd23bd8ec92f05653bbe110e232a7a92a680ded8&scene=27"
+  },
+  {
+   "id": 115,
+   "title": "农产品加工",
+   "url": "https://baike.baidu.com/item/农产品加工/2561532"
+  },
+  {
+   "id": 116,
+   "title": "浙江五芳斋实业股份有限公司",
+   "url": "https://www.zhipin.com/companys/514110bb523688280nF53N68.html"
+  },
+  {
+   "id": 117,
+   "title": "浙江华统肉制品股份有限公司",
+   "url": "https://bs.sdut.edu.cn/2024/1121/c10936a531365/page.htm"
+  },
+  {
+   "id": 118,
+   "title": "2026中国农科院农产品加工所植物蛋白结构与功能调控团队合同制科研助理招聘公告",
+   "url": "https://www.offcn.com/sydw/2026/0525/1140462.html"
+  },
+  {
+   "id": 119,
+   "title": "中国农业科学院农产品加工研究所公共平台招聘公告",
+   "url": "https://ifst.caas.cn/xwzx/zpxx/22d8b474919f4516bbea92890b262ce2.htm"
+  },
+  {
+   "id": 120,
+   "title": "中国农业科学院农产品加工研究所食物营养与功能性食品创新团队合同制科研助理招聘启事",
+   "url": "https://ifst.caas.cn/xwzx/zpxx/3b4a7f90da9f4c929aec989f11f7bff5.htm"
+  },
+  {
+   "id": 121,
+   "title": "来源: 市人社局 ",
+   "url": "https://rsj.haikou.gov.cn/ztbd/jyzd/202511/t1475501.shtml"
+  },
+  {
+   "id": 122,
+   "title": "浙江华统肉制品股份有限公司 ",
+   "url": "https://www.sohu.com/a/773604224_120988533"
+  },
+  {
+   "id": 123,
+   "title": "浙江华统肉制品股份有限公司 2023 年度向特定对象发行 A 股股票的审核 中心意见落实函的 专项核查意见",
+   "url": "https://pdf.dfcfw.com/pdf/H2_AN202411271641093874_1.pdf"
+  },
+  {
+   "id": 124,
+   "title": "浙江华统肉制品股份有限公司 第五届董事会第十四次会议决议公告",
+   "url": "https://finance.sina.cn/2024-12-17/detail-incztimz1930210.d.html"
+  },
+  {
+   "id": 125,
+   "title": "浙江华统肉制品股份有限公司关于公司2024年度日常关联交易预计的公告",
+   "url": "http://finance.sina.com.cn/jjxw/2024-01-03/doc-inaaemwn8225470.shtml"
+  },
+  {
+   "id": 126,
+   "title": "浙江华统肉制品股份有限公司 第五届董事会第十四次会议决议公告",
+   "url": "http://finance.sina.com.cn/jjxw/2024-12-17/doc-incztimz1930210.shtml"
+  },
+  {
+   "id": 127,
+   "title": "华统股份:2024年半年度报告 ",
+   "url": "http://money.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?id=10442008"
+  },
+  {
+   "id": 128,
+   "title": "华统股份上半年营收41.65亿元",
+   "url": "https://m.bjnews.com.cn/detail/1724941929168888.html"
+  },
+  {
+   "id": 129,
+   "title": "华统股份资产负债率超76% 净利润大幅亏损",
+   "url": "http://economy.enorth.com.cn/system/2024/05/27/056424399.shtml"
+  },
+  {
+   "id": 130,
+   "title": "证券代码:002840 证券简称:华统股份 公告编号:2024-028",
+   "url": "http://finance.sina.com.cn/jjxw/2024-02-27/doc-inakkzcw4146726.shtml"
+  },
+  {
+   "id": 131,
+   "title": "祖名股份:2024年前三季度亏损1205.71万元",
+   "url": "http://finance.sina.com.cn/stock/relnews/cn/2024-10-30/doc-incuitns1015237.shtml"
+  },
+  {
+   "id": 132,
+   "title": "祖名股份涨2.04%,成交额4567.12万元,主力资金净流出124.06万元",
+   "url": "http://finance.sina.com.cn/stock/aiassist/pzzd/2026-10-12/doc-iniuxwim7249689.shtml"
+  },
+  {
+   "id": 133,
+   "title": "祖名股份涨2.04%,成交额4567.12万元,主力资金净流出124.06万元 ",
+   "url": "https://www.sohu.com/a/1086663581_122014422"
+  },
+  {
+   "id": 134,
+   "title": "祖名股份收盘下跌1.52%,最新市净率1.92",
+   "url": "https://m.jrj.com.cn/madapter/finance/2024/12/30172946944146.shtml"
+  },
+  {
+   "id": 135,
+   "title": "祖名股份:2024年第一季度净利润970.59万元 同比增长3.93%",
+   "url": "https://finance.eastmoney.com/a/202404203053007913.html"
+  },
+  {
+   "id": 136,
+   "title": "祖名股份跌0.15%,成交额5823.19万元,后市是否有机会? ",
+   "url": "http://mt.sohu.com/a/1082756346_122014422"
+  },
+  {
+   "id": 137,
+   "title": "祖名股份:2024年第一季度净利润970.59万元 同比增长3.93%",
+   "url": "https://finance.sina.cn/2024-04-20/detail-inasniyu5292553.d.html"
+  },
+  {
+   "id": 138,
+   "title": "祖名股份拟收购南京豆制品公司,今年新增产能释放致净利润下滑",
+   "url": "https://www.jiemian.com/article/12037676.html"
+  },
+  {
+   "id": 139,
+   "title": "存扭亏压力!祖名股份拟购果果食品控股权,股价“抢跑”",
+   "url": "http://news.10jqka.com.cn/20241125/c663872735.shtml"
+  },
+  {
+   "id": 140,
+   "title": "祖名股份高溢价并购:连续扩张之后大量产能闲置 负债高企现金短债比低至0.29",
+   "url": "https://finance.sina.cn/2024-11-28/detail-incxrfqs9627132.d.html"
+  }
+ ],
+ "scale": [
+  {
+   "metric": "规模以上农产品加工业产值",
+   "value": "2370.99",
+   "unit": "亿元",
+   "year": "2025",
+   "scope": "全省",
+   "src": [
+    11
+   ]
+  },
+  {
+   "metric": "规模以上农产品加工业产值同比增长率",
+   "value": "5.34",
+   "unit": "%",
+   "year": "2025",
+   "scope": "全省",
+   "src": [
+    11
+   ]
+  }
+ ],
+ "segments": [
+  {
+   "name": "杂粮加工",
+   "desc": "依托浙西、浙南山区及丽水、衢州等地优质杂粮种植基础，发展功能性杂粮粉、即食杂粮代餐、高附加值杂粮健康食品。",
+   "src": [
+    53
+   ]
+  },
+  {
+   "name": "其他罐头食品制造",
+   "desc": "聚焦健康化、便捷化升级，重点发展低盐低糖果蔬罐头、即烹即食水产罐头、植物基蛋白罐头等细分品类。",
+   "src": [
+    49
+   ]
+  },
+  {
+   "name": "农副食品加工专用设备制造",
+   "desc": "加快智能化、绿色化设备研发与产业化，尤其在真空冻干设备、智能分选系统、节能型杀菌装备等领域形成技术突破和本地配套能力。",
+   "src": [
+    48,
+    52
+   ]
+  },
+  {
+   "name": "其他食品制造",
+   "desc": "响应消费升级与科技创新导向，杭州、宁波等地已布局生物技术驱动的功能性食品研发平台与中试基地，含植物肉、益生菌发酵食品、特殊膳食食品等新兴赛道。",
+   "src": [
+    47
+   ]
+  }
+ ],
+ "cities": [],
+ "listed": [],
+ "financing": [
+  {
+   "company": "仙居县相关项目",
+   "event": "推进农副产品综合批发市场、杨梅共富产业园等重大项目",
+   "amount": "5.3亿元以上",
+   "date": "2024年",
+   "src": [
+    16
+   ]
+  }
+ ],
+ "policies": [
+  {
+   "level": "国家级",
+   "name": "《乡村全面振兴规划（2024—2027年）》",
+   "issuer": "中共中央、国务院",
+   "year": "2024",
+   "gist": "明确要求大力发展农产品加工流通业，支持建设产地冷藏保鲜设施和区域性农产品精深加工基地，培育龙头企业。",
+   "src": [
+    6
+   ]
+  },
+  {
+   "level": "部委级",
+   "name": "《贯彻实施〈国家标准化发展纲要〉行动计划（2024—2025年）》",
+   "issuer": "国家发展改革委、工信部、市场监管总局等15部门",
+   "year": "",
+   "gist": "在食品加工装备等重点领域强化标准攻关，加快研制农产品分级分选、贮藏保鲜、精深加工等关键标准。",
+   "src": [
+    3
+   ]
+  },
+  {
+   "level": "部委级",
+   "name": "《贯彻实施〈国家标准化发展纲要〉行动计划（2024—2025年）》",
+   "issuer": "国家发展改革委、工信部、市场监管总局等15部门",
+   "year": "",
+   "gist": "推动农产品加工领域标准与国际接轨，支撑绿色低碳转型。",
+   "src": [
+    4
+   ]
+  },
+  {
+   "level": "部委级",
+   "name": "《关于大力实施可再生能源替代行动的指导意见》",
+   "issuer": "国家发改委",
+   "year": "2024",
+   "gist": "支持农产品加工企业开展生物质能替代、余热回收利用等绿色技改，将加工园区纳入可再生能源综合应用试点。",
+   "src": [
+    2
+   ]
+  },
+  {
+   "level": "省级",
+   "name": "《浙江省农业农村厅关于省十四届人大三次会议金78号建议的答复》",
+   "issuer": "浙江省农业农村厅",
+   "year": "2025",
+   "gist": "联合多部门共同推进落实加快推动农产品精深加工业高质量发展的建议，构成政策协同推进机制。",
+   "src": [
+    94
+   ]
+  }
+ ],
+ "jobs": [
+  {
+   "title": "食品研发员",
+   "city": "",
+   "salary": "5000–8000元/月",
+   "skills": [
+    "组织管理",
+    "沟通协调",
+    "动手能力",
+    "问题分析",
+    "创新思维",
+    "新产品/复制产品研发",
+    "工艺改进",
+    "标签审核"
+   ],
+   "src": [
+    112
+   ]
+  },
+  {
+   "title": "科研助理（植物蛋白/营养健康方向）",
+   "city": "",
+   "salary": "面议",
+   "skills": [
+    "熟练办公软件",
+    "较强文字表达能力",
+    "食品科学",
+    "农产品加工与贮藏",
+    "粮食油脂及植物蛋白工程",
+    "食品营养学",
+    "品质评价"
+   ],
+   "src": [
+    118
+   ]
+  },
+  {
+   "title": "科研助理（食物营养与功能性食品创新团队）",
+   "city": "",
+   "salary": "面议",
+   "skills": [
+    "熟练办公软件",
+    "较强文字表达能力",
+    "中药背景",
+    "高分子材料背景",
+    "食品科学背景"
+   ],
+   "src": [
+    120
+   ]
+  },
+  {
+   "title": "电商运营",
+   "city": "",
+   "salary": "底薪4000元/月 + 绩效 + 奖金",
+   "skills": [
+    "掌握平台规则",
+    "数据分析",
+    "营销推广"
+   ],
+   "src": [
+    114
+   ]
+  },
+  {
+   "title": "美工",
+   "city": "",
+   "salary": "底薪3000元/月 + 绩效 + 奖金",
+   "skills": [
+    "精通修图软件"
+   ],
+   "src": [
+    114
+   ]
+  }
+ ],
+ "demand": [],
+ "aliases": [
+  "食品",
+  "食品制造",
+  "农产品加工",
+  "预制菜",
+  "海洋食品"
+ ]
+}

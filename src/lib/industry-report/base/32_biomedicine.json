@@ -1,0 +1,1248 @@
+{
+ "industry": "生物医药",
+ "province": "江苏",
+ "collectedAt": "2026-10-16T10:51:22.640Z",
+ "origin": "base",
+ "sources": [
+  {
+   "id": 1,
+   "title": "国家金融监督管理总局上海监管局、上海市医疗保障局、 中共上海市委金融委员会办公室、上海市发展和改革委员会、 上海市科学技术委员会、上海市卫生健康委员会、上海市浦东新区人民政府印发 《关于促进商业健康保险高质量发展助力生物医药产业创新的若干措施》的通知 ",
+   "url": "https://www.shanghai.gov.cn/gwk/search/content/b4e63b343494428c9ad2c099f881b4ba"
+  },
+  {
+   "id": 2,
+   "title": "广西全面深化药品医疗器械监管改革促进医药产业高质量发展行动方案(2025―2027年)",
+   "url": "http://tzcjj.gxzf.gov.cn/gzdt/t26099170.shtml"
+  },
+  {
+   "id": 3,
+   "title": "介绍增强消费品供需适配性进一步促进消费政策措施有关情况",
+   "url": "https://www.gov.cn/xinwen/2025zccfh/14/index.htm"
+  },
+  {
+   "id": 4,
+   "title": "» 中医工作动态",
+   "url": "https://atcm.guizhou.gov.cn/xwzx/zyyw/202501/t20250106_86580179.html"
+  },
+  {
+   "id": 5,
+   "title": "介绍加快场景培育和开放推动新场景大规模应用有关情况",
+   "url": "https://www.gov.cn/xinwen/2025zccfh/13/index.htm"
+  },
+  {
+   "id": 6,
+   "title": "《西部地区鼓励类产业目录(2025年本)》 2024年第28号令",
+   "url": "https://www.ndrc.gov.cn/xxgk/zcfb/fzggwl/202411/t20241129_1394744.html"
+  },
+  {
+   "id": 7,
+   "title": "本周“发展改革热点,我知道”(12月22至12月26日)",
+   "url": "https://www.ndrc.gov.cn/fggz/202512/t20251229_1402689_ext.html"
+  },
+  {
+   "id": 8,
+   "title": "关于做好2025年享受税收优惠政策的集成电路企业或项目、软件企业清单制定工作的通知",
+   "url": "https://www.ndrc.gov.cn/xwdt/tzgg/202504/t20250401_1396948_ext.html"
+  },
+  {
+   "id": 9,
+   "title": "国家发展改革委有关负责人就《西部地区鼓励类产业目录(2025年本)》答记者问",
+   "url": "https://www.ndrc.gov.cn/xxgk/jd/jd/202411/t20241129_1394728_ext.html"
+  },
+  {
+   "id": 10,
+   "title": "江苏省生物医药行业“十五五”规划前景预测",
+   "url": "https://www.chinairn.com/news/20250717/170144929.shtml"
+  },
+  {
+   "id": 11,
+   "title": "无锡生物医药产业成绩亮眼",
+   "url": "http://www.js.gov.cn/art/2025/2/28/art_91317_11512144.html"
+  },
+  {
+   "id": 12,
+   "title": "生物医药全产业链开放创新发展,江苏这样发力",
+   "url": "https://jsjjb.xhby.net/pc/con/202509/18/content_1486381.html"
+  },
+  {
+   "id": 13,
+   "title": "苏州工业园区持续厚植生物医药及大健康产业土壤 ",
+   "url": "https://www.suzhou.gov.cn/szsrmzf/qxkx/202509/06d75f28b2e0400f932d62c01a7b1fc5.shtml"
+  },
+  {
+   "id": 14,
+   "title": "苏州工业园区生物医药综合竞争力稳居全国第二!2个单项全国第一!",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzI4MDAwODU0Ng==&mid=2649237273&idx=1&sn=8570ee1e439485340465ba053e162639&chksm=f27868c5520426c0d096ade986c08cb96e61f4c661597bf68adad0a4189ff6e0978f0b9f358a&scene=27"
+  },
+  {
+   "id": 15,
+   "title": "江苏无锡:含“新”量拉满,生物医药产业抢滩万亿赛道 ",
+   "url": "http://www.yznews.com.cn/wap/2025-05/18/content_7740653.html"
+  },
+  {
+   "id": 16,
+   "title": "苏州工业园区生物医药综合竞争力稳居全国第二!2个单项全国第一! ",
+   "url": "http://www.sipac.gov.cn/kjhxxhj/toutiao/202510/15a89cd027a54418b3dfff105843351a.shtml"
+  },
+  {
+   "id": 17,
+   "title": "江苏生物医药产业园竞争力领跑全国",
+   "url": "https://news.sina.com.cn/c/2025-11-01/doc-infvvzcv7999203.shtml"
+  },
+  {
+   "id": 18,
+   "title": "江苏生物医药产业园竞争力领跑全国",
+   "url": "https://news.sina.cn/gn/2025-11-01/detail-infvvzcv7999203.d.html"
+  },
+  {
+   "id": 19,
+   "title": "年产值突破150亿元,宜兴生命健康产业聚势攀高峰",
+   "url": "https://www.wxrb.com/doc/2025/11/20/427567.shtml"
+  },
+  {
+   "id": 20,
+   "title": "2024年1—10月全省经济运行简况",
+   "url": "https://www.jiangsu.gov.cn/art/2024/11/25/art_34151_11427656.html"
+  },
+  {
+   "id": 21,
+   "title": "详解2024全国工信工作会议:全年规上工业增速预计5.7%左右,未来产业点名生物制造、量子产业、具身智能",
+   "url": "https://www.163.com/dy/article/JKEG63KG05199NPP.html"
+  },
+  {
+   "id": 22,
+   "title": "经开区2024年一季度经济运行简析 ",
+   "url": "https://public.zzjkq.gov.cn/D12Y/8832042.jhtml"
+  },
+  {
+   "id": 23,
+   "title": "关于苏州市2023年国民经济和社会发展计划执行情况与2024年国民经济和社会发展计划草案的报告 ",
+   "url": "https://www.suzhou.gov.cn/szsrmzf/gmjjsh/202402/c33d71472c9647dfbb7f391458f4160c.shtml"
+  },
+  {
+   "id": 24,
+   "title": "江苏省政府2024年政府工作报告",
+   "url": "https://www.jiangsu.gov.cn/art/2024/1/29/art_33720_11138104.html"
+  },
+  {
+   "id": 25,
+   "title": "关于张家港市2023年国民经济和社会发展计划执行情况与2024年国民经济和社会发展计划草案的报告",
+   "url": "https://www.zjg.gov.cn/zjgszwz/gmjjshfzgh/202402/cb851b1f433f4b559224b5a9ba049d44.shtml"
+  },
+  {
+   "id": 26,
+   "title": "2024年1-8月金湾区经济运行简况",
+   "url": "https://www.jinwan.gov.cn/jinwan/zwgk/sjfb/tjfx/content/post_3716187.html"
+  },
+  {
+   "id": 27,
+   "title": "2024年1—6月全省经济运行简况",
+   "url": "https://www.jiangsu.gov.cn/art/2024/7/24/art_34151_11305109.html"
+  },
+  {
+   "id": 28,
+   "title": "关于2023年相城区国民经济和社会发展计划执行情况及2024年相城区国民经济和社会发展计划草案的报告 ",
+   "url": "http://www.szxc.gov.cn/szxcrmzf/c108771/202405/a383c9e4184c462f968e115b15be680c.shtml"
+  },
+  {
+   "id": 29,
+   "title": "【省市部委】江苏:关于印发《江苏省促进生物医药产业高质量发展三年行动计划》的通知",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzI0OTA0MjE3Nw==&mid=2650355721&idx=3&sn=e4048ea8c7308e177b6fc94c3dfb913f&chksm=f19a1c67c6ed957180b37eb3eacb39c05a809f778eb8ed00aba41cd4be31c70bd2631653d60c&scene=27"
+  },
+  {
+   "id": 30,
+   "title": "关于印发《江苏省促进生物医药产业高质量发展三年行动计划》的通知",
+   "url": "https://www.suqian.gov.cn/cnsq/cyzc/202608/44573b91eeed4d8fa7fdc150ce8df81b.shtml"
+  },
+  {
+   "id": 31,
+   "title": "关于印发《江苏省促进生物医药产业高质量发展三年行动计划》的通知",
+   "url": "https://gxt.jiangsu.gov.cn/art/2026/8/26/art_6278_11821001.html"
+  },
+  {
+   "id": 32,
+   "title": "省政府印发关于促进全省生物医药产业高质量发展若干政策措施的通知",
+   "url": "https://www.suqian.gov.cn/cnsq/cyzc/202110/7accc51c388349c2953d8ddcd3a2a4b2.shtml"
+  },
+  {
+   "id": 33,
+   "title": "江苏出台“一揽子”政策促进医药产业高质量发展",
+   "url": "https://m.thepaper.cn/baijiahao_16351527"
+  },
+  {
+   "id": 34,
+   "title": "促进医药产业高质量发展行动方案(2022-2024年)》政策解读",
+   "url": "https://www.jiangsu.gov.cn/art/2022/1/27/art_32648_10333899.html"
+  },
+  {
+   "id": 35,
+   "title": "生物医药产业绘就高质量发展新图景",
+   "url": "https://tech.cnr.cn/gstj/20250828/t20250828_527342760.shtml"
+  },
+  {
+   "id": 36,
+   "title": "宿迁出台相关政策 推进生物医药产业高质量发展",
+   "url": "https://zgjssw.jschina.com.cn/shixianchuanzhen/suqian/202402/t20240228_8218819.shtml"
+  },
+  {
+   "id": 37,
+   "title": "省政府办公厅印发关于优化审评审批服务",
+   "url": "https://www.jiangsu.gov.cn/art/2022/2/10/art_64797_10345046.html"
+  },
+  {
+   "id": 38,
+   "title": "未来五年中国医药行业投资前景预测 ",
+   "url": "https://news.sohu.com/a/824397429_255580"
+  },
+  {
+   "id": 39,
+   "title": "2025-2029年中国医药行业投资分析及前景预测 - 中投顾问|中投网",
+   "url": "https://www.ocn.com.cn/industry/202411/truxu08080413.shtml"
+  },
+  {
+   "id": 40,
+   "title": "2024年10月份全省规模以上工业生产总体平稳",
+   "url": "https://www.jiangsu.gov.cn/art/2024/11/25/art_88350_11427662.html"
+  },
+  {
+   "id": 41,
+   "title": "行业运行呈现积极迹象 高质量发展取得新成效--上半年我国医药工业经济运行情况分析",
+   "url": "https://www.cinic.org.cn/xw/cjfx/1558958.html"
+  },
+  {
+   "id": 42,
+   "title": "行业运行呈现积极迹象 高质量发展取得新成效——上半年我国医药工业经济运行情况分析 ",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzA4NTE5ODk2MA==&mid=2649075471&idx=3&sn=f92d00062997d44f6cf59b9b6f073b84&chksm=86df1e589f91eb9f732ac793cd215bb9b8fd28946383037cd93545021afcae229e1c9a18fdc3&scene=27"
+  },
+  {
+   "id": 43,
+   "title": "医药高新区(高港区)做实富民产业拓宽增收渠道",
+   "url": "http://www.trz.taizhou.gov.cn/xwzx/sqdt/art/2024/art_9c480eba03054c4685b06e30feb9485e.html"
+  },
+  {
+   "id": 44,
+   "title": "向绿、向新、向优,向未来",
+   "url": "https://xh.xhby.net/pc/con/202512/02/content_1508411.html"
+  },
+  {
+   "id": 45,
+   "title": "江苏省生物医药行业“十五五”规划前景预测研究",
+   "url": "https://www.chinairn.com/scfx/20250512/150827396.shtml"
+  },
+  {
+   "id": 46,
+   "title": "【新华日报头版】江苏创新药爆发背后的“创新钥”",
+   "url": "https://kxjst.jiangsu.gov.cn/art/2025/8/10/art_83499_11620983.html"
+  },
+  {
+   "id": 47,
+   "title": "要闻局|以设备更新破局生物医药卡脖子,以国产替代重构产业新生态——2025无锡市生物医药领域设备更新供需对接活动在滨湖区成功举办 ",
+   "url": "https://business.sohu.com/a/909859747_122225303"
+  },
+  {
+   "id": 48,
+   "title": "我市医药健康产业多点开花",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzIyOTc4NzA4Mw==&mid=2247499685&idx=1&sn=4b0fb0363e2dbc2c187eec9d2d415b86&chksm=e9363726e5d79add9095883f6e8ce6133c908ece2820d052599c0b5f82e832c76607a99068f6&scene=27"
+  },
+  {
+   "id": 49,
+   "title": "投资苏州丨一文看懂苏州市生物医药产业发展现状与投资机会前瞻(附生物医药产业现状、空间布局、投资机会分析等)",
+   "url": "http://finance.sina.com.cn/roll/2025-12-01/doc-infzhpkp1385623.shtml"
+  },
+  {
+   "id": 50,
+   "title": "关于帮助解决我区制药企业原料药生产困难的建议",
+   "url": "http://www.szwz.gov.cn/szwz/qzxtalm/202511/377c02fb9ceb40bb886860141f4912c8.shtml"
+  },
+  {
+   "id": 51,
+   "title": "江苏南京:激发增长动力,实现产业强市新突破",
+   "url": "https://www.nbs.cn/news/7/202505/t20250510_753599.html"
+  },
+  {
+   "id": 52,
+   "title": "产业能级持续跃升 高新区医疗器械及大健康产业迈向千亿规模",
+   "url": "http://www.snd.gov.cn/hqqrmzf/zwxw/202512/ea140fe4ed2f462a8fd18c5a8c541d22.shtml"
+  },
+  {
+   "id": 53,
+   "title": "长三角共建世界生物医药产业集群之策_俞翔",
+   "url": "https://m.doc88.com/mip-78747152562200.html"
+  },
+  {
+   "id": 54,
+   "title": "探访金陵创新前沿,解码产业集群活力",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzI4MTU2OTEyNQ==&mid=2247587602&idx=1&sn=9f4ae4e997f3a7e943a8c1461bb99445&chksm=ead3dd0db240d45f078ecf0273f516953bacb578a6e3ed1135ab397c6c7e0b4a92c85010eeb4&scene=27"
+  },
+  {
+   "id": 55,
+   "title": "《医药工业发展“十五五”规划》系列专家观点(七)",
+   "url": "https://www.miit.gov.cn/jgsj/xfpgys/yy/art/2026/art_9626c1612feb4037b454ab0b94f9ffd3.html"
+  },
+  {
+   "id": 56,
+   "title": "江苏省药品监督管理局",
+   "url": "https://baike.baidu.com/item/江苏省药品监督管理局/22992164"
+  },
+  {
+   "id": 57,
+   "title": "医药市场发展前景研究报告",
+   "url": "https://baike.baidu.com/item/医药市场发展前景研究报告/6489917"
+  },
+  {
+   "id": 58,
+   "title": "金凤凰生物医药创新中心",
+   "url": "https://baike.baidu.com/item/金凤凰生物医药创新中心/69324824"
+  },
+  {
+   "id": 59,
+   "title": "江苏省2025年生物医药产业发展简报",
+   "url": "https://zhuanlan.zhihu.com/p/2021898723643463074"
+  },
+  {
+   "id": 60,
+   "title": "生物制造产业",
+   "url": "https://baike.baidu.com/item/生物制造产业/69327491"
+  },
+  {
+   "id": 61,
+   "title": "南京生物医药产业集群",
+   "url": "https://baike.baidu.com/item/南京生物医药产业集群/69331422"
+  },
+  {
+   "id": 62,
+   "title": "产业大脑:60大国家级生物医药产业集群区域分布(附完整清单)",
+   "url": "https://zhuanlan.zhihu.com/p/714650337"
+  },
+  {
+   "id": 63,
+   "title": "东台圣源复科技有限公司",
+   "url": "https://baike.baidu.com/item/东台圣源复科技有限公司/51510810"
+  },
+  {
+   "id": 64,
+   "title": "天辰生物医药(苏州)股份有限公司",
+   "url": "https://baike.baidu.com/item/天辰生物医药（苏州）股份有限公司/66330230"
+  },
+  {
+   "id": 65,
+   "title": "药康生物跌2.96%,成交额2.38亿元,主力资金净流入1016.51万元",
+   "url": "http://news.10jqka.com.cn/20261014/c680688320.shtml"
+  },
+  {
+   "id": 66,
+   "title": "申万宏源等在苏州成立智医战新创投基金",
+   "url": "https://finance.sina.cn/2026-10-15/detail-inivhpnp8149204.d.html"
+  },
+  {
+   "id": 67,
+   "title": "富士莱跌1.68%,成交额2905.08万元,近3日主力净流入-234.25万",
+   "url": "http://finance.sina.com.cn/stock/aiassist/ggsp/2026-10-15/doc-inivhyan4577615.shtml"
+  },
+  {
+   "id": 68,
+   "title": "纳微科技跌3.78%,成交额3.93亿元,今日主力净流入1845.44万",
+   "url": "http://finance.sina.com.cn/stock/aiassist/ggsp/2026-10-15/doc-inivhyan4573553.shtml"
+  },
+  {
+   "id": 69,
+   "title": "关注中报及创新药研发进展 ——医药生物行业2026年8月投资策略",
+   "url": "https://pdf.dfcfw.com/pdf/H3_AP202608231828340925_1.pdf"
+  },
+  {
+   "id": 70,
+   "title": "近岸蛋白:10月15日获融资买入1.27亿元,融资余额连续3天增加,市场人气旺盛属强势市场",
+   "url": "http://finance.sina.cn/2026-10-16/detail-inivkncx8265331.d.html"
+  },
+  {
+   "id": 71,
+   "title": "前瞻医疗器械产业全球周报第71期:迈普医学深交所创业板上市,Apple Watch ECG功能大陆获批",
+   "url": "https://ecoapp.qianzhan.com/detials/210803-f71bbaed.html"
+  },
+  {
+   "id": 72,
+   "title": "省战新基金首个生物医药项目在苏州高新区成功落地",
+   "url": "http://www.snd.gov.cn/hqqrmzf/zwxw/202503/844f364a420c459b99f21375d2b77e9e.shtml"
+  },
+  {
+   "id": 73,
+   "title": "基金风险容亏率最高50%、投资奖励最高500万,无锡出台生物医药产业金融支持措施",
+   "url": "http://finance.sina.cn/2025-05-17/detail-inewwhzv7385869.d.html"
+  },
+  {
+   "id": 74,
+   "title": "《苏州日报》头版关注 | 园区发布“生物医药及大健康产业腾飞计划” ",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzI4MDAwODU0Ng==&mid=2649230272&idx=1&sn=d22764afc80ddd1d3c651c18dbc250b3&chksm=f28bebb4d3d47417bd80816745ab350ce4a54f2bc859e76374feff4ff7a1ae97768061c0df6a&scene=27"
+  },
+  {
+   "id": 75,
+   "title": "构建“5511”企业培育体系 园区发布“生物医药及大健康产业腾飞计划” ",
+   "url": "http://www.sipac.gov.cn/szgyyq/mtjj/202505/8a6e8e29eeb648399eb1df4b460d0311.shtml"
+  },
+  {
+   "id": 76,
+   "title": "苏州工业园区发布“生物医药及大健康产业腾飞计划” ",
+   "url": "https://www.suzhou.gov.cn/szsrmzf/szyw/202505/20b233af1c82485f973929693b2c964e.shtml"
+  },
+  {
+   "id": 77,
+   "title": "构建“5511”企业培育体系 园区发布“生物医药及大健康产业腾飞计划” - 投资园区",
+   "url": "http://www.sipac.gov.cn/szgyyqtzyq/tzdt/202505/b6ed5f1ea7b64c8aa923e31685678bc7.shtml"
+  },
+  {
+   "id": 78,
+   "title": "投资苏州丨一文看懂苏州市生物医药产业发展现状与投资机会前瞻(附生物医药产业现状、空间布局、投资机会分析等)",
+   "url": "https://www.163.com/dy/article/KFN0UGDA051480KF.html"
+  },
+  {
+   "id": 79,
+   "title": "政策解读:中国(江苏)自由贸易试验区生物医药全产业链开放创新发展新闻发布会",
+   "url": "http://www.zjna.gov.cn/zjna/zcwjt/202510/4c954ff9ee6246cdaffbb18994ebc1e7.shtml"
+  },
+  {
+   "id": 80,
+   "title": "苏州片区将争取医用耗材医保准入、医药仓储资源共享等试点落地 探索破解生物医药产业发展制度瓶颈",
+   "url": "https://doc.jiangsu.gov.cn/art/2025/5/21/art_79282_11568464.html"
+  },
+  {
+   "id": 81,
+   "title": "从“一粒药”到“一张网”——江苏自贸试验区制度型开放一线观察",
+   "url": "http://www.js.xinhuanet.com/20261013/ab14df090e484274b705e4cd510effb8/c.html"
+  },
+  {
+   "id": 82,
+   "title": "首席推荐:产业研究报告——2025年中国生物医药产业前瞻:挑战、趋势及应对 ",
+   "url": "https://news.sohu.com/a/859282842_465450"
+  },
+  {
+   "id": 83,
+   "title": "无锡太湖国家旅游度假区(马山街道) 2024年工作总结和2025年工作打算",
+   "url": "https://www.wxbh.gov.cn/doc/2025/02/24/4505741.shtml"
+  },
+  {
+   "id": 84,
+   "title": "关于江苏省2024年国民经济和社会发展计划执行情况与2025年国民经济和社会发展计划草案的报告(摘要)",
+   "url": "https://www.wxrb.com/doc/2025/01/27/386573.shtml"
+  },
+  {
+   "id": 85,
+   "title": "2024年度十大健康新闻回眸:医药,在波折中坚韧前行",
+   "url": "http://news.10jqka.com.cn/20250102/c665085919.shtml"
+  },
+  {
+   "id": 86,
+   "title": "政府工作报告",
+   "url": "https://www.jiangsu.gov.cn/art/2025/2/26/art_64797_11500332.html"
+  },
+  {
+   "id": 87,
+   "title": "江苏省政府2025年政府工作报告",
+   "url": "http://www.js.gov.cn/art/2025/1/26/art_84319_11480387.html"
+  },
+  {
+   "id": 88,
+   "title": "2025年江苏省政府工作报告",
+   "url": "http://www.js.gov.cn/art/2025/1/26/art_60096_11480219.html"
+  },
+  {
+   "id": 89,
+   "title": "【苏州生物医药招聘网_2026年苏州生物医药招聘信息】-苏州猎聘",
+   "url": "https://www.liepin.com/city-suzhou/zpshengwuyiyao/"
+  },
+  {
+   "id": 90,
+   "title": "江苏海慈生物药业有限公司化工实验室研究员招聘",
+   "url": "https://www.jobui.com/company/661344/jobs/?jobKw=化工实验室研究员"
+  },
+  {
+   "id": 91,
+   "title": "细胞培养专员",
+   "url": "https://www.rdrc.com.cn/Html/Job/106700"
+  },
+  {
+   "id": 92,
+   "title": "mRNA研发经理",
+   "url": "https://www.zhipin.com/job_detail/6cf4ea44989dc8121XR_2dm1EFVT.html"
+  },
+  {
+   "id": 93,
+   "title": "生产技术员 ",
+   "url": "https://jobs.51job.com/suzhou-gyyq/171595529.html"
+  },
+  {
+   "id": 94,
+   "title": "纯化技术员(招应届生)",
+   "url": "https://www.zhipin.com/job_detail/7980e3f28eb004641X1-0ty9E1pW.html"
+  },
+  {
+   "id": 95,
+   "title": "全称: 常州四药制药有限公司。 ",
+   "url": "https://www.jobui.com/company/32533/"
+  },
+  {
+   "id": 96,
+   "title": "管培生",
+   "url": "https://www.zhipin.com/job_detail/ba4a9b2766e39d021X152d-4GVFR.html"
+  },
+  {
+   "id": 97,
+   "title": "制剂总监/主管",
+   "url": "https://www.zhipin.com/job_detail/77a232bdee31ca3533F_39i4E1s~.html"
+  },
+  {
+   "id": 98,
+   "title": "生基医药",
+   "url": "https://www.jobui.com/company/15742880/"
+  },
+  {
+   "id": 99,
+   "title": "药品行业人才需求分析",
+   "url": "https://www.sgpjbg.com/searchtag/26676993.html"
+  },
+  {
+   "id": 100,
+   "title": "抓住新兴产业求才之机",
+   "url": "http://lw.xinhuanet.com/20260902/6e120379fe814cc0aff2713f8e51a47a/c.html"
+  },
+  {
+   "id": 101,
+   "title": "无锡发布2025年度重点产业紧缺人才需求目录",
+   "url": "http://www.js.gov.cn/art/2025/8/27/art_84324_11632532.html"
+  },
+  {
+   "id": 102,
+   "title": "2026中国生物医药产业发展动态及投资前景预测报告",
+   "url": "https://www.renrendoc.com/paper/538418455.html"
+  },
+  {
+   "id": 103,
+   "title": "行业人才需求数据表",
+   "url": "https://www.sgpjbg.com/searchtag/26697011.html"
+  },
+  {
+   "id": 104,
+   "title": "2026中国生物医药行业发展趋势及市场机会与投资风险评估报告",
+   "url": "https://www.renrendoc.com/paper/538589263.html"
+  },
+  {
+   "id": 105,
+   "title": "苏州市 2025 年度 重点产业紧缺专业人才 需求目录",
+   "url": "https://www.suzhou.gov.cn/szsrmzf/zyzct/202511/69afd9a1e9da4db3a5e9c4015647b3ac/files/a418b43704a045278180832e69601294.pdf"
+  },
+  {
+   "id": 106,
+   "title": "金秋揽才庆华诞 全域联动促就业——盐城市2026年国庆系列招聘活动扎实开展",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzAxOTMyMDQ4Ng==&mid=2650532185&idx=1&sn=0b48612591fe2ae5f96ebd22ddede598&chksm=826fae8fdc748ef1047023292a12837cec6358ff0dd98974688517b477d53ed6dc8071baf99f&scene=27"
+  },
+  {
+   "id": 107,
+   "title": "我市2026年国庆系列招聘活动扎实开展",
+   "url": "https://www.yancheng.gov.cn/art/2026/10/12/art_34222_4460036.html"
+  },
+  {
+   "id": 108,
+   "title": "江苏:这677个专业紧缺!《苏州市2023年度重点产业紧缺专业人才需求目录》发布! ",
+   "url": "http://www.chisa.edu.cn/talents/202307/t20230718_2111071105.html"
+  },
+  {
+   "id": 109,
+   "title": "药康生物:2024年净利润1.1亿元 拟10派1.1元",
+   "url": "https://wap.eastmoney.com/a/202504273389991696.html"
+  },
+  {
+   "id": 110,
+   "title": "康华生物2024年年报解读:营收净利双降,研发投入与现金流引关注",
+   "url": "http://finance.sina.com.cn/stock/aigc/stockfs/2025-04-19/doc-inetrsef7528426.shtml"
+  },
+  {
+   "id": 111,
+   "title": "江苏集萃药康生物科技股份有限公司2024年度业绩快报公告",
+   "url": "http://finance.sina.cn/2025-02-28/detail-inemyhhc0487728.d.html"
+  },
+  {
+   "id": 112,
+   "title": "药康生物:2024年报净利润1.1亿 同比下降30.82%",
+   "url": "https://m.10jqka.com.cn/20250425/c667774081.shtml"
+  },
+  {
+   "id": 113,
+   "title": "药康生物营收增10.38%净利两连降 推五折员工持股计划未设盈利目标",
+   "url": "http://news.10jqka.com.cn/20250326/c666984980.shtml"
+  },
+  {
+   "id": 114,
+   "title": "鹰眼预警:药康生物应收账款增速高于营业收入增速",
+   "url": "https://finance.sina.cn/2025-04-27/detail-ineupnsn6847810.d.html"
+  },
+  {
+   "id": 115,
+   "title": "江苏集萃药康生物科技股份有限公司 2024-10-31 ",
+   "url": "https://epaper.cs.com.cn/zgzqb/wap/html/2024-10/31/nw.D110000zgzqb_20241031_1-B650.htm"
+  },
+  {
+   "id": 116,
+   "title": "药康生物:2024年净利1.16亿元 同比下降27.14%",
+   "url": "https://finance.eastmoney.com/a/202502273331856864.html"
+  },
+  {
+   "id": 117,
+   "title": "药康生物:累计回购约155万股 ",
+   "url": "https://www.nbd.com.cn/articles/2025-10-29/4117582.html"
+  },
+  {
+   "id": 118,
+   "title": "江苏集萃药康生物科技股份有限公司关于召开2024年第三季度业绩说明会的公告",
+   "url": "https://finance.sina.cn/2024-11-28/detail-incxpxuy3092646.d.html"
+  },
+  {
+   "id": 119,
+   "title": "纳微科技接待25家机构调研,“填料+仪器”整合营销体系初见成效",
+   "url": "https://www.instrument.com.cn/news/20241015/747668.shtml"
+  },
+  {
+   "id": 120,
+   "title": "苏州纳微科技股份有限公司",
+   "url": "http://finance.sina.com.cn/roll/2024-04-25/doc-inasysek7969895.shtml"
+  },
+  {
+   "id": 121,
+   "title": "纳微科技(688690.SH)深度研究报告:国产&#34;色谱芯&#34;龙头业绩翻倍兑现,但国产替代的故事已提前定价",
+   "url": "https://xueqiu.com/4213294085/412288821"
+  },
+  {
+   "id": 122,
+   "title": "纳微科技跌0.73%,成交额4.48亿元,后市是否有机会? ",
+   "url": "https://www.sohu.com/a/1088602982_122014422"
+  },
+  {
+   "id": 123,
+   "title": "纳微科技:计提减值准备减少公司2024年半年度利润总额1702.86万元",
+   "url": "https://www.nbd.com.cn/rss/zaker/articles/3526359.html"
+  },
+  {
+   "id": 124,
+   "title": "纳微科技更正业绩预告:2023年净利降逾七成 比业绩预告下限低出11% ",
+   "url": "https://www.jjckb.cn/2024-02/28/c_1310765757.htm"
+  },
+  {
+   "id": 125,
+   "title": "苏州纳微科技股份有限公司2024年半年度报告摘要",
+   "url": "http://finance.sina.com.cn/roll/2024-08-28/doc-incmcriy3944305.shtml"
+  },
+  {
+   "id": 126,
+   "title": "苏州纳微科技股份有限公司2024年第三季度报告",
+   "url": "http://finance.sina.com.cn/roll/2024-10-30/doc-incuixuq0938318.shtml"
+  },
+  {
+   "id": 127,
+   "title": "苏州纳微科技股份有限公司 ",
+   "url": "https://www.sohu.com/a/774091600_120988533"
+  },
+  {
+   "id": 128,
+   "title": "纳微科技:预计2026年前三季度净利润2.18亿元左右,同比增长102%左右 ",
+   "url": "https://k.sina.cn/article_5953190046_162d6789e06703u5p8.html"
+  },
+  {
+   "id": 129,
+   "title": "富士莱:2024年净利润1640.61万元 拟10派0.91元",
+   "url": "https://wap.eastmoney.com/a/202504223384289458.html"
+  },
+  {
+   "id": 130,
+   "title": "富士莱2024年营收4.29亿元 多个在研产品取得重要进展",
+   "url": "https://m.10jqka.com.cn/20250423/c667667061.shtml"
+  },
+  {
+   "id": 131,
+   "title": "2024年度实现营收利润双增长 福莱新材打造柔性传感新引擎",
+   "url": "https://finance.eastmoney.com/a/202503283359524638.html"
+  },
+  {
+   "id": 132,
+   "title": "富士莱2025年归母净利润6429.46万元增291.89%,扣非仍亏326.92万元主业承压",
+   "url": "https://www.163.com/dy/article/KR78P0HK05198R91.html"
+  },
+  {
+   "id": 133,
+   "title": "鹰眼预警:富士莱营业收入下降",
+   "url": "https://finance.sina.cn/2025-04-22/detail-ineuafyn3871412.d.html"
+  },
+  {
+   "id": 134,
+   "title": "富士莱:10月22日召开董事会会议 ",
+   "url": "https://m.nbd.com.cn/articles/2025-10-23/4102992.html"
+  },
+  {
+   "id": 135,
+   "title": "富士莱:预计2024年度净利润为1600万元~2080万元,同比下降81.46%~85.74% ",
+   "url": "https://www.nbd.com.cn/articles/2025-01-17/3726415.html"
+  },
+  {
+   "id": 136,
+   "title": "财报速递:富士莱2024年全年净利润1640.61万元",
+   "url": "https://m.10jqka.com.cn/20250421/c667627948.shtml"
+  },
+  {
+   "id": 137,
+   "title": "富士莱2025年营收4.33亿元同比增长0.76%,归母净利润0.64亿元同比增长291.89%",
+   "url": "https://www.163.com/dy/article/KR76SACL0519QIKK.html"
+  },
+  {
+   "id": 138,
+   "title": "10月31日晚间重要公告集锦",
+   "url": "https://finance.sina.cn/2024-10-31/detail-incunhzz9516475.d.html"
+  },
+  {
+   "id": 139,
+   "title": "投资者关系 | 天辰生物",
+   "url": "http://irweb-longbio.comein.cn/"
+  },
+  {
+   "id": 140,
+   "title": "天辰生物-B(01779)",
+   "url": "https://xueqiu.com/S/01779"
+  },
+  {
+   "id": 141,
+   "title": "天辰生物医药(苏州)股份有限公司",
+   "url": "https://www.qcc.com/firm/0697ab29ffa0bb4e9b7b98b7dee16413.html"
+  },
+  {
+   "id": 142,
+   "title": "天辰生物实控人递表前套现上千万:行政开支大增,估值短期暴涨 ",
+   "url": "https://caifuhao.eastmoney.com/news/20250909084129182827130"
+  },
+  {
+   "id": 143,
+   "title": "天辰生物招股书解读:研发成本大增60.0%,亏损额扩大43.3%",
+   "url": "https://finance.sina.cn/2025-08-22/detail-infmvkhf8704857.d.html"
+  },
+  {
+   "id": 144,
+   "title": "天辰生物医药(苏州)股份有限公司",
+   "url": "https://aiqicha.baidu.com/company_detail_35102430625083"
+  },
+  {
+   "id": 145,
+   "title": "天辰生物-B(01779)",
+   "url": "http://xueqiu.com/S/01779"
+  },
+  {
+   "id": 146,
+   "title": "合肥奥科天辰生物科技有限责任公司",
+   "url": "https://www.tianyancha.com/sinvest/6919542230-ff65"
+  },
+  {
+   "id": 147,
+   "title": "商丘天辰生物科技有限公司",
+   "url": "https://baike.baidu.com/item/商丘天辰生物科技有限公司/52471879"
+  },
+  {
+   "id": 148,
+   "title": "江苏吴中医药发展股份有限公司 2023年年度股东大会决议公告",
+   "url": "https://finance.sina.cn/2024-05-17/detail-inavnsyy1315230.d.html"
+  },
+  {
+   "id": 149,
+   "title": "江苏吴中涨2.02%,成交额2698.67万元,主力资金净流入499.85万元",
+   "url": "https://finance.sina.cn/2024-12-02/detail-incxzraq8941193.d.html"
+  },
+  {
+   "id": 150,
+   "title": "江苏吴中跌2.02%,成交额2730.36万元,主力资金净流入94.80万元",
+   "url": "https://finance.sina.cn/2024-12-17/detail-incztpts8895067.d.html"
+  },
+  {
+   "id": 151,
+   "title": "江苏吴中医药发展股份有限公司",
+   "url": "https://cj.sina.com.cn/articles/view/7517400647/1c0126e4705905mfve"
+  },
+  {
+   "id": 152,
+   "title": "江苏吴中上涨5.38%,报9.4元/股",
+   "url": "https://stock.jrj.com.cn/2024/03/07105039763103.shtml"
+  },
+  {
+   "id": 153,
+   "title": "江苏吴中:江苏吴中医药发展股份有限公司关于控股股东部分股份解除质押的公告",
+   "url": "https://m.10jqka.com.cn/sn/20241011/49499613.shtml"
+  },
+  {
+   "id": 154,
+   "title": "江苏吴中医药发展股份有限公司 关于独立董事辞职暨补选独立董事的公告",
+   "url": "http://finance.sina.com.cn/jjxw/2024-12-07/doc-incyqqcy8235155.shtml"
+  },
+  {
+   "id": 155,
+   "title": "江苏吴中:江苏吴中医药发展股份有限公司关于部分限制性股票回购注销实施公告",
+   "url": "https://np-info.eastmoney.com/wap/notice/?infocode=AN202412301641472797"
+  },
+  {
+   "id": 156,
+   "title": "2024年度药物研发新技术研讨会圆满举办 ",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzU1NzQ1MjE2MQ==&mid=2247486218&idx=1&sn=5e275af8591ff4a7395a22911c130e0a&chksm=fc34d5e4cb435cf2dfe75552d3324aca063ba0c58895849ad1c978d3e0c0b20cabd65963a944&scene=27"
+  },
+  {
+   "id": 157,
+   "title": "江苏吴中:扣非净利润6年连续为负、借款逐年递增负债率5年连升",
+   "url": "https://fund.eastmoney.com/a/202405243086331469.html"
+  }
+ ],
+ "scale": [
+  {
+   "metric": "医药制造业增加值同比增速",
+   "value": "12.6%",
+   "unit": "%",
+   "year": "2024",
+   "scope": "全省",
+   "src": [
+    20
+   ]
+  },
+  {
+   "metric": "生物医药产业增加值同比增速",
+   "value": "19.8%",
+   "unit": "%",
+   "year": "2024",
+   "scope": "经开区",
+   "src": [
+    22
+   ]
+  },
+  {
+   "metric": "大健康产业规模",
+   "value": "1200亿元",
+   "unit": "亿元",
+   "year": "2023",
+   "scope": "泰州中国医药城所在区域",
+   "src": [
+    43
+   ]
+  },
+  {
+   "metric": "生物医药企业数量",
+   "value": "7446家",
+   "unit": "家",
+   "year": "2025",
+   "scope": "全省",
+   "src": [
+    59
+   ]
+  },
+  {
+   "metric": "苏州市生物医药企业数量",
+   "value": "2062家",
+   "unit": "家",
+   "year": "2025",
+   "scope": "苏州市",
+   "src": [
+    59
+   ]
+  },
+  {
+   "metric": "南京市生物医药企业数量",
+   "value": "970家",
+   "unit": "家",
+   "year": "2025",
+   "scope": "南京市",
+   "src": [
+    59
+   ]
+  },
+  {
+   "metric": "常州市生物医药企业数量",
+   "value": "811家",
+   "unit": "家",
+   "year": "2025",
+   "scope": "常州市",
+   "src": [
+    59
+   ]
+  },
+  {
+   "metric": "泰州市生物医药企业数量",
+   "value": "702家",
+   "unit": "家",
+   "year": "2025",
+   "scope": "泰州市",
+   "src": [
+    59
+   ]
+  }
+ ],
+ "segments": [
+  {
+   "name": "创新药与生物制品",
+   "desc": "聚焦抗肿瘤、自身免疫、代谢性疾病等领域的First-in-Class和Best-in-Class新药研发，强化抗体药物、细胞与基因治疗等前沿生物技术产业化。",
+   "src": [
+    53,
+    55
+   ]
+  },
+  {
+   "name": "高端医疗器械",
+   "desc": "重点发展影像设备、高值耗材、体外诊断核心原料与POCT系统、手术机器人关键部件等。",
+   "src": [
+    53
+   ]
+  },
+  {
+   "name": "现代中药与中药大健康",
+   "desc": "推动经典名方二次开发、中药新药临床转化、智能煎配与质量溯源体系建设。",
+   "src": [
+    53
+   ]
+  },
+  {
+   "name": "医药CXO与智能制造",
+   "desc": "包括药物发现CRO、临床前/临床CRO、CDMO、MAH持证服务，以及制药装备、AI制药软件等补链强链环节。",
+   "src": [
+    55,
+    56
+   ]
+  },
+  {
+   "name": "合成生物与生物制造",
+   "desc": "苏州/张家港主攻合成生物、生物制造、医美保健、生物芯片、生物基材料。",
+   "src": [
+    60
+   ]
+  },
+  {
+   "name": "细胞与基因治疗",
+   "desc": "南京强在细胞与基因治疗（CGT）、分子诊断、高端生物试剂、AI驱动的新药研发。",
+   "src": [
+    61
+   ]
+  }
+ ],
+ "cities": [
+  {
+   "city": "苏州市",
+   "focus": "全省第一，生物制造重点城市，主攻合成生物、生物制造、医美保健、生物芯片、生物基材料。",
+   "companies": [
+    "沃美生物",
+    "万众一芯",
+    "丰倍生物",
+    "威胜生物",
+    "拾光医药"
+   ],
+   "src": [
+    59,
+    60
+   ]
+  },
+  {
+   "city": "南京市",
+   "focus": "江北新区生物医药谷为国家级创新型产业集群，强在细胞与基因治疗、分子诊断、高端生物试剂、AI驱动的新药研发。",
+   "companies": [
+    "金斯瑞生物",
+    "诺唯赞",
+    "驯鹿生物",
+    "传奇生物"
+   ],
+   "src": [
+    61,
+    62
+   ]
+  },
+  {
+   "city": "常州市",
+   "focus": "重点发展抗体药物、体外诊断（IVD）等。",
+   "companies": [],
+   "src": [
+    59
+   ]
+  },
+  {
+   "city": "泰州市",
+   "focus": "中国医药城所在地，国家新型工业化产业示范基地，突出疫苗、抗体药物、新型给药系统、CDMO服务。",
+   "companies": [
+    "硕世生物",
+    "颐达生物",
+    "阿斯利康泰州供应基地"
+   ],
+   "src": [
+    59,
+    62
+   ]
+  },
+  {
+   "city": "无锡市",
+   "focus": "聚焦医疗器械、合成生物学与CXO服务。",
+   "companies": [],
+   "src": [
+    59
+   ]
+  },
+  {
+   "city": "连云港市",
+   "focus": "优势在抗肿瘤化药、中药现代化、海洋生物医药、原料药绿色合成。",
+   "companies": [
+    "恒瑞医药",
+    "正大天晴",
+    "康缘药业"
+   ],
+   "src": [
+    59
+   ]
+  }
+ ],
+ "listed": [
+  {
+   "company": "药康生物",
+   "code": "688046",
+   "city": "南京",
+   "rdExpense": "9433.66万元",
+   "rdRatio": "13.73%",
+   "year": "2024",
+   "src": [
+    109
+   ]
+  },
+  {
+   "company": "富士莱",
+   "code": "301258",
+   "city": "常熟",
+   "rdExpense": "4062.02万元",
+   "rdRatio": "9.46%",
+   "year": "2024",
+   "src": [
+    129,
+    130
+   ]
+  }
+ ],
+ "financing": [
+  {
+   "company": "苏州美创医疗科技有限公司",
+   "event": "完成超亿元A+轮融资",
+   "amount": "超亿元",
+   "date": "2025年3月",
+   "src": [
+    72
+   ]
+  }
+ ],
+ "policies": [
+  {
+   "level": "国家级",
+   "name": "关于全面深化药品医疗器械监管改革促进医药产业高质量发展的意见",
+   "issuer": "国务院办公厅",
+   "year": "2024",
+   "gist": "加大中药研发创新支持力度，对符合条件的独家中药品种、罕见病用药等给予一定市场独占期，推动中药饮片跨省销售。",
+   "src": [
+    4
+   ]
+  },
+  {
+   "level": "部委级",
+   "name": "关于增强消费品供需适配性进一步促进消费的实施方案",
+   "issuer": "工业和信息化部等六部门",
+   "year": "2025",
+   "gist": "将生物医药相关健康消费品纳入“增强供需适配性”重点支持范畴，强调以供给侧结构性改革提升创新产品供给能力。",
+   "src": [
+    3
+   ]
+  },
+  {
+   "level": "部委级",
+   "name": "西部地区鼓励类产业目录（2025年本）",
+   "issuer": "国家发展改革委",
+   "year": "2025",
+   "gist": "将“生物医药产业”整体纳入西部地区鼓励类产业范围，享受企业所得税减按15%优惠。",
+   "src": [
+    6
+   ]
+  },
+  {
+   "level": "省级",
+   "name": "中国（江苏）自由贸易试验区生物医药全产业链开放创新发展方案",
+   "issuer": "国务院",
+   "year": "2025",
+   "gist": "明确江苏为全国首个获批生物医药领域全产业链试点的省份，赋予南京、苏州、连云港三个片区制度型开放试验权。",
+   "src": [
+    81
+   ]
+  },
+  {
+   "level": "市级",
+   "name": "南京市推动生物医药产业高质量发展若干政策措施",
+   "issuer": "南京市",
+   "year": "",
+   "gist": "覆盖创新研发激励、临床试验支持、产业化落地、人才引育、金融赋能、审评审批便利化等全环节。",
+   "src": [
+    61
+   ]
+  },
+  {
+   "level": "市级",
+   "name": "关于落实〈中国（江苏）自由贸易试验区生物医药全产业链开放创新发展专项实施方案〉的举措（2026—2028年）",
+   "issuer": "南京片区",
+   "year": "2026",
+   "gist": "明确73项任务清单，聚焦研发、审评、生产、流通、出海等全链条堵点破题。",
+   "src": [
+    81
+   ]
+  }
+ ],
+ "jobs": [
+  {
+   "title": "生物医药质量经理",
+   "city": "苏州",
+   "salary": "25–35k",
+   "skills": [
+    "质量体系搭建",
+    "偏差/OOS调查",
+    "CAPA管理",
+    "审计应对"
+   ],
+   "src": [
+    89
+   ]
+  },
+  {
+   "title": "生物医药技术管培生",
+   "city": "太仓",
+   "salary": "10–16k·13薪",
+   "skills": [
+    "基础实验操作（细胞培养、ELISA、PCR等）"
+   ],
+   "src": [
+    89
+   ]
+  },
+  {
+   "title": "mRNA研发经理",
+   "city": "南京",
+   "salary": "",
+   "skills": [
+    "mRNA体外转录（IVT）",
+    "HPLC/UPLC纯化",
+    "dsRNA去除",
+    "LC-MS表征",
+    "冻干工艺开发",
+    "GMP文件撰写"
+   ],
+   "src": [
+    92
+   ]
+  },
+  {
+   "title": "化工实验室研究员/技术员",
+   "city": "泰州",
+   "salary": "8–14k·13薪",
+   "skills": [
+    "有机合成",
+    "中间体分析（HPLC/GC）",
+    "实验记录规范",
+    "安全合规意识"
+   ],
+   "src": [
+    90
+   ]
+  },
+  {
+   "title": "纯化技术员",
+   "city": "泰州",
+   "salary": "",
+   "skills": [
+    "蛋白纯化（AKTA系统）",
+    "层析操作",
+    "缓冲液配制",
+    "SDS-PAGE分析",
+    "GMP文档填写"
+   ],
+   "src": [
+    94
+   ]
+  },
+  {
+   "title": "研发/生产类技术岗",
+   "city": "无锡",
+   "salary": "15–30k",
+   "skills": [
+    "无菌操作",
+    "慢病毒包装",
+    "qPCR滴度测定",
+    "Western blot",
+    "生物反应器（如XDR）使用",
+    "CMC文件支持"
+   ],
+   "src": [
+    98
+   ]
+  },
+  {
+   "title": "细胞培养专员",
+   "city": "南通",
+   "salary": "",
+   "skills": [
+    "贴壁/悬浮细胞培养",
+    "瞬时转染",
+    "稳定株放大",
+    "配液过滤",
+    "库存管理"
+   ],
+   "src": [
+    91
+   ]
+  },
+  {
+   "title": "生产技术员",
+   "city": "苏州",
+   "salary": "",
+   "skills": [
+    "GMP车间操作",
+    "湿法粉碎",
+    "离心机平衡",
+    "冻干机运行",
+    "批记录填写",
+    "环境监测"
+   ],
+   "src": [
+    93
+   ]
+  }
+ ],
+ "demand": [
+  {
+   "text": "2026年上半年，生物制药研发领域人才缺口达10万人，其中合成生物学、AI生信、代谢工程等前沿方向供需比高达1:21。",
+   "src": [
+    99
+   ]
+  },
+  {
+   "text": "临床监查员（CRA）需供比4.4，临床协调员（CRC）需供比4.3；生物医药产业临床研究/试验岗位招聘需求同比增38.2%，需供比达4.82。",
+   "src": [
+    99
+   ]
+  },
+  {
+   "text": "医药代表备案人数从峰值300万降至11.6万，2025年A股256家药企裁减销售岗位近3.9万个。",
+   "src": [
+    99
+   ]
+  },
+  {
+   "text": "具身智能+生物交叉岗供需比达1:10，如生物传感接口开发、柔性电子-组织界面工程师等。",
+   "src": [
+    100
+   ]
+  },
+  {
+   "text": "无锡市2025年度重点产业紧缺人才需求目录中，博士需求岗位17个（占比6%），指导年薪均超35万元。",
+   "src": [
+    101
+   ]
+  }
+ ],
+ "aliases": [
+  "医药",
+  "生物",
+  "生物制药",
+  "生物技术"
+ ]
+}

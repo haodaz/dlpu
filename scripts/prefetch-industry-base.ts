@@ -4,8 +4,8 @@
 // 用法:
 //   npx tsx --env-file=.env.local scripts/prefetch-industry-base.ts                 # 默认:辽宁 × 全部产业
 //   npx tsx --env-file=.env.local scripts/prefetch-industry-base.ts 辽宁,江苏 food   # 指定省份与产业(slug,逗号分隔)
-//   加 --force 重新查已存在的条目
-import { existsSync, readdirSync, writeFileSync } from 'fs';
+//   加 --force 重新查已存在的条目;--index-only 只重建索引与覆盖清单(不检索)
+import { existsSync, readdirSync, readFileSync, writeFileSync } from 'fs';
 import path from 'path';
 import { collectRegionalProfile } from '../src/lib/industry-report/regional';
 import { Flywheel } from '../src/lib/industry-report/flywheel';
@@ -40,10 +40,53 @@ ${imports}
 export const BASE_PROFILES: RegionalProfile[] = [${files.map((_, i) => `p${i}`).join(', ')}] as RegionalProfile[];
 `,
   );
+  writeCoverage(files);
   return files.length;
 }
 
+// 覆盖清单(产品方案模式里展示):每个「省份 × 产业」七类数据各有几条,并给出评级
+// 评级:七类中有数据的类数 ≥ 6 且规模指标 ≥ 3 → 丰富;≥ 4 类 → 一般;其余 → 偏薄
+const DIMS = [
+  ['scale', '规模'],
+  ['segments', '细分方向'],
+  ['cities', '城市分布'],
+  ['listed', '上市公司研发'],
+  ['financing', '投融资'],
+  ['policies', '政策'],
+  ['jobs', '岗位薪资'],
+] as const;
+
+function writeCoverage(files: string[]) {
+  const rows = files.map((f) => {
+    const p = JSON.parse(readFileSync(path.join(DIR, f), 'utf-8'));
+    const counts = Object.fromEntries(DIMS.map(([k]) => [k, (p[k] ?? []).length]));
+    const filled = DIMS.filter(([k]) => counts[k] > 0).length;
+    const grade = filled >= 6 && counts.scale >= 3 ? '丰富' : filled >= 4 ? '一般' : '偏薄';
+    const missing = DIMS.filter(([k]) => !counts[k]).map(([, label]) => label);
+    return { province: p.province, industry: p.industry, collectedAt: String(p.collectedAt).slice(0, 10), grade, counts, missing };
+  });
+  writeFileSync(
+    path.join(DIR, 'coverage.ts'),
+    `// 自动生成,勿手改:预查底库覆盖清单(由 scripts/prefetch-industry-base.ts 写入,产品方案模式中展示)
+export interface BaseCoverage {
+  province: string;
+  industry: string;
+  collectedAt: string;
+  grade: '丰富' | '一般' | '偏薄';
+  counts: Record<string, number>;
+  missing: string[];
+}
+
+export const BASE_COVERAGE: BaseCoverage[] = ${JSON.stringify(rows, null, 1)};
+`,
+  );
+}
+
 async function main() {
+  if (process.argv.includes('--index-only')) {
+    console.log(`底库共 ${writeIndex()} 条,已重建索引与覆盖清单`);
+    return;
+  }
   const args = process.argv.slice(2).filter((a) => !a.startsWith('--'));
   const force = process.argv.includes('--force');
   const provinces = (args[0] ?? '辽宁').split(',').map((s) => s.trim()).filter(Boolean);

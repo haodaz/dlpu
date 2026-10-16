@@ -1,0 +1,1327 @@
+{
+ "industry": "智能制造与高端装备",
+ "province": "江苏",
+ "collectedAt": "2026-10-16T10:30:10.086Z",
+ "origin": "base",
+ "sources": [
+  {
+   "id": 1,
+   "title": "2024年1—9月全省工业经济平稳运行 动能转换有序推进",
+   "url": "https://www.jiangsu.gov.cn/art/2024/10/24/art_88350_11401453.html"
+  },
+  {
+   "id": 2,
+   "title": "2024年1—6月全省经济运行简况",
+   "url": "https://www.jiangsu.gov.cn/art/2024/7/24/art_34151_11305109.html"
+  },
+  {
+   "id": 3,
+   "title": "2024年1—5月全省经济运行简况",
+   "url": "https://www.jiangsu.gov.cn/art/2024/6/25/art_34151_11279142.html"
+  },
+  {
+   "id": 4,
+   "title": "2024年1—9月全省经济运行简况",
+   "url": "https://www.jiangsu.gov.cn/art/2024/10/24/art_34151_11401445.html"
+  },
+  {
+   "id": 5,
+   "title": "2024年1—8月全省经济运行简况",
+   "url": "https://www.jiangsu.gov.cn/art/2024/9/25/art_34151_11369331.html"
+  },
+  {
+   "id": 6,
+   "title": "2024年1—7月全省经济运行简况",
+   "url": "http://www.js.gov.cn/art/2024/8/26/art_34151_11333568.html"
+  },
+  {
+   "id": 7,
+   "title": "经济运行总体平稳 发展质效进一步提升",
+   "url": "https://tj.jiangsu.gov.cn/art/2024/7/25/art_87596_11305243.html"
+  },
+  {
+   "id": 8,
+   "title": "2025年前三季度苏州市经济运行情况 ",
+   "url": "https://www.suzhou.gov.cn/szsrmzf/tjsjjd/202510/39ee453a9e4f4627ac060c174110a6d5.shtml"
+  },
+  {
+   "id": 9,
+   "title": "连云港市政府2025年政府工作报告 ",
+   "url": "https://www.lyg.gov.cn/zglygzfmhwz/szfgzbg/content/03fe660f-a213-43aa-a907-12742ea7758e.html"
+  },
+  {
+   "id": 10,
+   "title": "稳中有进夯基础 进中提质赋新能——2025年前三季度苏州市经济运行情况 ",
+   "url": "http://tjj.suzhou.gov.cn/sztjj/xwfbh/202510/6d331098ea0e449f9c169a9f0d3e20c9.shtml"
+  },
+  {
+   "id": 11,
+   "title": "苏州前三季度GDP同比增长5.5%",
+   "url": "https://www.jiangsu.gov.cn/art/2025/10/29/art_33718_11668816.html"
+  },
+  {
+   "id": 12,
+   "title": "2024干得怎么样?江苏13市交出这些“成绩单”",
+   "url": "https://tj.jiangsu.gov.cn/art/2025/1/17/art_87245_11473058.html"
+  },
+  {
+   "id": 13,
+   "title": "苏州前三季度GDP同比增长5.5%",
+   "url": "http://www.js.gov.cn/art/2025/10/29/art_84324_11668817.html"
+  },
+  {
+   "id": 14,
+   "title": "政府工作报告",
+   "url": "http://www.yancheng.gov.cn/art/2025/1/25/art_45434_4282886.html"
+  },
+  {
+   "id": 15,
+   "title": "关于印发江苏省“人工智能+制造”实施方案的通知 ",
+   "url": "http://gxt.jiangsu.gov.cn/art/2026/6/10/art_6299_11783503.html"
+  },
+  {
+   "id": 16,
+   "title": "江苏以“质量三强”建设构筑高质量发展新格局",
+   "url": "https://xh.xhby.net/pc/con/202610/16/content_1597489.html"
+  },
+  {
+   "id": 17,
+   "title": "关于印发《江苏省商业航天高质量发展三年行动计划(2026-2028年)》的通知",
+   "url": "http://suqian.gov.cn/cnsq/cyzc/202608/ea04ae2bfd2b49f993164999d1512b42.shtml"
+  },
+  {
+   "id": 18,
+   "title": "市政府印发《关于加快培育新质生产力推动高质量发展的若干政策(2026年版)》的通知",
+   "url": "https://www.nanjing.gov.cn/xxgkn/zfgb/202602/t20260228_5797981.html"
+  },
+  {
+   "id": 19,
+   "title": "《节能装备高质量发展实施方案(2026—2028年)》解读",
+   "url": "https://www.miit.gov.cn/zwgk/zcjd/art/2026/art_271dd379de6a4f78a4dca638958ea86d.html"
+  },
+  {
+   "id": 20,
+   "title": "关于加快培育新质生产力推动高质量发展的若干政策(2026年版) ",
+   "url": "https://www.nanjing.gov.cn/hdjl/xwfbh/xwfbhgyjkpyxzscltdgzlfzdrgzc2026nb/index.html"
+  },
+  {
+   "id": 21,
+   "title": "关于印发“人工智能+制造”镇江行动方案(2026—2028年)的通知",
+   "url": "http://www.zhenjiang.gov.cn/zhenjiang/szfbwj/202609/f43474dff8d7402591689270b95d9db3.shtml"
+  },
+  {
+   "id": 22,
+   "title": "我国加快制造强国建设夯实高质量发展根基",
+   "url": "http://www.xinhuanet.com/fortune/20260413/f649121531e741189338a016452d3366/c.html"
+  },
+  {
+   "id": 23,
+   "title": "沭阳县新能源产业高质量发展三年行动方案 (2026—2028年)",
+   "url": "http://www.shuyang.gov.cn/attachment/upload/file/20260612/1781236774601009639.doc"
+  },
+  {
+   "id": 24,
+   "title": "2026年度政府工作报告 ",
+   "url": "http://www.gaoyou.gov.cn/zwgk/fdzdgknr/zfgzbg/art/2026/art_af2fb5ec45af4ccb96b17d5bf23f4794.html"
+  },
+  {
+   "id": 25,
+   "title": "上半年安居区规模以上工业增加值同比增长9.2%,排位全市第一!",
+   "url": "https://www.163.com/dy/article/J93PUGRH0514DBE9.html"
+  },
+  {
+   "id": 26,
+   "title": "关于吴中区2023年国民经济和社会发展计划执行情况与2024年国民经济和社会发展计划草案的报告 ",
+   "url": "https://www.suzhou.gov.cn/szsrmzf/ssw/202409/6d1181284d354249a62837ee716b3a81.shtml"
+  },
+  {
+   "id": 27,
+   "title": "2023年,规模以上工业增加值同比增长4.6%——工业经济运行亮点纷呈 ",
+   "url": "https://www.gov.cn/lianbo/bumen/202401/content_6927180.htm"
+  },
+  {
+   "id": 28,
+   "title": "一季度规上工业增加值同比增长6.1%,为8个季度以来最高——工业经济运行平稳向好 ",
+   "url": "https://www.gov.cn/lianbo/bumen/202404/content_6946179.htm"
+  },
+  {
+   "id": 29,
+   "title": "政府工作报告",
+   "url": "https://www.jswx.gov.cn/yw/202401/t20240129_3355047.shtml"
+  },
+  {
+   "id": 30,
+   "title": "关于昆山市2023年国民经济和社会发展计划执行情况与2024年国民经济和社会发展计划草案的报告 | 昆山市人民政府 ",
+   "url": "http://www.ks.gov.cn/kss/ghjh/202410/93f92cc96481499ba80cefc9e0152fc5.shtml"
+  },
+  {
+   "id": 31,
+   "title": "2024年扬州市广陵区人民政府工作报告",
+   "url": "https://www.yzglq.gov.cn/zfxxgk/fdzdgknr/zfgzbg/art/2024/art_d65c4ad2af72445a997ff166dd9e7df2.html"
+  },
+  {
+   "id": 32,
+   "title": "2024年区委区政府重点工作任务二季度推进情况督查通报 ",
+   "url": "https://www.linping.gov.cn/art/2024/8/6/art_1229592722_33947.html"
+  },
+  {
+   "id": 33,
+   "title": "> 内容",
+   "url": "https://www.cztn.gov.cn/html/cztn/2024/BPCILBQN_0830/31674.html"
+  },
+  {
+   "id": 34,
+   "title": "国新办举行2024年一季度工业和信息化发展情况新闻发布会",
+   "url": "https://shxca.miit.gov.cn/xwzx/bsyyw/art/2024/art_27614067b1e74517838cb0ac76463e86.html"
+  },
+  {
+   "id": 35,
+   "title": "智能工厂梯度培育行动",
+   "url": "https://baike.baidu.com/item/智能工厂梯度培育行动/69090217"
+  },
+  {
+   "id": 36,
+   "title": "民爆行业落实《国家智能制造标准体系建设指南》实施方案",
+   "url": "https://baike.baidu.com/item/民爆行业落实《国家智能制造标准体系建设指南》实施方案/67080834"
+  },
+  {
+   "id": 37,
+   "title": "工业和信息化部关于优化业务准入促进卫星通信产业发展的指导意见",
+   "url": "https://baike.baidu.com/item/工业和信息化部关于优化业务准入促进卫星通信产业发展的指导意见/66742256"
+  },
+  {
+   "id": 38,
+   "title": "智洋创新:2026年度向特定对象发行A股股票募集说明书(申报稿) ",
+   "url": "http://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?id=12642491"
+  },
+  {
+   "id": 39,
+   "title": "智洋创新:1-1智洋创新科技股份有限公司向特定对象发行股票证券募集说明书(申报稿) ",
+   "url": "http://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?id=12641600"
+  },
+  {
+   "id": 40,
+   "title": "国家发展改革委国家能源局关于促进新能源消纳和调控的指导意见",
+   "url": "https://baike.baidu.com/item/国家发展改革委国家能源局关于促进新能源消纳和调控的指导意见/67249874"
+  },
+  {
+   "id": 41,
+   "title": "天奇股份:募集说明书(注册稿) ",
+   "url": "http://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?stockid=002009&id=12625307"
+  },
+  {
+   "id": 42,
+   "title": "诚邦股份:以简易程序向特定对象发行股票证券募集说明书(注册稿) ",
+   "url": "http://money.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?id=12642241"
+  },
+  {
+   "id": 43,
+   "title": "翔丰华:2026年度向特定对象发行A股股票募集说明书(注册稿) ",
+   "url": "http://money.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?id=12644695"
+  },
+  {
+   "id": 44,
+   "title": "中科电气:2026年度向特定对象发行A股股票并在创业板上市募集说明书(申报稿) ",
+   "url": "http://money.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?id=12644683"
+  },
+  {
+   "id": 45,
+   "title": "“智造之城”跑出高质量发展加速度 ",
+   "url": "https://www.suzhou.gov.cn/szsrmzf/szyw/202507/9bb2465bcbb5490e9116e53a107ec11d.shtml"
+  },
+  {
+   "id": 46,
+   "title": "实干结硕果,奋进新征程——宿迁市“十四五”发展成效主题新闻发布会之“长三角先进制造业基地”专场新闻发布会",
+   "url": "https://www.suqian.gov.cn/cnsq/xwfbh/202511/17d845db2aa642ae8fde69057e83b31f.shtml"
+  },
+  {
+   "id": 47,
+   "title": "江苏举行“高质量完成‘十四五’规划”系列主题新闻发布会(第一场) ",
+   "url": "http://www.scio.gov.cn/xwfb/dfxwfb/gssfbh/js_13835/202512/t20251211_941982_m.html"
+  },
+  {
+   "id": 48,
+   "title": "盘点2025│从媒体调研行看新型工业化向纵深推进",
+   "url": "http://www.xinhuanet.com/info/20251218/005255d26cb9496f876a6bbbaee28623/c.html"
+  },
+  {
+   "id": 49,
+   "title": "经济大省挑大梁丨江苏无锡:高质量发展动能澎湃,谱写中国式现代化新篇章",
+   "url": "https://news.sina.com.cn/zx/gj/2025-12-21/doc-inhcnpwz0903936.shtml"
+  },
+  {
+   "id": 50,
+   "title": "经济大省挑大梁丨江苏无锡:高质量发展动能澎湃,谱写中国式现代化新篇章",
+   "url": "http://finance.sina.com.cn/jjxw/2025-12-21/doc-inhcpmap5814542.shtml"
+  },
+  {
+   "id": 51,
+   "title": "2025年江苏省常州市新质生产力发展研判:聚焦机器人等9大新质生产力细分赛道,深化“1028”产业生态布局[图] ",
+   "url": "https://caifuhao.eastmoney.com/news/20250515095215293693130"
+  },
+  {
+   "id": 52,
+   "title": "2025年江苏省常州市新质生产力发展研判:聚焦机器人等9大新质生产力细分赛道,深化“1028”产业生态布局[图]",
+   "url": "https://www.chyxx.com/industry/1221641.html"
+  },
+  {
+   "id": 53,
+   "title": "2025年江苏省常州市新质生产力发展研判:聚焦机器人等9大新质生产力细分赛道,深化“1028”产业生态布局",
+   "url": "https://news.sohu.com/a/895275638_120950077"
+  },
+  {
+   "id": 54,
+   "title": "区政府办公室关于印发《宿豫区特色优势产业发展三年行动计划(2026—2028年)》的通知",
+   "url": "https://www.suqian.gov.cn/zcwjk/suyu/202609/803a631e1ef7438b91ac5c156c1c5240.shtml"
+  },
+  {
+   "id": 55,
+   "title": "苏州加快打造具有国际竞争力的“智能制造之城”",
+   "url": "https://www.hx.gov.cn/zxzx/ztzl/qhyshj/tszs/81223011.html"
+  },
+  {
+   "id": 56,
+   "title": "中共南京市委 南京市人民政府",
+   "url": "https://www.nanjing.gov.cn/zdgk/202608/t20260814_5894034.html"
+  },
+  {
+   "id": 57,
+   "title": "常州钟楼:数智引领 产城共兴 奋力建设高质量的现代化城区",
+   "url": "https://www.cz001.com.cn/article/392692"
+  },
+  {
+   "id": 58,
+   "title": "市政府办公室关于印发宿迁市“十五五”数智新城建设发展规划的通知 ",
+   "url": "http://suqian.gov.cn/zfb/zcfg/202603/e244e83b8dc8450c9ee14e93449c851b.shtml"
+  },
+  {
+   "id": 59,
+   "title": "“开局起步‘十五五’”南京市专题新闻发布会 ",
+   "url": "https://www.nanjing.gov.cn/hdjl/xwfbh/kjqbswwnjztxwfbh/index_20041.html"
+  },
+  {
+   "id": 60,
+   "title": "市政府办公厅关于印发《南京市“十五五”现代服务业发展规划》的通知",
+   "url": "https://www.nanjing.gov.cn/xxgkn/zfgb/202608/t20260828_5901448.html"
+  },
+  {
+   "id": 61,
+   "title": "无锡先导智能装备股份有限公司",
+   "url": "https://baike.baidu.com/item/无锡先导智能装备股份有限公司/19941323"
+  },
+  {
+   "id": 62,
+   "title": "海晨股份跌6.29%,成交额1.44亿元,后市是否有机会?",
+   "url": "https://finance.sina.cn/2026-10-15/detail-inivhtuq4695897.d.html"
+  },
+  {
+   "id": 63,
+   "title": "禾川科技:向特定对象发行股票证券募集说明书(注册稿) ",
+   "url": "http://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?id=12646271"
+  },
+  {
+   "id": 64,
+   "title": "盘面还在磨底,高端装备三季报集体亮剑!硬核制造要崛起? ",
+   "url": "https://caifuhao.eastmoney.com/news/20261014225557377250760"
+  },
+  {
+   "id": 65,
+   "title": "软控股份跌3.04%,成交额7601.12万元,近3日主力净流入-770.82万",
+   "url": "http://finance.sina.com.cn/stock/aiassist/ggsp/2026-10-15/doc-inivhtus1450303.shtml"
+  },
+  {
+   "id": 66,
+   "title": "宝盈先进制造灵活配置混合型证券投资基金",
+   "url": "https://baike.baidu.com/item/宝盈先进制造灵活配置混合型证券投资基金/19704391"
+  },
+  {
+   "id": 67,
+   "title": "汉缆股份跌6.61%,成交额2.60亿元,后市是否有机会?",
+   "url": "http://finance.sina.com.cn/stock/aiassist/ggsp/2026-10-15/doc-inivhtuq4684074.shtml"
+  },
+  {
+   "id": 68,
+   "title": "汇丰晋信智造先锋股票型证券投资基金",
+   "url": "https://baike.baidu.com/item/汇丰晋信智造先锋股票型证券投资基金/19764647"
+  },
+  {
+   "id": 69,
+   "title": "江苏2个园区8家企业创建首批国家新兴产业发展示范基地",
+   "url": "http://www.js.gov.cn/art/2026/10/6/art_92848_11838523.html"
+  },
+  {
+   "id": 70,
+   "title": "江苏乔航海工装备制造基地",
+   "url": "https://baike.baidu.com/item/江苏乔航海工装备制造基地/68281361"
+  },
+  {
+   "id": 71,
+   "title": "镇江经开区“3211”产业体系再添新动能",
+   "url": "http://www.zhenjiang.gov.cn/zhenjiang/zjlljccz/202610/e6855dba0f8048dea795571ff89df858.shtml"
+  },
+  {
+   "id": 72,
+   "title": "20家海工企业扎根吕四港 ",
+   "url": "https://www.nantong.gov.cn/ntsrmzf/sxcz/content/067c7fcc-81ec-46c0-aa11-0b3de9026b0e.html"
+  },
+  {
+   "id": 73,
+   "title": "与城共进,智造未来",
+   "url": "https://jsjjb.xhby.net/pc/con/202509/04/content_1482009.html"
+  },
+  {
+   "id": 74,
+   "title": "2024年江苏省工业园区全景洞析:产业布局、工业园区名录及入驻企业名单 ",
+   "url": "https://www.sohu.com/a/811560451_120928700"
+  },
+  {
+   "id": 75,
+   "title": "【投资江苏】2025年江苏省重点产业投资全景分析(附重点产业布局、园区分布、投资保障等)",
+   "url": "https://m.askci.com/news/chanye/20251014/174542276043081902437817_7.shtml"
+  },
+  {
+   "id": 76,
+   "title": "人民日报|苏州:砥砺再出发 昂扬向新行",
+   "url": "https://www.jiangsu.gov.cn/art/2025/1/4/art_33718_11463795.html"
+  },
+  {
+   "id": 77,
+   "title": "锚定新型工业化 挺起工业脊梁——回眸淮安“十四五”工业经济高质量发展蝶变之路",
+   "url": "https://gxj.huaian.gov.cn/xwzx/jxdt/content/17671968/1768529753349iaSWjygZ.html"
+  },
+  {
+   "id": 78,
+   "title": "2025年政府工作报告 ",
+   "url": "https://www.lyg.gov.cn/zglygzfmhwz/rdcl_lh2025/content/1dac5b3d-cb0e-4855-8ae3-e2ec1b129c9d.html"
+  },
+  {
+   "id": 79,
+   "title": "2025年政府工作报告",
+   "url": "https://www.hj.gov.cn/zfxxgk/fdzdgknr/zfgzbg/art/2025/art_662306b6e53641c493aa949255c0274b.html"
+  },
+  {
+   "id": 80,
+   "title": "万洋航空航天及高端装备特色产业园一、二期项目签约落户江宁开发区",
+   "url": "http://mp.cnfol.com/57779/article/1758685383-142028963.html"
+  },
+  {
+   "id": 81,
+   "title": "政务公开",
+   "url": "https://www.luan.gov.cn/public/6608171/10670783.html"
+  },
+  {
+   "id": 82,
+   "title": "苏州工业经济向稳向新向优",
+   "url": "https://www.jiangsu.gov.cn/art/2025/8/4/art_33718_11621825.html"
+  },
+  {
+   "id": 83,
+   "title": "今年省重大实施项目达五百个 同比增加五十个 ",
+   "url": "https://www.jiangsu.gov.cn/art/2025/1/12/art_91704_11468975.html"
+  },
+  {
+   "id": 84,
+   "title": "2025年苏州企业可申报项目汇总 ",
+   "url": "https://news.sohu.com/a/926081859_121711689"
+  },
+  {
+   "id": 85,
+   "title": "2025年江苏扬州市新质生产力发展研判:巩固提升六大主导产业集群,攻坚突破13条新兴产业链[图]",
+   "url": "https://m.chyxx.com/industry/1226137.html"
+  },
+  {
+   "id": 86,
+   "title": "对市政协十五届三次会议第0295号提案的答复",
+   "url": "https://www.nanjing.gov.cn/xxgkn/jytabljggk/2025njytabl/shizxta/202512/t20251203_5704654.html"
+  },
+  {
+   "id": 87,
+   "title": "2025年苏州企业如何领百万补贴?申报指南速领~",
+   "url": "https://www.bilibili.com/opus/1103150586081050647"
+  },
+  {
+   "id": 88,
+   "title": "江苏省工业和信息化厅",
+   "url": "https://baike.baidu.com/item/江苏省工业和信息化厅/22992482"
+  },
+  {
+   "id": 89,
+   "title": "省政府办公厅关于印发江苏省",
+   "url": "https://www.jiangsu.gov.cn/art/2025/1/21/art_64797_11476243.html"
+  },
+  {
+   "id": 90,
+   "title": "省政府办公厅关于印发江苏省深化制造业智能化改造数字化转型网络化联接三年行动计划(2025-2027年)的通知",
+   "url": "https://www.jiangsu.gov.cn/art/2025/1/7/art_84418_11465413.html"
+  },
+  {
+   "id": 91,
+   "title": "江苏省新型电力装备制造业创新联盟",
+   "url": "https://baike.baidu.com/item/江苏省新型电力装备制造业创新联盟/66296019"
+  },
+  {
+   "id": 92,
+   "title": "专用设备制造行业:政策引导研发攻关叠加定制化模式落地 下游多赛道扩容带动智能装备需求增长",
+   "url": "https://xueqiu.com/5089275015/412661588"
+  },
+  {
+   "id": 93,
+   "title": "海洋工程装备制造",
+   "url": "https://baike.baidu.com/item/海洋工程装备制造/67151641"
+  },
+  {
+   "id": 94,
+   "title": "专用设备制造业:政策驱使及新基建带动需求 技术布局细分领域深化筑建多重壁垒",
+   "url": "https://q.stock.sohu.com/cn/news.html?textId=1067315844&tab=200&type=120&code=cn_301018&date=2026/1013"
+  },
+  {
+   "id": 95,
+   "title": "江苏氢能产业集群",
+   "url": "https://baike.baidu.com/item/江苏氢能产业集群/69317066"
+  },
+  {
+   "id": 96,
+   "title": "江苏省支持人工智能OPC创新发展若干措施",
+   "url": "https://baike.baidu.com/item/江苏省支持人工智能OPC创新发展若干措施/68349589"
+  },
+  {
+   "id": 97,
+   "title": "【微靖江】优质岗位|全新招聘清单已就绪,多一份选择,多一个转机,合适就抓紧行动!",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzA3NjEwOTczNQ==&mid=2651719136&idx=8&sn=f3f10a51b76c08e4c000189bf922695c&chksm=855beda818d42efe0dcba4b457d6eeb4e2d90d374d050eb63cbf6c0b619be7c28ae42d5f98d2&scene=27"
+  },
+  {
+   "id": 98,
+   "title": "江苏淮励拓新能源科技有限公司招聘简章",
+   "url": "https://mp.weixin.qq.com/s?__biz=MjM5ODYyMDQyMA==&mid=2651999465&idx=1&sn=582dc4c4e149fc328e800d6bbf860918&chksm=bc94334eb2123980e3c25ce4dc959ebb3a5a19470fb5e79daac0b8ef32a451e982d4c2c530b7&scene=27"
+  },
+  {
+   "id": 99,
+   "title": "嘉盛环境运营招聘(工资待遇要求)| 江苏嘉盛环境设备制造有限公司 - 职友集",
+   "url": "https://www.jobui.com/company/17745032/salary/j/yunying/"
+  },
+  {
+   "id": 100,
+   "title": "常发农装 工艺员 招聘(工资待遇要求) ",
+   "url": "https://www.jobui.com/company/8939828/salary/j/gongyiyuan/"
+  },
+  {
+   "id": 101,
+   "title": "机床-SOP工程师",
+   "url": "https://www.zhipin.com/job_detail/db11540bd4cc6e2603x_09m0EVFR.html"
+  },
+  {
+   "id": 102,
+   "title": "【装备制造产业链招聘】技术拿高薪!数控、加工中心、气保电焊工、数控车床操作工等岗位可选 ",
+   "url": "https://www.sohu.com/a/1088177301_121106832"
+  },
+  {
+   "id": 103,
+   "title": "苏州常熟市装备制造行业工资待遇和人才需求趋势",
+   "url": "https://www.jobui.com/salary/suzhou-all/ind-zhuangbeizhizao/area100507/"
+  },
+  {
+   "id": 104,
+   "title": "10月17日见!江苏省2027届高校毕业生公益供需洽谈会岗位需求信息(第二批)出炉_腾讯新闻",
+   "url": "https://news.qq.com/rain/a/20261011A07UDQ00?adChannelId=js"
+  },
+  {
+   "id": 105,
+   "title": "常州招聘机械设计工程师",
+   "url": "https://aiqicha.baidu.com/details/rankList?query=c6349263601816533408ba0027f7d031&type=20"
+  },
+  {
+   "id": 106,
+   "title": "2026装备制造业供需分析及市场竞争格局与发展规划研究",
+   "url": "https://www.renrendoc.com/paper/538575558.html"
+  },
+  {
+   "id": 107,
+   "title": "扬州市613产业体系急需紧缺人才目录",
+   "url": "https://baike.baidu.com/item/扬州市613产业体系急需紧缺人才目录/69304161"
+  },
+  {
+   "id": 108,
+   "title": "2026装备制造业市场生态分析及智能制造与市场需求报告",
+   "url": "https://www.renrendoc.com/paper/538592487.html"
+  },
+  {
+   "id": 109,
+   "title": "2026年1—6月全省规模以上工业增加值增长6.7%",
+   "url": "https://www.jiangsu.gov.cn/art/2026/7/22/art_88350_11806882.html"
+  },
+  {
+   "id": 110,
+   "title": "钱钧",
+   "url": "https://baike.baidu.com/item/钱钧/69400193"
+  },
+  {
+   "id": 111,
+   "title": "制造业人才发展规划指南",
+   "url": "https://www.miit.gov.cn/cms_files/filemanager/oldfile/miit/n1146285/n1146352/n3054355/n3057267/n3057273/c5499862/part/5499877.doc"
+  },
+  {
+   "id": 112,
+   "title": "苏州市 2025 年度 重点产业紧缺专业人才 需求目录",
+   "url": "https://www.suzhou.gov.cn/szsrmzf/zyzct/202511/69afd9a1e9da4db3a5e9c4015647b3ac/files/a418b43704a045278180832e69601294.pdf"
+  },
+  {
+   "id": 113,
+   "title": "宝胜股份:2024年实现营业总收入463.6亿元 同比增长5.85%",
+   "url": "https://finance.eastmoney.com/a/202503143346399820.html"
+  },
+  {
+   "id": 114,
+   "title": "宝胜股份:2024年实现营业总收入463.6亿元 同比增长5.85%",
+   "url": "https://wap.eastmoney.com/a/202503143346399820.html"
+  },
+  {
+   "id": 115,
+   "title": "宝胜股份2024年报:归母净利润亏损3亿元 同比下降1066.5%",
+   "url": "https://wap.eastmoney.com/a/202503173347426422.html"
+  },
+  {
+   "id": 116,
+   "title": "宝胜股份2024年营收463.60亿元同比增5.85%,净利润-3.00亿元同比降1066.53%,毛利率下降0.86个百分点 ",
+   "url": "https://m.sohu.com/a/871119336_122014422"
+  },
+  {
+   "id": 117,
+   "title": "宝胜股份全年营业收入463.60亿元,同比增长5.85%",
+   "url": "https://wap.stockstar.com/detail/IG2025031400041306"
+  },
+  {
+   "id": 118,
+   "title": "宝胜股份:2024年度净利润约-3亿元",
+   "url": "https://www.nbd.com.cn/rss/zaker/articles/3790055.html"
+  },
+  {
+   "id": 119,
+   "title": "宝胜股份:2024年实现营业收入463.60亿元",
+   "url": "https://m.bjx.com.cn/mnews/20250318/1432673.shtml"
+  },
+  {
+   "id": 120,
+   "title": "宝胜股份:2024年上半年净利润1865.78万元 同比下降68.94%",
+   "url": "https://finance.eastmoney.com/a/202408303171955263.html"
+  },
+  {
+   "id": 121,
+   "title": "宝胜股份全年营业收入463.60亿元,同比增长5.85%",
+   "url": "https://m.10jqka.com.cn/20250314/c666722323.shtml"
+  },
+  {
+   "id": 122,
+   "title": "12月20日上市公司重要公告集锦:浦发银行第一大股东子公司拟增持公司不低于4700万股 ",
+   "url": "http://mt.sohu.com/a/839663771_121857546"
+  },
+  {
+   "id": 123,
+   "title": "项目管理、数字化转型、产品研发/电气研发、机械研发、激光工艺、方案工程师、服务技改开发、项目工程师、销售工程师、供应链管理、采购工程师、质量工程师",
+   "url": "https://career.hebut.edu.cn/home/correcruit/content/id/63170.html"
+  },
+  {
+   "id": 124,
+   "title": "无锡先导智能装备股份有限公司",
+   "url": "https://job.xidian.edu.cn/teachin/view/id/124071"
+  },
+  {
+   "id": 125,
+   "title": "先导智能 :2024年财报解析无锡先导智能装备股份有限公司,成立于2002年,2015年在创业板上市,股票代码30045... - 雪球",
+   "url": "https://xueqiu.com/1334287437/334016247"
+  },
+  {
+   "id": 126,
+   "title": "固态电池设备端-先导智能",
+   "url": "https://xueqiu.com/1284158324/341369587"
+  },
+  {
+   "id": 127,
+   "title": "无锡先导智能装备股份有限公司2023年度报告摘要",
+   "url": "https://epaper.stcn.com/con/202404/25/content_2622113.html"
+  },
+  {
+   "id": 128,
+   "title": "先导智能:2024年限制性股票激励计划自查表",
+   "url": "https://m.10jqka.com.cn/sn/20240930/49421749.shtml"
+  },
+  {
+   "id": 129,
+   "title": "大连美德乐工业自动化股份有限公司",
+   "url": "https://pdf.dfcfw.com/pdf/H2_AN202407081637677031_1.pdf"
+  },
+  {
+   "id": 130,
+   "title": "天奇股份:10月8日获融资买入1386.37万元",
+   "url": "https://www.163.com/dy/article/L8POC6J805568W0A.html"
+  },
+  {
+   "id": 131,
+   "title": "天奇股份研究报告:深耕锂电回收,业绩进入爆发期",
+   "url": "https://zhuanlan.zhihu.com/p/543081269"
+  },
+  {
+   "id": 132,
+   "title": "天奇股份:2024年上半年亏损7851.37万元 拟10派0.2元",
+   "url": "https://wap.eastmoney.com/a/202408193159642250.html"
+  },
+  {
+   "id": 133,
+   "title": "天奇股份:2024年上半年亏损7851.37万元 拟10派0.2元",
+   "url": "https://finance.eastmoney.com/a/202408193159642250.html"
+  },
+  {
+   "id": 134,
+   "title": "天奇股份投资价值深度分析",
+   "url": "https://zhuanlan.zhihu.com/p/2009660518084921019"
+  },
+  {
+   "id": 135,
+   "title": "天奇股份研究报告:锂电回收加速发展,经营管理持续改善",
+   "url": "https://zhuanlan.zhihu.com/p/522586318"
+  },
+  {
+   "id": 136,
+   "title": "天奇自动化工程股份有限公司 第九届董事会第十六次会议决议公告",
+   "url": "https://epaper.stcn.com/pic/202608/26/8db8c0bfcd47258ace60189a3503e847.pdf"
+  },
+  {
+   "id": 137,
+   "title": "天奇股份:2020年半年度报告 ",
+   "url": "http://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?stockid=002009&id=6537779"
+  },
+  {
+   "id": 138,
+   "title": "东杰智能:2022年公司创业板向不特定对象发行可转换公司债券2024年跟踪评级报告 ",
+   "url": "http://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?id=10295158"
+  },
+  {
+   "id": 139,
+   "title": "上海步科自动化股份有限公司",
+   "url": "http://finance.sina.com.cn/jjxw/2024-08-28/doc-incmcvru2125296.shtml"
+  },
+  {
+   "id": 140,
+   "title": "上市以来研发支出首度下滑 亚威股份2023年度营收增速低于净利润",
+   "url": "https://finance.eastmoney.com/a/202405073068835027.html"
+  },
+  {
+   "id": 141,
+   "title": "上市以来研发支出首度下滑 亚威股份2023年度营收增速低于净利润",
+   "url": "https://wap.eastmoney.com/a/202405073068835027.html"
+  },
+  {
+   "id": 142,
+   "title": "上市以来研发支出首度下滑 亚威股份2023年度营收增速低于净利润",
+   "url": "https://finance.sina.cn/2024-05-07/detail-inaukzcz9159591.d.html"
+  },
+  {
+   "id": 143,
+   "title": "上市以来研发支出首度下滑 亚威股份2023年度营收增速低于净利润",
+   "url": "https://www.163.com/dy/article/J1JOPBJN05199NHJ.html"
+  },
+  {
+   "id": 144,
+   "title": "上市以来研发支出首度下滑 亚威股份2023年度营收增速低于净利润 ",
+   "url": "https://mp.weixin.qq.com/s?__biz=MjM5MzM1NTM1NA==&mid=2652091763&idx=2&sn=18537969c16af803f67c4508e6fc6bc4&chksm=bcd839c07205c8e54910e0b19179ec4f03862569241cf52bcf1d37a7ddbf073e0b4bc6eac4c0&scene=27"
+  },
+  {
+   "id": 145,
+   "title": "亚威股份:12月26日召开董事会会议 ",
+   "url": "https://www.nbd.com.cn/articles/2024-12-26/3700527.html"
+  },
+  {
+   "id": 146,
+   "title": "亚威股份:2024年上半年净利润6610.61万元 同比下降3.06%",
+   "url": "https://finance.sina.cn/2024-08-26/detail-inckykwx9566052.d.html"
+  },
+  {
+   "id": 147,
+   "title": "亚威股份:2024年上半年净利润6610.61万元 同比下降3.06% ",
+   "url": "https://www.sohu.com/a/803802647_120988533"
+  },
+  {
+   "id": 148,
+   "title": "亚威股份 (002559.SZ)",
+   "url": "http://finance.sina.com.cn/realstock/company/sz002559/nc.shtml"
+  },
+  {
+   "id": 149,
+   "title": "亚威股份获12家机构调研:公司投资6.8亿建设的伺服压力机及自动化冲压线技术改造项目将于2024年建成,目前工程建设正在紧密推进中(附调研问答)",
+   "url": "https://stock.10jqka.com.cn/20240301/c655491453.shtml"
+  },
+  {
+   "id": 150,
+   "title": "江苏新质生产力观察丨埃斯顿强化创新驱动角逐全球先进制造赛道",
+   "url": "http://www.js.xinhuanet.com/20241104/015da7b74e74403a9b4396237f413a0d/c.html"
+  },
+  {
+   "id": 151,
+   "title": "南京:“税”引擎为“新质生产力”发展添动力",
+   "url": "http://www.js.xinhuanet.com/20240316/52bed8d636bf41dd80f7c455bcc5eb30/c.html"
+  },
+  {
+   "id": 152,
+   "title": "埃斯顿:预计2024年半年度亏损8500.00万至6500.00万 净利润同比下降187.27%至166.73%",
+   "url": "https://yuanchuang.10jqka.com.cn/20240710/c659692642.shtml"
+  },
+  {
+   "id": 153,
+   "title": "证券时报电子报实时通过手机APP、网站免费阅读重大财经新闻资讯及上市公司公告",
+   "url": "https://epaper.stcn.com/con/202404/30/content_2628224.html"
+  },
+  {
+   "id": 154,
+   "title": "强信心 开新局│南京机器人产业挺进全国第一方阵",
+   "url": "https://jsnews.jschina.com.cn/zt2024/ztgk_2024/202408/t20240817_3447852.shtml"
+  },
+  {
+   "id": 155,
+   "title": "南京埃斯顿自动化股份有限公司第五届董事会第十一次会议决议公告",
+   "url": "http://finance.sina.com.cn/roll/2024-12-31/doc-inechsqm3131601.shtml"
+  },
+  {
+   "id": 156,
+   "title": "汇川技术上半年净利微增:新能源汽车业务收入翻倍,拟投不超过50亿扩产能",
+   "url": "https://www.thepaper.cn/newsDetail_forward_28533069"
+  },
+  {
+   "id": 157,
+   "title": "南京埃斯顿自动化股份有限公司关于为子公司提供担保的进展公告",
+   "url": "http://finance.sina.com.cn/roll/2024-10-26/doc-inctvezp1198143.shtml"
+  },
+  {
+   "id": 158,
+   "title": "证券时报电子报实时通过手机APP、网站免费阅读重大财经新闻资讯及上市公司公告",
+   "url": "https://epaper.stcn.com/con/202404/30/content_2628227.html"
+  },
+  {
+   "id": 159,
+   "title": "美国智库:中国机器人产业缺少创新力但不意味着会输 ",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzU0Mzk0MzA3Nw==&mid=2247494881&idx=1&sn=264b17639fb7c900e60ba52e1998799a&chksm=fab62b1090138abe6fa55a5b0595243ee6a80fe4b60956f297b8fb4f7331bc766136a69dc98d&scene=27"
+  }
+ ],
+ "scale": [
+  {
+   "metric": "规模以上装备制造业增加值同比增长",
+   "value": "8.9%",
+   "unit": "%",
+   "year": "2024",
+   "scope": "全省",
+   "src": [
+    1,
+    4
+   ]
+  },
+  {
+   "metric": "规模以上装备制造业增加值对全部规上工业增加值增长贡献率",
+   "value": "60.5%",
+   "unit": "%",
+   "year": "2024",
+   "scope": "全省",
+   "src": [
+    1,
+    4
+   ]
+  },
+  {
+   "metric": "规模以上装备制造业增加值贡献率",
+   "value": "56.2%",
+   "unit": "%",
+   "year": "2024",
+   "scope": "全省",
+   "src": [
+    2
+   ]
+  },
+  {
+   "metric": "规模以上工业总产值",
+   "value": "35797.4亿元",
+   "unit": "亿元",
+   "year": "2025",
+   "scope": "苏州市",
+   "src": [
+    8,
+    10,
+    11
+   ]
+  },
+  {
+   "metric": "电气机械和器材制造业产值同比增长",
+   "value": "5.0%",
+   "unit": "%",
+   "year": "2025",
+   "scope": "苏州市",
+   "src": [
+    8,
+    10,
+    11
+   ]
+  },
+  {
+   "metric": "规上机械企业产值",
+   "value": "1.2万亿元",
+   "unit": "万亿元",
+   "year": "2023",
+   "scope": "无锡市",
+   "src": [
+    12
+   ]
+  },
+  {
+   "metric": "规上高新技术产业产值占规上工业总产值比重",
+   "value": "56.2%",
+   "unit": "%",
+   "year": "2025",
+   "scope": "苏州市",
+   "src": [
+    45
+   ]
+  }
+ ],
+ "segments": [
+  {
+   "name": "商业航天装备",
+   "desc": "明确建设1–2个省级制造业创新中心，突破大运力/可重复使用火箭、卫星电源系统等关键技术。",
+   "src": [
+    17
+   ]
+  },
+  {
+   "name": "节能低碳装备",
+   "desc": "聚焦节能电机、变压器、工业热泵、水电解制氢装备等重点节能装备，提升能效水平与智能化匹配度。",
+   "src": [
+    19
+   ]
+  },
+  {
+   "name": "高端装备与智能制造",
+   "desc": "包括工业机器人、具身智能机器人、智能工厂等，南京已布局创新中心与产业联盟。",
+   "src": [
+    22
+   ]
+  },
+  {
+   "name": "新能源装备",
+   "desc": "聚焦氢燃料“制储运加用”全链条、新型储能、光伏装备、新能源船舶制造。",
+   "src": [
+    23
+   ]
+  },
+  {
+   "name": "新型电力装备",
+   "desc": "镇江将该领域列为数据集建设先行试点行业之一，支撑装备智能化升级。",
+   "src": [
+    21
+   ]
+  },
+  {
+   "name": "基础与工业软件",
+   "desc": "南京政策明确支持工业软件、信息技术应用创新产业化、鸿蒙适配等，强化装备数字化底座。",
+   "src": [
+    18
+   ]
+  }
+ ],
+ "cities": [
+  {
+   "city": "南京",
+   "focus": "聚焦智能机器人领域，入选首批国家新兴产业发展示范基地（企业类）。",
+   "companies": [
+    "南京埃斯顿自动化股份有限公司"
+   ],
+   "src": [
+    69
+   ]
+  },
+  {
+   "city": "苏州",
+   "focus": "打造“智能制造之城”，聚焦智能网联新能源汽车电驱动系统、生物制造、智能机器人核心零部件等。",
+   "companies": [
+    "苏州汇川联合动力系统股份有限公司",
+    "信达生物制药(苏州)有限公司",
+    "微康益生菌(苏州)股份有限公司",
+    "苏州绿的谐波传动科技股份有限公司"
+   ],
+   "src": [
+    69
+   ]
+  },
+  {
+   "city": "常州",
+   "focus": "属新型储能制造/智能电网装备领域，布局智能制造、精密加工等产业园区。",
+   "companies": [
+    "常州博瑞电力自动化设备有限公司"
+   ],
+   "src": [
+    69,
+    73
+   ]
+  },
+  {
+   "city": "徐州",
+   "focus": "属安全应急装备领域，入选首批国家新兴产业发展示范基地。",
+   "companies": [
+    "徐工消防安全装备有限公司"
+   ],
+   "src": [
+    69
+   ]
+  },
+  {
+   "city": "泰州",
+   "focus": "聚焦海上风电核心装备、海上升压站、海上制氢站、海洋牧场，打造全链条体系。",
+   "companies": [
+    "江苏乔航海洋装备有限公司"
+   ],
+   "src": [
+    70
+   ]
+  },
+  {
+   "city": "南通",
+   "focus": "集聚海工装备相关企业，形成覆盖风电整机配套、深海钢结构、船舶防腐涂装的完整产业链。",
+   "companies": [
+    "海力风电",
+    "韩通新能源"
+   ],
+   "src": [
+    72
+   ]
+  }
+ ],
+ "listed": [
+  {
+   "company": "宝胜股份",
+   "code": "600973",
+   "city": "扬州",
+   "rdExpense": "7亿元",
+   "rdRatio": "1.51%",
+   "year": "2024",
+   "src": [
+    113,
+    116,
+    119
+   ]
+  },
+  {
+   "company": "无锡先导智能装备股份有限公司",
+   "code": "300450",
+   "city": "无锡",
+   "rdExpense": "不低于11.86亿元",
+   "rdRatio": "10%以上",
+   "year": "2024",
+   "src": [
+    123,
+    124,
+    125,
+    126
+   ]
+  }
+ ],
+ "financing": [
+  {
+   "company": "牛牌机电",
+   "event": "新三板挂牌",
+   "amount": "16.3亿元",
+   "date": "2025年",
+   "src": [
+    79
+   ]
+  },
+  {
+   "company": "万洋航空航天及高端装备特色产业园",
+   "event": "签约落地一、二期项目",
+   "amount": "35亿元",
+   "date": "2025年9月23日",
+   "src": [
+    80
+   ]
+  },
+  {
+   "company": "纽威数控",
+   "event": "四期工厂投用及五期项目签约",
+   "amount": "7亿元",
+   "date": "2025年",
+   "src": [
+    82
+   ]
+  }
+ ],
+ "policies": [
+  {
+   "level": "国家级",
+   "name": "制造业数字化转型行动方案",
+   "issuer": "国务院办公厅",
+   "year": "",
+   "gist": "智能工厂梯度培育行动的政策依据与顶层设计。",
+   "src": [
+    35
+   ]
+  },
+  {
+   "level": "部委级",
+   "name": "关于开展2024年度智能工厂梯度培育行动的通知",
+   "issuer": "工业和信息化部等六部门",
+   "year": "2024",
+   "gist": "正式启动智能工厂梯度培育工作，明确基础级、先进级、卓越级、领航级四个层级。",
+   "src": [
+    35
+   ]
+  },
+  {
+   "level": "部委级",
+   "name": "关于开展2025年度智能工厂梯度培育行动的通知",
+   "issuer": "工业和信息化部等六部门",
+   "year": "2025",
+   "gist": "扩大遴选范围、强化标杆引领，推动智能制造装备等在装备制造业企业中的规模化应用。",
+   "src": [
+    35
+   ]
+  },
+  {
+   "level": "部委级",
+   "name": "关于开展2026年度智能工厂梯度培育行动的通知",
+   "issuer": "工业和信息化部等六部门",
+   "year": "2026",
+   "gist": "首次对人工智能技术场景应用比例提出量化要求，卓越级不低于30%、领航级不低于60%。",
+   "src": [
+    35
+   ]
+  },
+  {
+   "level": "部委级",
+   "name": "民爆行业落实〈国家智能制造标准体系建设指南〉实施方案",
+   "issuer": "工信部办公厅",
+   "year": "2025",
+   "gist": "聚焦民爆专用装备智能化升级，属于高端特种装备制造细分领域的重要标准落地举措。",
+   "src": [
+    36
+   ]
+  },
+  {
+   "level": "部委级",
+   "name": "工业和信息化部关于优化业务准入促进卫星通信产业发展的指导意见",
+   "issuer": "工业和信息化部",
+   "year": "2025",
+   "gist": "支持低轨卫星互联网建设及终端直连等新型装备研发制造。",
+   "src": [
+    37
+   ]
+  },
+  {
+   "level": "省级",
+   "name": "江苏省深化制造业智能化改造数字化转型网络化联接三年行动计划（2025—2027年）",
+   "issuer": "江苏省人民政府办公厅",
+   "year": "2024",
+   "gist": "构建四级智能工厂梯度建设体系，目标到2027年规上工业企业基本完成智能化改造。",
+   "src": [
+    89
+   ]
+  },
+  {
+   "level": "省级",
+   "name": "江苏省推动氢能产业高质量发展行动方案（2025—2030年）",
+   "issuer": "江苏省发展改革委、省工信厅",
+   "year": "2025",
+   "gist": "明确氢能装备作为高端装备制造业新增长极，提出到2027年产业规模突破1000亿元等目标。",
+   "src": [
+    95
+   ]
+  },
+  {
+   "level": "省级",
+   "name": "江苏省物联网产业发展三年行动计划",
+   "issuer": "省工信厅等十部门",
+   "year": "2026",
+   "gist": "强化传感器、智能终端、边缘计算设备等物联网装备的自主研发与集成应用。",
+   "src": [
+    88
+   ]
+  },
+  {
+   "level": "省级",
+   "name": "江苏省支持人工智能OPC创新发展若干措施",
+   "issuer": "江苏省相关部门",
+   "year": "2026",
+   "gist": "专为培育以个人为核心、轻量敏捷的智能装备软件与算法开发主体提供制度保障。",
+   "src": [
+    96
+   ]
+  }
+ ],
+ "jobs": [
+  {
+   "title": "折弯工/激光切割操作工",
+   "city": "",
+   "salary": "8000–10000元/月",
+   "skills": [
+    "CAD",
+    "2年以上相关经验"
+   ],
+   "src": [
+    97
+   ]
+  },
+  {
+   "title": "钣金工艺员",
+   "city": "常州",
+   "salary": "10–15K·13薪",
+   "skills": [
+    "CAD",
+    "UG",
+    "冲压",
+    "激光",
+    "焊接工艺"
+   ],
+   "src": [
+    100
+   ]
+  },
+  {
+   "title": "SOP工程师",
+   "city": "",
+   "salary": "",
+   "skills": [
+    "机加工",
+    "机床制造"
+   ],
+   "src": [
+    101
+   ]
+  },
+  {
+   "title": "工程师",
+   "city": "",
+   "salary": "12000–18000元/月",
+   "skills": [
+    "非标钣金拆图",
+    "CAD",
+    "钣金加工工艺"
+   ],
+   "src": [
+    98
+   ]
+  },
+  {
+   "title": "品质经理",
+   "city": "",
+   "salary": "12000–18000元/月",
+   "skills": [
+    "ISO9001",
+    "特种设备规范",
+    "制造业品质管理经验"
+   ],
+   "src": [
+    98
+   ]
+  },
+  {
+   "title": "安全员",
+   "city": "",
+   "salary": "12000–18000元/月",
+   "skills": [
+    "安全制度建设",
+    "隐患排查",
+    "高危作业监护"
+   ],
+   "src": [
+    98
+   ]
+  },
+  {
+   "title": "机械设计工程师",
+   "city": "常州",
+   "salary": "7–45K",
+   "skills": [],
+   "src": [
+    105
+   ]
+  },
+  {
+   "title": "运营岗",
+   "city": "常州",
+   "salary": "8–50K/月",
+   "skills": [],
+   "src": [
+    99
+   ]
+  },
+  {
+   "title": "仓库副主管",
+   "city": "",
+   "salary": "10–18K/月",
+   "skills": [],
+   "src": [
+    102
+   ]
+  },
+  {
+   "title": "工业机器人系统集成师",
+   "city": "",
+   "salary": "",
+   "skills": [],
+   "src": [
+    110
+   ]
+  },
+  {
+   "title": "PLC编程与设备互联调试员",
+   "city": "",
+   "salary": "",
+   "skills": [],
+   "src": [
+    110
+   ]
+  },
+  {
+   "title": "数字化产线规划师",
+   "city": "",
+   "salary": "",
+   "skills": [],
+   "src": [
+    110
+   ]
+  }
+ ],
+ "demand": [
+  {
+   "text": "扬州市发布的《“613”产业体系急需紧缺人才目录》显示，高端装备产业集群紧缺指数居全市各产业之首，共筛选出171个紧缺岗位，总需求达12,975人。",
+   "src": [
+    107
+   ]
+  },
+  {
+   "text": "苏州市2025年度重点产业紧缺人才目录已将“高端装备”列为五大重点产业之一。",
+   "src": [
+    112
+   ]
+  },
+  {
+   "text": "江苏所属的全国装备制造业中，本科及以上学历人才仅占人才总量的31%（29%本科+2%研究生）。",
+   "src": [
+    111
+   ]
+  },
+  {
+   "text": "常熟市装备制造行业人才需求中，“机械/仪器仪表类”岗位占比9.1%，侧面印证复合型技能人才供给严重滞后。",
+   "src": [
+    103
+   ]
+  },
+  {
+   "text": "小型盾构机全生命周期智能感知与预测性维护系统研发工程师属典型前沿紧缺方向。",
+   "src": [
+    110
+   ]
+  }
+ ],
+ "aliases": [
+  "智能制造",
+  "高端装备",
+  "装备制造",
+  "工业机器人",
+  "机器人",
+  "数控机床",
+  "机械"
+ ]
+}
