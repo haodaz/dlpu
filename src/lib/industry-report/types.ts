@@ -56,6 +56,7 @@ export interface PolicyItem {
   year: number;
   sourceId: number;
   score: number; // 政策力度得分 PIS
+  gist?: string; // 政策导向要点(区域画像抽取)
   history?: HistoryMark;
 }
 
@@ -132,6 +133,106 @@ export interface WeakChapter {
   signals: WeakSignal[];
 }
 
+// ---------- 区域产业画像(本省规模 / 细分方向 / 企业分布 / 上市公司研发 / 投融资 / 三级政策 / 岗位薪资) ----------
+// 来源:代码内预查底库(base/)命中则直接调用;未命中时现查并回流飞轮知识库。
+// 每条都带来源;数值字段必须在检索原文中逐字出现,否则丢弃(程序校验)。
+export interface RegionalSource {
+  id: number; // 画像内编号
+  title: string;
+  url: string;
+}
+
+export interface ScaleFact {
+  metric: string; // 如:规模以上企业营业收入
+  value: string; // 原文数值,如 2380
+  unit: string; // 如 亿元 / % / 家
+  year: string; // 统计年份或口径时间
+  scope: string; // 统计范围:全省 / 某市 / 某园区
+  src: number[];
+}
+
+export interface Segment {
+  name: string; // 细分方向
+  desc: string; // 原文依据的简述
+  src: number[];
+}
+
+export interface CityCluster {
+  city: string;
+  focus: string; // 该市在该产业的侧重
+  companies: string[];
+  src: number[];
+}
+
+export interface ListedRd {
+  company: string;
+  code: string; // 股票代码(原文未给则空)
+  city: string;
+  rdExpense: string; // 研发费用(含单位,原文)
+  rdRatio: string; // 研发投入占营收比(原文)
+  year: string;
+  src: number[];
+}
+
+export interface Financing {
+  company: string;
+  event: string; // 融资 / 投资 / 签约项目 / 产业基金
+  amount: string;
+  date: string;
+  src: number[];
+}
+
+export interface RegionalPolicy {
+  level: '国家级' | '部委级' | '省级' | '市级';
+  name: string;
+  issuer: string;
+  year: string;
+  gist: string; // 政策导向要点(原文概括)
+  src: number[];
+}
+
+export interface RegionalJob {
+  title: string;
+  city: string;
+  salary: string; // 原文薪资区间,如 12-20K
+  skills: string[];
+  src: number[];
+}
+
+export interface DemandFact {
+  text: string; // 人才供需 / 缺口相关的原文陈述
+  src: number[];
+}
+
+export interface RegionalProfile {
+  industry: string;
+  aliases?: string[]; // 底库条目的产业别名,用于匹配用户输入
+  province: string;
+  collectedAt: string;
+  origin: 'base' | 'live'; // 代码内底库 / 本次现查
+  sources: RegionalSource[];
+  scale: ScaleFact[];
+  segments: Segment[];
+  cities: CityCluster[];
+  listed: ListedRd[];
+  financing: Financing[];
+  policies: RegionalPolicy[];
+  jobs: RegionalJob[];
+  demand: DemandFact[];
+}
+
+/** 报告内的区域画像:来源已换成报告统一编号 [S#] */
+export type RegionalChapter = Omit<RegionalProfile, 'sources'> & { kind: SignalKind };
+
+// ---------- 研究报告正文(按章撰写的段落,只依据各章数据,数字逐个校验) ----------
+export interface Narrative {
+  overview: Claim[]; // 产业发展概况
+  policy: Claim[]; // 政策环境
+  structure: Claim[]; // 产业结构与区域布局
+  capital: Claim[]; // 资本与创新投入
+  talent: Claim[]; // 人才需求
+}
+
 // 飞轮:与上一次同产业同地区报告相比的变化
 export interface ReportDelta {
   mode: 'full' | 'incremental';
@@ -159,6 +260,8 @@ export interface IndustryReport {
   chain: ChainChapter;
   insight: InsightChapter;
   weak: WeakChapter;
+  regional?: RegionalChapter; // 新版报告才有;旧报告没有时页面按旧结构显示
+  narrative?: Narrative;
   sources: Source[];
   method: { label: string; value: string }[];
 }

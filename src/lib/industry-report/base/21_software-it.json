@@ -1,0 +1,708 @@
+{
+ "industry": "软件和信息技术服务",
+ "province": "辽宁",
+ "collectedAt": "2026-10-16T09:56:38.807Z",
+ "origin": "base",
+ "sources": [
+  {
+   "id": 1,
+   "title": "华夏软件龙头混合发起式A",
+   "url": "http://finance.sina.com.cn/fund/quotesold/020593/bc.shtml"
+  },
+  {
+   "id": 2,
+   "title": "政策端支持软件智能化升级叠加AI应用催化积聚,软件ETF易方达(562930)成长空间打开",
+   "url": "https://news.qq.com/rain/a/20261012A08A0X00"
+  },
+  {
+   "id": 3,
+   "title": "中银证券优选行业龙头混合A",
+   "url": "http://finance.sina.com.cn/fund/quotesold/009640/bc.shtml"
+  },
+  {
+   "id": 4,
+   "title": "软件和信息技术服务业:“人工智能+”上升为国家战略工程 技术壁垒随投入加码进一步夯实 ",
+   "url": "https://www.sohu.com/a/1086417832_120469565"
+  },
+  {
+   "id": 5,
+   "title": "> 同花顺个股数据 ",
+   "url": "https://data.eastmoney.com/stockdata/300033.html"
+  },
+  {
+   "id": 6,
+   "title": "> 广咨国际个股数据 ",
+   "url": "https://data.eastmoney.com/stockdata/920892.html"
+  },
+  {
+   "id": 7,
+   "title": "软件和信息技术服务业",
+   "url": "https://www.miit.gov.cn/ztzl/lszt/xysbdztbd/xy/art/2020/art_eb410a985764464d8b2f3a833d691abe.html"
+  },
+  {
+   "id": 8,
+   "title": "东方红消费研选混合型发起式证券投资基",
+   "url": "http://eid.csrc.gov.cn/fund/disclose/instance_show_pdf_id.do?instanceid=1565089"
+  },
+  {
+   "id": 9,
+   "title": "深市上市公司公告(10月15日)",
+   "url": "https://stock.10jqka.com.cn/20261015/c680709352.shtml"
+  },
+  {
+   "id": 10,
+   "title": "iFinD区域舆情日报20260824",
+   "url": "https://stock.10jqka.com.cn/20260824/c679236390.shtml"
+  },
+  {
+   "id": 11,
+   "title": "辽宁省信息软件业扩能提质若干措施",
+   "url": "https://baike.baidu.com/item/辽宁省信息软件业扩能提质若干措施/68071629"
+  },
+  {
+   "id": 12,
+   "title": "辽宁省软件行业协会",
+   "url": "https://baike.baidu.com/item/辽宁省软件行业协会/60819987"
+  },
+  {
+   "id": 13,
+   "title": "辽宁省发展和改革委员会",
+   "url": "https://baike.baidu.com/item/辽宁省发展和改革委员会/10032031"
+  },
+  {
+   "id": 14,
+   "title": "辽宁省“十四五”文化和旅游发展规划",
+   "url": "https://baike.baidu.com/item/辽宁省“十四五”文化和旅游发展规划/58710834"
+  },
+  {
+   "id": 15,
+   "title": "桐乡市人民政府关于推进全市服务业扩能提质的实施意见",
+   "url": "https://www.tx.gov.cn/col/col1641028/art/2026/art_a5031fe7925d4c28aa30b7495cbe0127.html"
+  },
+  {
+   "id": 16,
+   "title": "【辽宁省】辽宁省产业大脑建设工作方案/指南(2024 版)",
+   "url": "https://zhuanlan.zhihu.com/p/14217818700"
+  },
+  {
+   "id": 17,
+   "title": "阜新市“十四五”服务业发展规划",
+   "url": "https://baike.baidu.com/item/阜新市“十四五”服务业发展规划/60831940"
+  },
+  {
+   "id": 18,
+   "title": "中国互联网+节能服务行业商业模式创新与投资机会深度研究报告",
+   "url": "https://bg.qianzhan.com/report/detail/6b544df6fe57476d.html"
+  },
+  {
+   "id": 19,
+   "title": "政府工作报告(全文)",
+   "url": "https://www.ln.gov.cn/web/qmzx/2025qglh/gwyzfgzbg/2025031219195939087/index.shtml"
+  },
+  {
+   "id": 20,
+   "title": "https://new.qq.com/rain/a/20250210A08F3X00",
+   "url": "https://new.qq.com/rain/a/20250210A08F3X00"
+  },
+  {
+   "id": 21,
+   "title": "深圳市罗湖区2025年上半年国民经济和社会发展计划执行情况报告",
+   "url": "http://www.szlh.gov.cn/lhqfzhggj/gkmlpt/content/12/12444/mpost_12444439.html"
+  },
+  {
+   "id": 22,
+   "title": "深圳市罗湖区2025年上半年国民经济和社会发展计划执行情况报告",
+   "url": "http://www.szlh.gov.cn/zwgk/ghjh/gmjjhshfzgh/content/post_12444442.html"
+  },
+  {
+   "id": 23,
+   "title": "垫江县经济和信息化委员会2025年部门预算情况说明",
+   "url": "http://www.cqsdj.gov.cn/bmjz/bm/jjhxxhwyh/zwgk_72064/fdzdgknr_72066/ysjs_72073/ysgk/202501/t20250123_14198836.html"
+  },
+  {
+   "id": 24,
+   "title": "支持人工智能、机器人关键技术攻关,多地放大招 ",
+   "url": "https://caifuhao.eastmoney.com/news/20250320192913056026260"
+  },
+  {
+   "id": 25,
+   "title": "阜新市人民政府关于印发2025年辽宁省《政府工作报告》重点工作分工方案和阜新市《政府工作报告》重点工作分工方案的通知 ",
+   "url": "https://www.fuxin.gov.cn/mob/newsdetail.thtml?id=974778"
+  },
+  {
+   "id": 26,
+   "title": "2025年中国软件行业收入区域结构、产业链结构及重点企业分析 ",
+   "url": "https://news.sohu.com/a/863507484_121717379"
+  },
+  {
+   "id": 27,
+   "title": "合水县工业信息化和商务局2025年预算公开 ",
+   "url": "https://www.hsxzf.gov.cn/gsj/xxgk/fdzdgknr/ysjs/content_23664"
+  },
+  {
+   "id": 28,
+   "title": "2025世界机器人大会来了!国常会通过“人工智能+”行动意见;网信办约谈英伟达;浙江人工智能核心产业营收3000亿丨浙江物联一周",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzA5OTk5NjMxOA==&mid=2664553259&idx=1&sn=b1cb4bd1ed842424bec61f27710cfefb&chksm=8a92c259fde51e2c8721760197691af168101d83d557f79e1bb5cbdeca6fcc824781fcf977dc&scene=27"
+  },
+  {
+   "id": 29,
+   "title": "数字技术产业",
+   "url": "https://www.dlhitech.gov.cn/tzzs/szjs.html"
+  },
+  {
+   "id": 30,
+   "title": "通知公告",
+   "url": "https://www.dlhitech.gov.cn/news/list/1.html;jsessionid=6CB84ABBE313F82A8E25EC8B839FDA40?pageNumber=3"
+  },
+  {
+   "id": 31,
+   "title": "大高管发〔2026〕4号-关于印发《大连高新区国民经济和社会发展第十五个五年规划》的通知_政府公文_大连高新技术产业园区 ",
+   "url": "https://www.dlhitech.gov.cn/policy/view_2c8585ab9efcd666019f0343afcd0000.html"
+  },
+  {
+   "id": 32,
+   "title": "大连市人民政府 大政发 大连市人民政府关于印发《大连市服务业扩大开放综合试点实施方案》的通知",
+   "url": "https://www.dl.gov.cn/art/2026/9/30/art_852_2537889.html"
+  },
+  {
+   "id": 33,
+   "title": "沈阳市人民政府关于印发沈阳市服务业扩能提质行动计划的通知",
+   "url": "https://dsjj.shenyang.gov.cn/zwgk/fdzdgknr/bmwj/202607/t20260715_5056909.html"
+  },
+  {
+   "id": 34,
+   "title": "辽宁举行“开局起步‘十五五’ 奋力推动新时代辽宁全面振兴取得新突破”系列主题新闻发布会(大连专场) ",
+   "url": "http://www.scio.gov.cn/xwfb/dfxwfb/gssfbh/ln_13831/202606/t20260630_996887.html"
+  },
+  {
+   "id": 35,
+   "title": "关于组织开展2026年首版次软件产品申报工作的通知",
+   "url": "https://gxt.ln.gov.cn/gxt/tztg/2026043016484484029/index.shtml"
+  },
+  {
+   "id": 36,
+   "title": "全文来了!2026年辽宁省政府工作报告发布,涉及文旅有这些……",
+   "url": "https://wlgdj.panjin.gov.cn/2026_02/02_10/content-551003.html"
+  },
+  {
+   "id": 37,
+   "title": "辽宁省推进服务业扩能提质的实施意见",
+   "url": "https://www.lnxdfwxy.edu.cn/info/1118/11938.htm"
+  },
+  {
+   "id": 38,
+   "title": "政府信息公开",
+   "url": "https://www.zhuhai.gov.cn/gxj/gkmlpt/content/3/3769/post_3769342.html"
+  },
+  {
+   "id": 39,
+   "title": "最全!50个动态场景看2025《政府工作报告》全文",
+   "url": "https://www.ln.gov.cn/web/qmzx/2025qglh/tjbg/2025030515462644628/"
+  },
+  {
+   "id": 40,
+   "title": "辽宁省人民政府",
+   "url": "https://www.ln.gov.cn/web/ywdt/rdgz/2025031408572652188/index.shtml"
+  },
+  {
+   "id": 41,
+   "title": "关于印发2024年《市委经济工作报告》和2025年市《政府工作报告》任务分解方案的通知",
+   "url": "https://www.lianshan.gov.cn/zwgk/xzjcgk/zfwj/hlzf/202504/t20250417_1204905.html"
+  },
+  {
+   "id": 42,
+   "title": "2025年政府工作报告",
+   "url": "http://www.laobian.gov.cn/govxxgk/lbq/2025-01-22/223f3cc1-640c-4b7b-99f2-eeac14c4b490.html"
+  },
+  {
+   "id": 43,
+   "title": "科创辽宁周报:辽宁省统计局公布辽宁经济运行情况;辽宁发布工业机器人产业链质量提升方案;沈阳市科技型企业已突破2.4万户",
+   "url": "https://www.163.com/dy/article/J5EE8OON05198CJN.html"
+  },
+  {
+   "id": 44,
+   "title": "科技要闻 ",
+   "url": "http://kjt.shandong.gov.cn/art/2025/3/12/art_13361_10318478.html"
+  },
+  {
+   "id": 45,
+   "title": "2025年网信大事回眸之信息化发展篇——信息化赋能高质量发展 ",
+   "url": "https://www.cac.gov.cn/2025-12/31/c_1768823209559750.htm"
+  },
+  {
+   "id": 46,
+   "title": "政策汇总:全国31省市人工智能相关政策汇编 ",
+   "url": "http://mt.sohu.com/a/841741054_121388327"
+  },
+  {
+   "id": 47,
+   "title": "关于做好2025年享受税收优惠政策的集成电路企业或项目、软件企业清单制定工作的通知",
+   "url": "https://www.ndrc.gov.cn/xwdt/tzgg/202504/t20250401_1396948_ext.html"
+  },
+  {
+   "id": 48,
+   "title": "国务院政策例行吹风会文字实录(2025年11月10日) ",
+   "url": "https://www.gov.cn/zccfh/2025zccfh/20251110/wzsl/202511/content_7047770.htm"
+  },
+  {
+   "id": 49,
+   "title": "关于大力实施可再生能源替代行动的指导意见(发改能源〔2024〕1537号)",
+   "url": "https://www.ndrc.gov.cn/xxgk/zcfb/tz/202410/t20241030_1394119_ext.html"
+  },
+  {
+   "id": 50,
+   "title": "关于印发《贯彻实施〈国家标准化发展纲要〉",
+   "url": "https://www.sac.gov.cn/zt/gjbzhfzgyzt/zxdt/art/2024/art_1a6fba2dd701444494c199822fd520f0.html"
+  },
+  {
+   "id": 51,
+   "title": "工业和信息化部 国家发展改革委 财政部 税务总局关于开展2025年度享受增值税加计抵减政策的集成电路企业清单制定工作的通知",
+   "url": "https://www.chinasme.org.cn/html/mcms/daohang/zhengcehuibian/1968527596900261890.html"
+  },
+  {
+   "id": 52,
+   "title": "网络空间安全动态(202537期)",
+   "url": "https://metc.njtc.edu.cn/info/1141/5992.htm"
+  },
+  {
+   "id": 53,
+   "title": "关于印发《贯彻实施〈国家标准化发展纲要〉行动计划(2024—2025年)》的通知",
+   "url": "https://mzt.guizhou.gov.cn/xwzx/mzyw/202404/t20240404_84149775.html"
+  },
+  {
+   "id": 54,
+   "title": "本周“发展改革热点,我知道”(12月30日至1月3日)",
+   "url": "https://www.ndrc.gov.cn/fggz/202501/t20250106_1395459.html"
+  },
+  {
+   "id": 55,
+   "title": "国家发展改革委10月份新闻发布会",
+   "url": "https://www.ndrc.gov.cn/xwdt/wszb/10yxwfbh1/"
+  },
+  {
+   "id": 56,
+   "title": "2024年重大网络安全政策法规盘点 ",
+   "url": "https://www.sohu.com/a/839779168_121124365"
+  },
+  {
+   "id": 57,
+   "title": "【岗位信息发布】淮南市2026年第三季度重点企业急需紧缺岗位需求信息",
+   "url": "https://rsj.huainan.gov.cn/rsrc/zpxx/551871827.html"
+  },
+  {
+   "id": 58,
+   "title": "2026 年最新、最热门职业岗位有哪些?AI ESG 分析师名列榜首|秋招求职参考 ",
+   "url": "https://www.sohu.com/a/1088060486_121773866"
+  },
+  {
+   "id": 59,
+   "title": "大连市智慧人才服务平台",
+   "url": "https://baike.baidu.com/item/大连市智慧人才服务平台/69376073"
+  },
+  {
+   "id": 60,
+   "title": "CS实验室行业报告:AI算法工程师就业分析报告",
+   "url": "https://blog.csdn.net/qiwsir/article/details/160122860"
+  },
+  {
+   "id": 61,
+   "title": "com.9.1.gb.crm 进入免费版-com.9.1.gb.crm 进入2026最新版vv7.5.0 iphone版-22265安卓网 ",
+   "url": "http://jw.cj.gov.cn/logo.jsp?/article/00771828.html"
+  },
+  {
+   "id": 62,
+   "title": "陕西省2026年政府工作报告 ",
+   "url": "https://www.shaanxi.gov.cn/zfxxgk/zfgzbg/szfgzbg/202602/t20260202_3609862.html"
+  },
+  {
+   "id": 63,
+   "title": "周末重点速递|券商称进一步降息或者需求企稳是新一轮投资周期启动重要条件;地缘政治紧张背景下,军工哪些方向值得关注?",
+   "url": "https://www.163.com/dy/article/KNVOJGIF0512B07B.html"
+  },
+  {
+   "id": 64,
+   "title": "政府工作报告",
+   "url": "https://www.baishui.gov.cn/xwzx/zwyw/2018130611873452033.html"
+  },
+  {
+   "id": 65,
+   "title": "【已结束】泸县卫生健康局 关于公开征求《泸县人民医院医共体强基工程建设项目实施方案(征求意见稿)》 修改意见的公告 ",
+   "url": "https://www.luxian.gov.cn/zwgk/xzjcgk/gsgg/content_407159"
+  },
+  {
+   "id": 66,
+   "title": "https://new.qq.com/rain/a/20240910A0A3GF00",
+   "url": "https://new.qq.com/rain/a/20240910A0A3GF00"
+  },
+  {
+   "id": 67,
+   "title": "“多面手”东软集团的另一面",
+   "url": "http://mp.cnfol.com/52856/article/1727680724-141506698.html"
+  },
+  {
+   "id": 68,
+   "title": "【中航先进制造】东软集团(600718)2024H1点评:盈利能力稳健提升显韧性,研发投入提质增效赋新能",
+   "url": "https://finance.sina.cn/2024-09-09/detail-incnpptn2820922.d.html"
+  },
+  {
+   "id": 69,
+   "title": "一分钟看财报丨东软集团:2024年半年度报告",
+   "url": "https://www.yicai.com/video/102264246.html"
+  },
+  {
+   "id": 70,
+   "title": "东软集团露出了它的“软肋”",
+   "url": "https://m.36kr.com/p/2710171213363331"
+  },
+  {
+   "id": 71,
+   "title": "东软集团露出了它的“软肋”",
+   "url": "https://cj.sina.com.cn/articles/view/6192937794/17120bb42020026bpy"
+  },
+  {
+   "id": 72,
+   "title": "从外包到AI巨头,东软度过转型期 ",
+   "url": "https://caifuhao.eastmoney.com/news/20241104202152449331350"
+  },
+  {
+   "id": 73,
+   "title": "CCF YOCSEF成都第二十届学术委员会第二次会议暨2024-2025年度换届选举会议",
+   "url": "http://www.yocsef.org.cn/YOCSEF/Branches/Chengdu/News/qthd/2024-02-09/813827.shtml"
+  },
+  {
+   "id": 74,
+   "title": "东软集团股份有限公司 关于2024年股票期权激励计划授予登记完成的公告 ",
+   "url": "https://www.sohu.com/a/777091106_120988533"
+  },
+  {
+   "id": 75,
+   "title": "12月30日晚间公告集锦:中百集团称暂未收到武商联具体实施方案",
+   "url": "https://stock.10jqka.com.cn/20241230/c665021478.shtml"
+  }
+ ],
+ "scale": [
+  {
+   "metric": "软件和信息技术服务业营收年均增速",
+   "value": "≥5%",
+   "unit": "%",
+   "year": "2030",
+   "scope": "全省",
+   "src": [
+    11
+   ]
+  },
+  {
+   "metric": "东软集团上半年营业收入",
+   "value": "42.99亿元",
+   "unit": "亿元",
+   "year": "2024",
+   "scope": "企业",
+   "src": [
+    67
+   ]
+  },
+  {
+   "metric": "东软集团前三季度累计营业收入",
+   "value": "68.91亿元",
+   "unit": "亿元",
+   "year": "2024",
+   "scope": "企业",
+   "src": [
+    72
+   ]
+  }
+ ],
+ "segments": [
+  {
+   "name": "工业软件",
+   "desc": "涵盖研发设计类、生产控制类、经营管理类、运维服务类等关键环节，强调自主可控与填补省内空白。",
+   "src": [
+    11
+   ]
+  },
+  {
+   "name": "人工智能",
+   "desc": "实施“人工智能+制造”行动，推动AI技术在制造业场景的融合应用。",
+   "src": [
+    11,
+    12
+   ]
+  },
+  {
+   "name": "工业互联网",
+   "desc": "建设省级工业互联网公共服务平台，推动5G工厂、智能工厂建设，强化标识解析、边缘计算、平台集成等能力建设。",
+   "src": [
+    11,
+    16
+   ]
+  },
+  {
+   "name": "开源平台与适配验证",
+   "desc": "政策明确支持开源平台建设、软件适配验证测试等底层基础设施发展。",
+   "src": [
+    11,
+    16
+   ]
+  },
+  {
+   "name": "产业大脑",
+   "desc": "支持行业数据仓与服务能力平台等产业大脑基础设施建设。",
+   "src": [
+    11,
+    16
+   ]
+  }
+ ],
+ "cities": [
+  {
+   "city": "大连市",
+   "focus": "绝对核心，形成从基础软件、工业软件、嵌入式系统到AI+行业应用的全链条生态。",
+   "companies": [
+    "东软集团（大连）有限公司",
+    "国际商业机器全球服务（大连）有限公司",
+    "埃森哲信息技术（大连）有限公司",
+    "松下电器软件开发（大连）有限公司",
+    "大连华信计算机技术股份有限公司",
+    "大连中科创达软件有限公司",
+    "特斯拉汽车信息服务（大连）有限公司",
+    "华录智达科技有限公司"
+   ],
+   "src": [
+    29,
+    31,
+    32
+   ]
+  },
+  {
+   "city": "沈阳市",
+   "focus": "侧重科技服务业与融合型应用，软件业更多服务于本地装备制造业数字化转型。",
+   "companies": [
+    "东软集团"
+   ],
+   "src": [
+    4,
+    33,
+    37
+   ]
+  }
+ ],
+ "listed": [
+  {
+   "company": "东软集团",
+   "code": "600718.SH",
+   "city": "沈阳",
+   "rdExpense": "4.44亿元",
+   "rdRatio": "",
+   "year": "2024",
+   "src": [
+    66,
+    67
+   ]
+  }
+ ],
+ "financing": [],
+ "policies": [
+  {
+   "level": "部委级",
+   "name": "《关于做好2025年享受税收优惠政策的集成电路企业或项目、软件企业清单制定工作的通知》",
+   "issuer": "国家发展改革委",
+   "year": "2025",
+   "gist": "明确将“国家鼓励的重点软件企业”纳入清单管理范围，适用相关税收优惠政策。",
+   "src": [
+    47
+   ]
+  },
+  {
+   "level": "部委级",
+   "name": "《关于开展2025年度享受增值税加计抵减政策的集成电路企业清单制定工作的通知》",
+   "issuer": "工业和信息化部",
+   "year": "2025",
+   "gist": "将集成电路设计企业（属于软件和信息技术服务业重要子类）纳入增值税加计抵减范围。",
+   "src": [
+    51
+   ]
+  },
+  {
+   "level": "部委级",
+   "name": "《贯彻实施〈国家标准化发展纲要〉行动计划（2024—2025年）》",
+   "issuer": "国务院相关部门",
+   "year": "2024",
+   "gist": "明确将‘基础软件、工业软件、应用软件标准体系建设’列为重点任务，要求尽快出台产业急需标准。",
+   "src": [
+    50
+   ]
+  },
+  {
+   "level": "国家级",
+   "name": "《关于加快场景培育和开放推动新场景大规模应用的实施意见》",
+   "issuer": "国务院办公厅",
+   "year": "2025",
+   "gist": "将软件和信息技术服务作为新技术新产品新场景应用的核心载体，支持AI大模型平台等规模化验证与落地。",
+   "src": [
+    48
+   ]
+  },
+  {
+   "level": "部委级",
+   "name": "《政务领域人工智能大模型部署应用指引》",
+   "issuer": "中央网信办、国家发展改革委",
+   "year": "2025",
+   "gist": "明确政务部门应探索大模型+软件平台集成应用，推动国产基础软件、中间件、AI框架生态适配与替代。",
+   "src": [
+    52
+   ]
+  },
+  {
+   "level": "部委级",
+   "name": "《关于促进数据产业高质量发展的指导意见》",
+   "issuer": "国家发展改革委、国家数据局等六部门",
+   "year": "2025",
+   "gist": "将数据采集、存储、加工、分析、交易、安全等全链条软件与技术服务企业列为数据产业主体重点培育对象。",
+   "src": [
+    54
+   ]
+  },
+  {
+   "level": "部委级",
+   "name": "《工业制造、现代农业等九个领域“数据要素×”典型场景指引》",
+   "issuer": "国家数据局",
+   "year": "",
+   "gist": "直接面向软件企业开放场景接口与数据沙箱环境，要求配套开发行业级SaaS平台、数据治理工具链等。",
+   "src": [
+    52
+   ]
+  },
+  {
+   "level": "省级",
+   "name": "《辽宁省工业机器人等重点产业链供应链质量联动提升工作方案》",
+   "issuer": "辽宁省相关部门",
+   "year": "",
+   "gist": "覆盖16个产业，其质量图谱绘制、问题攻关等均高度依赖工业软件、嵌入式系统、数据服务及平台服务能力。",
+   "src": [
+    43
+   ]
+  }
+ ],
+ "jobs": [
+  {
+   "title": "AI算法工程师",
+   "city": "大连",
+   "salary": "",
+   "skills": [
+    "AI算法",
+    "智能系统开发"
+   ],
+   "src": [
+    59
+   ]
+  },
+  {
+   "title": "高性能计算工程师",
+   "city": "",
+   "salary": "",
+   "skills": [
+    "高性能计算"
+   ],
+   "src": [
+    60
+   ]
+  },
+  {
+   "title": "SLAM/规控/导航算法工程师",
+   "city": "大连",
+   "salary": "",
+   "skills": [
+    "SLAM",
+    "规控",
+    "导航算法"
+   ],
+   "src": [
+    60
+   ]
+  },
+  {
+   "title": "云计算工程师",
+   "city": "大连",
+   "salary": "",
+   "skills": [
+    "云计算"
+   ],
+   "src": [
+    60
+   ]
+  },
+  {
+   "title": "AI ESG分析师",
+   "city": "",
+   "salary": "",
+   "skills": [
+    "ESG数据智能分析"
+   ],
+   "src": [
+    58
+   ]
+  },
+  {
+   "title": "工业软件开发工程师",
+   "city": "",
+   "salary": "",
+   "skills": [
+    "工业软件适配经验"
+   ],
+   "src": [
+    59
+   ]
+  },
+  {
+   "title": "嵌入式系统开发工程师",
+   "city": "",
+   "salary": "",
+   "skills": [
+    "嵌入式系统开发能力"
+   ],
+   "src": [
+    59
+   ]
+  },
+  {
+   "title": "信创基础软件适配工程师",
+   "city": "",
+   "salary": "",
+   "skills": [
+    "数据库",
+    "中间件"
+   ],
+   "src": [
+    59
+   ]
+  }
+ ],
+ "demand": [
+  {
+   "text": "2026年AI岗位数量同比激增约12倍，占新经济岗位比重达26.23%，人才供需比为0.97。",
+   "src": [
+    60
+   ]
+  },
+  {
+   "text": "高性能计算工程师供需比仅为0.15（7岗抢1人）。",
+   "src": [
+    60
+   ]
+  },
+  {
+   "text": "辽宁省人社厅或工信厅尚未公开类似淮南市《2026年第三季度重点企业急需紧缺岗位需求表》的省级汇总文件。",
+   "src": [
+    57
+   ]
+  }
+ ],
+ "aliases": [
+  "软件",
+  "信息技术",
+  "数字经济",
+  "大数据",
+  "人工智能",
+  "计算机"
+ ]
+}

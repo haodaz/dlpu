@@ -11,7 +11,9 @@ const STEPS: { key: string; label: string }[] = [
   { key: 'openalex', label: 'OpenAlex 论文年度统计' },
   { key: 'policy', label: '政策检索与抽取' },
   { key: 'chain', label: '产业链与岗位检索与抽取' },
+  { key: 'regional', label: '区域产业画像(底库 / 现查)' },
   { key: 'insight', label: '综合研判 + 数字校验' },
+  { key: 'narrative', label: '撰写研究报告正文 + 数字校验' },
   { key: 'weak', label: '早期弱信号扫描' },
 ];
 

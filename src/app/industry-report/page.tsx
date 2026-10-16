@@ -1,7 +1,7 @@
 'use client';
 import React, { Suspense, useEffect, useState } from 'react';
 import { Button, Input, Checkbox } from 'antd';
-import { ExperimentOutlined, PrinterOutlined } from '@ant-design/icons';
+import { ExperimentOutlined } from '@ant-design/icons';
 import { useSearchParams } from 'next/navigation';
 import type { IndustryReport } from '@/lib/industry-report/types';
 import { ReportView, readJSON, writeJSON } from '@/components/industry-report/ReportView';
@@ -70,14 +70,9 @@ function IndustryReportContent() {
           </div>
           <div>
             <h1 className="text-xl font-bold text-slate-800 m-0 leading-tight">产业分析报告</h1>
-            <p className="text-sm text-slate-500 m-0 mt-0.5">数值来自公开数据并按公式计算 · 大模型只做检索、抽取与解读,每条结论都能追溯来源</p>
+            <p className="text-sm text-slate-500 m-0 mt-0.5">研究报告体例 · 数值来自公开数据并按公式计算或从原文逐字抽取 · 每条结论都能追溯来源 · 可下载 PDF / Word</p>
           </div>
         </div>
-        {report && !running && (
-          <Button icon={<PrinterOutlined />} onClick={() => window.print()}>
-            打印 / 导出 PDF
-          </Button>
-        )}
       </div>
 
       <div data-spec="ir-form" className="no-print rounded-2xl bg-white border border-slate-200 shadow-sm p-5 mb-5">

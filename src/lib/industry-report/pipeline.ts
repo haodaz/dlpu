@@ -8,10 +8,14 @@
 //   ③ 产业链/岗位检索 + 平方集群库/专业库 + 知识库沉淀 → 节点、企业、岗位技能 → 技能频次(纯计算)
 //   ④ 综合研判(LLM)只读 ①②③ 的表格,不得创造数字;生成后程序逐个校验数字
 //   ⑤ 早期弱信号(LLM)只看最近 30 天,量化数据不足时的兜底
+//   ③b 区域产业画像:本省规模、细分方向、企业分布、上市公司研发、投融资、三级政策、岗位薪资
+//      ——代码内底库命中直接调用,否则现查并回流飞轮(regional.ts)
+//   ④b 研究报告正文(LLM)按章撰写段落,只读各章表格,数字逐个校验
 //   ⑥ 与上一次报告比对,输出变化差值;报告沉淀回知识库(飞轮)
 
 import { callJSON, reportModel } from './llm';
 import { pfPolicies, pfClusters, pfMajorJobs, regionInfo } from './pingfang';
+import { getRegionalProfile } from './regional';
 import { Flywheel, loadKb, planIncremental, recallable, normIndustry, type IndustryKb, type IncrementalPlan, type KbEntry } from './flywheel';
 import {
   analysisYears,
@@ -43,6 +47,8 @@ import type {
   ClusterItem,
   ReportDelta,
   HistoryMark,
+  RegionalChapter,
+  Narrative,
 } from './types';
 
 type Emit = (e: ProgressEvent) => void;
@@ -360,6 +366,109 @@ ${(jobs?.text ?? '').slice(0, 10000)}
   return { chapter: { kind: 'EXTRACTED', clusters, nodes, jobs: jobList, skillFreq: skillFrequency(jobList) }, recalled: { nodes: recNodes, jobs: recJobs } };
 }
 
+// ---------- ③b 区域产业画像 ----------
+const EMPTY_REGIONAL: RegionalChapter = {
+  kind: 'SKIPPED',
+  industry: '',
+  province: '',
+  collectedAt: '',
+  origin: 'live',
+  scale: [],
+  segments: [],
+  cities: [],
+  listed: [],
+  financing: [],
+  policies: [],
+  jobs: [],
+  demand: [],
+};
+
+async function regionalChapter(ctx: Ctx): Promise<RegionalChapter> {
+  const { input, emit, reg } = ctx;
+  emit({ type: 'step', step: 'regional', status: 'working' });
+  const p = await getRegionalProfile(input.industry, input.region, (q) => ctx.fw.search(q), (m) => emit({ type: 'log', message: m }));
+  if (!p) {
+    emit({ type: 'step', step: 'regional', status: 'skipped', detail: '未识别出省份' });
+    return EMPTY_REGIONAL;
+  }
+  // 画像内编号 → 报告统一编号
+  const idMap = new Map(p.sources.map((s) => [s.id, reg.add(s.title, s.url)]));
+  const re = <T extends { src: number[] },>(rows: T[]) => rows.map((r) => ({ ...r, src: r.src.map((i) => idMap.get(i)).filter((x): x is number => !!x) }));
+  const { sources: _sources, ...rest } = p;
+  void _sources;
+  const ch: RegionalChapter = {
+    ...rest,
+    kind: 'EXTRACTED',
+    scale: re(p.scale),
+    segments: re(p.segments),
+    cities: re(p.cities),
+    listed: re(p.listed),
+    financing: re(p.financing),
+    policies: re(p.policies),
+    jobs: re(p.jobs),
+    demand: re(p.demand),
+  };
+  const n = ch.scale.length + ch.segments.length + ch.cities.length + ch.listed.length + ch.financing.length + ch.jobs.length;
+  if (!n && !ch.policies.length) {
+    emit({ type: 'step', step: 'regional', status: 'skipped', detail: '未检索到可核验的区域数据' });
+    return { ...ch, kind: 'SKIPPED' };
+  }
+  emit({
+    type: 'step',
+    step: 'regional',
+    status: 'done',
+    detail: `${p.origin === 'base' ? '命中代码内底库' : '现查(已回流知识库)'} · 规模 ${ch.scale.length} · 城市 ${ch.cities.length} · 上市公司 ${ch.listed.length} · 投融资 ${ch.financing.length} · 岗位 ${ch.jobs.length}`,
+  });
+  return ch;
+}
+
+// 区域画像里的三级政策并入政策章:补充导向要点,新增的政策一并计入力度 / 密度 / 加速度
+function mergeRegionalPolicies(ctx: Ctx, policy: PolicyChapter, regional: RegionalChapter): PolicyChapter {
+  if (!regional.policies.length) return policy;
+  const years = analysisYears().slice(-5);
+  const inRegion = regionMatcher(ctx.input.region);
+  const items = [...policy.items];
+  let added = 0;
+  for (const p of regional.policies) {
+    const hit = items.find((x) => norm(x.name) === norm(p.name));
+    if (hit) {
+      hit.gist ??= p.gist;
+      continue;
+    }
+    const year = Number(p.year);
+    const item = { name: p.name, issuer: p.issuer, level: p.level as PolicyLevel, year, score: POLICY_SCORE[p.level as PolicyLevel], sourceId: p.src[0], gist: p.gist };
+    if (!year || year < years[0] || year > new Date().getFullYear() || !item.sourceId || !inRegion(item)) continue;
+    items.push(item);
+    added++;
+  }
+  if (!added && items.length === policy.items.length) return { ...policy, items };
+  const byYear = policyByYear(items, years);
+  return {
+    ...policy,
+    kind: items.length >= 2 ? 'STRONG' : policy.kind,
+    items,
+    byYear,
+    acceleration: policyAcceleration(byYear, 2),
+    note: policy.note ?? '政策清单来自联网检索、平方政策库、区域画像与历次检索沉淀,不是全量政策库。',
+  };
+}
+
+// 区域画像中出现的数字,并入解读校验白名单
+function regionalNumbers(r: RegionalChapter): number[] {
+  const nums = (s: string) => (s.replace(/[,，]/g, '').match(/\d+(?:\.\d+)?/g) ?? []).map(Number);
+  return [
+    ...r.scale.flatMap((x) => nums(x.value)),
+    ...r.listed.flatMap((x) => nums(`${x.rdExpense} ${x.rdRatio}`)),
+    ...r.financing.flatMap((x) => nums(x.amount)),
+    ...r.jobs.flatMap((x) => nums(x.salary)),
+    ...r.demand.flatMap((x) => nums(x.text)),
+    r.cities.length,
+    r.listed.length,
+    r.financing.length,
+    r.jobs.length,
+  ];
+}
+
 // ---------- ⑤ 早期弱信号(始终只看最近 30 天) ----------
 async function weakChapter(ctx: Ctx, tech: TechChapter): Promise<WeakSignal[]> {
   const { input, emit } = ctx;
@@ -399,7 +508,7 @@ ${text.slice(0, 6000)}
 }
 
 // ---------- ④ 综合研判 ----------
-function tablesForLLM(tech: TechChapter, policy: PolicyChapter, chain: ChainChapter): string {
+function tablesForLLM(tech: TechChapter, policy: PolicyChapter, chain: ChainChapter, regional: RegionalChapter): string {
   const t1 = tech.directions
     .map((d) => `| ${d.name} | ${d.counts.map((c) => c.count).join(' / ')} | ${d.yoy ?? '—'} | ${d.cagr ?? '—'} | ${d.accel ?? '—'} | ${d.stage} |`)
     .join('\n');
@@ -420,6 +529,27 @@ function tablesForLLM(tech: TechChapter, policy: PolicyChapter, chain: ChainChap
                 .join('、')}`
             : '技能频次:样本不足(没有出现 ≥2 次的技能),不要基于具体技能给建议'
         }`;
+  const ref = (src: number[]) => (src.length ? src.slice(0, 2).map((i) => `[S${i}]`).join('') : '');
+  const t2list = policy.items
+    .slice()
+    .sort((a, b) => a.score - b.score || a.year - b.year)
+    .reverse()
+    .map((p) => `- ${p.level} · ${p.year} · 《${p.name.replace(/[《》]/g, '')}》 · ${p.issuer}${p.gist ? ` · 导向:${p.gist}` : ''} [S${p.sourceId}]`)
+    .join('\n');
+  const r = regional;
+  const t4 =
+    r.kind === 'SKIPPED'
+      ? '(本章数据不足,已跳过)'
+      : [
+          `数据来源:${r.origin === 'base' ? '代码内预查底库' : '本次现查'}(${r.collectedAt.slice(0, 10)})`,
+          `产业规模:${r.scale.map((x) => `${x.scope}${x.metric} ${x.value}${x.unit && !x.value.includes(x.unit) ? x.unit : ''}(${x.year || '年份未注明'})${ref(x.src)}`).join(';') || '无'}`,
+          `重点细分方向:${r.segments.map((x) => `${x.name}——${x.desc}${ref(x.src)}`).join(';') || '无'}`,
+          `企业城市分布:${r.cities.map((x) => `${x.city}(${x.focus};${x.companies.join('、') || '未点名企业'})${ref(x.src)}`).join(';') || '无'}`,
+          `上市公司研发投入:${r.listed.map((x) => `${x.company}${x.code ? `(${x.code})` : ''} ${x.year} 研发费用 ${x.rdExpense || '—'} 占营收 ${x.rdRatio || '—'}${ref(x.src)}`).join(';') || '无'}`,
+          `投融资与重大项目:${r.financing.map((x) => `${x.company} ${x.event} ${x.amount || ''} ${x.date}${ref(x.src)}`).join(';') || '无'}`,
+          `岗位与薪资:${r.jobs.map((x) => `${x.title}${x.city ? `(${x.city})` : ''} 薪资 ${x.salary || '未注明'} 技能 ${x.skills.join('/')}${ref(x.src)}`).join(';') || '无'}`,
+          `人才供需:${r.demand.map((x) => `${x.text}${ref(x.src)}`).join(';') || '无'}`,
+        ].join('\n');
   return `【T1 技术方向论文数与增长(年份 ${tech.years.join(' / ')};同比%、CAGR%、加速比、阶段)】
 | 方向 | 年度论文数 | 同比% | CAGR% | 加速比 | 阶段 |
 ${t1}
@@ -428,7 +558,13 @@ ${t1}
 ${t2}
 
 【T3 产业链与岗位技能】
-${t3}`;
+${t3}
+
+【T2 政策清单(层级 · 年份 · 名称 · 发布机构 · 导向)】
+${t2list || '无'}
+
+【T4 区域产业画像(${r.province || '本省'})】
+${t4}`;
 }
 
 async function insightChapter(ctx: Ctx, tables: string, allowed: number[]) {
@@ -439,14 +575,14 @@ async function insightChapter(ctx: Ctx, tables: string, allowed: number[]) {
 1. 只能使用给定表格中的信息,不得引入外部知识或新的数字;
 2. 引用数字时必须与表格完全一致;
 3. 若数据无明显变化,不要写成变化;阶段判定以表格为准,不得改判;
-4. 每条结论必须在 refs 中注明依据的表格编号(T1/T2/T3);
+4. 每条结论必须在 refs 中注明依据的表格编号(T1/T2/T3/T4);T1 论文热度只作技术方向的辅助参考,判断以 T4 区域产业规模、企业、资本与人才数据和 T2 政策为主;
 5. 技能只能引用频次 ≥ 2 的项;若岗位样本较少,要明确说明"岗位样本有限"。`,
     `产业:${input.industry};区域:${input.region};服务专业:${input.major || '未指定'}
 
 ${tables}
 
 请输出:
-- summary:3-5 条综合判断(该产业是否值得专业对接、哪些方向在加速、政策是否在加码),每条 1-2 句
+- summary:3-5 条发展方向研判(该产业在本省的地位与走势、重点细分方向、政策是否在加码、对人才的需求),每条 1-2 句
 - majorAdvice:3-4 条对"${input.major || '相关专业'}"建设的建议(课程方向、能力培养、校企合作对接环节),每条要落到表格中的具体方向/环节/技能
 
 输出 JSON:{"summary":[{"text":"","refs":["T1"]}],"majorAdvice":[{"text":"","refs":["T3"]}]}`,
@@ -461,6 +597,44 @@ ${tables}
   const flagged = [...summary, ...majorAdvice].filter((c) => c.unverifiedNumbers.length).length;
   emit({ type: 'step', step: 'insight', status: 'done', detail: flagged ? `${flagged} 条含未核验数字,已标出` : '数字全部可在表格中找到' });
   return { summary, majorAdvice };
+}
+
+// ---------- ④b 研究报告正文 ----------
+const EMPTY_NARRATIVE: Narrative = { overview: [], policy: [], structure: [], capital: [], talent: [] };
+
+async function narrativeChapter(ctx: Ctx, tables: string, allowed: number[]): Promise<Narrative> {
+  const { input, emit } = ctx;
+  emit({ type: 'step', step: 'narrative', status: 'working' });
+  const out = await callJSON<Record<keyof Narrative, { text: string; refs: string[] }[]>>(
+    `你是行业研究报告的撰稿人,文风参照券商 / 研究院的行业研究报告:正式、克制、连贯成段,先给判断再给依据,不写口号。规则:
+1. 只能使用给定表格中的信息,不得引入表格以外的事实、企业、政策或数字;
+2. 数字必须与表格完全一致(照抄,不换算、不取整);引用具体数据时在句末标注来源编号,如 [S12];
+3. 数据缺失的方面直接说明"公开资料未检索到",不要编造,也不要回避;
+4. 每段 120-220 字,不用项目符号;
+5. 每段在 refs 中注明依据的表格编号(T1/T2/T3/T4)。`,
+    `产业:${input.industry};区域:${input.region};服务专业:${input.major || '未指定'}
+
+${tables}
+
+按以下五章撰写正文,每章 2-3 段:
+- overview(产业发展概况):本省该产业的规模与增速、在全省工业中的地位、重点细分方向与发展目标。
+- policy(政策环境):按 国家 → 部委 → 本省(及市)三级梳理政策导向的传导关系,解读政策重点支持什么、对本省该产业意味着什么。
+- structure(产业结构与区域布局):产业链上中下游构成,企业在本省各城市的分布与各市侧重,本地龙头企业。
+- capital(资本与创新投入):投融资与重大项目、上市公司研发投入;论文热度(T1)仅作技术方向的补充参考,放在最后一段简述。
+- talent(人才需求):典型岗位、技能要求、薪资水平与人才缺口,点出与「${input.major || '相关专业'}」培养的对接点。
+
+输出 JSON:{"overview":[{"text":"","refs":["T4"]}],"policy":[],"structure":[],"capital":[],"talent":[]}`,
+    7000,
+  );
+  const check = (list: { text: string; refs: string[] }[] | undefined): Claim[] =>
+    (Array.isArray(list) ? list : [])
+      .filter((c) => c?.text)
+      .map((c) => ({ text: c.text, refs: (c.refs ?? []).map(String), unverifiedNumbers: unverifiedNumbers(c.text.replace(/\[S\d+\]/g, ''), allowed) }));
+  const n: Narrative = { overview: check(out.overview), policy: check(out.policy), structure: check(out.structure), capital: check(out.capital), talent: check(out.talent) };
+  const paras = Object.values(n).flat();
+  const flagged = paras.filter((c) => c.unverifiedNumbers.length).length;
+  emit({ type: 'step', step: 'narrative', status: 'done', detail: `${paras.length} 段正文${flagged ? `,${flagged} 段含未核验数字,已标出` : ',数字全部可在表格中找到'}` });
+  return n;
 }
 
 // ---------- ⑥ 与上一次比对 ----------
@@ -506,8 +680,8 @@ export async function runIndustryReport(input: ReportInput, emit: Emit): Promise
           : '首次检索该产业,全量检索',
   });
 
-  // ①②③ 并行
-  const [tech, pol, ch] = await Promise.all([
+  // ①②③ ③b 并行
+  const [tech, pol, ch, regional] = await Promise.all([
     techChapter(ctx),
     policyChapter(ctx).catch((e) => {
       emit({ type: 'step', step: 'policy', status: 'error', detail: (e as Error).message });
@@ -517,13 +691,25 @@ export async function runIndustryReport(input: ReportInput, emit: Emit): Promise
       emit({ type: 'step', step: 'chain', status: 'error', detail: (e as Error).message });
       return { chapter: { kind: 'SKIPPED', clusters: [], nodes: [], jobs: [], skillFreq: [], note: `检索或抽取失败:${(e as Error).message}` } as ChainChapter, recalled: { nodes: 0, jobs: 0 } };
     }),
+    regionalChapter(ctx).catch((e) => {
+      emit({ type: 'step', step: 'regional', status: 'error', detail: (e as Error).message });
+      return EMPTY_REGIONAL;
+    }),
   ]);
-  const policy = pol.chapter;
+  const policy = mergeRegionalPolicies(ctx, pol.chapter, regional);
   const chain = ch.chapter;
 
-  // ④⑤ 并行
-  const allowed = allowedNumbers({ tech, policy, chain });
-  const [insight, signals] = await Promise.all([insightChapter(ctx, tablesForLLM(tech, policy, chain), allowed), weakChapter(ctx, tech).catch(() => [] as WeakSignal[])]);
+  // ④ ④b ⑤ 并行
+  const allowed = [...allowedNumbers({ tech, policy, chain }), ...regionalNumbers(regional)];
+  const tables = tablesForLLM(tech, policy, chain, regional);
+  const [insight, narrative, signals] = await Promise.all([
+    insightChapter(ctx, tables, allowed),
+    narrativeChapter(ctx, tables, allowed).catch((e) => {
+      emit({ type: 'step', step: 'narrative', status: 'error', detail: (e as Error).message });
+      return EMPTY_NARRATIVE;
+    }),
+    weakChapter(ctx, tech).catch(() => [] as WeakSignal[]),
+  ]);
 
   const delta = computeDelta(ctx, tech, policy, chain, { policies: pol.recalled, ...ch.recalled });
   const R = STAGE_RULES;
@@ -539,9 +725,15 @@ export async function runIndustryReport(input: ReportInput, emit: Emit): Promise
     chain,
     insight: { kind: 'INTERPRETED', ...insight },
     weak: { kind: 'WEAK', signals },
+    regional,
+    narrative,
     sources: ctx.reg.list,
     method: [
       { label: '检索飞轮', value: `先查该产业的历史沉淀(${normIndustry(input.industry)});有历史时只检索上次之后的变化,并把本次未命中、历史上带来源出现过的条目补回(标注「历史沉淀」)` },
+      {
+        label: '区域画像',
+        value: `本省产业规模、细分方向、企业分布、上市公司研发投入、投融资、三级政策与岗位薪资;${regional.origin === 'base' ? `取自代码内预查底库(${regional.collectedAt.slice(0, 10)})` : '底库暂无,本次现查并回流知识库'};数值与企业名须在检索原文中逐字出现,否则丢弃`,
+      },
       { label: '平方数据', value: '政策库(层级、发布时间、官方链接)、产业集群库、国内专业库(就业方向),经 MCP 查询,来源标注「平方」' },
       { label: '论文数据', value: `OpenAlex 年度论文数(${tech.years[0]}–${tech.years[tech.years.length - 1]},仅统计完整年份)` },
       { label: '增长指标', value: '同比 =(当年−上年)/上年;CAGR =(末年/首年)^(1/6)−1;加速比 = 当年同比 / 上年同比' },
@@ -550,7 +742,7 @@ export async function runIndustryReport(input: ReportInput, emit: Emit): Promise
         value: `总量<${R.minTotal}→数据不足;末年<${R.embryoMaxLast}且近两年占比>${R.embryoRecentShare}→萌芽期;同比≥${R.burstYoy}%且加速比>1→爆发期;同比<${R.declineYoy}%→调整期;CAGR≥${R.growthCagr}%→成长期;其余→成熟期(阈值为演示口径,需专家校准)`,
       },
       { label: '政策力度', value: '国家级 5 / 部委级 4 / 省级 3 / 市级 2 / 区县级 1;加权得分 = 当年政策力度之和;加速度 = 最近两年加权得分变化率(任一年少于 2 条时不计算)' },
-      { label: '大模型', value: `阿里云 ${reportModel()}:仅用于检索式拆分、信息抽取与解读,不参与任何数值计算` },
+      { label: '大模型', value: `阿里云 ${reportModel()}:仅用于检索式拆分、信息抽取、正文撰写与解读,不参与任何数值计算` },
       { label: '数字校验', value: '解读文本中的每个数字都会与计算结果比对,找不到出处的数字在报告中标红' },
     ],
   };

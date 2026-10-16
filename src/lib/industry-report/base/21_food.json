@@ -1,0 +1,860 @@
+{
+ "industry": "食品加工",
+ "province": "辽宁",
+ "collectedAt": "2026-10-16T10:02:04.231Z",
+ "origin": "base",
+ "sources": [
+  {
+   "id": 1,
+   "title": "2025年铁岭县政府工作报告 ",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzkzMDMwMzg3NA==&mid=2247496854&idx=1&sn=475806f47e04da699e915c5c9e705235&chksm=c36c2e6b116340931efbb42b94c838bccfb45043c74f86ac72e1a3d62b3270d7404653155f76&scene=27"
+  },
+  {
+   "id": 2,
+   "title": "锦州市召开“实施全面振兴新突破三年行动打好打赢决胜之年决胜之战”主题系列新闻发布会第八场",
+   "url": "http://www.jz.gov.cn/info/1059/122525.htm"
+  },
+  {
+   "id": 3,
+   "title": "甘泉县2025年政府工作报告",
+   "url": "https://ganquanxian.gov.cn/zfxxgk/fdzdgknr/zfgzbg/1937047398442561537.html"
+  },
+  {
+   "id": 4,
+   "title": "沈阳市政府工作报告 ",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzAwNTUwMDY0Ng==&mid=2651074569&idx=1&sn=5fb0658e6a3319fa37e19bde16695fce&chksm=81db2d67f6a86a354f65874aa9ccb3a1629087c08a2bc7fb85a01e35fb9ad64b681c538a95e0&scene=27"
+  },
+  {
+   "id": 5,
+   "title": "中国功能性农产品及初加工发展现状与未来趋势深度研究报告",
+   "url": "https://zhuanlan.zhihu.com/p/1987991360926671925"
+  },
+  {
+   "id": 6,
+   "title": "力争产值突破1000亿元!广西重磅发布行动方案",
+   "url": "https://jrb.nanning.gov.cn/zl/jrkfmh/zcwj/t6298439.html"
+  },
+  {
+   "id": 7,
+   "title": "政府工作报告——2025年2月25日在汕尾市第八届人民代表大会第六次会议上",
+   "url": "http://www.hhw.gov.cn/gkmlpt/content/1/1128/post_1128698.html"
+  },
+  {
+   "id": 8,
+   "title": "2025年昌吉回族自治州人民政府工作报告 ",
+   "url": "https://www.cj.gov.cn/p1/zfgzbg/20250110/337053.html"
+  },
+  {
+   "id": 9,
+   "title": "收藏!2025年海南省政府工作报告全文来了",
+   "url": "https://www.nanhaixf.gov.cn/articles/79/44124.html"
+  },
+  {
+   "id": 10,
+   "title": "今年种业这样干!31省政府工作报告出炉",
+   "url": "https://www.163.com/dy/article/JOADR4BR0512CUPE.html"
+  },
+  {
+   "id": 11,
+   "title": "关于对省政协十三届三次会议第13030049号提案的答复",
+   "url": "https://nync.ln.gov.cn/nync/zfxxgk/fdzdgknr/jyta/szxta/szxssjschy2025n/2025082810291849003/index.shtml"
+  },
+  {
+   "id": 12,
+   "title": "2025年上半年全省经济运行情况新闻发布会",
+   "url": "https://liaoning.nen.com.cn/network/liaoningnews/xwfbh/xwfbhelewu/2025/07/20/803281321517388007.shtml"
+  },
+  {
+   "id": 13,
+   "title": "辽宁举行上半年全省经济运行情况新闻发布会 ",
+   "url": "http://www.scio.gov.cn/xwfb/dfxwfb/gssfbh/ln_13831/202507/t20250722_922857.html"
+  },
+  {
+   "id": 14,
+   "title": "2025年阜新市政府工作报告",
+   "url": "https://www.ln.gov.cn/web/zwgkx/zfgzbg/shizfgzbg/fxs/2025011715001558335/index.shtml"
+  },
+  {
+   "id": 15,
+   "title": "辽宁省四部门就2025上半年经济运行情况问答",
+   "url": "https://finance.eastmoney.com/a/202507213462883046.html"
+  },
+  {
+   "id": 16,
+   "title": "辽宁省四部门就2025上半年经济运行情况答记者问",
+   "url": "https://liaoning.lnd.com.cn/system/2025/07/19/030521503.shtml"
+  },
+  {
+   "id": 17,
+   "title": "中共辽宁省委关于制定辽宁省国民经济和社会发展第十五个五年规划的建议 ",
+   "url": "https://www.lnjgdj.gov.cn/lnjgdj/swyw/2025122916444119418/index.shtml"
+  },
+  {
+   "id": 18,
+   "title": "“沈水之阳”逐梦大东北",
+   "url": "https://szb.farmer.com.cn/nmrb/html/2025/20250210/20250210_1/nmrb_20250210_12930_1_1888706502417551365.html"
+  },
+  {
+   "id": 19,
+   "title": "辽宁省开原市国家现代农业产业园项目建设方案 (2025—2027年)",
+   "url": "https://lnky.gov.cn/kaiyuan/gsgg/2025060309374230032/index.html"
+  },
+  {
+   "id": 20,
+   "title": "辽宁举行2024年一季度经济运行情况系列新闻发布会(第一场) ",
+   "url": "http://www.scio.gov.cn/xwfb/dfxwfb/gssfbh/ln_13831/202404/t20240423_844424.html"
+  },
+  {
+   "id": 21,
+   "title": "2024年一季度全省经济运行情况 ",
+   "url": "https://tjj.ln.gov.cn/tjj/tjsj/sjfb/sqzx/2024041911061582139/"
+  },
+  {
+   "id": 22,
+   "title": "2024年一季度辽宁经济运行情况分析:GDP同比增长5.4%(图)",
+   "url": "https://www.askci.com/news/data/hongguan/20240424/112203271392892282420137.shtml"
+  },
+  {
+   "id": 23,
+   "title": "辽宁举行前三季度经济运行情况系列新闻发布会(第一场) ",
+   "url": "http://www.scio.gov.cn/xwfb/dfxwfb/gssfbh/ln_13831/202410/t20241021_870234.html"
+  },
+  {
+   "id": 24,
+   "title": "怎么样?怎么看?一文读懂辽宁经济“三季报”!",
+   "url": "https://cbgc.scol.com.cn/news/5543328"
+  },
+  {
+   "id": 25,
+   "title": "GDP同比增长5.4%,一季度辽宁省经济运行情况公布",
+   "url": "https://m.henan100.com/news/2024/1200666.shtml"
+  },
+  {
+   "id": 26,
+   "title": "“开门红”!沈阳一季度GDP同比增长6.2%!",
+   "url": "https://liaoning.nen.com.cn/network/liaoningnews/sy/2024/04/21/636614240286806053.shtml"
+  },
+  {
+   "id": 27,
+   "title": "辽宁举行“推动企业高质量发展”主题系列新闻发布会(第二场) ",
+   "url": "http://www.scio.gov.cn/xwfb/dfxwfb/gssfbh/ln_13831/202406/t20240617_851963_m.html"
+  },
+  {
+   "id": 28,
+   "title": "辽宁小粒花生产业集群",
+   "url": "https://baike.baidu.com/item/辽宁小粒花生产业集群/50161337"
+  },
+  {
+   "id": 29,
+   "title": "义县花生",
+   "url": "https://baike.baidu.com/item/义县花生/69388218"
+  },
+  {
+   "id": 30,
+   "title": "食品工业",
+   "url": "https://baike.baidu.com/item/食品工业/67974614"
+  },
+  {
+   "id": 31,
+   "title": "食品产业",
+   "url": "https://baike.baidu.com/item/食品产业/68416081"
+  },
+  {
+   "id": 32,
+   "title": "江苏省新型食品集群",
+   "url": "https://baike.baidu.com/item/江苏省新型食品集群/68970165"
+  },
+  {
+   "id": 33,
+   "title": "湖南日报|辣动山海 智造攀峰",
+   "url": "https://yy.voc.com.cn/news/202610/34003263.html"
+  },
+  {
+   "id": 34,
+   "title": "韶山市人民政府关于印发《韶山市国民经济和社会发展第十五个五年规划纲要》的通知 韶政发〔2026〕5号 ",
+   "url": "https://www.shaoshan.gov.cn/11698/11707/content_1458248.html"
+  },
+  {
+   "id": 35,
+   "title": "绿色食品精深加工重点产业链",
+   "url": "https://baike.baidu.com/item/绿色食品精深加工重点产业链/68727316"
+  },
+  {
+   "id": 36,
+   "title": "“奋进十五五·民企勇担当”系列报道④民企聚力兴沃野 绘出“三农”好“丰”景 ",
+   "url": "https://www.sohu.com/a/1088427301_121106991"
+  },
+  {
+   "id": 37,
+   "title": "制造业转型升级的重点有哪些-百度知了好学",
+   "url": "http://xue.baidu.com/okam/pages/strategy-tp/index?strategyId=138284851553112&source=natural"
+  },
+  {
+   "id": 38,
+   "title": "中华人民共和国国民经济和社会发展第十五个五年规划纲要",
+   "url": "https://www.ln.gov.cn/web/ywdt/rdgz/2026031407581924489/index.shtml"
+  },
+  {
+   "id": 39,
+   "title": "辽宁省 ",
+   "url": "https://lsj.fujian.gov.cn/ztzl/yslqh/xzszsq/202606/t20260612_7162391.htm"
+  },
+  {
+   "id": 40,
+   "title": "关于对省十四届人大三次会议第1431356号建议的答复",
+   "url": "https://nync.ln.gov.cn/nync/zfxxgk/fdzdgknr/jyta/srddbjy/sssjrdschy2025n/2025082014344631422/index.shtml"
+  },
+  {
+   "id": 41,
+   "title": "政府工作报告(全文)",
+   "url": "https://www.ln.gov.cn/web/qmzx/2025qglh/gwyzfgzbg/2025031219195939087/index.shtml"
+  },
+  {
+   "id": 42,
+   "title": "省农业农村厅:坚持党建领航赋能 引领“三农”高质量发展",
+   "url": "https://www.lnjgdj.gov.cn/lnjgdj/ztzl/ygzldjcjgzlfz/2026062409381755494/index.shtml"
+  },
+  {
+   "id": 43,
+   "title": "辽宁省国民经济和社会发展第十五个五年规划纲要",
+   "url": "https://liaoning.nen.com.cn/network/liaoningnews/lnquanwei/2026/05/18/910980495414663098.shtml"
+  },
+  {
+   "id": 44,
+   "title": "中共辽宁省委辽宁省人民政府",
+   "url": "https://www.ln.gov.cn/web/qmzx/xczx/zchb/2024050809271986634/index.shtml"
+  },
+  {
+   "id": 45,
+   "title": "市政协十六届五次会议《关于助推沈阳市农业现代化高质量发展提案》(第306号)的答复",
+   "url": "https://nyncj.shenyang.gov.cn/zwgk/fdzdgknr/jyta/zxta/202604/t20260429_5021426.html"
+  },
+  {
+   "id": 46,
+   "title": "辽宁省人民政府",
+   "url": "https://www.ln.gov.cn/web/ywdt/rdgz/2025030609300416459/index.shtml"
+  },
+  {
+   "id": 47,
+   "title": "阜新市人民政府关于印发2025年辽宁省《政府工作报告》重点工作分工方案和阜新市《政府工作报告》重点工作分工方案的通知 ",
+   "url": "https://www.fuxin.gov.cn/mob/newsdetail.thtml?id=974778"
+  },
+  {
+   "id": 48,
+   "title": "【鞍山新闻发布厅】规上工业增加值同比增长4.6% !工业指标快速增长 ",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzA4ODM5NzkxNA==&mid=2658740423&idx=3&sn=c3d4ff03433baa2189875baeb4ca114c&chksm=8ade29d982ef579e57725222eec480d8f89b8d4b834880fe5ebf14606a6e1fd62830c484cccc&scene=27"
+  },
+  {
+   "id": 49,
+   "title": "鞍山规上工业增加值同比增长4.6% 工业指标快速增长",
+   "url": "https://www.ln.chinanews.com.cn/news/2025/0122/348762.html"
+  },
+  {
+   "id": 50,
+   "title": "新闻发布会",
+   "url": "https://www.ln.gov.cn/web/spzb/2026nxwfbh/2026090414054818177/"
+  },
+  {
+   "id": 51,
+   "title": "2026年沈阳市苏家屯区政府工作报告",
+   "url": "https://www.sjtq.gov.cn/zwgk/fdzdgknr/qtzfxx/gzbg/202601/t20260113_4969118.html"
+  },
+  {
+   "id": 52,
+   "title": "辽宁省人民政府",
+   "url": "https://www.ln.gov.cn/web/ywdt/jrln/wzxx2018/2026020608362958828/index.shtml"
+  },
+  {
+   "id": 53,
+   "title": "“十五五”开局起步,浑南区部署10个领域重点任务,努力绘就高质量发展新图景 ",
+   "url": "http://www.hunnan.gov.cn/hnyw/202608/t20260820_5075474.html"
+  },
+  {
+   "id": 54,
+   "title": "2026年本溪市政府工作报告",
+   "url": "https://www.ln.gov.cn/web/zwgkx/zfgzbg/shizfgzbg/bxs/2026012014164321613/index.shtml"
+  },
+  {
+   "id": 55,
+   "title": "政府工作报告",
+   "url": "https://www.yingkou.gov.cn/001/001007/001007019/001007019007/001007019007002/001007019007002003/20260113/4857e7e2-5263-4882-a5d7-6ccc97d719b3.html"
+  },
+  {
+   "id": 56,
+   "title": "沈阳市人民政府关于印发2026年政府工作报告重点工作分工方案的通知",
+   "url": "https://www.shenyang.gov.cn/zt/jjlwlb/zcyjd/ykggjfsczthlzqfzxdn/202602/t20260213_4988535.html"
+  },
+  {
+   "id": 57,
+   "title": "政府工作报告 ——2026年1月7日在锦州市第十七届人民代表大会第六次会议上",
+   "url": "http://www.jz.gov.cn/info/1055/126024.htm"
+  },
+  {
+   "id": 58,
+   "title": "2026年阜新市人民政府工作报告 ",
+   "url": "https://www.fuxin.gov.cn/content/2026/1039596.html"
+  },
+  {
+   "id": 59,
+   "title": "> 东方海洋个股数据 ",
+   "url": "https://data.eastmoney.com/stockdata/002086.html"
+  },
+  {
+   "id": 60,
+   "title": "天马科技:2022年年度股东大会会议资料 ",
+   "url": "http://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?stockid=603668&id=9189472"
+  },
+  {
+   "id": 61,
+   "title": "> 国联水产个股数据 ",
+   "url": "https://data.eastmoney.com/stockdata/300094.html"
+  },
+  {
+   "id": 62,
+   "title": "大北农:2022年度向特定对象发行股票募集说明书(修订稿) ",
+   "url": "http://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?stockid=002385&id=9192248"
+  },
+  {
+   "id": 63,
+   "title": "正虹科技:1-1募集说明书 ",
+   "url": "http://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?stockid=000702&id=8930942"
+  },
+  {
+   "id": 64,
+   "title": "仙坛股份:2022年年度报告 ",
+   "url": "http://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?stockid=002746&id=9052420"
+  },
+  {
+   "id": 65,
+   "title": "> 乖宝宠物个股数据 ",
+   "url": "https://data.eastmoney.com/stockdata/301498.html"
+  },
+  {
+   "id": 66,
+   "title": "【得利斯】最新消息,股票行情,分析,走势_摩尔投研",
+   "url": "https://www.moer.cn/stockcode.htm?code=cn_sz002330"
+  },
+  {
+   "id": 67,
+   "title": "华统股份:可转换公司债券上市公告书 ",
+   "url": "http://vip.stock.finance.sina.com.cn/corp/view/vISSUE_MarketBulletinDetail.php?stockid=002840&id=6257295"
+  },
+  {
+   "id": 68,
+   "title": "2025-2030年中国乡村产业投资规划及前景预测报告 ",
+   "url": "https://news.sohu.com/a/847145159_121422521"
+  },
+  {
+   "id": 69,
+   "title": "2025年阜新市人民政府工作报告",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzIxMjA0NTUwNg==&mid=2247567587&idx=2&sn=6011d6c5db135fcf452161cd945a6b0b&chksm=963ea2536bda26aee9911b4683ea105d64e8c280dfc971daa61bc59a0468cd21dce2007e1860&scene=27"
+  },
+  {
+   "id": 70,
+   "title": "2025年丹东市政府工作报告",
+   "url": "https://www.ln.gov.cn/web/zwgkx/zfgzbg/shizfgzbg/dds/2025011714472234900/index.shtml"
+  },
+  {
+   "id": 71,
+   "title": "关于对省政协十三届三次会议第13030390号提案的答复",
+   "url": "https://nync.ln.gov.cn/nync/zfxxgk/fdzdgknr/jyta/szxta/szxssjschy2025n/2025091114495054711/"
+  },
+  {
+   "id": 72,
+   "title": "关于对省政协十三届三次会议第13030456号提案的答复",
+   "url": "https://nync.ln.gov.cn/nync/zfxxgk/fdzdgknr/jyta/szxta/szxssjschy2025n/2025091115091945876/index.shtml"
+  },
+  {
+   "id": 73,
+   "title": "2025年朝阳市政府工作报告",
+   "url": "https://www.ln.gov.cn/web/zwgkx/zfgzbg/shizfgzbg/cys/2025011715185598749/index.shtml"
+  },
+  {
+   "id": 74,
+   "title": "新闻发布会",
+   "url": "https://www.ln.gov.cn/web/spzb/2025nxwfbh(xbn)/2025071912285323318/index.shtml"
+  },
+  {
+   "id": 75,
+   "title": "2025年阜新市人民政府工作报告 ",
+   "url": "https://www.fuxin.gov.cn/content/2025/965643.html"
+  },
+  {
+   "id": 76,
+   "title": "食品研发员",
+   "url": "https://www.zhipin.com/job_detail/a72a314177543fe81XVz2dW0GFpT.html"
+  },
+  {
+   "id": 77,
+   "title": "“春暖农民工”服务行动农产品加工业专场——2026年公主岭市春风行动暨就业援助季活动(七)",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzI0OTIxNzczMQ==&mid=2247490174&idx=1&sn=546c326457ee2cc9dee418806bfef061&chksm=e809f20a39a78d110cadf6e51d812dd235b2cd23bd8ec92f05653bbe110e232a7a92a680ded8&scene=27"
+  },
+  {
+   "id": 78,
+   "title": "东港大闰肉禽食品有限公司",
+   "url": "https://www.tianyancha.com/company/999045141/jingzhuang"
+  },
+  {
+   "id": 79,
+   "title": "关于召开2022年台安县脱贫劳动力暨“农产品加工业”专场网络招聘会的通知",
+   "url": "http://www.lntaian.gov.cn/html/TAZF/202210/0167946394653936.html"
+  },
+  {
+   "id": 80,
+   "title": "2026中国农科院农产品加工所植物蛋白结构与功能调控团队合同制科研助理招聘公告",
+   "url": "https://www.offcn.com/sydw/2026/0525/1140462.html"
+  },
+  {
+   "id": 81,
+   "title": "连锁业务员",
+   "url": "https://www.zhipin.com/job_detail/774feed6c11300171nV83N-9F1dT.html"
+  },
+  {
+   "id": 82,
+   "title": "生猪养殖事业部总监",
+   "url": "https://www.zhipin.com/job_detail/9a2363c43aaa1f501HF-3du6FFVT.html"
+  },
+  {
+   "id": 83,
+   "title": "中国农业科学院农产品加工研究所食物营养与功能性食品创新团队合同制科研助理招聘启事",
+   "url": "https://ifst.caas.cn/xwzx/zpxx/3b4a7f90da9f4c929aec989f11f7bff5.htm"
+  },
+  {
+   "id": 84,
+   "title": "重磅!沈阳“十五五”规划建议全文发布",
+   "url": "https://sfj.shenyang.gov.cn/qmyfzs/gzxxyfzs/202512/t20251216_4955289.html"
+  },
+  {
+   "id": 85,
+   "title": "铁骑力士食品有限责任公司",
+   "url": "https://msys.cdu.edu.cn/info/1220/16473.htm"
+  },
+  {
+   "id": 86,
+   "title": "辽阳第地嘉农产品有限公司",
+   "url": "https://baike.baidu.com/item/辽阳第地嘉农产品有限公司/21255578"
+  },
+  {
+   "id": 87,
+   "title": "辽宁风光鹿苑农业发展有限公司",
+   "url": "https://baike.baidu.com/item/辽宁风光鹿苑农业发展有限公司/69386122"
+  },
+  {
+   "id": 88,
+   "title": "中粮集团有限公司",
+   "url": "https://www.qcc.com/firm/75ea1cf905f30cf36b02e84d7ad46fcd.html"
+  },
+  {
+   "id": 89,
+   "title": "沃谷生物科技(辽宁)有限公司",
+   "url": "https://baike.baidu.com/item/沃谷生物科技（辽宁）有限公司/65261679"
+  },
+  {
+   "id": 90,
+   "title": "铁岭市人民政府关于印发2026年市《政府工作报告》任务分工方案的通知",
+   "url": "https://www.tieling.gov.cn/tieling/zwgk/zfwj/tzf/2026041010525475532/index.html"
+  },
+  {
+   "id": 91,
+   "title": "新发地(盘锦)农产品有限公司",
+   "url": "https://baike.baidu.com/item/新发地（盘锦）农产品有限公司/62935118"
+  },
+  {
+   "id": 92,
+   "title": "中共辽宁省委关于制定辽宁省国民经济和社会发展第十五个五年规划的建议 ",
+   "url": "http://yjs.nx.gov.cn/sswgh/202601/t20260106_5128361.html"
+  },
+  {
+   "id": 93,
+   "title": "政府工作报告(2025)",
+   "url": "http://www.gaizhou.gov.cn/govxxgk/gzs/2026-02-25/a098478a-8653-4c19-a888-6ebdcddca321.html"
+  },
+  {
+   "id": 94,
+   "title": "荥经县农业农村局",
+   "url": "http://yingjing.gov.cn/mob/deptinfo.aspx?id=f64de611-f23c-47c9-8e1d-a6faba15cd54"
+  },
+  {
+   "id": 95,
+   "title": "关于2024年国民经济和社会发展计划执行情况与2025年国民经济和社会发展计划草案的报告(摘要) ",
+   "url": "https://www.gov.cn/yaowen/liebiao/202503/content_7010838.htm"
+  },
+  {
+   "id": 96,
+   "title": "关于大力实施可再生能源替代行动的指导意见(发改能源〔2024〕1537号)",
+   "url": "https://www.ndrc.gov.cn/xxgk/zcfb/tz/202410/t20241030_1394119_ext.html"
+  },
+  {
+   "id": 97,
+   "title": "关于印发《贯彻实施〈国家标准化发展纲要〉",
+   "url": "https://www.sac.gov.cn/zt/gjbzhfzgyzt/zxdt/art/2024/art_1a6fba2dd701444494c199822fd520f0.html"
+  },
+  {
+   "id": 98,
+   "title": "关于印发《贯彻实施〈国家标准化发展纲要〉行动计划(2024—2025年)》的通知",
+   "url": "https://mzt.guizhou.gov.cn/xwzx/mzyw/202404/t20240404_84149775.html"
+  },
+  {
+   "id": 99,
+   "title": "国务院2月重要政策 ",
+   "url": "https://www.gov.cn/yaowen/liebiao/202503/content_7009349.htm"
+  },
+  {
+   "id": 100,
+   "title": "本周“发展改革热点,我知道”(1月20至1月24日)",
+   "url": "https://www.ndrc.gov.cn/fggz/202501/t20250126_1395936_ext.html"
+  },
+  {
+   "id": 101,
+   "title": "国务院办公厅关于转发商务部、国家发展改革委《2025年稳外资行动方案》的通知",
+   "url": "http://www.yph.gov.cn/yphx/c107828/202508/bcef3b08eafc44e4b7c134db110aab64.shtml"
+  },
+  {
+   "id": 102,
+   "title": "国务院办公厅关于转发商务部、国家发展改革委 《2025年稳外资行动方案》的通知",
+   "url": "https://fgw.hubei.gov.cn/fbjd/xxgkml/jgzn/nsjg/myjjfzc/tzgg/202502/t20250220_5548462.shtml"
+  },
+  {
+   "id": 103,
+   "title": "本周“发展改革热点,我知道”(12月30日至1月3日)",
+   "url": "https://www.ndrc.gov.cn/fggz/202501/t20250106_1395459.html"
+  },
+  {
+   "id": 104,
+   "title": "国务院办公厅关于转发商务部、国家发展改革委《2025年稳外资行动方案》的通知",
+   "url": "https://fgw.hubei.gov.cn/fbjd/xxgkml/jgzn/nsjg/wjc/tzgg/202508/t20250819_5750485.shtml"
+  },
+  {
+   "id": 105,
+   "title": "关于对省第十四届人大二次会议 关于推进我省农产品加工业高质量发展的建议 (第1421197号)的答复",
+   "url": "https://nync.ln.gov.cn/nync/zfxxgk/fdzdgknr/jyta/srddbjy/sssjrdechydjy2024n/2024120914375816335/"
+  },
+  {
+   "id": 106,
+   "title": "于对省政协十三届二次会议关于推进辽宁农副产品加工产业转型升级的提案(第13020264号)的答复",
+   "url": "https://nync.ln.gov.cn/nync/zfxxgk/fdzdgknr/jyta/szxta/szxssjechy2024n/2024120916250788670/index.shtml"
+  },
+  {
+   "id": 107,
+   "title": "关于对省十四届人大三次会议第1431523号建议的答复",
+   "url": "https://nync.ln.gov.cn/nync/zfxxgk/fdzdgknr/jyta/srddbjy/sssjrdschy2025n/2025082115391454052/"
+  },
+  {
+   "id": 108,
+   "title": "粮食产量达到500.1亿斤 创辽宁历史第3高产年",
+   "url": "https://liaoning.news.163.com/25/0211/10/JO4168E904229BRM.html"
+  }
+ ],
+ "scale": [
+  {
+   "metric": "规模以上农产品加工业营业收入",
+   "value": "3744",
+   "unit": "亿元",
+   "year": "2024",
+   "scope": "全省",
+   "src": [
+    11
+   ]
+  },
+  {
+   "metric": "农副食品加工业增加值增速",
+   "value": "7.5",
+   "unit": "%",
+   "year": "2024",
+   "scope": "全省",
+   "src": [
+    20,
+    21,
+    22,
+    25
+   ]
+  },
+  {
+   "metric": "粮油加工企业工业总产值",
+   "value": "1171.34",
+   "unit": "亿元",
+   "year": "2025",
+   "scope": "全省",
+   "src": [
+    39
+   ]
+  },
+  {
+   "metric": "区域食品产业产值",
+   "value": "186.4",
+   "unit": "亿元",
+   "year": "2025",
+   "scope": "沈阳市苏家屯区",
+   "src": [
+    51
+   ]
+  },
+  {
+   "metric": "粮油产业集群产值",
+   "value": "2510",
+   "unit": "亿元",
+   "year": "2024",
+   "scope": "全省",
+   "src": [
+    72
+   ]
+  },
+  {
+   "metric": "畜禽产业集群产值",
+   "value": "2720",
+   "unit": "亿元",
+   "year": "2024",
+   "scope": "全省",
+   "src": [
+    72
+   ]
+  },
+  {
+   "metric": "水产产业集群产值",
+   "value": "1040",
+   "unit": "亿元",
+   "year": "2024",
+   "scope": "全省",
+   "src": [
+    72
+   ]
+  }
+ ],
+ "segments": [
+  {
+   "name": "小粒花生加工",
+   "desc": "围绕小粒花生构建种植、良种繁育及精深加工（冷榨油、休闲食品、蛋白提取）集群。",
+   "src": [
+    28,
+    29
+   ]
+  },
+  {
+   "name": "烘焙与休闲食品",
+   "desc": "以桃李面包为龙头，涵盖标准化烘焙、短保食品研发及智能冷链配送。",
+   "src": [
+    51
+   ]
+  },
+  {
+   "name": "啤酒与酒类加工",
+   "desc": "依托雪花啤酒等品牌，发展风味创新、绿色酿造及精酿、低醇等高附加值方向。",
+   "src": [
+    51
+   ]
+  },
+  {
+   "name": "粮油精深加工",
+   "desc": "以玉米、水稻、大豆为主导，突出功能性米制品、玉米淀粉衍生物、大豆蛋白开发。",
+   "src": [
+    39
+   ]
+  },
+  {
+   "name": "特色食品与预制菜",
+   "desc": "聚焦酸菜、葡萄、淡水鱼、白羽肉鸡等优势品类，构建加工标准体系。",
+   "src": [
+    45
+   ]
+  },
+  {
+   "name": "海洋水产品加工",
+   "desc": "发展即食海产、冻干海藻、海洋功能食品等高值化加工。",
+   "src": [
+    44
+   ]
+  }
+ ],
+ "cities": [
+  {
+   "city": "辽阳市",
+   "focus": "拥有市级农业产业化重点龙头企业，业务覆盖食堂配送等项目。",
+   "companies": [
+    "辽阳第地嘉农产品有限公司"
+   ],
+   "src": [
+    86
+   ]
+  },
+  {
+   "city": "盘锦市",
+   "focus": "拥有省级重点龙头企业，涉及农产品批发零售、仓储物流及梅花鹿深加工。",
+   "companies": [
+    "新发地（盘锦）农产品有限公司",
+    "辽宁风光鹿苑农业发展有限公司",
+    "沃谷生物科技（辽宁）有限公司"
+   ],
+   "src": [
+    91,
+    87,
+    89
+   ]
+  },
+  {
+   "city": "沈阳市",
+   "focus": "支持辽河粳稻、新民酸菜产业园等重点项目建设，是农产品加工重要承载地。",
+   "companies": [],
+   "src": [
+    45
+   ]
+  },
+  {
+   "city": "营口市",
+   "focus": "推进国家现代农业产业园，创建全国农业产业强镇及骨干冷链物流基地。",
+   "companies": [],
+   "src": [
+    93
+   ]
+  },
+  {
+   "city": "铁岭市",
+   "focus": "将农产品精深加工列为重点任务，深化农畜产品加工与进出口贸易合作。",
+   "companies": [],
+   "src": [
+    90
+   ]
+  },
+  {
+   "city": "锦州市",
+   "focus": "推进食品产业大市建设，新增多家农业产业化龙头企业。",
+   "companies": [],
+   "src": [
+    2
+   ]
+  }
+ ],
+ "listed": [],
+ "financing": [],
+ "policies": [
+  {
+   "level": "国家级",
+   "name": "《乡村全面振兴规划（2024—2027年）》",
+   "issuer": "中共中央、国务院",
+   "year": "2024",
+   "gist": "支持建设产地冷藏保鲜设施和区域性农产品精深加工基地，培育一批农产品加工龙头企业和“一县一业”示范县。",
+   "src": [
+    100
+   ]
+  },
+  {
+   "level": "部委级",
+   "name": "《贯彻实施〈国家标准化发展纲要〉行动计划（2024—2025年）》",
+   "issuer": "国家发展改革委、工信部、市场监管总局等15部门",
+   "year": "2024",
+   "gist": "在食品加工装备等重点领域强化标准攻关，加快研制农产品分级分选、贮藏保鲜、精深加工等关键标准。",
+   "src": [
+    97
+   ]
+  },
+  {
+   "level": "部委级",
+   "name": "《关于大力实施可再生能源替代行动的指导意见》",
+   "issuer": "国家发改委",
+   "year": "2024",
+   "gist": "支持农产品加工企业开展生物质能替代、余热回收利用等绿色技改，将农产品加工园区纳入可再生能源综合应用试点范围。",
+   "src": [
+    96
+   ]
+  },
+  {
+   "level": "省级",
+   "name": "《辽宁省食品工业大省发展规划（2023–2025年）》",
+   "issuer": "辽宁省",
+   "year": "",
+   "gist": "明确将农产品加工业作为食品工业强省建设的核心支撑，聚焦粮油、畜禽、水产三大千亿级产业集群。",
+   "src": [
+    105
+   ]
+  },
+  {
+   "level": "省级",
+   "name": "《关于推动消费品工业高质量发展的指导意见》",
+   "issuer": "辽宁省",
+   "year": "",
+   "gist": "将农产品加工纳入消费品工业体系统筹谋划，强调以“土特产”为切入点，强化品牌培育与产业链整合。",
+   "src": [
+    105
+   ]
+  },
+  {
+   "level": "省级",
+   "name": "2024年农民合作社培育项目实施方案",
+   "issuer": "辽宁省",
+   "year": "2024",
+   "gist": "支持农民合作社开展农产品清洗、包装、初加工及精深加工等设施建设与设备购置，按不高于实际投资总额50%予以奖补。",
+   "src": [
+    107
+   ]
+  }
+ ],
+ "jobs": [
+  {
+   "title": "食品研发员",
+   "city": "",
+   "salary": "5000–8000元/月",
+   "skills": [
+    "熟悉农产品加工行业知识",
+    "具备新产品研发、工艺改进、包装设计、技术文件编制、成本核算能力",
+    "能进行原辅材料测试、标签审核、样品制作",
+    "具备组织管理、沟通协调、问题分析与创新思维能力"
+   ],
+   "src": [
+    76
+   ]
+  },
+  {
+   "title": "食品厂品控人员",
+   "city": "丹东",
+   "salary": "面议",
+   "skills": [
+    "熟悉HACCP、ISO22000等食品质量管理体系",
+    "具备理化/微生物检验基础、现场巡检与异常处置能力"
+   ],
+   "src": [
+    78
+   ]
+  },
+  {
+   "title": "电商运营",
+   "city": "",
+   "salary": "底薪4000元 + 绩效 + 奖金",
+   "skills": [
+    "熟悉平台规则、数据分析、竞品分析、营销推广预算"
+   ],
+   "src": [
+    77
+   ]
+  },
+  {
+   "title": "美工",
+   "city": "",
+   "salary": "底薪3000元 + 绩效 + 奖金",
+   "skills": [
+    "熟练使用PS/AI等修图软件"
+   ],
+   "src": [
+    77
+   ]
+  },
+  {
+   "title": "合同制科研助理",
+   "city": "",
+   "salary": "面议",
+   "skills": [
+    "熟练使用办公软件",
+    "具备较强文字表达与沟通协调能力"
+   ],
+   "src": [
+    80
+   ]
+  }
+ ],
+ "demand": [],
+ "aliases": [
+  "食品",
+  "食品制造",
+  "农产品加工",
+  "预制菜",
+  "海洋食品"
+ ]
+}

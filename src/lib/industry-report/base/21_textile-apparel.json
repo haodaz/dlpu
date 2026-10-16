@@ -1,0 +1,763 @@
+{
+ "industry": "纺织服装",
+ "province": "辽宁",
+ "collectedAt": "2026-10-16T10:03:08.129Z",
+ "origin": "base",
+ "sources": [
+  {
+   "id": 1,
+   "title": "辽宁重点产业投资推介大会",
+   "url": "https://baike.baidu.com/item/辽宁重点产业投资推介大会/69329313"
+  },
+  {
+   "id": 2,
+   "title": "【高端视点】孙瑞哲:担当时代使命,共创锦绣未来",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzA3NjIzMDAzMw==&mid=2651334726&idx=1&sn=da1ed9e9c1e909adecb92be52d9510a0&chksm=85de26654975372dcfaee2af33fb90de597d482becd85748a64908cb724f35d8ed884dfb2d64&scene=27"
+  },
+  {
+   "id": 3,
+   "title": "大连市普兰店区生态文明建设规划 (2024-2030年)",
+   "url": "https://www.dlpld.gov.cn/ueditor/jsp/upload/file/20250324/1742784936553089374.doc"
+  },
+  {
+   "id": 4,
+   "title": "振兴发展势正劲,时尚辽宁“链”全球",
+   "url": "http://finance.sina.com.cn/jjxw/2025-03-13/doc-inepnynm0701761.shtml"
+  },
+  {
+   "id": 5,
+   "title": "【中国经济网】辽宁纺织服装“链”动全球产业对接大会成功举办",
+   "url": "https://gxt.ln.gov.cn/gxt/mtgz/2025032009264295321/index.shtml"
+  },
+  {
+   "id": 6,
+   "title": "辽宁纺织服装“链”动全球产业对接大会闪耀申城",
+   "url": "https://www.sh.chinanews.com.cn/shishang/2025-03-12/133612.shtml"
+  },
+  {
+   "id": 7,
+   "title": "大连市服装纺织协会会长胡冬梅:发挥区域优势,擦亮“大连智造”金招牌 ",
+   "url": "https://mp.weixin.qq.com/s?__biz=MjM5MDI0NjY2OQ==&mid=2652985971&idx=2&sn=b405f94b3d13cf07d742387fc81b2abb&chksm=bc2497a4ff9217e67ed550f6bcb88a006c6c1b6a4f3fec9d2a87d2cb890027bc205d191ddbe5&scene=27"
+  },
+  {
+   "id": 8,
+   "title": "中国纺联会长孙瑞哲:自立自强,在构建新发展格局中贡献纺织力量!",
+   "url": "https://mp.weixin.qq.com/s?__biz=MjM5OTc1MDc1Nw==&mid=2650170851&idx=2&sn=8834b6db9c64ebe3ed6e5da022f75b01&chksm=be6653cfabe096975a31cf29ab76a90690a3a31c9c07291b1aa52c1296969ef3e1f141c34bec&scene=27"
+  },
+  {
+   "id": 9,
+   "title": "兵团日报:兵团纺织服装产业“聚链成群”构筑新优势",
+   "url": "http://btgxj.xjbt.gov.cn/c/2025-02-07/8382253.shtml"
+  },
+  {
+   "id": 10,
+   "title": "孙瑞哲:自立自强,在构建新发展格局中贡献纺织力量",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzA3ODgyMDM0MQ==&mid=2653254378&idx=2&sn=9ff705037b7ce21515aa503287d22049&chksm=857ac0cdebde0342d6274adcdc19e06b67d02e02c6b35f0b123090d8883e7a062922c15af974&scene=27"
+  },
+  {
+   "id": 11,
+   "title": "孙瑞哲:自立自强,在构建新发展格局中贡献纺织力量",
+   "url": "https://cnga.org.cn/cngahtml/xwzx/hygc/20250806/1394.html"
+  },
+  {
+   "id": 12,
+   "title": "2025年十月份国民经济主要统计指标",
+   "url": "https://www.pucheng.gov.cn/zfxxgk/fdzdgknr/tjxx/2003002986841919489.html"
+  },
+  {
+   "id": 13,
+   "title": "经开区(头屯河区)关于2025年国民经济和社会发展计划执行情况与2026年国民经济和社会发展计划草案的报告",
+   "url": "https://www.uetd.gov.cn/jjjskfq/c119900/202511/5145b0e684a34023955a82a59af914f1.shtml"
+  },
+  {
+   "id": 14,
+   "title": "鲁泰A(000726):别小看纺织细分龙头,深藏护城河的高股息现金奶牛! ",
+   "url": "https://caifuhao.eastmoney.com/news/20261012074756441667940"
+  },
+  {
+   "id": 15,
+   "title": "A股:纺织服装核心龙头股名单,附股票名录(2024/7/8)",
+   "url": "https://lihel9.smartapps.cn/pages/classify/classifyDetail/classifyDetail?id=52572528"
+  },
+  {
+   "id": 16,
+   "title": "中央汇金重仓的3家纺织服装上市公司在细分领域拥有核心竞争力 ",
+   "url": "https://caifuhao.eastmoney.com/news/20250922160522101484500"
+  },
+  {
+   "id": 17,
+   "title": "> 富春染织个股数据 ",
+   "url": "https://data.eastmoney.com/stockdata/605189.html"
+  },
+  {
+   "id": 18,
+   "title": "纺织服饰行业上市公司股票",
+   "url": "https://m.hx168.com.cn/stock/industry/BK1090.html"
+  },
+  {
+   "id": 19,
+   "title": "华升股份跨界收购易信科技:是真转型还是上市平台\"输血\"通道?业绩承诺兑现是否存疑",
+   "url": "http://finance.sina.com.cn/stock/observe/2026-07-03/doc-inifpkay3692640.shtml"
+  },
+  {
+   "id": 20,
+   "title": "深纺织A上市公司信息",
+   "url": "https://m.hx168.com.cn/stock/F10/000045.html"
+  },
+  {
+   "id": 21,
+   "title": "> 凤竹纺织个股数据 ",
+   "url": "https://data.eastmoney.com/stockdata/600493.html"
+  },
+  {
+   "id": 22,
+   "title": "森马服饰",
+   "url": "http://finance.sina.com.cn/realstock/company/sz002563/nc.shtml"
+  },
+  {
+   "id": 23,
+   "title": "鲁泰A (000726) ",
+   "url": "https://www.futunn.com/stock/000726-SZ/company?code=HDB"
+  },
+  {
+   "id": 24,
+   "title": "重磅!2024年中国纺织行业政策汇总及解读(全)巩固纺织强国地位 ",
+   "url": "https://www.sohu.com/a/794333544_99922905"
+  },
+  {
+   "id": 25,
+   "title": "政府工作报告(全文)",
+   "url": "https://www.ln.gov.cn/web/qmzx/2025qglh/gwyzfgzbg/2025031219195939087/index.shtml"
+  },
+  {
+   "id": 26,
+   "title": "《贯彻实施〈国家标准化发展纲要〉行动计划(2024—2025年)》提出持续完善两化融合标准体系,加快数字化转型关键急需标准制修订 ",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzkyNTIwNjIzNA==&mid=2247511444&idx=1&sn=10d9b74c6d70782e7ce4d0c692b3b35a&chksm=c1c8fe21f6bf773716f79409533775296c84cbb59d55f254ae902e7dd8e2cb4ecce2fcb91109&scene=27"
+  },
+  {
+   "id": 27,
+   "title": "两会受权发布|关于2024年国民经济和社会发展计划执行情况与2025年国民经济和社会发展计划草案的报告",
+   "url": "https://www.gwgpac.org/page208?article_id=3215&pagenum=all"
+  },
+  {
+   "id": 28,
+   "title": "2025年政府工作报告",
+   "url": "http://www.laobian.gov.cn/govxxgk/lbq/2025-01-22/223f3cc1-640c-4b7b-99f2-eeac14c4b490.html"
+  },
+  {
+   "id": 29,
+   "title": "政府工作报告 ",
+   "url": "https://www.nx.gov.cn/zwxx_11337/wzttx/202503/t20250312_4852953_wap.html"
+  },
+  {
+   "id": 30,
+   "title": "关于2024年国民经济和社会发展计划执行情况与2025年国民经济和社会发展计划草案的报告 ",
+   "url": "https://www.nmg.gov.cn/zwyw/qgyw/202503/t20250314_2681465.html"
+  },
+  {
+   "id": 31,
+   "title": "最全丨31省份2025年优化营商环境重点工作任务汇总",
+   "url": "https://www.163.com/dy/article/JNUJ14Q90518KCLG.html"
+  },
+  {
+   "id": 32,
+   "title": "全国首发、首店经济政策全景指南:提振消费扶持措施全览 ",
+   "url": "https://news.sohu.com/a/872762399_152615"
+  },
+  {
+   "id": 33,
+   "title": "工信部、国家发改委联合印发《关于产业用纺织品行业高质量发展的指导意见》",
+   "url": "https://zhuanlan.zhihu.com/p/502569830"
+  },
+  {
+   "id": 34,
+   "title": "国务院政策例行吹风会文字实录(2025年11月27日) ",
+   "url": "https://www.gov.cn/zccfh/2025zccfh/20251127/wzsl/202511/content_7049672.htm"
+  },
+  {
+   "id": 35,
+   "title": "《关于加快推动再生纤维与制服产业协同绿色发展的工作方案》政策解读",
+   "url": "https://fgw.putian.gov.cn/xxgk/bwwj/zcjd/202406/t20240611_1925395.htm"
+  },
+  {
+   "id": 36,
+   "title": "关于印发《贯彻实施〈国家标准化发展纲要〉行动计划(2024—2025年)》的通知",
+   "url": "https://www.gov.cn/zhengce/zhengceku/202403/content_6942541.htm"
+  },
+  {
+   "id": 37,
+   "title": "国家发展改革委等部门关于印发《再生材料应用推广行动方案》的通知(发改环资〔2025〕1681号)",
+   "url": "https://www.ndrc.gov.cn/fggz/hjyzy/zyzhlyhxhjj/202601/t20260108_1403120_ext.html"
+  },
+  {
+   "id": 38,
+   "title": "工业和信息化部 国家发展改革委 商务部 文化和旅游部 中国人民银行 市场监管总局印发《关于增强消费品供需适配性进一步促进消费的实施方案》的通知",
+   "url": "https://www.gzzf.gov.cn/jgsz/zfbm/gyhkxjsj/zfxxgk/fdzdgknr/myjj_5750240/myjjgl_5750241/202511/t20251128_88993550.html"
+  },
+  {
+   "id": 39,
+   "title": "字号:默认大超大|打印|",
+   "url": "https://www.gov.cn/gongbao/2025/issue_11846/202502/content_7002782.html"
+  },
+  {
+   "id": 40,
+   "title": "国务院新闻办公室将于2025年2月20日(星期四)上午10时举行国务院政策例行吹风会,请商务部副部长兼国际贸易谈判副代表凌激和国家发展改革委、工业和信息化部、市场监管总局有关负责人介绍扩大高水平对外开放,做好2025年稳外资工作有关情况,并答记者问。 ",
+   "url": "https://www.gov.cn/xinwen/2025zccfh/3/index.htm"
+  },
+  {
+   "id": 41,
+   "title": "关于印发《贯彻实施〈国家标准化发展纲要〉行动计划(2024—2025年)》的通知",
+   "url": "https://hbdrc.hebei.gov.cn/ztzl/sbgxyjhx/gjzc/202406/t20240617_114494.html"
+  },
+  {
+   "id": 42,
+   "title": "国家发展改革委12月份新闻发布会",
+   "url": "https://www.ndrc.gov.cn/xwdt/wszb/12yxwfbh/"
+  },
+  {
+   "id": 43,
+   "title": "【辽宁服装/纺织设计招聘_辽宁招聘服装/纺织设计人才】-辽宁猎聘",
+   "url": "https://www.liepin.com/city-liaoning/career/fangzhipin/"
+  },
+  {
+   "id": 44,
+   "title": "服装打样/制版",
+   "url": "https://www.zhipin.com/job_detail/596990d05eb58be433V53t68FlM~.html"
+  },
+  {
+   "id": 45,
+   "title": "丹东妙香纺织服装有限公司",
+   "url": "https://m.zhaopin.com/company/CZL1462612500.htm"
+  },
+  {
+   "id": 46,
+   "title": "百日千万-高校毕业生(线上线下同步)网络招聘会第250048期",
+   "url": "https://www.lianshan.gov.cn/zwgk/zwgkzdgz/shgysy/jycy/202512/t20251211_1224041.html"
+  },
+  {
+   "id": 47,
+   "title": "配棉工程师",
+   "url": "https://baike.baidu.com/item/配棉工程师/7437898"
+  },
+  {
+   "id": 48,
+   "title": "丹东 采购 招聘(工资待遇要求) ",
+   "url": "https://www.jobui.com/company/6242891/salary/j/caigou/"
+  },
+  {
+   "id": 49,
+   "title": "丹东 服装业务跟单员 招聘(工资待遇要求) ",
+   "url": "https://www.jobui.com/company/6242891/salary/j/fuzhuangyewugendanyuan/"
+  },
+  {
+   "id": 50,
+   "title": "丹东 服装采购 招聘(工资待遇要求) ",
+   "url": "https://www.jobui.com/company/6242891/salary/j/fuzhuangcaigou/"
+  },
+  {
+   "id": 51,
+   "title": "面料业务员工资待遇",
+   "url": "https://www.jobui.com/salary/quanguo-mianliaoyewuyuan/"
+  },
+  {
+   "id": 52,
+   "title": "https://new.qq.com/rain/a/20250928A03QS000",
+   "url": "https://new.qq.com/rain/a/20250928A03QS000"
+  },
+  {
+   "id": 53,
+   "title": "“十五五”开局起步,辽中区紧扣三大战略定位,细化十二个重点领域任务,全力开创高质量发展新局面",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzA4MzcwMTYzMw==&mid=2247649350&idx=1&sn=7a9b22d288ed2b9199d0da94fa4381cf&chksm=9e2abc2b7bfc31cec50e872a8e228f8970b448bd069c1f72a89ff7c79a0d8a0fdde8fe02d959&scene=27"
+  },
+  {
+   "id": 54,
+   "title": "“十五五”开局起步,浑南区部署10个领域重点任务,努力绘就高质量发展新图景 ",
+   "url": "http://www.hunnan.gov.cn/hnyw/202608/t20260820_5075474.html"
+  },
+  {
+   "id": 55,
+   "title": "营口推动跨境电商高质量发展实施意见出台",
+   "url": "https://dzswgf.mofcom.gov.cn/news/182/2026/5/1780020042488.html"
+  },
+  {
+   "id": 56,
+   "title": "对省政协十三届四次会议《关于打造“十五五”辽宁对外贸易高质量发展新引擎的提案》(第0031号)的答复",
+   "url": "https://swt.ln.gov.cn/swt/zwgk/fdzdgknr/jytabljggk/szxta/szxssjschy2026n/2026080312521912521/"
+  },
+  {
+   "id": 57,
+   "title": "对省十四届人大三次会议《关于进一步夯实我省产业集群高质量发展的建议》(第1431245号)的答复",
+   "url": "https://gxt.ln.gov.cn/gxt/zfxxgk/fdzdgknr/jyta/srddbjy/srdssjschy2025n/2025082716390083210/index.shtml"
+  },
+  {
+   "id": 58,
+   "title": "贵州省第十四届人民政府第97次常务会议",
+   "url": "https://www.guizhou.gov.cn/ztzl/szfcwhy/gzsdssijrmzfd97ccwhy/zyyt/"
+  },
+  {
+   "id": 59,
+   "title": "政府工作报告",
+   "url": "https://www.yingkou.gov.cn/001/001007/001007019/001007019007/001007019007002/001007019007002003/20260113/4857e7e2-5263-4882-a5d7-6ccc97d719b3.html"
+  },
+  {
+   "id": 60,
+   "title": "如何推动纺织工业数字化转型?六部门明确4大行动18项措施! ",
+   "url": "https://www.qdn.gov.cn/zwgk_5871642/zfjg_5871644/qdnzjyj/zfxxgk_5877843/fdzdgknr_5877846/fggw/bmwj_5930508/202508/t20250820_88495282.html"
+  },
+  {
+   "id": 61,
+   "title": "赣州市人民政府办公室关于印发赣州市纺织服装产业发展规划纲要(2024—2035年)的通知 ",
+   "url": "https://www.ganzhou.gov.cn/gzszf/c102790vpcnhgkvgththnqdrksth/202408/56e51d8b77f54e99b11b817b1b70452e.shtml"
+  },
+  {
+   "id": 62,
+   "title": "辽宁举行2024年一季度经济运行情况系列新闻发布会(第三场) ",
+   "url": "http://www.scio.gov.cn/xwfb/dfxwfb/gssfbh/ln_13831/202404/t20240424_844771.html"
+  },
+  {
+   "id": 63,
+   "title": "2024年前三季度全省经济运行情况 ",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzIyMjk1NTMxMg==&mid=2247485113&idx=1&sn=5ac083f89be2f42a4104d058b96921ac&chksm=e824d4e6df535df0603626e8c2e6d93517e4523d50996d08918ceeb231398a850181464f0efb&scene=27"
+  },
+  {
+   "id": 64,
+   "title": "GDP同比增长5.1%!沈阳2024年前三季度经济“成绩单”来了!",
+   "url": "https://liaoning.nen.com.cn/network/liaoningnews/sy/2024/10/22/703233078876705418.shtml"
+  },
+  {
+   "id": 65,
+   "title": "GDP同比增长5.4%!沈阳2024年经济“半年报”出炉! ",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzA4MzcwMTYzMw==&mid=2247590084&idx=1&sn=93890e40f740ff1cc1e125d1444c7925&chksm=9edd93d5385b61545fd7f32f3360d5614227386384da5365a648bbf42cc73d0956ec06e6082e&scene=27"
+  },
+  {
+   "id": 66,
+   "title": "2024年1-4月份全省经济运行情况 ",
+   "url": "https://tjj.ln.gov.cn/tjj/tjsj/sjfb/sqzx/2024052213593813246/index.shtml"
+  },
+  {
+   "id": 67,
+   "title": "2024年1-4月纺织行业运行情况",
+   "url": "https://wap.miit.gov.cn/gxsj/tjfx/xfpgy/fz/art/2024/art_29f0c701af2d4262b86adac217dd1450.html"
+  },
+  {
+   "id": 68,
+   "title": "招商特训营半月刊7|2024年1-6月全国宏观经济数据及相关行业情况",
+   "url": "https://www.sg.gov.cn/sgsgxqgl/gkmlpt/content/2/2656/post_2656031.html"
+  },
+  {
+   "id": 69,
+   "title": "2023年1-12月中国服装行业经济运行简报",
+   "url": "https://www.texleader.com.cn/article-34064.html"
+  },
+  {
+   "id": 70,
+   "title": "2024年前三季度河源市经济运行简况 ",
+   "url": "http://www.gd.gov.cn/zwgk/sjfb/dssj/content/post_4516476.html"
+  },
+  {
+   "id": 71,
+   "title": "2024年一季度汕尾市经济运行简况 ",
+   "url": "http://www.gd.gov.cn/zwgk/sjfb/dssj/content/post_4417075.html"
+  },
+  {
+   "id": 72,
+   "title": "【学习强国】【创·我的大学】辽宁纺织服装新型工业化院在大连工业大学成立",
+   "url": "https://www.dlpu.edu.cn/detail/19/c2b985f2c7a516e715208b9ffde996c7.html"
+  },
+  {
+   "id": 73,
+   "title": "关于葫芦岛市2025年国民经济和社会发展计划执行情况与2026年国民经济和社会发展计划草案的报告",
+   "url": "https://www.hld.gov.cn/zwgk/fdzdgknr/ghxx/gmjjhshfzgh/202602/t20260205_1229656.html"
+  },
+  {
+   "id": 74,
+   "title": "中国纺联党委书记、会长孙瑞哲:把握趋势、守正创新、稳中求进,开启“十五五”锦绣新征程",
+   "url": "https://www.texleader.com.cn/article-35340.html"
+  },
+  {
+   "id": 75,
+   "title": "工作报告丨孙瑞哲:把握趋势 守正创新 稳中求进,开启“十五五”锦绣新征程",
+   "url": "https://www.163.com/dy/article/KJVPGP880552KN3A.html"
+  },
+  {
+   "id": 76,
+   "title": "各省产业规划重点、集群布局汇总分析 | 热点聚焦",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzA3NzIzNzcxMw==&mid=2652759093&idx=2&sn=a381a6cf1af81dbfe2531f1b11002092&chksm=85206c5448620f3cf1eac591d4d701aa43185063d39c2b67dae69cb2aa62a53575f66053b150&scene=27"
+  },
+  {
+   "id": 77,
+   "title": "各省产业规划重点、集群布局与产融结合汇总分析",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzU3NTQ4MDg0Nw==&mid=2247712689&idx=7&sn=2190f1fdb54de403d3a1a7d8b2333370&chksm=fc11219bf8275b3d6aeafb0df3ab51c68e67b71af13e5c9c44040c2742a9746150e5560d7b61&scene=27"
+  },
+  {
+   "id": 78,
+   "title": "舟山市定海区人民政府关于印发舟山市定海区国民经济和社会发展第十五个五年规划纲要的通知 ",
+   "url": "https://www.dinghai.gov.cn/col/col1229318273/sswghfb/zxgh/art/2026/art_50677c7a87e1443a9d17ed0ffcae620d.html"
+  },
+  {
+   "id": 79,
+   "title": "阜新市人民政府办公室关于印发《阜新市2026年高质量推动招商引资工作实施方案》的通知",
+   "url": "https://www.fuxin.gov.cn/content/2026/1039369.html"
+  },
+  {
+   "id": 80,
+   "title": "广西人工智能产业发展白皮书",
+   "url": "http://gxxxzx.gxzf.gov.cn/qwfb/bps/P020260723552067579985.pdf"
+  },
+  {
+   "id": 81,
+   "title": "“数”说纺织 || 2024年前三季度我国纺织行业规上企业工业增加值同比增长4.5% ",
+   "url": "https://mp.weixin.qq.com/s?__biz=Mzg2MTcyODQ3Ng==&mid=2247665356&idx=3&sn=3be51cab4955d572eaaa50febea3b2dd&chksm=cf26c5fb8d916d6eff44e48cf17bf2b9b286a5f2bd87e6ce03e0527ec0d8b471d9a684bf7a72&scene=27"
+  },
+  {
+   "id": 82,
+   "title": "2024年1-11月份规模以上工业运行情况 ",
+   "url": "https://tjj.ln.gov.cn/tjj/tjsj/sjfb/sqzx/2024122014020129299/index.shtml"
+  },
+  {
+   "id": 83,
+   "title": "2024年1-10月份规模以上工业运行情况 ",
+   "url": "https://tjj.ln.gov.cn/tjj/tjsj/sjfb/sqzx/2024112012532385638/index.shtml"
+  },
+  {
+   "id": 84,
+   "title": "2024年1-8月份规模以上工业运行情况 ",
+   "url": "https://tjj.ln.gov.cn/tjj/tjsj/sjfb/sqzx/2024092013515275691/index.shtml"
+  },
+  {
+   "id": 85,
+   "title": "2024年8月份规模以上工业增加值增长4.5% ",
+   "url": "https://www.gov.cn/lianbo/bumen/202409/content_6974526.htm"
+  },
+  {
+   "id": 86,
+   "title": "2024年1-9月份规模以上工业运行情况 ",
+   "url": "https://tjj.ln.gov.cn/tjj/tjsj/sjfb/sqzx/2024102000425779791/index.shtml"
+  },
+  {
+   "id": 87,
+   "title": "2024年3月份全国规模以上工业增加值增长4.5%",
+   "url": "https://gxt.ln.gov.cn/gxt/zhzx/xyxx/2024041616400613577/index.shtml"
+  },
+  {
+   "id": 88,
+   "title": "2024年7月份规模以上工业增加值增长5.1%",
+   "url": "https://www.stats.gov.cn/zwfwck/sjfb/202408/t20240815_1955984.html"
+  },
+  {
+   "id": 89,
+   "title": "2024年8月份规模以上工业增加值增长4.5%",
+   "url": "https://www.stats.gov.cn/zwfwck/sjfb/202409/t20240914_1956486.html"
+  },
+  {
+   "id": 90,
+   "title": "关于印发《于都县制造业重点产业链现代化建设“5313”行动计划(2024—2026年)》的通知",
+   "url": "https://www.yudu.gov.cn/ydxxxgk/c108335/202407/31d73262c8b64a0ab6968aaa1874efec.shtml"
+  },
+  {
+   "id": 91,
+   "title": "辽宁省发展和改革委员会",
+   "url": "https://baike.baidu.com/item/辽宁省发展和改革委员会/10032031"
+  },
+  {
+   "id": 92,
+   "title": "河南纺织服装产业链全景图谱",
+   "url": "https://mp.weixin.qq.com/s?__biz=MjM5NTYxMzA3NA==&mid=2656354465&idx=1&sn=4003eb80fbff7665a97311325c4b1aa3&chksm=bc75874fdb3904b1dc53bb9dc79cc7bc97f211ddf6d5b19b0c96c297014ddde943165e0540ca&scene=27"
+  },
+  {
+   "id": 93,
+   "title": "2026-2031年中国服装零售行业市场前瞻与投资战略规划分析报告",
+   "url": "https://bg.qianzhan.com/report/detail/3657e84df1db4e17.html"
+  },
+  {
+   "id": 94,
+   "title": "《辽宁省人工智能OPC培育发展实施方案(2026-2028年)》新闻发布会 ",
+   "url": "http://www.scio.gov.cn/xwfb/dfxwfb/gssfbh/ln_13831/202605/t20260514_989145.html"
+  },
+  {
+   "id": 95,
+   "title": "新疆“十大产业集群”",
+   "url": "https://baike.baidu.com/item/新疆“十大产业集群”/66711985"
+  },
+  {
+   "id": 96,
+   "title": "贵州纺织服装产业",
+   "url": "https://baike.baidu.com/item/贵州纺织服装产业/69397761"
+  },
+  {
+   "id": 97,
+   "title": "2026年商丘市政府工作报告(全文)",
+   "url": "https://mp.weixin.qq.com/s?__biz=Mzg5MDEwMDMzMQ==&mid=2247522195&idx=1&sn=b9c2243d28406ac56ecad848a4cd3436&scene=27&chksm=451a2304a327669734db19efd3133e6b290720e468297a6542b5a6a5643abb442dc0ec1cc3fc&scene=27"
+  }
+ ],
+ "scale": [],
+ "segments": [
+  {
+   "name": "泳装",
+   "desc": "兴城泳装已形成国家级特色产业集群，是辽宁纺织产业的重要代表之一。",
+   "src": [
+    72
+   ]
+  },
+  {
+   "name": "定制西装",
+   "desc": "在高端服装制造领域具备独特优势，构成辽宁纺织差异化竞争力的重要部分。",
+   "src": [
+    72
+   ]
+  },
+  {
+   "name": "产业用纺织品",
+   "desc": "作为高附加值、技术密集型方向，被列为关键发展领域，支撑新能源、大健康等跨界融合应用。",
+   "src": [
+    72
+   ]
+  },
+  {
+   "name": "西柳服装",
+   "desc": "以休闲服饰、外贸加工为特色的国家级产业集群。",
+   "src": [
+    72
+   ]
+  },
+  {
+   "name": "小北河袜业",
+   "desc": "全国重要袜业生产基地，具有完整产业链和规模效应。",
+   "src": [
+    72
+   ]
+  }
+ ],
+ "cities": [],
+ "listed": [],
+ "financing": [],
+ "policies": [
+  {
+   "level": "部委级",
+   "name": "《纺织工业提质升级实施方案（2023—2025年）》",
+   "issuer": "工业和信息化部等四部委",
+   "year": "",
+   "gist": "明确提出到2025年实现“70%规模以上纺织企业基本实现数字化网络化”“形成20家全球知名的企业品牌和区域品牌”等目标。",
+   "src": [
+    24
+   ]
+  },
+  {
+   "level": "部委级",
+   "name": "《关于产业用纺织品行业高质量发展的指导意见》",
+   "issuer": "工业和信息化部、国家发展改革委",
+   "year": "2022",
+   "gist": "重点目标包括规模以上企业工业增加值年均增长约6%，非织造布企业关键工序数控化率达70%等。",
+   "src": [
+    33
+   ]
+  },
+  {
+   "level": "部委级",
+   "name": "《推动大规模设备更新和消费品以旧换新行动方案》",
+   "issuer": "国务院",
+   "year": "2024",
+   "gist": "作为国家层面政策背景，支持纺织服装业等设备更新和消费品以旧换新。",
+   "src": [
+    35
+   ]
+  },
+  {
+   "level": "部委级",
+   "name": "《关于加快构建废弃物循环利用体系的意见》",
+   "issuer": "国务院",
+   "year": "2024",
+   "gist": "作为国家层面政策背景，支持废旧纺织品循环利用体系建设。",
+   "src": [
+    35
+   ]
+  },
+  {
+   "level": "部委级",
+   "name": "《再生材料应用推广行动方案》",
+   "issuer": "国家发展改革委、工信部、财政部、生态环境部、商务部、海关总署、市场监管总局",
+   "year": "2025",
+   "gist": "将再生纺织纤维纳入重点推广品类，明确提出在纺织服装等领域稳步提升再生材料替代使用比例。",
+   "src": [
+    37
+   ]
+  },
+  {
+   "level": "部委级",
+   "name": "《关于增强消费品供需适配性进一步促进消费的实施方案》",
+   "issuer": "工信部、国家发展改革委、商务部、文旅部、人民银行、市场监管总局",
+   "year": "2025",
+   "gist": "将现代纺织列为重点行业，支持建设中试验证平台，实施柔性制造改造计划。",
+   "src": [
+    38
+   ]
+  },
+  {
+   "level": "部委级",
+   "name": "《贯彻实施〈国家标准化发展纲要〉行动计划（2024—2025年）》",
+   "issuer": "市场监管总局牵头，工信部、发改委等17部门",
+   "year": "2024",
+   "gist": "在高性能纤维、绿色印染、智能纺织装备、废旧纺织品分级分类回收等方向加快研制关键技术标准。",
+   "src": [
+    36
+   ]
+  },
+  {
+   "level": "部委级",
+   "name": "《关于加强人力资源服务助力制造业高质量发展的意见》",
+   "issuer": "人社部、国家发改委、工信部、商务部、全国工商联",
+   "year": "2024",
+   "gist": "支持纺织产业集群地建设人力资源服务公共平台，鼓励培育专注纺织新材料等领域的专精特新人力资源服务机构。",
+   "src": [
+    39
+   ]
+  }
+ ],
+ "jobs": [
+  {
+   "title": "服装设计师",
+   "city": "大连",
+   "salary": "9–12k",
+   "skills": [
+    "服装设计能力",
+    "作品集",
+    "熟悉流行趋势",
+    "CAD"
+   ],
+   "src": [
+    43
+   ]
+  },
+  {
+   "title": "服装设计师",
+   "city": "沈阳",
+   "salary": "5–10k",
+   "skills": [],
+   "src": [
+    43
+   ]
+  },
+  {
+   "title": "服装设计师",
+   "city": "大连",
+   "salary": "7–9k",
+   "skills": [],
+   "src": [
+    43
+   ]
+  },
+  {
+   "title": "玩偶设计师",
+   "city": "",
+   "salary": "4–8k",
+   "skills": [],
+   "src": [
+    43
+   ]
+  },
+  {
+   "title": "打版师傅",
+   "city": "丹东",
+   "salary": "5000–6000元·13薪",
+   "skills": [
+    "服装CAD",
+    "工艺理解",
+    "样衣实操能力"
+   ],
+   "src": [
+    45
+   ]
+  },
+  {
+   "title": "服装采购专员",
+   "city": "",
+   "salary": "3–6k",
+   "skills": [
+    "面辅料价格谈判",
+    "系统录入",
+    "采购周期跟踪"
+   ],
+   "src": [
+    48
+   ]
+  },
+  {
+   "title": "服装业务跟单员",
+   "city": "",
+   "salary": "4.5–6k",
+   "skills": [
+    "沟通协调",
+    "订单执行",
+    "跨部门协作"
+   ],
+   "src": [
+    49
+   ]
+  },
+  {
+   "title": "电商运营",
+   "city": "葫芦岛",
+   "salary": "3–6k",
+   "skills": [],
+   "src": [
+    46
+   ]
+  },
+  {
+   "title": "短视频剪辑",
+   "city": "葫芦岛",
+   "salary": "4–6k",
+   "skills": [
+    "Premiere",
+    "剪映"
+   ],
+   "src": [
+    46
+   ]
+  },
+  {
+   "title": "电商主播",
+   "city": "葫芦岛",
+   "salary": "4–10k",
+   "skills": [
+    "直播话术",
+    "用户互动能力"
+   ],
+   "src": [
+    46
+   ]
+  },
+  {
+   "title": "机台工",
+   "city": "",
+   "salary": "8000–12000元",
+   "skills": [
+    "实操经验"
+   ],
+   "src": [
+    46
+   ]
+  },
+  {
+   "title": "服装厂机修",
+   "city": "",
+   "salary": "6000–7000元·13薪",
+   "skills": [
+    "设备维护能力",
+    "PLC基础",
+    "安全操作规范",
+    "电工证"
+   ],
+   "src": [
+    45
+   ]
+  }
+ ],
+ "demand": [],
+ "aliases": [
+  "纺织",
+  "服装",
+  "服饰",
+  "时尚"
+ ]
+}

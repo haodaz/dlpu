@@ -1,0 +1,784 @@
+{
+ "industry": "新材料",
+ "province": "辽宁",
+ "collectedAt": "2026-10-16T09:54:22.962Z",
+ "origin": "base",
+ "sources": [
+  {
+   "id": 1,
+   "title": "2025年我国新材料产业实现规模与创新双跃升",
+   "url": "http://finance.sina.com.cn/jjxw/2025-12-26/doc-inheautr2821200.shtml"
+  },
+  {
+   "id": 2,
+   "title": "辽宁沈阳:新材料产业助推高质量发展 ",
+   "url": "https://news.gmw.cn/2025-10/23/content_38360792.htm"
+  },
+  {
+   "id": 3,
+   "title": "智启“十五五”材创新征程 聚力打造东北新材料产业创新高地",
+   "url": "https://www.dldj.gov.cn/art/2025/12/10/art_11389_2489241.html"
+  },
+  {
+   "id": 4,
+   "title": "政府工作报告",
+   "url": "https://www.lndbss.gov.cn/diaobingshan/zfxxgk/fdzdgknr/qtfdxx/zfgzbg/2026020213503545581/index.html"
+  },
+  {
+   "id": 5,
+   "title": "辽宁省人民政府",
+   "url": "https://www.ln.gov.cn/web/ywdt/jrln/wzxx2018/2025060109063987331/index.shtml"
+  },
+  {
+   "id": 6,
+   "title": "在新时代东北全面振兴中勇于争先",
+   "url": "https://www.lnswdx.cn/lnswdx/mtsd/2025060309404664247/index.shtml"
+  },
+  {
+   "id": 7,
+   "title": "新华社旗下四大财经媒体看两会·新兴产业两会新观察丨新材料:赋能高端制造的“幕后英雄”",
+   "url": "http://www.xinhuanet.com/fortune/20250307/b0a840e0d64647cc928d1150fd0edfbe/c.html"
+  },
+  {
+   "id": 8,
+   "title": "“牢记嘱托 感恩奋进 坚决打好 打赢三年行动决胜之年决胜之战”系列新闻发布会(第八场)",
+   "url": "https://www.hld.gov.cn/xwdt/xwfbh/202507/t20250716_1212320.html"
+  },
+  {
+   "id": 9,
+   "title": "2025古塔区人民政府工作报告",
+   "url": "http://www.jzgtq.gov.cn/info/1170/12341.htm"
+  },
+  {
+   "id": 10,
+   "title": "2026年东洲区政府工作报告",
+   "url": "https://www.fushun.gov.cn/zwgk/002009/002009002/20260116/e997d1fc-3b11-46ca-9436-fd3337291de1.html"
+  },
+  {
+   "id": 11,
+   "title": "辽宁金中新材料产业集团有限公司",
+   "url": "https://baike.baidu.com/item/辽宁金中新材料产业集团有限公司/62820436"
+  },
+  {
+   "id": 12,
+   "title": "2025年政府工作报告",
+   "url": "http://www.jzth.gov.cn/info/1191/11711.htm"
+  },
+  {
+   "id": 13,
+   "title": "第五届国际新材料产业大会",
+   "url": "https://baike.baidu.com/item/第五届国际新材料产业大会/66991193"
+  },
+  {
+   "id": 14,
+   "title": "2025年政府工作报告",
+   "url": "http://www.laobian.gov.cn/govxxgk/lbq/2025-01-22/223f3cc1-640c-4b7b-99f2-eeac14c4b490.html"
+  },
+  {
+   "id": 15,
+   "title": "2025年辽宁创新创业大赛",
+   "url": "https://baike.baidu.com/item/2025年辽宁创新创业大赛/66317625"
+  },
+  {
+   "id": 16,
+   "title": "目录",
+   "url": "https://www.rongzhou.gov.cn/rxrmzf/c00199/2104827301986254848/ejFz0J0K.docx"
+  },
+  {
+   "id": 17,
+   "title": "决算公开",
+   "url": "http://www.zqx.gov.cn/info/1941/100503.htm"
+  },
+  {
+   "id": 18,
+   "title": "重庆市荣昌区招商投资促进局 2025年度部门决算公开",
+   "url": "https://www.rongchang.gov.cn/bm/qzstzj/zwgk_70831/fdzdgknr_70834/ysjs/jsgk/202610/t20261014_16231401.html"
+  },
+  {
+   "id": 19,
+   "title": "辽宁优选新能源科技有限公司",
+   "url": "https://baike.baidu.com/item/辽宁优选新能源科技有限公司/52686467"
+  },
+  {
+   "id": 20,
+   "title": "2025年大连市政府工作报告",
+   "url": "https://baike.baidu.com/item/2025年大连市政府工作报告/66757618"
+  },
+  {
+   "id": 21,
+   "title": "新材料产业",
+   "url": "https://baike.baidu.com/item/新材料产业/68092248"
+  },
+  {
+   "id": 22,
+   "title": "“十五五”新材料产业发展规划",
+   "url": "http://finance.sina.com.cn/roll/2025-11-15/doc-infxmzea3582515.shtml"
+  },
+  {
+   "id": 23,
+   "title": "新材料产业七大方向全面梳理 ",
+   "url": "https://business.sohu.com/a/920525434_121124362"
+  },
+  {
+   "id": 24,
+   "title": "我国化工新材料行业国际化发展方向及路径研究",
+   "url": "http://www.sinopecnews.com.cn/xnews/content/2026-08/28/content_7155177.html"
+  },
+  {
+   "id": 25,
+   "title": "营工信发〔2024〕1号 :关于印发营口市精细化工产业规划的通知",
+   "url": "https://www.yingkou.gov.cn/govxxgk/ykszf/2024-04-07/d1b0f527-adf4-4d7a-bdcb-12e543ca4ae4.html"
+  },
+  {
+   "id": 26,
+   "title": "市工业和信息化局关于征求《锦州市推动工业经济高质量发展的意见》(征求意见稿)意见的公告 ",
+   "url": "http://www.jz.gov.cn/myzjcontent.jsp?wbtreeid=1001&wbopinioncollectionid=1794"
+  },
+  {
+   "id": 27,
+   "title": "市政协十三届四次会议《关于大力发展特色精细化工产业加快推进我市新型工业化进程的建议》(21号)答复 ",
+   "url": "https://gxj.fuxin.gov.cn/mob/newsdetail.thtml?id=987533"
+  },
+  {
+   "id": 28,
+   "title": "辽宁省人民政府办公厅转发 ",
+   "url": "https://www.ln.gov.cn/web/zwgkx/lnsrmzfgb/2024n/qk/2024n_djq/szfbgtwj/2024042609511859915/"
+  },
+  {
+   "id": 29,
+   "title": "2025年中国新材料行业产值、重点企业分析及行业发展趋势",
+   "url": "http://finance.sina.com.cn/roll/2025-10-08/doc-infteazp0520578.shtml"
+  },
+  {
+   "id": 30,
+   "title": "对市十七届人大四次会议《关于促进锦州市有色金属材料产业发展的建议》第21号代表建议、批评和意见的答复",
+   "url": "http://gxj.jz.gov.cn/info/1072/3711.htm"
+  },
+  {
+   "id": 31,
+   "title": "这里盛开“五朵金花”",
+   "url": "https://finance.sina.cn/2026-10-16/detail-inivkfvt7828005.d.html"
+  },
+  {
+   "id": 32,
+   "title": "辽阳芳烃及化纤原料基地",
+   "url": "https://baike.baidu.com/item/辽阳芳烃及化纤原料基地/2765764"
+  },
+  {
+   "id": 33,
+   "title": "市十七届人大五次会议 关于积极推进沈阳市新材料产业高质量发展的建议(第0546号)的答复 ",
+   "url": "https://kjj.shenyang.gov.cn/zwgk/fdzdgknr/jyta/rddbjy/202605/t20260522_5030024.html"
+  },
+  {
+   "id": 34,
+   "title": "营口“建发盛海”百亿项目炼成记",
+   "url": "https://finance.sina.cn/2026-10-16/detail-inivksmm7006874.d.html"
+  },
+  {
+   "id": 35,
+   "title": "百亿项目炼成记",
+   "url": "http://finance.sina.cn/2026-10-16/detail-inivkfvz8220334.d.html"
+  },
+  {
+   "id": 36,
+   "title": "抚顺高新技术产业开发区",
+   "url": "https://baike.baidu.com/item/抚顺高新技术产业开发区/9128958"
+  },
+  {
+   "id": 37,
+   "title": "2026年全市工业和信息化暨产业园区改革发展工作会议召开 ",
+   "url": "https://www.sohu.com/a/981277692_121106875"
+  },
+  {
+   "id": 38,
+   "title": "绿天使集团每周聚焦 | 产业精粹(2026.03.02-03.08) ",
+   "url": "https://it.sohu.com/a/994114262_121123904"
+  },
+  {
+   "id": 39,
+   "title": "对省第十四届人大五次会议《关于以科技创新激活绿色产业动能,构建辽宁",
+   "url": "https://gxt.ln.gov.cn/gxt/zfxxgk/fdzdgknr/jyta/srddbjy/srdssjwchy2026n/2026061512375761506/index.shtml"
+  },
+  {
+   "id": 40,
+   "title": "对省十四届人大三次会议《关于推动法库县陶瓷产业低碳转型,建设新材料(化工)园区的建议》(第1431105号)的答复",
+   "url": "https://gxt.ln.gov.cn/gxt/zfxxgk/fdzdgknr/jyta/srddbjy/srdssjschy2025n/2025082814400529321/"
+  },
+  {
+   "id": 41,
+   "title": "锦州市召开“实施全面振兴新突破三年行动打好打赢决胜之年决胜之战”主题系列新闻发布会第五场",
+   "url": "http://www.jz.gov.cn/info/1059/122306.htm"
+  },
+  {
+   "id": 42,
+   "title": "辽宁省人民政府办公厅关于印发《辽宁省 促进人工智能创新发展实施方案》的通知 ",
+   "url": "https://www.ln.gov.cn/web/zwgkx/lnsrmzfgb/2025n/qk/2025n_dssq96/szfbgtwj/2025071516193997364/index.shtml"
+  },
+  {
+   "id": 43,
+   "title": "省政府办公厅文件",
+   "url": "https://www.ln.gov.cn/web/zwgkx/zfxxgk1/zc/xzgfxwj/szf/szfbgtwj/2025061810114850887/index.shtml"
+  },
+  {
+   "id": 44,
+   "title": "“牢记嘱托 感恩奋进 坚决打好 打赢三年行动决胜之年决胜之战”系列新闻发布会(第一场)",
+   "url": "https://www.hld.gov.cn/xwdt/xwfbh/202507/t20250702_1211114.html"
+  },
+  {
+   "id": 45,
+   "title": "阜新市人民政府关于印发2025年辽宁省《政府工作报告》重点工作分工方案和阜新市《政府工作报告》重点工作分工方案的通知 ",
+   "url": "https://www.fuxin.gov.cn/mob/newsdetail.thtml?id=974778"
+  },
+  {
+   "id": 46,
+   "title": "工信部等十部门联合印发《铝产业高质量发展实施方案(2025—2027年)》",
+   "url": "https://news.metal.net.cn/content-173-7850347-1.html"
+  },
+  {
+   "id": 47,
+   "title": "皇冠新材(001381)新股概览,10月19日开始网上申购 ",
+   "url": "https://m.sohu.com/a/1088526352_115377"
+  },
+  {
+   "id": 48,
+   "title": "> 海阳科技个股数据 ",
+   "url": "https://data.eastmoney.com/stockdata/603382.html"
+  },
+  {
+   "id": 49,
+   "title": "> 齐翔腾达个股数据 ",
+   "url": "https://data.eastmoney.com/stockdata/002408.html"
+  },
+  {
+   "id": 50,
+   "title": "> 飞凯材料个股数据 ",
+   "url": "https://data.eastmoney.com/stockdata/300398.html"
+  },
+  {
+   "id": 51,
+   "title": "> 万润股份个股数据 ",
+   "url": "https://data.eastmoney.com/stockdata/002643.html"
+  },
+  {
+   "id": 52,
+   "title": "> 锡业股份个股数据 ",
+   "url": "https://data.eastmoney.com/stockdata/000960.html"
+  },
+  {
+   "id": 53,
+   "title": "> 中国宝安个股数据 ",
+   "url": "https://data.eastmoney.com/stockdata/000009.html"
+  },
+  {
+   "id": 54,
+   "title": "百川股份涨1.42%,成交额1.25亿元,近5日主力净流入-2700.92万 ",
+   "url": "https://www.sohu.com/a/1088595193_122014422"
+  },
+  {
+   "id": 55,
+   "title": "> 中欣氟材个股数据 ",
+   "url": "https://data.eastmoney.com/stockdata/002915.html"
+  },
+  {
+   "id": 56,
+   "title": "前海开源新经济灵活配置混合型证券投资基金",
+   "url": "https://baike.baidu.com/item/前海开源新经济灵活配置混合型证券投资基金/19702246"
+  },
+  {
+   "id": 57,
+   "title": "政策资讯|工信部举行“标准提升引领原材料工业优化升级”新闻发布会 ",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzIzNzgwNDQwNg==&mid=2247514632&idx=2&sn=e6f08f899c23067ee65d98c1e045baaa&chksm=e9a4875a6ffb090eb1e718c78f1d4f4038109ff70d7efd9ca917bfb361b242a20be7ce42ea34&scene=27"
+  },
+  {
+   "id": 58,
+   "title": "贵州省工业和信息化厅等九部门关于印发贵州省推动建材行业稳增长促转型增效益的实施意见的通知",
+   "url": "http://www.trs.gov.cn/zwgk/zdlyxxgk/gyfz/202410/t20241009_85794289.html"
+  },
+  {
+   "id": 59,
+   "title": "工信部等九部门联合印发《精细化工产业创新发展实施方案(2024—2027年)》",
+   "url": "https://gxj.haibei.gov.cn/xwdt/tzgg/8993061.html"
+  },
+  {
+   "id": 60,
+   "title": "工业和信息化部、国家发展改革委、财政部、生态环境部、农业农村部、应急管理部、中国科学院、中国工程院、国家能源局等九部门关于印发《精细化工产业创新发展 实施方案(2024—2027年)》的通知",
+   "url": "https://fdi.swt.fujian.gov.cn/show-21612.html"
+  },
+  {
+   "id": 61,
+   "title": "先进制造2025|化工新材料产业发展未来可期——2024中国化工新材料产业发展研究(先进制造观察第3期)",
+   "url": "https://finance.sina.cn/2025-03-06/detail-inensrzp6927137.d.html"
+  },
+  {
+   "id": 62,
+   "title": "国新办就2025年上半年工业和信息化发展情况举行新闻发布会",
+   "url": "https://scca.miit.gov.cn/xwdt/xydt/art/2025/art_bb34f77782404d6aa25a3e6d7b7c307a.html"
+  },
+  {
+   "id": 63,
+   "title": "工业和信息化部节能与综合利用司负责同志解读",
+   "url": "http://gdj.gansu.gov.cn/gdj/c109238/202511/174235364.shtml"
+  },
+  {
+   "id": 64,
+   "title": "2026年辽阳市重点产业(行业)专场网络招聘会(20261013) ",
+   "url": "https://news.sohu.com/a/1087085874_121106822"
+  },
+  {
+   "id": 65,
+   "title": "机械工程师招聘工资_辽宁科之镁新材料研究2026年机械工程师工资待遇-BOSS直聘",
+   "url": "https://www.zhipin.com/job_detail/1e02eec23b9478961HF53tq8EFJS.html"
+  },
+  {
+   "id": 66,
+   "title": "沈阳 化工工艺工程师 招聘(工资待遇要求) ",
+   "url": "https://m.jobui.com/company/24424531/salary/j/huagonggongyigongchengshi/"
+  },
+  {
+   "id": 67,
+   "title": "【就业岗位在身边】聚力辽超·职引铁岭——辽超嵌入式招聘会 ",
+   "url": "https://www.sohu.com/a/1087121413_121106822"
+  },
+  {
+   "id": 68,
+   "title": "沈阳 化工工艺 招聘(工资待遇要求) 新职位提醒",
+   "url": "https://www.jobui.com/company/24424531/salary/j/huagonggongyi/"
+  },
+  {
+   "id": 69,
+   "title": "“就”在身边丨井陉矿区2026年金秋招聘专项行动线上招聘(第1期)",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzAxMTA0NTQ5NA==&mid=2651030241&idx=6&sn=19adc320cc063fa9d5357386dde4fd1a&chksm=81b62b61b5627639375a5efe911b778933f6937ba2eb36ce811017f481a170dda2efd3ed0683&scene=27"
+  },
+  {
+   "id": 70,
+   "title": "2026年仪征市汽车及零部件、大数据、新材料产业专场招聘会岗位一览表",
+   "url": "https://www.yizheng.gov.cn/xxfb/zpzl/art/2026/art_ca2d8e71109146adbb120f7f8aac19f3.html"
+  },
+  {
+   "id": 71,
+   "title": "铁岭市“心系辽宁 情注家乡”离校未就业暨寒假返乡高校毕业生网络招聘会岗位信息 ",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzA4MjQzMDA5Nw==&mid=2652251945&idx=4&sn=0a4be2150f4552f230c14f6d8b08fc58&chksm=846756d7b310dfc14eae6ee6f55a1a78629d64757e368045c00579bc59bb6abce71daefaa81d&scene=27"
+  },
+  {
+   "id": 72,
+   "title": "仪征市2026年10月13日网络招聘会岗位信息一览表",
+   "url": "https://yizheng.yangzhou.gov.cn/xxfb/zpzl/art/2026/art_489910c89a7e4c8b84f1621d597b11db.html"
+  },
+  {
+   "id": 73,
+   "title": "2026年海阳市重点产业链人才岗位需求目录——新材料类(第五期)",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzAwMDUyODE1OA==&mid=2247730866&idx=1&sn=262686196d7c23238d0fe66648ee80e4&chksm=9b8972237ecdd0b07607487af3704005fd63d300daa89f5a7f9a77731b13cfc864d19eeda1f1&scene=27"
+  },
+  {
+   "id": 74,
+   "title": "早安,辽宁!丨2026东北亚(沈阳)人才交流大会开幕在即,2600余家单位将携5.6万个岗位来沈揽才 ",
+   "url": "https://www.sohu.com/a/1087547763_121106822"
+  },
+  {
+   "id": 75,
+   "title": "辽宁沈阳发布产业急需紧缺人才需求目录",
+   "url": "https://www.hljbys.org.cn/school/newsView/aid/161254/tag/xwzx/mark/qqhru"
+  },
+  {
+   "id": 76,
+   "title": "行业人才需求数据表",
+   "url": "https://www.sgpjbg.com/searchtag/26697011.html"
+  },
+  {
+   "id": 77,
+   "title": "急,“平均月薪20804元”,这类人才紧缺",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzIwOTI0NzkzOA==&mid=2247662614&idx=5&sn=34584fdfdc1893d9d4ee0bca577e10ea&chksm=96d17bf9667174c4769e14d500db3f55247ac750864b166104758d267fb183e491e2e499bff0&scene=27"
+  },
+  {
+   "id": 78,
+   "title": "急,“平均月薪20804元”,这类人才紧缺",
+   "url": "http://finance.sina.com.cn/wm/2026-04-23/doc-inhvnhre8737077.shtml"
+  },
+  {
+   "id": 79,
+   "title": "急!“平均月薪20804元”,这类人才紧缺",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzkxNzMwMzA2NQ==&mid=2247789551&idx=1&sn=6bd400bba080c920259c9f4de674e56b&chksm=c055a44c5ce68d4df90a8a20b2a3ff2750af81f6cb34b816d40441eda77a4dbed82dd0b30e47&scene=27"
+  },
+  {
+   "id": 80,
+   "title": "急!“平均月薪20804元”,这类人才紧缺",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzI4MjE3MDE2MA==&mid=2651626203&idx=5&sn=3e5e504bd533d83a4d2d00493cdae5c8&chksm=f179a49bd4c7ad4af62de5321c5dd2ca0d47d6fcca712bc1a1bf7edfda7b2f7308c28a60777c&scene=27"
+  },
+  {
+   "id": 81,
+   "title": "急!平均月薪2万多元!这类人才紧缺",
+   "url": "https://mp.weixin.qq.com/s?__biz=MjM5Nzc3MTMyMA==&mid=2649854290&idx=2&sn=7256b873ab32d8fb44eb4036aa311eaa&chksm=bff24327a8db6dca1276bea6c9220cd00986b388ff8fb4bf27f04d5fa39c658ff45b035414a7&scene=27"
+  },
+  {
+   "id": 82,
+   "title": "4-5月哪些行业会补录?提前关注这些信号抢先机",
+   "url": "https://cet4-6.xdf.cn/202603/15143928.html"
+  },
+  {
+   "id": 83,
+   "title": "本钢板材:2024年上半年亏损15.51亿元",
+   "url": "http://finance.sina.com.cn/roll/2024-08-29/doc-incmhmen4429397.shtml"
+  },
+  {
+   "id": 84,
+   "title": "本钢板材:2024年上半年亏损15.51亿元",
+   "url": "https://finance.eastmoney.com/a/202408293169502529.html"
+  },
+  {
+   "id": 85,
+   "title": "本钢板材:2024年前三季度亏损32.06亿元",
+   "url": "https://finance.eastmoney.com/a/202410283219837460.html"
+  },
+  {
+   "id": 86,
+   "title": "本钢板材:2024年前三季度亏损32.06亿元",
+   "url": "http://finance.sina.com.cn/stock/relnews/cn/2024-10-28/doc-incucfhu2722492.shtml"
+  },
+  {
+   "id": 87,
+   "title": "本钢板材:2024年上半年亏损15.51亿元 ",
+   "url": "https://m.sohu.com/sa/804584382_120988533"
+  },
+  {
+   "id": 88,
+   "title": "本钢板材:2023年亏损17.43亿元",
+   "url": "http://finance.sina.com.cn/roll/2024-04-28/doc-inatkzst0516740.shtml"
+  },
+  {
+   "id": 89,
+   "title": "本钢板材:2024年上半年亏损15.51亿元 ",
+   "url": "https://www.sohu.com/a/804584382_120988533"
+  },
+  {
+   "id": 90,
+   "title": "本钢板材:2023年亏损17.43亿元",
+   "url": "https://zzcx.cs.com.cn/app/zzb/detail?id=fcc616e4eae14ee7aae2021d3ef3768a"
+  },
+  {
+   "id": 91,
+   "title": "本钢板材股份有限公司 九届董事会第三十一次会议决议公告",
+   "url": "http://finance.sina.com.cn/jjxw/2024-12-24/doc-ineapfhx1937401.shtml"
+  },
+  {
+   "id": 92,
+   "title": "鹰眼预警:本钢板材营业收入下降",
+   "url": "https://finance.sina.cn/2024-08-29/detail-incmhewv9899423.d.html"
+  }
+ ],
+ "scale": [
+  {
+   "metric": "工业总产值",
+   "value": "260亿元",
+   "unit": "亿元",
+   "year": "2024",
+   "scope": "锦州新材料集群",
+   "src": [
+    21
+   ]
+  },
+  {
+   "metric": "产值月均增速",
+   "value": "30%以上",
+   "unit": "%",
+   "year": "2025",
+   "scope": "沈阳苏家屯区钛金属公司",
+   "src": [
+    2
+   ]
+  },
+  {
+   "metric": "总产能",
+   "value": "20亿元",
+   "unit": "亿元",
+   "year": "2025",
+   "scope": "沈阳铁西区汉京半导体新厂区",
+   "src": [
+    2
+   ]
+  }
+ ],
+ "segments": [
+  {
+   "name": "先进有色金属材料",
+   "desc": "以钛、钼、铬、锆、钒、锰等为主导，覆盖海绵钛、钛铁、钼铁、金属铬、核级锆等。",
+   "src": [
+    21,
+    30
+   ]
+  },
+  {
+   "name": "高端合金与特种合金",
+   "desc": "太和区特种合金产业集群已入选工信部2024年度国家级中小企业特色产业集群。",
+   "src": [
+    21
+   ]
+  },
+  {
+   "name": "半导体关键材料",
+   "desc": "包括半导体级高纯金属（如高纯钼、高纯铬）、溅射靶材、光刻胶用含氟新材料等。",
+   "src": [
+    23,
+    27
+   ]
+  },
+  {
+   "name": "化工新材料",
+   "desc": "涵盖工程塑料（如聚酰亚胺膜、POE弹性体）、功能性膜材料、电子化学品、生物基与可降解材料等。",
+   "src": [
+    24
+   ]
+  },
+  {
+   "name": "石英及光电功能材料",
+   "desc": "发展半导体级石英坩埚、光学石英器件等，建设石英新材料产业园。",
+   "src": [
+    21
+   ]
+  },
+  {
+   "name": "轻量化与前沿功能材料",
+   "desc": "包括碳纤维复合材料、聚酰亚胺（PI）薄膜、碳化硅纤维（SiC）、高温合金单晶叶片等。",
+   "src": [
+    23
+   ]
+  }
+ ],
+ "cities": [
+  {
+   "city": "营口市",
+   "focus": "构建涵盖采选、冶炼、精深加工、稀贵金属回收的全链条临港有色金属新材料高地。",
+   "companies": [
+    "营口建发盛海有色科化有限公司",
+    "象屿铝业",
+    "石钢京诚装备技术公司"
+   ],
+   "src": [
+    31,
+    34,
+    35
+   ]
+  },
+  {
+   "city": "锦州市",
+   "focus": "全国产能占比突出的钛/钼/铬/锆/钒特种合金、高纯金属、半导体材料基地。",
+   "companies": [
+    "中信锦州金属",
+    "宝钛华神钛业",
+    "新华龙钼业",
+    "辽宁宏拓",
+    "锦州特冶"
+   ],
+   "src": [
+    21
+   ]
+  },
+  {
+   "city": "辽阳市",
+   "focus": "依托芳烃基地向化工新材料延伸，布局聚酰亚胺材料等高端化工新材料。",
+   "companies": [
+    "奥克集团",
+    "德国赢创",
+    "中化集团",
+    "科隆公司"
+   ],
+   "src": [
+    21,
+    32
+   ]
+  },
+  {
+   "city": "沈阳市",
+   "focus": "聚焦先进材料、冶金建材、石油化工，拥有苏家屯区金属复合材料产业集群。",
+   "companies": [
+    "攀钢集团沈阳钛金属新材料有限公司",
+    "辽宁汉京半导体材料有限公司"
+   ],
+   "src": [
+    1,
+    2,
+    33
+   ]
+  },
+  {
+   "city": "抚顺市",
+   "focus": "以石化为基础，向精细化学品、化工新材料延伸，形成化工新材料等四大产业集群。",
+   "companies": [
+    "抚顺石化"
+   ],
+   "src": [
+    36
+   ]
+  }
+ ],
+ "listed": [],
+ "financing": [
+  {
+   "company": "海达新材料",
+   "event": "投资项目",
+   "amount": "4亿元",
+   "date": "2025年",
+   "src": [
+    14
+   ]
+  }
+ ],
+ "policies": [
+  {
+   "level": "省级",
+   "name": "《辽宁省促进人工智能创新发展实施方案》",
+   "issuer": "辽宁省",
+   "year": "2025",
+   "gist": "将新材料列为底层赋能要素，提出攻克包含高端新材料在内的100项以上关键技术，强调AI与新材料深度融合。",
+   "src": [
+    42
+   ]
+  },
+  {
+   "level": "部委级",
+   "name": "《铝产业高质量发展实施方案（2025—2027年）》",
+   "issuer": "工信部等十部门",
+   "year": "2025",
+   "gist": "开展高强、高韧、耐腐蚀等铝合金材料制备技术研发及产业化应用，支持建设铝领域制造业创新中心等平台。",
+   "src": [
+    46
+   ]
+  },
+  {
+   "level": "部委级",
+   "name": "《精细化工产业创新发展实施方案（2024—2027年）》",
+   "issuer": "工业和信息化部、国家发展改革委等九部门",
+   "year": "2024",
+   "gist": "将精细化学品和化工新材料统称为“精细化工”，提出到2027年攻克一批关键产品，突破绿色化、安全化、智能化关键技术。",
+   "src": [
+    59
+   ]
+  },
+  {
+   "level": "国家级",
+   "name": "《2024—2025年节能降碳行动方案》",
+   "issuer": "国务院",
+   "year": "2024",
+   "gist": "推动化工新材料在节能材料、储能技术、新能源设备中的应用，强调光伏组件封装材料、新能源汽车用高性能纤维与电池材料等方向。",
+   "src": [
+    61
+   ]
+  },
+  {
+   "level": "部委级",
+   "name": "《标准提升引领原材料工业优化升级行动方案（2025—2027年）》",
+   "issuer": "工业和信息化部联合生态环境部、应急管理部、国家标准化管理委员会等部门",
+   "year": "2024",
+   "gist": "以国家标准提升为抓手，推动包括先进金属材料、无机非金属材料、化工新材料在内的原材料工业整体升级。",
+   "src": [
+    57
+   ]
+  }
+ ],
+ "jobs": [
+  {
+   "title": "化工工艺工程师",
+   "city": "沈阳",
+   "salary": "￥10,000–￥15,000",
+   "skills": [
+    "化工单元操作",
+    "工艺流程设计",
+    "PID图识读",
+    "Aspen Plus"
+   ],
+   "src": [
+    66
+   ]
+  },
+  {
+   "title": "焊接工程师",
+   "city": "辽阳",
+   "salary": "￥4,500元",
+   "skills": [
+    "持有效焊工证",
+    "铝合金TIG/MIG实操"
+   ],
+   "src": [
+    64
+   ]
+  },
+  {
+   "title": "采购主管/计划主管",
+   "city": "铁岭",
+   "salary": "￥7,000–￥8,000",
+   "skills": [
+    "材料/供应链相关本科背景",
+    "制造业物控经验"
+   ],
+   "src": [
+    71
+   ]
+  },
+  {
+   "title": "研发科学家/博士后研究员",
+   "city": "",
+   "salary": "折合月薪约￥12,500–￥16,667",
+   "skills": [
+    "FTIR",
+    "XRD",
+    "DSC",
+    "独立申报省级以上科研项目"
+   ],
+   "src": [
+    72
+   ]
+  },
+  {
+   "title": "机械设计工程师",
+   "city": "",
+   "salary": "￥8,000+",
+   "skills": [
+    "SolidWorks",
+    "CAD",
+    "CAXA",
+    "液压系统",
+    "机架结构及加工装配工艺"
+   ],
+   "src": [
+    69
+   ]
+  }
+ ],
+ "demand": [
+  {
+   "text": "新材料行业职位数在2026年一季度同比增长超三成，增幅与机器人行业并列最明显，位居新质生产力领域前列。",
+   "src": [
+    77
+   ]
+  },
+  {
+   "text": "平均招聘月薪突破10000元，位列新质产业薪酬前三（与机器人、光电子并列）。",
+   "src": [
+    77
+   ]
+  },
+  {
+   "text": "全国层面，制造业重点领域高技能人才缺口约3000万人，缺口率48%。",
+   "src": [
+    76
+   ]
+  },
+  {
+   "text": "沈阳市在《2025年沈阳市产业急需紧缺人才需求目录》中，新材料被列为十大重点产业集群之一，岗位需求专业高度集中于材料类、机械类、电气类等传统工科专业。",
+   "src": [
+    75
+   ]
+  },
+  {
+   "text": "辽宁石化新材料联合实验室的成立将直接催生对高技能研发人才、复合型工艺工程师、新材料应用验证人才的结构性需求。",
+   "src": [
+    74
+   ]
+  }
+ ],
+ "aliases": [
+  "材料",
+  "高分子材料",
+  "先进材料",
+  "功能材料"
+ ]
+}
