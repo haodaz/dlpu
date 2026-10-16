@@ -1,15 +1,19 @@
 'use client';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { usePathname } from 'next/navigation';
-import { CloseOutlined } from '@ant-design/icons';
+import { usePathname, useRouter } from 'next/navigation';
+import { CloseOutlined, CodeOutlined, LeftOutlined, PlayCircleFilled, RedoOutlined, RightOutlined } from '@ant-design/icons';
 import { SPEC_NOTES, LAYER_NAME, type SpecLayer } from './specNotes';
+import { STORY, STORY_ACTS } from './storyline';
+import { useDataImported, useResolvedIssues } from '@/lib/diagnosis-state';
+import type { Role } from '@/components/AppLayout';
 
 /**
  * 产品方案模式 · 按模块讲解(移植自 yida-company 的 SpecMode,源自 zhijipro reference/web/spec.js)
  * 开启后,当前页面上「有说明的模块」各画一个虚线框;点哪个框才展开哪个模块的说明,面板停靠在模块对侧、不遮挡它。
  * 分层:框架(侧栏、顶栏)/ 本页面。
  * 模块 = 页面元素上的 data-spec="id";文案在 specNotes.ts。改设计时同步改那里。
+ * 故事线(storyline.ts):按会议叙事一步步点着讲,每一步切角色 / 跳页面 / 切换有无数据,并高亮这一页要看的模块。
  */
 interface Live {
   id: string;
@@ -41,8 +45,16 @@ const save = (k: string, v: unknown) => {
   }
 };
 
-export default function SpecMode() {
+export default function SpecMode({ role, onRole }: { role: Role; onRole: (r: Role) => void }) {
   const path = usePathname();
+  const router = useRouter();
+  const [imported, setImported] = useDataImported();
+  const { reset: resetIssues } = useResolvedIssues();
+  const [storyIdx, setStoryIdx] = useState<number | null>(null);
+  const [tech, setTech] = useState(false);
+  const scrolledFor = useRef<string | null>(null);
+  const step = storyIdx === null ? null : STORY[storyIdx];
+  const focusId = step?.focus ?? null;
   const [on, setOn] = useState(false);
   const [sel, setSel] = useState<string | null>(null);
   const [layerPick, setLayerPick] = useState<SpecLayer | null>(null);
@@ -84,12 +96,18 @@ export default function SpecMode() {
       out.push({ id, el, rect });
     }
     out.sort((x, y) => y.rect.width * y.rect.height - x.rect.width * x.rect.height); // 大框在下,小框在上
+    // 故事线:要看的模块出现后滚到顶栏下方(底部留给故事线播放条),每步只滚一次
+    if (focusId && scrolledFor.current !== focusId && byId.has(focusId)) {
+      scrolledFor.current = focusId;
+      const top = byId.get(focusId)!.getBoundingClientRect().top + scrollY - 88;
+      scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+    }
     liveRef.current = out;
     setLive(out);
     setAvail(layers);
     const seenNow = load<string[]>(SEEN_KEY, []);
     setFresh([...byId.keys()].filter((id) => !seenNow.includes(id)).length);
-  }, [layerPick]);
+  }, [layerPick, focusId]);
 
   // 开着时持续刷新(页面内容在动),关着时低频计算「新模块」提示
   useEffect(() => {
@@ -108,8 +126,8 @@ export default function SpecMode() {
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setSel(null);
-    setLayerPick(null);
-  }, [path]);
+    setLayerPick(focusId ? SPEC_NOTES[focusId]?.layer ?? null : null);
+  }, [path, focusId]);
   useEffect(() => {
     document.body.classList.toggle('spec-on', on);
   }, [on]);
@@ -119,7 +137,7 @@ export default function SpecMode() {
     if (!on) return;
     const onClick = (e: MouseEvent) => {
       const t = e.target as Element;
-      if (t.closest?.('#spec-panel, #spec-btn, #spec-hint')) return;
+      if (t.closest?.('#spec-panel, #spec-btn, #spec-hint, #spec-story')) return;
       e.preventDefault();
       e.stopPropagation();
       const hit = liveRef.current
@@ -138,6 +156,7 @@ export default function SpecMode() {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         if (sel) setSel(null);
+        else if (storyIdx !== null) setStoryIdx(null);
         else setOn(false);
       }
     };
@@ -147,7 +166,24 @@ export default function SpecMode() {
       document.removeEventListener('click', onClick, true);
       removeEventListener('keydown', onKey);
     };
-  }, [on, sel]);
+  }, [on, sel, storyIdx]);
+
+  // 进入故事线的某一步:切角色 / 切换有无数据 / 跳页面,高亮要看的模块
+  const goStep = (i: number) => {
+    const st = STORY[i];
+    setOn(true);
+    setSel(null);
+    setStoryIdx(i);
+    scrolledFor.current = null;
+    if (st.role !== role) onRole(st.role);
+    if (st.imported !== undefined && st.imported !== imported) setImported(st.imported);
+    if (location.pathname + location.search !== st.path) router.push(st.path);
+  };
+  const resetDemo = () => {
+    if (!confirm('把演示数据恢复到初始状态(未导入数据、整改任务全部待处理),从第 1 步重新开始?')) return;
+    resetIssues();
+    goStep(0);
+  };
 
   const cur = layerPick && avail.includes(layerPick) ? layerPick : avail[0] ?? 'frame';
   const selLive = live.find((r) => r.id === sel);
@@ -193,7 +229,9 @@ export default function SpecMode() {
               return (
                 <div
                   key={r.id}
-                  className={`spec-frame ${r.id === 'sidebar' ? 'side' : ''} ${r.id === sel ? 'sel' : sel ? 'dim' : ''} ${seen.includes(r.id) ? '' : 'new'}`}
+                  className={`spec-frame ${r.id === 'sidebar' ? 'side' : ''} ${
+                    r.id === sel ? 'sel' : r.id === focusId && !sel ? 'sel story' : sel || focusId ? 'dim' : ''
+                  } ${seen.includes(r.id) ? '' : 'new'}`}
                   style={{ left: b.left - 5, top, width: b.width + 10, height: Math.min(b.height + 10, innerHeight - top - 2) }}
                 >
                   <span>
@@ -203,7 +241,7 @@ export default function SpecMode() {
                 </div>
               );
             })}
-            {!sel && (
+            {!sel && storyIdx === null && (
               <div
                 id="spec-hint"
                 className="fixed left-1/2 -translate-x-1/2 bottom-5 z-[2100] rounded-full bg-white/95 shadow-[0_8px_28px_rgba(30,30,90,.18)] border border-[rgba(96,85,245,.16)] px-4 py-2 text-[12.5px] text-slate-600 flex items-center gap-2"
@@ -226,6 +264,83 @@ export default function SpecMode() {
                   ))}
                 </span>
                 有 {live.length} 处说明 · 点虚线框查看 · Esc 退出
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    goStep(0);
+                  }}
+                  className="ml-1 inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#6055f5] text-white font-semibold"
+                >
+                  <PlayCircleFilled /> 故事线演示
+                </button>
+              </div>
+            )}
+            {step && storyIdx !== null && (
+              <div
+                id="spec-story"
+                className="fixed left-1/2 -translate-x-1/2 bottom-4 z-[2150] w-[min(760px,calc(100vw-24px))] rounded-2xl bg-white/95 backdrop-blur border border-[rgba(96,85,245,.18)] shadow-[0_18px_50px_rgba(30,30,90,.22)] px-4 py-3 text-[12.5px]"
+              >
+                <div className="flex items-center gap-2 flex-wrap">
+                  <b className="text-[#6055f5]">故事线</b>
+                  <span className="px-2 py-0.5 rounded-full bg-[#eef2ff] text-[#4f46e5] font-semibold">
+                    {step.act} · 第 {storyIdx + 1} / {STORY.length} 步
+                  </span>
+                  <span className="text-slate-400">{step.role === 'admin' ? '管理员视角' : '教师视角'}</span>
+                  <button onClick={() => setStoryIdx(null)} className="ml-auto w-6 h-6 rounded-full text-slate-400 hover:text-slate-600 hover:bg-slate-100" aria-label="退出故事线">
+                    <CloseOutlined />
+                  </button>
+                </div>
+                {/* 进度:按环节分组,点任意一格直接跳到那一步 */}
+                <div className="flex gap-3 mt-2 flex-wrap">
+                  {STORY_ACTS.map((act) => (
+                    <div key={act} className="flex items-center gap-1" title={act}>
+                      {STORY.map((s, i) =>
+                        s.act === act ? (
+                          <button
+                            key={s.key}
+                            title={s.title}
+                            onClick={() => goStep(i)}
+                            className={`h-1.5 rounded-full transition-all ${i === storyIdx ? 'w-6 bg-[#6055f5]' : i < storyIdx ? 'w-3.5 bg-[#a5a0fb]' : 'w-3.5 bg-[#e5e7f5] hover:bg-[#c7c4fb]'}`}
+                          />
+                        ) : null,
+                      )}
+                    </div>
+                  ))}
+                </div>
+                <h4 className="m-0 mt-2.5 text-[15px] font-bold text-[#1e1b4b]">{step.title}</h4>
+                <p className="m-0 mt-1 text-[13.5px] leading-relaxed text-[#1e1b4b]">{step.cap}</p>
+                {tech && <p className="m-0 mt-1.5 text-[12px] leading-relaxed text-slate-500 bg-[#f5f3ff] rounded-lg px-2.5 py-1.5">{step.tech}</p>}
+                <div className="flex items-center gap-2 mt-2.5 flex-wrap">
+                  <button
+                    disabled={storyIdx === 0}
+                    onClick={() => goStep(storyIdx - 1)}
+                    className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-slate-200 text-slate-600 disabled:opacity-40"
+                  >
+                    <LeftOutlined /> 上一步
+                  </button>
+                  {storyIdx < STORY.length - 1 ? (
+                    <button onClick={() => goStep(storyIdx + 1)} className="inline-flex items-center gap-1 px-3.5 py-1.5 rounded-lg bg-[#6055f5] text-white font-semibold">
+                      下一步:{STORY[storyIdx + 1].title} <RightOutlined />
+                    </button>
+                  ) : (
+                    <button onClick={() => setStoryIdx(null)} className="inline-flex items-center gap-1 px-3.5 py-1.5 rounded-lg bg-[#6055f5] text-white font-semibold">
+                      演示完毕
+                    </button>
+                  )}
+                  <button
+                    onClick={() => focusId && setSel(focusId)}
+                    className="px-3 py-1.5 rounded-lg bg-[#f4f4fb] text-[#4f46e5]"
+                    title="展开这个模块的完整使用说明"
+                  >
+                    看模块说明
+                  </button>
+                  <button onClick={() => setTech((t) => !t)} className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-[#f4f4fb] text-slate-600">
+                    <CodeOutlined /> {tech ? '收起技术说明' : '技术说明'}
+                  </button>
+                  <button onClick={resetDemo} className="ml-auto inline-flex items-center gap-1 text-slate-400 hover:text-slate-600">
+                    <RedoOutlined /> 重置演示
+                  </button>
+                </div>
               </div>
             )}
             {note && (

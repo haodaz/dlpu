@@ -337,7 +337,15 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
 
           {/* 右侧：角色切换 + 操作区 */}
           <div className={`flex items-center ${mobile ? 'gap-2.5' : 'gap-4'}`}>
-            {!mobile && <SpecMode />}
+            {!mobile && (
+              <SpecMode
+                role={role}
+                onRole={(r) => {
+                  setRole(r);
+                  localStorage.setItem('app_role', r);
+                }}
+              />
+            )}
             {/* 角色切换按钮 */}
             <Tooltip title="切换教师/管理员视角">
               <span data-spec="topbar" className="inline-flex">
