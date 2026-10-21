@@ -142,17 +142,14 @@ function HookView({ onImport }: { onImport: () => void }) {
 
   return (
     <div className="space-y-5">
-      <div className="decision-hero rounded-3xl text-white p-8 relative overflow-hidden">
-        <HeroDecor />
-        <div className="relative">
-          <SchoolBadge sub="双优政策解读" />
-          <h2 className="text-[26px] font-black mt-6 mb-0 leading-snug">
-            专业建设已经进入“生存之战”:
-            <br />
-            不是材料齐不齐,而是专业还该不该办、该怎么办。
-          </h2>
-          <p className="text-indigo-100/80 mt-3 mb-0 text-[15px]">先给两个最关键的判断;结合学校自己的专业数据,才能给出完整诊断。</p>
-        </div>
+      <div className="aurora-card rounded-2xl p-7">
+        <SchoolBadge sub="双优政策解读" />
+        <h2 className="text-[24px] font-black text-slate-800 mt-5 mb-0 leading-snug">
+          专业建设已经进入“生存之战”:
+          <br />
+          不是材料齐不齐,而是专业还该不该办、该怎么办。
+        </h2>
+        <p className="text-slate-500 mt-3 mb-0 text-[15px]">先给两个最关键的判断;结合学校自己的专业数据,才能给出完整诊断。</p>
       </div>
 
       <div data-spec="decision-hook" className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -185,16 +182,16 @@ function HookView({ onImport }: { onImport: () => void }) {
         </div>
       </div>
 
-      <div data-spec="decision-cta" className="rounded-2xl bg-blue-600 text-white p-6 flex items-center justify-between gap-4 flex-wrap">
+      <div data-spec="decision-cta" className="rounded-2xl bg-white border border-blue-200 shadow-sm p-6 flex items-center justify-between gap-4 flex-wrap">
         <div>
-          <div className="text-lg font-bold">导入专业数据,获取完整诊断</div>
-          <div className="text-sm text-blue-100 mt-1">只需把现有系统数据交出来,不改动学校原有系统。</div>
+          <div className="text-lg font-bold text-slate-800">导入专业数据,获取完整诊断</div>
+          <div className="text-sm text-slate-500 mt-1">只需把现有系统数据交出来,不改动学校原有系统。</div>
         </div>
         <div className="flex gap-2">
-          <Button size="large" icon={<CloudUploadOutlined />} onClick={() => router.push('/admin/data-sources')}>
+          <Button size="large" type="primary" icon={<CloudUploadOutlined />} onClick={() => router.push('/admin/data-sources')}>
             去导入数据
           </Button>
-          <Button size="large" type="primary" ghost className="!text-white !border-white" icon={<ExperimentOutlined />} onClick={onImport}>
+          <Button size="large" icon={<ExperimentOutlined />} onClick={onImport}>
             使用示例数据体验
           </Button>
         </div>
@@ -218,64 +215,58 @@ function DecisionView() {
 
   return (
     <div className="space-y-5">
-      {/* 大屏风格结论区 */}
-      <div data-spec="decision-verdict" className="decision-hero rounded-3xl text-white p-7 relative overflow-hidden">
-        <HeroDecor />
-        <div className="relative">
+      {/* 本年度结论:浅色卡片 */}
+      <div data-spec="decision-verdict" className="grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] gap-4">
+        <div className="aurora-card rounded-2xl p-6">
           <div className="flex items-center justify-between gap-3 flex-wrap">
-            <SchoolBadge sub={`专业建设决策驾驶舱 · ${LATEST_RESULT_TASK.name}`} />
-            <span className="text-xs text-indigo-200/80">判定依据:一致性(方向对不对)+ 有效性(做没做好)</span>
+            <SchoolBadge sub={`本年度结论 · ${LATEST_RESULT_TASK.name} · ${rows.length} 个参评专业`} />
+            <span className="text-xs text-slate-400">判定依据:一致性(方向对不对)+ 有效性(做没做好)</span>
           </div>
-          <div className="grid grid-cols-1 lg:grid-cols-[1.35fr_1fr] gap-6 mt-6 items-center">
-            <div>
-              <div className="text-sm text-indigo-200">参评专业</div>
-              <div className="flex items-end gap-3">
-                <span className="text-6xl font-black leading-none tracking-tight">{rows.length}</span>
-                <span className="text-lg text-indigo-100 mb-1">个专业的本年度结论</span>
+          <div className="grid grid-cols-3 gap-3 mt-5">
+            {TIERS.map((v) => (
+              <button
+                key={v}
+                onClick={() => setTier(v)}
+                className={`rounded-xl px-4 py-3 text-left border transition-all ${tier === v ? 'shadow-sm' : 'bg-white/70 border-white hover:border-slate-200'}`}
+                style={tier === v ? { borderColor: verdictMeta[v].dot, backgroundColor: `${verdictMeta[v].dot}12` } : undefined}
+              >
+                <div className="flex items-center gap-2 text-sm text-slate-600">
+                  <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: verdictMeta[v].dot }} />
+                  {verdictMeta[v].label}
+                </div>
+                <div className="text-3xl font-black text-slate-800 mt-1">{count(v)}</div>
+              </button>
+            ))}
+          </div>
+          <div className="grid grid-cols-2 2xl:grid-cols-4 gap-3 mt-4">
+            {[
+              ['综合均分', avgOf(rows, 'overall')],
+              ['一致性均分', avgOf(rows, 'consistency')],
+              ['有效性均分', avgOf(rows, 'effectiveness')],
+              ['区域重点产业', region ? region.industries.length : '—'],
+            ].map(([l, v]) => (
+              <div key={l as string} className="rounded-lg bg-white/70 px-3 py-2">
+                <div className="text-[11px] text-slate-500 whitespace-nowrap">{l}</div>
+                <div className="text-xl font-bold text-slate-800">{v}</div>
               </div>
-              <div className="grid grid-cols-3 gap-3 mt-5">
-                {TIERS.map((v) => (
-                  <button
-                    key={v}
-                    onClick={() => setTier(v)}
-                    className={`rounded-2xl px-4 py-3 text-left border transition-all ${tier === v ? 'bg-white/15 border-white/50' : 'bg-white/5 border-white/10 hover:bg-white/10'}`}
-                  >
-                    <div className="flex items-center gap-2 text-sm text-indigo-100">
-                      <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: verdictMeta[v].dot, boxShadow: `0 0 10px ${verdictMeta[v].dot}` }} />
-                      {verdictMeta[v].label}
-                    </div>
-                    <div className="text-3xl font-black mt-1">{count(v)}</div>
-                  </button>
-                ))}
-              </div>
-              <div className="grid grid-cols-2 2xl:grid-cols-4 gap-3 mt-4">
-                {[
-                  ['综合均分', avgOf(rows, 'overall')],
-                  ['一致性均分', avgOf(rows, 'consistency')],
-                  ['有效性均分', avgOf(rows, 'effectiveness')],
-                  ['区域重点产业', region ? region.industries.length : '—'],
-                ].map(([l, v]) => (
-                  <div key={l as string} className="rounded-xl bg-white/5 border border-white/10 px-3 py-2">
-                    <div className="text-[11px] text-indigo-200 whitespace-nowrap">{l}</div>
-                    <div className="text-xl font-bold">{v}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="h-[230px] relative">
-              <ResponsiveContainer width="100%" height="100%">
-                <PieChart>
-                  <Pie data={pie} dataKey="value" innerRadius="62%" outerRadius="88%" paddingAngle={3} stroke="none">
-                    {pie.map((p) => (
-                      <Cell key={p.name} fill={p.color} />
-                    ))}
-                  </Pie>
-                </PieChart>
-              </ResponsiveContainer>
-              <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-                <div className="text-xs text-indigo-200">重点发展占比</div>
-                <div className="text-3xl font-black">{rows.length ? Math.round((count('GO') / rows.length) * 100) : 0}%</div>
-              </div>
+            ))}
+          </div>
+        </div>
+        <div className="rounded-2xl bg-white border border-slate-200 shadow-sm p-6 flex flex-col">
+          <div className="text-base font-bold text-slate-800">三档分布</div>
+          <div className="flex-1 min-h-[200px] relative">
+            <ResponsiveContainer width="100%" height="100%">
+              <PieChart>
+                <Pie data={pie} dataKey="value" innerRadius="62%" outerRadius="88%" paddingAngle={3} stroke="none">
+                  {pie.map((p) => (
+                    <Cell key={p.name} fill={p.color} />
+                  ))}
+                </Pie>
+              </PieChart>
+            </ResponsiveContainer>
+            <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+              <div className="text-xs text-slate-500">重点发展占比</div>
+              <div className="text-3xl font-black text-slate-800">{rows.length ? Math.round((count('GO') / rows.length) * 100) : 0}%</div>
             </div>
           </div>
         </div>
@@ -364,41 +355,18 @@ function DecisionView() {
   );
 }
 
-// ---------- 大屏装饰 ----------
+
+// 校徽 + 学校名(浅色卡片用)
 function SchoolBadge({ sub }: { sub: string }) {
   return (
     <div className="flex items-center gap-3">
-      <span className="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-lg ring-4 ring-white/15 relative overflow-hidden">
+      <span className="w-11 h-11 rounded-full bg-white flex items-center justify-center shadow-sm ring-1 ring-indigo-100 relative overflow-hidden shrink-0">
         <Image src="/dlpu_logo.png" alt={`${TENANT_NAME}校徽`} fill className="object-contain p-1" />
       </span>
       <div>
-        <div className="text-lg font-bold leading-tight">{TENANT_NAME}</div>
-        <div className="text-xs text-indigo-200">{sub}</div>
+        <div className="text-base font-bold text-slate-800 leading-tight">{TENANT_NAME}</div>
+        <div className="text-xs text-slate-500">{sub}</div>
       </div>
     </div>
-  );
-}
-
-function HeroDecor() {
-  return (
-    <svg className="absolute inset-0 w-full h-full pointer-events-none" aria-hidden preserveAspectRatio="none">
-      <defs>
-        <pattern id="hero-grid" width="32" height="32" patternUnits="userSpaceOnUse">
-          <path d="M32 0H0V32" fill="none" stroke="rgba(255,255,255,0.07)" strokeWidth="1" />
-        </pattern>
-        <radialGradient id="hero-glow-a">
-          <stop offset="0%" stopColor="#22d3ee" stopOpacity="0.45" />
-          <stop offset="100%" stopColor="#22d3ee" stopOpacity="0" />
-        </radialGradient>
-        <radialGradient id="hero-glow-b">
-          <stop offset="0%" stopColor="#a78bfa" stopOpacity="0.5" />
-          <stop offset="100%" stopColor="#a78bfa" stopOpacity="0" />
-        </radialGradient>
-      </defs>
-      <rect width="100%" height="100%" fill="url(#hero-grid)" />
-      <circle cx="92%" cy="12%" r="180" fill="url(#hero-glow-a)" />
-      <circle cx="8%" cy="105%" r="200" fill="url(#hero-glow-b)" />
-      <path d="M0 80 Q 200 20 400 70 T 800 60 T 1200 40" fill="none" stroke="rgba(125,211,252,0.18)" strokeWidth="1.5" />
-    </svg>
   );
 }
