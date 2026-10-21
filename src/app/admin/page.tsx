@@ -1,407 +1,199 @@
 'use client';
-import React, { useState } from 'react';
+import React, { Suspense, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Card, Progress, Button, Tag, Collapse } from 'antd';
+import { Button, Table, Tag } from 'antd';
+import { DesktopOutlined } from '@ant-design/icons';
 import {
-  FileTextOutlined, CheckCircleOutlined, CloseCircleOutlined, PercentageOutlined,
-  TrophyOutlined, WarningOutlined, DesktopOutlined, FireOutlined,
-  RobotOutlined, BarsOutlined, FileDoneOutlined,
-} from '@ant-design/icons';
-import {
-  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, ResponsiveContainer,
-  PieChart, Pie, Cell, LabelList, Legend,
-  AreaChart, Area,
+  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip as RTooltip, ResponsiveContainer, Cell, LabelList, Legend,
   Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis,
-  FunnelChart, Funnel, LabelList as FunnelLabelList,
 } from 'recharts';
-import { schoolAvg, DEMO_MAJOR } from '@/lib/diagnosis';
-import CoreMetricCard from '@/components/diagnosis/CoreMetricCard';
-import IssueQueue from '@/components/diagnosis/IssueQueue';
+import { CORE_METRICS, verdictMeta, type Verdict } from '@/lib/diagnosis';
+import { LATEST_RESULT_TASK, RESULT_TASKS, avgOf, coreLinks, majorIssues, majorSlug, taskResults, LINK_PASS, type MajorResult } from '@/lib/eval-tasks';
+import { TaskHeader, HistoryTasks, useTaskParam } from '@/components/eval/TaskBar';
+import MajorScatter from '@/components/eval/MajorScatter';
 import MeetingMode from '@/components/diagnosis/MeetingMode';
 
-// 管理分析:结论层(默认展示)→ 分析层 → 进度层(默认收起,按需展开)
-// 首屏只呈现:两个核心指标结论 + 一个最需要解决的问题
+// 诊断分析:某次评价任务(默认最近一次)各专业的整体分析 → 横向比较 → 专业列表(点进具体专业的诊断)→ 往期诊断
+export default function Page() {
+  return (
+    <Suspense fallback={null}>
+      <DiagnosisOverview />
+    </Suspense>
+  );
+}
 
-// ============ 第一层：核心数字卡片数据 ============
-const coreStats = [
-  { title: '应提交报告数', value: 248, icon: <FileTextOutlined />, color: '#1677ff', suffix: '份' },
-  { title: '已提交报告数', value: 186, icon: <CheckCircleOutlined />, color: '#10b981', suffix: '份' },
-  { title: '未提交报告数', value: 62, icon: <CloseCircleOutlined />, color: '#ef4444', suffix: '份' },
-  { title: '提交完成率', value: 75, icon: <PercentageOutlined />, color: '#7c3aed', suffix: '%', isProgress: true },
-  { title: '平均综合得分', value: schoolAvg, icon: <TrophyOutlined />, color: '#f59e0b', suffix: '分' },
-  { title: '异常/待复核数', value: 14, icon: <WarningOutlined />, color: '#f97316', suffix: '份', isWarning: true },
-];
-
-// ============ 第二层：提交进度可视化 ============
-const funnelData = [
-  { value: 248, name: '未开始', fill: '#e2e8f0' },
-  { value: 212, name: '进行中', fill: '#fbbf24' },
-  { value: 186, name: '已提交', fill: '#1677ff' },
-  { value: 142, name: '已评价', fill: '#10b981' },
-];
-
-const departmentData = [
-  { name: '机械工程学院', submitted: 28, total: 30, rate: 93.3 },
-  { name: '信息工程学院', submitted: 24, total: 30, rate: 80.0 },
-  { name: '材料科学与工程学院', submitted: 22, total: 28, rate: 78.6 },
-  { name: '艺术设计学院', submitted: 18, total: 25, rate: 72.0 },
-  { name: '纺织服装学院', submitted: 19, total: 28, rate: 67.9 },
-  { name: '生物工程学院', submitted: 16, total: 27, rate: 59.3 },
-  { name: '管理学院', submitted: 14, total: 25, rate: 56.0 },
-  { name: '外语学院', submitted: 12, total: 25, rate: 48.0 },
-  { name: '食品学院', submitted: 10, total: 20, rate: 50.0 },
-  { name: '数理学院', submitted: 8, total: 20, rate: 40.0 },
-];
-
-const timeTrendData = [
-  { date: '09-01', submitted: 12, cumulative: 12 },
-  { date: '09-03', submitted: 18, cumulative: 30 },
-  { date: '09-05', submitted: 25, cumulative: 55 },
-  { date: '09-07', submitted: 32, cumulative: 87 },
-  { date: '09-09', submitted: 28, cumulative: 115 },
-  { date: '09-11', submitted: 22, cumulative: 137 },
-  { date: '09-13', submitted: 49, cumulative: 186 },
-];
-
-// ============ 第三层：提交结果质量分析 ============
-const indicatorDistribution = [
-  { name: '产业对齐', min: 55, median: 72, max: 95 },
-  { name: '目标穿透', min: 60, median: 80, max: 98 },
-  { name: '师资投入', min: 45, median: 65, max: 88 },
-  { name: '质量闭环', min: 40, median: 60, max: 85 },
-  { name: '产教实战', min: 50, median: 78, max: 96 },
-  { name: '社会反馈', min: 55, median: 75, max: 92 },
-  { name: '资产效能', min: 38, median: 58, max: 80 },
-  { name: '过程监测', min: 42, median: 62, max: 88 },
-];
-
-const scoreHistogram = [
-  { range: '优秀 (≥90)', count: 18, color: '#10b981' },
-  { range: '良好 (80-89)', count: 62, color: '#1677ff' },
-  { range: '合格 (60-79)', count: 78, color: '#f59e0b' },
-  { range: '不合格 (<60)', count: 28, color: '#ef4444' },
-];
-
-const indicatorRadar = [
-  { item: '产业对齐', score: 72 },
-  { item: '目标穿透', score: 80 },
-  { item: '师资投入', score: 65 },
-  { item: '质量闭环', score: 60 },
-  { item: '产教实战', score: 78 },
-  { item: '社会反馈', score: 75 },
-];
-
-// ============ 第四层：AI 评价概览 ============
-const aiEvaluationStats = {
-  totalGenerated: 142,
-  totalSubmitted: 186,
-  completionRate: 76.3,
+const LINKS = CORE_METRICS.flatMap((c) => c.links.map((l) => ({ core: c.key, name: l.name })));
+const median = (v: number[]) => {
+  const s = [...v].sort((a, b) => a - b);
+  return s.length % 2 ? s[(s.length - 1) / 2] : Math.round(((s[s.length / 2 - 1] + s[s.length / 2]) / 2) * 10) / 10;
 };
 
-const issueTypeData = [
-  { name: '材料缺失', value: 48, color: '#ef4444' },
-  { name: '外部数据未引用', value: 36, color: '#f97316' },
-  { name: '内容不达标', value: 28, color: '#f59e0b' },
-  { name: '数据前后矛盾', value: 18, color: '#eab308' },
-  { name: '逻辑断层', value: 12, color: '#a855f7' },
-];
-
-
-export default function AdminDashboard() {
+function DiagnosisOverview() {
   const router = useRouter();
   const [meeting, setMeeting] = useState(false);
+  const [task, setTask] = useTaskParam(LATEST_RESULT_TASK);
+  const rows = taskResults(task.id);
+  const open = (major: string) => router.push(`/admin/diagnosis?major=${majorSlug(major)}&task=${task.id}`);
+
+  // 各环节得分分布(按专业):最低 / 中位 / 最高
+  const linkScores = LINKS.map((l) => {
+    const v = rows.map((r) => coreLinks(task.id, r.major, l.core).find((x) => x.name === l.name)!.score);
+    return { name: l.name, min: Math.min(...v), median: median(v), max: Math.max(...v), avg: Math.round((v.reduce((s, x) => s + x, 0) / v.length) * 10) / 10, failing: v.filter((x) => x < LINK_PASS).length };
+  });
+  const histogram = [
+    { range: '≥ 90', count: rows.filter((r) => r.overall >= 90).length, color: '#10b981' },
+    { range: '80–89', count: rows.filter((r) => r.overall >= 80 && r.overall < 90).length, color: '#1677ff' },
+    { range: '70–79', count: rows.filter((r) => r.overall >= 70 && r.overall < 80).length, color: '#f59e0b' },
+    { range: '< 70', count: rows.filter((r) => r.overall < 70).length, color: '#ef4444' },
+  ];
+  const issues = rows.flatMap((r) => majorIssues(task.id, r.major));
+  const weakest = (r: MajorResult) =>
+    [...coreLinks(task.id, r.major, 'consistency'), ...coreLinks(task.id, r.major, 'effectiveness')].sort((a, b) => a.score - b.score)[0];
 
   return (
     <div className="space-y-5 pb-8 max-w-6xl mx-auto">
-      <div className="flex items-center justify-between gap-4 flex-wrap">
-        <div>
-          <h1 className="text-xl font-bold text-slate-800 m-0">管理分析 · {DEMO_MAJOR.name}</h1>
-          <p className="text-sm text-slate-500 m-0 mt-1">面向教务处 / 学院 · 先看结论,问题出在哪个环节再按需展开</p>
-        </div>
-        <div className="flex gap-2 flex-wrap">
-          <Button icon={<BarsOutlined />} onClick={() => router.push('/admin/major')}>指标明细</Button>
-          <Button icon={<FileDoneOutlined />} onClick={() => router.push('/rectification')}>整改报告</Button>
+      <TaskHeader
+        title="诊断分析"
+        desc={`${task.name} · ${rows.length} 个专业的整体分析与横向比较 · 点专业进入该专业的诊断`}
+        task={task}
+        onTask={setTask}
+        tasks={RESULT_TASKS}
+        extra={
           <span data-spec="meeting-btn">
-            <Button type="primary" icon={<DesktopOutlined />} onClick={() => setMeeting(true)}>会议模式(大屏)</Button>
+            <Button type="primary" icon={<DesktopOutlined />} onClick={() => setMeeting(true)}>
+              会议模式(大屏)
+            </Button>
           </span>
+        }
+      />
+
+      {/* 整体概览 */}
+      <div data-spec="diag-kpis" className="grid grid-cols-2 md:grid-cols-5 gap-3">
+        {[
+          { label: '参评专业', value: rows.length, unit: '个' },
+          { label: '一致性均分', value: avgOf(rows, 'consistency'), unit: '' },
+          { label: '有效性均分', value: avgOf(rows, 'effectiveness'), unit: '' },
+          { label: '诊断问题', value: issues.length, unit: '个' },
+          { label: '其中教师层面', value: issues.filter((i) => i.level === 'TEACHER').length, unit: '个' },
+        ].map((k) => (
+          <div key={k.label} className="rounded-xl bg-white border border-slate-200 shadow-sm p-4">
+            <div className="text-xs font-bold text-slate-500">{k.label}</div>
+            <div className="mt-1.5 text-2xl font-black text-slate-800">
+              {k.value}
+              <span className="text-xs font-normal text-slate-400 ml-1">{k.unit}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div data-spec="analysis-layers" className="grid grid-cols-1 xl:grid-cols-[1.6fr_1fr] gap-4">
+        <div className="rounded-2xl bg-white border border-slate-200 shadow-sm p-5">
+          <h3 className="text-base font-bold text-slate-800 m-0">各环节得分分布</h3>
+          <p className="text-xs text-slate-400 mt-1 mb-2">每个环节在 {rows.length} 个专业中的最低 / 中位 / 最高分;达标线 {LINK_PASS}</p>
+          <div className="h-[270px]">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart data={linkScores} margin={{ top: 10, right: 10, left: -10, bottom: 0 }}>
+                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
+                <XAxis dataKey="name" tick={{ fill: '#64748b', fontSize: 11 }} interval={0} />
+                <YAxis domain={[40, 100]} tick={{ fill: '#94a3b8', fontSize: 11 }} />
+                <RTooltip formatter={(v, n) => [v, n === 'max' ? '最高' : n === 'median' ? '中位' : '最低']} />
+                <Legend formatter={(v) => (v === 'max' ? '最高' : v === 'median' ? '中位' : '最低')} wrapperStyle={{ fontSize: 12 }} />
+                <Bar dataKey="max" fill="#dbeafe" radius={[3, 3, 0, 0]} />
+                <Bar dataKey="median" fill="#1677ff" radius={[3, 3, 0, 0]} />
+                <Bar dataKey="min" fill="#1e3a8a" radius={[3, 3, 0, 0]} />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
+        <div className="grid grid-rows-2 gap-4">
+          <div className="rounded-2xl bg-white border border-slate-200 shadow-sm p-5">
+            <h3 className="text-base font-bold text-slate-800 m-0 mb-1">综合得分分布</h3>
+            <div className="h-[110px]">
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart data={histogram} margin={{ top: 14, right: 10, left: -20, bottom: 0 }}>
+                  <XAxis dataKey="range" tick={{ fill: '#64748b', fontSize: 11 }} axisLine={false} tickLine={false} />
+                  <YAxis hide allowDecimals={false} />
+                  <RTooltip formatter={(v) => [`${v} 个专业`, '专业数']} />
+                  <Bar dataKey="count" barSize={30} radius={[4, 4, 0, 0]}>
+                    {histogram.map((h) => (
+                      <Cell key={h.range} fill={h.color} />
+                    ))}
+                    <LabelList dataKey="count" position="top" style={{ fontSize: 12, fill: '#475569', fontWeight: 700 }} />
+                  </Bar>
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
+          </div>
+          <div className="rounded-2xl bg-white border border-slate-200 shadow-sm p-5">
+            <h3 className="text-base font-bold text-slate-800 m-0 mb-1">各环节均分</h3>
+            <div className="h-[130px]">
+              <ResponsiveContainer width="100%" height="100%">
+                <RadarChart cx="50%" cy="50%" outerRadius="75%" data={linkScores}>
+                  <PolarGrid stroke="#e2e8f0" />
+                  <PolarAngleAxis dataKey="name" tick={{ fill: '#64748b', fontSize: 10 }} />
+                  <PolarRadiusAxis domain={[50, 100]} tick={false} axisLine={false} />
+                  <Radar dataKey="avg" stroke="#1677ff" fill="#1677ff" fillOpacity={0.35} />
+                  <RTooltip />
+                </RadarChart>
+              </ResponsiveContainer>
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* ============ 结论层:两个核心指标 ============ */}
-      <div data-spec="core-metrics" className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-start">
-        <CoreMetricCard metric="consistency" />
-        <CoreMetricCard metric="effectiveness" />
+      <MajorScatter rows={rows} onPick={open} />
+
+      {/* 专业列表 */}
+      <div data-spec="diag-majors" className="rounded-2xl bg-white border border-slate-200 shadow-sm p-5">
+        <h3 className="text-base font-bold text-slate-800 m-0 mb-3">各专业诊断</h3>
+        <Table
+          rowKey="major"
+          scroll={{ x: 980 }}
+          pagination={false}
+          size="middle"
+          dataSource={[...rows].sort((a, b) => a.overall - b.overall)}
+          onRow={(r) => ({ onClick: () => open(r.major), style: { cursor: 'pointer' } })}
+          columns={[
+            { title: '专业', dataIndex: 'major', width: 170, fixed: 'left' as const, render: (x: string) => <span className="font-bold text-slate-700">{x}</span> },
+            { title: '所属院系', dataIndex: 'college', width: 180 },
+            { title: '一致性', dataIndex: 'consistency', width: 80 },
+            { title: '有效性', dataIndex: 'effectiveness', width: 80 },
+            { title: '综合', dataIndex: 'overall', width: 70, render: (x: number) => <b>{x}</b> },
+            {
+              title: '结论',
+              dataIndex: 'verdict',
+              width: 100,
+              render: (v: Verdict) => (
+                <Tag style={{ color: verdictMeta[v].color, background: verdictMeta[v].bg, borderColor: 'transparent' }}>{verdictMeta[v].label}</Tag>
+              ),
+            },
+            {
+              title: '主要短板',
+              width: 150,
+              render: (_: unknown, r: MajorResult) => {
+                const w = weakest(r);
+                return (
+                  <span className={w.ok ? 'text-slate-500 text-xs' : 'text-red-500 text-xs font-bold'}>
+                    {w.name} {w.score}
+                  </span>
+                );
+              },
+            },
+            { title: '问题', width: 70, render: (_: unknown, r: MajorResult) => `${majorIssues(task.id, r.major).length} 个` },
+            { title: '', width: 90, render: () => <span className="text-xs text-blue-600">查看诊断 →</span> },
+          ]}
+        />
       </div>
 
-      {/* ============ 一次只给一个问题 ============ */}
-      <div data-spec="issue-queue">
-        <IssueQueue />
-      </div>
-
-      {/* ============ 分析层 / 进度层(默认收起) ============ */}
-      <Collapse
-        data-spec="analysis-layers"
-        className="bg-white"
-        items={[
-          {
-            key: 'quality',
-            label: <span className="font-bold text-slate-700">分析层 · 全校提交结果质量与 AI 评价概览</span>,
-            children: (
-              <div className="space-y-4">
-                <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr_1fr] gap-4">
-                  {/* 各指标得分分布 */}
-                  <Card title="各指标得分分布" className="shadow-sm" styles={{ body: { padding: 20 } }}>
-                    <div className="h-[280px]">
-                      <ResponsiveContainer width="100%" height="100%">
-                        <BarChart data={indicatorDistribution} margin={{ top: 20, right: 20, left: 0, bottom: 5 }}>
-                          <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
-                          <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fill: '#64748b', fontSize: 11, fontWeight: 'bold' }} dy={10} />
-                          <YAxis axisLine={false} tickLine={false} tick={{ fill: '#94a3b8', fontSize: 11 }} domain={[0, 100]} />
-                          <RechartsTooltip
-                            contentStyle={{ borderRadius: 8, border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
-                            formatter={(value: any, name: any) => {
-                              const label = name === 'max' ? '最高分' : name === 'median' ? '中位数' : '最低分';
-                              return [value, label];
-                            }}
-                          />
-                          <Bar dataKey="max" fill="#dbeafe" radius={[4, 4, 0, 0]} barSize={32} name="最高分" />
-                          <Bar dataKey="median" fill="#1677ff" radius={[4, 4, 0, 0]} barSize={32} name="中位数" />
-                          <Bar dataKey="min" fill="#1e3a8a" radius={[4, 4, 0, 0]} barSize={32} name="最低分" />
-                          <Legend />
-                        </BarChart>
-                      </ResponsiveContainer>
-                    </div>
-                  </Card>
-
-                  {/* 综合得分分布直方图 */}
-                  <Card title="综合得分分布" className="shadow-sm" styles={{ body: { padding: 20 } }}>
-                    <div className="h-[280px]">
-                      <ResponsiveContainer width="100%" height="100%">
-                        <BarChart data={scoreHistogram} margin={{ top: 20, right: 10, left: -10, bottom: 5 }}>
-                          <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
-                          <XAxis dataKey="range" axisLine={false} tickLine={false} tick={{ fill: '#64748b', fontSize: 10, fontWeight: 'bold' }} dy={10} />
-                          <YAxis axisLine={false} tickLine={false} tick={{ fill: '#94a3b8', fontSize: 11 }} />
-                          <RechartsTooltip contentStyle={{ borderRadius: 8, border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }} formatter={(v: any) => [`${v} 人`, '人数']} />
-                          <Bar dataKey="count" radius={[4, 4, 0, 0]} barSize={36}>
-                            {scoreHistogram.map((entry, index) => (
-                              <Cell key={`cell-${index}`} fill={entry.color} />
-                            ))}
-                            <LabelList dataKey="count" position="top" fill="#475569" fontSize={12} fontWeight="bold" />
-                          </Bar>
-                        </BarChart>
-                      </ResponsiveContainer>
-                    </div>
-                  </Card>
-
-                  {/* 指标得分雷达图 */}
-                  <Card title="指标平均分雷达图" className="shadow-sm" styles={{ body: { padding: 20 } }}>
-                    <div className="h-[280px]">
-                      <ResponsiveContainer width="100%" height="100%">
-                        <RadarChart cx="50%" cy="50%" outerRadius="70%" data={indicatorRadar}>
-                          <PolarGrid stroke="#e2e8f0" />
-                          <PolarAngleAxis dataKey="item" tick={{ fill: '#64748b', fontSize: 11, fontWeight: 'bold' }} />
-                          <PolarRadiusAxis angle={30} domain={[0, 100]} tick={false} axisLine={false} />
-                          <Radar name="平均分" dataKey="score" stroke="#1677ff" strokeWidth={2} fill="#1677ff" fillOpacity={0.4} />
-                          <RechartsTooltip contentStyle={{ borderRadius: 8, border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }} />
-                        </RadarChart>
-                      </ResponsiveContainer>
-                    </div>
-                  </Card>
-                </div>
-                <div className="grid grid-cols-1 lg:grid-cols-[0.8fr_1.2fr] gap-4">
-                  {/* AI 评价完成率 */}
-                  <Card className="shadow-sm" styles={{ body: { padding: 20 } }}>
-                    <div className="flex items-center justify-between mb-4">
-                      <span className="text-sm font-bold text-slate-700">AI 评价完成率</span>
-                      <RobotOutlined className="text-purple-500 text-lg" />
-                    </div>
-                    <div className="flex flex-col items-center justify-center py-4">
-                      <Progress
-                        type="circle"
-                        percent={aiEvaluationStats.completionRate}
-                        size={140}
-                        strokeColor={{ '0%': '#7c3aed', '100%': '#a855f7' }}
-                        format={(percent) => (
-                          <div className="text-center">
-                            <div className="text-2xl font-black text-slate-800">{percent}%</div>
-                            <div className="text-xs text-slate-400 mt-1">已完成</div>
-                          </div>
-                        )}
-                      />
-                      <div className="flex items-center justify-between w-full mt-6 pt-4 border-t border-slate-100">
-                        <div>
-                          <div className="text-xs text-slate-400">已生成</div>
-                          <div className="text-base font-bold text-purple-600">{aiEvaluationStats.totalGenerated} 份</div>
-                        </div>
-                        <div>
-                          <div className="text-xs text-slate-400">已提交</div>
-                          <div className="text-base font-bold text-slate-600">{aiEvaluationStats.totalSubmitted} 份</div>
-                        </div>
-                      </div>
-                    </div>
-                  </Card>
-
-                  {/* 常见问题类型分布 */}
-                  <Card title="AI 标记的常见问题类型分布" className="shadow-sm" styles={{ body: { padding: 20 } }}>
-                    <div className="h-[240px]">
-                      <ResponsiveContainer width="100%" height="100%">
-                        <PieChart>
-                          <Pie
-                            data={issueTypeData}
-                            cx="50%"
-                            cy="50%"
-                            innerRadius={55}
-                            outerRadius={85}
-                            paddingAngle={2}
-                            dataKey="value"
-                            stroke="none"
-                            label={(entry: any) => `${entry.name} ${entry.value}`}
-                            labelLine={false}
-                          >
-                            {issueTypeData.map((entry, index) => (
-                              <Cell key={`cell-${index}`} fill={entry.color} />
-                            ))}
-                          </Pie>
-                          <RechartsTooltip contentStyle={{ borderRadius: 8, border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }} formatter={(v: any, _n: any, p: any) => [`${v} 次 (${((v / 142) * 100).toFixed(1)}%)`, p.payload.name]} />
-                        </PieChart>
-                      </ResponsiveContainer>
-                    </div>
-                  </Card>
-                </div>
-              </div>
-            ),
-          },
-          {
-            key: 'progress',
-            label: <span className="font-bold text-slate-700">进度层 · 全校提交情况</span>,
-            children: (
-              <div className="space-y-4">
-                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-                  {coreStats.map((stat, i) => (
-                    <div key={i}>
-                      <Card
-                        className="h-full shadow-sm hover:shadow-md transition-all"
-                        styles={{ body: { padding: 16, height: '100%', display: 'flex', flexDirection: 'column' } }}
-                      >
-                        <div className="flex items-center justify-between mb-2 shrink-0">
-                          <span className="text-xs font-bold text-slate-500">{stat.title}</span>
-                          <div
-                            className="w-8 h-8 rounded-lg flex items-center justify-center text-base"
-                            style={{ backgroundColor: `${stat.color}15`, color: stat.color }}
-                          >
-                            {stat.icon}
-                          </div>
-                        </div>
-                        {stat.isProgress ? (
-                          <div className="flex-1 flex flex-col justify-end min-h-[56px]">
-                            <div className="flex items-baseline gap-1 mb-2">
-                              <span className="text-3xl font-black" style={{ color: stat.color }}>{stat.value}</span>
-                              <span className="text-sm text-slate-400">{stat.suffix}</span>
-                            </div>
-                            <Progress
-                              percent={stat.value as number}
-                              showInfo={false}
-                              strokeColor={stat.color}
-                              trailColor="#f1f5f9"
-                              strokeWidth={6}
-                            />
-                          </div>
-                        ) : (
-                          <div className="flex-1 flex items-end min-h-[56px]">
-                            <div className="flex items-baseline gap-1">
-                              <span
-                                className={`text-3xl font-black ${stat.isWarning ? 'animate-pulse' : ''}`}
-                                style={{ color: stat.isWarning ? stat.color : '#1e293b' }}
-                              >
-                                {stat.value}
-                              </span>
-                              <span className="text-sm text-slate-400">{stat.suffix}</span>
-                            </div>
-                          </div>
-                        )}
-                      </Card>
-                    </div>
-                  ))}
-                </div>
-                <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr_0.8fr] gap-4">
-                  {/* 提交进度漏斗 */}
-                  <Card title="提交进度漏斗" className="shadow-sm" styles={{ body: { padding: 20 } }}>
-                    <div className="h-[260px]">
-                      <ResponsiveContainer width="100%" height="100%">
-                        <FunnelChart>
-                          <RechartsTooltip contentStyle={{ borderRadius: 8, border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }} />
-                          <Funnel dataKey="value" data={funnelData} isAnimationActive>
-                            <FunnelLabelList position="right" fill="#475569" stroke="none" fontSize={12} fontWeight="bold" dataKey="name" />
-                          </Funnel>
-                        </FunnelChart>
-                      </ResponsiveContainer>
-                    </div>
-                  </Card>
-
-                  {/* 部门提交率对比 */}
-                  <Card
-                    title={
-                      <div className="flex items-center justify-between">
-                        <span>按学院提交率对比</span>
-                        <Tag color="blue" className="text-xs">拖后腿</Tag>
-                      </div>
-                    }
-                    className="shadow-sm"
-                    styles={{ body: { padding: 20 } }}
-                  >
-                    <div className="h-[260px]">
-                      <ResponsiveContainer width="100%" height="100%">
-                        <BarChart data={departmentData} layout="vertical" margin={{ top: 5, right: 30, left: 110, bottom: 5 }}>
-                          <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="#f1f5f9" />
-                          <XAxis type="number" domain={[0, 100]} axisLine={false} tickLine={false} tick={{ fill: '#94a3b8', fontSize: 11 }} />
-                          <YAxis type="category" dataKey="name" axisLine={false} tickLine={false} tick={{ fill: '#475569', fontSize: 11, fontWeight: 'bold' }} width={130} />
-                          <RechartsTooltip
-                            cursor={{ fill: '#f8fafc' }}
-                            contentStyle={{ borderRadius: 8, border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
-                            formatter={(value: any, _name: any, props: any) => {
-                              const { submitted, total } = props.payload;
-                              return [`${value}% (${submitted}/${total})`, '提交率'];
-                            }}
-                          />
-                          <Bar dataKey="rate" radius={[0, 4, 4, 0]} barSize={14}>
-                            {departmentData.map((entry, index) => (
-                              <Cell key={`cell-${index}`} fill={entry.rate >= 80 ? '#10b981' : entry.rate >= 60 ? '#1677ff' : entry.rate >= 50 ? '#f59e0b' : '#ef4444'} />
-                            ))}
-                            <LabelList dataKey="rate" position="right" fill="#64748b" fontSize={11} fontWeight="bold" formatter={(v: any) => `${v}%`} />
-                          </Bar>
-                        </BarChart>
-                      </ResponsiveContainer>
-                    </div>
-                  </Card>
-
-                  {/* 提交时间趋势 */}
-                  <Card title="提交时间趋势" className="shadow-sm" styles={{ body: { padding: 20 } }}>
-                    <div className="h-[260px]">
-                      <ResponsiveContainer width="100%" height="100%">
-                        <AreaChart data={timeTrendData} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
-                          <defs>
-                            <linearGradient id="trendGradient" x1="0" y1="0" x2="0" y2="1">
-                              <stop offset="5%" stopColor="#1677ff" stopOpacity={0.4} />
-                              <stop offset="95%" stopColor="#1677ff" stopOpacity={0} />
-                            </linearGradient>
-                          </defs>
-                          <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
-                          <XAxis dataKey="date" axisLine={false} tickLine={false} tick={{ fill: '#94a3b8', fontSize: 11 }} />
-                          <YAxis axisLine={false} tickLine={false} tick={{ fill: '#94a3b8', fontSize: 11 }} />
-                          <RechartsTooltip contentStyle={{ borderRadius: 8, border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }} />
-                          <Area type="monotone" dataKey="submitted" name="每日提交" stroke="#1677ff" strokeWidth={2} fill="url(#trendGradient)" />
-                        </AreaChart>
-                      </ResponsiveContainer>
-                    </div>
-                    <div className="mt-2 text-xs text-slate-400 text-center">
-                      截止前 2 天提交量激增 <FireOutlined className="text-red-500" />
-                    </div>
-                  </Card>
-                </div>
-              </div>
-            ),
-          },
-        ]}
+      <HistoryTasks
+        title="往期诊断分析"
+        tasks={RESULT_TASKS}
+        current={task.id}
+        onPick={setTask}
+        meta={(t) => {
+          const rs = taskResults(t.id);
+          return <span className="text-xs text-slate-400">一致性 {avgOf(rs, 'consistency')} · 有效性 {avgOf(rs, 'effectiveness')}</span>;
+        }}
       />
 
       <MeetingMode open={meeting} initial={1} onClose={() => setMeeting(false)} />

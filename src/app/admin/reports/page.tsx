@@ -1,115 +1,194 @@
 'use client';
-import React, { useMemo, useState } from 'react';
+import React, { Suspense, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Card, Table, Button, Input, Row, Col, Statistic, Segmented, Tooltip } from 'antd';
-import { FileTextOutlined, CheckCircleOutlined, WarningOutlined, CloseCircleOutlined, SearchOutlined, EyeOutlined, BarsOutlined } from '@ant-design/icons';
-import { MAJORS, verdictMeta, DEMO_MAJOR, schoolAvg, type Major, type Verdict } from '@/lib/diagnosis';
+import { Table, Tabs } from 'antd';
+import { ArrowDownOutlined, ArrowUpOutlined, MinusOutlined } from '@ant-design/icons';
+import { ResponsiveContainer, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import { verdictMeta, type Verdict } from '@/lib/diagnosis';
+import { LATEST_RESULT_TASK, RESULT_TASKS, avgOf, majorResult, majorSlug, taskResults, type MajorResult } from '@/lib/eval-tasks';
+import { TaskHeader, HistoryTasks, useTaskParam } from '@/components/eval/TaskBar';
 
-// 评价结果:全校各专业的诊断结论(与宏观决策页的红绿灯同一份数据,保证同一专业只有一个分)
-// 演示环境只有示例专业有完整诊断数据,其余专业可看结论、不可下钻
-const overall = (m: Major) => Math.round(((m.consistency + m.effectiveness) / 2) * 10) / 10;
-
-export default function AdminReportsPage() {
-  const router = useRouter();
-  const [verdict, setVerdict] = useState<'all' | Verdict>('all');
-  const [search, setSearch] = useState('');
-
-  const rows = useMemo(
-    () =>
-      MAJORS.filter((m) => (verdict === 'all' || m.verdict === verdict) && (!search.trim() || m.name.includes(search.trim()) || m.college.includes(search.trim()))),
-    [verdict, search],
+// 评价结果:某次评价任务各专业的三档结论与得分(默认最近一次)、近三次变化趋势、往期结果
+export default function Page() {
+  return (
+    <Suspense fallback={null}>
+      <ResultsPage />
+    </Suspense>
   );
-  const count = (v: Verdict) => MAJORS.filter((m) => m.verdict === v).length;
-  const scoreCell = (v: number) => <span style={{ color: v >= 85 ? '#10b981' : v >= 75 ? '#f59e0b' : '#ef4444' }} className="font-bold">{v}</span>;
+}
 
-  const columns = [
-    { title: '专业', dataIndex: 'name', key: 'name', render: (v: string) => <span className="font-bold text-slate-700">{v}</span> },
-    { title: '所属学院', dataIndex: 'college', key: 'college', width: 190 },
-    { title: '一致性', dataIndex: 'consistency', key: 'consistency', width: 90, sorter: (a: Major, b: Major) => a.consistency - b.consistency, render: scoreCell },
-    { title: '有效性', dataIndex: 'effectiveness', key: 'effectiveness', width: 90, sorter: (a: Major, b: Major) => a.effectiveness - b.effectiveness, render: scoreCell },
-    { title: '综合', key: 'overall', width: 80, sorter: (a: Major, b: Major) => overall(a) - overall(b), render: (_: unknown, m: Major) => scoreCell(overall(m)) },
-    {
-      title: '结论',
-      dataIndex: 'verdict',
-      key: 'verdict',
-      width: 90,
-      render: (v: Verdict) => (
-        <span className="text-xs font-bold px-2 py-0.5 rounded" style={{ color: verdictMeta[v].color, backgroundColor: verdictMeta[v].bg }}>
-          {verdictMeta[v].label}
-        </span>
-      ),
-    },
-    { title: '布局建议', dataIndex: 'layout', key: 'layout', width: 90 },
-    { title: '主要原因', dataIndex: 'reason', key: 'reason', render: (v: string) => <span className="text-xs text-slate-500">{v}</span> },
-    {
-      title: '操作',
-      key: 'action',
-      width: 120,
-      fixed: 'right' as const,
-      render: (_: unknown, m: Major) =>
-        m.name === DEMO_MAJOR.name ? (
-          <Button type="link" size="small" icon={<EyeOutlined />} onClick={() => router.push('/admin')}>
-            查看诊断
-          </Button>
-        ) : (
-          <Tooltip title="演示环境只有示例专业(智能制造工程)有完整诊断数据">
-            <span className="text-xs text-slate-300 px-2">仅示例可下钻</span>
-          </Tooltip>
-        ),
-    },
-  ];
+const TIERS: Verdict[] = ['GO', 'RISK', 'NO'];
+const TIER_DESC: Record<Verdict, string> = {
+  GO: '一致性与有效性综合 ≥ 80:方向对、做得好,建议加大投入',
+  RISK: '综合 70–80:有明确短板,按诊断问题优化整改',
+  NO: '综合 < 70:需重点关注,结合区域产业需求论证调整方向',
+};
+
+function ResultsPage() {
+  const router = useRouter();
+  const [task, setTask] = useTaskParam(LATEST_RESULT_TASK);
+  const rows = taskResults(task.id);
+  const [tier, setTier] = useState<Verdict>('GO');
+  const k = RESULT_TASKS.findIndex((t) => t.id === task.id);
+  const prevTask = RESULT_TASKS[k + 1];
+  const recent = RESULT_TASKS.slice(k, k + 3).reverse(); // 最近三次(含当前),时间正序
+  const open = (major: string) => router.push(`/admin/diagnosis?major=${majorSlug(major)}&task=${task.id}`);
+
+  const trend = recent.map((t) => {
+    const rs = taskResults(t.id);
+    return {
+      name: t.period.replace(' 学年', ''),
+      综合均分: avgOf(rs, 'overall'),
+      重点发展: rs.filter((r) => r.verdict === 'GO').length,
+      优化整改: rs.filter((r) => r.verdict === 'RISK').length,
+      风险关注: rs.filter((r) => r.verdict === 'NO').length,
+    };
+  });
 
   return (
-    <div className="space-y-4">
-      <Row gutter={[16, 16]}>
-        <Col xs={12} sm={6}>
-          <Card className="shadow-sm">
-            <Statistic title={`诊断专业 · 全校均分 ${schoolAvg}`} value={MAJORS.length} prefix={<FileTextOutlined />} />
-          </Card>
-        </Col>
-        <Col xs={12} sm={6}>
-          <Card className="shadow-sm">
-            <Statistic title="可办" value={count('GO')} styles={{ content: { color: '#10b981' } }} prefix={<CheckCircleOutlined />} />
-          </Card>
-        </Col>
-        <Col xs={12} sm={6}>
-          <Card className="shadow-sm">
-            <Statistic title="有风险" value={count('RISK')} styles={{ content: { color: '#f59e0b' } }} prefix={<WarningOutlined />} />
-          </Card>
-        </Col>
-        <Col xs={12} sm={6}>
-          <Card className="shadow-sm">
-            <Statistic title="不可办" value={count('NO')} styles={{ content: { color: '#ef4444' } }} prefix={<CloseCircleOutlined />} />
-          </Card>
-        </Col>
-      </Row>
+    <div className="max-w-6xl mx-auto pb-12 space-y-5">
+      <TaskHeader title="评价结果" desc={`${rows.length} 个专业的评价结论与得分 · 点专业查看该次评价的诊断`} task={task} onTask={setTask} tasks={RESULT_TASKS} />
 
-      <Card
-        className="shadow-sm"
-        styles={{ body: { padding: 20 } }}
-        title="各专业诊断结果"
-        extra={
-          <div className="flex items-center gap-2">
-            <Segmented
-              value={verdict}
-              onChange={(v) => setVerdict(v as typeof verdict)}
-              options={[
-                { label: '全部', value: 'all' },
-                { label: '可办', value: 'GO' },
-                { label: '有风险', value: 'RISK' },
-                { label: '不可办', value: 'NO' },
+      {/* 三档 */}
+      <div data-spec="result-tiers" className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {TIERS.map((v) => {
+          const m = verdictMeta[v];
+          const n = rows.filter((r) => r.verdict === v).length;
+          return (
+            <button
+              key={v}
+              onClick={() => setTier(v)}
+              className={`text-left rounded-2xl border-2 p-5 transition-all ${tier === v ? 'shadow-md' : 'opacity-80 hover:opacity-100'}`}
+              style={{ backgroundColor: m.bg, borderColor: tier === v ? m.dot : 'transparent' }}
+            >
+              <div className="flex items-center gap-2 text-sm font-bold" style={{ color: m.color }}>
+                <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: m.dot }} />
+                {m.label}
+              </div>
+              <div className="text-4xl font-black mt-2" style={{ color: m.color }}>
+                {n}
+                <span className="text-sm font-normal ml-1">个专业</span>
+              </div>
+              <div className="text-xs mt-1" style={{ color: m.color, opacity: 0.8 }}>
+                {TIER_DESC[v]}
+              </div>
+            </button>
+          );
+        })}
+      </div>
+
+      <div className="rounded-2xl bg-white border border-slate-200 shadow-sm p-5">
+        <Tabs
+          activeKey={tier}
+          onChange={(v) => setTier(v as Verdict)}
+          items={TIERS.map((v) => ({
+            key: v,
+            label: `${verdictMeta[v].label}(${rows.filter((r) => r.verdict === v).length})`,
+            children: (
+              <Table
+                rowKey="major"
+                scroll={{ x: 860 }}
+                size="middle"
+                pagination={false}
+                dataSource={rows.filter((r) => r.verdict === v).sort((a, b) => b.overall - a.overall)}
+                onRow={(r) => ({ onClick: () => open(r.major), style: { cursor: 'pointer' } })}
+                locale={{ emptyText: '没有该档专业' }}
+                columns={[
+                  { title: '专业', dataIndex: 'major', width: 170, fixed: 'left' as const, render: (x: string) => <span className="font-bold text-slate-700">{x}</span> },
+                  { title: '所属院系', dataIndex: 'college', width: 190 },
+                  { title: '一致性', dataIndex: 'consistency', width: 90 },
+                  { title: '有效性', dataIndex: 'effectiveness', width: 90 },
+                  { title: '综合得分', dataIndex: 'overall', width: 100, render: (x: number) => <b className="text-slate-800">{x}</b> },
+                  {
+                    title: prevTask ? `较${prevTask.period}` : '变化',
+                    width: 130,
+                    render: (_: unknown, r: MajorResult) => <Change now={r.overall} prev={prevTask ? majorResult(prevTask.id, r.major)?.overall : undefined} />,
+                  },
+                  { title: '', width: 90, render: () => <span className="text-xs text-blue-600">查看诊断 →</span> },
+                ]}
+              />
+            ),
+          }))}
+        />
+      </div>
+
+      {/* 近三次趋势 */}
+      {recent.length > 1 && (
+        <div data-spec="result-trend" className="grid grid-cols-1 xl:grid-cols-[1fr_1.2fr] gap-4">
+          <div className="rounded-2xl bg-white border border-slate-200 shadow-sm p-5">
+            <h3 className="text-base font-bold text-slate-800 m-0 mb-2">近 {recent.length} 次评价 · 三档专业数与综合均分</h3>
+            <div className="h-[260px]">
+              <ResponsiveContainer width="100%" height="100%">
+                <LineChart data={trend} margin={{ top: 10, right: 20, left: 0, bottom: 0 }}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
+                  <XAxis dataKey="name" tick={{ fontSize: 11, fill: '#64748b' }} />
+                  <YAxis yAxisId="n" allowDecimals={false} tick={{ fontSize: 11, fill: '#94a3b8' }} />
+                  <YAxis yAxisId="s" orientation="right" domain={[60, 100]} tick={{ fontSize: 11, fill: '#94a3b8' }} />
+                  <Tooltip />
+                  <Legend wrapperStyle={{ fontSize: 12 }} />
+                  <Line yAxisId="n" dataKey="重点发展" stroke="#10b981" strokeWidth={2} />
+                  <Line yAxisId="n" dataKey="优化整改" stroke="#f59e0b" strokeWidth={2} />
+                  <Line yAxisId="n" dataKey="风险关注" stroke="#ef4444" strokeWidth={2} />
+                  <Line yAxisId="s" dataKey="综合均分" stroke="#1677ff" strokeDasharray="5 4" strokeWidth={2} />
+                </LineChart>
+              </ResponsiveContainer>
+            </div>
+          </div>
+          <div className="rounded-2xl bg-white border border-slate-200 shadow-sm p-5">
+            <h3 className="text-base font-bold text-slate-800 m-0 mb-2">各专业综合得分变化</h3>
+            <Table<MajorResult & { scores: (number | undefined)[] }>
+              rowKey="major"
+              size="small"
+              pagination={false}
+              scroll={{ y: 260 }}
+              dataSource={rows.map((r) => ({ ...r, scores: recent.map((t) => majorResult(t.id, r.major)?.overall) }))}
+              onRow={(r) => ({ onClick: () => open(r.major), style: { cursor: 'pointer' } })}
+              columns={[
+                { title: '专业', dataIndex: 'major', width: 170, fixed: 'left' as const, render: (x: string) => <span className="font-semibold text-slate-700">{x}</span> },
+                ...recent.map((t, i) => ({ title: t.period.replace(' 学年', ''), width: 90, render: (_: unknown, r: { scores: (number | undefined)[] }) => r.scores[i] ?? '—' })),
+                {
+                  title: '近三次',
+                  width: 100,
+                  render: (_: unknown, r: { scores: (number | undefined)[] }) => <Change now={r.scores[r.scores.length - 1]!} prev={r.scores[0]} />,
+                },
               ]}
             />
-            <Input placeholder="搜索专业 / 学院" prefix={<SearchOutlined />} style={{ width: 200 }} allowClear value={search} onChange={(e) => setSearch(e.target.value)} />
-            <Button icon={<BarsOutlined />} onClick={() => router.push('/admin/indicators')}>
-              全校指标明细
-            </Button>
           </div>
-        }
-      >
-        <Table dataSource={rows} columns={columns} rowKey="name" scroll={{ x: 1200 }} pagination={false} />
-        <p className="text-xs text-slate-400 mt-3 mb-0">演示数据 · 判定依据:一致性(是否对准产业需求)+ 有效性(培养是否真正达成)</p>
-      </Card>
+        </div>
+      )}
+
+      <HistoryTasks
+        title="往期评价结果"
+        tasks={RESULT_TASKS}
+        current={task.id}
+        onPick={setTask}
+        meta={(t) => {
+          const rs = taskResults(t.id);
+          return (
+            <span className="text-xs">
+              <span style={{ color: verdictMeta.GO.color }}>重点发展 {rs.filter((r) => r.verdict === 'GO').length}</span> ·{' '}
+              <span style={{ color: verdictMeta.RISK.color }}>优化整改 {rs.filter((r) => r.verdict === 'RISK').length}</span> ·{' '}
+              <span style={{ color: verdictMeta.NO.color }}>风险关注 {rs.filter((r) => r.verdict === 'NO').length}</span>
+            </span>
+          );
+        }}
+      />
     </div>
+  );
+}
+
+function Change({ now, prev }: { now: number; prev?: number }) {
+  if (prev === undefined) return <span className="text-xs text-slate-400">—</span>;
+  const d = Math.round((now - prev) * 10) / 10;
+  if (d === 0)
+    return (
+      <span className="text-xs text-slate-400">
+        <MinusOutlined /> 持平
+      </span>
+    );
+  return (
+    <span className={`text-xs font-bold ${d > 0 ? 'text-emerald-600' : 'text-red-500'}`}>
+      {d > 0 ? <ArrowUpOutlined /> : <ArrowDownOutlined />} {Math.abs(d)}
+    </span>
   );
 }

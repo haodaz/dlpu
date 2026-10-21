@@ -88,7 +88,13 @@ export const TEACHER_ITEMS: TeacherItem[] = [
 ];
 
 // 演示教师(学校内部数据均为演示数据)
-export const DEMO_TEACHER = { name: '郝壮', call: '郝老师', course: '包装机械设计', contact: '教务处教学质量科' };
+export const DEMO_TEACHER = {
+  name: '郝壮',
+  call: '郝老师',
+  course: '包装机械设计',
+  contact: '教务处教学质量科',
+  majors: [{ name: '智能制造工程', role: '核心课任课教师' }], // 负责的专业(可多个)
+};
 
 export const TEACHER_INDICATOR_IDS = TEACHER_ITEMS.map((t) => t.indicatorId);
 
@@ -301,9 +307,9 @@ export interface Major {
 }
 
 export const verdictMeta: Record<Verdict, { label: string; color: string; bg: string; dot: string }> = {
-  GO: { label: '可办', color: '#047857', bg: '#ecfdf5', dot: '#10b981' },
-  RISK: { label: '有风险', color: '#b45309', bg: '#fffbeb', dot: '#f59e0b' },
-  NO: { label: '不可办', color: '#b91c1c', bg: '#fef2f2', dot: '#ef4444' },
+  GO: { label: '重点发展', color: '#047857', bg: '#ecfdf5', dot: '#10b981' },
+  RISK: { label: '优化整改', color: '#b45309', bg: '#fffbeb', dot: '#f59e0b' },
+  NO: { label: '风险关注', color: '#b91c1c', bg: '#fef2f2', dot: '#ef4444' },
 };
 
 const c = coreResult('consistency').score;

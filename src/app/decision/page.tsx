@@ -211,12 +211,12 @@ function DecisionView({ onReset }: { onReset: () => void }) {
       <div data-spec="decision-verdict" className="rounded-2xl bg-white border border-slate-200 shadow-sm p-6">
         <div className="text-xs font-bold text-slate-400 mb-2">本年度结论</div>
         <h2 className="text-2xl font-black text-slate-800 m-0 leading-snug">
-          全校 {MAJORS.length} 个专业中 {count('GO')} 个可办;{count('RISK')} 个有风险需优化;{count('NO')} 个建议缩减或停招。
+          {MAJORS.length} 个专业中 {count('GO')} 个重点发展;{count('RISK')} 个优化整改;{count('NO')} 个需风险关注。
         </h2>
-        <p className="text-sm text-slate-500 mt-2 mb-0">全校专业综合诊断均分 {schoolAvg} · 判定依据:一致性(是否对准产业需求)+ 有效性(培养是否真正达成)</p>
+        <p className="text-sm text-slate-500 mt-2 mb-0">专业综合诊断均分 {schoolAvg} · 判定依据:一致性(是否对准产业需求)+ 有效性(培养是否真正达成)</p>
       </div>
 
-      {/* 可办 / 风险 / 不可办 */}
+      {/* 重点发展 / 优化整改 / 风险关注 */}
       <div className="grid grid-cols-3 gap-4">
         {VERDICT_ORDER.map((v) => {
           const m = verdictMeta[v];

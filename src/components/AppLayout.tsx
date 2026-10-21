@@ -5,7 +5,6 @@ import { Layout, Menu, Avatar, Dropdown, theme, Segmented, Tooltip, Grid, Drawer
 import type { MenuProps } from 'antd';
 import {
   DashboardOutlined,
-  LineChartOutlined,
   ExperimentOutlined,
   FileDoneOutlined,
   BookOutlined,
@@ -108,8 +107,9 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
 
   // 专业教师视角菜单(按需触达:只保留"我要做的事",其余收进内部参考)
   const userMenuItems: NavItem[] = [
-    { key: '/', icon: <DashboardOutlined />, label: '我的待办' },
-    { key: '/data-management/ai-prefill', icon: <FormOutlined />, label: '待填报指标' },
+    { key: '/', icon: <DashboardOutlined />, label: '首页' },
+    { key: '/teacher/task', icon: <FormOutlined />, label: '评价任务' },
+    { key: '/teacher/result', icon: <FundViewOutlined />, label: '专业评价结果' },
     { key: '/data-management/records', icon: <SwapOutlined />, label: '填报记录' },
     {
       key: 'grp-internal-user',
@@ -132,12 +132,11 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
       icon: <BarChartOutlined />,
       label: '管理分析',
       children: [
-        { key: '/admin', icon: <FundViewOutlined />, label: '诊断分析' },
-        { key: '/rectification', icon: <FileDoneOutlined />, label: '整改报告与跟踪' },
-        { key: '/admin/review', icon: <LineChartOutlined />, label: '回看与比较' },
-        { key: '/admin/reports', icon: <FileTextOutlined />, label: '评价结果' },
+        // 按评价工作的先后:设任务 → 出结果 → 诊断(含回看比较)→ 整改
         { key: '/admin/tasks', icon: <ScheduleOutlined />, label: '评价任务' },
-        { key: '/admin/users', icon: <TeamOutlined />, label: '用户与权限' },
+        { key: '/admin/reports', icon: <FileTextOutlined />, label: '评价结果' },
+        { key: '/admin', icon: <FundViewOutlined />, label: '诊断分析' },
+        { key: '/rectification', icon: <FileDoneOutlined />, label: '整改与跟踪' },
       ],
     },
     {
@@ -149,6 +148,12 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
         { key: '/admin/industry-log', icon: <DatabaseOutlined />, label: '产业检索日志' },
         { key: '/admin/templates', icon: <ProfileOutlined />, label: '模板与范本' },
       ],
+    },
+    {
+      key: 'grp-system',
+      icon: <SettingOutlined />,
+      label: '系统设置',
+      children: [{ key: '/admin/users', icon: <TeamOutlined />, label: '用户与权限' }],
     },
     {
       key: 'grp-internal-admin',
@@ -181,10 +186,13 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
 
   // 指标页不再是菜单入口,只能从评价结论下钻;下钻时菜单高亮其来源页
   const DRILL_DOWN_ALIASES: Record<string, string> = {
-    '/metrics': role === 'admin' ? '/admin' : '/data-management/ai-prefill',
+    '/metrics': role === 'admin' ? '/admin' : '/teacher/task',
     '/admin/indicators': '/admin/reports',
     '/admin/major': '/admin',
-    '/admin/indicator-analysis': '/admin',
+    '/admin/review': '/admin',
+    '/admin/indicator-analysis': role === 'admin' ? '/admin' : '/teacher/result',
+    '/admin/diagnosis': role === 'admin' ? '/admin' : '/teacher/result',
+    '/data-management/ai-prefill': role === 'admin' ? '/admin/tasks' : '/teacher/task',
   };
   const aliasKey = Object.entries(DRILL_DOWN_ALIASES).find(
     ([prefix]) => pathname === prefix || pathname.startsWith(prefix + '/'),

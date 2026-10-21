@@ -6,9 +6,9 @@ import { useResolvedIssues } from '@/lib/diagnosis-state';
 import { PRODUCT_NAME, TENANT_NAME } from '@/lib/brand';
 
 // 会议模式(大屏):年度教育教学工作会议三环节连续演示
-// ① 决策:全校专业结论 ② 管理:一致性/有效性 + 最大问题 ③ 整改:教师层面 / 管理层面
+// ① 决策:各专业结论 ② 管理:一致性/有效性 + 最大问题 ③ 整改:教师层面 / 管理层面
 // 去导航、放大字号、深色高对比,适配投影
-export const MEETING_STEPS = ['决策 · 全校专业结论', '管理 · 诊断分析', '整改 · 任务落实'] as const;
+export const MEETING_STEPS = ['决策 · 各专业结论', '管理 · 诊断分析', '整改 · 任务落实'] as const;
 
 export default function MeetingMode({ open, initial = 0, onClose }: { open: boolean; initial?: number; onClose: () => void }) {
   // 每次打开都重新挂载,从指定环节开始
@@ -91,9 +91,11 @@ function DecisionSlide() {
   const count = (v: Verdict) => MAJORS.filter((m) => m.verdict === v).length;
   return (
     <div>
-      <h2 className="text-5xl font-black mb-3">全校 {MAJORS.length} 个专业,{count('GO')} 个可办</h2>
+      <h2 className="text-5xl font-black mb-3">
+        {MAJORS.length} 个专业中 {count('GO')} 个重点发展
+      </h2>
       <p className="text-2xl text-white/60 mb-10">
-        {count('RISK')} 个有风险需优化,{count('NO')} 个建议缩减或停招
+        {count('RISK')} 个优化整改,{count('NO')} 个需风险关注
       </p>
       <div className="grid grid-cols-4 gap-5">
         {MAJORS.map((m) => {

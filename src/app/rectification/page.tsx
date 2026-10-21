@@ -1,210 +1,121 @@
 'use client';
-import React, { useState } from 'react';
-import { Button, Segmented, Select, Modal } from 'antd';
+import React, { Suspense } from 'react';
 import { useRouter } from 'next/navigation';
-import { PrinterOutlined, FileDoneOutlined, DownloadOutlined, ReloadOutlined, StarFilled } from '@ant-design/icons';
-import { sortedIssues, teacherItemOf, coreResult, ANNUAL_FOCUS, DEMO_MAJOR, type IssueLevel } from '@/lib/diagnosis';
-import { useTaskStatus, useResolvedIssues, useCycle, type TaskStatus } from '@/lib/diagnosis-state';
-import { getIndicatorById } from '@/lib/indicators';
-import { TENANT_NAME } from '@/lib/brand';
+import { Progress, Table, Tag } from 'antd';
+import { DEMO_MAJOR, MAJORS } from '@/lib/diagnosis';
+import { useResolvedIssues } from '@/lib/diagnosis-state';
+import { LATEST_RESULT_TASK, RESULT_TASKS, majorIssues, majorSlug, staticRectDone } from '@/lib/eval-tasks';
+import { TaskHeader, HistoryTasks, useTaskParam } from '@/components/eval/TaskBar';
 
-const statusOptions: { value: TaskStatus; label: string }[] = [
-  { value: 'todo', label: '已派发' },
-  { value: 'doing', label: '整改中' },
-  { value: 'done', label: '已完成' },
-];
-const statusColor: Record<TaskStatus, string> = { todo: '#94a3b8', doing: '#f59e0b', done: '#10b981' };
-
-// 问题整改报告:由诊断结论生成,分教师层面 / 管理层面,含标准要求与范本,可打印分发
-export default function RectificationPage() {
-  const router = useRouter();
-  const [level, setLevel] = useState<'ALL' | IssueLevel>('ALL');
-  const { statusOf, setStatus, resetAll, ready } = useTaskStatus();
-  const { resolved, resolve, unresolve, reset } = useResolvedIssues();
-  const [cycle, setCycle] = useCycle();
-  const [modal, modalHolder] = Modal.useModal();
-
-  const groups: { level: IssueLevel; title: string; desc: string }[] = [
-    { level: 'MANAGEMENT', title: '管理层面整改', desc: '面向教务处、学院、专业负责人:方向与设置层面的问题' },
-    { level: 'TEACHER', title: '教师层面整改', desc: '面向任课教师:照着标准与范本补齐,只推送有问题的那一项' },
-  ];
-  const shownGroups = groups.filter((g) => level === 'ALL' || g.level === level);
-
-  const statusFor = (id: string): TaskStatus => (resolved.includes(id) ? 'done' : statusOf(id));
-  const doneCount = sortedIssues.filter((i) => statusFor(i.id) === 'done').length;
-  const allDone = doneCount === sortedIssues.length;
-
-  const nextCycle = () => {
-    modal.confirm({
-      title: `发起第 ${cycle + 1} 轮诊断?`,
-      content: '本轮问题与整改记录将归档用于纵向回看,下一轮将根据本轮结果推荐新的聚焦点。',
-      okText: '发起',
-      cancelText: '取消',
-      onOk: () => {
-        setCycle(cycle + 1);
-        reset();
-        resetAll();
-      },
-    });
-  };
-
-  const cores = [coreResult('consistency'), coreResult('effectiveness')];
-
+// 整改与跟踪:某次评价任务(默认最近一次)各专业的待整改问题与整改进度 → 点进具体专业的整改与跟踪报告
+export default function Page() {
   return (
-    <div className="max-w-5xl mx-auto pb-12">
-      {modalHolder}
-      <div className="flex items-center justify-between gap-4 mb-5 flex-wrap no-print">
-        <div className="flex items-center gap-4">
-          <div className="w-11 h-11 rounded-xl bg-emerald-600 flex items-center justify-center text-white text-xl shadow-sm">
-            <FileDoneOutlined />
-          </div>
-          <div>
-            <h1 className="text-xl font-bold text-slate-800 m-0 leading-tight">整改报告与任务跟踪</h1>
-            <p className="text-sm text-slate-500 m-0 mt-0.5">由诊断结论自动生成 · 第 {cycle} 轮 · 已完成 {doneCount}/{sortedIssues.length}</p>
-          </div>
-        </div>
-        <div className="flex items-center gap-2 flex-wrap">
-          <Segmented
-            value={level}
-            onChange={(v) => setLevel(v as typeof level)}
-            options={[
-              { value: 'ALL', label: '全部' },
-              { value: 'MANAGEMENT', label: '管理层面' },
-              { value: 'TEACHER', label: '教师层面' },
-            ]}
-          />
-          <Button icon={<PrinterOutlined />} onClick={() => window.print()}>打印 / 导出 PDF</Button>
-        </div>
-      </div>
-
-      {/* 报告正文(打印区) */}
-      <div data-spec="rect-report" className="bg-white rounded-2xl border border-slate-200 shadow-sm p-10">
-        <div className="text-center border-b border-slate-200 pb-6 mb-6">
-          <div className="text-sm text-slate-400">{TENANT_NAME} · 第 {cycle} 轮专业诊断</div>
-          <h2 className="text-2xl font-black text-slate-800 mt-2 mb-1">
-            {DEMO_MAJOR.name}专业问题整改报告
-            {level !== 'ALL' && <span className="text-slate-500">({level === 'TEACHER' ? '教师层面' : '管理层面'})</span>}
-          </h2>
-          <div className="text-sm text-slate-500 flex items-center justify-center gap-1">
-            <StarFilled className="text-amber-500" /> 本年度重点环节:{ANNUAL_FOCUS}
-          </div>
-        </div>
-
-        <section className="mb-8">
-          <h3 className="text-base font-bold text-slate-800 mb-3">一、诊断结论</h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {cores.map((r) => (
-              <div key={r.key} className="rounded-xl border border-slate-200 p-4">
-                <div className="flex items-baseline justify-between">
-                  <span className="font-bold text-slate-700">{r.name}</span>
-                  <span className="text-2xl font-black text-slate-800">{r.score}</span>
-                </div>
-                <p className="text-sm text-slate-600 mt-2 mb-0 leading-relaxed">{r.conclusion}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {shownGroups.map((g, gi) => {
-          const list = sortedIssues.filter((i) => i.level === g.level);
-          return (
-            <section key={g.level} className={`mb-8 ${gi > 0 ? 'print-break' : ''}`}>
-              <h3 className="text-base font-bold text-slate-800 mb-1">
-                {level === 'ALL' ? (gi === 0 ? '二、' : '三、') : '二、'}
-                {g.title}
-              </h3>
-              <p className="text-xs text-slate-500 mt-0 mb-3">{g.desc}</p>
-              <div className="space-y-4">
-                {list.map((issue, idx) => {
-                  const ind = getIndicatorById(issue.indicatorId);
-                  const tItem = teacherItemOf(issue.indicatorId);
-                  const st = statusFor(issue.id);
-                  return (
-                    <div key={issue.id} className="rounded-xl border border-slate-200 p-5 break-inside-avoid">
-                      <div className="flex items-start gap-3 mb-2">
-                        <span className="font-bold text-slate-400">{idx + 1}.</span>
-                        <div className="flex-1">
-                          <div className="font-bold text-slate-800 text-[15px]">{issue.title}</div>
-                          <div className="text-xs text-slate-400 mt-0.5">
-                            依据指标 {ind?.id} {ind?.name}
-                          </div>
-                        </div>
-                        {ready && (
-                          <Select
-                            size="small"
-                            className="w-24 no-print"
-                            value={st}
-                            onChange={(v) => {
-                              setStatus(issue.id, v);
-                              if (v === 'done') resolve(issue.id);
-                              else unresolve(issue.id);
-                            }}
-                            options={statusOptions}
-                          />
-                        )}
-                        <span className="hidden print:inline text-xs font-bold" style={{ color: statusColor[st] }}>
-                          {statusOptions.find((o) => o.value === st)?.label}
-                        </span>
-                      </div>
-                      <table className="w-full text-sm border-collapse">
-                        <tbody>
-                          <Row label="问题">{issue.detail}</Row>
-                          <Row label="整改要求">{issue.action}</Row>
-                          {tItem && (
-                            <Row label="标准要求">
-                              <ul className="m-0 pl-4 space-y-0.5">
-                                {tItem.standard.map((s) => (
-                                  <li key={s}>{s}</li>
-                                ))}
-                              </ul>
-                            </Row>
-                          )}
-                          {tItem && (
-                            <Row label="模板范本">
-                              <button
-                                className="text-blue-600 hover:underline inline-flex items-center gap-1"
-                                onClick={() => router.push(`/templates/${tItem.templateId}`)}
-                              >
-                                <DownloadOutlined /> {tItem.templateName}
-                              </button>
-                            </Row>
-                          )}
-                          <Row label="责任人">{issue.owner}</Row>
-                          <Row label="完成时间">{issue.due}</Row>
-                        </tbody>
-                      </table>
-                    </div>
-                  );
-                })}
-              </div>
-            </section>
-          );
-        })}
-      </div>
-
-      {/* 闭环:下一轮 */}
-      <div data-spec="rect-cycle" className="no-print mt-5 rounded-2xl border border-slate-200 bg-white p-5 flex items-center justify-between gap-4 flex-wrap">
-        <div>
-          <div className="font-bold text-slate-800">
-            {allDone ? '本轮整改已全部完成' : `本轮还有 ${sortedIssues.length - doneCount} 项整改未完成`}
-          </div>
-          <div className="text-sm text-slate-500 mt-0.5">
-            诊断 → 分析 → 整改 → 建设 → 评价 → 下一轮。{allDone ? '可以发起下一轮,聚焦下一个改进点。' : '全部完成后可发起下一轮。'}
-          </div>
-        </div>
-        <Button type="primary" icon={<ReloadOutlined />} disabled={!allDone} onClick={nextCycle}>
-          发起第 {cycle + 1} 轮诊断
-        </Button>
-      </div>
-    </div>
+    <Suspense fallback={null}>
+      <RectOverview />
+    </Suspense>
   );
 }
 
-function Row({ label, children }: { label: string; children: React.ReactNode }) {
+interface Row {
+  major: string;
+  college: string;
+  total: number;
+  done: number;
+  mgmt: number;
+  teacher: number;
+}
+
+function RectOverview() {
+  const router = useRouter();
+  const [task, setTask] = useTaskParam(LATEST_RESULT_TASK);
+  const { resolved } = useResolvedIssues();
+  const latest = task.id === LATEST_RESULT_TASK.id;
+
+  const rows: Row[] = MAJORS.map((m) => {
+    const issues = majorIssues(task.id, m.name);
+    const live = latest && m.name === DEMO_MAJOR.name;
+    return {
+      major: m.name,
+      college: m.college,
+      total: issues.length,
+      done: live ? issues.filter((i) => resolved.includes(i.id)).length : staticRectDone(task.id, m.name, issues.length),
+      mgmt: issues.filter((i) => i.level === 'MANAGEMENT').length,
+      teacher: issues.filter((i) => i.level === 'TEACHER').length,
+    };
+  }).filter((r) => r.total > 0);
+
+  const total = rows.reduce((s, r) => s + r.total, 0);
+  const done = rows.reduce((s, r) => s + r.done, 0);
+  const open = (major: string) => router.push(`/rectification/report?major=${majorSlug(major)}&task=${task.id}`);
+
   return (
-    <tr className="border-t border-slate-100">
-      <td className="py-2 pr-4 align-top text-slate-400 whitespace-nowrap w-20">{label}</td>
-      <td className="py-2 text-slate-700 leading-relaxed">{children}</td>
-    </tr>
+    <div className="max-w-6xl mx-auto pb-12 space-y-5">
+      <TaskHeader title="整改与跟踪" desc={`${task.name} · 各专业的待整改问题与整改进度 · 点专业查看整改与跟踪报告`} task={task} onTask={setTask} tasks={RESULT_TASKS} />
+
+      <div data-spec="rect-kpis" className="grid grid-cols-2 md:grid-cols-5 gap-3">
+        {[
+          { label: '涉及专业', value: rows.length, unit: '个' },
+          { label: '整改问题', value: total, unit: '个' },
+          { label: '待整改', value: total - done, unit: '个' },
+          { label: '已完成', value: done, unit: '个' },
+          { label: '整改完成率', value: total ? Math.round((done / total) * 100) : 0, unit: '%' },
+        ].map((k) => (
+          <div key={k.label} className="rounded-xl bg-white border border-slate-200 shadow-sm p-4">
+            <div className="text-xs font-bold text-slate-500">{k.label}</div>
+            <div className="mt-1.5 text-2xl font-black text-slate-800">
+              {k.value}
+              <span className="text-xs font-normal text-slate-400 ml-1">{k.unit}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div data-spec="rect-majors" className="rounded-2xl bg-white border border-slate-200 shadow-sm p-5">
+        <h3 className="text-base font-bold text-slate-800 m-0 mb-3">各专业整改进度</h3>
+        <Table
+          rowKey="major"
+          scroll={{ x: 900 }}
+          pagination={false}
+          size="middle"
+          dataSource={[...rows].sort((a, b) => a.done / a.total - b.done / b.total)}
+          onRow={(r) => ({ onClick: () => open(r.major), style: { cursor: 'pointer' } })}
+          columns={[
+            { title: '专业', dataIndex: 'major', width: 170, fixed: 'left' as const, render: (x: string) => <span className="font-bold text-slate-700">{x}</span> },
+            { title: '所属院系', dataIndex: 'college', width: 180 },
+            { title: '管理层面', dataIndex: 'mgmt', width: 90, render: (x: number) => `${x} 个` },
+            { title: '教师层面', dataIndex: 'teacher', width: 90, render: (x: number) => `${x} 个` },
+            {
+              title: '整改进度',
+              width: 220,
+              render: (_: unknown, r: Row) => (
+                <div className="flex items-center gap-2">
+                  <Progress percent={Math.round((r.done / r.total) * 100)} size="small" className="flex-1 m-0" strokeColor={r.done === r.total ? '#10b981' : '#1677ff'} showInfo={false} />
+                  <span className="text-xs text-slate-500 w-10 text-right">
+                    {r.done}/{r.total}
+                  </span>
+                </div>
+              ),
+            },
+            {
+              title: '状态',
+              width: 90,
+              render: (_: unknown, r: Row) => <Tag color={r.done === r.total ? 'success' : r.done ? 'processing' : 'default'}>{r.done === r.total ? '已完成' : r.done ? '整改中' : '待整改'}</Tag>,
+            },
+            { title: '', width: 90, render: () => <span className="text-xs text-blue-600">整改报告 →</span> },
+          ]}
+        />
+      </div>
+
+      <HistoryTasks
+        title="往期整改与跟踪"
+        tasks={RESULT_TASKS}
+        current={task.id}
+        onPick={setTask}
+        meta={(t) => {
+          const n = MAJORS.reduce((s, m) => s + majorIssues(t.id, m.name).length, 0);
+          return <span className="text-xs text-slate-400">{n} 个整改问题</span>;
+        }}
+      />
+    </div>
   );
 }

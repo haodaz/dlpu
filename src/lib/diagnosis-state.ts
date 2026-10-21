@@ -26,8 +26,18 @@ interface ArchivedCycle extends CycleRow {
   totalCount: number | null;
   archivedAt: string | null;
 }
+// 管理员新建的评价任务(草稿,尚未开始自评)
+export interface CustomTask {
+  id: string;
+  name: string;
+  period: string;
+  start: string;
+  end: string;
+  majors: string[];
+}
+
 export interface SchoolState {
-  settings: { dataImported?: boolean; viewVisibility?: Record<ViewGroup, boolean> };
+  settings: { dataImported?: boolean; viewVisibility?: Record<ViewGroup, boolean>; customTasks?: CustomTask[] };
   cycle: CycleRow;
   tasks: TaskRow[];
   history: ArchivedCycle[];
@@ -105,4 +115,10 @@ const ALL_VIEWS: Record<ViewGroup, boolean> = { decision: true, management: true
 export function useViewVisibility(): [Record<ViewGroup, boolean>, (v: Record<ViewGroup, boolean>) => void, boolean] {
   const { data, ready } = schoolStore.use();
   return [data.settings.viewVisibility ?? ALL_VIEWS, (v) => void setSetting('viewVisibility', v), ready];
+}
+
+// 新建的评价任务
+export function useCustomTasks(): [CustomTask[], (list: CustomTask[]) => void] {
+  const { data } = schoolStore.use();
+  return [data.settings.customTasks ?? [], (list) => void setSetting('customTasks', list)];
 }

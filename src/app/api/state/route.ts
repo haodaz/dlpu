@@ -9,7 +9,7 @@ import { activeCycle, startNextCycle } from '@/lib/db/closed-loop';
 import { dbUnavailable, bad } from '@/lib/db/respond';
 import { guard, denied } from '@/lib/api-guard';
 
-const SETTING_KEYS = ['dataImported', 'viewVisibility'];
+const SETTING_KEYS = ['dataImported', 'viewVisibility', 'customTasks'];
 const TASK_STATUS = ['todo', 'doing', 'done'];
 
 async function snapshot() {
