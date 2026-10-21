@@ -78,7 +78,9 @@ export interface PolicyChapter {
 export interface ChainNode {
   level: '上游' | '中游' | '下游';
   node: string;
-  companies: string[];
+  companies: string[]; // 本地区代表企业(没有时为全国)
+  national?: string[]; // 全国代表性企业
+  industries?: string[]; // 该环节包含的细分行业
   sourceIds: number[];
   history?: HistoryMark;
 }
@@ -224,13 +226,53 @@ export interface RegionalProfile {
 /** 报告内的区域画像:来源已换成报告统一编号 [S#] */
 export type RegionalChapter = Omit<RegionalProfile, 'sources'> & { kind: SignalKind };
 
+// ---------- 报告扩展:全国上市公司研发、重点企业介绍、关键岗位、人才供给 ----------
+export interface CompanyIntro {
+  name: string;
+  city: string;
+  node: string; // 所处产业链环节
+  intro: string;
+  origin: 'pingfang' | 'web';
+  src: number[];
+}
+
+export interface KeyJob {
+  title: string;
+  intro: string; // 岗位介绍
+  abilities: string[]; // 所需能力
+  skills: string[]; // 技能清单
+  salary: string; // 薪资范围(原文)
+  companies: string[]; // 代表性企业
+  occupation: string; // 匹配到的平方职业库职业名(没有为空)
+  src: number[];
+}
+
+export interface SupplyFact {
+  text: string; // 原文陈述(人才缺口 / 岗位数量 / 专业开设、招生、毕业生规模)
+  src: number[];
+}
+
+export interface ReportExtension {
+  kind: SignalKind;
+  nationalListed: ListedRd[]; // 全国代表性上市公司研发投入
+  companies: CompanyIntro[]; // 本地区重点企业介绍
+  keyJobs: KeyJob[];
+  shortage: SupplyFact[]; // 人才紧缺情况
+  demand: SupplyFact[]; // 岗位需求:全国岗位数量分布、本省岗位数量变化
+  supply: SupplyFact[]; // 人才供给:对应专业的开设数量、招生、毕业生人数
+}
+
 // ---------- 研究报告正文(按章撰写的段落,只依据各章数据,数字逐个校验) ----------
+// 三章结构:一 产业分析(概况 / 政策 / 资本 / 态势)二 产业链图谱(产业链 / 区域布局)三 人才需求(供需 / 关键岗位)
 export interface Narrative {
   overview: Claim[]; // 产业发展概况
   policy: Claim[]; // 政策环境
-  structure: Claim[]; // 产业结构与区域布局
   capital: Claim[]; // 资本与创新投入
-  talent: Claim[]; // 人才需求
+  trend?: Claim[]; // 产业发展态势总结
+  chain?: Claim[]; // 产业链分析
+  structure: Claim[]; // 区域产业布局
+  talent: Claim[]; // 人才供需
+  supply?: Claim[]; // 人才供给
 }
 
 // 飞轮:与上一次同产业同地区报告相比的变化
@@ -261,6 +303,7 @@ export interface IndustryReport {
   insight: InsightChapter;
   weak: WeakChapter;
   regional?: RegionalChapter; // 新版报告才有;旧报告没有时页面按旧结构显示
+  ext?: ReportExtension;
   narrative?: Narrative;
   sources: Source[];
   method: { label: string; value: string }[];

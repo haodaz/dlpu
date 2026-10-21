@@ -80,6 +80,17 @@ export const STORY: StoryStep[] = [
     tech: 'POST /api/advisor:系统提示词注入各专业评价结果、区域重点产业与已检索的产业画像,只依据这些数据作答。',
   },
   {
+    key: 'industry',
+    act: '环节一 · 看清形势',
+    title: '每个重点产业一份研究报告',
+    role: 'admin',
+    path: '/industry-report',
+    imported: true,
+    focus: 'ir-list',
+    cap: '区域重点产业可以一键生成研究报告,分三章:产业分析、产业链图谱、产业人才需求;报告都留在列表里,再次生成只看变化,历史版本可以回看。',
+    tech: '企业介绍、岗位介绍与薪资优先取平方企业库 / 职业库,其余联网检索;题库、文库类低质量来源在检索阶段剔除;数字须在原文中逐字出现。',
+  },
+  {
     key: 'tasks',
     act: '环节二 · 诊断分析',
     title: '先看评价任务进展到哪了',

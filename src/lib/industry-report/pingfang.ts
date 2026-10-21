@@ -21,15 +21,19 @@ type Item = Record<string, unknown>;
 async function search(model: string, fields: string[], condition: unknown, limit: number): Promise<Item[]> {
   const token = process.env.VISIONSQUARE_AUTH_BEARER;
   if (!token) return [];
-  try {
-    const res = (await Promise.race([
-      mcpToolsDataPlatform.dashGenericSearch({ model, fields, condition: JSON.stringify(condition), limit }, token),
-      new Promise((_, reject) => setTimeout(() => reject(new Error('平方数据查询超时')), 30000)),
-    ])) as { items?: Item[] };
-    return res?.items ?? [];
-  } catch {
-    return [];
+  // MCP 首次调用要冷启动,偶尔超时:超时后重试一次
+  for (let attempt = 0; attempt < 2; attempt++) {
+    try {
+      const res = (await Promise.race([
+        mcpToolsDataPlatform.dashGenericSearch({ model, fields, condition: JSON.stringify(condition), limit }, token),
+        new Promise((_, reject) => setTimeout(() => reject(new Error('平方数据查询超时')), 30000)),
+      ])) as { items?: Item[] };
+      return res?.items ?? [];
+    } catch {
+      /* 重试 */
+    }
   }
+  return [];
 }
 
 const like = (field: string, v: string) => ({ leaf: { field, comparator: 'ilike', value: `%${v}%` } });
@@ -112,4 +116,55 @@ export async function pfMajorJobs(major: string): Promise<{ titles: string[]; ra
     .map((s) => s.trim())
     .filter((s) => s && s.length <= 20);
   return { titles, raw };
+}
+
+// 企业库:按企业名查简介(企业库字段多为空,查不到时由流水线改用联网检索)
+export interface PfCompany {
+  name: string;
+  intro: string;
+  city: string;
+  revenue: string;
+}
+export async function pfCompanies(names: string[]): Promise<PfCompany[]> {
+  if (!names.length) return [];
+  const items = await search('CRMCompany', ['name', 'introduction', 'one_sentence', 'city', 'operating_revenue'], { logic_operator: '|', children: names.map((n) => like('name', n)) }, 30);
+  return items
+    .map((c) => ({ name: String(c.name ?? ''), intro: String(c.introduction || c.one_sentence || '').trim(), city: String(c.city ?? ''), revenue: String(c.operating_revenue ?? '') }))
+    .filter((c) => c.name);
+}
+
+// 职业库薪资字段是按工作年限分档的 JSON(月薪,元),转成可读文本;全为 0 视为无数据
+function salaryText(raw: unknown, recent: unknown): string {
+  try {
+    const o = JSON.parse(String(raw ?? '')) as Record<string, number>;
+    const parts = Object.entries(o)
+      .filter(([, v]) => Number(v) > 0)
+      .map(([k, v]) => `${k.replace(/^year_(\d+)_(\d+)$/, '$1–$2 年')} ${Math.round(Number(v))} 元`);
+    if (parts.length) return `月薪:${parts.join(' / ')}`;
+  } catch {
+    /* 非 JSON */
+  }
+  return Number(recent) > 0 ? `近一年月薪约 ${Math.round(Number(recent))} 元` : '';
+}
+
+// 职业库:按岗位关键词查职业(介绍、任职要求、职责、薪资)
+export interface PfOccupation {
+  name: string;
+  intro: string;
+  requirement: string;
+  responsibility: string;
+  salary: string;
+}
+export async function pfOccupations(keywords: string[]): Promise<PfOccupation[]> {
+  if (!keywords.length) return [];
+  const items = await search('CRMOccupation', ['name', 'intro', 'position_requirement', 'responsibility', 'salary_str', 'recent_year_monthly_salary'], { logic_operator: '|', children: keywords.map((k) => like('name', k)) }, 30);
+  return items
+    .map((o) => ({
+      name: String(o.name ?? ''),
+      intro: String(o.intro ?? '').trim(),
+      requirement: String(o.position_requirement ?? '').trim(),
+      responsibility: String(o.responsibility ?? '').trim(),
+      salary: salaryText(o.salary_str, o.recent_year_monthly_salary),
+    }))
+    .filter((o) => o.name);
 }

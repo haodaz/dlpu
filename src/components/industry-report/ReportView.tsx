@@ -20,12 +20,10 @@ export const KIND_META: Record<SignalKind, { label: string; cls: string; tip: st
 
 // 章节:review 为本章审核时回流知识库的条目类型(见 flywheel.markReviewed)
 const CHAPTERS = [
-  { key: 'overview', no: '一', title: '产业发展概况', review: [] as string[] },
-  { key: 'policy', no: '二', title: '政策环境', review: ['policy'] },
-  { key: 'structure', no: '三', title: '产业结构与区域布局', review: ['chain'] },
-  { key: 'capital', no: '四', title: '资本与创新投入', review: ['tech'] },
-  { key: 'talent', no: '五', title: '人才需求', review: ['chain'] },
-  { key: 'insight', no: '六', title: '发展研判与专业建设建议', review: ['weak'] },
+  { key: 'industry', no: '第一章', title: '产业分析', review: ['policy', 'tech'] as string[] },
+  { key: 'chain', no: '第二章', title: '产业链图谱分析', review: ['chain'] },
+  { key: 'talent', no: '第三章', title: '产业人才需求分析', review: ['chain'] },
+  { key: 'insight', no: '第四章', title: '发展研判与专业建设建议', review: ['weak'] },
 ] as const;
 
 export function readJSON<T>(key: string): T | null {
@@ -77,7 +75,20 @@ export function ReportView({ report }: { report: IndustryReport }) {
   const title = `${report.region}${report.industry}产业分析报告`;
   const r = report.regional;
   const n = report.narrative;
-  const legacy = !r || !n;
+  const ext = report.ext;
+  const legacy = !r || !n || !ext;
+  // 上市公司研发:全国代表性(扩展章)+ 本省(区域画像),同名去重
+  const listedAll = [
+    ...(ext?.nationalListed ?? []).map((x) => ({ ...x, scope: '全国' })),
+    ...(r?.listed ?? []).map((x) => ({ ...x, scope: r?.province ?? '本省' })),
+  ].filter((x, i, a) => a.findIndex((y) => y.company === x.company) === i);
+  // 产业链细分表:只列有细分行业或全国企业的环节(历史沉淀的旧环节没有这两项)
+  const detailNodes = report.chain.nodes.filter((x) => x.industries?.length || x.national?.length);
+  const tableNodes = detailNodes.length ? detailNodes : report.chain.nodes;
+  // 关键岗位表:扩展章的关键岗位优先,旧报告退回区域画像岗位
+  const keyRows = ext?.keyJobs.length
+    ? ext.keyJobs.map((j) => ({ title: j.title, salary: j.salary, skills: j.skills, companies: j.companies, src: j.src }))
+    : (r?.jobs ?? []).map((j) => ({ title: j.title, salary: j.salary, skills: j.skills, companies: j.city ? [j.city] : [], src: j.src }));
 
   const downloadPdf = () => {
     const prev = document.title;
@@ -126,7 +137,7 @@ export function ReportView({ report }: { report: IndustryReport }) {
       </div>
       {legacy && (
         <div className="no-print mb-4 rounded-lg border border-amber-200 bg-amber-50 px-4 py-2.5 text-sm text-amber-800">
-          这是旧版报告,没有区域产业画像与成段正文。重新生成即可得到完整的研究报告版本。
+          这是旧版报告,缺少部分章节(全国上市公司研发、重点企业介绍、关键岗位详情、人才供需)。点「更新报告」重新生成即可得到三章结构的完整版本。
         </div>
       )}
       {report.delta && (
@@ -175,7 +186,7 @@ export function ReportView({ report }: { report: IndustryReport }) {
             {CHAPTERS.map((c) => (
               <li key={c.key}>
                 <span>
-                  {c.no}、{c.title}
+                  {c.no} {c.title}
                 </span>
                 <i />
               </li>
@@ -190,9 +201,10 @@ export function ReportView({ report }: { report: IndustryReport }) {
           </p>
         </Sheet>
 
-        {/* 一、产业发展概况 */}
-        <Sheet page={nextPage()} header={title} section="一、产业发展概况">
-          <ChapterHead no="一" title="产业发展概况" kind={r?.kind ?? 'SKIPPED'} {...chapterProps('overview')} />
+        {/* 第一章 产业分析 */}
+        <Sheet page={nextPage()} header={title} section="第一章 产业分析">
+          <ChapterHead no="第一章" title="产业分析" kind={r?.kind ?? report.policy.kind} {...chapterProps('industry')} />
+          <h3 className="doc-h3">一、产业发展概况</h3>
           <Paras claims={n?.overview} srcMap={srcMap} />
           {r && r.scale.length > 0 && (
             <>
@@ -244,15 +256,12 @@ export function ReportView({ report }: { report: IndustryReport }) {
               <SourceLine />
             </>
           )}
-        </Sheet>
 
-        {/* 二、政策环境 */}
-        <Sheet page={nextPage()} header={title} section="二、政策环境">
-          <ChapterHead no="二" title="政策环境" kind={report.policy.kind} {...chapterProps('policy')} />
+          <h3 className="doc-h3">二、政策环境</h3>
           <Paras claims={n?.policy} srcMap={srcMap} />
           {report.policy.byYear.length > 0 && report.policy.items.length > 0 && (
             <>
-              <Caption no="图 2-1" title="政策层级加权得分的年度分布" />
+              <Caption no="图 1-2" title="政策层级加权得分的年度分布" />
               <figure className="chart word-skip">
                 <div className="bars">
                   {report.policy.byYear.map((y) => {
@@ -290,7 +299,7 @@ export function ReportView({ report }: { report: IndustryReport }) {
                 </tbody>
               </table>
               <SourceLine text={`政策力度按国家级 5 / 部委级 4 / 省级 3 / 市级 2 / 区县级 1 加权;政策加速度 ${report.policy.acceleration === null ? '样本不足,不计算' : `${report.policy.acceleration}%`}`} />
-              <Caption no="表 2-1" title="国家—部委—本省政策导向" />
+              <Caption no="表 1-2" title="国家—部委—本省政策导向" />
               <table className="t3">
                 <thead>
                   <tr>
@@ -330,89 +339,18 @@ export function ReportView({ report }: { report: IndustryReport }) {
           )}
         </Sheet>
 
-        {/* 三、产业结构与区域布局 */}
-        <Sheet page={nextPage()} header={title} section="三、产业结构与区域布局">
-          <ChapterHead no="三" title="产业结构与区域布局" kind={report.chain.kind} {...chapterProps('structure')} />
-          <Paras claims={n?.structure} srcMap={srcMap} />
-          {report.chain.nodes.length > 0 && (
-            <>
-              <Caption no="图 3-1" title={`${report.industry}产业链结构与代表企业`} />
-              <div className="chain">
-                {(['上游', '中游', '下游'] as const).map((lv) => (
-                  <div key={lv} className="chain-col">
-                    <div className="chain-h">{lv}</div>
-                    {report.chain.nodes
-                      .filter((x) => x.level === lv)
-                      .map((x) => (
-                        <div key={x.node} className="chain-node">
-                          <b>
-                            {x.node}
-                            <Cite ids={x.sourceIds.slice(0, 2)} />
-                            <HistoryTag h={x.history} />
-                          </b>
-                          {x.companies.length > 0 && <span>{x.companies.join('、')}</span>}
-                        </div>
-                      ))}
-                    {!report.chain.nodes.some((x) => x.level === lv) && <div className="chain-node text-slate-400">资料中未提及</div>}
-                  </div>
-                ))}
-              </div>
-              <SourceLine />
-            </>
-          )}
-          {r && r.cities.length > 0 && (
-            <>
-              <Caption no="表 3-1" title={`${r.province}${r.industry}企业的城市分布`} />
-              <table className="t3">
-                <thead>
-                  <tr>
-                    <th style={{ width: 72 }}>城市</th>
-                    <th>产业侧重</th>
-                    <th>代表企业</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {r.cities.map((x) => (
-                    <tr key={x.city}>
-                      <td className="font-semibold">{x.city}</td>
-                      <td>
-                        {x.focus}
-                        <Cite ids={x.src} />
-                      </td>
-                      <td>{x.companies.join('、') || '—'}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-              <SourceLine />
-            </>
-          )}
-          {report.chain.clusters?.length > 0 && (
-            <p className="doc-note">
-              区域产业集群(平方产业集群库):
-              {report.chain.clusters.map((c, i) => (
-                <React.Fragment key={c.name}>
-                  {i > 0 && ';'}
-                  {c.name}({c.type})
-                  <Cite ids={[c.sourceId]} />
-                </React.Fragment>
-              ))}
-            </p>
-          )}
-        </Sheet>
-
-        {/* 四、资本与创新投入 */}
-        <Sheet page={nextPage()} header={title} section="四、资本与创新投入">
-          <ChapterHead no="四" title="资本与创新投入" kind={r?.kind ?? 'SKIPPED'} {...chapterProps('capital')} />
+        <Sheet page={nextPage()} header={title} section="第一章 产业分析">
+          <h3 className="doc-h3">三、资本与创新投入</h3>
           <Paras claims={n?.capital} srcMap={srcMap} />
-          {r && r.listed.length > 0 && (
+          {listedAll.length > 0 && (
             <>
-              <Caption no="表 4-1" title={`${r.province}相关上市公司研发投入`} />
+              <Caption no="表 1-3" title="代表性上市公司研发投入" />
               <table className="t3">
                 <thead>
                   <tr>
                     <th>公司</th>
                     <th>证券代码</th>
+                    <th>范围</th>
                     <th className="num">研发费用</th>
                     <th className="num">占营收比</th>
                     <th>年份</th>
@@ -420,10 +358,11 @@ export function ReportView({ report }: { report: IndustryReport }) {
                   </tr>
                 </thead>
                 <tbody>
-                  {r.listed.map((x) => (
+                  {listedAll.map((x) => (
                     <tr key={x.company}>
                       <td className="font-semibold">{x.company}</td>
                       <td>{x.code || '—'}</td>
+                      <td>{x.scope}</td>
                       <td className="num">{x.rdExpense || '—'}</td>
                       <td className="num">{x.rdRatio || '—'}</td>
                       <td>{x.year || '—'}</td>
@@ -434,12 +373,12 @@ export function ReportView({ report }: { report: IndustryReport }) {
                   ))}
                 </tbody>
               </table>
-              <SourceLine text="上市公司年报及公开报道,方略一答整理;仅列出研发数据能在原文中核对到的公司" />
+              <SourceLine text="上市公司年报及公开报道,方略一答整理;不限本省,仅列出研发数据能在原文中核对到的公司" />
             </>
           )}
           {r && r.financing.length > 0 && (
             <>
-              <Caption no="表 4-2" title="投融资与重大项目" />
+              <Caption no="表 1-4" title="投融资与重大项目" />
               <table className="t3">
                 <thead>
                   <tr>
@@ -468,7 +407,7 @@ export function ReportView({ report }: { report: IndustryReport }) {
           )}
           {report.tech.directions.length > 0 && (
             <>
-              <Caption no={`表 4-${r && r.financing.length ? 3 : r && r.listed.length ? 2 : 1}`} title="技术方向研究热度(补充参考)" />
+              <Caption no="表 1-5" title="技术方向研究热度(补充参考)" />
               <table className="t3 compact">
                 <thead>
                   <tr>
@@ -510,15 +449,176 @@ export function ReportView({ report }: { report: IndustryReport }) {
               <SourceLine text="OpenAlex 年度论文数(仅统计完整年份),增长指标按附录公式计算;论文热度反映学术关注度,仅作技术方向的补充参考" />
             </>
           )}
+          <h3 className="doc-h3">四、产业发展态势总结</h3>
+          <Paras claims={n?.trend ?? report.insight.summary} srcMap={srcMap} />
         </Sheet>
 
-        {/* 五、人才需求 */}
-        <Sheet page={nextPage()} header={title} section="五、人才需求">
-          <ChapterHead no="五" title="人才需求" kind={r?.jobs.length || report.chain.jobs.length ? 'EXTRACTED' : 'SKIPPED'} {...chapterProps('talent')} />
+        {/* 第二章 产业链图谱分析 */}
+        <Sheet page={nextPage()} header={title} section="第二章 产业链图谱分析">
+          <ChapterHead no="第二章" title="产业链图谱分析" kind={report.chain.kind} {...chapterProps('chain')} />
+          <h3 className="doc-h3">一、产业链分析</h3>
+          <Paras claims={n?.chain} srcMap={srcMap} />
+          {report.chain.nodes.length > 0 && (
+            <>
+              <Caption no="图 2-1" title={`${report.industry}产业链图谱`} />
+              <div className="chain">
+                {(['上游', '中游', '下游'] as const).map((lv) => (
+                  <div key={lv} className="chain-col">
+                    <div className="chain-h">{lv}</div>
+                    {report.chain.nodes
+                      .filter((x) => x.level === lv)
+                      .map((x) => (
+                        <div key={x.node} className="chain-node">
+                          <b>
+                            {x.node}
+                            <Cite ids={x.sourceIds.slice(0, 2)} />
+                            <HistoryTag h={x.history} />
+                          </b>
+                          {!!x.industries?.length && <span>{x.industries.join(' · ')}</span>}
+                        </div>
+                      ))}
+                    {!report.chain.nodes.some((x) => x.level === lv) && <div className="chain-node text-slate-400">资料中未提及</div>}
+                  </div>
+                ))}
+              </div>
+              <SourceLine />
+              <Caption no="表 2-1" title="产业链各环节细分行业与全国代表性企业" />
+              <table className="t3">
+                <thead>
+                  <tr>
+                    <th style={{ width: 48 }}>环节</th>
+                    <th style={{ width: 120 }}>细分领域</th>
+                    <th>包含的行业 / 产品</th>
+                    <th>全国代表性企业</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {(['上游', '中游', '下游'] as const).flatMap((lv) =>
+                    tableNodes
+                      .filter((x) => x.level === lv)
+                      .map((x, i, arr) => (
+                        <tr key={x.node}>
+                          {i === 0 && (
+                            <td rowSpan={arr.length} className="lv">
+                              {lv}
+                            </td>
+                          )}
+                          <td className="font-semibold">
+                            {x.node}
+                            <Cite ids={x.sourceIds.slice(0, 2)} />
+                          </td>
+                          <td>{x.industries?.join('、') || '—'}</td>
+                          <td>{x.national?.join('、') || '—'}</td>
+                        </tr>
+                      )),
+                  )}
+                </tbody>
+              </table>
+              <SourceLine />
+            </>
+          )}
+        </Sheet>
+
+        <Sheet page={nextPage()} header={title} section="第二章 产业链图谱分析">
+          <h3 className="doc-h3">二、区域产业布局</h3>
+          <Paras claims={n?.structure} srcMap={srcMap} />
+          {report.chain.nodes.some((x) => x.companies.length) && (
+            <>
+              <Caption no="表 2-2" title={`${report.region}在产业链各环节的布局与企业`} />
+              <table className="t3">
+                <thead>
+                  <tr>
+                    <th style={{ width: 48 }}>环节</th>
+                    <th style={{ width: 120 }}>细分领域</th>
+                    <th>本地企业</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {report.chain.nodes
+                    .filter((x) => x.companies.length)
+                    .map((x) => (
+                      <tr key={x.node}>
+                        <td className="lv">{x.level}</td>
+                        <td className="font-semibold">{x.node}</td>
+                        <td>{x.companies.join('、')}</td>
+                      </tr>
+                    ))}
+                </tbody>
+              </table>
+              <SourceLine />
+            </>
+          )}
+          {r && r.cities.length > 0 && (
+            <>
+              <Caption no="表 2-3" title={`${r.province}${r.industry}企业的城市分布`} />
+              <table className="t3">
+                <thead>
+                  <tr>
+                    <th style={{ width: 72 }}>城市</th>
+                    <th>产业侧重</th>
+                    <th>代表企业</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {r.cities.map((x) => (
+                    <tr key={x.city}>
+                      <td className="font-semibold">{x.city}</td>
+                      <td>
+                        {x.focus}
+                        <Cite ids={x.src} />
+                      </td>
+                      <td>{x.companies.join('、') || '—'}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              <SourceLine />
+            </>
+          )}
+          {report.chain.clusters?.length > 0 && (
+            <p className="doc-note">
+              区域产业集群(平方产业集群库):
+              {report.chain.clusters.map((c, i) => (
+                <React.Fragment key={c.name}>
+                  {i > 0 && ';'}
+                  {c.name}({c.type})
+                  <Cite ids={[c.sourceId]} />
+                </React.Fragment>
+              ))}
+            </p>
+          )}
+          {!!ext?.companies.length && (
+            <>
+              <h3 className="doc-h3">三、重点企业介绍</h3>
+              {ext.companies.map((c, i) => (
+                <div key={c.name} className="company">
+                  <h4 className="doc-h4">
+                    {i + 1}. {c.name}
+                    <span className="company-meta">{[c.city, c.node].filter(Boolean).join(' · ')}</span>
+                  </h4>
+                  <p>
+                    {c.intro}
+                    <Cite ids={c.src} />
+                  </p>
+                </div>
+              ))}
+              <SourceLine text="企业介绍优先取自平方企业库,库中没有的企业取自公开资料" />
+            </>
+          )}
+        </Sheet>
+
+        {/* 第三章 产业人才需求分析 */}
+        <Sheet page={nextPage()} header={title} section="第三章 产业人才需求分析">
+          <ChapterHead no="第三章" title="产业人才需求分析" kind={ext?.keyJobs.length || r?.jobs.length || report.chain.jobs.length ? 'EXTRACTED' : 'SKIPPED'} {...chapterProps('talent')} />
+          <h3 className="doc-h3">一、人才供需分析</h3>
           <Paras claims={n?.talent} srcMap={srcMap} />
-          {r && r.demand.length > 0 && (
+          <FactBlock title="(一)人才紧缺情况" facts={[...(ext?.shortage ?? []), ...(r?.demand ?? [])]} Cite={Cite} />
+          <FactBlock title="(二)岗位需求情况" facts={ext?.demand ?? []} Cite={Cite} empty="招聘平台岗位数量数据待接入(平方暂无招聘库),公开资料中未检索到可核验的全国 / 本省岗位数量。" />
+          <h4 className="doc-h4">(三)人才供给情况</h4>
+          <Paras claims={n?.supply} srcMap={srcMap} empty="公开资料中未检索到对应专业的开设与招生数据。" />
+          {!!ext?.supply.length && (
             <blockquote className="quote">
-              {r.demand.map((d, i) => (
+              {ext.supply.map((d, i) => (
                 <p key={i}>
                   {d.text}
                   <Cite ids={d.src} />
@@ -526,38 +626,9 @@ export function ReportView({ report }: { report: IndustryReport }) {
               ))}
             </blockquote>
           )}
-          {r && r.jobs.length > 0 && (
-            <>
-              <Caption no="表 5-1" title={`${r.province}典型岗位、薪资与技能要求`} />
-              <table className="t3">
-                <thead>
-                  <tr>
-                    <th>岗位</th>
-                    <th>城市</th>
-                    <th>薪资</th>
-                    <th>技能要求</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {r.jobs.map((j, i) => (
-                    <tr key={i}>
-                      <td className="font-semibold">
-                        {j.title}
-                        <Cite ids={j.src} />
-                      </td>
-                      <td>{j.city || '—'}</td>
-                      <td>{j.salary || '—'}</td>
-                      <td>{j.skills.join('、') || '—'}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-              <SourceLine text="招聘信息与公开报道,方略一答整理;薪资照录原文口径" />
-            </>
-          )}
           {report.chain.skillFreq.length > 0 && (
             <>
-              <Caption no={`图 5-1`} title={`岗位技能要求出现频次(样本 ${report.chain.jobs.length} 个岗位)`} />
+              <Caption no="图 3-1" title={`岗位技能要求出现频次(样本 ${report.chain.jobs.length} 个岗位)`} />
               <figure className="chart word-skip">
                 <div className="hbars">
                   {report.chain.skillFreq.slice(0, 10).map((s) => (
@@ -586,12 +657,82 @@ export function ReportView({ report }: { report: IndustryReport }) {
           )}
         </Sheet>
 
-        {/* 六、研判与建议 */}
-        <Sheet page={nextPage()} header={title} section="六、发展研判与专业建设建议">
-          <ChapterHead no="六" title="发展研判与专业建设建议" kind={report.insight.kind} {...chapterProps('insight')} />
-          <h3 className="doc-h3">(一)发展方向研判</h3>
+        <Sheet page={nextPage()} header={title} section="第三章 产业人才需求分析">
+          <h3 className="doc-h3">二、关键岗位清单</h3>
+          {keyRows.length > 0 ? (
+            <>
+              <Caption no="表 3-1" title="关键岗位、薪资与技能要求" />
+              <table className="t3">
+                <thead>
+                  <tr>
+                    <th>岗位</th>
+                    <th>薪资</th>
+                    <th>技能要求</th>
+                    <th>代表性企业</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {keyRows.map((j, i) => (
+                    <tr key={i}>
+                      <td className="font-semibold">
+                        {j.title}
+                        <Cite ids={j.src} />
+                      </td>
+                      <td>{j.salary || '—'}</td>
+                      <td>{j.skills.join('、') || '—'}</td>
+                      <td>{j.companies.join('、') || '—'}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              <SourceLine text="岗位介绍与分年限月薪优先取自平方职业库,其余取自招聘信息与公开报道;薪资照录原文口径" />
+            </>
+          ) : (
+            <p className="doc-note">公开资料中未检索到可核验的关键岗位信息。</p>
+          )}
+          {ext?.keyJobs.map((j, i) => (
+            <div key={j.title} className="job">
+              <h4 className="doc-h4">
+                ({i + 1}){j.title}
+                {j.occupation && <span className="company-meta">对应平方职业库:{j.occupation}</span>}
+              </h4>
+              <dl className="job-dl">
+                <dt>岗位介绍</dt>
+                <dd>
+                  {j.intro}
+                  <Cite ids={j.src} />
+                </dd>
+                {j.abilities.length > 0 && (
+                  <>
+                    <dt>所需能力</dt>
+                    <dd>{j.abilities.join(';')}</dd>
+                  </>
+                )}
+                {j.skills.length > 0 && (
+                  <>
+                    <dt>技能清单</dt>
+                    <dd>{j.skills.join('、')}</dd>
+                  </>
+                )}
+                <dt>薪资范围</dt>
+                <dd>{j.salary || '公开资料未注明'}</dd>
+                {j.companies.length > 0 && (
+                  <>
+                    <dt>代表性企业</dt>
+                    <dd>{j.companies.join('、')}</dd>
+                  </>
+                )}
+              </dl>
+            </div>
+          ))}
+        </Sheet>
+
+        {/* 第四章 研判与建议 */}
+        <Sheet page={nextPage()} header={title} section="第四章 发展研判与专业建设建议">
+          <ChapterHead no="第四章" title="发展研判与专业建设建议" kind={report.insight.kind} {...chapterProps('insight')} />
+          <h3 className="doc-h3">一、发展方向研判</h3>
           <Paras claims={report.insight.summary} srcMap={srcMap} />
-          <h3 className="doc-h3">(二)对「{report.major || '相关专业'}」建设的建议</h3>
+          <h3 className="doc-h3">二、对「{report.major || '相关专业'}」建设的建议</h3>
           <ol className="advice">
             {report.insight.majorAdvice.map((c, i) => (
               <li key={i}>
@@ -601,7 +742,7 @@ export function ReportView({ report }: { report: IndustryReport }) {
           </ol>
           {report.weak.signals.length > 0 && (
             <>
-              <h3 className="doc-h3">(三)值得关注的早期信号</h3>
+              <h3 className="doc-h3">三、值得关注的早期信号</h3>
               <p className="doc-note">以下方向近期报道较多,但尚无量化数据支撑,置信度低,仅供专家参考。</p>
               <ul className="weak">
                 {report.weak.signals.map((s) => (
@@ -672,7 +813,7 @@ function ChapterHead({ no, title, kind, reviewed, onReview }: { no: string; titl
   return (
     <div className="chapter-head">
       <h2 className="doc-h2">
-        {no}、{title}
+        {no} {title}
       </h2>
       <span className="no-print flex items-center gap-2 ml-auto">
         <Tooltip title={m.tip}>
@@ -694,8 +835,8 @@ const Caption = ({ no, title }: { no: string; title: string }) => (
 
 const SourceLine = ({ text }: { text?: string }) => <div className="src-line">资料来源:{text ?? '联网检索与公开资料,方略一答整理;上标为参考来源编号'}</div>;
 
-function Paras({ claims, srcMap }: { claims?: Claim[]; srcMap: Map<number, Source> }) {
-  if (!claims?.length) return <p className="doc-note">本章暂无正文(公开资料不足,或为旧版报告)。</p>;
+function Paras({ claims, srcMap, empty }: { claims?: Claim[]; srcMap: Map<number, Source>; empty?: string }) {
+  if (!claims?.length) return <p className="doc-note">{empty ?? '本节暂无正文(公开资料不足,或为旧版报告)。'}</p>;
   return (
     <div className="paras">
       {claims.map((c, i) => (
@@ -847,6 +988,8 @@ function exportWord(doc: HTMLElement, title: string) {
     h1{font-family:"黑体",SimHei,sans-serif;font-size:24pt;line-height:1.4;margin:120pt 0 12pt}
     h2{font-family:"黑体",SimHei,sans-serif;font-size:15pt;margin:18pt 0 8pt}
     h3{font-family:"黑体",SimHei,sans-serif;font-size:12pt;margin:12pt 0 6pt}
+    h4{font-family:"黑体",SimHei,sans-serif;font-size:10.5pt;margin:10pt 0 4pt}
+    dt{font-weight:bold;margin-top:4pt}dd{margin:0 0 2pt 2em}
     p{text-indent:2em;margin:0 0 6pt}
     .caption{font-family:"黑体",SimHei,sans-serif;font-size:10pt;text-align:center;margin:12pt 0 4pt}
     .src-line,.doc-note{font-size:9pt;color:#555;text-indent:0}
@@ -871,4 +1014,25 @@ function exportWord(doc: HTMLElement, title: string) {
   a.download = `${title}.doc`;
   a.click();
   setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+}
+
+// 原文陈述小节(人才紧缺 / 岗位需求):逐条引用原文,没有时说明缺口
+function FactBlock({ title, facts, Cite, empty }: { title: string; facts: { text: string; src: number[] }[]; Cite: (p: { ids: number[] }) => React.ReactNode; empty?: string }) {
+  return (
+    <>
+      <h4 className="doc-h4">{title}</h4>
+      {facts.length ? (
+        <blockquote className="quote">
+          {facts.map((d, i) => (
+            <p key={i}>
+              {d.text}
+              <Cite ids={d.src} />
+            </p>
+          ))}
+        </blockquote>
+      ) : (
+        <p className="doc-note">{empty ?? '公开资料中未检索到可核验的相关陈述。'}</p>
+      )}
+    </>
+  );
 }

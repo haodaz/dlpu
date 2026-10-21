@@ -111,12 +111,32 @@ function release() {
   else active--;
 }
 
+// 低质量 / 不可核对的来源:题库、文库、问答、付费文档站。这类页面常与搜索摘要对不上或需付费解锁,
+// 直接从来源中剔除,并去掉正文里指向它们的角标——只靠这些来源支撑的句子随之失去来源,抽取时会被丢弃
+const LOW_QUALITY = [
+  /tiku|题库|ks5u|zujuan|zuoyebang|jyeoo|exam/i,
+  /wenku\.baidu|wenku\.so|docin\.com|doc88\.com|book118\.com|max\.book118|renrendoc|mbalib|wendangku|taodocs|360doc\.com/i,
+  /zhidao\.baidu|wenwen\.sogou|iask\.sina|zhihu\.com\/question/i,
+  /道客巴巴|豆丁|原创力文档|人人文库|百度文库|百度题库|百度知道/,
+];
+export const isLowQuality = (s: { title: string; url: string }) => LOW_QUALITY.some((re) => re.test(s.url) || re.test(s.title));
+
+export function dropLowQuality(r: SearchResult): SearchResult {
+  const bad = new Set((r.sources ?? []).filter(isLowQuality).map((s) => s.index));
+  if (!bad.size) return r;
+  return {
+    ...r,
+    sources: (r.sources ?? []).filter((s) => !bad.has(s.index)),
+    AbstractText: r.AbstractText.replace(/\[ref_(\d+)\]/g, (m, n) => (bad.has(Number(n)) ? '' : m)),
+  };
+}
+
 export async function searchWeb(query: string, options?: SearchOptions): Promise<SearchResult> {
   await acquire();
   try {
     for (let attempt = 0; ; attempt++) {
       try {
-        return await fetchAliyun(query, options);
+        return dropLowQuality(await fetchAliyun(query, options));
       } catch (e) {
         if (!(e as { retry?: boolean }).retry || attempt >= 3) throw e;
         await sleep(3000 * 2 ** attempt);

@@ -14,7 +14,8 @@
 //   ⑥ 与上一次报告比对,输出变化差值;报告沉淀回知识库(飞轮)
 
 import { callJSON, reportModel } from './llm';
-import { pfPolicies, pfClusters, pfMajorJobs, regionInfo } from './pingfang';
+import { pfPolicies, pfClusters, pfMajorJobs, pfCompanies, pfOccupations, regionInfo } from './pingfang';
+import { getStore } from './store';
 import { getRegionalProfile } from './regional';
 import { Flywheel, loadKb, planIncremental, recallable, normIndustry, type IndustryKb, type IncrementalPlan, type KbEntry } from './flywheel';
 import {
@@ -49,6 +50,10 @@ import type {
   HistoryMark,
   RegionalChapter,
   Narrative,
+  ListedRd,
+  CompanyIntro,
+  KeyJob,
+  ReportExtension,
 } from './types';
 
 type Emit = (e: ProgressEvent) => void;
@@ -274,7 +279,7 @@ async function chainChapter(ctx: Ctx): Promise<{ chapter: ChainChapter; recalled
   const [clustersRaw, majorJobs, structure, local, jobs] = await Promise.all([
     pfClusters(input.industry, input.region),
     pfMajorJobs(input.major),
-    search(ctx, `${input.industry} 产业链图谱 上游 中游 下游 各环节构成 代表企业`, false).catch(() => null),
+    search(ctx, `${input.industry} 产业链图谱 上游 中游 下游 各环节构成 细分行业 全国龙头企业`, false).catch(() => null),
     search(ctx, `${input.region} ${input.industry} 重点企业 龙头企业 产业集群 主营业务`).catch(() => null),
     Promise.all([
       search(ctx, `${input.region} ${input.industry} 企业招聘 工程师 岗位职责 任职要求 技能`).catch(() => null),
@@ -291,7 +296,7 @@ async function chainChapter(ctx: Ctx): Promise<{ chapter: ChainChapter; recalled
   let jobList: JobItem[] = [];
   if (chain?.text || jobs?.text) {
     const out = await callJSON<{
-      nodes: { level: string; node: string; companies: unknown; sources: unknown }[];
+      nodes: { level: string; node: string; industries: unknown; national: unknown; companies: unknown; sources: unknown }[];
       jobs: { title: string; background: unknown; skills: unknown; source: string }[];
     }>(
       '你是产业信息抽取员。只能抽取材料中明确出现的内容,不得补充材料外的企业、岗位或技能。',
@@ -305,7 +310,8 @@ ${(jobs?.text ?? '').slice(0, 10000)}
 
 抽取:
 1. nodes:产业链环节。不同材料中含义相同的环节要合并为一条,每个 level 最多 4 个环节。
-   level 只能是 上游/中游/下游;node 为简短环节名(不超过 12 字);companies 为材料中点名的该环节企业,优先列出${input.region}本地企业(没有则空数组);
+   level 只能是 上游/中游/下游;node 为简短环节名(不超过 12 字);industries 为该环节包含的细分行业或产品(如「伺服电机」「减速器」,最多 5 个);
+   national 为材料中点名的该环节全国代表性企业(最多 5 家);companies 为材料中点名的${input.region}本地企业(没有则空数组);
    sources 为支撑该环节的全部来源编号数组,如 ["S2","S5"]
 2. jobs:与「${input.industry}」产业直接相关的企业岗位(不要学校/教师招聘,不要与该产业无关的岗位,如化工生产、销售、行政、普工)。title 为岗位名;background 为专业背景要求(如"自动化""机械工程");
    skills 为具体技能或工具(如"PLC 编程""机器视觉""MES"),不要把专业名当技能;source 为来源编号
@@ -318,6 +324,8 @@ ${(jobs?.text ?? '').slice(0, 10000)}
         level: n.level as ChainNode['level'],
         node: String(n.node ?? '').trim(),
         companies: Array.from(new Set(arr(n.companies))).slice(0, 8),
+        national: Array.from(new Set(arr(n.national))).slice(0, 6),
+        industries: Array.from(new Set(arr(n.industries))).slice(0, 6),
         sourceIds: Array.from(new Set(arr(n.sources).map(sid).filter((id) => validIds.has(id)))),
       }))
       .filter((n) => n.node && CHAIN_LEVELS.includes(n.level) && n.sourceIds.length);
@@ -469,6 +477,167 @@ function regionalNumbers(r: RegionalChapter): number[] {
   ];
 }
 
+// ---------- ③c 报告扩展:全国上市公司研发 / 本地重点企业介绍 / 关键岗位 / 人才紧缺·需求·供给 ----------
+// 企业介绍优先取平方企业库,职业介绍与薪资优先取平方职业库,缺的再联网检索补;
+// 关键岗位结果写入飞轮(occupations),作为回哺平方职业库的候选数据(平方目前只有读接口)
+const EMPTY_EXT: ReportExtension = { kind: 'SKIPPED', nationalListed: [], companies: [], keyJobs: [], shortage: [], demand: [], supply: [] };
+const plainNum = (s: string) => s.replace(/[,，\s]/g, '');
+const numsIn = (s: string) => plainNum(s).match(/\d+(?:\.\d+)?/g) ?? [];
+
+async function extensionChapter(ctx: Ctx, chain: ChainChapter, regional: RegionalChapter): Promise<ReportExtension> {
+  const { input, emit, reg } = ctx;
+  emit({ type: 'step', step: 'extend', status: 'working' });
+  const { provinceName = input.region } = regionInfo(input.region);
+  const bundle = async (qs: string[], fresh = false) => {
+    const list = (await Promise.all(qs.map((q) => search(ctx, q, fresh).catch(() => null)))).filter(Boolean) as SearchBundle[];
+    return { text: list.map((b) => b.text).join('\n\n'), ids: new Set(list.flatMap((b) => b.ids)) };
+  };
+  const srcOf = (v: unknown, valid: Set<number>) => Array.from(new Set(arr(v).map(sid).filter((id) => valid.has(id))));
+  const str = (v: unknown) => String(v ?? '').trim();
+
+  // 候选:本地企业(区域画像城市分布 + 上市公司 + 产业链本地企业),关键岗位(区域岗位 + 产业链岗位)
+  const nodeOf = new Map<string, string>();
+  chain.nodes.forEach((n) => n.companies.forEach((c) => nodeOf.has(c) || nodeOf.set(c, `${n.level}·${n.node}`)));
+  const localNames = Array.from(new Set([...chain.nodes.flatMap((n) => n.companies), ...regional.cities.flatMap((c) => c.companies), ...regional.listed.map((l) => l.company)])).slice(0, 8);
+  const jobTitles = Array.from(new Set([...regional.jobs.map((j) => j.title), ...[...chain.jobs].sort((a, b) => b.skills.length - a.skills.length).map((j) => j.title)])).slice(0, 6);
+  const occKeys = Array.from(new Set(jobTitles.map((t) => t.replace(/[(（].*$/, '').replace(/(高级|中级|初级|资深)/g, '').trim()).filter((t) => t.length >= 2)));
+
+  const [pfComp, pfOcc, listedB, compB, jobB, talentB] = await Promise.all([
+    pfCompanies(localNames),
+    pfOccupations(occKeys),
+    bundle([`${input.industry} 上市公司 研发投入 研发费用 占营业收入比例 2024年年报 龙头企业`]),
+    localNames.length ? bundle([`${localNames.slice(0, 4).join(' ')} 公司简介 主营业务`, `${localNames.slice(4, 8).join(' ') || input.region + input.industry} 公司简介 主营业务`]) : Promise.resolve(null),
+    jobTitles.length ? bundle([`${input.region} ${jobTitles.slice(0, 3).join(' ')} 岗位职责 任职要求 薪资 招聘企业`, `${input.industry} ${jobTitles.slice(3, 6).join(' ') || '关键岗位'} 岗位职责 能力要求 薪资`], true) : Promise.resolve(null),
+    bundle(
+      [
+        `${input.industry} 人才缺口 紧缺岗位 人才需求 报告`,
+        `${input.industry} 招聘 岗位数量 全国 各省 分布 ${provinceName} 岗位需求 同比`,
+        ...(input.major ? [`${input.major} 专业 全国 开设高校 数量 招生规模 毕业生人数 近年`] : []),
+      ],
+      true,
+    ),
+  ]);
+  emit({ type: 'log', message: `平方数据:企业库匹配 ${pfComp.length} 家,职业库匹配 ${pfOcc.length} 个职业` });
+
+  const all = [listedB?.text, compB?.text, jobB?.text, talentB?.text].filter(Boolean).join('\n\n');
+  const valid = new Set([...(listedB?.ids ?? []), ...(compB?.ids ?? []), ...(jobB?.ids ?? []), ...(talentB?.ids ?? [])]);
+  const t = plainNum(all);
+  const numsOk = (...vs: string[]) => vs.every((v) => numsIn(v).every((n) => t.includes(n)));
+
+  // 平方企业库命中的企业:介绍直接取库里的;未命中的从检索材料抽取
+  const pfHit = new Map<string, (typeof pfComp)[number]>();
+  // 只认同名企业,或名称包含且注册地在本地区的(避免「东软集团」匹配到外地子公司)
+  const place = regionInfo(input.region).city ?? provinceName;
+  for (const name of localNames) {
+    const c =
+      pfComp.find((x) => x.intro && x.name === name) ??
+      pfComp.find((x) => x.intro && (x.name.includes(name) || name.includes(x.name)) && `${x.city}${x.intro.slice(0, 80)}`.includes(place));
+    if (c) pfHit.set(name, c);
+  }
+  const occText = pfOcc.map((o) => `【${o.name}】介绍:${o.intro.slice(0, 200)} 要求:${o.requirement.slice(0, 200)} 薪资:${o.salary || '无'}`).join('\n');
+
+  const out = all
+    ? await callJSON<{ listed: Record<string, unknown>[]; companies: Record<string, unknown>[]; keyJobs: Record<string, unknown>[]; shortage: Record<string, unknown>[]; demand: Record<string, unknown>[]; supply: Record<string, unknown>[] }>(
+        '你是产业研究信息抽取员。只能抽取材料中明确出现的内容,不得补充或推测;每条必须给出材料中的来源编号;数字照抄原文。',
+        `产业:${input.industry};地区:${input.region};对应专业:${input.major || '未指定'}
+
+【检索材料】(句后 [S数字] 为来源编号)
+${all.slice(0, 22000)}
+
+【平方职业库】(无来源编号,可作为岗位介绍与能力的依据)
+${occText || '无'}
+
+抽取:
+1. listed:全国(不限本省)该产业代表性上市公司的研发投入,最多 8 家。company / code(证券代码,没有为空)/ city / rdExpense(研发费用含单位)/ rdRatio(占营收比)/ year / src
+2. companies:以下本地企业的介绍(每家 1-2 句,主营业务与在产业链中的位置):${localNames.filter((n) => !pfHit.has(n)).join('、') || '无'}。name / intro / src
+3. keyJobs:关键岗位,优先这些:${jobTitles.join('、') || '材料中的关键岗位'},最多 6 个。title / intro(岗位介绍 1-2 句)/ abilities(所需能力,最多 4 条)/ skills(技能或工具,最多 6 个)/ salary(材料中的薪资原文,没有为空)/ companies(材料中点名招聘该岗位的企业)/ occupation(对应的平方职业库职业名,没有为空)/ src(来源编号数组;仅依据职业库时可为空数组)
+4. shortage:该产业人才紧缺情况的原文陈述(缺口规模、紧缺岗位),最多 4 条。text / src
+5. demand:岗位需求数量的原文陈述(全国岗位数量与分布、${provinceName}岗位数量变化),最多 4 条。text / src
+6. supply:${input.major ? `「${input.major}」等对应专业的人才供给原文陈述(开设高校数量、招生规模、毕业生人数及近年变化)` : '对应专业人才供给的原文陈述'},最多 4 条。text / src
+
+src 为来源编号数组,如 ["S3"]。输出 JSON:{"listed":[],"companies":[],"keyJobs":[],"shortage":[],"demand":[],"supply":[]}`,
+        7000,
+      ).catch((e) => {
+        emit({ type: 'log', message: `扩展章节抽取失败:${(e as Error).message}` });
+        return null;
+      })
+    : null;
+
+  const facts = (rows: Record<string, unknown>[] | undefined) =>
+    (rows ?? []).map((r) => ({ text: str(r.text), src: srcOf(r.src, valid) })).filter((r) => r.text && r.src.length && numsOk(r.text));
+
+  const nationalListed: ListedRd[] = (out?.listed ?? [])
+    .map((r) => ({ company: str(r.company), code: str(r.code), city: str(r.city), rdExpense: str(r.rdExpense), rdRatio: str(r.rdRatio), year: str(r.year), src: srcOf(r.src, valid) }))
+    .filter((r) => r.company && r.src.length && /\d/.test(r.rdExpense + r.rdRatio) && !/未披露/.test(r.rdExpense + r.rdRatio) && numsOk(r.rdExpense, r.rdRatio));
+
+  // 平方企业库简介多为工商信息全文:保留成立与注册地,经营范围截取前段
+  const pfIntro = (s: string) => {
+    const [head, scope = ''] = s.split(/经营范围(?:包括|为|:|：)?/);
+    const main = scope.replace(/[(（][^)）]*[)）]/g, '').split(/[;；。]/)[0].slice(0, 90);
+    return `${head.trim().replace(/[,，。]$/, '')}${main ? `。主营:${main}${main.length >= 90 ? '等' : ''}` : ''}`.slice(0, 260);
+  };
+  const pfSrc = (name: string) => reg.add(`平方企业库 · ${name}`, '', 'pingfang');
+  const cityOf = (name: string) => regional.cities.find((c) => c.companies.includes(name))?.city ?? regional.listed.find((l) => l.company === name)?.city ?? '';
+  const companies: CompanyIntro[] = [
+    ...[...pfHit].map(([name, c]) => ({ name, city: (/^[\d.]+$/.test(c.city) ? '' : c.city) || cityOf(name), node: nodeOf.get(name) ?? '', intro: pfIntro(c.intro), origin: 'pingfang' as const, src: [pfSrc(name)] })),
+    ...(out?.companies ?? [])
+      .map((r) => ({ name: str(r.name), city: cityOf(str(r.name)), node: nodeOf.get(str(r.name)) ?? '', intro: str(r.intro), origin: 'web' as const, src: srcOf(r.src, valid) }))
+      .filter((r) => r.name && r.intro && r.src.length && localNames.includes(r.name) && !pfHit.has(r.name)),
+  ];
+
+  const occSrc = (name: string) => reg.add(`平方职业库 · ${name}`, '', 'pingfang');
+  const keyJobs: KeyJob[] = (out?.keyJobs ?? [])
+    .map((r) => {
+      // 职业库匹配:同名,或岗位名包含职业名(不反向匹配,避免「车工」命中「机车工程师」)
+      const title = str(r.title);
+      const occ =
+        pfOcc.find((o) => o.name === str(r.occupation) && (title.includes(o.name) || o.name.includes(title))) ?? pfOcc.find((o) => o.name === title || title.includes(o.name));
+      const salary = str(r.salary);
+      const src = srcOf(r.src, valid);
+      return {
+        title: str(r.title),
+        intro: str(r.intro) || occ?.intro.slice(0, 160) || '',
+        abilities: arr(r.abilities).slice(0, 4),
+        skills: arr(r.skills).slice(0, 6),
+        // 薪资:检索原文能核对到就用原文,否则用职业库分年限月薪
+        salary: salary && numsOk(salary) && src.length ? salary : occ?.salary ?? '',
+        companies: arr(r.companies).filter((c) => all.includes(c)).slice(0, 5),
+        occupation: occ?.name ?? '',
+        src: [...src, ...(occ ? [occSrc(occ.name)] : [])],
+      };
+    })
+    .filter((j) => j.title && j.intro && j.src.length && (j.skills.length || j.salary));
+
+  // 关键岗位沉淀进飞轮:积累后作为回哺平方职业库的候选数据
+  await Promise.all(keyJobs.map((j) => getStore().put('occupations', `${normIndustry(input.industry)}|${norm(j.title)}`, { ...j, industry: input.industry, region: input.region, at: new Date().toISOString() }).catch(() => {})));
+
+  const ext: ReportExtension = { kind: 'EXTRACTED', nationalListed, companies, keyJobs, shortage: facts(out?.shortage), demand: facts(out?.demand), supply: facts(out?.supply) };
+  const n = nationalListed.length + companies.length + keyJobs.length + ext.shortage.length + ext.demand.length + ext.supply.length;
+  if (!n) {
+    emit({ type: 'step', step: 'extend', status: 'skipped', detail: '未检索到可核验的扩展材料' });
+    return { ...ext, kind: 'SKIPPED' };
+  }
+  emit({
+    type: 'step',
+    step: 'extend',
+    status: 'done',
+    detail: `全国上市公司 ${nationalListed.length} · 企业介绍 ${companies.length}(平方 ${pfHit.size})· 关键岗位 ${keyJobs.length} · 人才供需 ${ext.shortage.length + ext.demand.length + ext.supply.length} 条`,
+  });
+  return ext;
+}
+
+function extNumbers(e: ReportExtension): number[] {
+  const nums = (s: string) => numsIn(s).map(Number);
+  return [
+    ...e.nationalListed.flatMap((x) => nums(`${x.rdExpense} ${x.rdRatio}`)),
+    ...e.keyJobs.flatMap((x) => nums(x.salary)),
+    ...[...e.shortage, ...e.demand, ...e.supply].flatMap((x) => nums(x.text)),
+    e.nationalListed.length,
+    e.companies.length,
+    e.keyJobs.length,
+  ];
+}
+
 // ---------- ⑤ 早期弱信号(始终只看最近 30 天) ----------
 async function weakChapter(ctx: Ctx, tech: TechChapter): Promise<WeakSignal[]> {
   const { input, emit } = ctx;
@@ -508,7 +677,7 @@ ${text.slice(0, 6000)}
 }
 
 // ---------- ④ 综合研判 ----------
-function tablesForLLM(tech: TechChapter, policy: PolicyChapter, chain: ChainChapter, regional: RegionalChapter): string {
+function tablesForLLM(tech: TechChapter, policy: PolicyChapter, chain: ChainChapter, regional: RegionalChapter, ext: ReportExtension): string {
   const t1 = tech.directions
     .map((d) => `| ${d.name} | ${d.counts.map((c) => c.count).join(' / ')} | ${d.yoy ?? '—'} | ${d.cagr ?? '—'} | ${d.accel ?? '—'} | ${d.stage} |`)
     .join('\n');
@@ -520,7 +689,9 @@ function tablesForLLM(tech: TechChapter, policy: PolicyChapter, chain: ChainChap
   const t3 =
     chain.kind === 'SKIPPED'
       ? '(本章数据不足,已跳过)'
-      : `区域产业集群:${chain.clusters.map((c) => `${c.name}(${c.type})`).join(';') || '无'}\n环节:${chain.nodes.map((n) => `${n.level}·${n.node}`).join(';')}\n岗位样本:${chain.jobs.length} 个\n${
+      : `区域产业集群:${chain.clusters.map((c) => `${c.name}(${c.type})`).join(';') || '无'}\n环节(细分行业 | 全国代表企业 | 本地企业):\n${chain.nodes
+          .map((n) => `- ${n.level}·${n.node}(${n.industries?.join('、') || '—'} | ${n.national?.join('、') || '—'} | ${n.companies.join('、') || '—'})${n.sourceIds.slice(0, 2).map((i) => `[S${i}]`).join('')}`)
+          .join('\n')}\n岗位样本:${chain.jobs.length} 个\n${
           chain.skillFreq.some((s) => s.count >= 2)
             ? `技能频次(仅列出现 ≥2 次的):${chain.skillFreq
                 .filter((s) => s.count >= 2)
@@ -564,7 +735,21 @@ ${t3}
 ${t2list || '无'}
 
 【T4 区域产业画像(${r.province || '本省'})】
-${t4}`;
+${t4}
+
+【T5 企业、关键岗位与人才供需】
+${
+  ext.kind === 'SKIPPED'
+    ? '(本章数据不足,已跳过)'
+    : [
+        `全国上市公司研发投入:${ext.nationalListed.map((x) => `${x.company}${x.code ? `(${x.code})` : ''} ${x.year} 研发费用 ${x.rdExpense || '—'} 占营收 ${x.rdRatio || '—'}${ref(x.src)}`).join(';') || '无'}`,
+        `本地重点企业:${ext.companies.map((x) => `${x.name}${x.city ? `(${x.city})` : ''}${x.node ? `[${x.node}]` : ''}:${x.intro}${ref(x.src)}`).join(';') || '无'}`,
+        `关键岗位:${ext.keyJobs.map((x) => `${x.title}(技能 ${x.skills.join('/') || '—'};薪资 ${x.salary || '未注明'};企业 ${x.companies.join('、') || '—'})${ref(x.src)}`).join(';') || '无'}`,
+        `人才紧缺:${ext.shortage.map((x) => `${x.text}${ref(x.src)}`).join(';') || '无'}`,
+        `岗位需求数量:${ext.demand.map((x) => `${x.text}${ref(x.src)}`).join(';') || '无'}`,
+        `人才供给(对应专业):${ext.supply.map((x) => `${x.text}${ref(x.src)}`).join(';') || '无'}`,
+      ].join('\n')
+}`;
 }
 
 async function insightChapter(ctx: Ctx, tables: string, allowed: number[]) {
@@ -575,7 +760,7 @@ async function insightChapter(ctx: Ctx, tables: string, allowed: number[]) {
 1. 只能使用给定表格中的信息,不得引入外部知识或新的数字;
 2. 引用数字时必须与表格完全一致;
 3. 若数据无明显变化,不要写成变化;阶段判定以表格为准,不得改判;
-4. 每条结论必须在 refs 中注明依据的表格编号(T1/T2/T3/T4);T1 论文热度只作技术方向的辅助参考,判断以 T4 区域产业规模、企业、资本与人才数据和 T2 政策为主;
+4. 每条结论必须在 refs 中注明依据的表格编号(T1/T2/T3/T4/T5);T1 论文热度只作技术方向的辅助参考,判断以 T4 区域产业规模、企业、资本与人才数据、T5 关键岗位与人才供需和 T2 政策为主;
 5. 技能只能引用频次 ≥ 2 的项;若岗位样本较少,要明确说明"岗位样本有限"。`,
     `产业:${input.industry};区域:${input.region};服务专业:${input.major || '未指定'}
 
@@ -600,7 +785,7 @@ ${tables}
 }
 
 // ---------- ④b 研究报告正文 ----------
-const EMPTY_NARRATIVE: Narrative = { overview: [], policy: [], structure: [], capital: [], talent: [] };
+const EMPTY_NARRATIVE: Narrative = { overview: [], policy: [], capital: [], trend: [], chain: [], structure: [], talent: [], supply: [] };
 
 async function narrativeChapter(ctx: Ctx, tables: string, allowed: number[]): Promise<Narrative> {
   const { input, emit } = ctx;
@@ -611,26 +796,41 @@ async function narrativeChapter(ctx: Ctx, tables: string, allowed: number[]): Pr
 2. 数字必须与表格完全一致(照抄,不换算、不取整);引用具体数据时在句末标注来源编号,如 [S12];
 3. 数据缺失的方面直接说明"公开资料未检索到",不要编造,也不要回避;
 4. 每段 120-220 字,不用项目符号;
-5. 每段在 refs 中注明依据的表格编号(T1/T2/T3/T4)。`,
+5. 每段在 refs 中注明依据的表格编号(T1/T2/T3/T4/T5)。`,
     `产业:${input.industry};区域:${input.region};服务专业:${input.major || '未指定'}
 
 ${tables}
 
-按以下五章撰写正文,每章 2-3 段:
-- overview(产业发展概况):本省该产业的规模与增速、在全省工业中的地位、重点细分方向与发展目标。
-- policy(政策环境):按 国家 → 部委 → 本省(及市)三级梳理政策导向的传导关系,解读政策重点支持什么、对本省该产业意味着什么。
-- structure(产业结构与区域布局):产业链上中下游构成,企业在本省各城市的分布与各市侧重,本地龙头企业。
-- capital(资本与创新投入):投融资与重大项目、上市公司研发投入;论文热度(T1)仅作技术方向的补充参考,放在最后一段简述。
-- talent(人才需求):典型岗位、技能要求、薪资水平与人才缺口,点出与「${input.major || '相关专业'}」培养的对接点。
+报告分三章,按以下小节撰写正文:
+第一章 产业分析
+- overview(产业发展概况,2-3 段):本省该产业的规模与增速、在全省工业中的地位、重点细分方向与发展目标。
+- policy(政策环境,2-3 段):按 国家 → 部委 → 本省(及市)三级梳理政策导向的传导关系,解读政策重点支持什么、对本省该产业意味着什么。
+- capital(资本与创新投入,2-3 段):全国代表性上市公司研发投入(T5,不限本省)、本省上市公司研发与投融资、重大项目;论文热度(T1)仅作技术方向的补充参考,放在最后一段简述。
+- trend(产业发展态势总结,1-2 段):综合规模、政策、资本三方面,判断该产业在本省的整体发展态势(扩张 / 稳定 / 调整)与主要驱动力。
+第二章 产业链图谱分析
+- chain(产业链分析,2-3 段):上游、中游、下游各包含哪些细分行业,各环节有哪些全国代表性企业(T3)。
+- structure(区域产业布局,2-3 段):本省在产业链各环节的布局,各城市的侧重与代表企业,本地重点企业的主营业务(T4、T5)。
+第三章 产业人才需求分析
+- talent(人才紧缺与需求,2 段):人才紧缺情况、岗位需求数量与分布、技能要求与薪资水平。
+- supply(人才供给,1-2 段):对应专业的开设、招生与毕业生情况,与需求对比,点出与「${input.major || '相关专业'}」培养的对接点;资料不足时直接说明。
 
-输出 JSON:{"overview":[{"text":"","refs":["T4"]}],"policy":[],"structure":[],"capital":[],"talent":[]}`,
-    7000,
+输出 JSON:{"overview":[{"text":"","refs":["T4"]}],"policy":[],"capital":[],"trend":[],"chain":[],"structure":[],"talent":[],"supply":[]}`,
+    9000,
   );
   const check = (list: { text: string; refs: string[] }[] | undefined): Claim[] =>
     (Array.isArray(list) ? list : [])
       .filter((c) => c?.text)
       .map((c) => ({ text: c.text, refs: (c.refs ?? []).map(String), unverifiedNumbers: unverifiedNumbers(c.text.replace(/\[S\d+\]/g, ''), allowed) }));
-  const n: Narrative = { overview: check(out.overview), policy: check(out.policy), structure: check(out.structure), capital: check(out.capital), talent: check(out.talent) };
+  const n: Narrative = {
+    overview: check(out.overview),
+    policy: check(out.policy),
+    capital: check(out.capital),
+    trend: check(out.trend),
+    chain: check(out.chain),
+    structure: check(out.structure),
+    talent: check(out.talent),
+    supply: check(out.supply),
+  };
   const paras = Object.values(n).flat();
   const flagged = paras.filter((c) => c.unverifiedNumbers.length).length;
   emit({ type: 'step', step: 'narrative', status: 'done', detail: `${paras.length} 段正文${flagged ? `,${flagged} 段含未核验数字,已标出` : ',数字全部可在表格中找到'}` });
@@ -699,9 +899,15 @@ export async function runIndustryReport(input: ReportInput, emit: Emit): Promise
   const policy = mergeRegionalPolicies(ctx, pol.chapter, regional);
   const chain = ch.chapter;
 
+  // ③c 扩展章节依赖产业链与区域画像中的企业、岗位
+  const ext = await extensionChapter(ctx, chain, regional).catch((e) => {
+    emit({ type: 'step', step: 'extend', status: 'error', detail: (e as Error).message });
+    return EMPTY_EXT;
+  });
+
   // ④ ④b ⑤ 并行
-  const allowed = [...allowedNumbers({ tech, policy, chain }), ...regionalNumbers(regional)];
-  const tables = tablesForLLM(tech, policy, chain, regional);
+  const allowed = [...allowedNumbers({ tech, policy, chain }), ...regionalNumbers(regional), ...extNumbers(ext)];
+  const tables = tablesForLLM(tech, policy, chain, regional, ext);
   const [insight, narrative, signals] = await Promise.all([
     insightChapter(ctx, tables, allowed),
     narrativeChapter(ctx, tables, allowed).catch((e) => {
@@ -726,6 +932,7 @@ export async function runIndustryReport(input: ReportInput, emit: Emit): Promise
     insight: { kind: 'INTERPRETED', ...insight },
     weak: { kind: 'WEAK', signals },
     regional,
+    ext,
     narrative,
     sources: ctx.reg.list,
     method: [
@@ -734,7 +941,7 @@ export async function runIndustryReport(input: ReportInput, emit: Emit): Promise
         label: '区域画像',
         value: `本省产业规模、细分方向、企业分布、上市公司研发投入、投融资、三级政策与岗位薪资;${regional.origin === 'base' ? `取自代码内预查底库(${regional.collectedAt.slice(0, 10)})` : '底库暂无,本次现查并回流知识库'};数值与企业名须在检索原文中逐字出现,否则丢弃`,
       },
-      { label: '平方数据', value: '政策库(层级、发布时间、官方链接)、产业集群库、国内专业库(就业方向),经 MCP 查询,来源标注「平方」' },
+      { label: '平方数据', value: '政策库(层级、发布时间、官方链接)、产业集群库、国内专业库(就业方向)、企业库(企业介绍)、职业库(岗位介绍与分年限月薪),经 MCP 查询,来源标注「平方」' },
       { label: '论文数据', value: `OpenAlex 年度论文数(${tech.years[0]}–${tech.years[tech.years.length - 1]},仅统计完整年份)` },
       { label: '增长指标', value: '同比 =(当年−上年)/上年;CAGR =(末年/首年)^(1/6)−1;加速比 = 当年同比 / 上年同比' },
       {

@@ -12,6 +12,7 @@ const STEPS: { key: string; label: string }[] = [
   { key: 'policy', label: '政策检索与抽取' },
   { key: 'chain', label: '产业链与岗位检索与抽取' },
   { key: 'regional', label: '区域产业画像(底库 / 现查)' },
+  { key: 'extend', label: '重点企业 · 关键岗位 · 人才供需(平方企业库 / 职业库 + 检索)' },
   { key: 'insight', label: '综合研判 + 数字校验' },
   { key: 'narrative', label: '撰写研究报告正文 + 数字校验' },
   { key: 'weak', label: '早期弱信号扫描' },

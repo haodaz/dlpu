@@ -3,7 +3,7 @@
 // 2. 知识库:每次生成的政策 / 产业链环节与企业 / 集群 / 岗位 / 弱信号按产业去重沉淀,记录出现次数与来源
 // 3. 增量:同产业同地区有历史时,先取知识库作底稿,再只检索上次之后的变化(时效过滤),报告给出变化差值
 // 4. 审核回流:专家审核过的章节,其条目在知识库标记为已审核,后续优先采用
-import { searchWeb, type SearchResult, type SearchOptions } from '@/lib/search';
+import { searchWeb, dropLowQuality, type SearchResult, type SearchOptions } from '@/lib/search';
 import { fetchYearCounts } from './quant';
 import { getStore, hashKey } from './store';
 import type { DirectionPlan, IndustryReport, PolicyLevel, ChainNode } from './types';
@@ -80,7 +80,7 @@ export class Flywheel {
     const hit = await getStore().get<{ at: number; result: SearchResult }>('cache-search', key);
     if (hit && Date.now() - hit.at < SEARCH_TTL) {
       this.stats.searchHit++;
-      return hit.result;
+      return dropLowQuality(hit.result); // 旧缓存同样过滤低质量来源
     }
     this.stats.searchMiss++;
     const result = await searchWeb(query, options);

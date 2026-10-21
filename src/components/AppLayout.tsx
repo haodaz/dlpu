@@ -126,7 +126,15 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
   // 管理员视角菜单:三种页面视角(按开会叙事顺序)+ 内部参考(默认收起)
   const adminMenuItems: NavItem[] = [
     { key: '/decision', icon: <FundProjectionScreenOutlined />, label: '宏观决策分析' },
-    { key: '/industry-report', icon: <ExperimentOutlined />, label: '产业分析报告' },
+    {
+      key: 'grp-industry',
+      icon: <ExperimentOutlined />,
+      label: '产业分析报告',
+      children: [
+        { key: '/industry-report', icon: <FileTextOutlined />, label: '报告列表' },
+        { key: '/admin/industry-log', icon: <DatabaseOutlined />, label: '产业检索日志' },
+      ],
+    },
     {
       key: 'grp-management',
       icon: <BarChartOutlined />,
@@ -145,7 +153,6 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
       label: '数据上传',
       children: [
         { key: '/admin/data-sources', icon: <CloudServerOutlined />, label: '数据源接入' },
-        { key: '/admin/industry-log', icon: <DatabaseOutlined />, label: '产业检索日志' },
         { key: '/admin/templates', icon: <ProfileOutlined />, label: '模板与范本' },
       ],
     },
@@ -178,7 +185,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
   const degradedReason = useDegradedReason();
   const VIEW_KEYS: Record<string, keyof typeof visible> = {
     '/decision': 'decision',
-    '/industry-report': 'decision',
+    'grp-industry': 'decision',
     'grp-management': 'management',
     'grp-upload': 'upload',
   };

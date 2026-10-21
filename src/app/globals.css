@@ -94,6 +94,13 @@ body.spec-on [data-spec] { cursor: help; }
 .chapter-head { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
 .doc-h2 { font-family: system-ui, "PingFang SC", sans-serif; font-size: 21px; font-weight: 800; color: #0f1e46; margin: 0; }
 .doc-h3 { font-family: system-ui, "PingFang SC", sans-serif; font-size: 15.5px; font-weight: 700; color: #1f2937; margin: 26px 0 10px; }
+.doc-h4 { font-family: system-ui, "PingFang SC", sans-serif; font-size: 14px; font-weight: 700; color: #334155; margin: 18px 0 8px; display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.company-meta { font-size: 12px; font-weight: 400; color: #64748b; }
+.company p { text-indent: 2em; margin: 0 0 6px; }
+.job { margin-top: 6px; break-inside: avoid; }
+.job-dl { display: grid; grid-template-columns: 84px 1fr; gap: 6px 12px; margin: 0; font-size: 13.5px; line-height: 1.75; }
+.job-dl dt { font-family: system-ui, sans-serif; font-weight: 600; color: #475569; }
+.job-dl dd { margin: 0; color: #1f2937; }
 .paras p, .paper .advice li, .paper .key-points li { font-size: 14.5px; line-height: 1.95; text-align: justify; }
 .paras p { text-indent: 2em; margin: 0 0 12px; }
 .key-points, .advice { margin: 12px 0 0; padding-left: 1.6em; }
