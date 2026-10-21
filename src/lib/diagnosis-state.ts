@@ -36,8 +36,25 @@ export interface CustomTask {
   majors: string[];
 }
 
+// 模板配置(管理员在「模板与范本」里选用 / 配置后发布给教师)
+export interface TemplateSetting {
+  variant: string; // 选用的模板版本:std / lite / custom
+  requirement?: string; // 学校自定义的填写要求
+  prompt?: string; // AI 辅助起草的提示词
+  sampleName?: string; // 学校上传的范文文件名
+  publishedAt?: string; // 发布给教师的时间
+}
+
+// 版本配额:学校版 / 院系版功能相同,只差可评价专业数与可生成报告的产业数
+export interface Quotas {
+  edition: 'school' | 'college';
+  majors: number;
+  industries: number;
+}
+export const DEFAULT_QUOTAS: Quotas = { edition: 'school', majors: 60, industries: 10 };
+
 export interface SchoolState {
-  settings: { dataImported?: boolean; viewVisibility?: Record<ViewGroup, boolean>; customTasks?: CustomTask[] };
+  settings: { dataImported?: boolean; viewVisibility?: Record<ViewGroup, boolean>; customTasks?: CustomTask[]; templateConfig?: Record<string, TemplateSetting>; quotas?: Quotas };
   cycle: CycleRow;
   tasks: TaskRow[];
   history: ArchivedCycle[];
@@ -121,4 +138,14 @@ export function useViewVisibility(): [Record<ViewGroup, boolean>, (v: Record<Vie
 export function useCustomTasks(): [CustomTask[], (list: CustomTask[]) => void] {
   const { data } = schoolStore.use();
   return [data.settings.customTasks ?? [], (list) => void setSetting('customTasks', list)];
+}
+
+export function useTemplateConfig(): [Record<string, TemplateSetting>, (v: Record<string, TemplateSetting>) => void] {
+  const { data } = schoolStore.use();
+  return [data.settings.templateConfig ?? {}, (v) => void setSetting('templateConfig', v)];
+}
+
+export function useQuotas(): [Quotas, (v: Quotas) => void] {
+  const { data } = schoolStore.use();
+  return [data.settings.quotas ?? DEFAULT_QUOTAS, (v) => void setSetting('quotas', v)];
 }

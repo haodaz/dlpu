@@ -35,21 +35,41 @@ function Rich({ text }: { text: string }) {
   );
 }
 
-export function AdvisorChat({ initialQuestion, onAsked }: { initialQuestion?: string | null; onAsked?: () => void }) {
+export interface KbDocRef {
+  title: string;
+  summary: string;
+  sample?: boolean;
+}
+export type AskPayload = string | { text: string; doc?: KbDocRef };
+
+export function AdvisorChat({
+  initialQuestion,
+  onAsked,
+  major,
+  questions = ADVISOR_QUESTIONS,
+  intro,
+}: {
+  initialQuestion?: AskPayload | null;
+  onAsked?: () => void;
+  major?: string; // 聚焦某个专业:回答时读取该专业的评价结果与问题清单
+  questions?: string[];
+  intro?: React.ReactNode;
+}) {
   const [msgs, setMsgs] = useState<ChatMsg[]>([]);
   const [draft, setDraft] = useState('');
   const [busy, setBusy] = useState(false);
   const endRef = useRef<HTMLDivElement>(null);
 
-  const ask = async (q: string) => {
-    const text = q.trim();
+  const ask = async (p: AskPayload) => {
+    const text = (typeof p === 'string' ? p : p.text).trim();
+    const doc = typeof p === 'string' ? undefined : p.doc;
     if (!text || busy) return;
     const next: ChatMsg[] = [...msgs, { role: 'user', content: text }];
     setMsgs(next);
     setDraft('');
     setBusy(true);
     try {
-      const r = await fetch('/api/advisor', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ messages: next }) }).then((x) => x.json());
+      const r = await fetch('/api/advisor', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ messages: next, major, doc }) }).then((x) => x.json());
       setMsgs([...next, { role: 'assistant', content: r.success ? r.reply : `抱歉,暂时无法回答:${r.error ?? '服务异常'}` }]);
     } catch {
       setMsgs([...next, { role: 'assistant', content: '网络异常,请稍后再试。' }]);
@@ -76,9 +96,13 @@ export function AdvisorChat({ initialQuestion, onAsked }: { initialQuestion?: st
       <div className="flex-1 overflow-y-auto space-y-4 pr-1">
         {!msgs.length && (
           <div className="text-sm text-slate-500 leading-relaxed">
-            我会结合<b>本地区的重点产业</b>和<b>各专业最近一次的评价结果</b>,给出专业布局方面的建议。你可以直接提问,或点下面的问题:
+            {intro ?? (
+              <>
+                我会结合<b>本地区的重点产业</b>和<b>各专业最近一次的评价结果</b>,给出专业布局方面的建议。你可以直接提问,或点下面的问题:
+              </>
+            )}
             <div className="mt-3 flex flex-col gap-2">
-              {ADVISOR_QUESTIONS.map((q) => (
+              {questions.map((q) => (
                 <button key={q} onClick={() => ask(q)} className="text-left text-sm rounded-lg border border-indigo-100 bg-indigo-50/60 px-3 py-2 text-indigo-700 hover:border-indigo-300">
                   {q}
                 </button>

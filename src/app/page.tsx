@@ -22,7 +22,7 @@ export default function TeacherHome() {
     <div className="max-w-5xl mx-auto pt-2 pb-14 space-y-5">
       <div>
         <div className="text-sm text-slate-400">
-          {now.toLocaleDateString('zh-CN', { month: 'long', day: 'numeric', weekday: 'long' })} · {DEMO_TEACHER.course}
+          {now.toLocaleDateString('zh-CN', { month: 'long', day: 'numeric', weekday: 'long' })} · 任教课程:{DEMO_TEACHER.course}
         </div>
         <h1 className="text-[28px] font-bold text-slate-800 mt-1 mb-0 tracking-tight">
           {hello},{DEMO_TEACHER.call}

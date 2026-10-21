@@ -373,5 +373,5 @@ export type ViewGroup = 'decision' | 'management' | 'upload';
 export const VIEW_GROUP_META: Record<ViewGroup, { label: string; audience: string }> = {
   decision: { label: '宏观决策分析', audience: '校长 / 班子' },
   management: { label: '管理分析', audience: '教务处 / 学院' },
-  upload: { label: '数据上传', audience: '教务操作人员' },
+  upload: { label: '数据管理', audience: '教务操作人员' },
 };

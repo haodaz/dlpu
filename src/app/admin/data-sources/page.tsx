@@ -12,9 +12,9 @@ import { useDataImported } from '@/lib/diagnosis-state';
 import DegradedBanner from '@/components/DegradedBanner';
 
 const typeMap: Record<string, { color: string; text: string; icon: React.ReactNode }> = {
-  rest: { color: 'blue', text: 'REST API', icon: <ApiOutlined /> },
-  database: { color: 'green', text: '数据库', icon: <DatabaseOutlined /> },
-  file: { color: 'orange', text: '文件接口', icon: <CloudServerOutlined /> },
+  rest: { color: 'blue', text: '接口推送', icon: <ApiOutlined /> },
+  database: { color: 'green', text: '只读数据库', icon: <DatabaseOutlined /> },
+  file: { color: 'orange', text: '文件上传', icon: <CloudServerOutlined /> },
   webhooks: { color: 'purple', text: 'Webhook', icon: <LinkOutlined /> },
 };
 
@@ -200,6 +200,48 @@ export default function AdminDataSourcesPage() {
         </div>
       </Card>
 
+      <Card data-spec="ds-howto" className="shadow-sm" title="学校系统怎么接进来" styles={{ body: { padding: 20 } }}>
+        <p className="text-sm text-slate-500 mt-0 mb-4">
+          这里只接学校自己的业务系统(教务、课程平台、资产、实践教学、学工)。政策、企业、论文等公开数据由平台 AI 统一采集,学校不用管;老师的教案等材料在教师端「评价任务」里上传,也不在这里。
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+          {[
+            {
+              icon: <ApiOutlined />,
+              title: '接口推送',
+              who: '学校信息中心 / 系统厂商',
+              how: '学校系统定时把数据发到平台的一个固定地址(带学校专属令牌),格式照「技术对接文档」。一次配好,之后自动更新。',
+              tag: '推荐',
+            },
+            {
+              icon: <DatabaseOutlined />,
+              title: '只读数据库',
+              who: '学校信息中心',
+              how: '学校开一个只能查、不能改的数据库账号,平台每天读一次。不用学校写代码,但需要开通网络访问。',
+            },
+            {
+              icon: <CloudServerOutlined />,
+              title: '文件上传',
+              who: '教务处管理员即可',
+              how: '没有接口的系统,按平台给的 Excel 模板导出,每学期在这里上传一次。不需要任何编程。',
+            },
+          ].map((m) => (
+            <div key={m.title} className="rounded-xl border border-slate-200 p-4">
+              <div className="flex items-center gap-2 font-bold text-slate-800">
+                <span className="text-blue-600">{m.icon}</span>
+                {m.title}
+                {m.tag && <Tag color="blue" className="ml-1">{m.tag}</Tag>}
+              </div>
+              <div className="text-xs text-slate-500 mt-1">谁来做:{m.who}</div>
+              <p className="text-sm text-slate-600 mt-2 mb-0 leading-relaxed">{m.how}</p>
+            </div>
+          ))}
+        </div>
+        <p className="text-xs text-slate-400 mt-3 mb-0">
+          三种方式最后都进同一个入口,每次导入都会写进下方「导入日志」,出错会在页面顶部告警。一般老师不需要处理这一页。
+        </p>
+      </Card>
+
       <Row gutter={[16, 16]}>
         <Col xs={12} sm={6}>
           <Card className="shadow-sm"><Statistic title="数据源总数" value={sources.length} prefix={<CloudServerOutlined />} /></Card>
@@ -227,14 +269,14 @@ export default function AdminDataSourcesPage() {
               onChange={(v) => setTypeFilter(v as string)}
               options={[
                 { label: '全部', value: 'all' },
-                { label: 'REST API', value: 'rest' },
-                { label: '数据库', value: 'database' },
+                { label: '接口推送', value: 'rest' },
+                { label: '只读数据库', value: 'database' },
                 { label: '文件', value: 'file' },
                 { label: 'Webhook', value: 'webhooks' },
               ]}
             />
             <Input placeholder="搜索数据源名称" style={{ width: 200 }} allowClear value={search} onChange={(e) => setSearch(e.target.value)} />
-            <Button icon={<FileTextOutlined />} href="/docs/data-integration-spec.md" target="_blank">接入规范</Button>
+            <Button icon={<FileTextOutlined />} href="/docs/data-integration-spec.md" target="_blank">技术对接文档(给信息中心)</Button>
             <Button type="primary" icon={<PlusOutlined />} onClick={() => setModalOpen(true)}>接入数据源</Button>
           </Space>
         }
@@ -281,8 +323,8 @@ export default function AdminDataSourcesPage() {
           <Form.Item label="类型" name="type" rules={[{ required: true, message: '请选择类型' }]}>
             <Segmented
               options={[
-                { label: 'REST API', value: 'rest' },
-                { label: '数据库', value: 'database' },
+                { label: '接口推送', value: 'rest' },
+                { label: '只读数据库', value: 'database' },
                 { label: '文件', value: 'file' },
                 { label: 'Webhook', value: 'webhooks' },
               ]}

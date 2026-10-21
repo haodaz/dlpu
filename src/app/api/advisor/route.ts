@@ -7,6 +7,28 @@ import { REGION_BASE } from '@/lib/industry-report/region-base';
 import { BASE_PROFILES } from '@/lib/industry-report/base';
 import { TENANT_NAME, TENANT_REGION } from '@/lib/brand';
 import { regionInfo } from '@/lib/industry-report/pingfang';
+import { LATEST_RESULT_TASK, majorResult, majorIssues, coreLinks, VERDICT_TEXT } from '@/lib/eval-tasks';
+
+// 聚焦某个专业时,读取该专业最近一次评价的环节得分与问题清单(专业建设智能体用)
+function majorContext(name: string): string {
+  const r = majorResult(LATEST_RESULT_TASK.id, name);
+  if (!r) return '';
+  const links = (['consistency', 'effectiveness'] as const)
+    .flatMap((k) => coreLinks(LATEST_RESULT_TASK.id, name, k))
+    .map((l) => `${l.name} ${l.score}`)
+    .join(';');
+  const issues = majorIssues(LATEST_RESULT_TASK.id, name)
+    .slice(0, 6)
+    .map((i) => `- ${i.title}:${i.detail}(建议:${i.action})`)
+    .join('\n');
+  return `\n【当前聚焦专业:${name}(${LATEST_RESULT_TASK.name})】\n结论 ${VERDICT_TEXT[r.verdict]},综合 ${r.overall},一致性 ${r.consistency},有效性 ${r.effectiveness}\n各环节得分:${links}\n主要问题:\n${issues || '无'}`;
+}
+
+// 解读知识库文件:只有标题与摘要时,说明需查看原文
+function docContext(doc: { title?: unknown; summary?: unknown; sample?: unknown } | undefined): string {
+  if (!doc || typeof doc.title !== 'string') return '';
+  return `\n【待解读的知识库文件】《${doc.title.slice(0, 120)}》\n摘要:${String(doc.summary ?? '').slice(0, 400) || '无'}\n${doc.sample ? '(这是示例条目,只有标题和摘要,原文待知识库接入;回答第一句先注明「以下基于标题与摘要,具体以原文为准」)' : ''}`;
+}
 
 export const maxDuration = 120;
 
@@ -50,7 +72,8 @@ export async function POST(request: Request) {
     .map((m: { role: 'user' | 'assistant'; content: string }) => ({ role: m.role, content: m.content.slice(0, 2000) }));
   if (!history.length || history[history.length - 1].role !== 'user') return Response.json({ success: false, error: '缺少问题' }, { status: 400 });
   try {
-    const reply = await callChat([{ role: 'system', content: `${SYSTEM}\n\n${context()}` }, ...history]);
+    const focus = typeof body?.major === 'string' ? majorContext(body.major) : '';
+    const reply = await callChat([{ role: 'system', content: `${SYSTEM}\n\n${context()}${focus}${docContext(body?.doc)}` }, ...history]);
     return Response.json({ success: true, reply });
   } catch (e) {
     return Response.json({ success: false, error: (e as Error).message }, { status: 500 });

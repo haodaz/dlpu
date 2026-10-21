@@ -441,6 +441,55 @@ export const SPEC_NOTES: Record<string, SpecNote> = {
     impl: ['src/app/admin/data-sources/page.tsx'],
   },
 
+  /* ───────── 数据管理 / 系统设置 / 智能体(10-21 反馈) ───────── */
+  'ds-howto': {
+    layer: 'page',
+    label: '学校系统怎么接',
+    title: '三种接法,都用大白话说清谁来做',
+    lead: '这一页只接学校自己的业务系统;公开数据由平台 AI 采集,老师的材料在教师端上传,都不在这里。接口推送(信息中心)、只读数据库(信息中心)、文件上传(教务处管理员,不用编程),最后都进同一个入口并写导入日志。',
+    points: [['示例数据', '原来的「企业工商信息」「LinkedIn」等外部数据源已换成教务、课程平台、资产、实践教学、学工五类学校系统;已有库启动时自动替换。']],
+    impl: ['src/app/admin/data-sources/page.tsx', 'src/lib/data-sources.ts', 'public/docs/data-integration-spec.md'],
+  },
+  'tpl-teacher': {
+    layer: 'page',
+    label: '模板与范本 · 教师填报',
+    title: '选用 → 配置 → 确认发布',
+    lead: '每类教师材料可以选系统标准版、简化版,或学校自定义(改填写要求、AI 起草提示词、上传本校范文);确认后发布,老师在评价任务里看到的就是发布的版本。',
+    points: [
+      ['AI 采集', '平台统一维护、逐个测过的模板,学校只能选版本,不能改内容,保证采集质量。'],
+      ['学校系统', '每个模板写清要从哪个系统取哪些字段、用在哪个指标,一键复制对接说明发给信息中心。'],
+      ['模板库入口', '模板详情页「返回」在管理员视角回到这里,不再出现找不到入口的「模板库」页。'],
+    ],
+    impl: ['src/app/admin/templates/page.tsx', 'src/lib/diagnosis-state.ts · useTemplateConfig'],
+  },
+  'dl-materials': {
+    layer: 'page',
+    label: '数据下载',
+    title: '各专业资料单独下 / 分表下 / 并表下,报告单份或批量',
+    lead: '按评价任务导出:各专业上传资料的清单与状态(Excel,可勾选专业)、评价结果、产业分析报告与专业诊断报告(单份打开即可下载 PDF / Word,批量导出带链接的清单)。',
+    points: [['尚缺', '原始附件按专业打包下载需要接入学校文件存储。']],
+    impl: ['src/app/admin/downloads/page.tsx'],
+  },
+  quota: {
+    layer: 'page',
+    label: '版本与配额',
+    title: '学校版 / 院系版只差两项配额',
+    lead: '功能完全相同,只限制可评价的专业数和可生成报告的产业数;产业分析报告列表显示已用配额。角色与院校治理工作台统一:学校管理员、院系管理员(只看本院系)、专业负责人、教师、校领导(只读)。',
+    points: [],
+    impl: ['src/app/admin/users/page.tsx', 'src/lib/diagnosis-state.ts · useQuotas'],
+  },
+  'agent-chat': {
+    layer: 'page',
+    label: '专业建设智能体',
+    title: '读库给建议,推送知识并解读',
+    lead: '选中专业后,智能体读取该专业最近一次评价的环节得分和问题清单,结合本地区重点产业回答;右侧从专业建设知识库推送政策与案例,点「让智能体解读」即结合本专业情况解读。',
+    points: [
+      ['知识库', '与一答「官方知识库 · 专家智库」同一份数据、同一个接口(assist_repository_search);该库在一答主站,需配置主站令牌(HIGHER_ED_KB_ENDPOINT / HIGHER_ED_KB_TOKEN)后实时检索,目前显示示例条目。'],
+      ['不编造', '示例条目只有标题和摘要,解读时会先注明「以下基于标题与摘要,具体以原文为准」。'],
+    ],
+    impl: ['src/app/agent/page.tsx', 'src/app/knowledge/page.tsx', 'src/lib/knowledge.ts', 'POST /api/advisor(major / doc)'],
+  },
+
   /* ───────── 产业分析报告 ───────── */
   'ir-list': {
     layer: 'page',

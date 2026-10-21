@@ -4,7 +4,7 @@ import mockDb from '@/lib/mockDb.json';
 import { normalizeSourceType } from '@/lib/source-type';
 import { indicators } from '@/lib/indicators';
 import { seedState } from '@/lib/filing-core';
-import { DATA_SOURCE_SEED, IMPORT_LOG_SEED } from '@/lib/data-sources';
+import { DATA_SOURCE_SEED, IMPORT_LOG_SEED, LEGACY_SOURCE_NAMES } from '@/lib/data-sources';
 import { activeCycle } from './closed-loop';
 
 type MockRow = { id: string; templateCode: string; sourceType?: string; rawPayload: string; status?: string; createdAt?: string };
@@ -27,8 +27,16 @@ export async function seedDatabase(db: PrismaClient) {
     await db.filingRecord.createMany({ data: indicators.map((i) => ({ indicatorId: i.id, ...seedState(i.id) })) });
   }
 
-  if ((await db.dataSource.count()) === 0) {
-    await db.dataSource.createMany({ data: DATA_SOURCE_SEED.map((d) => ({ ...d, lastSync: new Date(d.lastSync) })) });
+  // 旧版演示数据源(含企业工商信息等外部数据)整体替换为学校系统清单
+  const legacy = !!(await db.dataSource.findFirst({ where: { name: '企业工商信息' } }));
+  if (legacy) {
+    await db.dataSource.deleteMany({ where: { name: { in: LEGACY_SOURCE_NAMES } } });
+    await db.dataImportLog.deleteMany({ where: { sourceSystem: { in: LEGACY_SOURCE_NAMES } } });
+  }
+
+  if (legacy || (await db.dataSource.count()) === 0) {
+    const taken = new Set((await db.dataSource.findMany({ select: { id: true } })).map((d) => d.id));
+    await db.dataSource.createMany({ data: DATA_SOURCE_SEED.filter((d) => !taken.has(d.id)).map((d) => ({ ...d, lastSync: new Date(d.lastSync) })) });
     await db.dataImportLog.createMany({
       data: IMPORT_LOG_SEED.map((l) => ({ ...l, sourceType: 'SYSTEM', createdAt: new Date(l.createdAt) })),
     });

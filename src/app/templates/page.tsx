@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button } from 'antd';
 import { useRouter } from 'next/navigation';
 import { FormOutlined, LayoutOutlined } from '@ant-design/icons';
@@ -11,6 +11,12 @@ const templates = TEMPLATES;
 
 export default function TemplatesPage() {
   const router = useRouter();
+  // 模板详情页的「返回」都指向这里;管理员视角回到「模板与范本」配置页
+  useEffect(() => {
+    try {
+      if (localStorage.getItem('app_role') === 'admin') router.replace('/admin/templates');
+    } catch {}
+  }, [router]);
 
   return (
     <div className="flex-1 flex flex-col min-h-[calc(100vh-140px)] bg-slate-50">

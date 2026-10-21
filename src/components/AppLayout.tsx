@@ -35,6 +35,7 @@ import {
   FundViewOutlined,
   ClusterOutlined,
   MenuOutlined,
+  DownloadOutlined,
 } from '@ant-design/icons';
 import Image from 'next/image';
 import { useRouter, usePathname } from 'next/navigation';
@@ -136,6 +137,15 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
       ],
     },
     {
+      key: 'grp-agent',
+      icon: <RobotOutlined />,
+      label: '专业建设智能体',
+      children: [
+        { key: '/agent', icon: <RobotOutlined />, label: '智能体' },
+        { key: '/knowledge', icon: <ReadOutlined />, label: '专业建设知识库' },
+      ],
+    },
+    {
       key: 'grp-management',
       icon: <BarChartOutlined />,
       label: '管理分析',
@@ -150,10 +160,11 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
     {
       key: 'grp-upload',
       icon: <CloudUploadOutlined />,
-      label: '数据上传',
+      label: '数据管理',
       children: [
         { key: '/admin/data-sources', icon: <CloudServerOutlined />, label: '数据源接入' },
         { key: '/admin/templates', icon: <ProfileOutlined />, label: '模板与范本' },
+        { key: '/admin/downloads', icon: <DownloadOutlined />, label: '数据下载' },
       ],
     },
     {
@@ -186,6 +197,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
   const VIEW_KEYS: Record<string, keyof typeof visible> = {
     '/decision': 'decision',
     'grp-industry': 'decision',
+    'grp-agent': 'decision',
     'grp-management': 'management',
     'grp-upload': 'upload',
   };
@@ -200,6 +212,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
     '/admin/indicator-analysis': role === 'admin' ? '/admin' : '/teacher/result',
     '/admin/diagnosis': role === 'admin' ? '/admin' : '/teacher/result',
     '/data-management/ai-prefill': role === 'admin' ? '/admin/tasks' : '/teacher/task',
+    '/templates': role === 'admin' ? '/admin/templates' : '/templates',
   };
   const aliasKey = Object.entries(DRILL_DOWN_ALIASES).find(
     ([prefix]) => pathname === prefix || pathname.startsWith(prefix + '/'),

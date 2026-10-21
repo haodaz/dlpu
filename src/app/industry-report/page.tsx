@@ -8,6 +8,7 @@ import type { IndustryReport } from '@/lib/industry-report/types';
 import type { RunSummary } from '@/lib/industry-report/runs';
 import { ReportView, readJSON, writeJSON } from '@/components/industry-report/ReportView';
 import { Progress, useReportGenerator } from '@/components/industry-report/Generator';
+import { useQuotas } from '@/lib/diagnosis-state';
 
 // AI-native 产业分析报告
 // 进入先看报告列表(同产业同地区合并,可展开历史版本);?new=1 新建,?run= 查看某次生成的报告
@@ -15,8 +16,6 @@ import { Progress, useReportGenerator } from '@/components/industry-report/Gener
 // 飞轮:先查检索日志与知识库,有历史时只检索变化;所有生成都记入产业检索日志
 
 const STORE_KEY = 'industry_report_last';
-// 可生成报告的产业数(学校版 / 院系版的配额,演示值;在「用户与权限」中设置)
-const INDUSTRY_QUOTA = 10;
 
 export default function IndustryReportPage() {
   return (
@@ -67,6 +66,7 @@ const who = (u: RunSummary['user']) => (u.role in ROLE_LABEL ? `${ROLE_LABEL[u.r
 
 function ReportList() {
   const router = useRouter();
+  const [quotas] = useQuotas(); // 可生成报告的产业数(学校版 / 院系版配额,在「用户与权限」中设置)
   const [runs, setRuns] = useState<RunSummary[] | null>(null);
   const [err, setErr] = useState('');
   const load = useCallback(async () => {
@@ -116,7 +116,7 @@ function ReportList() {
       <div data-spec="ir-list-stats" className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-5">
         <Stat label="报告数" value={groups.length} hint="同产业同地区合并为一份" />
         <Stat label="累计生成次数" value={(runs ?? []).filter((r) => r.status === 'done').length} />
-        <Stat label="已用产业配额" value={`${industries} / ${INDUSTRY_QUOTA}`} hint="可生成报告的产业数,按购买版本设定" />
+        <Stat label="已用产业配额" value={`${industries} / ${quotas.industries}`} hint="可生成报告的产业数,按购买版本设定" />
         <Stat label="最近生成" value={groups[0] ? fmtTime(groups[0].latest.startedAt).slice(5) : '—'} />
       </div>
       <div data-spec="ir-list" className="bg-white rounded-2xl border border-slate-200 shadow-sm p-5">
