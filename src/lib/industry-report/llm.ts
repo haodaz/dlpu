@@ -45,3 +45,12 @@ export async function callJSON<T>(system: string, user: string, maxTokens = 4000
   if (!parsed) throw new Error('模型未返回合法 JSON');
   return parsed;
 }
+
+// 对话调用:返回纯文本(专业建设专家 AI 等),关闭思考模式
+export async function callChat(messages: { role: 'system' | 'user' | 'assistant'; content: string }[], maxTokens = 1500): Promise<string> {
+  const res = await client().chat.completions.create(
+    { model: reportModel(), messages, temperature: 0.4, max_tokens: maxTokens, enable_thinking: false } as OpenAI.Chat.ChatCompletionCreateParamsNonStreaming,
+    { timeout: 90000 },
+  );
+  return res.choices?.[0]?.message?.content?.trim() ?? '';
+}

@@ -23,8 +23,9 @@ export default function IndustryReportPage() {
 }
 
 function IndustryReportContent() {
-  const runParam = useSearchParams().get('run');
-  const [industry, setIndustry] = useState('智能制造');
+  const params = useSearchParams();
+  const runParam = params.get('run');
+  const [industry, setIndustry] = useState(params.get('industry') ?? '智能制造');
   const [region, setRegion] = useState('辽宁省大连市');
   const [major, setMajor] = useState('智能制造工程');
   const [forceFull, setForceFull] = useState(false);

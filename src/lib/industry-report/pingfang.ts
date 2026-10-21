@@ -89,6 +89,18 @@ export async function pfClusters(industry: string, region: string): Promise<PfCl
     .filter((c) => c.name && (c.mainIndustry.includes(core) || industry.includes(c.mainIndustry)));
 }
 
+// 产业集群库:某地区的全部集群(不按产业过滤,用于「区域重点产业」的客观展示)
+export async function pfRegionClusters(region: string): Promise<PfCluster[]> {
+  const { provinceName, city } = regionInfo(region);
+  const places = [city, provinceName].filter(Boolean) as string[];
+  if (!places.length) return [];
+  const items = await search('VSDIndustryCluster', ['name', 'cluster_type', 'main_industry'], { logic_operator: '|', children: places.map((p) => like('name', p)) }, 40);
+  const seen = new Set<string>();
+  return items
+    .map((c) => ({ name: String(c.name ?? ''), type: String(c.cluster_type ?? ''), mainIndustry: String(c.main_industry ?? '') }))
+    .filter((c) => c.name && !seen.has(c.name) && (seen.add(c.name), true));
+}
+
 // 国内专业库:取专业的就业方向(结构化文本中的岗位名)
 export async function pfMajorJobs(major: string): Promise<{ titles: string[]; raw: string }> {
   if (!major) return { titles: [], raw: '' };

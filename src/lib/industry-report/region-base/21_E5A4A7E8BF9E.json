@@ -1,0 +1,325 @@
+{
+ "region": "辽宁省大连市",
+ "province": "辽宁",
+ "city": "大连",
+ "collectedAt": "2026-10-21T11:35:50.873Z",
+ "origin": "base",
+ "sources": [
+  {
+   "id": 1,
+   "title": "辽宁‘2211’产业体系",
+   "url": "https://baike.baidu.com/item/辽宁‘2211’产业体系/67189704"
+  },
+  {
+   "id": 2,
+   "title": "辽宁省政协“十四五”期间助推加快建设现代化产业体系",
+   "url": "https://mp.weixin.qq.com/s?__biz=MzAwMzMxMDUxNg==&mid=2650689411&idx=2&sn=6c7be7cea60f9fa8d1fa49837684e2a4&chksm=82b527b93897b3952c0da48ec6d837d8c6e7a9a57860174936cf0e3bf41df562a33932d2d125&scene=27"
+  },
+  {
+   "id": 3,
+   "title": "辽宁省“十四五”服务业发展规划",
+   "url": "https://baike.baidu.com/item/辽宁省“十四五”服务业发展规划/60877371"
+  },
+  {
+   "id": 4,
+   "title": "新闻发布会",
+   "url": "https://www.ln.gov.cn/web/spzb/2026nxwfbh/2026052016412639110/index.shtml"
+  },
+  {
+   "id": 5,
+   "title": "政府工作报告",
+   "url": "https://www.lnrd.gov.cn/lnrd/hy/srdh/lnsdssjrmdbdhdechy/hybg/2025012009384328893/"
+  },
+  {
+   "id": 6,
+   "title": "2026年阜新市政府工作报告",
+   "url": "https://www.ln.gov.cn/web/zwgkx/zfgzbg/shizfgzbg/fxs/2026020511163082706/index.shtml"
+  },
+  {
+   "id": 7,
+   "title": "辽宁省“十四五”生态经济发展规划",
+   "url": "https://baike.baidu.com/item/辽宁省“十四五”生态经济发展规划/59906287"
+  },
+  {
+   "id": 8,
+   "title": "——2026年1月27日在辽宁省第十四届人民代表大会第五次会议上",
+   "url": "https://www.ln.gov.cn/web/qmzx/2026lnlh/bgqw/2026020108353362407/index.shtml"
+  },
+  {
+   "id": 9,
+   "title": "辽宁省“十四五”海洋经济发展规划",
+   "url": "https://baike.baidu.com/item/辽宁省“十四五”海洋经济发展规划/59958335"
+  },
+  {
+   "id": 10,
+   "title": "2026年大连市政府工作报告",
+   "url": "https://www.ln.gov.cn/web/zwgkx/zfgzbg/shizfgzbg/dls/2026012814282249798/index.shtml"
+  },
+  {
+   "id": 11,
+   "title": "大连市政府工作报告(2025年1月8日 陈绍旺)",
+   "url": "http://district.ce.cn/newarea/roll/202502/07/t20250207_39284997.shtml"
+  },
+  {
+   "id": 12,
+   "title": "大连全面发力!决战决胜抢开局",
+   "url": "http://finance.sina.cn/2025-03-17/detail-inepxqhp9826127.d.html"
+  },
+  {
+   "id": 13,
+   "title": "2025年西岗区政府工作报告",
+   "url": "https://www.dlxg.gov.cn/xxgk/zfgzbg/187302.htm"
+  },
+  {
+   "id": 14,
+   "title": "2025年辽宁省大连市新质生产力发展研判:推动优势+特色产业协同发展,加快构建“4+4”现代服务业新体系[图]",
+   "url": "https://m.chyxx.com/industry/1218365.html"
+  },
+  {
+   "id": 15,
+   "title": "【大连日报】2025年“百万学子留辽来辽”专项行动暨“百校千企”人才对接计划 现代轻工产业集群高校毕业生专场招聘会在连举行",
+   "url": "https://www.dlpu.edu.cn/detail/19/189736ddc40759dd445cdb66b92739ac.html"
+  },
+  {
+   "id": 16,
+   "title": "关于印发2024年《市委经济工作报告》和2025年市《政府工作报告》任务分解方案的通知",
+   "url": "https://www.lianshan.gov.cn/zwgk/xzjcgk/zfwj/hlzf/202504/t20250417_1204905.html"
+  },
+  {
+   "id": 17,
+   "title": "国务院总理李强作的2025年政府工作报告(摘登) - 部门动态 - 大同市人民政府门户网站",
+   "url": "https://www.dt.gov.cn/dtszf/bumdtc/202503/f874c133226e4736890fc5b6c4088a3b.shtml"
+  },
+  {
+   "id": 18,
+   "title": "大连市2025年营商环境质量提升行动方案",
+   "url": "https://www.dldj.gov.cn/art/2025/2/6/art_9273_2397282.html"
+  },
+  {
+   "id": 19,
+   "title": "政府工作报告",
+   "url": "http://www.jieyang.gov.cn/gkmlpt/content/0/929/post_929824.html"
+  },
+  {
+   "id": 20,
+   "title": "大连打造7个千亿级产业集群:能造30万吨邮轮,也能造0.1纳米分离膜",
+   "url": "https://www.163.com/dy/article/KVNJCD3B0514R9P4.html"
+  },
+  {
+   "id": 21,
+   "title": "辽宁省人民政府",
+   "url": "https://www.ln.gov.cn/web/ywdt/jrln/wzxx2018/2025123008445019047/index.shtml"
+  },
+  {
+   "id": 22,
+   "title": "城市24小时 | 又一座“准万亿”之城“出分”了",
+   "url": "https://finance.eastmoney.com/a/202601153619406440.html"
+  },
+  {
+   "id": 23,
+   "title": "大连自贸片区挂牌六周年回望(四) | 产业集聚推动高质量发展",
+   "url": "https://www.dlftz.gov.cn/mobile/news_272504.html"
+  },
+  {
+   "id": 24,
+   "title": "【快讯】产值超150亿元,大连市布局氢能“制、储、运、加、用”全产业链",
+   "url": "http://finance.sina.com.cn/roll/2025-07-15/doc-inffpsmu7204107.shtml"
+  },
+  {
+   "id": 25,
+   "title": "产值超150亿元,大连市布局氢能“制、储、运、加、用”全产业链 ",
+   "url": "https://www.china5e.com/news/news-1191384-1.html"
+  },
+  {
+   "id": 26,
+   "title": "砥砺奋进谱新篇 黄渤海岸奏强音",
+   "url": "https://www.dldj.gov.cn/art/2025/12/31/art_11389_2493598.html"
+  },
+  {
+   "id": 27,
+   "title": "落实“六个建设”目标任务,当好新时代东北振兴“跳高队”",
+   "url": "https://www.lndj.gov.cn/portaluploads/html/info/53033.html"
+  },
+  {
+   "id": 28,
+   "title": "【辽宁日报】大连:扛牢使命挑大梁 蓄势聚能再扬帆",
+   "url": "https://news.dlut.edu.cn/info/1071/112434.htm"
+  },
+  {
+   "id": 29,
+   "title": "万亿GDP稳了温州大连徐州坐等晋级了",
+   "url": "http://finance.sina.com.cn/zmt/2025-11-11/doc-infxcywy4755467.shtml"
+  }
+ ],
+ "industries": [
+  {
+   "name": "绿色石化",
+   "level": "国家级先进制造业集群",
+   "scope": "大连",
+   "desc": "2025年产值占全市工业总产值36%，集群规模长期稳定在4000亿元量级，获评国家级先进制造业集群。",
+   "scale": "4000亿元量级",
+   "src": [
+    5,
+    22,
+    27,
+    28
+   ]
+  },
+  {
+   "name": "精细化工",
+   "level": "省重点产业集群",
+   "scope": "辽宁",
+   "desc": "聚焦提升化工精细化率、增强中试服务能力、加快科技成果转化。",
+   "scale": "",
+   "src": [
+    1
+   ]
+  },
+  {
+   "name": "新一代汽车产业",
+   "level": "千亿级产业集群",
+   "scope": "大连",
+   "desc": "2025年全链条产值超千亿元，涵盖新能源、智能网联及氢能，本地配套率提升至40%。",
+   "scale": "超千亿元",
+   "src": [
+    21,
+    26
+   ]
+  },
+  {
+   "name": "高端装备制造",
+   "level": "国家级先进制造业集群",
+   "scope": "大连",
+   "desc": "以船舶海工、轨道交通、轴承、数控机床为代表，其中“工业母机”集群获评国家级先进制造业集群。",
+   "scale": "800亿元（船舶海工）",
+   "src": [
+    14,
+    22,
+    27,
+    28
+   ]
+  },
+  {
+   "name": "航空航天",
+   "level": "国家级先进制造业集群",
+   "scope": "辽宁",
+   "desc": "沈阳航空产业集群获评国家级先进制造业集群，紧盯国产大飞机配套及卫星互联网产业链。",
+   "scale": "",
+   "src": [
+    5,
+    1
+   ]
+  },
+  {
+   "name": "数字经济",
+   "level": "千亿级产业集群",
+   "scope": "大连",
+   "desc": "目标2030年核心产业增加值占GDP比重达14.5%左右，涵盖人工智能、工业软件及数据基础设施。",
+   "scale": "",
+   "src": [
+    22,
+    26,
+    27
+   ]
+  },
+  {
+   "name": "新材料",
+   "level": "战略性新兴产业",
+   "scope": "辽宁",
+   "desc": "重点发展高性能合金、碳纤维、半导体材料等，营口重点发展耐高温合金等高性能替代材料。",
+   "scale": "",
+   "src": [
+    1,
+    6
+   ]
+  },
+  {
+   "name": "洁净能源",
+   "level": "市重点产业集群",
+   "scope": "大连",
+   "desc": "包括核电、风电/光伏、氢能装备及动力电池，与氢能、绿甲醇、绿氨协同布局。",
+   "scale": "",
+   "src": [
+    14,
+    24,
+    25
+   ]
+  },
+  {
+   "name": "生物医药",
+   "level": "战略性新兴产业",
+   "scope": "辽宁",
+   "desc": "追踪基因治疗、创新药研发及高端医疗器械临床进展，聚焦生物制药及康复医疗。",
+   "scale": "",
+   "src": [
+    1,
+    6,
+    13,
+    14
+   ]
+  },
+  {
+   "name": "海洋经济",
+   "level": "千亿级产业集群",
+   "scope": "大连",
+   "desc": "海洋经济产业园主体竣工，涵盖海洋工程装备服务、海洋生物医药研发及特色水产品。",
+   "scale": "",
+   "src": [
+    26
+   ]
+  },
+  {
+   "name": "大宗商品国际贸易",
+   "level": "千亿级产业集群",
+   "scope": "大连",
+   "desc": "2022年销售额达1368亿元，年均复合增长率15%，集聚贸易企业超300家。",
+   "scale": "1368亿元",
+   "src": [
+    23
+   ]
+  },
+  {
+   "name": "人工智能",
+   "level": "未来产业",
+   "scope": "辽宁",
+   "desc": "系统部署的六大未来产业方向之一，大连人工智能计算中心纳入国家重大项目。",
+   "scale": "",
+   "src": [
+    1,
+    27
+   ]
+  },
+  {
+   "name": "低空经济",
+   "level": "战略性新兴产业",
+   "scope": "辽宁",
+   "desc": "已在阜新等地开篇布局，涵盖eVTOL、通航制造、空管系统等。",
+   "scale": "",
+   "src": [
+    6
+   ]
+  },
+  {
+   "name": "现代服务业",
+   "level": "市主导产业",
+   "scope": "大连",
+   "desc": "构建“4+4”体系，包括信息服务、金融服务、物流服务、贸易服务四大优势产业及科技、商务、绿色、海洋四大特色产业。",
+   "scale": "1300亿元（2027年软件和信息服务业目标）",
+   "src": [
+    12
+   ]
+  }
+ ],
+ "clusters": [
+  {
+   "name": "大连市智能制造产业集群",
+   "type": "国家级战略性新兴产业集群",
+   "mainIndustry": "智能制造"
+  },
+  {
+   "name": "大连市信息技术服务产业集群",
+   "type": "国家级战略性新兴产业集群",
+   "mainIndustry": "信息技术服务"
+  }
+ ]
+}

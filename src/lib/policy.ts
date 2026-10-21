@@ -49,12 +49,3 @@ export const POLICY_POINTS: PolicyPoint[] = [
     freeLevel: 1,
   },
 ];
-
-// 区域产业匹配预览(无数据态模糊展示)
-export const REGION_PREVIEW = [
-  { industry: '高端装备制造', demand: '高' },
-  { industry: '海洋食品与生物', demand: '高' },
-  { industry: '新材料与功能纺织', demand: '中' },
-  { industry: '数字经济与软件', demand: '中' },
-  { industry: '现代服务业', demand: '低' },
-];

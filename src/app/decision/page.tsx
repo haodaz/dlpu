@@ -1,103 +1,158 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import { Button } from 'antd';
+import Image from 'next/image';
+import { Button, Segmented, Tabs, Tag } from 'antd';
 import { useRouter } from 'next/navigation';
-import {
-  FundProjectionScreenOutlined,
-  LockOutlined,
-  CloudUploadOutlined,
-  DesktopOutlined,
-  ArrowRightOutlined,
-  ExperimentOutlined,
-} from '@ant-design/icons';
-import { MAJORS, verdictMeta, schoolAvg, DEMO_MAJOR, type Verdict, type Layout } from '@/lib/diagnosis';
+import { LockOutlined, CloudUploadOutlined, DesktopOutlined, ArrowRightOutlined, ExperimentOutlined, RobotOutlined, EnvironmentOutlined, FireOutlined } from '@ant-design/icons';
+import { ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
+import { verdictMeta, type Verdict } from '@/lib/diagnosis';
 import { useDataImported } from '@/lib/diagnosis-state';
-import { POLICY_POINTS, POLICY_SOURCE_NOTE, REGION_PREVIEW } from '@/lib/policy';
+import { POLICY_POINTS, POLICY_SOURCE_NOTE } from '@/lib/policy';
+import { LATEST_RESULT_TASK, avgOf, majorSlug, taskResults } from '@/lib/eval-tasks';
 import MeetingMode from '@/components/diagnosis/MeetingMode';
-import { TENANT_REGION } from '@/lib/brand';
+import { AdvisorDrawer, ADVISOR_QUESTIONS } from '@/components/advisor/AdvisorChat';
+import { TENANT_NAME, TENANT_REGION } from '@/lib/brand';
+import type { RegionIndustryProfile } from '@/lib/industry-report/region-industries';
 
-// 本地区最近一次产业分析报告的摘要(真实检索结果,来自产业检索日志)
-interface RegionSignal {
-  found: boolean;
-  runId?: string;
-  at?: string;
-  industry?: string;
-  clusters?: { name: string; type: string }[];
-  directions?: { name: string; stage: string; cagr: number | null }[];
-  policyCount?: number;
-  localPolicies?: string[];
-  companies?: string[];
-}
-
-function useRegionSignal(): RegionSignal | null {
-  const [sig, setSig] = useState<RegionSignal | null>(null);
-  useEffect(() => {
-    const city = TENANT_REGION.replace(/^.*?(省|自治区)/, '').replace(/市$/, '');
-    fetch(`/api/industry-log?latest=${encodeURIComponent(city)}`)
-      .then((r) => r.json())
-      .then(setSig)
-      .catch(() => setSig({ found: false }));
-  }, []);
-  return sig;
-}
-
-const STAGE_COLOR: Record<string, string> = { 爆发期: '#dc2626', 成长期: '#059669', 萌芽期: '#0891b2', 成熟期: '#64748b', 调整期: '#d97706' };
-
-// 宏观决策分析:面向校领导班子,只给是/否级别的结论
-// 无数据 → 获客态(双优政策解读钩子 + 导入 CTA);有数据 → 决策态(专业红绿灯 + 可办/风险/不可办)
+// 宏观决策分析
+// 「诊断前 · 政策解读」:学校还没有导入数据时的获客页(双优政策解读钩子 + 区域重点产业 + 导入入口)
+// 「诊断结论」:大屏风格的结论区 + 区域重点产业(客观,不取决于本校专业)+ 专业红绿灯(三档 tab)+ 专业建设专家 AI
 export default function DecisionPage() {
   const [imported, setImported, ready] = useDataImported();
   const [meeting, setMeeting] = useState(false);
 
   return (
     <div className="max-w-6xl mx-auto w-full pb-12">
-      <div className="flex items-center justify-between gap-4 mb-6 flex-wrap">
-        <div className="flex items-center gap-4">
-          <div className="w-11 h-11 rounded-xl bg-purple-600 flex items-center justify-center text-white text-xl shadow-sm">
-            <FundProjectionScreenOutlined />
+      <div className="flex items-center justify-between gap-4 mb-5 flex-wrap">
+        <h1 className="text-xl font-bold text-slate-800 m-0">宏观决策分析</h1>
+        {ready && (
+          <div className="flex items-center gap-2 flex-wrap">
+            <Segmented
+              data-spec="decision-switch"
+              value={imported ? 'result' : 'before'}
+              onChange={(v) => setImported(v === 'result')}
+              options={[
+                { value: 'before', label: '诊断前 · 政策解读' },
+                { value: 'result', label: '诊断结论' },
+              ]}
+            />
+            {imported && (
+              <span data-spec="meeting-btn">
+                <Button type="primary" icon={<DesktopOutlined />} onClick={() => setMeeting(true)}>
+                  会议模式(大屏)
+                </Button>
+              </span>
+            )}
           </div>
-          <div>
-            <h1 className="text-xl font-bold text-slate-800 m-0 leading-tight">宏观决策分析</h1>
-            <p className="text-sm text-slate-500 m-0 mt-0.5">面向校领导班子 · 只给是 / 否级别的结论</p>
-          </div>
-        </div>
-        {ready && imported && (
-          <span data-spec="meeting-btn">
-            <Button type="primary" size="large" icon={<DesktopOutlined />} onClick={() => setMeeting(true)}>
-              会议模式(大屏)
-            </Button>
-          </span>
         )}
       </div>
 
-      {!ready ? null : imported ? (
-        <DecisionView onReset={() => setImported(false)} />
-      ) : (
-        <HookView onImport={() => setImported(true)} />
-      )}
+      {!ready ? null : imported ? <DecisionView /> : <HookView onImport={() => setImported(true)} />}
 
       <MeetingMode open={meeting} initial={0} onClose={() => setMeeting(false)} />
     </div>
   );
 }
 
-// ---------- 状态 A:无数据(获客态) ----------
+// ---------- 区域重点产业(客观) ----------
+function useRegionIndustries(): RegionIndustryProfile | null | false {
+  const [d, setD] = useState<RegionIndustryProfile | null | false>(null);
+  useEffect(() => {
+    fetch(`/api/region-industries?region=${encodeURIComponent(TENANT_REGION)}`)
+      .then((r) => r.json())
+      .then((j) => setD(j.success ? j : false))
+      .catch(() => setD(false));
+  }, []);
+  return d;
+}
+
+function RegionIndustries({ compact = false }: { compact?: boolean }) {
+  const router = useRouter();
+  const data = useRegionIndustries();
+  const [scope, setScope] = useState<string>('all');
+  if (data === null) return <div className="rounded-2xl bg-white border border-slate-200 p-6 text-sm text-slate-400">区域重点产业加载中…</div>;
+  if (data === false) return <div className="rounded-2xl bg-white border border-slate-200 p-6 text-sm text-slate-400">区域重点产业暂时无法获取</div>;
+  const scopes = Array.from(new Set(data.industries.map((i) => i.scope)));
+  const list = data.industries.filter((i) => scope === 'all' || i.scope === scope).slice(0, compact ? 8 : 20);
+  const src = new Map(data.sources.map((s) => [s.id, s]));
+  return (
+    <div data-spec="decision-region" className="rounded-2xl bg-white border border-slate-200 shadow-sm p-6">
+      <div className="flex items-center justify-between mb-1 flex-wrap gap-2">
+        <h3 className="text-base font-bold text-slate-800 m-0 flex items-center gap-2">
+          <EnvironmentOutlined className="text-indigo-500" /> 区域重点产业 · {TENANT_REGION}
+        </h3>
+        {scopes.length > 1 && !compact && (
+          <Segmented size="small" value={scope} onChange={(v) => setScope(v as string)} options={[{ value: 'all', label: '全部' }, ...scopes.map((s) => ({ value: s, label: s }))]} />
+        )}
+      </div>
+      <p className="text-xs text-slate-400 mt-0 mb-4">客观展示本地区政府重点发展的产业(来自省市规划与政府工作报告、平方产业集群库),不取决于本校开设了哪些专业</p>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+        {list.map((i) => (
+          <div key={`${i.scope}-${i.name}`} className="rounded-xl border border-slate-200 p-4 flex flex-col">
+            <div className="flex items-start gap-2">
+              <span className="font-bold text-slate-800 flex-1">{i.name}</span>
+              <Tag className="m-0 text-[11px]">{i.scope}</Tag>
+            </div>
+            <div className="text-[11px] font-bold text-indigo-600 mt-1">{i.level}</div>
+            {i.scale && (
+              <div className="text-sm font-black text-slate-800 mt-1">
+                <FireOutlined className="text-orange-500" /> {i.scale}
+              </div>
+            )}
+            <div className="text-xs text-slate-500 mt-1.5 leading-relaxed flex-1">{i.desc}</div>
+            <div className="flex items-center justify-between mt-2 text-[11px]">
+              <span className="text-slate-400">
+                {i.src.slice(0, 2).map((id) => {
+                  const s = src.get(id);
+                  return s?.url ? (
+                    <a key={id} href={s.url} target="_blank" rel="noreferrer" className="mr-1 hover:text-blue-600" title={s.title}>
+                      [{id}]
+                    </a>
+                  ) : null;
+                })}
+              </span>
+              {!compact && (
+                <button className="text-blue-600 hover:underline" onClick={() => router.push(`/industry-report?industry=${encodeURIComponent(i.name)}`)}>
+                  产业分析报告 →
+                </button>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+      {data.clusters.length > 0 && (
+        <div className="mt-4 text-xs text-slate-500">
+          平方产业集群库:
+          {data.clusters.map((c) => (
+            <Tag key={c.name} color="cyan" className="ml-1">
+              {c.name} · {c.type}
+            </Tag>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ---------- 诊断前:政策解读(获客) ----------
 function HookView({ onImport }: { onImport: () => void }) {
   const router = useRouter();
-  const sig = useRegionSignal();
   const free = POLICY_POINTS.filter((p) => p.freeLevel === 0);
   const locked = POLICY_POINTS.filter((p) => p.freeLevel === 1);
 
   return (
     <div className="space-y-5">
-      <div className="rounded-2xl bg-gradient-to-br from-slate-900 to-indigo-900 text-white p-8">
-        <div className="text-sm text-indigo-200 font-bold mb-2">双优政策解读</div>
-        <h2 className="text-2xl font-black m-0 leading-snug">
-          专业建设已经进入“生存之战”:
-          <br />
-          不是材料齐不齐,而是专业还该不该办、该怎么办。
-        </h2>
-        <p className="text-indigo-100/80 mt-3 mb-0 text-[15px]">先给你两个最关键的判断,其余解读需要结合学校自己的专业数据才有意义。</p>
+      <div className="decision-hero rounded-3xl text-white p-8 relative overflow-hidden">
+        <HeroDecor />
+        <div className="relative">
+          <SchoolBadge sub="双优政策解读" />
+          <h2 className="text-[26px] font-black mt-6 mb-0 leading-snug">
+            专业建设已经进入“生存之战”:
+            <br />
+            不是材料齐不齐,而是专业还该不该办、该怎么办。
+          </h2>
+          <p className="text-indigo-100/80 mt-3 mb-0 text-[15px]">先给两个最关键的判断;结合学校自己的专业数据,才能给出完整诊断。</p>
+        </div>
       </div>
 
       <div data-spec="decision-hook" className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -114,56 +169,11 @@ function HookView({ onImport }: { onImport: () => void }) {
         ))}
       </div>
 
-      <div className="rounded-2xl bg-white border border-slate-200 shadow-sm p-6">
-        <div className="flex items-center justify-between mb-4">
-          <h3 className="text-base font-bold text-slate-800 m-0">区域产业匹配预览</h3>
-          <span className="text-xs text-slate-400 flex items-center gap-1">
-            <LockOutlined /> 导入专业数据后显示本校匹配结果
-          </span>
-        </div>
-        {sig?.found ? (
-          <>
-            <div className="text-xs text-slate-500 mb-3">
-              {TENANT_REGION} · {sig.industry} · 来自 {new Date(sig.at!).toLocaleDateString('zh-CN')} 的产业分析报告(真实检索)
-              {sig.clusters?.map((c) => (
-                <span key={c.name} className="ml-2 inline-block text-[11px] font-bold px-1.5 py-0.5 rounded bg-teal-50 text-teal-700 border border-teal-200">
-                  {c.name}
-                </span>
-              ))}
-            </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-              {sig.directions?.map((d) => (
-                <div key={d.name} className="rounded-xl border border-slate-200 p-4">
-                  <div className="text-sm font-bold text-slate-700">{d.name}</div>
-                  <div className="text-xs mt-1" style={{ color: STAGE_COLOR[d.stage] ?? '#64748b' }}>
-                    {d.stage}
-                    {d.cagr !== null && <span className="text-slate-400"> · 年均增长 {d.cagr}%</span>}
-                  </div>
-                  <div className="mt-3 blur-[5px] select-none text-slate-600 text-sm" aria-hidden>
-                    本校匹配专业 ×× 个
-                  </div>
-                </div>
-              ))}
-            </div>
-          </>
-        ) : (
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
-          {REGION_PREVIEW.map((r) => (
-            <div key={r.industry} className="rounded-xl border border-slate-200 p-4 relative overflow-hidden">
-              <div className="text-sm font-bold text-slate-700">{r.industry}</div>
-              <div className="text-xs text-slate-400 mt-1">区域需求 {r.demand}</div>
-              <div className="mt-3 blur-[5px] select-none text-slate-600 text-sm" aria-hidden>
-                本校匹配专业 ×× 个
-              </div>
-            </div>
-          ))}
-        </div>
-        )}
-      </div>
+      <RegionIndustries compact />
 
       <div className="rounded-2xl bg-white border border-dashed border-slate-300 p-6">
         <div className="text-sm font-bold text-slate-500 mb-3 flex items-center gap-2">
-          <LockOutlined /> 还有 {locked.length} 条解读,结合本校数据后解锁
+          <LockOutlined /> 还有 {locked.length} 条解读,以及本校专业与区域产业的匹配结论,导入数据后解锁
         </div>
         <div className="space-y-2">
           {locked.map((p) => (
@@ -194,172 +204,201 @@ function HookView({ onImport }: { onImport: () => void }) {
   );
 }
 
-// ---------- 状态 B:有数据(决策态) ----------
-const VERDICT_ORDER: Verdict[] = ['GO', 'RISK', 'NO'];
-const LAYOUT_ORDER: Layout[] = ['保留', '优化', '缩减', '停招'];
+// ---------- 诊断结论 ----------
+const TIERS: Verdict[] = ['GO', 'RISK', 'NO'];
 
-function DecisionView({ onReset }: { onReset: () => void }) {
+function DecisionView() {
   const router = useRouter();
-  const sig = useRegionSignal();
-  const [filter, setFilter] = useState<Verdict | null>(null);
-  const count = (v: Verdict) => MAJORS.filter((m) => m.verdict === v).length;
-  const shown = filter ? MAJORS.filter((m) => m.verdict === filter) : MAJORS;
+  const rows = taskResults(LATEST_RESULT_TASK.id);
+  const region = useRegionIndustries();
+  const [tier, setTier] = useState<Verdict>('GO');
+  const [ask, setAsk] = useState<{ open: boolean; q: string | null }>({ open: false, q: null });
+  const count = (v: Verdict) => rows.filter((r) => r.verdict === v).length;
+  const pie = TIERS.map((v) => ({ name: verdictMeta[v].label, value: count(v), color: verdictMeta[v].dot }));
 
   return (
     <div className="space-y-5">
-      {/* 一句话结论 */}
-      <div data-spec="decision-verdict" className="rounded-2xl bg-white border border-slate-200 shadow-sm p-6">
-        <div className="text-xs font-bold text-slate-400 mb-2">本年度结论</div>
-        <h2 className="text-2xl font-black text-slate-800 m-0 leading-snug">
-          {MAJORS.length} 个专业中 {count('GO')} 个重点发展;{count('RISK')} 个优化整改;{count('NO')} 个需风险关注。
-        </h2>
-        <p className="text-sm text-slate-500 mt-2 mb-0">专业综合诊断均分 {schoolAvg} · 判定依据:一致性(是否对准产业需求)+ 有效性(培养是否真正达成)</p>
-      </div>
-
-      {/* 重点发展 / 优化整改 / 风险关注 */}
-      <div className="grid grid-cols-3 gap-4">
-        {VERDICT_ORDER.map((v) => {
-          const m = verdictMeta[v];
-          const active = filter === v;
-          return (
-            <button
-              key={v}
-              onClick={() => setFilter(active ? null : v)}
-              className={`rounded-2xl border-2 p-5 text-left transition-all ${active ? 'shadow-md' : 'hover:shadow-sm'}`}
-              style={{ borderColor: active ? m.dot : `${m.dot}55`, backgroundColor: m.bg }}
-            >
-              <div className="flex items-center gap-2">
-                <span className="w-3.5 h-3.5 rounded-full" style={{ backgroundColor: m.dot }} />
-                <span className="font-bold" style={{ color: m.color }}>{m.label}</span>
+      {/* 大屏风格结论区 */}
+      <div data-spec="decision-verdict" className="decision-hero rounded-3xl text-white p-7 relative overflow-hidden">
+        <HeroDecor />
+        <div className="relative">
+          <div className="flex items-center justify-between gap-3 flex-wrap">
+            <SchoolBadge sub={`专业建设决策驾驶舱 · ${LATEST_RESULT_TASK.name}`} />
+            <span className="text-xs text-indigo-200/80">判定依据:一致性(方向对不对)+ 有效性(做没做好)</span>
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-[1.35fr_1fr] gap-6 mt-6 items-center">
+            <div>
+              <div className="text-sm text-indigo-200">参评专业</div>
+              <div className="flex items-end gap-3">
+                <span className="text-6xl font-black leading-none tracking-tight">{rows.length}</span>
+                <span className="text-lg text-indigo-100 mb-1">个专业的本年度结论</span>
               </div>
-              <div className="text-4xl font-black mt-2" style={{ color: m.color }}>{count(v)}</div>
-            </button>
-          );
-        })}
-      </div>
-
-      {/* 区域产业信号:来自产业分析报告的真实检索结果 */}
-      <div data-spec="decision-region" className="rounded-2xl bg-white border border-slate-200 shadow-sm p-6">
-        <div className="flex items-center justify-between mb-3 flex-wrap gap-2">
-          <h3 className="text-base font-bold text-slate-800 m-0">区域产业信号 · {TENANT_REGION}</h3>
-          {sig?.found ? (
-            <button className="text-xs text-blue-600 hover:underline" onClick={() => router.push(`/industry-report?run=${sig.runId}`)}>
-              {sig.industry}产业分析报告 · {new Date(sig.at!).toLocaleDateString('zh-CN')} <ArrowRightOutlined />
-            </button>
-          ) : (
-            <button className="text-xs text-blue-600 hover:underline" onClick={() => router.push('/industry-report')}>
-              生成本地区产业分析报告 <ArrowRightOutlined />
-            </button>
-          )}
-        </div>
-        {sig?.found ? (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
-            <div>
-              <div className="text-xs text-slate-400 mb-1.5">产业集群(平方数据)</div>
-              {sig.clusters?.length ? (
-                sig.clusters.map((c) => (
-                  <div key={c.name} className="text-slate-700">
-                    {c.name}
-                    <span className="text-xs text-slate-400"> · {c.type}</span>
+              <div className="grid grid-cols-3 gap-3 mt-5">
+                {TIERS.map((v) => (
+                  <button
+                    key={v}
+                    onClick={() => setTier(v)}
+                    className={`rounded-2xl px-4 py-3 text-left border transition-all ${tier === v ? 'bg-white/15 border-white/50' : 'bg-white/5 border-white/10 hover:bg-white/10'}`}
+                  >
+                    <div className="flex items-center gap-2 text-sm text-indigo-100">
+                      <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: verdictMeta[v].dot, boxShadow: `0 0 10px ${verdictMeta[v].dot}` }} />
+                      {verdictMeta[v].label}
+                    </div>
+                    <div className="text-3xl font-black mt-1">{count(v)}</div>
+                  </button>
+                ))}
+              </div>
+              <div className="grid grid-cols-2 2xl:grid-cols-4 gap-3 mt-4">
+                {[
+                  ['综合均分', avgOf(rows, 'overall')],
+                  ['一致性均分', avgOf(rows, 'consistency')],
+                  ['有效性均分', avgOf(rows, 'effectiveness')],
+                  ['区域重点产业', region ? region.industries.length : '—'],
+                ].map(([l, v]) => (
+                  <div key={l as string} className="rounded-xl bg-white/5 border border-white/10 px-3 py-2">
+                    <div className="text-[11px] text-indigo-200 whitespace-nowrap">{l}</div>
+                    <div className="text-xl font-bold">{v}</div>
                   </div>
-                ))
-              ) : (
-                <div className="text-slate-400">未收录</div>
-              )}
+                ))}
+              </div>
             </div>
-            <div>
-              <div className="text-xs text-slate-400 mb-1.5">技术方向(OpenAlex 论文统计)</div>
-              {sig.directions?.map((d) => (
-                <div key={d.name} className="flex items-center gap-2">
-                  <span className="text-slate-700">{d.name}</span>
-                  <span className="text-xs font-bold" style={{ color: STAGE_COLOR[d.stage] ?? '#64748b' }}>
-                    {d.stage}
-                  </span>
-                </div>
-              ))}
-            </div>
-            <div>
-              <div className="text-xs text-slate-400 mb-1.5">本地政策(共检索到 {sig.policyCount} 条相关政策)</div>
-              {sig.localPolicies?.length ? (
-                sig.localPolicies.map((p) => (
-                  <div key={p} className="text-slate-700 text-xs leading-relaxed truncate" title={p}>
-                    {p}
-                  </div>
-                ))
-              ) : (
-                <div className="text-slate-400 text-xs">暂无本地政策</div>
-              )}
+            <div className="h-[230px] relative">
+              <ResponsiveContainer width="100%" height="100%">
+                <PieChart>
+                  <Pie data={pie} dataKey="value" innerRadius="62%" outerRadius="88%" paddingAngle={3} stroke="none">
+                    {pie.map((p) => (
+                      <Cell key={p.name} fill={p.color} />
+                    ))}
+                  </Pie>
+                </PieChart>
+              </ResponsiveContainer>
+              <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+                <div className="text-xs text-indigo-200">重点发展占比</div>
+                <div className="text-3xl font-black">{rows.length ? Math.round((count('GO') / rows.length) * 100) : 0}%</div>
+              </div>
             </div>
           </div>
-        ) : (
-          <div className="text-sm text-slate-400">{sig ? '还没有本地区的产业分析报告,生成后这里会显示真实的产业集群、技术热度与政策信号。' : '加载中…'}</div>
-        )}
+        </div>
       </div>
 
-      {/* 专业红绿灯 */}
+      <RegionIndustries />
+
+      {/* 专业红绿灯:三档 tab */}
       <div data-spec="decision-lights" className="rounded-2xl bg-white border border-slate-200 shadow-sm p-6">
-        <div className="flex items-center justify-between mb-4">
-          <h3 className="text-base font-bold text-slate-800 m-0">专业红绿灯{filter ? ` · ${verdictMeta[filter].label}` : ''}</h3>
-          <span className="text-xs text-slate-400">点击「{DEMO_MAJOR.name}」查看完整诊断(示例专业)</span>
+        <div className="flex items-center justify-between flex-wrap gap-2">
+          <h3 className="text-base font-bold text-slate-800 m-0">专业红绿灯</h3>
+          <span className="text-xs text-slate-400">点专业查看诊断</span>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-          {shown.map((m) => {
-            const v = verdictMeta[m.verdict];
-            const demo = m.name === DEMO_MAJOR.name;
-            return (
-              <button
-                key={m.name}
-                disabled={!demo}
-                title={demo ? '查看诊断分析' : '演示环境只有示例专业有完整诊断数据'}
-                onClick={() => router.push('/admin')}
-                className={`rounded-xl border p-4 text-left transition-all ${demo ? 'border-blue-200 hover:border-blue-400 hover:shadow-sm cursor-pointer' : 'border-slate-200 cursor-default'}`}
-              >
-                <div className="flex items-center gap-2">
-                  <span className="w-3 h-3 rounded-full shrink-0" style={{ backgroundColor: v.dot }} />
-                  <span className="font-bold text-slate-800 flex-1 truncate">{m.name}</span>
-                  <span className="text-xs font-bold px-2 py-0.5 rounded" style={{ color: v.color, backgroundColor: v.bg }}>
-                    {v.label}
-                  </span>
-                </div>
-                <div className="text-xs text-slate-500 mt-2 leading-relaxed">{m.reason}</div>
-              </button>
-            );
-          })}
-        </div>
+        <Tabs
+          activeKey={tier}
+          onChange={(k) => setTier(k as Verdict)}
+          items={TIERS.map((v) => ({
+            key: v,
+            label: (
+              <span className="flex items-center gap-1.5">
+                <span className="w-2.5 h-2.5 rounded-full inline-block" style={{ backgroundColor: verdictMeta[v].dot }} />
+                {verdictMeta[v].label}({count(v)})
+              </span>
+            ),
+            children: (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                {rows
+                  .filter((r) => r.verdict === v)
+                  .sort((a, b) => b.overall - a.overall)
+                  .map((r) => (
+                    <button
+                      key={r.major}
+                      onClick={() => router.push(`/admin/diagnosis?major=${majorSlug(r.major)}&task=${LATEST_RESULT_TASK.id}`)}
+                      className="rounded-xl border border-slate-200 p-4 text-left hover:border-blue-400 hover:shadow-sm transition-all"
+                    >
+                      <div className="flex items-center gap-2">
+                        <span className="w-3 h-3 rounded-full shrink-0" style={{ backgroundColor: verdictMeta[r.verdict].dot }} />
+                        <span className="font-bold text-slate-800 flex-1 truncate">{r.major}</span>
+                        <span className="text-lg font-black text-slate-700">{r.overall}</span>
+                      </div>
+                      <div className="text-xs text-slate-400 mt-1">{r.college}</div>
+                      <div className="text-xs text-slate-500 mt-1.5 leading-relaxed">
+                        一致性 {r.consistency} · 有效性 {r.effectiveness}
+                      </div>
+                    </button>
+                  ))}
+                {!count(v) && <div className="text-sm text-slate-400">没有该档专业</div>}
+              </div>
+            ),
+          }))}
+        />
       </div>
 
-      {/* 专业布局建议 */}
-      <div data-spec="decision-layout" className="rounded-2xl bg-white border border-slate-200 shadow-sm p-6">
-        <h3 className="text-base font-bold text-slate-800 m-0 mb-4">专业布局建议</h3>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-          {LAYOUT_ORDER.map((l) => {
-            const list = MAJORS.filter((m) => m.layout === l);
-            return (
-              <div key={l} className="rounded-xl bg-slate-50 border border-slate-100 p-4">
-                <div className="text-sm font-bold text-slate-700 mb-2">
-                  {l} <span className="text-slate-400 font-normal">· {list.length}</span>
-                </div>
-                <div className="space-y-1">
-                  {list.map((m) => (
-                    <div key={m.name} className="text-sm text-slate-600 truncate">{m.name}</div>
-                  ))}
-                  {!list.length && <div className="text-xs text-slate-400">—</div>}
-                </div>
-              </div>
-            );
-          })}
+      {/* 专业建设专家 AI(替代原「专业布局建议」) */}
+      <div data-spec="decision-advisor" className="rounded-2xl border border-indigo-100 bg-gradient-to-br from-indigo-50 to-white shadow-sm p-6 flex flex-col md:flex-row gap-5 md:items-center">
+        <div className="flex-1">
+          <div className="flex items-center gap-2 text-base font-bold text-slate-800">
+            <span className="w-9 h-9 rounded-xl bg-indigo-600 text-white flex items-center justify-center">
+              <RobotOutlined />
+            </span>
+            专业布局怎么调?和专业建设专家 AI 聊一聊
+          </div>
+          <p className="text-sm text-slate-500 mt-2 mb-0 leading-relaxed">AI 会结合上面的区域重点产业、已检索的产业分析和各专业提交资料后的评价结果,给出布局方面的建议;涉及招生调整的只给论证方向,不替学校下结论。</p>
+        </div>
+        <div className="flex flex-col gap-2 md:w-[22rem]">
+          {ADVISOR_QUESTIONS.slice(0, 3).map((q) => (
+            <button key={q} onClick={() => setAsk({ open: true, q })} className="text-left text-sm rounded-lg border border-indigo-100 bg-white px-3 py-2 text-indigo-700 hover:border-indigo-300">
+              {q}
+            </button>
+          ))}
+          <Button type="primary" icon={<RobotOutlined />} onClick={() => setAsk({ open: true, q: null })}>
+            开始对话
+          </Button>
         </div>
       </div>
 
       <div className="flex items-center justify-between text-xs text-slate-400">
-        <span>演示数据 · 专业结论由诊断引擎按一致性与有效性综合判定</span>
-        <span className="flex items-center gap-3">
-          <button className="hover:text-blue-500" onClick={() => router.push('/admin')}>
-            进入管理分析 <ArrowRightOutlined />
-          </button>
-          <button className="hover:text-blue-500" onClick={onReset}>演示:切回无数据状态</button>
-        </span>
+        <span>学校内部数据为演示数据;区域重点产业为真实检索结果</span>
+        <button className="hover:text-blue-500" onClick={() => router.push('/admin')}>
+          进入管理分析 <ArrowRightOutlined />
+        </button>
+      </div>
+
+      <AdvisorDrawer open={ask.open} question={ask.q} onClose={() => setAsk({ open: false, q: null })} />
+    </div>
+  );
+}
+
+// ---------- 大屏装饰 ----------
+function SchoolBadge({ sub }: { sub: string }) {
+  return (
+    <div className="flex items-center gap-3">
+      <span className="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-lg ring-4 ring-white/15 relative overflow-hidden">
+        <Image src="/dlpu_logo.png" alt={`${TENANT_NAME}校徽`} fill className="object-contain p-1" />
+      </span>
+      <div>
+        <div className="text-lg font-bold leading-tight">{TENANT_NAME}</div>
+        <div className="text-xs text-indigo-200">{sub}</div>
       </div>
     </div>
+  );
+}
+
+function HeroDecor() {
+  return (
+    <svg className="absolute inset-0 w-full h-full pointer-events-none" aria-hidden preserveAspectRatio="none">
+      <defs>
+        <pattern id="hero-grid" width="32" height="32" patternUnits="userSpaceOnUse">
+          <path d="M32 0H0V32" fill="none" stroke="rgba(255,255,255,0.07)" strokeWidth="1" />
+        </pattern>
+        <radialGradient id="hero-glow-a">
+          <stop offset="0%" stopColor="#22d3ee" stopOpacity="0.45" />
+          <stop offset="100%" stopColor="#22d3ee" stopOpacity="0" />
+        </radialGradient>
+        <radialGradient id="hero-glow-b">
+          <stop offset="0%" stopColor="#a78bfa" stopOpacity="0.5" />
+          <stop offset="100%" stopColor="#a78bfa" stopOpacity="0" />
+        </radialGradient>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#hero-grid)" />
+      <circle cx="92%" cy="12%" r="180" fill="url(#hero-glow-a)" />
+      <circle cx="8%" cy="105%" r="200" fill="url(#hero-glow-b)" />
+      <path d="M0 80 Q 200 20 400 70 T 800 60 T 1200 40" fill="none" stroke="rgba(125,211,252,0.18)" strokeWidth="1.5" />
+    </svg>
   );
 }
